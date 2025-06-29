@@ -147,6 +147,17 @@ body {
     60% { transform: translateY(-7px); }
 }
 
+
+/* --- FOOTER --- */
+.footer-qr {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
 /* --- MODO OSCURO --- */
 @media (prefers-color-scheme: dark) {
     body {
@@ -165,8 +176,6 @@ body {
     h1, h2, h3 { color: #f9fafb; }
     .normal-text { color: #e5e7eb !important; }
 
-    /* ***** CORRECCIÓN AQUÍ ***** */
-    /* Se asegura que el texto del footer sea claro en modo oscuro */
     footer .text-gray-600 {
         color: #9ca3af; /* Tailwind's gray-400 */
     }
@@ -201,6 +210,10 @@ body {
     .section-card h3 {
         font-size: 1.2rem !important;
     }
+    .section-card {
+        background-color: transparent;
+    }
+
     .download-btn {
         width: 175px !important;
         height: 48px !important;
@@ -209,6 +222,11 @@ body {
     .button-container {
         justify-content: flex-start !important;
     }
+
+    .footer-qr {
+        width: 44px;
+        height: 44px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -216,14 +234,12 @@ body {
     .logo-os10 { width: 50px; top: 10px; left: 10px; }
     .download-btn { width: 165px !important; }
 
-    /* En pantallas muy pequeñas, centrar todo en el footer para evitar solapamiento */
     footer {
         text-align: center;
     }
-    footer img {
+    footer .footer-qr {
         position: static !important;
         margin: 1rem auto 0;
         display: block;
     }
 }
-
