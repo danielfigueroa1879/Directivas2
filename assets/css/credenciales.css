@@ -236,11 +236,11 @@ h3, h4 {
     margin-left: 0;
     margin-right: auto;
 }
+/* CAMBIO: Tamaño de la imagen de valores aumentado */
 .valores-example { 
     display: block;
-    width: 150px; /* Ancho fijo para mejor control */
+    width: 220px; 
 }
-/* Tamaño de la imagen QR reducido */
 .qr-cred-image {
     width: 80px;
     height: auto;
@@ -320,9 +320,9 @@ h3, h4 {
     }
 
     .photo-example { width: 80%; margin-left: 0; }
-
+    /* CAMBIO: Tamaño de la imagen de valores aumentado para móvil */
     .valores-example { 
-        width: 120px;
+        width: 180px;
     }
     .qr-cred-image {
         width: 60px; /* Tamaño más pequeño para el QR en móvil */
@@ -375,4 +375,3 @@ h3, h4 {
     .table-container { overflow: visible; }
     img { max-width: 300px !important; }
 }
-
