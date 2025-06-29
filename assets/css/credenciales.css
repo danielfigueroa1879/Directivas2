@@ -42,86 +42,6 @@ h3, h4 {
     margin-top: 2rem;
 }
 
-/* --- BANNER DE INSTALACIÓN --- */
-.install-banner, .install-banner-ios {
-    position: fixed;
-    top: -120px; /* Oculto por defecto */
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 12px 16px;
-    /* Efecto de vidrio esmerilado */
-    background-color: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: top 0.5s ease-in-out;
-}
-.install-banner.visible, .install-banner-ios.visible {
-    top: 0;
-}
-/* Banner de Android */
-.install-banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.banner-text {
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-.banner-button-install {
-    background-color: white;
-    color: #0d6efd;
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-.banner-button-install:hover {
-    background-color: #f0f0f0;
-}
-
-/* Banner de iOS */
-.install-banner-ios {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    text-align: center;
-}
-.ios-text-container {
-    color: white;
-}
-.instructions {
-    font-size: 0.8rem;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 4px;
-}
-.share-icon {
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    display: inline-block;
-    margin: 0 2px;
-}
-.banner-button-close {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #333;
-    font-weight: bold;
-    padding: 6px 14px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    margin-top: 4px;
-}
-
 /* --- CABECERA Y TÍTULO --- */
 .logo-os10 {
     position: absolute;
@@ -208,7 +128,7 @@ h3, h4 {
 .download-btn:hover {
     transform: translateY(-3px);
 }
-/* CAMBIO: Se corrige el ancho de los botones DPI en escritorio */
+/* Se corrige el ancho de los botones DPI en escritorio */
 .dpi-btn {
     width: 240px;
     min-width: 240px;
@@ -320,7 +240,7 @@ h3, h4 {
     display: block;
     width: 150px; /* Ancho fijo para mejor control */
 }
-/* CAMBIO: Tamaño de la imagen QR reducido */
+/* Tamaño de la imagen QR reducido */
 .qr-cred-image {
     width: 80px;
     height: auto;
@@ -329,7 +249,6 @@ h3, h4 {
 .photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 .valores-example:hover { transform: scale(1.25); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 
-/* CAMBIO: Se elimina la clase qr-link que usaba position: absolute */
 .qr-link {
     /* No se necesita más */
 }
@@ -395,7 +314,7 @@ h3, h4 {
         margin-left: 0;
     }
 
-    /* CAMBIO: Se permite que los botones DPI tengan ancho automático en móvil */
+    /* Se permite que los botones DPI tengan ancho automático en móvil */
     .dpi-btn {
       width: auto;
     }
@@ -456,3 +375,4 @@ h3, h4 {
     .table-container { overflow: visible; }
     img { max-width: 300px !important; }
 }
+
