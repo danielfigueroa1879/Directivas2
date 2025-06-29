@@ -1,0 +1,305 @@
+/* --- ESTILOS GENERALES Y LAYOUT --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #374151; /* gray-700 */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-image: url("../images/101.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.card-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #F2FFFD;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: slideUp 1s ease-out 0.5s forwards;
+    position: relative;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.logo-os10 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: auto;
+    opacity: 0.7;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+.logo-os10:hover {
+    opacity: 1;
+}
+
+.normal-text {
+    color: #1f2937 !important; /* gray-800 */
+    font-weight: 400 !important;
+    font-size: 1.05rem !important;
+}
+
+/* --- SECCIONES/TARJETAS --- */
+.section-card {
+    border-left-width: 4px;
+    padding-left: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+    border-radius: 0 4px 4px 0;
+    background-color: #f7fdfc;
+}
+
+.section-card h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.8rem;
+}
+
+.section-card.clicked,
+.section-card:hover {
+    transform: translateX(3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Colores de borde y fondo por sección */
+.section-blue { border-color: #0a73c3; background-color: #F1F7FF; }
+.section-green { border-color: #1ccfc3; background-color: #F6FFFD; }
+.section-red { border-color: #f01317; background-color: #FFF8F8; }
+.section-yellow { border-color: #f5b508; background-color: #FFFFEF; }
+
+.qr-code {
+    width: 60px;
+    height: 60px;
+    float: right;
+    margin: -10px 5px 10px 10px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* --- BOTONES --- */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.download-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    height: 40px;
+    padding: 10px 15px !important;
+    margin-bottom: 15px;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: white !important;
+    text-align: center !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 8px !important;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease !important;
+}
+
+/* Sombra y efecto hover base */
+.download-btn {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+.download-btn:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25) !important;
+    opacity: 1;
+}
+
+/* Colores de fondo y sombra específicos */
+.section-blue .download-btn { background-color: #0a73c3; box-shadow: 0 4px 8px rgba(10, 115, 195, 0.4) !important; }
+.section-blue .download-btn:hover { background-color: #0861a5; box-shadow: 0 8px 15px rgba(10, 115, 195, 0.5) !important; }
+
+.section-green .download-btn { background-color: #1ccfc3; box-shadow: 0 4px 8px rgba(28, 207, 195, 0.4) !important; }
+.section-green .download-btn:hover { background-color: #18b6ab; box-shadow: 0 8px 15px rgba(28, 207, 195, 0.5) !important; }
+
+.section-red .download-btn { background-color: #f01317; box-shadow: 0 4px 8px rgba(240, 19, 23, 0.4) !important; }
+.section-red .download-btn:hover { background-color: #d10f13; box-shadow: 0 8px 15px rgba(240, 19, 23, 0.5) !important; }
+
+.section-yellow .download-btn { background-color: #f5b508; box-shadow: 0 4px 8px rgba(245, 181, 8, 0.4) !important; }
+.section-yellow .download-btn:hover { background-color: #d99c07; box-shadow: 0 8px 15px rgba(245, 181, 8, 0.5) !important; }
+
+/* Animación de rebote para botón de credenciales */
+#tramitarCredencialesBtn.bounce-animation {
+    animation: bounce 2s ease infinite !important;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+
+/* --- BANNER DE INSTALACIÓN PWA --- */
+.install-banner {
+    position: fixed;
+    top: -100px; /* Inicia fuera de la pantalla */
+    left: 0;
+    right: 0;
+    background-color: rgba(10, 115, 195, 0.95);
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: top 0.5s ease-in-out;
+}
+.install-banner.visible {
+    top: 0; /* Lo hace visible */
+}
+#install-banner-ios {
+    flex-direction: column;
+    gap: 10px;
+}
+.install-banner .instructions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.install-banner .share-icon {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.install-banner .banner-button {
+    padding: 8px 16px;
+    background: white;
+    color: #0a73c3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.install-banner .banner-button-close {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.install-banner .banner-button:hover { background-color: #f0f0f0; }
+.install-banner .banner-button-close:hover { background-color: rgba(255,255,255,0.1); }
+
+/* --- MODO OSCURO --- */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #111827; /* gray-900 */
+        color: #e2e8f0; /* slate-200 */
+    }
+    .card-container {
+        background-color: #374151; /* gray-700 */
+        color: #e2e8f0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+    .section-card {
+        border-color: #4b5563 !important; /* gray-600 */
+        background-color: #2d3748 !important; /* Un poco más oscuro que el card-container */
+    }
+    h1, h2, h3 { color: #f9fafb; } /* gray-50 */
+    .normal-text { color: #e5e7eb !important; } /* gray-200 */
+
+    /* Colores de botones en modo oscuro */
+    .section-blue .download-btn { background-color: #3b82f6; }
+    .section-blue .download-btn:hover { background-color: #2563eb; }
+    .section-green .download-btn { background-color: #10b981; }
+    .section-green .download-btn:hover { background-color: #059669; }
+    .section-red .download-btn { background-color: #ef4444; }
+    .section-red .download-btn:hover { background-color: #dc2626; }
+    .section-yellow .download-btn { background-color: #f59e0b; }
+    .section-yellow .download-btn:hover { background-color: #d97706; }
+
+    /* Banner en modo oscuro */
+    .install-banner { background-color: rgba(30, 64, 175, 0.95); }
+    .install-banner .banner-button { background-color: #f0f0f0; color: #1e40af; }
+}
+
+/* --- DISEÑO RESPONSIVO (MÓVIL) --- */
+@media (max-width: 640px) {
+    body {
+        padding: 12px;
+    }
+    .card-container {
+        padding: 15px;
+    }
+    .logo-os10 {
+        width: 60px;
+        top: 15px;
+        left: 15px;
+    }
+    .normal-text {
+        font-size: 1rem !important;
+    }
+    .section-card h3 {
+        font-size: 1.2rem !important;
+    }
+    .download-btn {
+        width: 175px !important;
+        height: 48px !important;
+        font-size: 0.95rem !important;
+    }
+    .button-container {
+        justify-content: flex-start !important;
+    }
+    .qr-code {
+        width: 50px;
+        height: 50px;
+        margin-top: -5px;
+    }
+
+    /* Banner en móvil */
+    .install-banner {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .install-banner .instructions {
+        flex-direction: column;
+        margin-top: 5px;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    body { padding: 8px; }
+    .logo-os10 { width: 50px; top: 10px; left: 10px; }
+    .download-btn { width: 165px !important; }
+}

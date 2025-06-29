@@ -1,1 +1,144 @@
-<h1>directivas 2</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Directivas de Funcionamiento OS10</title>
+
+    <!-- Metadatos PWA y SEO -->
+    <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
+    <meta name="theme-color" content="#0a73c3"/>
+    <meta name="application-name" content="Directivas OS10">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
+
+    <!-- Apple Touch Icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
+    <link rel="apple-touch-icon" href="assets/images/icon-180x180.png">
+    
+    <!-- Dependencias y Estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Contenedor del Banner de instalación PWA (solo visible en móvil via JS) -->
+    <div id="install-banner-android" class="install-banner">
+        <span>¿Quieres instalar esta app?</span>
+        <div>
+            <button id="install-button-android" class="banner-button">Instalar</button>
+            <button id="close-banner-android" class="banner-button-close">No, gracias</button>
+        </div>
+    </div>
+    <div id="install-banner-ios" class="install-banner">
+        <span>Instala esta app en tu iPhone/iPad</span>
+        <div class="instructions">
+            <span>1. Toca <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Compartir</span>
+            <span>2. Selecciona "Añadir a la pantalla de inicio"</span>
+        </div>
+        <button id="close-banner-ios" class="banner-button-close">Entendido</button>
+    </div>
+
+    <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
+        <!-- Logo OS10 -->
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
+            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10">
+        </a>
+
+        <header class="text-center">
+            <h1 class="text-2xl font-bold">DIRECTIVA DE FUNCIONAMIENTO</h1>
+            <h2 class="text-lg font-semibold">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+        </header>
+
+        <main class="space-y-4">
+           <!-- Sección 1 -->
+           <section class="section-card border-blue-500 section-blue">
+                <h3 class="font-bold">1️⃣ Presentar Directiva DD.FF.</h3>
+                <ul class="list-disc pl-5 text-sm normal-text">
+                    <li>Vigencia 03 años en instalación.</li>
+                    <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
+                    <li>
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 hover:underline">Dec. 93/1985</a>,
+                        <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 hover:underline">Dec. 261 (IV.4)</a>, y
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 hover:underline">Dec. 32/2024</a>.
+                   </li>
+               </ul>
+           </section>
+           
+           <!-- Sección 2 -->
+           <section class="section-card border-green-500 section-green">
+               <h3 class="font-bold">2️⃣ Documentación</h3>
+               <ul class="space-y-3 pl-5 text-sm normal-text">
+                    <li><span>02 Solicitudes Simple.</span>
+                        <div class="button-container"><a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn" title="Descargar Solicitud">Descargar Solicit.</a></div>
+                    </li>
+                    <li><span>01 copia DD.FF. completa.</span>
+                        <div class="button-container"><a href="https://dal5.short.gy/D" target="_blank" class="download-btn" title="Descargar Word">Descargar Word</a></div>
+                    </li>
+                    <li><span>Requisitos según tipo, Instalación, Eventos, Partidos de Fútbol Prof.</span>
+                        <div class="button-container"><a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn" title="Descargar Requisitos">Descargar Requis.</a></div>
+                    </li>
+                    <li><span>Uniforme Decreto 32/2024.</span>
+                        <div class="button-container"><a href="https://dal5.short.gy/0u" target="_blank" class="download-btn" title="Ejemplo Uniforme">Ejemplo Uniforme</a></div>
+                    </li>
+                    <li><span>Análisis de Vulnerabilidades.</span>
+                        <div class="button-container"><a href="https://dal5.short.gy/6ydn" target="_blank" class="download-btn" title="Descargar Análisis">Descargar Anális.</a></div>
+                    </li>
+                    <li><span>Solicitud de Uniforme Distinto.</span>
+                        <div class="button-container"><a href="https://d6.short.gy/G8" target="_blank" class="download-btn" title="Descargar Word">Descargar Word</a></div>
+                    </li>
+               </ul>
+           </section>
+           
+           <!-- Sección 3 -->
+           <section class="section-card border-red-500 section-red">
+               <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
+               <ul class="list-disc pl-5 text-sm normal-text">
+                   <li>
+                       <span>Escanear todo en 01 archivo PDF (Pendrive) y/o Página Unir PDF.</span>
+                       <div class="button-container">
+                           <a href="https://dal5.short.gy/I" target="_blank" class="download-btn" title="Herramienta para unir PDF">Herramienta</a>
+                       </div>
+                   </li>
+               </ul>
+           </section>
+           
+           <!-- Sección 4 -->
+           <section class="section-card border-yellow-500 section-yellow">
+                <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
+                <img src="assets/images/qr.png" alt="Código QR para más información" class="qr-code">
+                <ul class="list-disc pl-5 text-sm normal-text">
+                    <li>
+                        <span>Resol. 1480 (10.04.2025) revoca resolución 1.199 para confección de tarjetas.</span>
+                        <div class="button-container">
+                            <a href="https://d6.short.gy/dsds" target="_blank" class="download-btn" title="Descargar Documentos">Descargar Docum.</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Tramitar credenciales.</span>
+                        <div class="button-container">
+                            <a href="credenciales.html" class="download-btn" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar Credenc.</a>
+                        </div>
+                    </li>
+                </ul>
+           </section>
+       </main>
+       
+       <footer class="text-sm text-center normal-text space-y-1">
+            <span>Haga clic para descargar.</span>
+            <span>©2025 - Daniel Figueroa Ch.</span>
+            <span>Ingeniero en Informática.</span>
+       </footer>
+   </div>
+   
+   <!-- El script se carga al final para asegurar que todo el HTML esté disponible -->
+   <script src="assets/js/main.js"></script>
+</body>
+</html>

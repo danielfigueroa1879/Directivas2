@@ -1,0 +1,25 @@
+{
+  "short_name": "Directivas OS10",
+  "name": "Directivas de Funcionamiento OS10",
+  "description": "Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.",
+  "icons": [
+    {
+      "src": "assets/images/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#F2FFFD",
+  "theme_color": "#0a73c3",
+  "orientation": "portrait-primary",
+  "scope": "."
+}
