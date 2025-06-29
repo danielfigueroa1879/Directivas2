@@ -183,13 +183,7 @@ body {
 
 
 /* --- FOOTER --- */
-.footer-qr {
-    width: 56px;
-    height: 56px;
-    position: absolute;
-    bottom: 1rem;
-    right: 1.5rem;
-}
+/* Se eliminaron los estilos de .footer-qr ya que ahora se usan clases de Tailwind en el HTML */
 
 
 /* --- BOTONES --- */
@@ -215,7 +209,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    border: none; /* Se quita el borde por si acaso */
+    border: none;
     border-radius: 8px !important;
     opacity: 0.95;
     letter-spacing: 0.5px;
@@ -226,7 +220,6 @@ body {
 .download-btn:hover {
     transform: translateY(-5px) !important;
     opacity: 1;
-    /* Efecto de brillo/resplandor usando la variable de color de la sección padre */
     box-shadow: 0 0 22px 4px var(--glow-color);
 }
 
@@ -304,13 +297,6 @@ body {
     .button-container {
         justify-content: flex-start !important;
     }
-
-    .footer-qr {
-        width: 44px;
-        height: 44px;
-        right: 0.5rem;
-        bottom: 0.5rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -319,7 +305,6 @@ body {
     .download-btn { width: 165px !important; }
 }
 /* --- ESTILOS PARA EL BANNER DE INSTALACIÓN --- */
-/* Esta clase se aplica al div del banner creado por JavaScript */
 .install-banner-custom {
     position: fixed;
     top: 0;
@@ -331,32 +316,30 @@ body {
     justify-content: space-between;
     align-items: center;
     
-    /* Efecto de vidrio esmerilado (semi-transparente y borroso) */
     background-color: rgba(20, 20, 20, 0.6);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* Para compatibilidad con Safari */
+    -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-    /* Estilos del texto */
     color: white;
     font-weight: 600;
     font-size: 0.9rem;
-    font-family: 'Poppins', sans-serif; /* Asegura que la fuente sea consistente */
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Estilos para el botón de instalación dentro del banner */
 .install-banner-custom button {
     background-color: white;
-    color: #0a73c3; /* Letras azules */
+    color: #0a73c3;
     font-weight: bold;
     padding: 8px 16px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    margin-left: 15px; /* Espacio entre el texto y el botón */
+    margin-left: 15px;
     transition: background-color 0.2s;
 }
 
 .install-banner-custom button:hover {
-    background-color: #f0f0f0; /* Un gris muy claro al pasar el mouse */
+    background-color: #f0f0f0;
 }
+
