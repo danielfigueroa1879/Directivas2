@@ -2,32 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport optimizado para móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tramitar Credencial Empresa e Independiente</title>
 
-    <!-- Metadatos PWA y SEO -->
+    <!-- Metadatos y Favicon -->
     <meta name="description" content="Requisitos y formatos para tramitar la credencial de seguridad privada para empresas e independientes en OS10.">
-    <meta name="theme-color" content="#0a73c3"/>
-    <meta name="application-name" content="Directivas OS10">
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Favicons Estándar (con rutas corregidas) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
-    <link rel="icon" type="image/png" href="assets/images/os.png">
-
-    <!-- Iconos y configuración para Apple iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
-    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
     
     <!-- Dependencias y Estilos -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -151,23 +131,24 @@
                             <li>R.U.T.: 61.944.800-6</li>
                             <li>Teléfono OS.10.: +562512651024</li>
                         </ul>
-                        <div class="mt-4">
+                        <!-- Contenedor para alinear las dos imágenes -->
+                        <div class="flex items-end justify-start gap-4 mt-4">
+                            <!-- Imagen de valores a la izquierda -->
                             <img src="assets/images/valores.png" alt="Valores de Pago" class="valores-example">
+                            <!-- QR a la derecha -->
+                            <a href="https://dal5.short.gy/C√" target="_blank">
+                               <img src="assets/images/qrcred.png" alt="Código QR para más información" class="qr-cred-image">
+                            </a>
                         </div>
                     </div>
                 </div>
             </section>
         </main>  
        
-       <footer class="relative mt-6 pt-4 border-t border-gray-200 dark:border-gray-600">
-            <div class="text-center text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                <span>Haga clic en los botones para descargar.</span><br>
-                <span>©2025 - Daniel Figueroa Ch.</span><br>
-                <span>Ingeniero en Informática.</span>
-            </div>
-            <a href="https://dal5.short.gy/C√" target="_blank">
-               <img src="assets/images/qrcred.png" alt="Código QR para más información" class="qr-code-footer">
-            </a>
+       <footer class="footer-text">
+          <span>Haga clic en los botones para descargar.</span>
+          <span>©2025 - Daniel Figueroa Ch.</span>
+          <span>Ingeniero en Informática.</span>
        </footer>
     </div>
 
