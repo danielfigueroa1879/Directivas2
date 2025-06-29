@@ -29,8 +29,6 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- SE ELIMINÓ EL HTML DEL BANNER DE INSTALACIÓN -->
-
     <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
         <!-- Logo OS10 -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
@@ -98,7 +96,7 @@
            <!-- Sección 4 -->
            <section class="section-card border-yellow-500 section-yellow">
                 <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
-                <img src="assets/images/qr.png" alt="Código QR para más información" class="qr-code">
+                <!-- SE ELIMINÓ EL QR DE AQUÍ -->
                 <ul class="list-disc pl-5 text-sm normal-text">
                     <li>
                         <span>Resol. 1480 (10.04.2025) revoca resolución 1.199 para confección de tarjetas.</span>
@@ -116,10 +114,16 @@
            </section>
        </main>
        
-       <footer class="text-sm text-center normal-text space-y-1">
-            <span>Haga clic para descargar.</span>
-            <span>©2025 - Daniel Figueroa Ch.</span>
-            <span>Ingeniero en Informática.</span>
+       <!-- Footer Corregido -->
+       <footer class="relative mt-6 pt-4 border-t border-gray-200 dark:border-gray-600">
+            <!-- Contenedor para el texto centrado -->
+            <div class="text-center text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <span>Haga clic para descargar.</span><br>
+                <span>©2025 - Daniel Figueroa Ch.</span><br>
+                <span>Ingeniero en Informática.</span>
+            </div>
+            <!-- QR posicionado a la derecha (visible en pantallas pequeñas y más grandes) -->
+            <img src="assets/images/qr.png" alt="Código QR para más información" class="w-14 h-14 absolute bottom-0 right-0" title="Más información">
        </footer>
    </div>
    
