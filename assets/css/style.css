@@ -57,14 +57,12 @@ body {
 
 /* --- SECCIONES/TARJETAS --- */
 .section-card {
-    /* CORRECCIÓN: Se aplica un borde completo */
     border-width: 1.5px;
     border-style: solid;
-    border-radius: 8px; /* Redondea todas las esquinas */
-    padding: 1.25rem; /* Ajuste de padding para compensar el borde */
+    border-radius: 8px;
+    padding: 1.25rem;
     margin-bottom: 1.2rem;
     --glow-color: rgba(128, 128, 128, 0.2);
-    /* Efecto de iluminación sutil por defecto */
     box-shadow: 0 0 12px 0px var(--glow-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -72,12 +70,11 @@ body {
 .section-card h3 {
     font-size: 1.3rem !important;
     margin-bottom: 0.8rem;
-    padding-left: 0; /* Se quita el padding anterior que era para el borde izquierdo */
+    padding-left: 0;
 }
 
-/* Efecto hover con iluminación más intensa */
 .section-card:hover, .section-card.clicked {
-    transform: translateY(-2px) scale(1.01); /* Efecto de levitación sutil */
+    transform: translateY(-2px) scale(1.01);
     box-shadow: 0 0 22px 4px var(--glow-color);
 }
 
@@ -248,12 +245,5 @@ body {
     .logo-os10 { width: 50px; top: 10px; left: 10px; }
     .download-btn { width: 165px !important; }
 
-    footer {
-        text-align: center;
-    }
-    footer .footer-qr {
-        position: static !important;
-        margin: 1rem auto 0;
-        display: block;
-    }
+    /* CORRECCIÓN: Se elimina la regla que centraba el QR */
 }
