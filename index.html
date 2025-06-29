@@ -36,7 +36,8 @@
 </head>
 <body class="text-gray-800">
 
-    <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
+    <!-- Se elimina 'bg-white' para que el contenedor use el color definido en style.css -->
+    <div class="card-container rounded-xl shadow-md p-6 space-y-6 relative">
         <!-- Logo OS10 -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10">
@@ -120,8 +121,8 @@
            </section>
        </main>
        
-       <!-- Footer con modo claro/oscuro, texto ajustado y QR a la derecha -->
-       <footer class="relative mt-6 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-b-xl p-4">
+       <!-- Footer sin fondo propio para que herede el del contenedor padre -->
+       <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 p-4">
             <div class="text-center text-sm text-gray-600 dark:text-gray-200 leading-tight transform -translate-x-4">
                 <span>Haga clic para descargar.</span><br>
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
@@ -134,4 +135,3 @@
    <script src="assets/js/main.js"></script>
 </body>
 </html>
-
