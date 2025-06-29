@@ -59,12 +59,15 @@ body {
 .section-card {
     border-left-width: 4px;
     padding-left: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
     margin-bottom: 1.2rem;
     border-radius: 0 4px 4px 0;
-    background-color: #f7fdfc;
+    /* CORRECCIÓN: Se añade variable para el color del resplandor */
+    --glow-color: rgba(128, 128, 128, 0.2);
+    /* CORRECCIÓN: Se añade box-shadow para el efecto de resplandor */
+    box-shadow: 0 0 15px -2px var(--glow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section-card h3 {
@@ -72,17 +75,43 @@ body {
     margin-bottom: 0.8rem;
 }
 
-.section-card.clicked,
-.section-card:hover {
-    transform: translateX(3px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+/* CORRECCIÓN: Efecto hover mejorado con resplandor más intenso */
+.section-card:hover, .section-card.clicked {
+    transform: translateX(4px) scale(1.02);
+    box-shadow: 0 0 25px -2px var(--glow-color);
 }
 
-/* Colores de borde y fondo por sección */
-.section-blue { border-color: #0a73c3; background-color: #F1F7FF; }
-.section-green { border-color: #1ccfc3; background-color: #F6FFFD; }
-.section-red { border-color: #f01317; background-color: #FFF8F8; }
-.section-yellow { border-color: #f5b508; background-color: #FFFFEF; }
+/* Colores de borde, fondo y resplandor por sección */
+.section-blue { 
+    border-color: #0a73c3; 
+    background-color: #F1F7FF;
+    --glow-color: rgba(10, 115, 195, 0.5);
+}
+.section-green { 
+    border-color: #1ccfc3; 
+    background-color: #F6FFFD;
+    --glow-color: rgba(28, 207, 195, 0.5);
+}
+.section-red { 
+    border-color: #f01317; 
+    background-color: #FFF8F8;
+    --glow-color: rgba(240, 19, 23, 0.5);
+}
+.section-yellow { 
+    border-color: #f5b508; 
+    background-color: #FFFFEF;
+    --glow-color: rgba(245, 181, 8, 0.6);
+}
+
+
+/* --- FOOTER --- */
+.footer-qr {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
 
 
 /* --- BOTONES --- */
@@ -147,17 +176,6 @@ body {
     60% { transform: translateY(-7px); }
 }
 
-
-/* --- FOOTER --- */
-.footer-qr {
-    width: 56px;
-    height: 56px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-
 /* --- MODO OSCURO --- */
 @media (prefers-color-scheme: dark) {
     body {
@@ -210,9 +228,7 @@ body {
     .section-card h3 {
         font-size: 1.2rem !important;
     }
-    .section-card {
-        background-color: transparent;
-    }
+    /* CORRECCIÓN: Se elimina la regla que hacía el fondo transparente */
 
     .download-btn {
         width: 175px !important;
