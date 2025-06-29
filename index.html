@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- Viewport optimizado para móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Directivas de Funcionamiento OS10</title>
 
@@ -11,16 +12,22 @@
     <meta name="application-name" content="Directivas OS10">
     <link rel="manifest" href="manifest.json">
 
-    <!-- Favicon -->
+    <!-- Favicons Estándar (con rutas corregidas) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
+    <link rel="icon" type="image/png" href="assets/images/os.png">
 
-    <!-- Apple Touch Icons -->
+    <!-- Iconos y configuración para Apple iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
-    <link rel="apple-touch-icon" href="assets/images/icon-180x180.png">
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
     
     <!-- Dependencias y Estilos -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -121,7 +128,7 @@
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
                 <span>Ingeniero en Informática.</span>
             </div>
-            <!-- QR posicionado a la derecha con tamaño responsivo -->
+            <!-- Se utiliza una clase específica '.footer-qr' para controlar el tamaño y posición -->
             <img src="assets/images/qr.png" alt="Código QR para más información" class="footer-qr" title="Más información">
        </footer>
    </div>
