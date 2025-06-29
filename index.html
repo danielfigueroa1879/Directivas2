@@ -120,19 +120,17 @@
            </section>
        </main>
        
-       <!-- Footer Corregido con Flexbox para una alineación correcta -->
-       <footer class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-600 flex justify-between items-center">
-            <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+       <!-- Footer Corregido con texto centrado, fondo oscuro y QR a la derecha -->
+       <footer class="relative mt-6 bg-gray-800 rounded-b-xl p-4">
+            <div class="text-center text-sm text-white leading-relaxed">
                 <span>Haga clic para descargar.</span><br>
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
                 <span>Ingeniero en Informática.</span>
             </div>
-            <!-- El tamaño del QR se controla con clases de Tailwind para ser responsivo -->
-            <img src="assets/images/qr.png" alt="Código QR para más información" class="w-11 h-11 md:w-14 md:h-14" title="Más información">
+            <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información">
        </footer>
    </div>
    
    <script src="assets/js/main.js"></script>
 </body>
 </html>
-
