@@ -215,16 +215,35 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: none; /* Se quita el borde por si acaso */
     border-radius: 8px !important;
     opacity: 0.95;
     letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease !important;
 }
 
 .download-btn:hover {
     transform: translateY(-5px) !important;
     opacity: 1;
+    /* Efecto de brillo/resplandor usando la variable de color de la sección padre */
+    box-shadow: 0 0 22px 4px var(--glow-color);
 }
+
+/* Colores de botones por sección */
+.section-blue .download-btn {
+    background-color: #0a73c3;
+}
+.section-green .download-btn {
+    background-color: #1ccfc3;
+}
+.section-red .download-btn {
+    background-color: #f01317;
+}
+.section-yellow .download-btn {
+    background-color: #f5b508;
+}
+
 
 #tramitarCredencialesBtn.bounce-animation {
     animation: bounce 2s ease infinite !important;
