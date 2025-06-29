@@ -35,6 +35,152 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="text-gray-800">
+     <!-- Banner de instalación para Android -->
+    <div id="install-banner">
+        ¿Quieres instalar esta app? 
+        <button id="install-button-android">Instalar</button>
+        <button id="close-banner-android">No, gracias</button>
+    </div>
+   
+   <!-- Script para la funcionalidad de instalación -->
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+       // Variables para la instalación
+       let deferredPrompt;
+       
+       // Referencias a los elementos del DOM
+       const androidBanner = document.getElementById('install-banner');
+       const iosBanner = document.getElementById('ios-install-banner');
+       const androidInstallButton = document.getElementById('install-button-android');
+       const androidCloseBanner = document.getElementById('close-banner-android');
+       const iosCloseBanner = document.getElementById('close-banner-ios');
+       
+       // Detectar si el dispositivo es iOS
+       const isIOS = () => {
+           return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+       };
+       
+       // Detectar si es Safari en iOS
+       const isSafari = () => {
+           const ua = navigator.userAgent;
+           return /Safari/.test(ua) && /Apple/.test(ua) && !/Chrome/.test(ua) && !/Firefox/.test(ua);
+       };
+       
+       // Verificar si la app ya está instalada (modo independiente)
+       const isInStandaloneMode = () => {
+           return ('standalone' in window.navigator) && (window.navigator.standalone) || 
+                  window.matchMedia('(display-mode: standalone)').matches;
+       };
+       
+       // Función para mostrar el banner de iOS
+       const showIOSBanner = () => {
+           // Solo mostrar en iOS, en Safari y si no está en modo standalone
+           if (isIOS() && isSafari() && !isInStandaloneMode() && !localStorage.getItem('iosBannerClosed')) {
+               iosBanner.style.display = 'flex';
+               
+               // Guardar en localStorage que el usuario ha visto el banner
+               localStorage.setItem('iosBannerShown', 'true');
+               
+               // Ocultar después de 15 segundos
+               setTimeout(() => {
+                   iosBanner.style.display = 'none';
+               }, 15000);
+           }
+       };
+       
+       // Si es iOS, mostrar el banner específico
+       if (isIOS()) {
+           // Mostrar el banner después de 2 segundos para no interrumpir la carga inicial
+           setTimeout(showIOSBanner, 2000);
+           
+           // Manejar el cierre del banner de iOS
+           iosCloseBanner.addEventListener('click', () => {
+               iosBanner.style.display = 'none';
+               // Recordar que el usuario ha cerrado el banner
+               localStorage.setItem('iosBannerClosed', 'true');
+           });
+       } else {
+           // Para Android y otros dispositivos
+           window.addEventListener('beforeinstallprompt', (e) => {
+               e.preventDefault();
+               deferredPrompt = e;
+               
+               // No mostrar el banner si el usuario ya lo cerró antes
+               if (!localStorage.getItem('androidBannerClosed')) {
+                   // Mostrar el banner de instalación después de 2 segundos
+                   setTimeout(() => {
+                       androidBanner.style.display = 'block';
+                   }, 2000);
+               }
+           });
+           
+           // Acción del botón de instalación
+           androidInstallButton.addEventListener('click', () => {
+               androidBanner.style.display = 'none';
+               
+               if (deferredPrompt) {
+                   deferredPrompt.prompt();
+                   deferredPrompt.userChoice.then((choiceResult) => {
+                       if (choiceResult.outcome === 'accepted') {
+                           console.log('Usuario aceptó la instalación');
+                       }
+                       deferredPrompt = null;
+                   });
+               }
+           });
+           
+           // Cerrar el banner de Android
+           androidCloseBanner.addEventListener('click', () => {
+               androidBanner.style.display = 'none';
+               localStorage.setItem('androidBannerClosed', 'true');
+           });
+       }
+       
+       // Script para el botón de tramitar credenciales con animación
+       const tramitarBtn = document.getElementById('tramitarCredenciales');
+       if (tramitarBtn) {
+           // Función para activar/desactivar la animación
+           function toggleBounce() {
+               tramitarBtn.classList.add('bounce-animation');
+               
+               // Desactivar después de 2 segundos
+               setTimeout(function() {
+                   tramitarBtn.classList.remove('bounce-animation');
+               }, 2000);
+           }
+           
+           // Activar cada 5 segundos
+           setInterval(toggleBounce, 5000);
+           
+           // Primera activación después de 3 segundos
+           setTimeout(toggleBounce, 3000);
+       }
+       
+       // Efecto click en secciones
+       var sections = document.querySelectorAll('.border-l-4');
+       for (var i = 0; i < sections.length; i++) {
+           sections[i].addEventListener('click', function() {
+               for (var j = 0; j < sections.length; j++) {
+                   sections[j].classList.remove('clicked');
+               }
+               this.classList.add('clicked');
+           });
+       }
+       
+       // Mostrar nuevamente el banner de iOS si han pasado más de 7 días desde la última vez
+       if (isIOS() && localStorage.getItem('iosBannerShown')) {
+           const lastShown = localStorage.getItem('iosBannerShown');
+           const daysSinceShown = (new Date() - new Date(lastShown)) / (1000 * 60 * 60 * 24);
+           
+           if (daysSinceShown > 7) {
+               localStorage.removeItem('iosBannerClosed');
+               localStorage.removeItem('iosBannerShown');
+               setTimeout(showIOSBanner, 2000);
+           }
+       }
+   });
+   </script>
+
 
     <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
         <!-- Logo OS10 -->
