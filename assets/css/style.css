@@ -63,10 +63,9 @@ body {
     padding-bottom: 0.8rem;
     margin-bottom: 1.2rem;
     border-radius: 0 4px 4px 0;
-    /* CORRECCIÓN: Se añade variable para el color del resplandor */
     --glow-color: rgba(128, 128, 128, 0.2);
-    /* CORRECCIÓN: Se añade box-shadow para el efecto de resplandor */
-    box-shadow: 0 0 15px -2px var(--glow-color);
+    /* CORRECCIÓN: Efecto de iluminación sutil por defecto */
+    box-shadow: 0 0 12px 0px var(--glow-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -75,10 +74,10 @@ body {
     margin-bottom: 0.8rem;
 }
 
-/* CORRECCIÓN: Efecto hover mejorado con resplandor más intenso */
+/* CORRECCIÓN: Efecto hover con iluminación más intensa */
 .section-card:hover, .section-card.clicked {
-    transform: translateX(4px) scale(1.02);
-    box-shadow: 0 0 25px -2px var(--glow-color);
+    transform: translateX(4px);
+    box-shadow: 0 0 22px 4px var(--glow-color);
 }
 
 /* Colores de borde, fondo y resplandor por sección */
@@ -228,7 +227,6 @@ body {
     .section-card h3 {
         font-size: 1.2rem !important;
     }
-    /* CORRECCIÓN: Se elimina la regla que hacía el fondo transparente */
 
     .download-btn {
         width: 175px !important;
