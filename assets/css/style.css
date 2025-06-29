@@ -187,8 +187,8 @@ body {
     width: 56px;
     height: 56px;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 1rem;
+    right: 1.5rem;
 }
 
 
@@ -308,6 +308,8 @@ body {
     .footer-qr {
         width: 44px;
         height: 44px;
+        right: 0.5rem;
+        bottom: 0.5rem;
     }
 }
 
@@ -315,15 +317,6 @@ body {
     body { padding: 8px; }
     .logo-os10 { width: 50px; top: 10px; left: 10px; }
     .download-btn { width: 165px !important; }
-
-    footer {
-        text-align: center;
-    }
-    footer .footer-qr {
-        position: static !important;
-        margin: 1rem auto 0;
-        display: block;
-    }
 }
 /* --- ESTILOS PARA EL BANNER DE INSTALACIÓN --- */
 /* Esta clase se aplica al div del banner creado por JavaScript */
