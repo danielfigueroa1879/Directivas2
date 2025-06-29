@@ -42,6 +42,86 @@ h3, h4 {
     margin-top: 2rem;
 }
 
+/* --- BANNER DE INSTALACIÓN --- */
+.install-banner, .install-banner-ios {
+    position: fixed;
+    top: -120px; /* Oculto por defecto */
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 12px 16px;
+    /* Efecto de vidrio esmerilado */
+    background-color: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: top 0.5s ease-in-out;
+}
+.install-banner.visible, .install-banner-ios.visible {
+    top: 0;
+}
+/* Banner de Android */
+.install-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.banner-text {
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.banner-button-install {
+    background-color: white;
+    color: #0d6efd;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.banner-button-install:hover {
+    background-color: #f0f0f0;
+}
+
+/* Banner de iOS */
+.install-banner-ios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+.ios-text-container {
+    color: white;
+}
+.instructions {
+    font-size: 0.8rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 4px;
+}
+.share-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 2px;
+}
+.banner-button-close {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
 /* --- CABECERA Y TÍTULO --- */
 .logo-os10 {
     position: absolute;
@@ -114,7 +194,6 @@ h3, h4 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    /* CORRECCIÓN: Botones más anchos y delgados */
     padding: 8px 24px;
     margin: 0.5rem 0;
     width: auto;
@@ -129,13 +208,11 @@ h3, h4 {
 .download-btn:hover {
     transform: translateY(-3px);
 }
-/* Sombra por color de botón */
 .bg-yellow-500 { box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4); }
 .bg-yellow-500:hover { box-shadow: 0 6px 15px rgba(251, 191, 36, 0.5); }
 .bg-blue-500 { box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4); }
 .bg-blue-500:hover { box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5); }
 
-/* Animación para botón independiente */
 .indep-btn.bounce-animation {
     animation: bounce 2s ease infinite !important;
 }
@@ -145,7 +222,6 @@ h3, h4 {
     60% { transform: translateY(-6px); }
 }
 
-/* Botón de Volver */
 .back-btn {
     position: absolute;
     top: 20px;
@@ -199,7 +275,7 @@ h3, h4 {
     white-space: nowrap;
 }
 .responsive-table th {
-    background-color: #f1f5f9; /* gray-100 */
+    background-color: #f1f5f9;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -226,11 +302,9 @@ h3, h4 {
     cursor: zoom-in;
     border: 2px solid #FFD700;
     margin-bottom: 10px;
-    position: relative;
     border-radius: 8px;
     max-width: 100%;
 }
-/* CORRECCIÓN: foto.jpg alineada a la izquierda */
 .photo-example { 
     width: 40%; 
     margin-left: 0;
@@ -240,22 +314,26 @@ h3, h4 {
     display: block;
     width: 25%;
 }
-/* CORRECCIÓN: QR un poco más grande */
 .qr-cred-image {
-    width: 90px;
+    width: 100px;
     height: auto;
 }
 
 .photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
-.valores-example:hover { transform: scale(1.1); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
+.valores-example:hover { transform: scale(1.25); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 
+.qr-link {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
 
 /* --- FOOTER --- */
 .footer-text {
     text-align: center;
     margin-top: 2rem;
     font-size: 0.9rem;
-    color: #4b5563; /* gray-600 */
+    color: #4b5563;
 }
 
 /* --- MODO OSCURO --- */
@@ -302,24 +380,29 @@ h3, h4 {
     
     .logo-os10 { width: 50px; top: 10px; left: 10px; }
     
-    /* CORRECCIÓN: Botones más pequeños y alineados a la izquierda en móvil */
     .download-btn {
         width: auto;
         min-width: 0;
         max-width: 180px;
-        padding: 8px 16px; /* Más delgados verticalmente */
+        padding: 8px 16px;
         margin-right: auto;
         margin-left: 0;
     }
 
     .photo-example { width: 80%; margin-left: 0; }
 
-    /* CORRECCIÓN: Tamaño y alineación de imágenes inferiores en móvil */
     .valores-example { 
         width: 60%;
     }
     .qr-cred-image {
         width: 35%;
+    }
+    .qr-link {
+        position: static;
+        display: inline-block;
+    }
+    .relative > .flex {
+        align-items: flex-end;
     }
 
     .table-container {
