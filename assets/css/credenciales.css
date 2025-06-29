@@ -208,6 +208,12 @@ h3, h4 {
 .download-btn:hover {
     transform: translateY(-3px);
 }
+/* CAMBIO: Se corrige el ancho de los botones DPI en escritorio */
+.dpi-btn {
+    width: 240px;
+    min-width: 240px;
+}
+
 .bg-yellow-500 { box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4); }
 .bg-yellow-500:hover { box-shadow: 0 6px 15px rgba(251, 191, 36, 0.5); }
 .bg-blue-500 { box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4); }
@@ -312,20 +318,20 @@ h3, h4 {
 }
 .valores-example { 
     display: block;
-    width: 25%;
+    width: 150px; /* Ancho fijo para mejor control */
 }
+/* CAMBIO: Tamaño de la imagen QR reducido */
 .qr-cred-image {
-    width: 100px;
+    width: 80px;
     height: auto;
 }
 
 .photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 .valores-example:hover { transform: scale(1.25); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 
+/* CAMBIO: Se elimina la clase qr-link que usaba position: absolute */
 .qr-link {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    /* No se necesita más */
 }
 
 /* --- FOOTER --- */
@@ -389,13 +395,18 @@ h3, h4 {
         margin-left: 0;
     }
 
+    /* CAMBIO: Se permite que los botones DPI tengan ancho automático en móvil */
+    .dpi-btn {
+      width: auto;
+    }
+
     .photo-example { width: 80%; margin-left: 0; }
 
     .valores-example { 
-        width: 60%;
+        width: 120px;
     }
     .qr-cred-image {
-        width: 35%;
+        width: 60px; /* Tamaño más pequeño para el QR en móvil */
     }
     .qr-link {
         position: static;
