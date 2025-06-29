@@ -219,42 +219,36 @@ h3, h4 {
     min-width: 200px;
 }
 
-/* --- IMÁGENES --- */
+/* --- IMÁGENES Y QR --- */
 .photo-example, .valores-example {
     transition: transform 0.3s ease;
     cursor: zoom-in;
-    border: 2px solid #FFD700; /* Borde dorado */
+    border: 2px solid #FFD700;
     margin-bottom: 10px;
     position: relative;
     border-radius: 8px;
     max-width: 100%;
 }
 .photo-example { width: 40%; }
-
-/* ***** CORRECCIÓN AQUÍ ***** */
 .valores-example { 
     display: block;
-    width: 25%; /* Reducido a un cuarto del tamaño del contenedor */
+    width: 25%;
+}
+.qr-cred-image {
+    width: 80px;
+    height: auto;
 }
 
 .photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 .valores-example:hover { transform: scale(1.1); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 
-/* --- FOOTER Y SU QR --- */
-.qr-code-footer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 60px;
-    height: 60px;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    background-color: white;
-    padding: 4px;
-}
-.qr-code-footer:hover {
-    transform: scale(1.1);
+
+/* --- FOOTER --- */
+.footer-text {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #4b5563; /* gray-600 */
 }
 
 /* --- MODO OSCURO --- */
@@ -263,7 +257,7 @@ h3, h4 {
     .card-container { background-color: #1f2937; }
     
     p, li, td {
-        color: #d1d5db; /* gray-300 */
+        color: #d1d5db;
     }
     
     .requirement-subtitle, h3 { color: #e5e7eb; }
@@ -278,7 +272,6 @@ h3, h4 {
     }
     .table-select option { background-color: #1f2937; color: #d1d5db; }
 
-    /* Sombras en modo oscuro */
     .bg-yellow-500 { box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5); }
     .bg-yellow-500:hover { box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6); }
     .bg-blue-500 { box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5); }
@@ -302,19 +295,24 @@ h3, h4 {
     
     .logo-os10 { width: 50px; top: 10px; left: 10px; }
     
+    /* CORRECCIÓN: Botones a la mitad del tamaño y alineados a la izquierda */
     .download-btn {
-        width: 100%;
-        min-width: unset;
-        padding: 14px 20px;
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+        width: auto;
+        min-width: 0;
+        max-width: 180px; /* Limita el ancho máximo */
+        padding: 10px 16px; /* Reduce el padding */
+        margin-right: auto; /* Fuerza la alineación a la izquierda */
+        margin-left: 0;
     }
-    .download-btn:hover { box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35); }
 
     .photo-example { width: 80%; margin: 1rem auto; display: block; }
-    
-    /* En móvil, la imagen de valores vuelve a ocupar más espacio para ser legible */
+
+    /* CORRECCIÓN: Tamaño de imagen valores en móvil */
     .valores-example { 
-        width: 100%; 
+        width: 60%; /* Ajustado para dar espacio al QR */
+    }
+    .qr-cred-image {
+        width: 35%; /* El QR ocupa el resto del espacio */
     }
 
     .table-container {
@@ -334,7 +332,6 @@ h3, h4 {
         .table-container::after { color: #9ca3af; }
     }
 
-    /* Botón de volver en móvil */
     .back-btn {
         top: auto;
         bottom: 20px;
@@ -347,14 +344,6 @@ h3, h4 {
     .back-btn .btn-text { display: none; }
     .back-btn svg { margin-right: 0; }
     .back-btn:active { transform: scale(0.95); }
-
-    /* En pantallas muy pequeñas, centrar todo en el footer para evitar solapamiento */
-    footer { text-align: center; }
-    footer .qr-code-footer {
-        position: static !important;
-        margin: 1rem auto 0;
-        display: block;
-    }
 }
 
 /* --- ESTILOS DE IMPRESIÓN --- */
