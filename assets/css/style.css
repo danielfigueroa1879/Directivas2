@@ -84,15 +84,6 @@ body {
 .section-red { border-color: #f01317; background-color: #FFF8F8; }
 .section-yellow { border-color: #f5b508; background-color: #FFFFEF; }
 
-.qr-code {
-    width: 60px;
-    height: 60px;
-    float: right;
-    margin: -10px 5px 10px 10px;
-    position: relative;
-    z-index: 1;
-}
-
 
 /* --- BOTONES --- */
 .button-container {
@@ -156,68 +147,6 @@ body {
     60% { transform: translateY(-7px); }
 }
 
-
-/* --- BANNER DE INSTALACIÓN PWA --- */
-.install-banner {
-    position: fixed;
-    top: -100px; /* Inicia fuera de la pantalla */
-    left: 0;
-    right: 0;
-    background-color: rgba(10, 115, 195, 0.95);
-    color: white;
-    font-weight: bold;
-    padding: 15px;
-    text-align: center;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: top 0.5s ease-in-out;
-}
-.install-banner.visible {
-    top: 0; /* Lo hace visible */
-}
-#install-banner-ios {
-    flex-direction: column;
-    gap: 10px;
-}
-.install-banner .instructions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-.install-banner .share-icon {
-    width: 20px;
-    height: 20px;
-    fill: white;
-    vertical-align: middle;
-    margin: 0 5px;
-}
-.install-banner .banner-button {
-    padding: 8px 16px;
-    background: white;
-    color: #0a73c3;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.install-banner .banner-button-close {
-    padding: 8px 16px;
-    background: transparent;
-    color: white;
-    border: 1px solid white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-.install-banner .banner-button:hover { background-color: #f0f0f0; }
-.install-banner .banner-button-close:hover { background-color: rgba(255,255,255,0.1); }
-
 /* --- MODO OSCURO --- */
 @media (prefers-color-scheme: dark) {
     body {
@@ -231,10 +160,16 @@ body {
     }
     .section-card {
         border-color: #4b5563 !important; /* gray-600 */
-        background-color: #2d3748 !important; /* Un poco más oscuro que el card-container */
+        background-color: #2d3748 !important;
     }
-    h1, h2, h3 { color: #f9fafb; } /* gray-50 */
-    .normal-text { color: #e5e7eb !important; } /* gray-200 */
+    h1, h2, h3 { color: #f9fafb; }
+    .normal-text { color: #e5e7eb !important; }
+
+    /* ***** CORRECCIÓN AQUÍ ***** */
+    /* Se asegura que el texto del footer sea claro en modo oscuro */
+    footer .text-gray-600 {
+        color: #9ca3af; /* Tailwind's gray-400 */
+    }
 
     /* Colores de botones en modo oscuro */
     .section-blue .download-btn { background-color: #3b82f6; }
@@ -245,10 +180,6 @@ body {
     .section-red .download-btn:hover { background-color: #dc2626; }
     .section-yellow .download-btn { background-color: #f59e0b; }
     .section-yellow .download-btn:hover { background-color: #d97706; }
-
-    /* Banner en modo oscuro */
-    .install-banner { background-color: rgba(30, 64, 175, 0.95); }
-    .install-banner .banner-button { background-color: #f0f0f0; color: #1e40af; }
 }
 
 /* --- DISEÑO RESPONSIVO (MÓVIL) --- */
@@ -278,28 +209,21 @@ body {
     .button-container {
         justify-content: flex-start !important;
     }
-    .qr-code {
-        width: 50px;
-        height: 50px;
-        margin-top: -5px;
-    }
-
-    /* Banner en móvil */
-    .install-banner {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        font-size: 14px;
-    }
-    .install-banner .instructions {
-        flex-direction: column;
-        margin-top: 5px;
-        gap: 5px;
-    }
 }
 
 @media (max-width: 480px) {
     body { padding: 8px; }
     .logo-os10 { width: 50px; top: 10px; left: 10px; }
     .download-btn { width: 165px !important; }
+
+    /* En pantallas muy pequeñas, centrar todo en el footer para evitar solapamiento */
+    footer {
+        text-align: center;
+    }
+    footer img {
+        position: static !important;
+        margin: 1rem auto 0;
+        display: block;
+    }
 }
+
