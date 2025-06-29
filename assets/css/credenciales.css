@@ -219,7 +219,7 @@ h3, h4 {
     min-width: 200px;
 }
 
-/* --- IMÁGENES Y QR --- */
+/* --- IMÁGENES --- */
 .photo-example, .valores-example {
     transition: transform 0.3s ease;
     cursor: zoom-in;
@@ -230,14 +230,21 @@ h3, h4 {
     max-width: 100%;
 }
 .photo-example { width: 40%; }
-.valores-example { width: 50%; }
+.valores-example { 
+    display: block;
+    width: 100%;
+}
 
 .photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
-.valores-example:hover { transform: scale(1.5); z-index: 1000; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
+.valores-example:hover { transform: scale(1.1); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 
+/* --- FOOTER Y SU QR --- */
 .qr-code-footer {
-    width: 80px;
-    height: 80px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
     transition: all 0.3s ease;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -248,24 +255,11 @@ h3, h4 {
     transform: scale(1.1);
 }
 
-/* --- FOOTER --- */
-.footer-text {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: #4b5563; /* gray-600 */
-}
-
 /* --- MODO OSCURO --- */
 @media (prefers-color-scheme: dark) {
     body { background-color: #111827; color: #d1d5db; }
     .card-container { background-color: #1f2937; }
     
-    /* ***** CORRECCIÓN AQUÍ ***** */
-    /* Se asegura que el texto de los párrafos y listas sea claro */
     p, li, td {
         color: #d1d5db; /* gray-300 */
     }
@@ -289,8 +283,6 @@ h3, h4 {
     .bg-blue-500:hover { box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6); }
     .back-btn.bg-yellow-500 { box-shadow: 0 2px 5px rgba(251, 191, 36, 0.4); }
     .back-btn.bg-yellow-500:hover { box-shadow: 0 4px 10px rgba(251, 191, 36, 0.5); }
-
-    .footer-text { color: #9ca3af; }
 }
 
 /* --- DISEÑO RESPONSIVO (MÓVIL) --- */
@@ -350,7 +342,13 @@ h3, h4 {
     .back-btn svg { margin-right: 0; }
     .back-btn:active { transform: scale(0.95); }
 
-    .qr-code-footer { display: none; } /* Ocultarlo en móvil para evitar problemas de layout */
+    /* En pantallas muy pequeñas, centrar todo en el footer para evitar solapamiento */
+    footer { text-align: center; }
+    footer .qr-code-footer {
+        position: static !important;
+        margin: 1rem auto 0;
+        display: block;
+    }
 }
 
 /* --- ESTILOS DE IMPRESIÓN --- */
@@ -362,3 +360,4 @@ h3, h4 {
     .table-container { overflow: visible; }
     img { max-width: 300px !important; }
 }
+
