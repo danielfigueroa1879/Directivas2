@@ -230,9 +230,11 @@ h3, h4 {
     max-width: 100%;
 }
 .photo-example { width: 40%; }
+
+/* ***** CORRECCIÓN AQUÍ ***** */
 .valores-example { 
     display: block;
-    width: 100%;
+    width: 25%; /* Reducido a un cuarto del tamaño del contenedor */
 }
 
 .photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
@@ -309,7 +311,11 @@ h3, h4 {
     .download-btn:hover { box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35); }
 
     .photo-example { width: 80%; margin: 1rem auto; display: block; }
-    .valores-example { width: 100%; }
+    
+    /* En móvil, la imagen de valores vuelve a ocupar más espacio para ser legible */
+    .valores-example { 
+        width: 100%; 
+    }
 
     .table-container {
         margin-left: -15px;
@@ -360,4 +366,3 @@ h3, h4 {
     .table-container { overflow: visible; }
     img { max-width: 300px !important; }
 }
-
