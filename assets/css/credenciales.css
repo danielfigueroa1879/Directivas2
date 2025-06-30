@@ -246,7 +246,8 @@ h3, h4 {
 }
 
 .photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
-.valores-example:hover { transform: scale(1.25); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
+/* Se ajusta el scale en el hover para mayor expansión */
+.valores-example:hover { transform: scale(1.3); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
 
 .qr-link {
     /* No se necesita más */
