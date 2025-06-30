@@ -33,5 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         }, 1500);
     }
-    
+
+    // 3. Descarga automática del PDF al hacer clic en la imagen "valores.png"
+    const valoresImageLink = document.getElementById('valoresImageLink');
+    if (valoresImageLink) {
+        valoresImageLink.addEventListener('click', (event) => {
+            // Evitar la acción por defecto del enlace (que podría abrir el PDF en una nueva pestaña)
+            event.preventDefault(); 
+            
+            const pdfUrl = valoresImageLink.href; // Obtener la URL del PDF del atributo href
+            const fileName = valoresImageLink.download || 'documento.pdf'; // Obtener el nombre de archivo o usar uno por defecto
+
+            // Crear un elemento de enlace temporal
+            const a = document.createElement('a');
+            a.href = pdfUrl;
+            a.download = fileName; // Esto fuerza la descarga con el nombre especificado
+            document.body.appendChild(a); // Añadir el enlace al DOM
+            a.click(); // Simular un clic en el enlace
+            document.body.removeChild(a); // Eliminar el enlace después de la descarga
+            
+            console.log(`Intentando descargar: ${fileName} desde ${pdfUrl}`);
+        });
+    }
 });
