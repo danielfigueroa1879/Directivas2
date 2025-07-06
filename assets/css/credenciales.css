@@ -297,7 +297,6 @@ body {
     .button-container {
         justify-content: flex-start !important;
     }
-    /* MODIFICADO: Se aumenta el margen y se fuerza con !important */
     header.text-center {
         margin-top: 2.5rem !important;
     }
@@ -348,10 +347,8 @@ body {
 }
 
 /* --- ESTILOS PARA EL CONTADOR DE VISITAS (NUEVO) --- */
-/* MODIFICADO: Se reduce el tamaño de la fuente */
 #visitor-counter-container {
     color: #4b5563; /* Color para modo claro (gris oscuro) */
-    font-size: 0.6rem;
 }
 
 @media (prefers-color-scheme: dark) {
