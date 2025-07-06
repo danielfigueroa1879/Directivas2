@@ -1,12 +1,9 @@
-/* --- ESTILOS BASE Y FUENTES --- */
+/* --- ESTILOS GENERALES Y LAYOUT --- */
 body {
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
     margin: 0;
     padding: 20px;
-    color: #1f2937; /* gray-800 */
-    line-height: 1.6;
-    font-size: 16px;
+    color: #374151; /* gray-700 */
     transition: background-color 0.3s ease, color 0.3s ease;
     background-image: url("../images/101.jpg");
     background-size: cover;
@@ -14,378 +11,351 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-p, li, td {
-    font-size: 1.05rem;
-}
-h3, h4 {
-    font-weight: 600;
-}
 
-/* --- LAYOUT Y CONTENEDOR PRINCIPAL --- */
 .card-container {
-    max-width: 950px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 25px;
-    background-color: #FFFFEF; /* Beige muy claro */
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    background-color: #F2FFFD;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     opacity: 0;
     animation: slideUp 1s ease-out 0.5s forwards;
     position: relative;
 }
+
 @keyframes slideUp {
-    from { transform: translateY(20%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(20%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.content-container {
-    margin-top: 2rem;
-}
-
-/* --- CABECERA Y TÍTULO --- */
 .logo-os10 {
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 70px;
+    width: 80px;
     height: auto;
-    opacity: 0.5;
+    opacity: 0.7;
+    z-index: 10;
     transition: opacity 0.3s ease;
-    z-index: 20;
 }
 .logo-os10:hover {
     opacity: 1;
 }
 
-.title-container {
-    text-align: center;
-    margin-top: 1rem;
-    line-height: 1;
-}
-.main-title, .main-subtitle {
-    color: #EAB308; /* yellow-500 */
-    font-weight: bold;
-    display: block;
-    text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4);
-    transition: all 0.3s ease;
-    margin: 0;
-    padding: 0;
-}
-.main-title {
-    font-size: 2.2rem;
-    transform: translateX(-2px);
-}
-.main-subtitle {
-    font-size: 1.9rem;
-    transform: translateX(10px);
-}
-.title-container:hover .main-title,
-.title-container:hover .main-subtitle {
-    text-shadow: 0 2px 6px rgba(245, 158, 11, 0.5);
+.normal-text {
+    color: #1f2937 !important;
+    font-weight: 400 !important;
+    font-size: 1.05rem !important;
 }
 
-/* --- SECCIONES Y SUBTÍTULOS --- */
-.main-section {
-    border-left: 4px solid #F59E0B; /* yellow-500 */
-    padding-left: 1.5rem;
+/* --- BANNER DE INSTALACIÓN (ESTILO NUEVO) --- */
+.install-banner, .install-banner-ios {
+    position: fixed;
+    top: -120px; /* Oculto por defecto, se muestra con JS */
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 12px 16px;
+    /* Efecto de vidrio esmerilado */
+    background-color: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: top 0.5s ease-in-out;
 }
-.section-title {
-    color: #F54C38; /* Rojo anaranjado */
-    font-size: 1.5rem;
+.install-banner.visible, .install-banner-ios.visible {
+    top: 0;
+}
+/* Banner de Android */
+.install-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.banner-text {
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.banner-button-install {
+    background-color: white;
+    color: #0a73c3; /* Letras azules */
     font-weight: bold;
-    margin-bottom: 1.5rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
-.requirement-block {
-    margin-bottom: 2rem;
+.banner-button-install:hover {
+    background-color: #f0f0f0;
 }
-.requirement-subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #1f2937;
+
+/* Banner de iOS */
+.install-banner-ios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
 }
-.requirement-subtitle.special-subtitle {
-    color: #F54C38;
-    margin-top: 2rem;
-    font-size: 1.4rem;
+.ios-text-container {
+    color: white;
 }
+.instructions {
+    font-size: 0.8rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 4px;
+}
+.share-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 2px;
+}
+.banner-button-close {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+
+/* --- SECCIONES/TARJETAS --- */
+.section-card {
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.2rem;
+    --glow-color: rgba(128, 128, 128, 0.2);
+    box-shadow: 0 0 12px 0px var(--glow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.8rem;
+    padding-left: 0;
+}
+
+.section-card:hover, .section-card.clicked {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 0 22px 4px var(--glow-color);
+}
+
+/* Colores de borde, fondo y resplandor por sección */
+.section-blue { 
+    border-color: #0a73c3; 
+    background-color: #F1F7FF;
+    --glow-color: rgba(10, 115, 195, 0.5);
+}
+.section-green { 
+    border-color: #1ccfc3; 
+    background-color: #F6FFFD;
+    --glow-color: rgba(28, 207, 195, 0.5);
+}
+.section-red { 
+    border-color: #f01317; 
+    background-color: #FFF8F8;
+    --glow-color: rgba(240, 19, 23, 0.5);
+}
+.section-yellow { 
+    border-color: #f5b508; 
+    background-color: #FFFFEF;
+    --glow-color: rgba(245, 181, 8, 0.6);
+}
+
+
+/* --- FOOTER --- */
+/* Se eliminaron los estilos de .footer-qr ya que ahora se usan clases de Tailwind en el HTML */
+
 
 /* --- BOTONES --- */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 8px;
+}
+
 .download-btn {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 8px 24px;
-    margin: 0.5rem 0;
-    width: auto;
-    min-width: 240px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    border-radius: 7px;
-    text-align: center;
-    transition: all 0.3s ease;
+    width: 190px;
+    height: 40px;
+    padding: 10px 15px !important;
+    margin-bottom: 15px;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: white !important;
+    text-align: center !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: none;
+    border-radius: 8px !important;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease !important;
 }
+
 .download-btn:hover {
-    transform: translateY(-3px);
-}
-/* Se corrige el ancho de los botones DPI en escritorio */
-.dpi-btn {
-    width: 240px;
-    min-width: 240px;
+    transform: translateY(-5px) !important;
+    opacity: 1;
+    box-shadow: 0 0 22px 4px var(--glow-color);
 }
 
-.bg-yellow-500 { box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4); }
-.bg-yellow-500:hover { box-shadow: 0 6px 15px rgba(251, 191, 36, 0.5); }
-.bg-blue-500 { box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4); }
-.bg-blue-500:hover { box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5); }
+/* Colores de botones por sección */
+.section-blue .download-btn {
+    background-color: #0a73c3;
+}
+.section-green .download-btn {
+    background-color: #1ccfc3;
+}
+.section-red .download-btn {
+    background-color: #f01317;
+}
+.section-yellow .download-btn {
+    background-color: #f5b508;
+}
 
-.indep-btn.bounce-animation {
+
+#tramitarCredencialesBtn.bounce-animation {
     animation: bounce 2s ease infinite !important;
 }
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-12px); }
-    60% { transform: translateY(-6px); }
-}
-
-/* Botón de volver posicionado abajo a la derecha */
-.back-btn {
-    position: absolute;
-    bottom: 20px; 
-    right: 20px;
-    padding: 10px 14px;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    z-index: 20;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.back-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-.back-btn svg {
-    margin-right: 5px;
-    height: 20px;
-    width: 20px;
-}
-.back-btn.pulse-animation {
-    animation: pulse 1s ease-in-out;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* --- TABLA --- */
-.table-container {
-    overflow-x: auto;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-}
-.responsive-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-.responsive-table th,
-.responsive-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-    font-size: 0.95rem;
-    white-space: nowrap;
-}
-.responsive-table th {
-    background-color: #f1f5f9;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-.table-select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 1em;
-    padding: 0.5rem 2rem 0.5rem 0.5rem;
-    font-size: 0.95rem;
-    cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 100%;
-    min-width: 200px;
-}
-
-/* --- IMÁGENES Y QR --- */
-.photo-example, .valores-example {
-    transition: transform 0.3s ease;
-    cursor: zoom-in;
-    border: 2px solid #FFD700;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    max-width: 100%;
-}
-.photo-example { 
-    width: 40%; 
-    margin-left: 0;
-    margin-right: auto;
-}
-.valores-example { 
-    display: block;
-    width: 220px; 
-}
-.qr-cred-image {
-    width: 80px;
-    height: auto;
-}
-
-.photo-example:hover { transform: scale(1.2); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
-.valores-example:hover { transform: scale(1.3); z-index: 1000; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
-
-.qr-link {
-    /* No se necesita más */
-}
-
-/* --- FOOTER --- */
-.footer-text {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    color: #4b5563;
-}
-
-/* --- ESTILOS PARA EL CONTADOR DE VISITAS --- */
-/* MODIFICADO: Se reduce ligeramente el tamaño de la fuente */
-#visitor-counter-container {
-    color: #4b5563; /* Color para modo claro (gris oscuro) */
-    font-size: 0.7rem; 
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
 }
 
 /* --- MODO OSCURO --- */
 @media (prefers-color-scheme: dark) {
-    body { background-color: #111827; color: #d1d5db; }
-    .card-container { background-color: #1f2937; }
-    
-    p, li, td {
-        color: #d1d5db;
+    body {
+        background-color: #111827;
+        color: #e2e8f0;
     }
-    
-    .requirement-subtitle, h3 { color: #e5e7eb; }
-    .requirement-subtitle.special-subtitle, .section-title { color: #F54C38; }
-
-    .responsive-table th { background-color: #374151; color: #d1d5db; }
-    .responsive-table th, .responsive-table td { border-color: #4b5563; }
-    .table-select {
-        background-color: #2d3748;
-        color: #d1d5db;
-        border-color: #4b5563;
+    .card-container {
+        background-color: #374151;
+        color: #e2e8f0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     }
-    .table-select option { background-color: #1f2937; color: #d1d5db; }
+    .section-card {
+        background-color: #2d3748 !important;
+    }
+    h1, h2, h3 { color: #f9fafb; }
+    .normal-text { color: #e5e7eb !important; }
 
-    .bg-yellow-500 { box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5); }
-    .bg-yellow-500:hover { box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6); }
-    .bg-blue-500 { box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5); }
-    .bg-blue-500:hover { box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6); }
-    .back-btn.bg-yellow-500 { box-shadow: 0 2px 5px rgba(251, 191, 36, 0.4); }
-    .back-btn.bg-yellow-500:hover { box-shadow: 0 4px 10px rgba(251, 191, 36, 0.5); }
-    
-    #visitor-counter-container {
-        color: #d1d5db;
+    footer .text-gray-600 {
+        color: #9ca3af;
     }
 }
 
 /* --- DISEÑO RESPONSIVO (MÓVIL) --- */
 @media (max-width: 640px) {
-    body { padding: 10px; font-size: 14px; }
-    p, li, td { font-size: 1rem; }
-    .card-container { padding: 15px; }
-
-    /* MODIFICADO: Se baja el título en la vista móvil */
-    .title-container {
-        margin-top: 2.5rem;
+    body {
+        padding: 12px;
     }
-
-    .main-title { font-size: 1.6rem; }
-    .main-subtitle { font-size: 1.4rem; transform: translateX(8px); }
-    
-    .section-title { font-size: 1.3rem; }
-    .requirement-subtitle { font-size: 1.1rem; }
-    .requirement-subtitle.special-subtitle { font-size: 1.2rem; }
-    
-    .logo-os10 { width: 50px; top: 10px; left: 10px; }
-    
-    .download-btn {
-        width: 190px;
-        min-width: 190px;
-        padding: 8px 16px;
-        margin-right: auto;
-        margin-left: 0;
+    .card-container {
+        padding: 15px;
     }
-
-    .dpi-btn {
-      /* Ya no es necesaria una regla específica aquí */
-    }
-
-    .photo-example { width: 80%; margin-left: 0; }
-
-    .valores-example { 
-        width: 180px;
-    }
-    .qr-cred-image {
+    .logo-os10 {
         width: 60px;
+        top: 15px;
+        left: 15px;
     }
-    .qr-link {
-        position: static;
-        display: inline-block;
+    .normal-text {
+        font-size: 1rem !important;
     }
-    .relative > .flex {
-        align-items: flex-end;
-    }
-
-    .table-container {
-        margin-left: -15px;
-        margin-right: -15px;
-        width: calc(100% + 30px);
-    }
-    .table-container::after {
-        content: '← Desplaza para ver más →';
-        display: block;
-        text-align: center;
-        font-size: 13px;
-        color: #6b7280;
-        margin-top: 8px;
-    }
-    @media (prefers-color-scheme: dark) {
-        .table-container::after { color: #9ca3af; }
+    .section-card h3 {
+        font-size: 1.2rem !important;
     }
 
-    .back-btn {
-        top: auto;
-        bottom: 20px;
-        right: 20px;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    .download-btn {
+        width: 175px !important;
+        height: 48px !important;
+        font-size: 0.95rem !important;
     }
-    .back-btn .btn-text { display: none; }
-    .back-btn svg { margin-right: 0; }
-    .back-btn:active { transform: scale(0.95); }
+    .button-container {
+        justify-content: flex-start !important;
+    }
+    /* MODIFICADO: Se aumenta el margen y se fuerza con !important */
+    header.text-center {
+        margin-top: 2.5rem !important;
+    }
 }
 
-/* --- ESTILOS DE IMPRESIÓN --- */
-@media print {
-    body { background-image: none !important; color: #000 !important; font-size: 12pt; }
-    .card-container { box-shadow: none !important; border: 1px solid #ccc; }
-    .logo-os10, .back-btn, .download-btn, #visitor-counter-container { display: none !important; }
-    .main-section { border-left: none; padding-left: 0; }
-    .table-container { overflow: visible; }
-    img { max-width: 300px !important; }
+@media (max-width: 480px) {
+    body { padding: 8px; }
+    .logo-os10 { width: 50px; top: 10px; left: 10px; }
+    .download-btn { width: 165px !important; }
+}
+/* --- ESTILOS PARA EL BANNER DE INSTALACIÓN --- */
+.install-banner-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.install-banner-custom button {
+    background-color: white;
+    color: #0a73c3;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: background-color 0.2s;
+}
+
+.install-banner-custom button:hover {
+    background-color: #f0f0f0;
+}
+
+/* --- ESTILOS PARA EL CONTADOR DE VISITAS (NUEVO) --- */
+/* MODIFICADO: Se reduce el tamaño de la fuente */
+#visitor-counter-container {
+    color: #4b5563; /* Color para modo claro (gris oscuro) */
+    font-size: 0.6rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    #visitor-counter-container {
+        color: #e5e7eb; /* Color para modo oscuro (gris muy claro) */
+    }
 }
