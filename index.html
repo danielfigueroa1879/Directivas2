@@ -121,18 +121,106 @@
            </section>
        </main>
        
-       <!-- Footer sin fondo propio, con texto movido a la izquierda y color blanco en modo oscuro -->
+       <!-- Footer con contador de visitas -->
        <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 p-4">
-            <!-- El texto se mueve -translate-x-8 en móvil y -translate-x-6 en escritorio -->
+            <!-- Contenido original del footer -->
             <div class="text-center text-sm text-gray-600 dark:text-white leading-tight transform -translate-x-8 md:-translate-x-6">
                 <span>Haga clic para descargar.</span><br>
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
                 <span>Ingeniero en Informática.</span>
             </div>
             <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información">
+            
+            <!-- Elemento para el Contador de Visitas -->
+            <div id="visitor-counter-container" class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4" style="opacity:0; transition: opacity 0.5s;">
+                <p>Visitas: <span id="visit-counter" class="font-bold">0</span></p>
+            </div>
        </footer>
    </div>
    
    <script src="assets/js/main.js"></script>
+
+   <!-- Firebase SDK y Lógica del Contador de Visitas -->
+   <script type="module">
+        // Importar funciones de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, runTransaction, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // --- Configuración y Inicialización de Firebase ---
+        
+        // Habilitar logs de Firestore para depuración en la consola del navegador
+        setLogLevel('debug');
+
+        // Obtener el ID de la aplicación y la configuración de Firebase desde las variables globales del entorno
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'directivas-os10-pwa';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // Solo proceder si la configuración de Firebase está disponible
+        if (firebaseConfig) {
+            try {
+                // Inicializar la app de Firebase
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+
+                // Autenticar al usuario para cumplir con las reglas de seguridad de Firestore
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                console.log("Firebase Auth: Usuario autenticado.");
+
+                // --- Lógica del Contador de Visitas ---
+                
+                // Referencia al documento del contador en Firestore.
+                // Se guarda en una colección pública específica para esta app para no mezclar datos.
+                const counterRef = doc(db, `artifacts/${appId}/public/data/visits/counter`);
+                const counterSpan = document.getElementById('visit-counter');
+                const counterContainer = document.getElementById('visitor-counter-container');
+
+                // Usar una transacción para actualizar el contador. Esto previene
+                // que múltiples visitas al mismo tiempo causen un conteo incorrecto.
+                await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    
+                    let newCount;
+                    if (!counterDoc.exists()) {
+                        // Si el contador no existe, se crea con valor 1
+                        newCount = 1;
+                        transaction.set(counterRef, { count: newCount });
+                    } else {
+                        // Si existe, se incrementa en 1
+                        newCount = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: newCount });
+                    }
+                    return newCount;
+
+                }).then(newCount => {
+                    // Actualizar el contador en la página y hacerlo visible con una transición suave
+                    if(counterSpan && counterContainer) {
+                        counterSpan.textContent = newCount.toLocaleString('es-CL'); // Formato con separador de miles
+                        counterContainer.style.opacity = '1';
+                    }
+                    console.log(`Contador de visitas actualizado a: ${newCount}`);
+                }).catch(error => {
+                    console.error("Error en la transacción del contador: ", error);
+                    if(counterSpan) counterSpan.textContent = "Error";
+                });
+
+            } catch (error) {
+                console.error("Error al inicializar Firebase o al ejecutar el contador: ", error);
+                const counterSpan = document.getElementById('visit-counter');
+                if(counterSpan) counterSpan.textContent = "Error";
+            }
+        } else {
+            console.warn("Configuración de Firebase no encontrada. El contador de visitas está deshabilitado.");
+            const counterContainer = document.getElementById('visitor-counter-container');
+            // Ocultar el contenedor si no hay configuración para no mostrar "Visitas: 0"
+            if(counterContainer) counterContainer.style.display = 'none';
+        }
+   </script>
 </body>
 </html>
