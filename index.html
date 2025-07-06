@@ -38,8 +38,8 @@
 
     <div class="card-container rounded-xl shadow-md p-6 space-y-6 relative">
         
-        <!-- Contador de Visitas (Estilo de color final corregido) -->
-        <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-600 dark:text-slate-500">
+        <!-- Contador de Visitas (Ahora sin clases de color) -->
+        <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs">
             <p class="flex items-center">
                 <!-- Icono de ojo -->
                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
@@ -150,47 +150,42 @@
           apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
           authDomain: "cuenta-946e2.firebaseapp.com",
           projectId: "cuenta-946e2",
-          storageBucket: "cuenta-946e2.appspot.com",
+          storageBucket: "cuenta-946e2.firebasestorage.app",
           messagingSenderId: "816979648502",
           appId: "1:816979648502:web:809beffeea8ba7968031d7",
           measurementId: "G-RX9KZSC0F4"
         };
         
-        const counterSpan = document.getElementById('visit-counter');
-
-        try {
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);
-            const auth = getAuth(app);
-            
-            signInAnonymously(auth)
-                .then(() => {
-                    const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                    return runTransaction(db, async (transaction) => {
-                        const counterDoc = await transaction.get(counterRef);
-                        let newCount = 1;
-                        if (counterDoc.exists()) {
-                            newCount = counterDoc.data().count + 1;
-                            transaction.update(counterRef, { count: newCount });
-                        } else {
-                            transaction.set(counterRef, { count: newCount });
-                        }
-                        return newCount;
-                    });
-                })
-                .then(newCount => {
-                    if(counterSpan) {
-                        counterSpan.textContent = newCount.toLocaleString('es-CL');
+        async function runCounter() {
+            const counterSpan = document.getElementById('visit-counter');
+            try {
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                await signInAnonymously(auth);
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    let count = 1;
+                    if (counterDoc.exists()) {
+                        count = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: count });
+                    } else {
+                        transaction.set(counterRef, { count: count });
                     }
-                })
-                .catch(error => {
-                    console.error("ERROR: Algo falló durante la autenticación o la transacción.", error);
-                    if(counterSpan) counterSpan.textContent = "Error";
+                    return count;
                 });
-        } catch (error) {
-            console.error("ERROR: Falló la inicialización de Firebase.", error);
-            if(counterSpan) counterSpan.textContent = "Error";
+                if (counterSpan) {
+                    counterSpan.textContent = newCount.toLocaleString('es-CL');
+                }
+            } catch (error) {
+                console.error("ERROR FINAL: Falló el proceso del contador.", error);
+                if (counterSpan) {
+                    counterSpan.textContent = "Error";
+                }
+            }
         }
+        runCounter();
    </script>
 </body>
 </html>
