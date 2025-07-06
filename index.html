@@ -131,8 +131,8 @@
             </div>
             <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información">
             
-            <!-- Elemento para el Contador de Visitas -->
-            <div id="visitor-counter-container" class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4" style="opacity:0; transition: opacity 0.5s;">
+            <!-- Elemento para el Contador de Visitas (AHORA VISIBLE POR DEFECTO) -->
+            <div id="visitor-counter-container" class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
                 <p>Visitas: <span id="visit-counter" class="font-bold">0</span></p>
             </div>
        </footer>
@@ -175,50 +175,40 @@
 
                 // --- Lógica del Contador de Visitas ---
                 
-                // Referencia al documento del contador en Firestore.
-                // Se guarda en una colección pública específica para esta app para no mezclar datos.
                 const counterRef = doc(db, `artifacts/${appId}/public/data/visits/counter`);
                 const counterSpan = document.getElementById('visit-counter');
-                const counterContainer = document.getElementById('visitor-counter-container');
-
-                // Usar una transacción para actualizar el contador. Esto previene
-                // que múltiples visitas al mismo tiempo causen un conteo incorrecto.
+                
                 await runTransaction(db, async (transaction) => {
                     const counterDoc = await transaction.get(counterRef);
                     
                     let newCount;
                     if (!counterDoc.exists()) {
-                        // Si el contador no existe, se crea con valor 1
                         newCount = 1;
                         transaction.set(counterRef, { count: newCount });
                     } else {
-                        // Si existe, se incrementa en 1
                         newCount = counterDoc.data().count + 1;
                         transaction.update(counterRef, { count: newCount });
                     }
                     return newCount;
 
                 }).then(newCount => {
-                    // Actualizar el contador en la página y hacerlo visible con una transición suave
-                    if(counterSpan && counterContainer) {
-                        counterSpan.textContent = newCount.toLocaleString('es-CL'); // Formato con separador de miles
-                        counterContainer.style.opacity = '1';
+                    if(counterSpan) {
+                        counterSpan.textContent = newCount.toLocaleString('es-CL');
                     }
                     console.log(`Contador de visitas actualizado a: ${newCount}`);
                 }).catch(error => {
                     console.error("Error en la transacción del contador: ", error);
-                    if(counterSpan) counterSpan.textContent = "Error";
+                    if(counterSpan) counterSpan.textContent = "--"; // Mostrar "--" en caso de error
                 });
 
             } catch (error) {
                 console.error("Error al inicializar Firebase o al ejecutar el contador: ", error);
                 const counterSpan = document.getElementById('visit-counter');
-                if(counterSpan) counterSpan.textContent = "Error";
+                if(counterSpan) counterSpan.textContent = "--"; // Mostrar "--" en caso de error
             }
         } else {
             console.warn("Configuración de Firebase no encontrada. El contador de visitas está deshabilitado.");
             const counterContainer = document.getElementById('visitor-counter-container');
-            // Ocultar el contenedor si no hay configuración para no mostrar "Visitas: 0"
             if(counterContainer) counterContainer.style.display = 'none';
         }
    </script>
