@@ -2,14 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- Viewport optimizado para móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Directivas de Funcionamiento OS10</title>
 
+    <!-- Metadatos PWA y SEO -->
     <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
     <meta name="theme-color" content="#0a73c3"/>
     <meta name="application-name" content="Directivas OS10">
     <link rel="manifest" href="manifest.json">
 
+    <!-- Favicons Estándar (con rutas corregidas) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -17,6 +20,7 @@
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
     <link rel="icon" type="image/png" href="assets/images/os.png">
 
+    <!-- Iconos y configuración para Apple iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
@@ -24,14 +28,17 @@
     <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
-
+    
+    <!-- Dependencias y Estilos -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="text-gray-800">
 
+    <!-- Se elimina 'bg-white' para que el contenedor use el color definido en style.css -->
     <div class="card-container rounded-xl shadow-md p-6 space-y-6 relative">
+        <!-- Logo OS10 -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10">
         </a>
@@ -42,6 +49,7 @@
         </header>
 
         <main class="space-y-4">
+           <!-- Sección 1 -->
            <section class="section-card border-blue-500 section-blue">
                 <h3 class="font-bold">1️⃣ Presentar Directiva DD.FF.</h3>
                 <ul class="list-disc pl-5 text-sm normal-text">
@@ -54,7 +62,8 @@
                    </li>
                </ul>
            </section>
-
+           
+           <!-- Sección 2 -->
            <section class="section-card border-green-500 section-green">
                <h3 class="font-bold">2️⃣ Documentación</h3>
                <ul class="space-y-3 pl-5 text-sm normal-text">
@@ -78,7 +87,8 @@
                     </li>
                </ul>
            </section>
-
+           
+           <!-- Sección 3 -->
            <section class="section-card border-red-500 section-red">
                <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
                <ul class="list-disc pl-5 text-sm normal-text">
@@ -90,7 +100,8 @@
                    </li>
                </ul>
            </section>
-
+           
+           <!-- Sección 4 -->
            <section class="section-card border-yellow-500 section-yellow">
                 <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
                 <ul class="list-disc pl-5 text-sm normal-text">
@@ -109,18 +120,104 @@
                 </ul>
            </section>
        </main>
-
+       
+       <!-- Footer con contador de visitas -->
        <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 p-4">
+            <!-- Contenido original del footer -->
             <div class="text-center text-sm text-gray-600 dark:text-white leading-tight transform -translate-x-8 md:-translate-x-6">
                 <span>Haga clic para descargar.</span><br>
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
-                <span>Ingeniero en Informática.</span><br>
-                <span id="visit-counter">Visitas: 0</span>
+                <span>Ingeniero en Informática.</span>
             </div>
             <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información">
+            
+            <!-- Elemento para el Contador de Visitas -->
+            <div id="visitor-counter-container" class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
+                <p>Visitas: <span id="visit-counter" class="font-bold">--</span></p>
+            </div>
        </footer>
    </div>
-
+   
    <script src="assets/js/main.js"></script>
+
+   <!-- Firebase SDK y Lógica del Contador de Visitas -->
+   <script type="module">
+        // Importar funciones de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, runTransaction, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // --- Configuración y Inicialización de Firebase ---
+        
+        // =================================================================================
+        // ==  ¡IMPORTANTE! REEMPLAZA ESTO CON LA CONFIGURACIÓN DE TU PROPIO PROYECTO FIREBASE  ==
+        // =================================================================================
+        // Puedes encontrar estas credenciales en tu consola de Firebase:
+        // 1. Ve a tu proyecto de Firebase.
+        // 2. Haz clic en el ícono de engranaje (Configuración del proyecto).
+        // 3. En la pestaña "General", desplázate hacia abajo hasta "Tus apps".
+        // 4. Selecciona la app web y busca el objeto "firebaseConfig".
+        // 5. Copia y pega los valores aquí.
+        const firebaseConfig = {
+          apiKey: "TU_API_KEY",
+          authDomain: "TU_AUTH_DOMAIN",
+          projectId: "TU_PROJECT_ID",
+          storageBucket: "TU_STORAGE_BUCKET",
+          messagingSenderId: "TU_MESSAGING_SENDER_ID",
+          appId: "TU_APP_ID"
+        };
+        
+        // Solo proceder si la configuración de Firebase NO tiene los valores por defecto
+        if (firebaseConfig && firebaseConfig.apiKey !== "TU_API_KEY") {
+            try {
+                // Inicializar la app de Firebase
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+
+                // Autenticar al usuario de forma anónima
+                await signInAnonymously(auth);
+                console.log("Firebase Auth: Usuario autenticado anónimamente.");
+
+                // --- Lógica del Contador de Visitas ---
+                
+                // Usamos el ID del proyecto como parte de la ruta para mantener los datos organizados
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const counterSpan = document.getElementById('visit-counter');
+                
+                await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    
+                    let newCount;
+                    if (!counterDoc.exists()) {
+                        newCount = 1;
+                        transaction.set(counterRef, { count: newCount });
+                    } else {
+                        newCount = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: newCount });
+                    }
+                    return newCount;
+
+                }).then(newCount => {
+                    if(counterSpan) {
+                        counterSpan.textContent = newCount.toLocaleString('es-CL');
+                    }
+                    console.log(`Contador de visitas actualizado a: ${newCount}`);
+                }).catch(error => {
+                    console.error("Error en la transacción del contador: ", error);
+                    if(counterSpan) counterSpan.textContent = "Error";
+                });
+
+            } catch (error) {
+                console.error("Error al inicializar Firebase o al ejecutar el contador: ", error);
+                const counterSpan = document.getElementById('visit-counter');
+                if(counterSpan) counterSpan.textContent = "Error";
+            }
+        } else {
+            console.warn("La configuración de Firebase no ha sido reemplazada. El contador de visitas está deshabilitado.");
+            const counterContainer = document.getElementById('visitor-counter-container');
+            if(counterContainer) counterContainer.style.display = 'none'; // Ocultar si no hay config
+        }
+   </script>
 </body>
 </html>
