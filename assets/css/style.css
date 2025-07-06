@@ -297,6 +297,10 @@ body {
     .button-container {
         justify-content: flex-start !important;
     }
+    /* NUEVO: Añade espacio sobre el título en móviles */
+    header.text-center {
+        margin-top: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
