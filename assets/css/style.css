@@ -297,9 +297,9 @@ body {
     .button-container {
         justify-content: flex-start !important;
     }
-    /* NUEVO: Añade espacio sobre el título en móviles */
+    /* MODIFICADO: Se aumenta el margen y se fuerza con !important */
     header.text-center {
-        margin-top: 1.5rem;
+        margin-top: 2.5rem !important;
     }
 }
 
@@ -357,3 +357,4 @@ body {
         color: #e5e7eb; /* Color para modo oscuro (gris muy claro) */
     }
 }
+
