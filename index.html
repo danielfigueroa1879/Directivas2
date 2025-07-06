@@ -142,70 +142,63 @@
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        // =================================================================================
-        // ==  ¡IMPORTANTE! REEMPLAZA ESTO CON LA CONFIGURACIÓN DE TU PROPIO PROYECTO FIREBASE  ==
-        // =================================================================================
+        // Configuración de tu app de Firebase
         const firebaseConfig = {
-          apiKey: "TU_API_KEY",
-          authDomain: "TU_AUTH_DOMAIN",
-          projectId: "TU_PROJECT_ID",
-          storageBucket: "TU_STORAGE_BUCKET",
-          messagingSenderId: "TU_MESSAGING_SENDER_ID",
-          appId: "TU_APP_ID"
+          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+          authDomain: "cuenta-946e2.firebaseapp.com",
+          projectId: "cuenta-946e2",
+          storageBucket: "cuenta-946e2.appspot.com",
+          messagingSenderId: "816979648502",
+          appId: "1:816979648502:web:809beffeea8ba7968031d7",
+          measurementId: "G-RX9KZSC0F4"
         };
         
         const counterSpan = document.getElementById('visit-counter');
 
-        if (firebaseConfig && firebaseConfig.apiKey !== "TU_API_KEY") {
+        try {
             console.log("Paso 1: Configuración de Firebase encontrada. Project ID:", firebaseConfig.projectId);
-            try {
-                const app = initializeApp(firebaseConfig);
-                const db = getFirestore(app);
-                const auth = getAuth(app);
-                
-                console.log("Paso 2: Firebase inicializado. Intentando autenticación anónima...");
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            const auth = getAuth(app);
+            
+            console.log("Paso 2: Firebase inicializado. Intentando autenticación anónima...");
 
-                signInAnonymously(auth)
-                    .then(() => {
-                        console.log("Paso 3: Autenticación anónima exitosa. UID:", auth.currentUser.uid);
-                        console.log("Paso 4: Ejecutando transacción para actualizar el contador...");
-                        
-                        const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                        
-                        return runTransaction(db, async (transaction) => {
-                            const counterDoc = await transaction.get(counterRef);
-                            let newCount = 1;
-                            if (counterDoc.exists()) {
-                                newCount = counterDoc.data().count + 1;
-                                transaction.update(counterRef, { count: newCount });
-                            } else {
-                                transaction.set(counterRef, { count: newCount });
-                            }
-                            return newCount;
-                        });
-                    })
-                    .then(newCount => {
-                        console.log("Paso 5: Transacción exitosa. Nuevo conteo:", newCount);
-                        if(counterSpan) {
-                            counterSpan.textContent = newCount.toLocaleString('es-CL');
+            signInAnonymously(auth)
+                .then(() => {
+                    console.log("Paso 3: Autenticación anónima exitosa. UID:", auth.currentUser.uid);
+                    console.log("Paso 4: Ejecutando transacción para actualizar el contador...");
+                    
+                    const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                    
+                    return runTransaction(db, async (transaction) => {
+                        const counterDoc = await transaction.get(counterRef);
+                        let newCount = 1;
+                        if (counterDoc.exists()) {
+                            newCount = counterDoc.data().count + 1;
+                            transaction.update(counterRef, { count: newCount });
+                        } else {
+                            transaction.set(counterRef, { count: newCount });
                         }
-                    })
-                    .catch(error => {
-                        // Este catch atrapará errores de autenticación O de la transacción
-                        console.error("ERROR: Algo falló durante la autenticación o la transacción.", error);
-                        if(counterSpan) counterSpan.textContent = "Error";
+                        return newCount;
                     });
+                })
+                .then(newCount => {
+                    console.log("Paso 5: Transacción exitosa. Nuevo conteo:", newCount);
+                    if(counterSpan) {
+                        counterSpan.textContent = newCount.toLocaleString('es-CL');
+                    }
+                })
+                .catch(error => {
+                    console.error("ERROR: Algo falló durante la autenticación o la transacción.", error);
+                    if(counterSpan) counterSpan.textContent = "Error";
+                });
 
-            } catch (error) {
-                console.error("ERROR: Falló la inicialización de Firebase.", error);
-                if(counterSpan) counterSpan.textContent = "Error";
-            }
-        } else {
-            console.warn("ADVERTENCIA: La configuración de Firebase no ha sido reemplazada. El contador de visitas está deshabilitado.");
-            const counterContainer = document.getElementById('visitor-counter-container');
-            if(counterContainer) counterContainer.style.display = 'none';
+        } catch (error) {
+            console.error("ERROR: Falló la inicialización de Firebase.", error);
+            if(counterSpan) counterSpan.textContent = "Error";
         }
    </script>
 </body>
 </html>
+
 
