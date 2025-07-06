@@ -342,3 +342,14 @@ body {
 .install-banner-custom button:hover {
     background-color: #f0f0f0;
 }
+
+/* --- ESTILOS PARA EL CONTADOR DE VISITAS (NUEVO) --- */
+#visitor-counter-container {
+    color: #4b5563; /* Color para modo claro (gris oscuro) */
+}
+
+@media (prefers-color-scheme: dark) {
+    #visitor-counter-container {
+        color: #e5e7eb; /* Color para modo oscuro (gris muy claro) */
+    }
+}
