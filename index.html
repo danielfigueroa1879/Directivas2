@@ -149,15 +149,30 @@
 
         // --- Configuración y Inicialización de Firebase ---
         
-        // =================================================================================
-        // ==  ¡IMPORTANTE! REEMPLAZA ESTO CON LA CONFIGURACIÓN DE TU PROPIO PROYECTO FIREBASE  ==
-        // =================================================================================
-        // Puedes encontrar estas credenciales en tu consola de Firebase:
-        // 1. Ve a tu proyecto de Firebase.
-        // 2. Haz clic en el ícono de engranaje (Configuración del proyecto).
-        // 3. En la pestaña "General", desplázate hacia abajo hasta "Tus apps".
-        // 4. Selecciona la app web y busca el objeto "firebaseConfig".
-        // 5. Copia y pega los valores aquí.
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+  authDomain: "cuenta-946e2.firebaseapp.com",
+  projectId: "cuenta-946e2",
+  storageBucket: "cuenta-946e2.firebasestorage.app",
+  messagingSenderId: "816979648502",
+  appId: "1:816979648502:web:809beffeea8ba7968031d7",
+  measurementId: "G-RX9KZSC0F4"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+       
         const firebaseConfig = {
           apiKey: "TU_API_KEY",
           authDomain: "TU_AUTH_DOMAIN",
