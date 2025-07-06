@@ -148,9 +148,10 @@ h3, h4 {
     60% { transform: translateY(-6px); }
 }
 
+/* MODIFICADO: Botón de volver posicionado abajo a la derecha */
 .back-btn {
     position: absolute;
-    top: 20px;
+    bottom: 20px; /* Cambiado de top a bottom */
     right: 20px;
     padding: 10px 14px;
     border-radius: 7px;
@@ -261,6 +262,11 @@ h3, h4 {
     color: #4b5563;
 }
 
+/* --- ESTILOS PARA EL CONTADOR DE VISITAS (AÑADIDO) --- */
+#visitor-counter-container {
+    color: #4b5563; /* Color para modo claro (gris oscuro) */
+}
+
 /* --- MODO OSCURO --- */
 @media (prefers-color-scheme: dark) {
     body { background-color: #111827; color: #d1d5db; }
@@ -288,6 +294,11 @@ h3, h4 {
     .bg-blue-500:hover { box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6); }
     .back-btn.bg-yellow-500 { box-shadow: 0 2px 5px rgba(251, 191, 36, 0.4); }
     .back-btn.bg-yellow-500:hover { box-shadow: 0 4px 10px rgba(251, 191, 36, 0.5); }
+    
+    /* Estilo del contador en modo oscuro */
+    #visitor-counter-container {
+        color: #d1d5db;
+    }
 }
 
 /* --- DISEÑO RESPONSIVO (MÓVIL) --- */
@@ -352,6 +363,7 @@ h3, h4 {
         .table-container::after { color: #9ca3af; }
     }
 
+    /* El botón de volver ya estaba posicionado abajo en móvil, se mantiene */
     .back-btn {
         top: auto;
         bottom: 20px;
@@ -370,7 +382,7 @@ h3, h4 {
 @media print {
     body { background-image: none !important; color: #000 !important; font-size: 12pt; }
     .card-container { box-shadow: none !important; border: 1px solid #ccc; }
-    .logo-os10, .back-btn, .download-btn { display: none !important; }
+    .logo-os10, .back-btn, .download-btn, #visitor-counter-container { display: none !important; }
     .main-section { border-left: none; padding-left: 0; }
     .table-container { overflow: visible; }
     img { max-width: 300px !important; }
