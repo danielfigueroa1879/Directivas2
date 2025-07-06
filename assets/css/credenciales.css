@@ -261,15 +261,20 @@ h3, h4 {
     color: #4b5563;
 }
 
-/* --- ESTILOS PARA EL CONTADOR DE VISITAS (AÑADIDO) --- */
-#visitor-counter-container {
+/* --- ESTILOS PARA EL CONTADOR DE VISITAS --- */
+#visitor-counter-container p {
     color: #4b5563; /* Color para modo claro (gris oscuro) */
 }
 
 /* --- MODO OSCURO --- */
 @media (prefers-color-scheme: dark) {
-    body { background-color: #111827; color: #d1d5db; }
-    .card-container { background-color: #1f2937; }
+    body { 
+        background-color: #1f2937; /* Gris oscuro, un poco más claro */
+        color: #d1d5db; 
+    }
+    .card-container { 
+        background-color: #374151; /* Gris más claro para la tarjeta */
+    }
     
     p, li, td {
         color: #d1d5db;
@@ -278,14 +283,14 @@ h3, h4 {
     .requirement-subtitle, h3 { color: #e5e7eb; }
     .requirement-subtitle.special-subtitle, .section-title { color: #F54C38; }
 
-    .responsive-table th { background-color: #374151; color: #d1d5db; }
-    .responsive-table th, .responsive-table td { border-color: #4b5563; }
+    .responsive-table th { background-color: #4b5563; color: #d1d5db; }
+    .responsive-table th, .responsive-table td { border-color: #6b7280; } /* Borde un poco más claro */
     .table-select {
-        background-color: #2d3748;
+        background-color: #4b5563;
         color: #d1d5db;
-        border-color: #4b5563;
+        border-color: #6b7280;
     }
-    .table-select option { background-color: #1f2937; color: #d1d5db; }
+    .table-select option { background-color: #374151; color: #d1d5db; }
 
     .bg-yellow-500 { box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5); }
     .bg-yellow-500:hover { box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6); }
@@ -295,8 +300,13 @@ h3, h4 {
     .back-btn.bg-yellow-500:hover { box-shadow: 0 4px 10px rgba(251, 191, 36, 0.5); }
     
     /* Estilo del contador en modo oscuro */
-    #visitor-counter-container {
-        color: #d1d5db;
+    #visitor-counter-container p {
+        color: #d1d5db; /* Color de texto claro */
+    }
+
+    /* Estilo del footer en modo oscuro */
+    .footer-text {
+        color: #9ca3af; /* Gris claro para el texto del footer */
     }
 }
 
@@ -388,4 +398,3 @@ h3, h4 {
     .table-container { overflow: visible; }
     img { max-width: 300px !important; }
 }
-
