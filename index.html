@@ -24,9 +24,12 @@
 
     <!-- Estilos para el Chatbot y Layout Adaptativo -->
     <style>
-        /* --- Configuración de Modo Oscuro --- */
-        /* Tailwind usa la preferencia del sistema por defecto. */
-        
+        /* --- Variables de Color Verde --- */
+        :root {
+            --glow-color: rgba(22, 163, 74, 0.5); /* green-600 con opacidad */
+            --glow-color-dark: rgba(52, 211, 153, 0.6); /* emerald-400 con opacidad */
+        }
+
         /* --- Layout General --- */
         body {
             background-color: #f3f4f6; /* gray-100 */
@@ -59,24 +62,40 @@
             max-width: 400px;
             transition: transform 0.3s ease-out, opacity 0.3s ease-out;
             transform-origin: bottom right;
+            box-shadow: 0 0 25px -5px var(--glow-color);
         }
+        .dark #chat-popup {
+            box-shadow: 0 0 25px -5px var(--glow-color-dark);
+        }
+
         #chat-popup.hidden {
             transform: scale(0.5);
             opacity: 0;
             pointer-events: none;
         }
         #chat-toggle-button {
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 15px -2px var(--glow-color);
+            transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+        #chat-toggle-button:hover {
+             box-shadow: 0 0 25px 2px var(--glow-color);
+             transform: scale(1.05);
+        }
+        .dark #chat-toggle-button {
+             box-shadow: 0 0 15px -2px var(--glow-color-dark);
+        }
+        .dark #chat-toggle-button:hover {
+             box-shadow: 0 0 25px 2px var(--glow-color-dark);
         }
         
         /* Estilos Comunes del Chat */
         .chat-messages-container {
             scrollbar-width: thin;
-            scrollbar-color: #6b7280 #374151;
+            scrollbar-color: #4b5563 #27272a; /* gray-600 zinc-800 */
         }
         .chat-messages-container::-webkit-scrollbar { width: 5px; }
-        .chat-messages-container::-webkit-scrollbar-track { background: #374151; }
-        .chat-messages-container::-webkit-scrollbar-thumb { background-color: #6b7280; border-radius: 20px; }
+        .chat-messages-container::-webkit-scrollbar-track { background: #27272a; }
+        .chat-messages-container::-webkit-scrollbar-thumb { background-color: #4b5563; border-radius: 20px; }
         
         .message-fade-in {
             opacity: 0;
@@ -163,15 +182,15 @@
     <!-- ===== INICIO DEL CHATBOT FLOTANTE ===== -->
     <div id="chat-widget-container">
         <!-- Ventana del Chat (inicialmente oculta) -->
-        <div id="chat-popup" class="hidden flex flex-col bg-gray-800 rounded-2xl shadow-xl border border-gray-700">
-            <header class="bg-gray-900/80 p-3 border-b border-gray-700 rounded-t-2xl flex items-center justify-between text-white">
-                <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center border-2 border-gray-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-400">Seguridad Privada Chile</p></div></div>
+        <div id="chat-popup" class="hidden flex flex-col bg-gray-900/95 dark:bg-zinc-900/95 backdrop-blur-sm border border-emerald-500/50 rounded-2xl">
+            <header class="p-3 border-b border-emerald-500/30 flex items-center justify-between text-white">
+                <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center border-2 border-emerald-400/80 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-400">Seguridad Privada Chile</p></div></div>
             </header>
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
-            <footer class="p-3 border-t border-gray-700"><div class="flex items-center bg-gray-700 rounded-xl p-2"><input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 text-sm"><button id="send-button" class="bg-blue-600 hover:bg-blue-700 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button></div></footer>
+            <footer class="p-3 border-t border-emerald-500/30"><div class="flex items-center bg-gray-800 dark:bg-zinc-800 rounded-xl p-2"><input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 text-sm"><button id="send-button" class="bg-emerald-500 hover:bg-emerald-600 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button></div></footer>
         </div>
         <!-- Botón para abrir/cerrar el chat -->
-        <button id="chat-toggle-button" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" title="Abrir Asistente Virtual">
+        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 text-emerald-500 dark:text-emerald-400 w-16 h-16 rounded-full flex items-center justify-center" title="Abrir Asistente Virtual">
             <svg id="chat-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 5.523-4.477 10-10 10-5.523 0-10-4.477-10-10 0-5.523 4.477-10 10-10 5.523 0 10 4.477 10 10z" /></svg>
             <svg id="chat-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
@@ -224,5 +243,4 @@
    </script>
 </body>
 </html>
-
 
