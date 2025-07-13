@@ -48,7 +48,7 @@
         #chat-widget-container {
             position: fixed;
             bottom: 2rem;
-            right: 2rem;
+            right: 1.5rem; /* Ajustado para estar más a la derecha en móvil */
             z-index: 1000;
         }
         
@@ -90,7 +90,7 @@
             border-radius: 1.25rem; /* rounded-2xl */
             --tw-shadow: 0 0 15px -2px var(--glow-color-light);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-            animation: float-animation 4s infinite ease-in-out;
+            animation: float-animation 3s infinite ease-in-out; /* Animación más rápida */
             transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
         }
         #chat-toggle-button:hover {
@@ -107,7 +107,7 @@
 
         @keyframes float-animation {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-15px); } /* Movimiento más alto */
         }
         
         /* --- Estilos Internos del Chat --- */
