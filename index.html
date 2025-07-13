@@ -26,8 +26,10 @@
     <style>
         /* --- Variables de Color Verde --- */
         :root {
-            --glow-color-light: rgba(34, 197, 94, 0.6);
-            --glow-color-dark: rgba(74, 222, 128, 0.7);
+            --green-light: #22c55e; /* green-500 */
+            --green-dark: #4ade80; /* green-400 */
+            --glow-color-light: rgba(34, 197, 94, 0.7);
+            --glow-color-dark: rgba(74, 222, 128, 0.8);
         }
 
         /* --- Layout General --- */
@@ -48,7 +50,7 @@
         #chat-widget-container {
             position: fixed;
             bottom: 2rem;
-            right: 1rem; /* Ajustado para estar más a la derecha en móvil */
+            right: 1.5rem; /* Posición por defecto para móvil */
             z-index: 1000;
         }
         
@@ -89,17 +91,20 @@
             width: 68px;
             height: 68px;
             border-radius: 1.25rem; /* rounded-2xl */
+            border: 3px solid var(--green-light); /* Borde verde grueso */
+            background-color: white;
             --tw-shadow: 0 0 15px -2px var(--glow-color-light);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-            animation: float-animation 2.5s infinite ease-in-out; /* Animación más rápida */
+            animation: float-animation 2.5s infinite ease-in-out;
             transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
         }
         #chat-toggle-button:hover {
              --tw-shadow: 0 0 25px 2px var(--glow-color-light);
              transform: scale(1.05);
-             animation-play-state: paused;
         }
         .dark #chat-toggle-button {
+             border-color: var(--green-dark);
+             background-color: #1f2937; /* gray-800 */
              --tw-shadow: 0 0 15px -2px var(--glow-color-dark);
         }
         .dark #chat-toggle-button:hover {
@@ -108,13 +113,13 @@
 
         @keyframes float-animation {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-18px); } /* Movimiento más alto */
+            50% { transform: translateY(-18px); }
         }
         
         /* --- Estilos Internos del Chat --- */
         .chat-messages-container { scrollbar-width: thin; }
-        .light .chat-messages-container { scrollbar-color: #a1a1aa #e5e7eb; } /* zinc-400 gray-200 */
-        .dark .chat-messages-container { scrollbar-color: #6b7280 #374151; } /* gray-500 gray-700 */
+        .light .chat-messages-container { scrollbar-color: #a1a1aa #e5e7eb; }
+        .dark .chat-messages-container { scrollbar-color: #6b7280 #374151; }
         .chat-messages-container::-webkit-scrollbar { width: 5px; }
         .light .chat-messages-container::-webkit-scrollbar-track { background: #e5e7eb; }
         .dark .chat-messages-container::-webkit-scrollbar-track { background: #374151; }
@@ -137,13 +142,12 @@
         .typing-indicator span:nth-child(3) { animation-delay: .6666s; }
         @keyframes blink { 50% { opacity: 1; } }
 
-        /* Estilo para la burbuja de respuesta del bot */
         .bot-bubble {
-            background-color: rgba(34, 197, 94, 0.1); /* Verde agua claro semi-transparente */
+            background-color: rgba(34, 197, 94, 0.1);
             border: 1px solid rgba(34, 197, 94, 0.2);
         }
         .dark .bot-bubble {
-            background-color: rgba(74, 222, 128, 0.15); /* Verde agua oscuro semi-transparente */
+            background-color: rgba(74, 222, 128, 0.15);
             border: 1px solid rgba(74, 222, 128, 0.3);
         }
 
@@ -153,7 +157,7 @@
         }
         @media (min-width: 1200px) {
             #chat-backdrop {
-                display: none; /* No se necesita en escritorio */
+                display: none;
             }
         }
     </style>
@@ -235,7 +239,7 @@
             <footer class="p-3 border-t border-green-500/30"><div class="flex items-center bg-gray-200 dark:bg-gray-900/80 rounded-xl p-2"><input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-sm"><button id="send-button" class="bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button></div></footer>
         </div>
         <!-- Botón para abrir/cerrar el chat -->
-        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual">
+        <button id="chat-toggle-button" class="w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual">
             <img id="chat-open-icon" src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
             <svg id="chat-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
