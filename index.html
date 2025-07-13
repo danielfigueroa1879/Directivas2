@@ -166,18 +166,16 @@
 
         /* --- Ajuste para el ancho en móviles --- */
         @media (max-width: 640px) {
-            body {
-                padding: 0; /* Elimina el padding del body para evitar desbordamiento */
-            }
             .card-container {
-                width: 100%;
-                margin: 0;
-                border-radius: 0; /* Opcional: para un look de borde a borde */
-                padding: 1rem; /* Añade el padding dentro del contenedor */
-                box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
+                width: 99%;
+                margin: 0.5rem auto;
+                padding: 1rem;
+                box-sizing: border-box;
             }
             .section-card {
-                width: 100%; /* Ocupará el 100% del contenedor padre que ya tiene padding */
+                width: 98%;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>
@@ -312,3 +310,4 @@
    </script>
 </body>
 </html>
+
