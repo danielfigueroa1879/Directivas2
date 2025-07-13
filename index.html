@@ -94,7 +94,6 @@
             width: 68px;
             height: 68px;
             border-radius: 1.25rem; /* rounded-2xl */
-            /* MODIFICADO: Se asegura que el borde verde se aplique correctamente */
             border: 3px solid var(--green-light); /* Borde verde grueso */
             background-color: white;
             --tw-shadow: 0 0 15px -2px var(--glow-color-light);
@@ -107,7 +106,6 @@
              transform: scale(1.05);
         }
         .dark #chat-toggle-button {
-             /* MODIFICADO: Se asegura que el borde verde se aplique en modo oscuro */
              border-color: var(--green-dark);
              background-color: #1f2937; /* gray-800 */
              --tw-shadow: 0 0 15px -2px var(--glow-color-dark);
@@ -168,14 +166,18 @@
 
         /* --- Ajuste para el ancho en móviles --- */
         @media (max-width: 640px) {
+            body {
+                padding: 0; /* Elimina el padding del body para evitar desbordamiento */
+            }
             .card-container {
                 width: 100%;
+                margin: 0;
+                border-radius: 0; /* Opcional: para un look de borde a borde */
+                padding: 1rem; /* Añade el padding dentro del contenedor */
+                box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
             }
             .section-card {
-                width: 99%;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 1.2rem;
+                width: 100%; /* Ocupará el 100% del contenedor padre que ya tiene padding */
             }
         }
     </style>
