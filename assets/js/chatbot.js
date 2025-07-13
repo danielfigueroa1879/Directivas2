@@ -2,6 +2,7 @@
  * chatbot.js
  * * This module handles all the functionality for the floating chatbot widget.
  * It manages the UI, state, and communication with the Gemini API.
+ * It now includes a system for predefined responses to common questions.
  */
 
 // --- DOM Element Selection ---
@@ -12,6 +13,41 @@ const closeIcon = document.getElementById('chat-close-icon');
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
+
+// --- Predefined Responses ---
+// Aquí puedes "entrenar" al bot con respuestas instantáneas.
+// Las 'claves' son arrays de palabras clave que activarán la respuesta.
+const predefinedResponses = {
+    'saludo': {
+        keywords: ['hola', 'buenos dias', 'buenas tardes', 'buenas noches', 'saludos'],
+        response: '¡Hola! Soy el asistente virtual de OS10. ¿En qué puedo ayudarte hoy?'
+    },
+    'gracias': {
+        keywords: ['gracias', 'muchas gracias', 'te pasaste', 'agradecido'],
+        response: '¡De nada! Si tienes otra consulta, no dudes en preguntar.'
+    },
+    'costo_credencial': {
+        keywords: ['valor credencial', 'precio credencial', 'costo credencial', 'cuanto vale la credencial'],
+        response: 'El costo para la credencial es de $5.890 CLP y se debe pagar mediante un Vale Vista a nombre de "ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS".'
+    },
+    'contacto': {
+        keywords: ['contacto', 'teléfono', 'llamar', 'numero'],
+        response: 'El número de teléfono de la oficina OS10 para consultas es 512651024.'
+    },
+    'creador': {
+        keywords: ['quien te creo', 'creador', 'desarrollador', 'programador'],
+        response: 'Fui desarrollado por Daniel Figueroa Ch., Ingeniero en Informática. Puedes encontrar su información en el pie de página del sitio.'
+    },
+    'horario': {
+        keywords: ['horario', 'atencion', 'atienden', 'dirección', 'ubicación', 'donde estan', 'oficina'],
+        response: '🤖 👉🏼 <b>OS10 Coquimbo</b><br>Lunes a Jueves: 09:00 a 13:00 hrs.<br>📍 Cienfuegos 180, La Serena.<br>📞 Fono: 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-blue-400 hover:underline">Ver en Google Maps</a>'
+    },
+    'infracciones': {
+        keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
+        response: 'Las infracciones más comunes del Decreto 93 son:<br>🔹 <b>Art. 13:</b> Guardia sin curso OS10 vigente.<br>🔹 <b>Art. 15:</b> Sin Directiva de Funcionamiento aprobada.<br>🔹 <b>Art. 18:</b> Guardia sin portar su credencial.<br><br>⚠️ <b>Importante:</b> La infracción se cursa a la empresa de seguridad, no directamente al guardia.'
+    }
+};
+
 
 // --- API Configuration ---
 const API_KEY = 'AIzaSyAgOFzsnwwLt4TSb1lO3XZ8Ot9QJUX7Y6A';
@@ -46,23 +82,28 @@ function addMessage(sender, text) {
         messageElement.classList.add('ml-auto', 'flex-row-reverse');
         messageContent = `
             <div class="bg-blue-600 rounded-xl rounded-br-none p-3 ml-2">
-                <p class="text-white text-sm">${text}</p>
+                <p class="text-white text-sm"></p>
             </div>
             <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0">U</div>
         `;
-    } else {
+        messageElement.innerHTML = messageContent;
+        // Use textContent for user input to prevent XSS vulnerabilities
+        messageElement.querySelector('p').textContent = text;
+    } else { // sender is 'bot'
         messageElement.classList.add('mr-auto');
         messageContent = `
             <div class="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 8a1 1 0 112 0 1 1 0 01-2 0zm5 0a1 1 0 112 0 1 1 0 01-2 0zM7 12a1 1 0 100 2h6a1 1 0 100-2H7z" /></svg>
             </div>
             <div class="bg-gray-700 rounded-xl rounded-bl-none p-3 ml-2">
-                <p class="text-gray-200 text-sm">${text}</p>
+                <p class="text-gray-200 text-sm"></p>
             </div>
         `;
+        messageElement.innerHTML = messageContent;
+        // Use innerHTML for bot responses because we want to render the HTML link and line breaks
+        messageElement.querySelector('p').innerHTML = text;
     }
     
-    messageElement.innerHTML = messageContent;
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
 }
@@ -94,10 +135,27 @@ function showTypingIndicator(show) {
     }
 }
 
+/**
+ * Checks if the user input matches any predefined questions.
+ * @param {string} text - The user's input text.
+ * @returns {string|null} The predefined response or null if no match.
+ */
+function getPredefinedResponse(text) {
+    const lowerCaseText = text.toLowerCase();
+    for (const key in predefinedResponses) {
+        const item = predefinedResponses[key];
+        if (item.keywords.some(keyword => lowerCaseText.includes(keyword))) {
+            return item.response;
+        }
+    }
+    return null;
+}
+
+
 // --- API Communication ---
 
 /**
- * Sends the user's message to the Gemini API and displays the response.
+ * Sends the user's message, checking for predefined responses first.
  */
 async function handleSendMessage() {
     const userText = userInput.value.trim();
@@ -105,9 +163,21 @@ async function handleSendMessage() {
 
     addMessage('user', userText);
     userInput.value = '';
-    showTypingIndicator(true);
     
-    // Add user message to history
+    // Check for a predefined response first
+    const predefinedResponse = getPredefinedResponse(userText);
+    if (predefinedResponse) {
+        // Wait a little to simulate "thinking"
+        setTimeout(() => {
+            addMessage('bot', predefinedResponse);
+            chatHistory.push({ role: "user", parts: [{ text: userText }] });
+            chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
+        }, 500);
+        return;
+    }
+    
+    // If no predefined response, call the API
+    showTypingIndicator(true);
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
@@ -130,7 +200,6 @@ async function handleSendMessage() {
         const data = await response.json();
         const botText = data.candidates[0].content.parts[0].text;
         
-        // Add bot response to history
         chatHistory.push({ role: "model", parts: [{ text: botText }] });
         
         showTypingIndicator(false);
