@@ -75,7 +75,7 @@
             max-height: 550px;
             width: 90vw;
             max-width: 400px;
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transition: all 0.3s ease-out; /* Transición para todos los cambios */
             transform-origin: bottom right;
             --tw-shadow: 0 0 25px -5px var(--glow-color-light);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -186,6 +186,12 @@
             #chat-popup .text-sm,
             #chat-popup #user-input {
                 font-size: 0.9rem; /* Aumenta ligeramente el tamaño de la fuente */
+            }
+
+            /* --- NUEVO: Estilo para cuando el teclado está visible --- */
+            #chat-popup.keyboard-visible {
+                height: 45vh; /* Reduce más la altura para dar espacio */
+                bottom: 6rem; /* Sube la ventana del chat */
             }
         }
     </style>
