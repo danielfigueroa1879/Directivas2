@@ -48,7 +48,7 @@
         #chat-widget-container {
             position: fixed;
             bottom: 2rem;
-            right: 1.5rem; /* Posición por defecto para móvil */
+            right: 1rem; /* Ajustado para estar más a la derecha en móvil */
             z-index: 1000;
         }
         
@@ -97,7 +97,7 @@
         #chat-toggle-button:hover {
              --tw-shadow: 0 0 25px 2px var(--glow-color-light);
              transform: scale(1.05);
-             /* Se elimina "animation-play-state: paused;" para que la animación no se detenga */
+             animation-play-state: paused;
         }
         .dark #chat-toggle-button {
              --tw-shadow: 0 0 15px -2px var(--glow-color-dark);
@@ -288,4 +288,3 @@
    </script>
 </body>
 </html>
-
