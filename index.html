@@ -7,7 +7,7 @@
 
     <!-- Metadatos PWA y SEO -->
     <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
-    <meta name="theme-color" content="#0a73c3"/>
+    <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
     <link rel="manifest" href="manifest.json">
 
@@ -22,51 +22,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Estilos para el Chatbot Flotante -->
+    <!-- Estilos para el Chatbot y Layout Adaptativo -->
     <style>
-        /* Estilos para el contenedor del chatbot y el botón flotante */
-        #chat-widget-container {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 1000;
-        }
-
-        #chat-popup {
-            font-family: 'Inter', sans-serif;
-            height: 70vh;
-            max-height: 500px;
-            width: 90vw;
-            max-width: 400px;
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-            transform-origin: bottom right;
-        }
-
-        /* Ocultar por defecto */
-        #chat-popup.hidden {
-            transform: scale(0.5);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #chat-toggle-button {
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-        }
+        /* --- Configuración de Modo Oscuro --- */
+        /* Tailwind usa la preferencia del sistema por defecto. */
+        /* Para forzarlo, puedes agregar la clase 'dark' al <html> */
         
-        /* Estilos para el scroll del chat */
-        #chat-messages::-webkit-scrollbar { width: 5px; }
-        #chat-messages::-webkit-scrollbar-track { background: #374151; }
-        #chat-messages::-webkit-scrollbar-thumb { background-color: #6b7280; border-radius: 20px; }
+        /* --- Layout General --- */
+        body {
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        .dark body {
+            background-color: #111827; /* gray-900 */
+        }
+        .main-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 1rem;
+            width: 100%;
+            max-width: 1300px; /* Ancho máximo para el layout completo */
+            margin: auto;
+        }
 
-        /* Animación para los mensajes */
+        /* --- Contenedor Principal (Banner) --- */
+        .card-container {
+            width: 100%;
+            max-width: 800px; /* Ancho máximo del contenido */
+        }
+
+        /* --- Estilos Comunes del Chat --- */
+        .chat-widget {
+            font-family: 'Inter', sans-serif;
+        }
+        .chat-messages-container {
+            scrollbar-width: thin;
+            scrollbar-color: #6b7280 #374151;
+        }
+        .chat-messages-container::-webkit-scrollbar { width: 5px; }
+        .chat-messages-container::-webkit-scrollbar-track { background: #374151; }
+        .chat-messages-container::-webkit-scrollbar-thumb { background-color: #6b7280; border-radius: 20px; }
+        
         .message-fade-in {
             opacity: 0;
             transform: translateY(10px);
             animation: fadeIn 0.4s ease-out forwards;
         }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-
-        /* Animación del indicador de "escribiendo" */
+        
         .typing-indicator span {
             height: 8px; width: 8px; float: left; margin: 0 1px;
             background-color: #9ca3af; display: block; border-radius: 50%;
@@ -75,175 +79,147 @@
         .typing-indicator span:nth-child(2) { animation-delay: .5s; }
         .typing-indicator span:nth-child(3) { animation-delay: .6666s; }
         @keyframes blink { 50% { opacity: 1; } }
+
+        /* --- Layout Móvil y Tablet (hasta 1199px) --- */
+        .desktop-chat-container {
+            display: none;
+        }
+        .mobile-chat-widget {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+        }
+        #chat-popup {
+            position: absolute;
+            bottom: 5.5rem; /* Espacio sobre el botón */
+            right: 0;
+            height: 70vh;
+            max-height: 500px;
+            width: 90vw;
+            max-width: 400px;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transform-origin: bottom right;
+        }
+        #chat-popup.hidden {
+            transform: scale(0.5);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #chat-toggle-button {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        /* --- Layout Escritorio (1200px y más) --- */
+        @media (min-width: 1200px) {
+            .mobile-chat-widget {
+                display: none; /* Ocultar el widget flotante en escritorio */
+            }
+            .desktop-chat-container {
+                display: flex;
+                flex-direction: column;
+                width: 400px;
+                height: 85vh;
+                max-height: 750px;
+                position: sticky; /* Se mantiene visible al hacer scroll */
+                top: 1.5rem;
+            }
+        }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-100 dark:bg-gray-800">
 
-    <!-- Contenido Original de la Página -->
-    <div class="card-container rounded-xl shadow-md p-6 space-y-6 relative">
-        
-        <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs">
-            <p class="flex items-center">
-                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
-            </p>
-        </div>
-
-        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
-            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10">
-        </a>
-
-        <header class="text-center">
-            <h1 class="text-2xl font-bold">DIRECTIVA DE FUNCIONAMIENTO</h1>
-            <h2 class="text-lg font-semibold">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
-        </header>
-
-        <main class="space-y-4">
-           <!-- Secciones... -->
-           <section class="section-card border-blue-500 section-blue">
-                <h3 class="font-bold">1️⃣ Presentar Directiva DD.FF.</h3>
-                <ul class="list-disc pl-5 text-sm normal-text">
-                    <li>Vigencia 03 años en instalación.</li>
-                    <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
-                    <li>
-                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 hover:underline">Dec. 93/1985</a>,
-                        <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 hover:underline">Dec. 261 (IV.4)</a>, y
-                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 hover:underline">Dec. 32/2024</a>.
-                   </li>
-               </ul>
-           </section>
-           
-           <section class="section-card border-green-500 section-green">
-                <h3 class="font-bold">2️⃣ Documentación</h3>
-                <ul class="space-y-3 pl-5 text-sm normal-text">
-                    <li>
-                        <span>02 Solicitudes Simple.</span>
-                        <div class="button-container">
-                            <a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn" title="Descargar Solicitud">
-                                Descargar Solicit.
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <span>01 copia DD.FF. completa.</span>
-                        <div class="button-container">
-                            <a href="https://dal5.short.gy/D" target="_blank" class="download-btn" title="Descargar Word">
-                                Descargar Word
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <span>Requisitos según tipo, Instalación, Eventos, Partidos de Fútbol Prof.</span>
-                        <div class="button-container">
-                            <a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn" title=" Descargar Requisi.">
-                                Descargar Requis.
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <span>Uniforme Decreto 32/2024.</span>
-                        <div class="button-container">
-                            <a href="https://dal5.short.gy/0u" target="_blank" class="download-btn" title="Ejemplo Uniforme">
-                                Ejemplo Uniforme
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <span>Análisis de Vulnerabilidades.</span>
-                        <div class="button-container">
-                            <a href="https://dal5.short.gy/6ydn" target="_blank" class="download-btn" title="Descargar Análisis">
-                                Descargar Anális.
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                         <span>Solicitud de Uniforme Distinto.</span>
-                         <div class="button-container">
-                         <a href="https://d6.short.gy/G8" target="_blank" class="download-btn" title="Descargar Word">
-                                 Descargar Word
-                            </a>
-                       </div>
-                     </li>
-                </ul>
-            </section>
-           
-           <section class="section-card border-red-500 section-red">
-               <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
-               <ul class="list-disc pl-5 text-sm normal-text">
-                   <li>
-                       <span>Escanear todo en 01 archivo PDF (Pendrive) y/o Página Unir PDF.</span>
-                       <div class="button-container">
-                           <a href="https://dal5.short.gy/I" target="_blank" class="download-btn" title="Herramienta para unir PDF">Herramienta</a>
-                       </div>
-                   </li>
-               </ul>
-           </section>
-           
-           <section class="section-card border-yellow-500 section-yellow">
-                <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
-                <ul class="list-disc pl-5 text-sm normal-text">
-                    <li>
-                        <span>Resol. 1480 (10.04.2025) revoca resolución 1.199 para confección de tarjetas.</span>
-                        <div class="button-container">
-                            <a href="https://d6.short.gy/dsds" target="_blank" class="download-btn" title="Descargar Documentos">Descargar Docum.</a>
-                        </div>
-                    </li>
-                    <li>
-                        <span>Tramitar credenciales.</span>
-                        <div class="button-container">
-                            <a href="credenciales.html" class="download-btn" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar Credenc.</a>
-                        </div>
-                    </li>
-                </ul>
-           </section>
-       </main>
-       
-       <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 p-4">
-            <div class="text-center text-sm text-gray-600 dark:text-white leading-tight transform -translate-x-8 md:-translate-x-6">
-                <span>Haga clic para descargar.</span><br>
-                <span>©2025 - Daniel Figueroa Ch.</span><br>
-                <span>Ingeniero en Informática.</span>
+    <div class="main-layout">
+        <!-- Contenido Original de la Página -->
+        <div class="card-container rounded-xl shadow-md p-6 space-y-6 relative bg-white dark:bg-gray-700">
+            <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
+                <p class="flex items-center">
+                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+                </p>
             </div>
-            <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información">
-       </footer>
-   </div>
-
-    <!-- ===== INICIO DEL CHATBOT FLOTANTE ===== -->
-    <div id="chat-widget-container">
-        <!-- Ventana del Chat (inicialmente oculta) -->
-        <div id="chat-popup" class="hidden flex flex-col bg-gray-800 rounded-2xl shadow-xl border border-gray-700">
-            <header class="bg-gray-900/80 p-3 border-b border-gray-700 rounded-t-2xl flex items-center justify-between text-white">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center border-2 border-gray-600 flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg>
-                    </div>
-                    <div>
-                        <h1 class="text-base font-bold">Asistente OS10</h1>
-                        <p class="text-xs text-gray-400">Seguridad Privada Chile</p>
-                    </div>
-                </div>
+            <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
+                <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10">
+            </a>
+            <header class="text-center">
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-white">DIRECTIVA DE FUNCIONAMIENTO</h1>
+                <h2 class="text-lg font-semibold text-gray-600 dark:text-gray-300">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
             </header>
-            <main id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4"></main>
-            <footer class="p-3 border-t border-gray-700">
-                <div class="flex items-center bg-gray-700 rounded-xl p-2">
-                    <input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 text-sm">
-                    <button id="send-button" class="bg-blue-600 hover:bg-blue-700 transition-colors rounded-lg p-2 ml-2 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg>
-                    </button>
+            <main class="space-y-4">
+                <section class="section-card border-blue-500 section-blue">
+                    <h3 class="font-bold">1️⃣ Presentar Directiva DD.FF.</h3>
+                    <ul class="list-disc pl-5 text-sm normal-text">
+                        <li>Vigencia 03 años en instalación.</li>
+                        <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
+                        <li>
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">Dec. 93/1985</a>,
+                            <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">Dec. 261 (IV.4)</a>, y
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">Dec. 32/2024</a>.
+                       </li>
+                   </ul>
+                </section>
+                <section class="section-card border-green-500 section-green">
+                    <h3 class="font-bold">2️⃣ Documentación</h3>
+                    <ul class="space-y-3 pl-5 text-sm normal-text">
+                        <li><span>02 Solicitudes Simple.</span><div class="button-container"><a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn" title="Descargar Solicitud">Descargar Solicit.</a></div></li>
+                        <li><span>01 copia DD.FF. completa.</span><div class="button-container"><a href="https://dal5.short.gy/D" target="_blank" class="download-btn" title="Descargar Word">Descargar Word</a></div></li>
+                        <li><span>Requisitos según tipo, Instalación, Eventos, Partidos de Fútbol Prof.</span><div class="button-container"><a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn" title=" Descargar Requisi.">Descargar Requis.</a></div></li>
+                        <li><span>Uniforme Decreto 32/2024.</span><div class="button-container"><a href="https://dal5.short.gy/0u" target="_blank" class="download-btn" title="Ejemplo Uniforme">Ejemplo Uniforme</a></div></li>
+                        <li><span>Análisis de Vulnerabilidades.</span><div class="button-container"><a href="https://dal5.short.gy/6ydn" target="_blank" class="download-btn" title="Descargar Análisis">Descargar Anális.</a></div></li>
+                        <li><span>Solicitud de Uniforme Distinto.</span><div class="button-container"><a href="https://d6.short.gy/G8" target="_blank" class="download-btn" title="Descargar Word">Descargar Word</a></div></li>
+                    </ul>
+                </section>
+                <section class="section-card border-red-500 section-red">
+                    <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
+                    <ul class="list-disc pl-5 text-sm normal-text">
+                        <li><span>Escanear todo en 01 archivo PDF (Pendrive) y/o Página Unir PDF.</span><div class="button-container"><a href="https://dal5.short.gy/I" target="_blank" class="download-btn" title="Herramienta para unir PDF">Herramienta</a></div></li>
+                    </ul>
+                </section>
+                <section class="section-card border-yellow-500 section-yellow">
+                    <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
+                    <ul class="list-disc pl-5 text-sm normal-text">
+                        <li><span>Resol. 1480 (10.04.2025) revoca resolución 1.199 para confección de tarjetas.</span><div class="button-container"><a href="https://d6.short.gy/dsds" target="_blank" class="download-btn" title="Descargar Documentos">Descargar Docum.</a></div></li>
+                        <li><span>Tramitar credenciales.</span><div class="button-container"><a href="credenciales.html" class="download-btn" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar Credenc.</a></div></li>
+                    </ul>
+                </section>
+            </main>
+            <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-600 pt-4">
+                <div class="text-center text-sm text-gray-600 dark:text-gray-400 leading-tight transform -translate-x-8 md:-translate-x-6">
+                    <span>Haga clic para descargar.</span><br>
+                    <span>©2025 - Daniel Figueroa Ch.</span><br>
+                    <span>Ingeniero en Informática.</span>
                 </div>
+                <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información">
             </footer>
+       </div>
+       
+        <!-- Chatbot para Escritorio (Visible en pantallas > 1200px) -->
+        <div class="desktop-chat-container chat-widget bg-gray-800 rounded-2xl shadow-xl border border-gray-700">
+            <header class="bg-gray-900/80 p-3 border-b border-gray-700 rounded-t-2xl flex items-center justify-between text-white">
+                <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center border-2 border-gray-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-400">Seguridad Privada Chile</p></div></div>
+            </header>
+            <main id="desktop-chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
+            <footer class="p-3 border-t border-gray-700"><div class="flex items-center bg-gray-700 rounded-xl p-2"><input type="text" id="desktop-user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 text-sm"><button id="desktop-send-button" class="bg-blue-600 hover:bg-blue-700 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button></div></footer>
         </div>
-        <!-- Botón para abrir/cerrar el chat -->
-        <button id="chat-toggle-button" class="mt-4 bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all transform hover:scale-110 focus:outline-none" title="Abrir Asistente Virtual">
+    </div>
+
+    <!-- Chatbot Flotante para Móvil (Visible en pantallas < 1200px) -->
+    <div class="mobile-chat-widget">
+        <div id="chat-popup" class="hidden chat-widget flex-col bg-gray-800 rounded-2xl shadow-xl border border-gray-700">
+            <header class="bg-gray-900/80 p-3 border-b border-gray-700 rounded-t-2xl flex items-center justify-between text-white">
+                <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center border-2 border-gray-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-400">Seguridad Privada Chile</p></div></div>
+            </header>
+            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
+            <footer class="p-3 border-t border-gray-700"><div class="flex items-center bg-gray-700 rounded-xl p-2"><input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 text-sm"><button id="send-button" class="bg-blue-600 hover:bg-blue-700 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button></div></footer>
+        </div>
+        <button id="chat-toggle-button" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" title="Abrir Asistente Virtual">
             <svg id="chat-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 5.523-4.477 10-10 10-5.523 0-10-4.477-10-10 0-5.523 4.477-10 10-10 5.523 0 10 4.477 10 10z" /></svg>
             <svg id="chat-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
     </div>
-    <!-- ===== FIN DEL CHATBOT FLOTANTE ===== -->
    
    <script src="assets/js/main.js"></script>
-
-   <!-- Script para el contador de visitas -->
+   <script type="module" src="assets/js/chatbot.js"></script>
    <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
@@ -286,8 +262,6 @@
         }
         runCounter();
    </script>
-   
-   <!-- Llama al nuevo archivo del chatbot -->
-   <script type="module" src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
