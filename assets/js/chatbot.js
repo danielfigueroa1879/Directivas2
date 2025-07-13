@@ -46,6 +46,10 @@ const predefinedResponses = {
         keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
         response: 'Las infracciones más comunes del Decreto 93 son:<br>🔹 <b>Art. 13:</b> Guardia sin curso OS10 vigente.<br>🔹 <b>Art. 15:</b> Sin Directiva de Funcionamiento aprobada.<br>🔹 <b>Art. 18:</b> Guardia sin portar su credencial.<br><br>⚠️ <b>Importante:</b> La infracción se cursa a la empresa de seguridad, no directamente al guardia.'
     },
+    'vigencia_credencial': {
+        keywords: ['vigencia', 'vencimiento', 'cuanto dura', 'validez', 'expira', 'duracion'],
+        response: '✅ Todas las credenciales para los componentes del sistema de seguridad privada tienen una <b>vigencia de 3 años.</b><br><br>Esto incluye: Guardia de Seguridad, Vigilante Privado, Asesor, Capacitador, Encargado de Seguridad, Jefe de Seguridad, Supervisor, Operador CCTV y Operador de Cajero Automático.<br><br><b>Importante:</b> La vigencia de la credencial está directamente ligada a la vigencia del curso OS10 correspondiente.'
+    },
     'decretos_leyes': {
         keywords: ['decreto', 'ley', 'normativa', 'legal', 'reglamento', 'dfl', '3.607', 'decreto 93', 'decreto 1814', 'decreto 32'],
         response: '🤖 👉🏼 <b>NORMATIVA VIGENTE</b><br><br>' +
@@ -112,7 +116,7 @@ const predefinedResponses = {
         response: 'Aquí tienes el documento para la <b>Credencial de Guardia (vía Empleador) (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Empleador</a>'
     },
     'credencial_independiente': {
-        keywords: ['guardia independiente', 'solicitud independiente', 'formulario independiente'],
+        keywords: ['guardia independiente', 'formulario independiente'],
         response: 'Aquí tienes el documento para la <b>Credencial de Guardia Independiente (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Independiente</a>'
     },
     // --- Respuesta general para documentos ---
@@ -158,7 +162,7 @@ const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-
 
 // --- State Management ---
 let chatHistory = [];
-const systemPrompt = `Eres un asistente virtual experto en materias de seguridad privada en Chile, enfocado en las directivas y procedimientos de OS10 de Carabineros. Tu conocimiento incluye: Decreto Ley 3.607, Decretos 93, 261, 32, Resolución 1480, y todo sobre Directivas de Funcionamiento (DD.FF.) y credenciales. Responde de forma clara y precisa, basándote en la normativa chilena. Si no sabes algo, indícalo amablemente. Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con *.`;
+const systemPrompt = `Eres un asistente virtual experto en materias de seguridad privada en Chile, enfocado en las directivas y procedimientos de OS10 de Carabineros. Tu conocimiento incluye: Decreto Ley 3.607, Decretos 93, 261, 32, Resolución 1480, y todo sobre Directivas de Funcionamiento (DD.FF.) y credenciales. Tu prioridad es entregar documentos y guías específicas (PDFs) que tengas en tu base de datos cuando se te pregunte por un trámite. Responde de forma clara y precisa, basándote en la normativa chilena. Si no sabes algo, indícalo amablemente. Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con *.`;
 
 // --- UI Functions ---
 
@@ -374,3 +378,4 @@ function init() {
 
 // Run the chatbot initialization
 init();
+
