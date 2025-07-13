@@ -2,7 +2,7 @@
  * chatbot.js
  * * This module handles all the functionality for the floating chatbot widget.
  * It manages the UI, state, and communication with the Gemini API.
- * It now includes a system for predefined responses to common questions.
+ * It now includes a system for predefined responses and Markdown to HTML conversion.
  */
 
 // --- DOM Element Selection ---
@@ -55,7 +55,7 @@ const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-
 
 // --- State Management ---
 let chatHistory = [];
-const systemPrompt = `Eres un asistente virtual experto en materias de seguridad privada en Chile, enfocado en las directivas y procedimientos de OS10 de Carabineros. Tu conocimiento incluye: Decreto Ley 3.607, Decretos 93, 261, 32, Resolución 1480, y todo sobre Directivas de Funcionamiento (DD.FF.) y credenciales. Responde de forma clara y precisa, basándote en la normativa chilena. Si no sabes algo, indícalo amablemente.`;
+const systemPrompt = `Eres un asistente virtual experto en materias de seguridad privada en Chile, enfocado en las directivas y procedimientos de OS10 de Carabineros. Tu conocimiento incluye: Decreto Ley 3.607, Decretos 93, 261, 32, Resolución 1480, y todo sobre Directivas de Funcionamiento (DD.FF.) y credenciales. Responde de forma clara y precisa, basándote en la normativa chilena. Si no sabes algo, indícalo amablemente. Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con *.`;
 
 // --- UI Functions ---
 
@@ -67,6 +67,28 @@ function toggleChat() {
     openIcon.classList.toggle('hidden');
     closeIcon.classList.toggle('hidden');
 }
+
+/**
+ * Converts basic Markdown syntax to HTML for rendering in the chat.
+ * @param {string} text - The raw text from the API.
+ * @returns {string} - The text formatted with HTML tags.
+ */
+function markdownToHtml(text) {
+    // Convert bold: **text** -> <b>text</b>
+    let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+
+    // Convert list items: * item -> <br>🔹 item
+    // This regex handles list items at the beginning of a line, with or without preceding newline.
+    formattedText = formattedText.replace(/(?:\n|^)\s*\*\s/g, '<br>🔹 ').trim();
+    
+    // Clean up any leading <br> that might have been created
+    if (formattedText.startsWith('<br>')) {
+        formattedText = formattedText.substring(4);
+    }
+
+    return formattedText;
+}
+
 
 /**
  * Creates and appends a message to the chat UI.
@@ -100,7 +122,7 @@ function addMessage(sender, text) {
             </div>
         `;
         messageElement.innerHTML = messageContent;
-        // Use innerHTML for bot responses because we want to render the HTML link and line breaks
+        // Use innerHTML for bot responses because we want to render the formatted HTML
         messageElement.querySelector('p').innerHTML = text;
     }
     
@@ -198,12 +220,17 @@ async function handleSendMessage() {
         }
 
         const data = await response.json();
+        // Get the raw text from the bot
         const botText = data.candidates[0].content.parts[0].text;
         
+        // Convert Markdown to HTML before displaying
+        const formattedBotText = markdownToHtml(botText);
+        
+        // Add original bot text to history, but display the formatted version
         chatHistory.push({ role: "model", parts: [{ text: botText }] });
         
         showTypingIndicator(false);
-        addMessage('bot', botText);
+        addMessage('bot', formattedBotText);
 
     } catch (error) {
         console.error('Error fetching from Gemini API:', error);
