@@ -40,7 +40,7 @@ const predefinedResponses = {
     },
     'horario': {
         keywords: ['horario', 'atencion', 'atienden', 'dirección', 'ubicación', 'donde estan', 'oficina'],
-        response: '🤖 👉🏼 <b>OS10 Coquimbo</b><br>Lunes a Jueves: 09:00 a 13:00 hrs.<br>📍 Cienfuegos 180, La Serena.<br>📞 Fono: 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-blue-400 hover:underline">Ver en Google Maps</a>'
+        response: '🤖 👉🏼 <b>OS10 Coquimbo</b><br>Lunes a Jueves: 09:00 a 13:00 hrs.<br>📍 Cienfuegos 180, La Serena.<br>📞 Fono: 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>'
     },
     'infracciones': {
         keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
@@ -53,82 +53,82 @@ const predefinedResponses = {
     'decretos_leyes': {
         keywords: ['decreto', 'ley', 'normativa', 'legal', 'reglamento', 'dfl', '3.607', 'decreto 93', 'decreto 1814', 'decreto 32'],
         response: '🤖 👉🏼 <b>NORMATIVA VIGENTE</b><br><br>' +
-                  '<b>➢ DECRETO LEY 3.607:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="text-blue-400 hover:underline">Ver Decreto Ley 3.607</a><br><br>' +
-                  '<b>➢ DECRETO 93:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-400 hover:underline">Ver Decreto 93</a><br><br>' +
-                  '<b>➢ DECRETO 1814:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1069299" target="_blank" class="text-blue-400 hover:underline">Ver Decreto 1814</a><br><br>' +
-                  '<b>➢ DECRETO 32 (Modifica D. 261):</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-400 hover:underline">Ver Decreto 32</a>'
+                  '<b>➢ DECRETO LEY 3.607:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto Ley 3.607</a><br><br>' +
+                  '<b>➢ DECRETO 93:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto 93</a><br><br>' +
+                  '<b>➢ DECRETO 1814:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1069299" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto 1814</a><br><br>' +
+                  '<b>➢ DECRETO 32 (Modifica D. 261):</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto 32</a>'
     },
     'nuevos_valores': {
         keywords: ['valores', 'valor plan', 'valor curso', 'perfeccionamiento', 'formación'],
         response: '🤖🧙🏻‍♂️ <b>VALORES 2DO. SEMESTRE 2025</b><br><br>' +
-                  '1.- <b>CREDENCIAL:</b> <a href="https://dal5.short.gy/val" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/val</a><br>' +
-                  '2.- <b>CRED. EMPRESA:</b> <a href="https://dal5.short.gy/C.emp" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/C.emp</a><br>' +
-                  '3.- <b>CURSO FORMACIÓN:</b> <a href="https://dal5.short.gy/Form" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Form</a><br>' +
-                  '4.- <b>CURSO PERFECC:</b> <a href="https://dal5.short.gy/BjzkHI" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/BjzkHI</a><br>' +
-                  '5.- <b>VALOR PLAN:</b> <a href="https://os10.short.gy/Pl4n" target="_blank" class="text-blue-400 hover:underline">os10.short.gy/Pl4n</a>'
+                  '1.- <b>CREDENCIAL:</b> <a href="https://dal5.short.gy/val" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/val</a><br>' +
+                  '2.- <b>CRED. EMPRESA:</b> <a href="https://dal5.short.gy/C.emp" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/C.emp</a><br>' +
+                  '3.- <b>CURSO FORMACIÓN:</b> <a href="https://dal5.short.gy/Form" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Form</a><br>' +
+                  '4.- <b>CURSO PERFECC:</b> <a href="https://dal5.short.gy/BjzkHI" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/BjzkHI</a><br>' +
+                  '5.- <b>VALOR PLAN:</b> <a href="https://os10.short.gy/Pl4n" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">os10.short.gy/Pl4n</a>'
     },
     'pagina_credencial': {
         keywords: ['página credencial', 'pagina de credenciales', 'link credencial'],
-        response: '🤖 <b>Página Credencial Empresa / Independiente</b><br><a href="https://dal5.short.gy/C√" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/C√</a>'
+        response: '🤖 <b>Página Credencial Empresa / Independiente</b><br><a href="https://dal5.short.gy/C√" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/C√</a>'
     },
     'ciberseguridad': {
         keywords: ['ciberseguridad', 'deepfake', 'antivirus', 'osint', 'csirt', 'iso', 'ley 21459', 'ley 21663', 'ciber'],
         response: '🤖🧙🏻‍♂️ <b>CIBERSEGURIDAD</b><br>' +
-                  '<b>➢ ¿Qué Hacer?:</b> <a href="https://dal5.short.gy/SIyeI3" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/SIyeI3</a><br>' +
-                  '<b>➢ ¿Cómo notificar?:</b> <a href="https://dal5.short.gy/GFxMgX" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/GFxMgX</a><br>' +
-                  '<b>➢ Empresa de Ciberseguridad:</b> <a href="https://dal5.short.gy/C25" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/C25</a><br>' +
-                  '<b>➢ Verificar deepfake:</b> <a href="https://prepro.autoverifai.com/" target="_blank" class="text-blue-400 hover:underline">prepro.autoverifai.com</a><br><br>' +
+                  '<b>➢ ¿Qué Hacer?:</b> <a href="https://dal5.short.gy/SIyeI3" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/SIyeI3</a><br>' +
+                  '<b>➢ ¿Cómo notificar?:</b> <a href="https://dal5.short.gy/GFxMgX" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/GFxMgX</a><br>' +
+                  '<b>➢ Empresa de Ciberseguridad:</b> <a href="https://dal5.short.gy/C25" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/C25</a><br>' +
+                  '<b>➢ Verificar deepfake:</b> <a href="https://prepro.autoverifai.com/" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">prepro.autoverifai.com</a><br><br>' +
                   '🧙🏻‍♂️ <b>HERRAMIENTAS CIBERSEGURIDAD</b> 👇🏽<br>' +
-                  '<b>➢ Antivirus Online:</b> <a href="https://dal5.short.gy/Anti" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Anti</a><br>' +
-                  '<b>➢ Sociales:</b> <a href="https://dal5.short.gy/Herr" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Herr</a><br>' +
-                  '<b>➢ Osint:</b> <a href="https://dal5.short.gy/Os" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/Os</a><br>' +
-                  '<b>➢ Csirt:</b> <a href="http://csirt.gob.cl" target="_blank" class="text-blue-400 hover:underline">csirt.gob.cl</a><br>' +
+                  '<b>➢ Antivirus Online:</b> <a href="https://dal5.short.gy/Anti" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Anti</a><br>' +
+                  '<b>➢ Sociales:</b> <a href="https://dal5.short.gy/Herr" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Herr</a><br>' +
+                  '<b>➢ Osint:</b> <a href="https://dal5.short.gy/Os" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Os</a><br>' +
+                  '<b>➢ Csirt:</b> <a href="http://csirt.gob.cl" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">csirt.gob.cl</a><br>' +
                   '<b>➢ Fono Incid.Ciberseg:</b> 1510<br>' +
                   '<b>➢ Brigada Ciberseguridad PDI:</b> +56227080658<br>' +
-                  '<b>➢ ISO 27001:</b> <a href="https://dal5.short.gy/Iso" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Iso</a><br>' +
-                  '<b>➢ ISO 27031:</b> <a href="https://dal5.short.gy/1" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/1</a><br>' +
-                  '<b>➢ Ley 21459:</b> <a href="https://dal5.short.gy/Ley" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Ley</a><br>' +
-                  '<b>➢ Ley 21663 Marco:</b> <a href="https://www.bcn.cl/leychile/navegar?i=1202434" target="_blank" class="text-blue-400 hover:underline">www.bcn.cl/leychile/...</a><br>' +
-                  '<b>➢ VALORES INFRACCIONES:</b> <a href="https://dal5.short.gy/Vc" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/Vc</a><br>' +
-                  '<b>➢ DFL:</b> <a href="https://dal5.short.gy/FL" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/FL</a><br>' +
-                  '<b>➢ Buscar Fono:</b> <a href="https://www.truecaller.com/es-la" target="_blank" class="text-blue-400 hover:underline">www.truecaller.com/es-la</a><br>' +
-                  '<b>➢ Telegram Bot:</b> <a href="https://t.me/TruecallerR0Bot" target="_blank" class="text-blue-400 hover:underline">t.me/TruecallerR0Bot</a>'
+                  '<b>➢ ISO 27001:</b> <a href="https://dal5.short.gy/Iso" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Iso</a><br>' +
+                  '<b>➢ ISO 27031:</b> <a href="https://dal5.short.gy/1" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/1</a><br>' +
+                  '<b>➢ Ley 21459:</b> <a href="https://dal5.short.gy/Ley" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Ley</a><br>' +
+                  '<b>➢ Ley 21663 Marco:</b> <a href="https://www.bcn.cl/leychile/navegar?i=1202434" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">www.bcn.cl/leychile/...</a><br>' +
+                  '<b>➢ VALORES INFRACCIONES:</b> <a href="https://dal5.short.gy/Vc" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Vc</a><br>' +
+                  '<b>➢ DFL:</b> <a href="https://dal5.short.gy/FL" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/FL</a><br>' +
+                  '<b>➢ Buscar Fono:</b> <a href="https://www.truecaller.com/es-la" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">www.truecaller.com/es-la</a><br>' +
+                  '<b>➢ Telegram Bot:</b> <a href="https://t.me/TruecallerR0Bot" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">t.me/TruecallerR0Bot</a>'
     },
     // --- Respuestas específicas para cada tipo de credencial ---
     'credencial_asesor': {
         keywords: ['credencial asesor', 'solicitud asesor', 'formulario asesor'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Asesor (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ASESOR 1 SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Asesor</a>'
+        response: 'Aquí tienes el documento para la <b>Credencial de Asesor (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ASESOR 1 SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Asesor</a>'
     },
     'credencial_capacitador': {
         keywords: ['credencial capacitador', 'solicitud capacitador', 'formulario capacitador'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Capacitador (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CAPACITADOR 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Capacitador</a>'
+        response: 'Aquí tienes el documento para la <b>Credencial de Capacitador (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CAPACITADOR 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Capacitador</a>'
     },
     'credencial_cctv': {
         keywords: ['credencial cctv', 'solicitud cctv', 'formulario cctv', 'operador cctv'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Operador CCTV (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CCTV 2025 1ER SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud CCTV</a>'
+        response: 'Aquí tienes el documento para la <b>Credencial de Operador CCTV (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CCTV 2025 1ER SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud CCTV</a>'
     },
     'credencial_encargado': {
         keywords: ['credencial encargado', 'solicitud encargado', 'formulario encargado', 'encargado de seguridad'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Encargado de Seguridad (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ENC. DE SEGURIDAD 1ER. SEM 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Encargado</a>'
+        response: 'Aquí tienes el documento para la <b>Credencial de Encargado de Seguridad (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ENC. DE SEGURIDAD 1ER. SEM 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Encargado</a>'
     },
     'credencial_empleador': {
         keywords: ['credencial empleador', 'formulario empleador', 'guardia empresa'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Guardia (vía Empleador) (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Empleador</a>'
+        response: 'Aquí tienes el documento para la <b>Credencial de Guardia (vía Empleador) (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Empleador</a>'
     },
     'credencial_independiente': {
         keywords: ['guardia independiente', 'formulario independiente'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Guardia Independiente (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Independiente</a>'
+        response: 'Aquí tienes el documento para la <b>Credencial de Guardia Independiente (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Independiente</a>'
     },
     // --- Respuesta general para documentos ---
     'documentos': {
         keywords: ['documentos', 'formularios', 'archivos', 'pdf', 'formatos', 'solicitud'],
         response: '¡Claro! Si buscas una solicitud de credencial, por favor sé más específico (ej: "credencial de asesor"). Para otros documentos, aquí tienes:<br><br>' +
                   '<b>🔹 Listas de Valores (2do Semestre 2025):</b><br>' +
-                  '<a href="CREDENCIALES VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Credenciales</a><br>' +
-                  '<a href="CURSO PERFECCIONAMIENTO VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Perfeccionamiento</a><br><br>' +
+                  '<a href="CREDENCIALES VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Valores Credenciales</a><br>' +
+                  '<a href="CURSO PERFECCIONAMIENTO VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Valores Perfeccionamiento</a><br><br>' +
                   '<b>🔹 Otros Documentos:</b><br>' +
-                  '<a href="EMPRESAS DE CAPACITACION 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Empresas de Capacitación 2025</a><br>' +
-                  '<a href="FORMATO SOLICITUD SIMPLE CREDENCIAL GGSS INDEPENDIENTE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Formato Solicitud Simple (Independiente)</a>'
+                  '<a href="EMPRESAS DE CAPACITACION 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Empresas de Capacitación 2025</a><br>' +
+                  '<a href="FORMATO SOLICITUD SIMPLE CREDENCIAL GGSS INDEPENDIENTE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Formato Solicitud Simple (Independiente)</a>'
     },
     // --- Nuevas reglas del CSV ---
     'csv_rule_1': { keywords: ['info', 'información', 'ayuda'], response: '🤖 Hola, ¿en qué te puedo ayudar? Para una mejor atención, escribe tu consulta de forma clara y precisa. ' },
@@ -142,16 +142,16 @@ const predefinedResponses = {
     'csv_rule_9': { keywords: ['muchas gracias'], response: 'De nada, que estés bien.' },
     'csv_rule_10': { keywords: ['ok'], response: '👍' },
     'csv_rule_11': { keywords: ['consulta'], response: 'Sí, dime.' },
-    'csv_rule_12': { keywords: ['donde'], response: 'La oficina de OS10 Coquimbo está en Cienfuegos 180, La Serena. Lunes a Jueves de 09:00 a 13:00 hrs. Fono 512651024. <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-blue-400 hover:underline">Ver en Google Maps</a>' },
-    'csv_rule_13': { keywords: ['como llego'], response: 'Puedes usar este enlace de Google Maps para llegar: <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-blue-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>' },
+    'csv_rule_12': { keywords: ['donde'], response: 'La oficina de OS10 Coquimbo está en Cienfuegos 180, La Serena. Lunes a Jueves de 09:00 a 13:00 hrs. Fono 512651024. <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>' },
+    'csv_rule_13': { keywords: ['como llego'], response: 'Puedes usar este enlace de Google Maps para llegar: <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>' },
     'csv_rule_14': { keywords: ['requisitos'], response: 'Los requisitos dependen del trámite. ¿Qué necesitas hacer? (Ej: "credencial de guardia", "directiva de funcionamiento", etc.)' },
-    'csv_rule_15': { keywords: ['directiva de funcionamiento'], response: 'Aquí tienes los documentos para la Directiva de Funcionamiento (DD.FF.):<br><b>- Solicitud Simple:</b> <a href="https://dal5.short.gy/Solic" target="_blank" class="text-blue-400 hover:underline">Descargar</a><br><b>- Formato Word DD.FF.:</b> <a href="https://dal5.short.gy/D" target="_blank" class="text-blue-400 hover:underline">Descargar</a><br><b>- Requisitos:</b> <a href="https://dal5.short.gy/Re24" target="_blank" class="text-blue-400 hover:underline">Descargar</a>' },
-    'csv_rule_16': { keywords: ['unir pdf'], response: 'Puedes usar esta herramienta online para unir archivos PDF: <a href="https://dal5.short.gy/I" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/I</a>' },
-    'csv_rule_17': { keywords: ['cambiar dpi'], response: 'Puedes usar estas herramientas para ajustar los DPI de tus fotos:<br><b>- Opción 1:</b> <a href="https://dal5.short.gy/0" target="_blank" class="text-blue-400 hover:underline">Convert. 300 DPI</a><br><b>- Opción 2:</b> <a href="https://dal5.short.gy/j" target="_blank" class="text-blue-400 hover:underline">Convert. 300 DPI</a>' },
-    'csv_rule_18': { keywords: ['excel'], response: 'Puedes descargar el formato de Excel para la nómina de guardias aquí: <a href="https://dal5.short.gy/Cr3d" target="_blank" class="text-blue-400 hover:underline">Descargar Excel</a>' },
+    'csv_rule_15': { keywords: ['directiva de funcionamiento'], response: 'Aquí tienes los documentos para la Directiva de Funcionamiento (DD.FF.):<br><b>- Solicitud Simple:</b> <a href="https://dal5.short.gy/Solic" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a><br><b>- Formato Word DD.FF.:</b> <a href="https://dal5.short.gy/D" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a><br><b>- Requisitos:</b> <a href="https://dal5.short.gy/Re24" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a>' },
+    'csv_rule_16': { keywords: ['unir pdf'], response: 'Puedes usar esta herramienta online para unir archivos PDF: <a href="https://dal5.short.gy/I" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/I</a>' },
+    'csv_rule_17': { keywords: ['cambiar dpi'], response: 'Puedes usar estas herramientas para ajustar los DPI de tus fotos:<br><b>- Opción 1:</b> <a href="https://dal5.short.gy/0" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Convert. 300 DPI</a><br><b>- Opción 2:</b> <a href="https://dal5.short.gy/j" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Convert. 300 DPI</a>' },
+    'csv_rule_18': { keywords: ['excel'], response: 'Puedes descargar el formato de Excel para la nómina de guardias aquí: <a href="https://dal5.short.gy/Cr3d" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar Excel</a>' },
     'pagina_general_tramites': {
         keywords: ['directiva', 'credencial empresa', 'independiente'],
-        response: '🤖 <b>PÁGINA PARA:</b><br>1.- PRESENTAR DIRECTIVA.<br>2.- CREDENCIAL EMPRESA.<br>3.- CRED. INDEPENDIENTE.<br>Página ⬇️<br><a href="https://dal5.short.gy/df" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/df</a>'
+        response: '🤖 <b>PÁGINA PARA:</b><br>1.- PRESENTAR DIRECTIVA.<br>2.- CREDENCIAL EMPRESA.<br>3.- CRED. INDEPENDIENTE.<br>Página ⬇️<br><a href="https://dal5.short.gy/df" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/df</a>'
     }
 };
 
@@ -162,7 +162,13 @@ const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-
 
 // --- State Management ---
 let chatHistory = [];
-const systemPrompt = `Eres un asistente virtual experto en materias de seguridad privada en Chile, enfocado en las directivas y procedimientos de OS10 de Carabineros. Tu conocimiento incluye: Decreto Ley 3.607, Decretos 93, 261, 32, Resolución 1480, y todo sobre Directivas de Funcionamiento (DD.FF.) y credenciales. Tu prioridad es entregar documentos y guías específicas (PDFs) que tengas en tu base de datos cuando se te pregunte por un trámite. Responde de forma clara y precisa, basándote en la normativa chilena. Si no sabes algo, indícalo amablemente. Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con *.`;
+const systemPrompt = `Eres un asistente virtual experto en materias de seguridad privada en Chile, enfocado en las directivas y procedimientos de OS10 de Carabineros.
+Tus reglas principales son:
+1.  **Prioridad a los documentos:** Tu máxima prioridad es buscar y entregar primero cualquier documento, guía o PDF que tengas en tu base de datos cuando se te pregunte por un trámite (ej. "cómo tramitar credencial"). Una vez entregado el documento, puedes responder preguntas adicionales.
+2.  **Respuestas cortas y reales:** Sé conciso y factual. No inventes respuestas. Si no sabes algo, indícalo amablemente.
+3.  **Formato claro:** Usa Markdown para dar formato. Para listas, asegúrate de que cada ítem esté en una nueva línea (ej. "1. Guardia\\n2. Vigilante").
+
+Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.`;
 
 // --- UI Functions ---
 
@@ -184,14 +190,11 @@ function markdownToHtml(text) {
     // Convert bold: **text** -> <b>text</b>
     let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
 
-    // Convert list items: * item -> <br>🔹 item
-    // This regex handles list items at the beginning of a line, with or without preceding newline.
-    formattedText = formattedText.replace(/(?:\n|^)\s*\*\s/g, '<br>🔹 ').trim();
-    
-    // Clean up any leading <br> that might have been created
-    if (formattedText.startsWith('<br>')) {
-        formattedText = formattedText.substring(4);
-    }
+    // Convert bullet points: * item -> 🔹 item
+    formattedText = formattedText.replace(/^\s*\*\s/gm, '🔹 ');
+
+    // Ensure newlines in the original text become <br> tags in HTML
+    formattedText = formattedText.replace(/\n/g, '<br>');
 
     return formattedText;
 }
@@ -210,10 +213,10 @@ function addMessage(sender, text) {
     if (sender === 'user') {
         messageElement.classList.add('ml-auto', 'flex-row-reverse');
         messageContent = `
-            <div class="bg-blue-600 rounded-xl rounded-br-none p-3 ml-2">
+            <div class="bg-green-500 rounded-xl rounded-br-none p-3 ml-2">
                 <p class="text-white text-sm"></p>
             </div>
-            <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0">U</div>
+            <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0 text-gray-600 dark:text-gray-300">U</div>
         `;
         messageElement.innerHTML = messageContent;
         // Use textContent for user input to prevent XSS vulnerabilities
@@ -221,11 +224,11 @@ function addMessage(sender, text) {
     } else { // sender is 'bot'
         messageElement.classList.add('mr-auto');
         messageContent = `
-            <div class="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 8a1 1 0 112 0 1 1 0 01-2 0zm5 0a1 1 0 112 0 1 1 0 01-2 0zM7 12a1 1 0 100 2h6a1 1 0 100-2H7z" /></svg>
+            <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 8a1 1 0 112 0 1 1 0 01-2 0zm5 0a1 1 0 112 0 1 1 0 01-2 0zM7 12a1 1 0 100 2h6a1 1 0 100-2H7z" /></svg>
             </div>
-            <div class="bg-gray-700 rounded-xl rounded-bl-none p-3 ml-2">
-                <p class="text-gray-200 text-sm"></p>
+            <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2">
+                <p class="text-gray-700 dark:text-gray-200 text-sm"></p>
             </div>
         `;
         messageElement.innerHTML = messageContent;
@@ -249,10 +252,10 @@ function showTypingIndicator(show) {
             indicator.id = 'typing-indicator';
             indicator.classList.add('message-fade-in', 'flex', 'items-start');
             indicator.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 8a1 1 0 112 0 1 1 0 01-2 0zm5 0a1 1 0 112 0 1 1 0 01-2 0zM7 12a1 1 0 100 2h6a1 1 0 100-2H7z" /></svg>
+                <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 8a1 1 0 112 0 1 1 0 01-2 0zm5 0a1 1 0 112 0 1 1 0 01-2 0zM7 12a1 1 0 100 2h6a1 1 0 100-2H7z" /></svg>
                 </div>
-                <div class="bg-gray-700 rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
+                <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
                     <span></span><span></span><span></span>
                 </div>
             `;
@@ -378,4 +381,3 @@ function init() {
 
 // Run the chatbot initialization
 init();
-
