@@ -125,7 +125,26 @@ const predefinedResponses = {
                   '<b>🔹 Otros Documentos:</b><br>' +
                   '<a href="EMPRESAS DE CAPACITACION 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Empresas de Capacitación 2025</a><br>' +
                   '<a href="FORMATO SOLICITUD SIMPLE CREDENCIAL GGSS INDEPENDIENTE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Formato Solicitud Simple (Independiente)</a>'
-    }
+    },
+    // --- Nuevas reglas del CSV ---
+    'csv_rule_1': { keywords: ['info', 'información', 'ayuda'], response: '🤖 Hola, ¿en qué te puedo ayudar? Para una mejor atención, escribe tu consulta de forma clara y precisa. ' },
+    'csv_rule_2': { keywords: ['adios', 'chao'], response: 'Adiós, que tengas un buen día.' },
+    'csv_rule_3': { keywords: ['👍'], response: '👍' },
+    'csv_rule_4': { keywords: ['grs'], response: 'De nada.' },
+    'csv_rule_5': { keywords: ['buena'], response: 'Qué bueno que te sirvió.' },
+    'csv_rule_6': { keywords: ['se paso'], response: 'De nada, para eso estamos.' },
+    'csv_rule_7': { keywords: ['excelente'], response: 'Me alegro de poder ayudar.' },
+    'csv_rule_8': { keywords: ['se agradece'], response: 'Un placer ayudarte.' },
+    'csv_rule_9': { keywords: ['muchas gracias'], response: 'De nada, que estés bien.' },
+    'csv_rule_10': { keywords: ['ok'], response: '👍' },
+    'csv_rule_11': { keywords: ['consulta'], response: 'Sí, dime.' },
+    'csv_rule_12': { keywords: ['donde'], response: 'La oficina de OS10 Coquimbo está en Cienfuegos 180, La Serena. Lunes a Jueves de 09:00 a 13:00 hrs. Fono 512651024. <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-blue-400 hover:underline">Ver en Google Maps</a>' },
+    'csv_rule_13': { keywords: ['como llego'], response: 'Puedes usar este enlace de Google Maps para llegar: <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-blue-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>' },
+    'csv_rule_14': { keywords: ['requisitos'], response: 'Los requisitos dependen del trámite. ¿Qué necesitas hacer? (Ej: "credencial de guardia", "directiva de funcionamiento", etc.)' },
+    'csv_rule_15': { keywords: ['directiva de funcionamiento'], response: 'Aquí tienes los documentos para la Directiva de Funcionamiento (DD.FF.):<br><b>- Solicitud Simple:</b> <a href="https://dal5.short.gy/Solic" target="_blank" class="text-blue-400 hover:underline">Descargar</a><br><b>- Formato Word DD.FF.:</b> <a href="https://dal5.short.gy/D" target="_blank" class="text-blue-400 hover:underline">Descargar</a><br><b>- Requisitos:</b> <a href="https://dal5.short.gy/Re24" target="_blank" class="text-blue-400 hover:underline">Descargar</a>' },
+    'csv_rule_16': { keywords: ['unir pdf'], response: 'Puedes usar esta herramienta online para unir archivos PDF: <a href="https://dal5.short.gy/I" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/I</a>' },
+    'csv_rule_17': { keywords: ['cambiar dpi'], response: 'Puedes usar estas herramientas para ajustar los DPI de tus fotos:<br><b>- Opción 1:</b> <a href="https://dal5.short.gy/0" target="_blank" class="text-blue-400 hover:underline">Convert. 300 DPI</a><br><b>- Opción 2:</b> <a href="https://dal5.short.gy/j" target="_blank" class="text-blue-400 hover:underline">Convert. 300 DPI</a>' },
+    'csv_rule_18': { keywords: ['excel'], response: 'Puedes descargar el formato de Excel para la nómina de guardias aquí: <a href="https://dal5.short.gy/Cr3d" target="_blank" class="text-blue-400 hover:underline">Descargar Excel</a>' }
 };
 
 
