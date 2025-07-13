@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport optimizado para móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Directivas de Funcionamiento OS10</title>
 
@@ -12,22 +11,13 @@
     <meta name="application-name" content="Directivas OS10">
     <link rel="manifest" href="manifest.json">
 
-    <!-- Favicons Estándar (con rutas corregidas) -->
+    <!-- Favicons -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
-    <link rel="icon" type="image/png" href="assets/images/os.png">
-
-    <!-- Iconos y configuración para Apple iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
     
     <!-- Dependencias y Estilos -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -38,16 +28,13 @@
 
     <div class="card-container rounded-xl shadow-md p-6 space-y-6 relative">
         
-        <!-- Contador de Visitas (Ahora sin clases de color) -->
         <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs">
             <p class="flex items-center">
-                <!-- Icono de ojo -->
                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
             </p>
         </div>
 
-        <!-- Logo OS10 -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10">
         </a>
@@ -127,7 +114,6 @@
            </section>
        </main>
        
-       <!-- Footer -->
        <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 p-4">
             <div class="text-center text-sm text-gray-600 dark:text-white leading-tight transform -translate-x-8 md:-translate-x-6">
                 <span>Haga clic para descargar.</span><br>
@@ -137,6 +123,13 @@
             <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información">
        </footer>
    </div>
+
+    <!-- Botón Flotante para Abrir el Chatbot -->
+    <a href="chatbot.html" id="open-chat-btn" class="fixed bottom-6 right-6 bg-blue-600 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-all transform hover:scale-110 focus:outline-none z-50" title="Abrir Asistente Virtual">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 5.523-4.477 10-10 10-5.523 0-10-4.477-10-10 0-5.523 4.477-10 10-10 5.523 0 10 4.477 10 10z" />
+        </svg>
+    </a>
    
    <script src="assets/js/main.js"></script>
 
@@ -189,3 +182,4 @@
    </script>
 </body>
 </html>
+
