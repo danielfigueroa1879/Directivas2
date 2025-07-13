@@ -13,6 +13,7 @@ const closeIcon = document.getElementById('chat-close-icon');
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
+const chatBackdrop = document.getElementById('chat-backdrop'); // <-- Nuevo
 
 // --- Predefined Responses ---
 // Aquí puedes "entrenar" al bot con respuestas instantáneas.
@@ -179,6 +180,7 @@ function toggleChat() {
     chatPopup.classList.toggle('hidden');
     openIcon.classList.toggle('hidden');
     closeIcon.classList.toggle('hidden');
+    chatBackdrop.classList.toggle('hidden'); // <-- Controla el fondo
 }
 
 /**
