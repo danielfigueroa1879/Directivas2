@@ -27,7 +27,7 @@ const predefinedResponses = {
         response: '¡De nada! Si tienes otra consulta, no dudes en preguntar.'
     },
     'costo_credencial': {
-        keywords: ['valor credencial', 'precio credencial', 'costo credencial', 'cuanto vale la credencial'],
+        keywords: ['costo credencial', 'cuanto vale la credencial'],
         response: 'El costo para la credencial es de $5.890 CLP y se debe pagar mediante un Vale Vista a nombre de "ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS".'
     },
     'contacto': {
@@ -45,6 +45,50 @@ const predefinedResponses = {
     'infracciones': {
         keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
         response: 'Las infracciones más comunes del Decreto 93 son:<br>🔹 <b>Art. 13:</b> Guardia sin curso OS10 vigente.<br>🔹 <b>Art. 15:</b> Sin Directiva de Funcionamiento aprobada.<br>🔹 <b>Art. 18:</b> Guardia sin portar su credencial.<br><br>⚠️ <b>Importante:</b> La infracción se cursa a la empresa de seguridad, no directamente al guardia.'
+    },
+    'decretos_leyes': {
+        keywords: ['decreto', 'ley', 'normativa', 'legal', 'reglamento', 'dfl', '3.607', 'decreto 93', 'decreto 1814', 'decreto 32'],
+        response: '🤖 👉🏼 <b>NORMATIVA VIGENTE</b><br><br>' +
+                  '<b>➢ DECRETO LEY 3.607:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="text-blue-400 hover:underline">Ver Decreto Ley 3.607</a><br><br>' +
+                  '<b>➢ DECRETO 93:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-400 hover:underline">Ver Decreto 93</a><br><br>' +
+                  '<b>➢ DECRETO 1814:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1069299" target="_blank" class="text-blue-400 hover:underline">Ver Decreto 1814</a><br><br>' +
+                  '<b>➢ DECRETO 32 (Modifica D. 261):</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-400 hover:underline">Ver Decreto 32</a>'
+    },
+    'nuevos_valores': {
+        keywords: ['valores', 'valor plan', 'valor curso', 'perfeccionamiento', 'formación'],
+        response: '🤖🧙🏻‍♂️ <b>VALORES 2DO. SEMESTRE 2025</b><br><br>' +
+                  '1.- <b>CREDENCIAL:</b> <a href="https://dal5.short.gy/val" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/val</a><br>' +
+                  '2.- <b>CRED. EMPRESA:</b> <a href="https://dal5.short.gy/C.emp" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/C.emp</a><br>' +
+                  '3.- <b>CURSO FORMACIÓN:</b> <a href="https://dal5.short.gy/Form" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Form</a><br>' +
+                  '4.- <b>CURSO PERFECC:</b> <a href="https://dal5.short.gy/BjzkHI" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/BjzkHI</a><br>' +
+                  '5.- <b>VALOR PLAN:</b> <a href="https://os10.short.gy/Pl4n" target="_blank" class="text-blue-400 hover:underline">os10.short.gy/Pl4n</a>'
+    },
+    'pagina_credencial': {
+        keywords: ['página credencial', 'pagina de credenciales', 'link credencial'],
+        response: '🤖 <b>Página Credencial Empresa / Independiente</b><br><a href="https://dal5.short.gy/C√" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/C√</a>'
+    },
+    'ciberseguridad': {
+        keywords: ['ciberseguridad', 'deepfake', 'antivirus', 'osint', 'csirt', 'iso', 'ley 21459', 'ley 21663', 'ciber'],
+        response: '🤖🧙🏻‍♂️ <b>CIBERSEGURIDAD</b><br>' +
+                  '<b>➢ ¿Qué Hacer?:</b> <a href="https://dal5.short.gy/SIyeI3" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/SIyeI3</a><br>' +
+                  '<b>➢ ¿Cómo notificar?:</b> <a href="https://dal5.short.gy/GFxMgX" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/GFxMgX</a><br>' +
+                  '<b>➢ Empresa de Ciberseguridad:</b> <a href="https://dal5.short.gy/C25" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/C25</a><br>' +
+                  '<b>➢ Verificar deepfake:</b> <a href="https://prepro.autoverifai.com/" target="_blank" class="text-blue-400 hover:underline">prepro.autoverifai.com</a><br><br>' +
+                  '🧙🏻‍♂️ <b>HERRAMIENTAS CIBERSEGURIDAD</b> 👇🏽<br>' +
+                  '<b>➢ Antivirus Online:</b> <a href="https://dal5.short.gy/Anti" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Anti</a><br>' +
+                  '<b>➢ Sociales:</b> <a href="https://dal5.short.gy/Herr" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Herr</a><br>' +
+                  '<b>➢ Osint:</b> <a href="https://dal5.short.gy/Os" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/Os</a><br>' +
+                  '<b>➢ Csirt:</b> <a href="http://csirt.gob.cl" target="_blank" class="text-blue-400 hover:underline">csirt.gob.cl</a><br>' +
+                  '<b>➢ Fono Incid.Ciberseg:</b> 1510<br>' +
+                  '<b>➢ Brigada Ciberseguridad PDI:</b> +56227080658<br>' +
+                  '<b>➢ ISO 27001:</b> <a href="https://dal5.short.gy/Iso" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Iso</a><br>' +
+                  '<b>➢ ISO 27031:</b> <a href="https://dal5.short.gy/1" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/1</a><br>' +
+                  '<b>➢ Ley 21459:</b> <a href="https://dal5.short.gy/Ley" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/Ley</a><br>' +
+                  '<b>➢ Ley 21663 Marco:</b> <a href="https://www.bcn.cl/leychile/navegar?i=1202434" target="_blank" class="text-blue-400 hover:underline">www.bcn.cl/leychile/...</a><br>' +
+                  '<b>➢ VALORES INFRACCIONES:</b> <a href="https://dal5.short.gy/Vc" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/Vc</a><br>' +
+                  '<b>➢ DFL:</b> <a href="https://dal5.short.gy/FL" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/FL</a><br>' +
+                  '<b>➢ Buscar Fono:</b> <a href="https://www.truecaller.com/es-la" target="_blank" class="text-blue-400 hover:underline">www.truecaller.com/es-la</a><br>' +
+                  '<b>➢ Telegram Bot:</b> <a href="https://t.me/TruecallerR0Bot" target="_blank" class="text-blue-400 hover:underline">t.me/TruecallerR0Bot</a>'
     },
     // --- Respuestas específicas para cada tipo de credencial ---
     'credencial_asesor': {
@@ -73,8 +117,8 @@ const predefinedResponses = {
     },
     // --- Respuesta general para documentos ---
     'documentos': {
-        keywords: ['documentos', 'formularios', 'archivos', 'pdf', 'formatos', 'valores'],
-        response: '¡Claro! Aquí tienes una lista de documentos generales. Si buscas una solicitud de credencial, por favor sé más específico (ej: "credencial de asesor").<br><br>' +
+        keywords: ['documentos', 'formularios', 'archivos', 'pdf', 'formatos', 'solicitud'],
+        response: '¡Claro! Si buscas una solicitud de credencial, por favor sé más específico (ej: "credencial de asesor"). Para otros documentos, aquí tienes:<br><br>' +
                   '<b>🔹 Listas de Valores (2do Semestre 2025):</b><br>' +
                   '<a href="CREDENCIALES VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Credenciales</a><br>' +
                   '<a href="CURSO PERFECCIONAMIENTO VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Perfeccionamiento</a><br><br>' +
