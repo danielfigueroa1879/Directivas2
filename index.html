@@ -48,8 +48,16 @@
         #chat-widget-container {
             position: fixed;
             bottom: 2rem;
-            right: 1.5rem; /* Posición fija para todos los dispositivos */
+            right: 1.5rem; /* Posición por defecto para móvil */
             z-index: 1000;
+        }
+        
+        /* --- AJUSTE DE POSICIÓN PARA PC --- */
+        @media (min-width: 1280px) {
+             #chat-widget-container {
+                /* Calcula la posición para alinearlo a la derecha del contenedor principal */
+                right: calc((100vw - 800px) / 2);
+             }
         }
 
         #chat-popup {
@@ -280,4 +288,3 @@
    </script>
 </body>
 </html>
-
