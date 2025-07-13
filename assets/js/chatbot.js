@@ -72,6 +72,17 @@ const predefinedResponses = {
         keywords: ['página credencial', 'pagina de credenciales', 'link credencial'],
         response: '🤖 <b>Página Credencial Empresa / Independiente</b><br><a href="https://dal5.short.gy/C√" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/C√</a>'
     },
+    'medidas_seguridad': {
+        keywords: ['medidas de seguridad', 'medida editable', 'copia de medidas'],
+        response: '🤖🧙🏻‍♂️ <b>MEDIDAS DE SEGURIDAD</b><br>' +
+                  '➢ <b>MED.EDITABLE:</b> <a href="https://dal5.short.gy/M3" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/M3</a><br>' +
+                  '➢ <b>SOLICITUD SIMPLE:</b> <a href="https://dal5.short.gy/H23wIF" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/H23wIF</a><br>' +
+                  '➢ <b>REQUISITOS SERVICENTROS:</b> <a href="https://dal5.short.gy/S3rv" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/S3rv</a>'
+    },
+    'plan_seguridad': {
+        keywords: ['plan de seguridad', 'modelo'],
+        response: '🤖🧙🏻‍♂️<b>MODELO PLAN DE SEGURIDAD EDITABLE</b><br><a href="https://d6.short.gy/Pl4n" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://d6.short.gy/Pl4n</a>'
+    },
     'ciberseguridad': {
         keywords: ['ciberseguridad', 'deepfake', 'antivirus', 'osint', 'csirt', 'iso', 'ley 21459', 'ley 21663', 'ciber'],
         response: '🤖🧙🏻‍♂️ <b>CIBERSEGURIDAD</b><br>' +
@@ -82,7 +93,7 @@ const predefinedResponses = {
                   '🧙🏻‍♂️ <b>HERRAMIENTAS CIBERSEGURIDAD</b> 👇🏽<br>' +
                   '<b>➢ Antivirus Online:</b> <a href="https://dal5.short.gy/Anti" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Anti</a><br>' +
                   '<b>➢ Sociales:</b> <a href="https://dal5.short.gy/Herr" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Herr</a><br>' +
-                  '<b>➢ Osint:</b> <a href="https://dal5.short.gy/Os" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Os</a><br>' +
+                  '<b>➢ Osint:</b> <a href="https://dal5.short.gy/Os" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Os</a><br>' +
                   '<b>➢ Csirt:</b> <a href="http://csirt.gob.cl" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">csirt.gob.cl</a><br>' +
                   '<b>➢ Fono Incid.Ciberseg:</b> 1510<br>' +
                   '<b>➢ Brigada Ciberseguridad PDI:</b> +56227080658<br>' +
@@ -383,3 +394,4 @@ function init() {
 
 // Run the chatbot initialization
 init();
+
