@@ -108,11 +108,11 @@ const predefinedResponses = {
         response: 'Aquí tienes el documento para la <b>Credencial de Encargado de Seguridad (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ENC. DE SEGURIDAD 1ER. SEM 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Encargado</a>'
     },
     'credencial_empleador': {
-        keywords: ['credencial empleador', 'solicitud empleador', 'formulario empleador', 'guardia empresa'],
+        keywords: ['credencial empleador', 'formulario empleador', 'guardia empresa'],
         response: 'Aquí tienes el documento para la <b>Credencial de Guardia (vía Empleador) (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Empleador</a>'
     },
     'credencial_independiente': {
-        keywords: ['credencial independiente', 'solicitud independiente', 'formulario independiente', 'guardia independiente'],
+        keywords: ['guardia independiente', 'solicitud independiente', 'formulario independiente'],
         response: 'Aquí tienes el documento para la <b>Credencial de Guardia Independiente (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Independiente</a>'
     },
     // --- Respuesta general para documentos ---
@@ -144,7 +144,11 @@ const predefinedResponses = {
     'csv_rule_15': { keywords: ['directiva de funcionamiento'], response: 'Aquí tienes los documentos para la Directiva de Funcionamiento (DD.FF.):<br><b>- Solicitud Simple:</b> <a href="https://dal5.short.gy/Solic" target="_blank" class="text-blue-400 hover:underline">Descargar</a><br><b>- Formato Word DD.FF.:</b> <a href="https://dal5.short.gy/D" target="_blank" class="text-blue-400 hover:underline">Descargar</a><br><b>- Requisitos:</b> <a href="https://dal5.short.gy/Re24" target="_blank" class="text-blue-400 hover:underline">Descargar</a>' },
     'csv_rule_16': { keywords: ['unir pdf'], response: 'Puedes usar esta herramienta online para unir archivos PDF: <a href="https://dal5.short.gy/I" target="_blank" class="text-blue-400 hover:underline">https://dal5.short.gy/I</a>' },
     'csv_rule_17': { keywords: ['cambiar dpi'], response: 'Puedes usar estas herramientas para ajustar los DPI de tus fotos:<br><b>- Opción 1:</b> <a href="https://dal5.short.gy/0" target="_blank" class="text-blue-400 hover:underline">Convert. 300 DPI</a><br><b>- Opción 2:</b> <a href="https://dal5.short.gy/j" target="_blank" class="text-blue-400 hover:underline">Convert. 300 DPI</a>' },
-    'csv_rule_18': { keywords: ['excel'], response: 'Puedes descargar el formato de Excel para la nómina de guardias aquí: <a href="https://dal5.short.gy/Cr3d" target="_blank" class="text-blue-400 hover:underline">Descargar Excel</a>' }
+    'csv_rule_18': { keywords: ['excel'], response: 'Puedes descargar el formato de Excel para la nómina de guardias aquí: <a href="https://dal5.short.gy/Cr3d" target="_blank" class="text-blue-400 hover:underline">Descargar Excel</a>' },
+    'pagina_general_tramites': {
+        keywords: ['directiva', 'credencial empresa', 'independiente'],
+        response: '🤖 <b>PÁGINA PARA:</b><br>1.- PRESENTAR DIRECTIVA.<br>2.- CREDENCIAL EMPRESA.<br>3.- CRED. INDEPENDIENTE.<br>Página ⬇️<br><a href="https://dal5.short.gy/df" target="_blank" class="text-blue-400 hover:underline">dal5.short.gy/df</a>'
+    }
 };
 
 
