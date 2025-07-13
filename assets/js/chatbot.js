@@ -45,6 +45,23 @@ const predefinedResponses = {
     'infracciones': {
         keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
         response: 'Las infracciones más comunes del Decreto 93 son:<br>🔹 <b>Art. 13:</b> Guardia sin curso OS10 vigente.<br>🔹 <b>Art. 15:</b> Sin Directiva de Funcionamiento aprobada.<br>🔹 <b>Art. 18:</b> Guardia sin portar su credencial.<br><br>⚠️ <b>Importante:</b> La infracción se cursa a la empresa de seguridad, no directamente al guardia.'
+    },
+    'documentos': {
+        keywords: ['documentos', 'formularios', 'solicitud', 'archivos', 'pdf', 'formatos', 'valores'],
+        response: '¡Claro! Aquí tienes los documentos y formularios para el <b>2do Semestre 2025</b>:<br><br>' +
+                  '<b>🔹 Solicitudes de Credencial:</b><br>' +
+                  '<a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Guardia (Empleador)</a><br>' +
+                  '<a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Guardia (Independiente)</a><br>' +
+                  '<a href="SOLIC. CREDENCIAL ASESOR 1 SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Asesor</a><br>' +
+                  '<a href="SOLIC. CREDENCIAL CAPACITADOR 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Capacitador</a><br>' +
+                  '<a href="SOLIC. CREDENCIAL CCTV 2025 1ER SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Operador CCTV</a><br>' +
+                  '<a href="SOLIC. CREDENCIAL ENC. DE SEGURIDAD 1ER. SEM 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Encargado de Seguridad</a><br><br>' +
+                  '<b>🔹 Listas de Valores:</b><br>' +
+                  '<a href="CREDENCIALES VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Credenciales (2do Semestre)</a><br>' +
+                  '<a href="CURSO PERFECCIONAMIENTO VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Perfeccionamiento (2do Semestre)</a><br><br>' +
+                  '<b>🔹 Otros Documentos:</b><br>' +
+                  '<a href="EMPRESAS DE CAPACITACION 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Empresas de Capacitación 2025</a><br>' +
+                  '<a href="FORMATO SOLICITUD SIMPLE CREDENCIAL GGSS INDEPENDIENTE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Formato Solicitud Simple (Independiente)</a>'
     }
 };
 
