@@ -46,19 +46,38 @@ const predefinedResponses = {
         keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
         response: 'Las infracciones más comunes del Decreto 93 son:<br>🔹 <b>Art. 13:</b> Guardia sin curso OS10 vigente.<br>🔹 <b>Art. 15:</b> Sin Directiva de Funcionamiento aprobada.<br>🔹 <b>Art. 18:</b> Guardia sin portar su credencial.<br><br>⚠️ <b>Importante:</b> La infracción se cursa a la empresa de seguridad, no directamente al guardia.'
     },
+    // --- Respuestas específicas para cada tipo de credencial ---
+    'credencial_asesor': {
+        keywords: ['credencial asesor', 'solicitud asesor', 'formulario asesor'],
+        response: 'Aquí tienes el documento para la <b>Credencial de Asesor (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ASESOR 1 SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Asesor</a>'
+    },
+    'credencial_capacitador': {
+        keywords: ['credencial capacitador', 'solicitud capacitador', 'formulario capacitador'],
+        response: 'Aquí tienes el documento para la <b>Credencial de Capacitador (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CAPACITADOR 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Capacitador</a>'
+    },
+    'credencial_cctv': {
+        keywords: ['credencial cctv', 'solicitud cctv', 'formulario cctv', 'operador cctv'],
+        response: 'Aquí tienes el documento para la <b>Credencial de Operador CCTV (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CCTV 2025 1ER SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud CCTV</a>'
+    },
+    'credencial_encargado': {
+        keywords: ['credencial encargado', 'solicitud encargado', 'formulario encargado', 'encargado de seguridad'],
+        response: 'Aquí tienes el documento para la <b>Credencial de Encargado de Seguridad (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ENC. DE SEGURIDAD 1ER. SEM 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Encargado</a>'
+    },
+    'credencial_empleador': {
+        keywords: ['credencial empleador', 'solicitud empleador', 'formulario empleador', 'guardia empresa'],
+        response: 'Aquí tienes el documento para la <b>Credencial de Guardia (vía Empleador) (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Empleador</a>'
+    },
+    'credencial_independiente': {
+        keywords: ['credencial independiente', 'solicitud independiente', 'formulario independiente', 'guardia independiente'],
+        response: 'Aquí tienes el documento para la <b>Credencial de Guardia Independiente (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline">› Descargar Solicitud Independiente</a>'
+    },
+    // --- Respuesta general para documentos ---
     'documentos': {
-        keywords: ['documentos', 'formularios', 'solicitud', 'archivos', 'pdf', 'formatos', 'valores'],
-        response: '¡Claro! Aquí tienes los documentos y formularios para el <b>2do Semestre 2025</b>:<br><br>' +
-                  '<b>🔹 Solicitudes de Credencial:</b><br>' +
-                  '<a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Guardia (Empleador)</a><br>' +
-                  '<a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Guardia (Independiente)</a><br>' +
-                  '<a href="SOLIC. CREDENCIAL ASESOR 1 SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Asesor</a><br>' +
-                  '<a href="SOLIC. CREDENCIAL CAPACITADOR 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Capacitador</a><br>' +
-                  '<a href="SOLIC. CREDENCIAL CCTV 2025 1ER SEMESTRE 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Operador CCTV</a><br>' +
-                  '<a href="SOLIC. CREDENCIAL ENC. DE SEGURIDAD 1ER. SEM 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Encargado de Seguridad</a><br><br>' +
-                  '<b>🔹 Listas de Valores:</b><br>' +
-                  '<a href="CREDENCIALES VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Credenciales (2do Semestre)</a><br>' +
-                  '<a href="CURSO PERFECCIONAMIENTO VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Perfeccionamiento (2do Semestre)</a><br><br>' +
+        keywords: ['documentos', 'formularios', 'archivos', 'pdf', 'formatos', 'valores'],
+        response: '¡Claro! Aquí tienes una lista de documentos generales. Si buscas una solicitud de credencial, por favor sé más específico (ej: "credencial de asesor").<br><br>' +
+                  '<b>🔹 Listas de Valores (2do Semestre 2025):</b><br>' +
+                  '<a href="CREDENCIALES VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Credenciales</a><br>' +
+                  '<a href="CURSO PERFECCIONAMIENTO VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Valores Perfeccionamiento</a><br><br>' +
                   '<b>🔹 Otros Documentos:</b><br>' +
                   '<a href="EMPRESAS DE CAPACITACION 2025.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Empresas de Capacitación 2025</a><br>' +
                   '<a href="FORMATO SOLICITUD SIMPLE CREDENCIAL GGSS INDEPENDIENTE.pdf" target="_blank" class="text-blue-400 hover:underline ml-4">› Formato Solicitud Simple (Independiente)</a>'
