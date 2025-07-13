@@ -13,7 +13,9 @@ const closeIcon = document.getElementById('chat-close-icon');
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
-const chatBackdrop = document.getElementById('chat-backdrop'); // <-- Nuevo
+const chatBackdrop = document.getElementById('chat-backdrop');
+const chatWidgetContainer = document.getElementById('chat-widget-container');
+
 
 // --- Predefined Responses ---
 // Aquí puedes "entrenar" al bot con respuestas instantáneas.
@@ -382,6 +384,25 @@ function init() {
         }
     });
     
+    // --- NUEVO: Lógica mejorada para el teclado en móvil ---
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile && window.visualViewport) {
+        const originalWidgetBottom = chatWidgetContainer.style.bottom;
+
+        window.visualViewport.addEventListener('resize', () => {
+            // La altura del teclado es la diferencia entre la altura total y la altura visible.
+            const keyboardHeight = window.innerHeight - window.visualViewport.height;
+
+            if (keyboardHeight > 100) { // Un umbral para asegurarse de que es el teclado
+                // Sube el widget completo por encima del teclado
+                chatWidgetContainer.style.bottom = `${keyboardHeight + 10}px`; // 10px de margen
+            } else {
+                // Restaura la posición original cuando el teclado se cierra
+                chatWidgetContainer.style.bottom = originalWidgetBottom;
+            }
+        });
+    }
+
     // Display welcome message
     const welcomeMessage = "¡Hola! Soy tu asistente virtual OS10. ¿En qué puedo ayudarte hoy?";
     addMessage('bot', welcomeMessage);
@@ -394,4 +415,3 @@ function init() {
 
 // Run the chatbot initialization
 init();
-
