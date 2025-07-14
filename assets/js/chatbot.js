@@ -30,8 +30,12 @@ const predefinedResponses = {
         response: '¡De nada! Si tienes otra consulta, no dudes en preguntar.'
     },
     'costo_credencial': {
-        keywords: ['costo credencial', 'cuanto vale la credencial'],
-        response: 'El costo para la credencial es de $5.890 CLP y se debe pagar mediante un Vale Vista a nombre de "ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS".'
+        keywords: ['cuanto cuesta una credencial', 'costo credencial', 'valor credencial'],
+        response: '🤖🧙🏻‍♂️ El valor es de $5.890 CLP y se paga con un VALE VISTA a nombre de:<br><b>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</b><br>R.U.T.: 61.944.800-6<br>Teléfono OS.10.: 512651024'
+    },
+    'plazos_directiva': {
+        keywords: ['plazos para presentar', 'plazo directiva'],
+        response: 'Debes presentarla con 15 días hábiles de anticipación a la fecha de inicio del servicio, según el Decreto 32 del 2024.'
     },
     'contacto': {
         keywords: ['fono', 'teléfono', 'llamar', 'numero', 'contacto'],
