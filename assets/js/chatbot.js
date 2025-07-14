@@ -421,4 +421,3 @@ function init() {
 
 // Run the chatbot initialization
 init();
-
