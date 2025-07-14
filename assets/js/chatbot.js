@@ -8,13 +8,13 @@
 // --- DOM Element Selection ---
 const chatPopup = document.getElementById('chat-popup');
 const chatToggleButton = document.getElementById('chat-toggle-button');
-const openIcon = document.getElementById('chat-open-icon');
-const closeIcon = document.getElementById('chat-close-icon');
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
+// MODIFICADO: Se añade el nuevo botón de cierre interno
+const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
 
 // --- Predefined Responses ---
@@ -203,10 +203,9 @@ Genera respuestas usando Markdown para formato, como **negrita** para énfasis y
  */
 function toggleChat() {
     chatPopup.classList.toggle('hidden');
-    openIcon.classList.toggle('hidden');
-    closeIcon.classList.toggle('hidden');
-    chatBackdrop.classList.toggle('hidden'); // <-- Controls the backdrop
-    chatToggleButton.classList.toggle('chat-open'); // MODIFICADO: Añade/quita la clase para cambiar el estilo del botón
+    chatBackdrop.classList.toggle('hidden');
+    // MODIFICADO: Se oculta el botón principal en lugar de cambiar íconos
+    chatToggleButton.classList.toggle('hidden');
 }
 
 /**
@@ -251,7 +250,7 @@ function addMessage(sender, text) {
         messageElement.classList.add('ml-auto', 'flex-row-reverse');
         messageContent = `
             <div class="bg-green-500 rounded-xl rounded-br-none p-3 ml-2">
-                <p class="text-white text-sm"></p>
+                <p class="text-white text-base"></p>
             </div>
             <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0 text-gray-600 dark:text-gray-300">U</div>
         `;
@@ -422,6 +421,10 @@ function init() {
     
     // Event Listeners
     chatToggleButton.addEventListener('click', toggleChat);
+    // MODIFICADO: Se añade el listener para el nuevo botón de cierre
+    if(internalCloseBtn) {
+        internalCloseBtn.addEventListener('click', toggleChat);
+    }
     sendButton.addEventListener('click', handleSendMessage);
     userInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -432,15 +435,19 @@ function init() {
     // Improved logic for mobile keyboard
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile && window.visualViewport) {
-        const originalWidgetBottom = chatWidgetContainer.style.bottom || '5rem';
+        const originalWidgetBottom = window.getComputedStyle(chatWidgetContainer).bottom;
 
         window.visualViewport.addEventListener('resize', () => {
             const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
             if (keyboardHeight > 100) { 
-                chatWidgetContainer.style.bottom = `${keyboardHeight + 10}px`;
+                // MODIFICADO: Se reduce la distancia al teclado
+                chatWidgetContainer.style.setProperty('--keyboard-height', `${keyboardHeight + 5}px`);
+                chatWidgetContainer.classList.add('keyboard-visible');
+
             } else {
-                chatWidgetContainer.style.bottom = originalWidgetBottom;
+                chatWidgetContainer.classList.remove('keyboard-visible');
+                chatWidgetContainer.style.removeProperty('--keyboard-height');
             }
         });
     }
