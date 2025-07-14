@@ -75,7 +75,7 @@
         /* --- Chat Flotante --- */
         #chat-widget-container {
             position: fixed;
-            bottom: 10rem; 
+            bottom: 5rem; /* MODIFICADO: Posición inicial restaurada */
             right: 1rem; 
             z-index: 1000;
         }
@@ -85,7 +85,7 @@
              #chat-widget-container {
                 /* Calcula la posición para alinearlo a la derecha del contenedor principal */
                 right: calc((100vw - 800px) / 2);
-                bottom: 11rem; 
+                bottom: 6rem; /* MODIFICADO: Posición inicial restaurada para PC */
              }
         }
 
@@ -206,8 +206,7 @@
             /* Ajustes para el chat en móvil */
             #chat-popup {
                 height: 65vh; /* Reduce la altura vertical */
-                width: 97vw; /* MODIFICADO: Ocupa el 97% del ancho */
-                max-width: 97vw; /* MODIFICADO: Permite que se expanda */
+                /* MODIFICADO: Ancho restaurado a su valor por defecto (90vw) */
             }
             
             #chat-popup #user-input,
@@ -356,3 +355,4 @@
    </script>
 </body>
 </html>
+
