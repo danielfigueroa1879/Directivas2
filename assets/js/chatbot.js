@@ -143,8 +143,8 @@ const predefinedResponses = {
     'rule_121': { keywords: ["f30","actividad economica"], response: '🤖 *ACTIVIDAD ECONÓMICA (F30)*\nCódigo 801001 para Servicios de Seguridad Privada' },
     'rule_122': { keywords: ["ct","curso tecnico"], response: '🤖 *CURSO TÉCNICO*\n*DURACIÓN:* 40 HORAS\n*COSTO:* $35.000\n*EXAMEN:* 10 PREGUNTAS' },
     'rule_123': { keywords: ["ci","curso instalador"], response: '🤖 *CURSO INSTALADOR*\n*DURACIÓN:* 40 HORAS\n*COSTO:* $35.000\n*EXAMEN:* 10 PREGUNTAS' },
-    'rule_124': { keywords: ["cc","curso cajeros"], response: '🤖 *CURSO OPERADOR CAJEROS*\n*DURACIÓN:* 20 HORAS\n*COSTO:* $25.000\n*EXAMEN:* 5 PREGUNTAS' },
-    'rule_125': { keywords: ["cv","curso cctv"], response: '🤖 *CURSO OPERADOR CCTV*\n*DURACIÓN:* 20 HORAS\n*COSTO:* $25.000\n*EXAMEN:* 5 PREGUNTAS' },
+    'rule_124': { keywords: ["cc","curso cajeros"], response: '🤖 *CURSO OPERADOR CAJEROS*\n*DURACIÓN:* 20 HORAS\n*COSTO:* $25.000\n*EXAMEN:* 5 PREGuntas' },
+    'rule_125': { keywords: ["cv","curso cctv"], response: '🤖 *CURSO OPERADOR CCTV*\n*DURACIÓN:* 20 HORAS\n*COSTO:* $25.000\n*EXAMEN:* 5 PREGuntas' },
     'rule_126': { keywords: ["cp","curso perfeccionamiento"], response: '🤖 *CURSO PERFECCIONAMIENTO*\n*DURACIÓN:* 20 HORAS\n*COSTO:* $30.000\n*OBLIGATORIO:* Cada 3 años' },
     'rule_127': { keywords: ["certificado medico"], response: '🤖 *CERTIFICADO MÉDICO*\nFísico: Médico Cirujano\nPsíquico: Psiquiatra o Psicólogo\nVigencia: Anual' },
     'rule_128': { keywords: ["antecedentes especiales"], response: '🤖 *CERTIFICADO ANTECEDENTES ESPECIALES*\nServicio Registro Civil\nVigencia: 30 días' },
@@ -303,22 +303,31 @@ function toggleChat() {
     chatPopup.classList.toggle('hidden');
     openIcon.classList.toggle('hidden');
     closeIcon.classList.toggle('hidden');
-    chatBackdrop.classList.toggle('hidden'); // <-- Controla el fondo
+    chatBackdrop.classList.toggle('hidden'); // <-- Controls the backdrop
 }
 
 /**
- * Converts basic Markdown syntax to HTML for rendering in the chat.
- * @param {string} text - The raw text from the API.
+ * Converts basic Markdown syntax (and URLs) to HTML for rendering in the chat.
+ * @param {string} text - The raw text from the API or predefined responses.
  * @returns {string} - The text formatted with HTML tags.
  */
 function markdownToHtml(text) {
-    // Convert bold: **text** -> <b>text</b>
-    let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+    // 1. Convert URLs to clickable links.
+    const urlRegex = /(https?:\/\/[^\s"'<>`]+)/g;
+    let formattedText = text.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
 
-    // Convert bullet points: * item -> 🔹 item
+    // 2. Convert bold (double asterisk): **text** -> <b>text</b>
+    formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+
+    // 3. Convert bold (single asterisk): *text* -> <b>text</b>
+    // This is common in the predefined responses.
+    formattedText = formattedText.replace(/\*(.*?)\*/g, '<b>$1</b>');
+
+    // 4. Convert bullet points: * item -> 🔹 item
+    // This regex only matches '*' at the beginning of a line to avoid conflict with bold.
     formattedText = formattedText.replace(/^\s*\*\s/gm, '🔹 ');
 
-    // Ensure newlines in the original text become <br> tags in HTML
+    // 5. Ensure newlines in the original text become <br> tags in HTML for line breaks.
     formattedText = formattedText.replace(/\n/g, '<br>');
 
     return formattedText;
@@ -328,7 +337,7 @@ function markdownToHtml(text) {
 /**
  * Creates and appends a message to the chat UI.
  * @param {string} sender - The sender of the message ('user' or 'bot').
- * @param {string} text - The content of the message.
+ * @param {string} text - The content of the message (can be raw text for user, HTML for bot).
  */
 function addMessage(sender, text) {
     const messageElement = document.createElement('div');
@@ -445,7 +454,11 @@ async function handleSendMessage() {
     if (predefinedResponse) {
         // Wait a little to simulate "thinking"
         setTimeout(() => {
-            addMessage('bot', predefinedResponse);
+            // Format the predefined response before adding it to the chat
+            const formattedResponse = markdownToHtml(predefinedResponse);
+            addMessage('bot', formattedResponse);
+            
+            // Add original (unformatted) response to history for context
             chatHistory.push({ role: "user", parts: [{ text: userText }] });
             chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
         }, 500);
@@ -513,7 +526,7 @@ function init() {
         }
     });
     
-    // Lógica mejorada para el teclado en móvil
+    // Improved logic for mobile keyboard
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile && window.visualViewport) {
         const originalWidgetBottom = chatWidgetContainer.style.bottom || '5rem';
