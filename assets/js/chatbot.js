@@ -70,7 +70,7 @@ const predefinedResponses = {
                   '<b>➢ DECRETO 32 (Modifica D. 261):</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto 32</a>'
     },
     'nuevos_valores': {
-        keywords: ['valores', 'valor plan', 'valor curso', 'perfeccionamiento', 'formación'],
+        keywords: ['valores', 'valor plan', 'valor de una plan', 'valor curso', 'perfeccionamiento', 'formación', 'valor de un curso de formacion', 'valor de un curso de perfeccionamiento', 'perfeccion para guardia', 'perfeccion para vigilante'],
         response: '🤖🧙🏻‍♂️ <b>VALORES 2DO. SEMESTRE 2025</b><br><br>' +
                   '1.- <b>CREDENCIAL:</b> <a href="https://dal5.short.gy/val" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/val</a><br>' +
                   '2.- <b>CRED. EMPRESA:</b> <a href="https://dal5.short.gy/C.emp" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/C.emp</a><br>' +
