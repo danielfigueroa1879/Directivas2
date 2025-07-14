@@ -174,14 +174,14 @@
         .typing-indicator span:nth-child(3) { animation-delay: .6666s; }
         @keyframes blink { 50% { opacity: 1; } }
 
-        /* MODIFICADO: Se aumenta la transparencia de las burbujas del bot */
+        /* Estilo de la burbuja de respuesta del bot revertido */
         .bot-bubble {
-            background-color: rgba(34, 197, 94, 0.05);
-            border: 1px solid rgba(34, 197, 94, 0.1);
+            background-color: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
         .dark .bot-bubble {
-            background-color: rgba(74, 222, 128, 0.1);
-            border: 1px solid rgba(74, 222, 128, 0.2);
+            background-color: rgba(74, 222, 128, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.3);
         }
 
         /* --- Fondo Oscurecido (Overlay) --- */
@@ -293,7 +293,8 @@
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <div id="chat-widget-container">
         <!-- Ventana del Chat (inicialmente oculta) -->
-        <div id="chat-popup" class="hidden flex flex-col bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-green-500/50 rounded-2xl">
+        <!-- MODIFICADO: Se aumenta la transparencia de la caja del chat y el desenfoque del fondo -->
+        <div id="chat-popup" class="hidden flex flex-col bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-green-500/50 rounded-2xl">
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800 dark:text-white">
                 <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center border-2 border-green-400/80 flex-shrink-0 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-500 dark:text-gray-400">Seguridad Privada Chile</p></div></div>
                 <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
