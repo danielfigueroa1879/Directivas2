@@ -23,7 +23,7 @@ const chatWidgetContainer = document.getElementById('chat-widget-container');
 const predefinedResponses = {
     'saludo': {
         keywords: ['hola', 'buenos dias', 'buenas tardes', 'buenas noches', 'saludos'],
-        response: '¡Hola! Soy el asistente virtual de OS10. ¿En qué puedo ayudarte hoy?'
+        response: '¡Hola! Soy el asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?'
     },
     'gracias': {
         keywords: ['gracias', 'muchas gracias', 'te pasaste', 'agradecido'],
@@ -34,8 +34,12 @@ const predefinedResponses = {
         response: 'El costo para la credencial es de $5.890 CLP y se debe pagar mediante un Vale Vista a nombre de "ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS".'
     },
     'contacto': {
-        keywords: ['contacto', 'teléfono', 'llamar', 'numero'],
-        response: 'El número de teléfono de la oficina OS10 para consultas es 512651024.'
+        keywords: ['fono', 'teléfono', 'llamar', 'numero', 'contacto'],
+        response: 'Claro, nuestros teléfonos en la oficina OS10 Coquimbo son: 512651024, 512651022 y 512651023. Atendemos de Lunes a Jueves de 09:00 a 13:00 hrs.'
+    },
+    'correo': {
+        keywords: ['correo', 'email', 'correo del os10'],
+        response: '🤖🧙🏻‍♂️ Nuestros correos en OS10 Coquimbo son:<br>os10.coquimbo@carabineros.cl<br>os10coquimbo@gmail.com'
     },
     'creador': {
         keywords: ['quien te creo', 'creador', 'desarrollador', 'programador'],
@@ -43,7 +47,7 @@ const predefinedResponses = {
     },
     'horario': {
         keywords: ['horario', 'atencion', 'atienden', 'dirección', 'ubicación', 'donde estan', 'oficina'],
-        response: '🤖 👉🏼 <b>OS10 Coquimbo</b><br>Lunes a Jueves: 09:00 a 13:00 hrs.<br>📍 Cienfuegos 180, La Serena.<br>📞 Fono: 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>'
+        response: '🤖 👉🏼 <b>Nuestra oficina OS10 Coquimbo</b><br>Atiende de Lunes a Jueves de 09:00 a 13:00 hrs.<br>📍 Estamos en Cienfuegos 180, La Serena.<br>📞 Fono: 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>'
     },
     'infracciones': {
         keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
@@ -84,6 +88,10 @@ const predefinedResponses = {
     'plan_seguridad': {
         keywords: ['plan de seguridad', 'modelo'],
         response: '🤖🧙🏻‍♂️<b>MODELO PLAN DE SEGURIDAD EDITABLE</b><br><a href="https://d6.short.gy/Pl4n" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://d6.short.gy/Pl4n</a>'
+    },
+    'zosepcar_santiago': {
+        keywords: ['os10 de carabineros'],
+        response: '🤖🧙🏻‍♂️ Esta es la página de Zosepcar de Santiago <a href="https://www.zosepcar.cl/OS10.php" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/OS10.php</a>. Recuerda que yo pertenezco a la oficina de Coquimbo.'
     },
     'ciberseguridad': {
         keywords: ['ciberseguridad', 'deepfake', 'antivirus', 'osint', 'csirt', 'iso', 'ley 21459', 'ley 21663', 'ciber'],
@@ -156,8 +164,8 @@ const predefinedResponses = {
     'csv_rule_9': { keywords: ['muchas gracias'], response: 'De nada, que estés bien.' },
     'csv_rule_10': { keywords: ['ok'], response: '👍' },
     'csv_rule_11': { keywords: ['consulta'], response: 'Sí, dime.' },
-    'csv_rule_12': { keywords: ['donde'], response: 'La oficina de OS10 Coquimbo está en Cienfuegos 180, La Serena. Lunes a Jueves de 09:00 a 13:00 hrs. Fono 512651024. <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>' },
-    'csv_rule_13': { keywords: ['como llego'], response: 'Puedes usar este enlace de Google Maps para llegar: <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>' },
+    'csv_rule_12': { keywords: ['donde'], response: 'Nuestra oficina de OS10 Coquimbo está en Cienfuegos 180, La Serena. Atendemos de Lunes a Jueves de 09:00 a 13:00 hrs. Fono 512651024. <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>' },
+    'csv_rule_13': { keywords: ['como llego'], response: 'Puedes usar este enlace de Google Maps para llegar a nuestra oficina: <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>' },
     'csv_rule_14': { keywords: ['requisitos'], response: 'Los requisitos dependen del trámite. ¿Qué necesitas hacer? (Ej: "credencial de guardia", "directiva de funcionamiento", etc.)' },
     'csv_rule_15': { keywords: ['directiva de funcionamiento'], response: 'Aquí tienes los documentos para la Directiva de Funcionamiento (DD.FF.):<br><b>- Solicitud Simple:</b> <a href="https://dal5.short.gy/Solic" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a><br><b>- Formato Word DD.FF.:</b> <a href="https://dal5.short.gy/D" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a><br><b>- Requisitos:</b> <a href="https://dal5.short.gy/Re24" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a>' },
     'csv_rule_16': { keywords: ['unir pdf'], response: 'Puedes usar esta herramienta online para unir archivos PDF: <a href="https://dal5.short.gy/I" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/I</a>' },
@@ -176,11 +184,12 @@ const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-
 
 // --- State Management ---
 let chatHistory = [];
-const systemPrompt = `Eres un asistente virtual experto en materias de seguridad privada en Chile, enfocado en las directivas y procedimientos de OS10 de Carabineros.
+const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada OS10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas.
 Tus reglas principales son:
-1.  **Prioridad a los documentos:** Tu máxima prioridad es buscar y entregar primero cualquier documento, guía o PDF que tengas en tu base de datos cuando se te pregunte por un trámite (ej. "cómo tramitar credencial"). Una vez entregado el documento, puedes responder preguntas adicionales.
-2.  **Respuestas cortas y reales:** Sé conciso y factual. No inventes respuestas. Si no sabes algo, indícalo amablemente.
-3.  **Formato claro:** Usa Markdown para dar formato. Para listas, asegúrate de que cada ítem esté en una nueva línea (ej. "1. Guardia\\n2. Vigilante").
+1.  **Asume tu Rol:** Responde siempre como si fueras un miembro del equipo de la oficina OS10 Coquimbo. Usa un tono servicial y profesional.
+2.  **Prioridad a los documentos:** Tu máxima prioridad es buscar y entregar primero cualquier documento, guía o PDF que tengas en tu base de datos cuando se te pregunte por un trámite (ej. "cómo tramitar credencial"). Una vez entregado el documento, puedes responder preguntas adicionales.
+3.  **Respuestas cortas y reales:** Sé conciso y factual. No inventes respuestas. Si no sabes algo, indícalo amablemente.
+4.  **Formato claro:** Usa Markdown para dar formato. Para listas, asegúrate de que cada ítem esté en una nueva línea (ej. "1. Guardia\\n2. Vigilante").
 
 Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.`;
 
@@ -384,27 +393,24 @@ function init() {
         }
     });
     
-    // --- NUEVO: Lógica mejorada para el teclado en móvil ---
+    // Lógica mejorada para el teclado en móvil
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile && window.visualViewport) {
-        const originalWidgetBottom = chatWidgetContainer.style.bottom;
+        const originalWidgetBottom = chatWidgetContainer.style.bottom || '5rem';
 
         window.visualViewport.addEventListener('resize', () => {
-            // La altura del teclado es la diferencia entre la altura total y la altura visible.
             const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
-            if (keyboardHeight > 100) { // Un umbral para asegurarse de que es el teclado
-                // Sube el widget completo por encima del teclado
-                chatWidgetContainer.style.bottom = `${keyboardHeight + 10}px`; // 10px de margen
+            if (keyboardHeight > 100) { 
+                chatWidgetContainer.style.bottom = `${keyboardHeight + 10}px`;
             } else {
-                // Restaura la posición original cuando el teclado se cierra
                 chatWidgetContainer.style.bottom = originalWidgetBottom;
             }
         });
     }
 
     // Display welcome message
-    const welcomeMessage = "¡Hola! Soy tu asistente virtual OS10. ¿En qué puedo ayudarte hoy?";
+    const welcomeMessage = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
     addMessage('bot', welcomeMessage);
     
     // Add welcome message to history for context
@@ -415,3 +421,4 @@ function init() {
 
 // Run the chatbot initialization
 init();
+
