@@ -47,7 +47,7 @@ const predefinedResponses = {
     'rule_29': { keywords: ["41"], response: '*DECRETO 41*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=68127' },
     'rule_30': { keywords: ["1772"], response: '*DECRETO 1772*. \nhttps://www.bcn.cl/leychile/navegar?idNorma=68126' },
     'rule_31': { keywords: ["1773"], response: '*DECRETO 1773*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=30766' },
-    'rule_32': { keywords: ["93"], response: '*DECRETO 93*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=9081' },
+    'rule_32': { keywords: ["93"], response: '*DECRETO 93*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=12251' },
     'rule_33': { keywords: ["3607"], response: '*D. LEY 3607*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=6935' },
     'rule_34': { keywords: ["19303"], response: '*LEY 19303*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=30648' },
     'rule_35': { keywords: ["253"], response: '*Resol. 253*. https://www.zosepcar.cl/content/OS10/Resol_253.pdf' },
@@ -164,7 +164,7 @@ const predefinedResponses = {
     'rule_227': { keywords: ["preventiva"], response: '🤖 *PREVENTIVA*\nhttp://www.medpreventiva.dipreca.cl:8098/autoconsulta/ingresarut.asp' },
     'rule_238': { keywords: ["pensiones","calculo pensión","jubilación","retiro","pensión","retirarme","retirarse"], response: '🧙🏼‍♂️ *Calculo Pensiones*\ndal5.short.gy/Pens' },
     'rule_239': { keywords: ["directiva","directiva de funcionamiento","directivas","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🤖 *PAGINA PARA:*\n*1.- PRESENTAR DIRECTIVA.*\n*2.- CREDENCIAL EMPRESA.*\n*3.- CRED. INDEPENDIENTE.*' },
-    'rule_240': { keywords: ["credencial empresa","credencial empleador","cred empresa","credencial empresas","credenciales empresas","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: '🤖 *Página Credencial Empresa / Independiente*\n*https://dal5.short.gy/C√*' },
+    'rule_240': { keywords: ["credencial empresa","credencial empleador","cred empresa","credencial empresas","credenciales empresas","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: 'TRAMITAR CREDENCIALES 🤖👉🏼 https://directiva.netlify.app/credenciales, aquí salen los pasos a seguir para tramitar una credencial.' },
     'rule_243': { keywords: ["realizaron examen","los que realizaron el examen","enviar el resultado examen","enviar resultado","enviar resultados"], response: '🤖 👮🏼‍♂️\n1.- Los que están con rojo sacaron bajo el 60% y están reprobados' },
     'rule_244': { keywords: ["usuario portal","portal usuario","portal de usuario","usuario"], response: '🧙🏼‍♂️\nhttps://dal5.short.gy/U53' },
     'rule_245': { keywords: ["presentación con ia","presentaciónes"], response: '🤖🧙🏼‍♂️ \n\n1.- https://gamma.app/' },
@@ -438,7 +438,7 @@ function init() {
             const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
             if (keyboardHeight > 100) { 
-                chatWidgetContainer.style.setProperty('--keyboard-height', `${keyboardHeight + 5}px`);
+                chatWidgetContainer.style.setProperty('--keyboard-height', `${keyboardHeight}px`);
                 chatWidgetContainer.classList.add('keyboard-visible');
 
             } else {
@@ -460,4 +460,3 @@ function init() {
 
 // Run the chatbot initialization
 init();
-
