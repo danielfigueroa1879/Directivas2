@@ -90,7 +90,6 @@
         }
 
         #chat-popup {
-            /* MODIFICADO: Se cambia la fuente a Poppins */
             font-family: 'Poppins', sans-serif;
             position: absolute;
             bottom: 6rem; /* Espacio sobre el botón */
@@ -207,11 +206,17 @@
             /* Ajustes para el chat en móvil */
             #chat-popup {
                 height: 65vh; /* Reduce la altura vertical */
+                width: 99vw; /* MODIFICADO: Ocupa casi todo el ancho */
+                max-width: 99vw; /* MODIFICADO: Permite que se expanda */
             }
-            /* MODIFICADO: Se agranda la fuente en el chat para móviles */
-            #chat-popup .text-sm,
-            #chat-popup #user-input {
+            
+            /* MODIFICADO: Se ajustan los tamaños de fuente de forma independiente */
+            #chat-popup #user-input,
+            #chat-popup .ml-auto .text-sm { /* Mensajes del usuario */
                 font-size: 1.05rem; 
+            }
+            #chat-popup .bot-bubble .text-sm { /* Mensajes del bot */
+                font-size: 0.95rem;
             }
 
             /* --- NUEVO: Estilo para cuando el teclado está visible --- */
