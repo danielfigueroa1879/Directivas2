@@ -2,20 +2,43 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Meta Tags Principales y de PWA -->
     <title>Directivas de Funcionamiento OS10</title>
-
-    <!-- Metadatos PWA y SEO -->
     <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json">
 
-    <!-- Favicons -->
+    <!-- Configuración para iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
+
+    <!-- Favicons y Iconos Estándar (Rutas Corregidas) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
+    <link rel="icon" type="image/png" href="assets/images/os.png">
+
+    <!-- Iconos para iOS (Rutas Corregidas) -->
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
     
+    <!-- Splash screens para iOS (Rutas Corregidas) -->
+    <!-- Nota: Asegúrate de que estos archivos existan en tu carpeta assets/images/ -->
+    <link rel="apple-touch-startup-image" href="assets/images/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-1536x2048.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2)">
+
     <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
@@ -99,13 +122,13 @@
             background-color: white;
             --tw-shadow: 0 0 15px -2px var(--glow-color-light);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-            /* MODIFICADO: Se cambia la animación */
-            animation: pulse-animation 2.5s infinite ease-in-out;
+            animation: float-animation 2.5s infinite ease-in-out;
+            transform: translateZ(0); /* Solución para el bug de scroll */
             transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
         }
         #chat-toggle-button:hover {
              --tw-shadow: 0 0 25px 2px var(--glow-color-light);
-             transform: scale(1.05);
+             transform: scale(1.05) translateZ(0); /* Mantener la optimización en hover */
         }
         .dark #chat-toggle-button {
              border-color: var(--green-dark);
@@ -115,30 +138,10 @@
         .dark #chat-toggle-button:hover {
              --tw-shadow: 0 0 25px 2px var(--glow-color-dark);
         }
-
-        /* MODIFICADO: Nueva animación de pulso */
-        @keyframes pulse-animation {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 15px -2px var(--glow-color-light);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 25px 2px var(--glow-color-light);
-            }
-        }
-        .dark #chat-toggle-button {
-            animation-name: pulse-animation-dark;
-        }
-        @keyframes pulse-animation-dark {
-             0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 15px -2px var(--glow-color-dark);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 25px 2px var(--glow-color-dark);
-            }
+        
+        @keyframes float-animation {
+            0%, 100% { transform: translateY(0) translateZ(0); }
+            50% { transform: translateY(-18px) translateZ(0); }
         }
         
         /* --- Estilos Internos del Chat --- */
