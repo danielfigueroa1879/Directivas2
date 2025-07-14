@@ -18,183 +18,229 @@ const chatWidgetContainer = document.getElementById('chat-widget-container');
 
 
 // --- Predefined Responses ---
-// Aquí puedes "entrenar" al bot con respuestas instantáneas.
-// Las 'claves' son arrays de palabras clave que activarán la respuesta.
+// Base de datos de respuestas predefinidas
 const predefinedResponses = {
-    'saludo': {
-        keywords: ['hola', 'buenos dias', 'buenas tardes', 'buenas noches', 'saludos'],
-        response: '¡Hola! Soy el asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?'
+    'figueroa_descanso': {
+        keywords: ['figueroa', 'mi suboficial', 'mi sargento'],
+        response: '🧙🏻 ‍♂️ no estoy de servicio, puede llamar al 512651024 o esperar la atención de lunes a viernes de 08:30 a 13:00 horas. Gracias  👍✌️'
     },
-    'gracias': {
-        keywords: ['gracias', 'muchas gracias', 'te pasaste', 'agradecido'],
-        response: '¡De nada! Si tienes otra consulta, no dudes en preguntar.'
+    'descanso_viernes': {
+        keywords: ['mi suboficial', 'mi sargento'],
+        response: 'Estoy con unos días de descanso vuelvo el viernes, saludos  🙂   👍🏼'
     },
-    'costo_credencial': {
-        keywords: ['cuanto cuesta una credencial', 'costo credencial', 'valor credencial'],
-        response: '🤖🧙🏻‍♂️ El valor es de $5.890 CLP y se paga con un VALE VISTA a nombre de:<br><b>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</b><br>R.U.T.: 61.944.800-6<br>Teléfono OS.10.: 512651024'
+    'fuera_de_servicio': {
+        keywords: ['servicio'],
+        response: 'Hola, esta es una contestadora automática, no estoy de servicio puede llamar al 512651024 o esperar la atención de lunes a viernes de 08:30 a 13:00 horas. Gracias  👍'
     },
-    'plazos_directiva': {
-        keywords: ['plazos para presentar', 'plazo directiva'],
-        response: 'Debes presentarla con 15 días hábiles de anticipación a la fecha de inicio del servicio, según el Decreto 32 del 2024.'
+    'saludo_automatico': {
+        keywords: ['hola'],
+        response: 'Hola esta es una contestadora automática, deja tu mensaje y te escribiré cuando pueda, gracias, sigamos cuidándonos  🙏👍💪'
     },
-    'duracion_plan_seguridad': {
-        keywords: ['cuanto dura un plan de seguridad'],
-        response: '2 años, dependiendo del decreto.'
+    'horario_atencion_general': {
+        keywords: ['horario', 'atención', 'horarios'],
+        response: 'Hola, puede llamar al 512651024 o esperar la atención de lunes a viernes de 09:00 a 13:00 horas. Gracias  👍'
     },
-    'duracion_directiva': {
-        keywords: ['cuanto dura una directiva de funcionamiento'],
-        response: '3 años, según el Decreto 32/2024.'
+    'guias_componentes': {
+        keywords: ['guías', 'guía', 'componentes del sistema', 'componentes'],
+        response: '*ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE* 👮🏻 ‍♂️ \n  ⬇️ \n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS'
     },
-    'duracion_medidas_seguridad': {
-        keywords: ['cuanto dura una medidas de seguridad'],
-        response: '3 años, según el Decreto 32/2024.'
+    'guia_guardia': {
+        keywords: ['guardia de seguridad', 'guardia', 'guardia seguridad'],
+        response: '🤖   🧙🏻 ‍♂️ Ok... en este link encontrará la guía de *GUARDIA DE SEGURIDAD* la puede descargar: <a href="https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf</a>'
     },
-    'tramite_credencial_general': {
-        keywords: ['tramitar una credencial', 'tamaño de la fotografia', 'excel para presentar una credencial'],
-        response: 'Esta es la página con todos los requisitos para tramitar una credencial: <a href="https://directiva.netlify.app/credenciales" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://directiva.netlify.app/credenciales</a>'
+    'guia_jefe_seguridad': {
+        keywords: ['jefe de seguridad'],
+        response: '🤖  OK..en este link encontrará la guía de *JEFE DE SEGURIDAD* la puede descargar: <a href="https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf</a><br><br> 🤖  *ACTAS JEFE SEGURIDAD EX FF.AA*<br><a href="https://drive.google.com/drive/folders/1aAkt55yTidnT90LI-Ss3gNWCGM8X7luW?usp=sharing" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Actas</a><br><br> 🤖  *ACTAS JEFE DE SEGURIDAD CIVIL*<br><a href="https://drive.google.com/drive/folders/14UBGFXwo7NBA55_o0p2MNQxe1_3H16k4?usp=sharing" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Actas</a><br><br> 🧙🏼 ‍♂️ *CREDENCIAL JEFE DE SEGURIDAD*<br><a href="https://os10.short.gy/Jef" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://os10.short.gy/Jef</a>'
     },
-    'horario_ubicacion': {
-        keywords: ['horario', 'atencion', 'atienden', 'dirección', 'ubicación', 'donde estan', 'oficina', 'llegar al os10', 'esta abierta la oficina', 'como llego', 'hasta que hora atienden', 'llegar al os10 de coquimbo'],
-        response: '🤖 👉🏼 <b>OS10 Coquimbo</b><br>De lunes a jueves de 09:00 horas a 13:00 horas.<br>Cienfuegos 180, La Serena.<br>Fono 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>'
+    'guia_supervisor': {
+        keywords: ['supervisor', 'acreditación supervisor', 'supervisor seguridad', 'para supervisor', 'acreditar un supervisor', 'supervisores', 'acreditar supervisores'],
+        response: '🤖 . *SUPERVISOR* <br>1.- *GUIA*<br><a href="https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf</a><br>2.- *CREDENCIAL*<br><a href="https://os10.short.gy/Sup" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://os10.short.gy/Sup</a>'
     },
-    'contacto': {
-        keywords: ['fono', 'teléfono', 'llamar', 'numero', 'contacto'],
-        response: 'Claro, nuestros teléfonos en la oficina OS10 Coquimbo son: 512651024, 512651022 y 512651023. Atendemos de Lunes a Jueves de 09:00 a 13:00 hrs.'
+    'guia_encargado': {
+        keywords: ['encargado de seguridad', 'encargado'],
+        response: '🤖  *ENCARGADO DE SEGURIDAD*<br>*CREDENCIAL:*<br><a href="https://bit.ly/3H6pIOu" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/3H6pIOu</a><br>*GUIA:*<br><a href="https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf</a>'
     },
-    'correo': {
-        keywords: ['correo', 'email', 'correo del os10'],
-        response: '🤖🧙🏻‍♂️ Nuestros correos en OS10 Coquimbo son:<br>os10.coquimbo@carabineros.cl<br>os10coquimbo@gmail.com'
+    'guia_capacitador': {
+        keywords: ['capacitador'],
+        response: '🤖  *CAPACITADOR*<br><a href="https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf</a><br><br>*CAPACITADOR CIVIL*<br> ➢  Solic. Simple: <a href="https://dal5.short.gy/Solic.Sim" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Solic.Sim</a><br> ➢  Solic simp Punto 6: <a href="https://dal5.short.gy/CapCivil" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/CapCivil</a><br><br>*CAPACITADOR EX FF.AA.*<br> ➢  Solic. Simple: <a href="https://dal5.short.gy/Solic.Sim" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Solic.Sim</a><br> ➢  Acta simple punto 8 puerta ancha: <a href="https://dal5.short.gy/Pension" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Pension</a><br> ➢  Acta simple Punto 6 y 7: <a href="https://dal5.short.gy/WVArop" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/WVArop</a>'
     },
-    'creador': {
-        keywords: ['quien te creo', 'creador', 'desarrollador', 'programador'],
-        response: 'Fui desarrollado por Daniel Figueroa Ch., Ingeniero en Informática. Puedes encontrar su información en el pie de página del sitio.'
+    'guia_tecnico': {
+        keywords: ['tecnico'],
+        response: '*TÉCNICO* <a href="https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf</a>'
     },
-    'infracciones': {
-        keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
-        response: 'Las infracciones más comunes del Decreto 93 son:<br>🔹 <b>Art. 13:</b> Guardia sin curso OS10 vigente.<br>🔹 <b>Art. 15:</b> Sin Directiva de Funcionamiento aprobada.<br>🔹 <b>Art. 18:</b> Guardia sin portar su credencial.<br><br>⚠️ <b>Importante:</b> La infracción se cursa a la empresa de seguridad, no directamente al guardia.'
+     'guia_asesor': {
+        keywords: ['asesor'],
+        response: '🤖  *ASESOR*<br>**GUÍA:*<br><a href="https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf</a><br>Títulos afines:<br>*Resol. 4070* 20.10.2021- link: <a href="https://bit.ly/3r5HrBg" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/3r5HrBg</a><br> ➢  *SIN DIPLOMADO EN SEGURIDAD PRIVADA*<br>1.- INGENIERO DE EJECUCIÓN EN GESTIÓN DE SEGURIDAD PRIVADA.<br>2.- INGENIERO EN GESTIÓN DE SEGURIDAD Y VIGILANCIA PRIVADA.<br> ➢  *CON DIPLOMADO EN SEGURIDAD PRIVADA*<br>3.- INGENIERO EN SEGURIDAD Y PREVENCIÓN DE RIESGO.<br>4.- INGENIERO EN PREVENCIÓN DE RIESGOS.<br>5.- PARA LOS EX MIEMBROS DE LAS FUERZAS ARMADAS, CARABINEROS DE CHILE, POLICÍA DE INVESTIGACIONES Y GENDARMERÍA DE CHILE exigirá EL TITULO DE OFICIAL EGRESADO de/las Fuerzas primadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile.<br><br>*Resol. 2660* 20.07.2023-link: <a href="https://bit.ly/44PRW9w" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/44PRW9w</a><br>6.- INGENIERÍA EN ADMINISTRACIÓN MENCIÓN SEGURIDAD PRIVADA<br>**CREDENCIAL:*<br><a href="https://bit.ly/3tGuM9a" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/3tGuM9a</a>'
     },
-    'vigencia_credencial': {
-        keywords: ['vigencia', 'vencimiento', 'cuanto dura', 'validez', 'expira', 'duracion'],
-        response: '✅ Todas las credenciales para los componentes del sistema de seguridad privada tienen una <b>vigencia de 3 años.</b><br><br>Esto incluye: Guardia de Seguridad, Vigilante Privado, Asesor, Capacitador, Encargado de Seguridad, Jefe de Seguridad, Supervisor, Operador CCTV y Operador de Cajero Automático.<br><br><b>Importante:</b> La vigencia de la credencial está directamente ligada a la vigencia del curso OS10 correspondiente.'
+    'guia_instalador_tecnico': {
+        keywords: ['instalador tecnico', 'instalador'],
+        response: '*INSTALADOR TÉCNICO* <a href="https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf</a>'
     },
-    'decretos_leyes': {
-        keywords: ['decreto', 'ley', 'normativa', 'legal', 'reglamento', 'dfl', '3.607', 'decreto 93', 'decreto 1814', 'decreto 32'],
-        response: '🤖 👉🏼 <b>NORMATIVA VIGENTE</b><br><br>' +
-                  '<b>➢ DECRETO LEY 3.607:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto Ley 3.607</a><br><br>' +
-                  '<b>➢ DECRETO 93:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto 93</a><br><br>' +
-                  '<b>➢ DECRETO 1814:</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1069299" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto 1814</a><br><br>' +
-                  '<b>➢ DECRETO 32 (Modifica D. 261):</b><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver Decreto 32</a>'
+    'guia_operador_cajeros': {
+        keywords: ['operador de cajeros'],
+        response: '*OPERADOR DE CAJEROS AUTOMÁTICOS* <a href="https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf</a>'
     },
-    'nuevos_valores': {
-        keywords: ['valores', 'valor plan', 'valor de una plan', 'valor curso', 'perfeccionamiento', 'formación', 'valor de un curso de formacion', 'valor de un curso de perfeccionamiento', 'perfeccion para guardia', 'perfeccion para vigilante'],
-        response: '🤖🧙🏻‍♂️ <b>VALORES 2DO. SEMESTRE 2025</b><br><br>' +
-                  '1.- <b>CREDENCIAL:</b> <a href="https://dal5.short.gy/val" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/val</a><br>' +
-                  '2.- <b>CRED. EMPRESA:</b> <a href="https://dal5.short.gy/C.emp" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/C.emp</a><br>' +
-                  '3.- <b>CURSO FORMACIÓN:</b> <a href="https://dal5.short.gy/Form" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Form</a><br>' +
-                  '4.- <b>CURSO PERFECC:</b> <a href="https://dal5.short.gy/BjzkHI" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/BjzkHI</a><br>' +
-                  '5.- <b>VALOR PLAN:</b> <a href="https://os10.short.gy/Pl4n" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">os10.short.gy/Pl4n</a>'
+    'guia_operador_cctv': {
+        keywords: ['operador cctv', 'cctv'],
+        response: '🤖  *OPERADOR CCTV*<br>*GUÍA:* <a href="https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf</a><br>*CREDENCIAL*<br><a href="https://bit.ly/48jcidU" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/48jcidU</a>'
     },
-    'pagina_credencial': {
-        keywords: ['página credencial', 'pagina de credenciales', 'link credencial'],
-        response: '🤖 <b>Página Credencial Empresa / Independiente</b><br><a href="https://dal5.short.gy/C√" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/C√</a>'
+    'menu_manuales': {
+        keywords: ['manuales'],
+        response: '🤖   ⬇️  *ESCRIBE UNA OPCIÓN* 👮🏻 ‍♂️ 🚦 <br>*1M.-* MANUAL DE FUNCIONAMIENTO<br>*2M.-* MANUAL DE CAPACITACIÓN <br>*3M.-* MANUAL DE ORGANIZACIÓN'
     },
-    'medidas_seguridad': {
-        keywords: ['medidas de seguridad', 'medida editable', 'copia de medidas'],
-        response: '🤖🧙🏻‍♂️ <b>MEDIDAS DE SEGURIDAD</b><br>' +
-                  '➢ <b>MED.EDITABLE:</b> <a href="https://dal5.short.gy/M3" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/M3</a><br>' +
-                  '➢ <b>SOLICITUD SIMPLE:</b> <a href="https://dal5.short.gy/H23wIF" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/H23wIF</a><br>' +
-                  '➢ <b>REQUISITOS SERVICENTROS:</b> <a href="https://dal5.short.gy/S3rv" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/S3rv</a>'
+    'guia_empresas': {
+        keywords: ['empresas', 'empresa'],
+        response: '*EMPRESAS* <a href="https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf</a><br>- Mod. Solicitud Simple: <a href="https://dal5.short.gy/exqKjv" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/exqKjv</a><br>- Dec. Jurada 5, 6 y 8 : <a href="https://dal5.short.gy/gZXROQ" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/gZXROQ</a><br>Tiene que traer la documentación de los puntos del 1 al 19, considerando lo siguiente:<br><br>*Puntos a considerar como empresa de RR.HH:* <br>* Punto 1, La Solicitud debe ser en duplicado. <br>* Punto 9, El currículum debe ser sin fotografía.<br>* Punto 10, Antecedentes académicos debe ser legalizado ante notario (Diplomado en seguridad privada 400 horas), si no tiene diplomado, el contrato de trabajo legalizado del asesor con su acreditación vigente.<br>* El punto 5, puede ser omitido si no perteneció a las fuerzas armadas.<br>* El punto 12, el F30 deben ingresar el código 801001 para que aparezca *Servicios de Seguridad Privada Prestado por Empresas. <br>* El punto 13, Escritura o constitución de sociedad en el Objetivo debe decir *“Desarrollar actividades como empresa de recursos Humanos, en materias inherentes a Seguridad Privada”.*<br>Si empresa se constituyo por la ley N° 20.659 debe incorporar: <br>a) Certificado de Estatuto actualizado con la formación de la empresa; <br>b) Certificado de vigencia de la empresa y <br>c) Certificado de anotaciones vigentes de la empresa<br>* El punto 16, Set fotográfico, debe ser presentado fotografías del interior y exterior de la oficina indicando la numeración del domicilio (foto panorámica de la numeración de la oficina). Todo esto inserto en un oficio con descripción de cada fotografía.'
     },
-    'plan_seguridad': {
-        keywords: ['plan de seguridad', 'modelo'],
-        response: '🤖🧙🏻‍♂️<b>MODELO PLAN DE SEGURIDAD EDITABLE</b><br><a href="https://d6.short.gy/Pl4n" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://d6.short.gy/Pl4n</a>'
+    'manual_funcionamiento': {
+        keywords: ['1m'],
+        response: '*MANUAL DE FUNCIONAMIENTO* <a href="https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf</a>'
     },
-    'zosepcar_santiago': {
-        keywords: ['os10 de carabineros'],
-        response: '🤖🧙🏻‍♂️ Esta es la página de Zosepcar de Santiago <a href="https://www.zosepcar.cl/OS10.php" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/OS10.php</a>. Recuerda que yo pertenezco a la oficina de Coquimbo.'
+    'manual_organizacion': {
+        keywords: ['3m'],
+        response: '*MANUAL DE ORGANIZACIÓN*<br><a href="https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf</a>'
     },
-    'ciberseguridad': {
-        keywords: ['ciberseguridad', 'deepfake', 'antivirus', 'osint', 'csirt', 'iso', 'ley 21459', 'ley 21663', 'ciber'],
-        response: '🤖🧙🏻‍♂️ <b>CIBERSEGURIDAD</b><br>' +
-                  '<b>➢ ¿Qué Hacer?:</b> <a href="https://dal5.short.gy/SIyeI3" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/SIyeI3</a><br>' +
-                  '<b>➢ ¿Cómo notificar?:</b> <a href="https://dal5.short.gy/GFxMgX" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/GFxMgX</a><br>' +
-                  '<b>➢ Empresa de Ciberseguridad:</b> <a href="https://dal5.short.gy/C25" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/C25</a><br>' +
-                  '<b>➢ Verificar deepfake:</b> <a href="https://prepro.autoverifai.com/" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">prepro.autoverifai.com</a><br><br>' +
-                  '🧙🏻‍♂️ <b>HERRAMIENTAS CIBERSEGURIDAD</b> 👇🏽<br>' +
-                  '<b>➢ Antivirus Online:</b> <a href="https://dal5.short.gy/Anti" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Anti</a><br>' +
-                  '<b>➢ Sociales:</b> <a href="https://dal5.short.gy/Herr" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Herr</a><br>' +
-                  '<b>➢ Osint:</b> <a href="https://dal5.short.gy/Os" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Os</a><br>' +
-                  '<b>➢ Csirt:</b> <a href="http://csirt.gob.cl" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">csirt.gob.cl</a><br>' +
-                  '<b>➢ Fono Incid.Ciberseg:</b> 1510<br>' +
-                  '<b>➢ Brigada Ciberseguridad PDI:</b> +56227080658<br>' +
-                  '<b>➢ ISO 27001:</b> <a href="https://dal5.short.gy/Iso" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Iso</a><br>' +
-                  '<b>➢ ISO 27031:</b> <a href="https://dal5.short.gy/1" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/1</a><br>' +
-                  '<b>➢ Ley 21459:</b> <a href="https://dal5.short.gy/Ley" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/Ley</a><br>' +
-                  '<b>➢ Ley 21663 Marco:</b> <a href="https://www.bcn.cl/leychile/navegar?i=1202434" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">www.bcn.cl/leychile/...</a><br>' +
-                  '<b>➢ VALORES INFRACCIONES:</b> <a href="https://dal5.short.gy/Vc" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Vc</a><br>' +
-                  '<b>➢ DFL:</b> <a href="https://dal5.short.gy/FL" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/FL</a><br>' +
-                  '<b>➢ Buscar Fono:</b> <a href="https://www.truecaller.com/es-la" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">www.truecaller.com/es-la</a><br>' +
-                  '<b>➢ Telegram Bot:</b> <a href="https://t.me/TruecallerR0Bot" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">t.me/TruecallerR0Bot</a>'
+    'manual_capacitacion': {
+        keywords: ['2m'],
+        response: '*MANUAL DE CAPACITACIÓN*<br><a href="https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf</a>'
     },
-    // --- Respuestas específicas para cada tipo de credencial ---
-    'credencial_asesor': {
-        keywords: ['credencial asesor', 'solicitud asesor', 'formulario asesor'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Asesor (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ASESOR 1 SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Asesor</a>'
+    'menu_leyes': {
+        keywords: ['leyes'],
+        response: '*ESCRIBE UN NUMERO LEY O DECRETO*.<br>  🚦 .  ⬇️  <br> <br>DECTO. *261* DEL 31.0 un7.2020<br>DECTO. *298* DEL 17.09.2019<br>DECTO. *123* DEL 05.04.2019<br>DECTO. *1045* DEL 12.09.2018<br>DECTO. *867* DEL 12.09.2017 <br>DECTO. *1814* DEL 10.11.2014<br>DECTO. *222* DEL 30.10.2014<br>DECTO. *1122* DEL 19.10.1994<br>DECTO. *41* DEL 05.03.1996<br>DECTO. *1772* DEL 26.01.1995<br>DECTO. *1773* DEL 14.11.1994<br>DECTO. *93* DEL 21.10.1985<br>D. LEY. *3607* DEL 08.01.1981<br>LEY *19303* DEL 13.04.1994<br>Resol. *253* DEL 29.10.2013<br>Resol. *59*. DEL 30.09.2014<br>Resol. *32*. DEL 31.01.2024<br>Resol. *80* DEL 20.03.2024<br>LEY. *21659* DEL 21.03.2024'
     },
-    'credencial_capacitador': {
-        keywords: ['credencial capacitador', 'solicitud capacitador', 'formulario capacitador'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Capacitador (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CAPACITADOR 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Capacitador</a>'
+    'decreto_261': {
+        keywords: ['261'],
+        response: '*DECRETO NRO 261*. <br><br><a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/Decreto-261.pdf</a>'
     },
-    'credencial_cctv': {
-        keywords: ['credencial cctv', 'solicitud cctv', 'formulario cctv', 'operador cctv'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Operador CCTV (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL CCTV 2025 1ER SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud CCTV</a>'
+    'decreto_298': {
+        keywords: ['298'],
+        response: '*DECRETO 298*. <a href="https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17</a>'
     },
-    'credencial_encargado': {
-        keywords: ['credencial encargado', 'solicitud encargado', 'formulario encargado', 'encargado de seguridad'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Encargado de Seguridad (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL ENC. DE SEGURIDAD 1ER. SEM 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Encargado</a>'
+    'decreto_123': {
+        keywords: ['123'],
+        response: '*DECRETO 123*. <a href="https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05</a>'
     },
-    'credencial_empleador': {
-        keywords: ['credencial empleador', 'formulario empleador', 'guardia empresa'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Guardia (vía Empleador) (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. EMPLEADOR  VALORES CRED 2025 1ER. SEMESTRE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Empleador</a>'
+    'decreto_1045': {
+        keywords: ['1045'],
+        response: '*DECRETO 1045*. <a href="https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12</a>'
     },
-    'credencial_independiente': {
-        keywords: ['guardia independiente', 'formulario independiente'],
-        response: 'Aquí tienes el documento para la <b>Credencial de Guardia Independiente (2do Semestre 2025)</b>:<br><a href="SOLIC. CREDENCIAL GG.SS. INDEPENDIENTE 1ER. SEMESTRE 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">› Descargar Solicitud Independiente</a>'
+    'decreto_867': {
+        keywords: ['867'],
+        response: '*DECRETO 867*. <br><br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1116274" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=1116274</a>'
     },
-    // --- Respuesta general para documentos ---
-    'documentos': {
-        keywords: ['documentos', 'formularios', 'archivos', 'pdf', 'formatos', 'solicitud'],
-        response: '¡Claro! Si buscas una solicitud de credencial, por favor sé más específico (ej: "credencial de asesor"). Para otros documentos, aquí tienes:<br><br>' +
-                  '<b>🔹 Listas de Valores (2do Semestre 2025):</b><br>' +
-                  '<a href="CREDENCIALES VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Valores Credenciales</a><br>' +
-                  '<a href="CURSO PERFECCIONAMIENTO VALORES 2025 FORMULA 1ER. SEMESTRE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Valores Perfeccionamiento</a><br><br>' +
-                  '<b>🔹 Otros Documentos:</b><br>' +
-                  '<a href="EMPRESAS DE CAPACITACION 2025.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Empresas de Capacitación 2025</a><br>' +
-                  '<a href="FORMATO SOLICITUD SIMPLE CREDENCIAL GGSS INDEPENDIENTE.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline ml-4">› Formato Solicitud Simple (Independiente)</a>'
+    'decreto_1814': {
+        keywords: ['1814', 'decreto 1814', 'decreto transporte valores'],
+        response: '*DECRETO 1814*<br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1069299" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=1069299</a>'
     },
-    // --- Nuevas reglas del CSV ---
-    'csv_rule_1': { keywords: ['info', 'información', 'ayuda'], response: '🤖 Hola, ¿en qué te puedo ayudar? Para una mejor atención, escribe tu consulta de forma clara y precisa. ' },
-    'csv_rule_2': { keywords: ['adios', 'chao'], response: 'Adiós, que tengas un buen día.' },
-    'csv_rule_3': { keywords: ['👍'], response: '👍' },
-    'csv_rule_4': { keywords: ['grs'], response: 'De nada.' },
-    'csv_rule_5': { keywords: ['buena'], response: 'Qué bueno que te sirvió.' },
-    'csv_rule_6': { keywords: ['se paso'], response: 'De nada, para eso estamos.' },
-    'csv_rule_7': { keywords: ['excelente'], response: 'Me alegro de poder ayudar.' },
-    'csv_rule_8': { keywords: ['se agradece'], response: 'Un placer ayudarte.' },
-    'csv_rule_9': { keywords: ['muchas gracias'], response: 'De nada, que estés bien.' },
-    'csv_rule_10': { keywords: ['ok'], response: '👍' },
-    'csv_rule_11': { keywords: ['consulta'], response: 'Sí, dime.' },
-    'csv_rule_12': { keywords: ['donde'], response: 'Nuestra oficina de OS10 Coquimbo está en Cienfuegos 180, La Serena. Atendemos de Lunes a Jueves de 09:00 a 13:00 hrs. Fono 512651024. <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>' },
-    'csv_rule_13': { keywords: ['como llego'], response: 'Puedes usar este enlace de Google Maps para llegar a nuestra oficina: <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>' },
-    'csv_rule_14': { keywords: ['requisitos'], response: 'Los requisitos dependen del trámite. ¿Qué necesitas hacer? (Ej: "credencial de guardia", "directiva de funcionamiento", etc.)' },
-    'csv_rule_15': { keywords: ['directiva de funcionamiento'], response: 'Aquí tienes los documentos para la Directiva de Funcionamiento (DD.FF.):<br><b>- Solicitud Simple:</b> <a href="https://dal5.short.gy/Solic" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a><br><b>- Formato Word DD.FF.:</b> <a href="https://dal5.short.gy/D" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a><br><b>- Requisitos:</b> <a href="https://dal5.short.gy/Re24" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar</a>' },
-    'csv_rule_16': { keywords: ['unir pdf'], response: 'Puedes usar esta herramienta online para unir archivos PDF: <a href="https://dal5.short.gy/I" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/I</a>' },
-    'csv_rule_17': { keywords: ['cambiar dpi'], response: 'Puedes usar estas herramientas para ajustar los DPI de tus fotos:<br><b>- Opción 1:</b> <a href="https://dal5.short.gy/0" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Convert. 300 DPI</a><br><b>- Opción 2:</b> <a href="https://dal5.short.gy/j" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Convert. 300 DPI</a>' },
-    'csv_rule_18': { keywords: ['excel'], response: 'Puedes descargar el formato de Excel para la nómina de guardias aquí: <a href="https://dal5.short.gy/Cr3d" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Descargar Excel</a>' },
-    'pagina_general_tramites': {
-        keywords: ['directiva', 'credencial empresa', 'independiente'],
-        response: '🤖 <b>PÁGINA PARA:</b><br>1.- PRESENTAR DIRECTIVA.<br>2.- CREDENCIAL EMPRESA.<br>3.- CRED. INDEPENDIENTE.<br>Página ⬇️<br><a href="https://dal5.short.gy/df" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/df</a>'
-    }
+    'decreto_222': {
+        keywords: ['222'],
+        response: '*DECRETO 222*. <a href="https://www.bcn.cl/leychile/navegar?idNorma=1055580" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=1055580</a>'
+    },
+    'decreto_1122': {
+        keywords: ['1122'],
+        response: '*DECRETO 1122*<br><a href="https://www.bcn.cl/leychile/navegar?idNorma=1072929" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=1072929</a>'
+    },
+     'decreto_41': {
+        keywords: ['41'],
+        response: '*DECRETO 41*. <a href="https://www.bcn.cl/leychile/navegar?idNorma=19870" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=19870</a>'
+    },
+    'decreto_1773': {
+        keywords: ['1773'],
+        response: '*DECRETO 1773*<br><a href="https://www.bcn.cl/leychile/navegar?idNorma=18594" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=18594</a>'
+    },
+    'decreto_93': {
+        keywords: ['93', 'decreto 93'],
+        response: '*DECRETO 93.* <br><a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=9081</a>'
+    },
+    'decreto_1772': {
+        keywords: ['1772'],
+        response: '*DECRETO 1772*<br><a href="https://www.bcn.cl/leychile/navegar?idNorma=18592" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=18592</a>'
+    },
+    'ley_19303': {
+        keywords: ['19303'],
+        response: '*LEY 19303* <br><a href="https://www.bcn.cl/leychile/navegar?idNorma=30670" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=30670</a>'
+    },
+    'decreto_ley_3607': {
+        keywords: ['3607'],
+        response: '*DECRETO LEY 3.607*<br><a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.bcn.cl/leychile/navegar?idNorma=7193</a>'
+    },
+    'fiscalizacion_carabineros': {
+        keywords: ['fiscalización de carabineros', 'fiscalizar', 'fiscalizar carabineros'],
+        response: '👮🏼🤖  *FISCALIZACIÓN SEGURIDAD PRIVADA*<br>*1.-* Completar formulario con los datos necesarios para crear el informe que se remite a la gobernación.<br> Link: *<a href="https://dal5.short.gy/Fiscal" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Fiscal</a>*'
+    },
+    'gracias_respuesta': {
+        keywords: ['gracias'],
+        response: 'Gracias a usted....  👍'
+    },
+    'correo_os10': {
+        keywords: ['correo'],
+        response: 'Si los correo del os10 son:<br>os10.coquimbo@carabineros.cl<br>os10coquimbo@gmail.com'
+    },
+    'solicitar_idoneidad': {
+        keywords: ['delegacion', 'presidencial', 'gobernacion', 'idoneidad civica', 'intendencia', 'idoneidad'],
+        response: '🤖👉🏼  *SOLICITAR CERTIFICADO IDONEIDAD* <br>Correos:partesdprcoquimbo@interior.gob.cl<br>Link: <a href="https://dal5.short.gy/Idon" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://dal5.short.gy/Idon</a>'
+    },
+    'acta_todas_juntas': {
+        keywords: ['todas juntas', 'acta todas juntas'],
+        response: 'Acta todas juntas <br><a href="https://docs.google.com/document/d/1fre-A_13p98nrrS77yyYfrrI_Bf9mYca/edit?usp=sharing&ouid=106863493232977056654&rtpof=true&sd=true" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://docs.google.com/document/d/1fre-A_13p98nrrS77yyYfrrI_Bf9mYca/edit?usp=sharing&ouid=106863493232977056654&rtpof=true&sd=true</a>'
+    },
+    'menu_editable': {
+        keywords: ['editable'],
+        response: '🤖🧙🏻 ‍♂️ *ESCRIBA DE UNO EN UNO EL QUE NECESITA*:<br><br> ✅  Estudio<br> ✅  Plan<br> ✅  Medidas <br> ✅  Directiva <br> ✅  Todos@'
+    },
+    'modelo_plan': {
+        keywords: ['plan'],
+        response: '🤖🧙🏻 ‍♂️*MODELO PLAN DE SEGURIDAD EDITABLE* <br><a href="https://d6.short.gy/Pl4n" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://d6.short.gy/Pl4n</a>'
+    },
+    'info_infracciones': {
+        keywords: ['infracciones', 'infracción'],
+        response: 'ORD. GEN 2840 DEL 03.05.2021<br><a href="https://drive.google.com/file/d/1pawmNrL0EXSaH-D_yFVUBPEIgNLzgZ75/view?usp=sharing" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://drive.google.com/file/d/1pawmNrL0EXSaH-D_yFVUBPEIgNLzgZ75/view?usp=sharing</a>'
+    },
+    'buscar_infracciones': {
+        keywords: ['infracción buscar', 'infracciones buscar', 'buscar infracciones'],
+        response: 'Buscar infracciones<br><a href="https://drive.google.com/file/d/1pawmNrL0EXSaH-D_yFVUBPEIgNLzgZ75/view?usp=sharing" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://drive.google.com/file/d/1pawmNrL0EXSaH-D_yFVUBPEIgNLzgZ75/view?usp=sharing</a>'
+    },
+    'empresas_capacitacion': {
+        keywords: ['capacitacion', 'capacitadora', 'hacer curso', 'empresa de capacitación', 'donde hacen los cursos', 'empresa capacitacion'],
+        response: '🧙🏻 ‍♂️ *EMPRESAS DE CAPACITACIÓN 2025*<br><a href="https://d6.short.gy/Cap" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://d6.short.gy/Cap</a><br><br> 🧙🏻 ‍♂️ *GUÍA EMPRESAS*<br><a href="https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf</a>'
+    },
+    'info_asesores': {
+        keywords: ['asesores'],
+        response: '*ASESORES* <br><a href="https://dal5.short.gy/4S3" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/4S3</a>'
+    },
+    'punto_5_pensiones': {
+        keywords: ['punto 5', 'departamento de pensiones', 'certificado pensiones'],
+        response: '🤖👉🏼  *PUNTO 5 DPTO DE PENSIONES*<br>*<a href="https://bit.ly/4bfW9rt" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/4bfW9rt</a>*'
+    },
+    'credencial_asesor_link': {
+        keywords: ['credencial asesor'],
+        response: '🤖  *CREDENCIAL ASESOR*<br><a href="https://bit.ly/3tGuM9a" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/3tGuM9a</a>'
+    },
+    'actas_jefe_ex_ffaa': {
+        keywords: ['actas jefe de seg ex ffaa'],
+        response: '🤖  *ACTAS JEFE SEGURIDAD EX FF.AA*<br><br><a href="https://drive.google.com/drive/folders/1aAkt55yTidnT90LI-Ss3gNWCGM8X7luW?usp=sharing" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://drive.google.com/drive/folders/1aAkt55yTidnT90LI-Ss3gNWCGM8X7luW?usp=sharing</a>'
+    },
+    'actas_jefe_civil': {
+        keywords: ['actas jefe de seg civil'],
+        response: '🤖  *ACTAS JEFE DE SEGURIDAD CIVIL*<br><br><a href="https://drive.google.com/drive/folders/14UBGFXwo7NBA55_o0p2MNQxe1_3H16k4?usp=sharing" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://drive.google.com/drive/folders/14UBGFXwo7NBA55_o0p2MNQxe1_3H16k4?usp=sharing</a>'
+    },
+     'plan_seguridad_ant': {
+        keywords: ['plan de seguridad ant'],
+        response: '🤖🧙🏻 ‍♂️*PLAN DE SEGURIDAD ANT*<br><br><a href="https://bit.ly/44FrO1I" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/44FrO1I</a>'
+    },
+    'estudio_seguridad': {
+        keywords: ['estudio'],
+        response: '🤖🧙🏻 ‍♂️*ESTUDIO DE SEGURIDAD*<br><a href="https://bit.ly/3QbfmlT" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/3QbfmlT</a>'
+    },
+    'todos_documentos': {
+        keywords: ['todos@'],
+        response: '🤖🧙🏻 ‍♂️*OK ESTUDIO, PLAN, MEDIDAS DE SEGURIDAD, DIRECTIVA FUNCIONAMIENTO CON REQUISITOS DE LA DIRECTIVA*<br><br><a href="https://bit.ly/3O9oHrZ" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://bit.ly/3O9oHrZ</a>'
+    },
+    'credencial_empresa_qr': {
+        keywords: ['credencial empresa', 'credencial empleador', 'cred empresa', 'credencial empresas', 'credenciales empresas'],
+        response: '*CRED. QR. EMPRESA*<br>Descarga la guía <br><a href="https://dal5.short.gy/C.emp" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">dal5.short.gy/C.emp</a>'
+    },
+    // ... (El resto de las respuestas se agregarían aquí siguiendo el mismo formato)
 };
 
 
@@ -317,10 +363,20 @@ function showTypingIndicator(show) {
  * @returns {string|null} The predefined response or null if no match.
  */
 function getPredefinedResponse(text) {
-    const lowerCaseText = text.toLowerCase();
+    const lowerCaseText = text.toLowerCase().trim();
     for (const key in predefinedResponses) {
         const item = predefinedResponses[key];
-        if (item.keywords.some(keyword => lowerCaseText.includes(keyword))) {
+        const hasExactMatch = item.keywords.some(keyword => lowerCaseText === keyword.replace(/,\s*$/, ''));
+        const hasInclusionMatch = item.keywords.some(keyword => {
+            const cleanKeyword = keyword.replace(/\*/g, '');
+            return cleanKeyword && lowerCaseText.includes(cleanKeyword);
+        });
+
+        if (item.keywords.some(k => k.includes(',')) && hasExactMatch) {
+             return item.response;
+        }
+        
+        if (item.keywords.some(k => k.includes('*')) && hasInclusionMatch) {
             return item.response;
         }
     }
