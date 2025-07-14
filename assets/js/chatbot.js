@@ -37,6 +37,26 @@ const predefinedResponses = {
         keywords: ['plazos para presentar', 'plazo directiva'],
         response: 'Debes presentarla con 15 días hábiles de anticipación a la fecha de inicio del servicio, según el Decreto 32 del 2024.'
     },
+    'duracion_plan_seguridad': {
+        keywords: ['cuanto dura un plan de seguridad'],
+        response: '2 años, dependiendo del decreto.'
+    },
+    'duracion_directiva': {
+        keywords: ['cuanto dura una directiva de funcionamiento'],
+        response: '3 años, según el Decreto 32/2024.'
+    },
+    'duracion_medidas_seguridad': {
+        keywords: ['cuanto dura una medidas de seguridad'],
+        response: '3 años, según el Decreto 32/2024.'
+    },
+    'tramite_credencial_general': {
+        keywords: ['tramitar una credencial', 'tamaño de la fotografia', 'excel para presentar una credencial'],
+        response: 'Esta es la página con todos los requisitos para tramitar una credencial: <a href="https://directiva.netlify.app/credenciales" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://directiva.netlify.app/credenciales</a>'
+    },
+    'horario_ubicacion': {
+        keywords: ['horario', 'atencion', 'atienden', 'dirección', 'ubicación', 'donde estan', 'oficina', 'llegar al os10', 'esta abierta la oficina', 'como llego', 'hasta que hora atienden', 'llegar al os10 de coquimbo'],
+        response: '🤖 👉🏼 <b>OS10 Coquimbo</b><br>De lunes a jueves de 09:00 horas a 13:00 horas.<br>Cienfuegos 180, La Serena.<br>Fono 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">https://maps.app.goo.gl/QUhujWbTF1FjDA7E6</a>'
+    },
     'contacto': {
         keywords: ['fono', 'teléfono', 'llamar', 'numero', 'contacto'],
         response: 'Claro, nuestros teléfonos en la oficina OS10 Coquimbo son: 512651024, 512651022 y 512651023. Atendemos de Lunes a Jueves de 09:00 a 13:00 hrs.'
@@ -48,10 +68,6 @@ const predefinedResponses = {
     'creador': {
         keywords: ['quien te creo', 'creador', 'desarrollador', 'programador'],
         response: 'Fui desarrollado por Daniel Figueroa Ch., Ingeniero en Informática. Puedes encontrar su información en el pie de página del sitio.'
-    },
-    'horario': {
-        keywords: ['horario', 'atencion', 'atienden', 'dirección', 'ubicación', 'donde estan', 'oficina'],
-        response: '🤖 👉🏼 <b>Nuestra oficina OS10 Coquimbo</b><br>Atiende de Lunes a Jueves de 09:00 a 13:00 hrs.<br>📍 Estamos en Cienfuegos 180, La Serena.<br>📞 Fono: 512651024<br><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" class="text-green-500 dark:text-green-400 hover:underline">Ver en Google Maps</a>'
     },
     'infracciones': {
         keywords: ['infraccion', 'infracciones', 'multa', 'multas', 'sancion', 'sanciones', 'articulo 13', 'articulo 15', 'articulo 18'],
@@ -425,3 +441,4 @@ function init() {
 
 // Run the chatbot initialization
 init();
+
