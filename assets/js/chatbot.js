@@ -206,6 +206,7 @@ function toggleChat() {
     openIcon.classList.toggle('hidden');
     closeIcon.classList.toggle('hidden');
     chatBackdrop.classList.toggle('hidden'); // <-- Controls the backdrop
+    chatToggleButton.classList.toggle('chat-open'); // MODIFICADO: Añade/quita la clase para cambiar el estilo del botón
 }
 
 /**
