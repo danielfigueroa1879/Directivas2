@@ -19,10 +19,9 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 // --- Predefined Responses ---
 // Base de datos de respuestas predefinidas, actualizada con el nuevo documento.
 const predefinedResponses = {
-    'rule_3': { keywords: ["*horario*","*atención*","*horarios*","*como llego*","*como puedo llegar*", "*donde estan*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*" ], response: '🤖 👉🏼 OS10 Coquimbo De lunes a jueves de 09:00 horas a 13:00 horas. Cienfuegos 180, La Serena. Fono 512651024 https://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
     'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '*ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
     'rule_5': { keywords: ["guardia de seguridad","guardia","guardia seguridad"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de *GUARDIA DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
-    'rule_6': { keywords: ["jefe de seguridad"], response: '🤖 OK..en este link encontrará la guía de *JEFE DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf' },
+    'rule_6': { keywords: ["jefe de seguridad"], response: 'OK..en este link encontrará la guía de *JEFE DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf' },
     'rule_7': { keywords: ["supervisor","acreditación supervisor","supervisor seguridad","para supervisor","acreditar un supervisor","supervisores","acreditar supervisores"], response: '🤖. *SUPERVISOR* \n1.- *GUIA*\nhttps://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf\n2.- *CREDENCIAL*\nhttps://os10.short.gy/Sup' },
     'rule_8': { keywords: ["*encargado de seguridad*","*encargado*"], response: '🤖 *ENCARGADO DE SEGURIDAD*\n*CREDENCIAL:*\nhttps://bit.ly/3H6pIOu\n*GUIA:*\nhttps://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf' },
     'rule_9': { keywords: ["capacitador"], response: '🤖 *CAPACITADOR*\nhttps://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf' },
@@ -57,10 +56,10 @@ const predefinedResponses = {
     'rule_38': { keywords: ["80"], response: '*Resol. 80*. https://www.zosepcar.cl/content/OS10/Resol_80.pdf' },
     'rule_39': { keywords: ["21659"], response: '*LEY 21659*. https://www.bcn.cl/leychile/navegar?idNorma=1207089' },
     'rule_60': { keywords: ["cursos","curso"], response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*CF.-* CURSO FORMACIÓN GUARDIA\n*CJ.-* CURSO JEFE DE SEGURIDAD\n*CE.-* CURSO ENCARGADO\n*CS.-* CURSO SUPERVISOR\n*CT.-* CURSO TÉCNICO\n*CI.-* CURSO INSTALADOR\n*CC.-* CURSO OPERADOR CAJEROS\n*CV.-* CURSO OPERADOR CCTV\n*CP.-* CURSO PERFECCIONAMIENTO' },
-    'rule_65': { keywords: ["*correos*","*correo*", "*fono*", "*telefono*","numero fijo","ubicados","dirección os10","atención","horario","horarios","ubicación","direccion oficina","cual es la dirección del os10","horario atención publico"], response: '🤖 👉🏼 *OS10 Coquimbo*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFono 51 2 651024 o Credenciales 51 2 651023\n Correos: os10.coquimbo@carabineros.cl y os10coquimbo@gmail.com\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
+    'rule_65': { keywords: ["*correos*","*correo*", "*fono*", "*telefono*","numero fijo","ubicados","dirección os10","atención","horario","horarios","ubicación","direccion oficina","cual es la dirección del os10","horario atención publico", "*donde estan*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*"], response: '🤖 👉🏼 OS10 Coquimbo\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFono 512651024\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
     'rule_66': { keywords: ["menu","menú","menus"], response: '*menú* Escriba lo que está con negrillas.\nconsultar patente: *ppu*\nConsultar nombre o rut: *rut*\nConsultar guardia *registro*\nmenú OS10: *Os10*\nComisaria cuadrantes: *comisaria*\nCiberseguridad: *ciberseguridad*\nDGAC Seg. Priv. *Dgac*\nModifica 261: *Decreto 32*\nResol.3632: *no hay sistema*\nDirectiva: *directiva*\ninfracción tto: *infraccion*\nInfracción os10: *infraccion os10*\nInfracción alcoholes: *infracción alcoholes*\nEstadio: estadio\nBots: Seguridad privada, Ciberseguridad, tránsito, Ley Karyn' },
     'rule_68': { keywords: ["imc"], response: '*CALCULAR IMC*\nhttps://nutricionistavirtual.cl/calculadora/' },
-    'rule_69': { keywords: ["curso os10","vigencia curso","tiene curso","si tiene curso"], response: '🤖 *GUARDIA / EMPRESA* 👮🏻‍♂️ 👇🏽 VIGENCIA GG.SS./ VV.PP. /EMP. \nhttps://zosepcar.cl/OS10.php#buscador\n\n🏭 *RAZON SOC. / RUT EMP.*👇🏽\nhttps://boletaofactura.com\nhttps://genealog.cl\nhttps://mercantil.com\n \n⚖️ *JUZGADO DE TURNO LA SERENA*\nhttps://bit.ly/3GIrWE1' },
+    'rule_69': { keywords: ["curso os10","vigencia curso","tiene curso","si tiene curso"], response: '🤖 *GUARDIA / EMPRESA* 👮🏻‍♂️ 👇🏽 VIGENCIA GG.SS./ VV.PP. /EMP. \nhttps://zosepcar.cl/OS10.php#buscador\n\n🏭 *RAZON SOC. / RUT EMP.*👇🏽\nboletaofactura.com\ngenealog.cl\nmercantil.com\n \n⚖️ *JUZGADO DE TURNO LA SERENA*\nhttps://bit.ly/3GIrWE1' },
     'rule_70': { keywords: ["4651"], response: '*RESOLUCIÓN 4651 INASISTENCIA*\n\nhttps://zosepcar.cl/content/OS10/resol_4651.pdf' },
     'rule_71': { keywords: ["empresa capacitacion arica"], response: '*EMPRESA DE CAPACITACIÓN ARICA*\n\n*SETCH* FONO: 582251978\n*GSC* FONO: 950144679\n*EDGARDO ABARZUA* FONO: 977777716\n*FUNCAL* FONO: 951490729' },
     'rule_72': { keywords: ["empresa en un dia"], response: '*\"CREA TU EMPRESA EN UN DIA\"* \n https://www.registrodeempresasysociedades.cl/' },
@@ -72,7 +71,7 @@ const predefinedResponses = {
     'rule_78': { keywords: ["*votaciones*","*votar*","*excusarme*","*lugar de votación*"], response: '*LUGAR DE VOTACIÓN - VOCAL DE MESA*☝🏼👍🏽\nhttps://consulta.servel.cl/\n*PUEDE LLAMAR AL* 600 600 0166 desde su teléfono\n🤖 *CONSULTAS Y RECLAMOS SERVEL LINK- EXCUSA*: \nhttps://www.servel.cl/contacto/' },
     'rule_79': { keywords: ["cajero"], response: '*INGRESAR CAJERO*\nhttps://forms.gle/68s4SkMqTooU5EdRA' },
     'rule_80': { keywords: ["comisaria","cuadrante","cuadrantes","comisarías"], response: '🤖👮🏻‍♂️ TEL. CUADRANTES\n- https://www.comisariavirtual.cl\n- https://www.stop.carabineros.cl/\n- BUSCA TU CUADRANTE:\nhttps://www.bit.ly/3Yna7AP\n- CUAD. LA SERENA\nhttps://www.dal5.short.gy/C\n- CUAD. LAS COMPAÑIAS\nhttps://www.dal5.short.gy/C1\n- CUAD. COQUIMBO\nhttps://www.dal5.short.gy/Co\n- MAPA CUAD LA SERENA\nhttps://www.d6.short.gy/LS\n- MAPA CUAD COQUIMBO\nhttps://www.d6.short.gy/CQ\n- CEROFILAS\nhttps://www.dal5.short.gy/CFil' },
-    'rule_81': { keywords: ["placa patente","ppu"], response: '🤖 🚗 *BUSCAR PATENTES* 🏎️ \nhttps://patentechile.com\nhttps://volanteomaleta.com\nhttps://www.autoseguro.gob.cl/\n*RUT*\nhttps://www.rutificador.co/rut/\nhttps://www.elrutificador.com/' },
+    'rule_81': { keywords: ["placa patente","ppu"], response: '🤖 🚗 *BUSCAR PATENTES* 🏎️ \npatentechile.com\nvolanteomaleta.com\nwww.autoseguro.gob.cl/\n*RUT*\nhttps://www.rutificador.co/rut/\nhttps://www.elrutificador.com/' },
     'rule_82': { keywords: ["rut","ver un rut"], response: '🤖 🧙🏻‍♂️ *Consultar R.U.T.* 👇🏽\nhttps://www.elrutificador.com/\nhttps://www.nombrerutyfirma.com\nhttps://www.rutynombre.com/\nhttps://www.rutificador.co/rut/' },
     'rule_83': { keywords: ["aaff"], response: '*AA.FF. A NIVEL NACIONAL* 🤖Busque la comuna que necesita en el mapa. \nhttps://www.zosepcar.cl/OS10.php#autoridad' },
     'rule_84': { keywords: ["actas"], response: '🤖 *DESCARGAR ACTAS* \nhttps://dal5.short.gy/Acta' },
@@ -97,7 +96,7 @@ const predefinedResponses = {
     'rule_107': { keywords: ["bots"], response: '🤖 *LISTADO DE BOTS INTELIGENCIA AVANZADA*\n- Bot Seguridad Privada\n- Bot Ciberseguridad\n- Bot Tránsito\n- Bot Ley Karyn' },
     'rule_108': { keywords: ["dgac"], response: '🤖 *DGAC SEGURIDAD PRIVADA*\nDirección General de Aeronáutica Civil - Requisitos especiales' },
     'rule_109': { keywords: ["decreto 32"], response: '*DECRETO 32/2024*\nModifica decreto 261\nhttps://www.zosepcar.cl/content/OS10/Resol_32.pdf' },
-    'rule_110': { keywords: ["editable","documentos word"], response: '🤖 **DOCUMENTOS EDITABLES EN WORD**\n- [Solicitud Simple](https://dal5.short.gy/Solic)\n- [Directiva Funcionamiento](https://dal5.short.gy/D)\n- [Análisis Vulnerabilidades](https://dal5.short.gy/6ydn)' },
+    'rule_110': { keywords: ["editable","documentos word"], response: '🤖 *DOCUMENTOS EDITABLES EN WORD*\n- Solicitud Simple: dal5.short.gy/Solic\n- Directiva Funcionamiento: dal5.short.gy/D\n- Análisis Vulnerabilidades: dal5.short.gy/6ydn' },
     'rule_111': { keywords: ["nueva ley"], response: '🤖 *NUEVA LEY SEGURIDAD PRIVADA*\nLey 21.659 del 21 de marzo de 2024\nhttps://www.bcn.cl/leychile/navegar?idNorma=1207089' },
     'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor\n- Independiente' },
     'rule_113': { keywords: ["vigilante privado"], response: '🤖 *VIGILANTE PRIVADO*\nSimilar a guardia de seguridad pero con funciones específicas\nhttps://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado.pdf' },
@@ -132,7 +131,7 @@ const predefinedResponses = {
     'rule_181': { keywords: ["estudios"], response: '🤖👉🏼 *TECNICO DE NIVEL SUPERIOR EN TRABAJO SOCIAL*\nhttps://www.dal5.short.gy/SU' },
     'rule_182': { keywords: ["currículum"], response: '🤖👍🏼 *CURRÍCULUM VITAE* \nhttps://dal5.short.gy/CV' },
     'rule_183': { keywords: ["registro pampilla","ingreso pampilla"], response: '🤖👮🏼👉🏼 *REGISTRO DE INGRESO* 🏟️\n\nhttps://dal5.short.gy/Estadio' },
-    'rule_185': { keywords: ["foto ia","ia foto","agrandar foto","ampliar foto","herramientas de inteligencia artificial","inteligencia","cambiar fondo"], response: '🤖☝🏼 *HERREMIENTAS DE INTELIGENCIA ARTIFICIAL*\n\n1.- *Laboratorio de Google IA*\nhttps://labs.google/fx/es' },
+    'rule_185': { keywords: ["foto ia","ia foto","agrandar foto","ampliar foto","herramientas de inteligencia artificial","inteligencia","cambiar fondo"], response: '🤖☝🏼 *HERREMIENTAS DE INTELIGENCIA ARTIFICIAL*\n\n1.- *Laboratorio de Google IA*\nlabs.google/fx/es' },
     'rule_186': { keywords: ["diplomados"], response: '*DANIEL FIGUEROA* \n*INGENIERO EN INFORMÁTICA*\nhttps://drive.google.com/file/d/1k2oiHE9VkBsU8MdFsRo6uFYYnDh-tEs1/view?usp=drivesdk' },
     'rule_187': { keywords: ["registro estadio","estadio"], response: '🤖 *DEJAR REGISTRO ESTADIO*\n1.- *ESTE ES EL EXCEL:*\nhttps://dal5.short.gy/Estad' },
     'rule_188': { keywords: ["trabajo"], response: '*Seguridad IOT*\nTRABAJO 3 INDIVIDUAL \n\nhttps://docs.google.com/document/d/1gDgNpIwkqmGK2GTJ_sTP1O1Dx1ZDnmR9/edit' },
@@ -140,7 +139,7 @@ const predefinedResponses = {
     'rule_193': { keywords: ["tejidos","tejido","tejer","tejidos luna"], response: '🤖 *TEJIDOS LUNA*👇🏽🦴🐕\n\nhttps://dal5.short.gy/Tej3' },
     'rule_194': { keywords: ["14 puntos cajeros"], response: '🤖 *14 PUNTOS CAJEROS*\n\nMi XXXXXXX se informa el siguiente procedimiento' },
     'rule_195': { keywords: ["*¿los días de votación serán feriados?"], response: '*¿Los días de votación serán feriados?*\n\nSí. El sábado 26 de octubre será feriado normal, por lo que el comercio podrá abrir. Mientras que el domingo 27 de octubre será feriado irrenunciable.' },
-    'rule_196': { keywords: ["bots","tienes un bot","hay un bot","tiene algún bot de seguridad privada","algun bot","tiene un bot","dame el bot","bot de seguridad privada","bot"], response: '🤖 *Bots con IA avanzada:*\n\n➢ *Bot Seguridad Privada*\nhttps://dal5.short.gy/SePriv' },
+    'rule_196': { keywords: ["bots","tienes un bot","hay un bot","tiene algún bot de seguridad privada","algun bot","tiene un bot","dame el bot","bot de seguridad privada","bot"], response: '🤖 *Bots con IA avanzada:*\n\n➢ *Bot Seguridad Privada*\ndal5.short.gy/SePriv' },
     'rule_197': { keywords: ["colores"], response: '🤖 *Colores votaciones* \nhttps://drive.google.com/file/d/1qAQoR_DRaXl8Cgzfueyx2ggh2LL_caBh/view?usp=drivesdk' },
     'rule_198': { keywords: ["*para tramitar una credencial de guardia*","*credencial de guardia*"], response: '👮🏽‍♂️👉🏼 Existen dos tipos de credenciales para guardia de seguridad, escribe lo que está con negrillas del que necesitas:\n*1. Independiente:* (solo eventos)\n*2. Credencial Empresa* (instalación empresa)' },
     'rule_199': { keywords: ["*bot*","*bot seguridad privada*"], response: '🤖👮🏽‍♂️👉🏼 *Bots con IA avanzada Chat Gpt 4o:*\n\n🤖 *Bot de Seguridad Privada* https://dal5.short.gy/SePriv' },
@@ -180,10 +179,9 @@ const predefinedResponses = {
     'rule_257': { keywords: ["gestudio","estudiar","gestor académico","gestor"], response: '🤖🧙🏼‍♂️✅\n\nhttps://gestudios.netlify.app/' }
 };
 
-
 // --- API Configuration ---
 const API_KEY = 'AIzaSyAgOFzsnwwLt4TSb1lO3XZ8Ot9QJUX7Y6A';
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
 let chatHistory = [];
@@ -214,24 +212,22 @@ function toggleChat() {
  * @returns {string} - The text formatted with HTML tags.
  */
 function markdownToHtml(text) {
-    // 1. Convert Markdown links: [text](url) -> <a href="url">text</a>
-    let formattedText = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
+    // 1. Convert URLs to clickable links.
+    const urlRegex = /(https?:\/\/[^\s"'<>`]+)/g;
+    let formattedText = text.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
 
-    // 2. Convert standalone URLs to clickable links.
-    // This regex looks for URLs that are not already inside an <a> tag's href attribute.
-    const urlRegex = /(?<!href=")(https?:\/\/[^\s"'<>`]+)/g;
-    formattedText = formattedText.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
-    
-    // 3. Convert bold (double asterisk): **text** -> <b>text</b>
+    // 2. Convert bold (double asterisk): **text** -> <b>text</b>
     formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
 
-    // 4. Convert bold (single asterisk): *text* -> <b>text</b>
+    // 3. Convert bold (single asterisk): *text* -> <b>text</b>
+    // This is common in the predefined responses.
     formattedText = formattedText.replace(/\*(.*?)\*/g, '<b>$1</b>');
 
-    // 5. Convert bullet points: * item -> 🔹 item
+    // 4. Convert bullet points: * item -> 🔹 item
+    // This regex only matches '*' at the beginning of a line to avoid conflict with bold.
     formattedText = formattedText.replace(/^\s*\*\s/gm, '🔹 ');
 
-    // 6. Ensure newlines in the original text become <br> tags in HTML for line breaks.
+    // 5. Ensure newlines in the original text become <br> tags in HTML for line breaks.
     formattedText = formattedText.replace(/\n/g, '<br>');
 
     return formattedText;
@@ -464,3 +460,4 @@ function init() {
 
 // Run the chatbot initialization
 init();
+
