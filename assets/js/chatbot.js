@@ -176,7 +176,7 @@ const predefinedResponses = {
     'rule_254': { keywords: ["*examen os10*","examen"], response: '🧙🏼‍♂️🤖👮🏼‍♂️ *Practicar examen*\nhttps://dal5.short.gy/SeSec' },
     'rule_255': { keywords: ["*examen moto*","examen para moto","moto"], response: '🤖🧙🏼‍♂️ *Examen moto*\nhttps://dal5.short.gy/ExMoto' },
     'rule_256': { keywords: ["honorarios"], response: '*HONORARIOS*\nhttps://rentab.netlify.app/' },
-    'rule_257': { keywords: ["gestudio","estudiar","gestor académico","gestor"], response: '🤖🧙🏼‍♂️✅\n\nhttps://gestudios.netlify.app/' }
+    'rule_257': { keywords: ["gestudio","estudiar","gestor académico","gestor"], response: '🤖🧙🏼‍♂️✅\n\nhttps://gestudios.netlify.app/' },
     'rule_258': { keywords: ["quien es tu creador","quien te creo"], response: '🤖🧙🏼‍♂️✅ Mi creador es todo el equipo de Profesionales que se encuentra trabajando en la oficina de seguridad Privada OS10 Coquimbo.- *Ingeniero en Informática y Ciberseguridad Daniel Figueroa*' }
 };
 
