@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     
-    <!-- Meta Tags Principales y de PWA -->
     <title>Directivas de Funcionamiento OS10</title>
     <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -12,12 +11,10 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json">
 
-    <!-- Configuración para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
 
-    <!-- Favicons y Iconos Estándar (Rutas Corregidas) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -25,27 +22,22 @@
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
     <link rel="icon" type="image/png" href="assets/images/os.png">
 
-    <!-- Iconos para iOS (Rutas Corregidas) -->
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
     
-    <!-- Splash screens para iOS (Rutas Corregidas) -->
-    <!-- Nota: Asegúrate de que estos archivos existan en tu carpeta assets/images/ -->
     <link rel="apple-touch-startup-image" href="assets/images/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-1536x2048.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2)">
 
-    <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Estilos para el Chatbot y Layout Adaptativo -->
     <style>
         /* --- Variables de Color Verde --- */
         :root {
@@ -220,7 +212,6 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-800">
 
-    <!-- Contenido Original de la Página -->
     <div class="card-container rounded-xl shadow-md space-y-6 relative">
         <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
             <p class="flex items-center">
@@ -283,29 +274,26 @@
         </footer>
    </div>
 
-    <!-- ===== INICIO DEL CHATBOT FLOTANTE ===== -->
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <div id="chat-widget-container">
-        <!-- Ventana del Chat (inicialmente oculta) -->
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-green-500/50 rounded-2xl">
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800 dark:text-white">
                 <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center border-2 border-green-400/80 flex-shrink-0 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-500 dark:text-gray-400">Seguridad Privada Chile</p></div></div>
-                <!-- MODIFICADO: Botón de cierre interno -->
                 <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </header>
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
-            <footer class="p-3 border-t border-green-500/30"><div class="flex items-center bg-gray-200 dark:bg-gray-900/80 rounded-xl p-2"><input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base"><button id="send-button" class="bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button></div></footer>
+            <footer class="p-3 border-t border-green-500/30"><div class="flex items-center bg-gray-200 dark:bg-gray-900/80 rounded-xl p-2">
+                <input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-lg">
+                <button id="send-button" class="bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button>
+            </div></footer>
         </div>
-        <!-- Botón para abrir/cerrar el chat -->
         <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual">
             <img id="chat-open-icon" src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
         </button>
     </div>
-    <!-- ===== FIN DEL CHATBOT FLOTANTE ===== -->
-   
-   <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
    <script type="module" src="assets/js/chatbot.js"></script>
    <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
