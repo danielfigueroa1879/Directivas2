@@ -258,7 +258,7 @@ function addMessage(sender, text) {
     } else { // sender is 'bot'
         messageElement.classList.add('mr-auto');
         messageContent = `
-            <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 p-1">
+            <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
                 <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
             </div>
             <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2">
@@ -286,7 +286,7 @@ function showTypingIndicator(show) {
             indicator.id = 'typing-indicator';
             indicator.classList.add('message-fade-in', 'flex', 'items-start');
             indicator.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 p-1">
+                <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
                      <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                 </div>
                 <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
