@@ -13,7 +13,6 @@ const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
-// MODIFICADO: Se añade el nuevo botón de cierre interno
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
 
@@ -204,7 +203,6 @@ Genera respuestas usando Markdown para formato, como **negrita** para énfasis y
 function toggleChat() {
     chatPopup.classList.toggle('hidden');
     chatBackdrop.classList.toggle('hidden');
-    // MODIFICADO: Se oculta el botón principal en lugar de cambiar íconos
     chatToggleButton.classList.toggle('hidden');
 }
 
@@ -260,8 +258,8 @@ function addMessage(sender, text) {
     } else { // sender is 'bot'
         messageElement.classList.add('mr-auto');
         messageContent = `
-            <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 8a1 1 0 112 0 1 1 0 01-2 0zm5 0a1 1 0 112 0 1 1 0 01-2 0zM7 12a1 1 0 100 2h6a1 1 0 100-2H7z" /></svg>
+            <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 p-1">
+                <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
             </div>
             <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2">
                 <p class="text-gray-700 dark:text-gray-200 text-sm"></p>
@@ -288,8 +286,8 @@ function showTypingIndicator(show) {
             indicator.id = 'typing-indicator';
             indicator.classList.add('message-fade-in', 'flex', 'items-start');
             indicator.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 8a1 1 0 112 0 1 1 0 01-2 0zm5 0a1 1 0 112 0 1 1 0 01-2 0zM7 12a1 1 0 100 2h6a1 1 0 100-2H7z" /></svg>
+                <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 p-1">
+                     <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                 </div>
                 <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
                     <span></span><span></span><span></span>
@@ -421,7 +419,6 @@ function init() {
     
     // Event Listeners
     chatToggleButton.addEventListener('click', toggleChat);
-    // MODIFICADO: Se añade el listener para el nuevo botón de cierre
     if(internalCloseBtn) {
         internalCloseBtn.addEventListener('click', toggleChat);
     }
@@ -441,7 +438,6 @@ function init() {
             const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
             if (keyboardHeight > 100) { 
-                // MODIFICADO: Se reduce la distancia al teclado
                 chatWidgetContainer.style.setProperty('--keyboard-height', `${keyboardHeight + 5}px`);
                 chatWidgetContainer.classList.add('keyboard-visible');
 
