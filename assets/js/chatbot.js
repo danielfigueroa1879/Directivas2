@@ -118,7 +118,6 @@ const predefinedResponses = {
     'rule_168': { keywords: ["criptografia"], response: 'Estás invitado a una reunión de Teams.\n\nClases de Criptografía\n\nhttps://teams.microsoft.com/l/meetup-join' },
     'rule_169': { keywords: ["diplomado"], response: '🤖👉🏼 *DIPLOMADO*\n\nhttps://dal5.short.gy/Diplo' },
     'rule_170': { keywords: ["*ley de control de armas*","*armas*"], response: '🤖👉🏼LEY DE CONTROL DE ARMAS\n\nhttps://www.bcn.cl/leychile/navegar?i=29291&f=1972-10-21' },
-    'rule_171': { keywords: ["*ley de seguridad privada*","*reglamento ley de seguridad privada*","*reglamento*","*reglamentos ley*","*nueva ley*","*21659*"], response: '🤖 *NUEVA LEY DE SEGURIDAD PRIVADA*\n➢ Reglamento de La Ley\n➢ Reglamento de Evento Masivos' },
     'rule_172': { keywords: ["209"], response: '🤖 *REGLAMENTO LEY DE SEGURIDAD PRIVADA* https://dal5.short.gy/Regl' },
     'rule_173': { keywords: ["auditorias","instructivo auditorias","auditoría"], response: '👮🏼☝🏼 *INSTRUCTIVO AUDITORIAS D/E 142623956*\n1.- Empresas de RR.HH.\n2.- Empresas de TT.VV.\n3.- Empresas de Capacitación' },
     'rule_174': { keywords: ["binance","recibir criptomonedas"], response: '🤖🪙💰🪙👉🏼 💸*RECIBIR CRIPTO EN BINANCE*\n*Recibir:*\n 0x78b349586f9de0ad692549b20e0efba58df1ff79' },
@@ -189,7 +188,7 @@ Tus reglas principales son:
 4.  **Formato claro:** Usa Markdown para dar formato. Para listas, asegúrate de que cada ítem esté en una nueva línea (ej. "1. Guardia\\n2. Vigilante").
 5.- **OS10 COQUIMBO, OFICINA DE SEGURIDAD PRIVADA OS10 COQUIMBO, OFICINA, OS10:** Es una oficina que se ecuentra en en el centro de La Serena, su direccion es Calle Cienfuegos N°180, La Serena, su fono o telefono es el siguiente: 51 2 651024 o el 51 2 651023, su correo es *os10.couimbo@carabineros.cl* - *os10coquimbo@gmail.com*
 6.  **infracciones del os10:** las principales infracciones de guardia de seguridad son las siguiente: sin curso os10 art. 13 del decreto 93, sin directiva de funcionamiento art. 15 del decreto 93, sin credencial de guardia (gg.ss) art 18 del decreto 93, guardia de seguridad no puede usar armamento art. 14 decreto 93, sin uniforme reglamentario art. 8vo del decrero 867 y decreto 23/2024. 
-
+7.- **Nueva Ley de seguridad privada:** La Nueva ley de seguridad privada entra en vigencia el 28-NOV-2025 pero por el momento no han llegado instrucciones del funcionamiento de la nueva ley de seguridad privada, se informara en forma oportuna si llega alguna información. 
 Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.`;
 
 // --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
