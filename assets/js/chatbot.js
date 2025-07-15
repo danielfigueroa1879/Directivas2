@@ -17,7 +17,6 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
 
 // --- Predefined Responses ---
-// Base de datos de respuestas predefinidas, actualizada con el nuevo documento.
 const predefinedResponses = {
     'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '*ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
     'rule_5': { keywords: ["guardia de seguridad","guardia","guardia seguridad"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de *GUARDIA DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
@@ -197,6 +196,41 @@ Tus reglas principales son:
 
 Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.`;
 
+// --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
+let responseMap = new Map();
+let partialMatchRules = [];
+
+/**
+ * Processes the predefinedResponses object into faster lookup structures.
+ * This function runs only once on initialization.
+ */
+function buildResponseMap() {
+    const newResponseMap = new Map();
+    const newPartialMatchRules = [];
+
+    for (const key in predefinedResponses) {
+        const item = predefinedResponses[key];
+        for (const keyword of item.keywords) {
+            const normalizedKeyword = keyword.toLowerCase().trim();
+            
+            if (normalizedKeyword.startsWith('*') && normalizedKeyword.endsWith('*')) {
+                // This is a partial match rule (e.g., *word*)
+                const cleanKeyword = normalizedKeyword.substring(1, normalizedKeyword.length - 1);
+                if(cleanKeyword) {
+                    newPartialMatchRules.push({ keyword: cleanKeyword, response: item.response });
+                }
+            } else {
+                // This is an exact match rule
+                newResponseMap.set(normalizedKeyword, item.response);
+            }
+        }
+    }
+    responseMap = newResponseMap;
+    partialMatchRules = newPartialMatchRules;
+    console.log("Response map built successfully.", {exactMatches: responseMap.size, partialMatches: partialMatchRules.length});
+}
+
+
 // --- UI Functions ---
 
 /**
@@ -207,7 +241,7 @@ function toggleChat() {
     chatBackdrop.classList.toggle('hidden');
     chatToggleButton.classList.toggle('hidden');
 
-    // MODIFICADO: Asegurarse de quitar el modo de pantalla completa al cerrar.
+    // Ensure fullscreen mode is exited when chat is closed
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
         chatWidgetContainer.classList.remove('keyboard-up');
@@ -220,87 +254,80 @@ function toggleChat() {
  * @returns {string} - The text formatted with HTML tags.
  */
 function markdownToHtml(text) {
+    if (!text) return '';
     // 1. Convert URLs to clickable links.
-    const urlRegex = /(https?:\/\/[^\s"'<>`]+)/g;
-    let formattedText = text.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
-
-    // 2. Convert bold (double asterisk): **text** -> <b>text</b>
-    formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-
-    // 3. Convert bold (single asterisk): *text* -> <b>text</b>
-    // This is common in the predefined responses.
-    formattedText = formattedText.replace(/\*(.*?)\*/g, '<b>$1</b>');
-
-    // 4. Convert bullet points: * item -> 🔹 item
-    // This regex only matches '*' at the beginning of a line to avoid conflict with bold.
-    formattedText = formattedText.replace(/^\s*\*\s/gm, '🔹 ');
-
-    // 5. Ensure newlines in the original text become <br> tags in HTML for line breaks.
-    formattedText = formattedText.replace(/\n/g, '<br>');
-
-    return formattedText;
+    let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
+    // 2. Convert bold (asterisks): *text* or **text** -> <b>text</b>
+    formattedText = formattedText.replace(/\*(\*?)(.*?)\1\*/g, '<b>$2</b>');
+    // 3. Convert bullet points: * item -> 🔹 item
+    formattedText = formattedText.replace(/^\s*-\s/gm, '🔹 ');
+    // 4. Convert newlines to <br>
+    return formattedText.replace(/\n/g, '<br>');
 }
 
 
 /**
  * Creates and appends a message to the chat UI.
  * @param {string} sender - The sender of the message ('user' or 'bot').
- * @param {string} text - The content of the message (can be raw text for user, HTML for bot).
+ * @param {string} text - The content of the message (raw text for user, HTML for bot).
  * @param {string[]} [buttons=[]] - An optional array of strings to create as buttons.
  */
 function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
-    messageElement.classList.add('message-fade-in', 'flex', 'items-start', 'max-w-xs', 'md:max-w-sm');
-    
-    let messageContent;
-    if (sender === 'user') {
-        messageElement.classList.add('ml-auto', 'flex-row-reverse');
-        messageContent = `
-            <div class="bg-green-500 rounded-xl rounded-br-none p-3 ml-2">
-                <p class="text-white text-base"></p>
-            </div>
-            <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0 text-gray-600 dark:text-gray-300">U</div>
-        `;
-        messageElement.innerHTML = messageContent;
-        // Use textContent for user input to prevent XSS vulnerabilities
-        messageElement.querySelector('p').textContent = text;
-    } else { // sender is 'bot'
-        messageElement.classList.add('mr-auto');
-        messageContent = `
-            <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
-                <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
-            </div>
-            <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2">
-                <p class="text-gray-700 dark:text-gray-200 text-sm"></p>
-                <div class="mt-2 flex flex-col space-y-2 button-container"></div>
-            </div>
-        `;
-        messageElement.innerHTML = messageContent;
-        // Use innerHTML for bot responses because we want to render the formatted HTML
-        messageElement.querySelector('p').innerHTML = text;
+    messageElement.className = 'message-fade-in flex items-start max-w-xs md:max-w-sm';
 
-        // Add buttons if any
-        const buttonContainer = messageElement.querySelector('.button-container');
-        if (buttons.length > 0) {
-            buttons.forEach(buttonText => {
-                const button = document.createElement('button');
-                button.textContent = buttonText;
-                button.classList.add('bg-green-100', 'dark:bg-gray-700', 'border', 'border-green-500/50', 'text-green-800', 'dark:text-green-300', 'text-sm', 'py-1.5', 'px-3', 'rounded-lg', 'hover:bg-green-200', 'dark:hover:bg-gray-600', 'transition-colors', 'w-full', 'text-left', 'font-medium');
-                button.onclick = () => {
-                    // Simulate user typing and sending the button's text
-                    userInput.value = buttonText;
-                    handleSendMessage();
-                };
-                buttonContainer.appendChild(button);
-            });
-        } else {
-            // If there are no buttons, remove the empty container
-            buttonContainer.remove();
-        }
+    const isUser = sender === 'user';
+    messageElement.classList.toggle('ml-auto', isUser);
+    messageElement.classList.toggle('flex-row-reverse', isUser);
+
+    const bubble = document.createElement('div');
+    bubble.className = isUser 
+        ? 'bg-green-500 rounded-xl rounded-br-none p-3 ml-2' 
+        : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2';
+
+    const p = document.createElement('p');
+    p.className = isUser ? 'text-white text-base' : 'text-gray-700 dark:text-gray-200 text-sm';
+    
+    // Sanitize user input, allow HTML for bot responses
+    if (isUser) {
+        p.textContent = text;
+    } else {
+        p.innerHTML = markdownToHtml(text);
     }
     
+    bubble.appendChild(p);
+    
+    // Handle buttons for bot messages
+    if (!isUser && buttons.length > 0) {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'mt-2 flex flex-col space-y-2';
+        buttons.forEach(buttonText => {
+            const button = document.createElement('button');
+            button.textContent = buttonText;
+            button.className = 'bg-green-100 dark:bg-gray-700 border border-green-500/50 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg hover:bg-green-200 dark:hover:bg-gray-600 transition-colors w-full text-left font-medium';
+            button.onclick = () => {
+                userInput.value = buttonText;
+                handleSendMessage();
+            };
+            buttonContainer.appendChild(button);
+        });
+        bubble.appendChild(buttonContainer);
+    }
+
+    // Avatar
+    const avatar = document.createElement('div');
+    if (isUser) {
+        avatar.className = 'w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0 text-gray-600 dark:text-gray-300';
+        avatar.textContent = 'U';
+    } else {
+        avatar.className = 'w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1';
+        avatar.innerHTML = `<img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">`;
+    }
+
+    messageElement.appendChild(avatar);
+    messageElement.appendChild(bubble);
     chatMessages.appendChild(messageElement);
-    chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 /**
@@ -309,56 +336,42 @@ function addMessage(sender, text, buttons = []) {
  */
 function showTypingIndicator(show) {
     let indicator = document.getElementById('typing-indicator');
-    if (show) {
-        if (!indicator) {
-            indicator = document.createElement('div');
-            indicator.id = 'typing-indicator';
-            indicator.classList.add('message-fade-in', 'flex', 'items-start');
-            indicator.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
-                     <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
-                </div>
-                <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
-                    <span></span><span></span><span></span>
-                </div>
-            `;
-            chatMessages.appendChild(indicator);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-    } else {
-        if (indicator) indicator.remove();
+    if (show && !indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'typing-indicator';
+        indicator.className = 'message-fade-in flex items-start';
+        indicator.innerHTML = `
+            <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                 <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+            </div>
+            <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
+                <span></span><span></span><span></span>
+            </div>
+        `;
+        chatMessages.appendChild(indicator);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    } else if (!show && indicator) {
+        indicator.remove();
     }
 }
 
 /**
- * Checks if the user input matches any predefined questions.
+ * Finds a predefined response using the optimized maps.
  * @param {string} text - The user's input text.
  * @returns {string|null} The predefined response or null if no match.
  */
 function getPredefinedResponse(text) {
     const lowerCaseText = text.toLowerCase().trim();
+    
+    // 1. Check for an exact match (fastest)
+    if (responseMap.has(lowerCaseText)) {
+        return responseMap.get(lowerCaseText);
+    }
 
-    // Iterate over each response rule
-    for (const key in predefinedResponses) {
-        const item = predefinedResponses[key];
-
-        // Iterate over each keyword in the rule
-        for (const keyword of item.keywords) {
-            const lowerKeyword = keyword.toLowerCase().trim();
-
-            // Rule for inclusion match (contains asterisks)
-            if (lowerKeyword.startsWith('*') && lowerKeyword.endsWith('*')) {
-                const cleanKeyword = lowerKeyword.substring(1, lowerKeyword.length - 1);
-                if (cleanKeyword && lowerCaseText.includes(cleanKeyword)) {
-                    return item.response; 
-                }
-            } 
-            // Rule for exact match (no asterisks)
-            else {
-                if (lowerCaseText === lowerKeyword) {
-                    return item.response; 
-                }
-            }
+    // 2. Check for partial matches (slower, but necessary)
+    for (const rule of partialMatchRules) {
+        if (lowerCaseText.includes(rule.keyword)) {
+            return rule.response;
         }
     }
 
@@ -373,28 +386,21 @@ function getPredefinedResponse(text) {
  */
 async function handleSendMessage() {
     const userText = userInput.value.trim();
-    if (userText === '') return;
+    if (!userText) return;
 
     addMessage('user', userText);
     userInput.value = '';
     
-    // Check for a predefined response first
     const predefinedResponse = getPredefinedResponse(userText);
     if (predefinedResponse) {
-        // Wait a little to simulate "thinking"
         setTimeout(() => {
-            // Format the predefined response before adding it to the chat
-            const formattedResponse = markdownToHtml(predefinedResponse);
-            addMessage('bot', formattedResponse);
-            
-            // Add original (unformatted) response to history for context
+            addMessage('bot', predefinedResponse);
             chatHistory.push({ role: "user", parts: [{ text: userText }] });
             chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
         }, 500);
         return;
     }
     
-    // If no predefined response, call the API
     showTypingIndicator(true);
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
@@ -412,26 +418,21 @@ async function handleSendMessage() {
         });
 
         if (!response.ok) {
-            throw new Error(`API Error: ${response.status}`);
+            const errorData = await response.json();
+            throw new Error(errorData.error?.message || `API Error: ${response.status}`);
         }
 
         const data = await response.json();
-        // Get the raw text from the bot
-        const botText = data.candidates[0].content.parts[0].text;
+        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No obtuve una respuesta.";
         
-        // Convert Markdown to HTML before displaying
-        const formattedBotText = markdownToHtml(botText);
-        
-        // Add original bot text to history, but display the formatted version
         chatHistory.push({ role: "model", parts: [{ text: botText }] });
-        
-        showTypingIndicator(false);
-        addMessage('bot', formattedBotText);
+        addMessage('bot', botText);
 
     } catch (error) {
         console.error('Error fetching from Gemini API:', error);
-        showTypingIndicator(false);
         addMessage('bot', `Lo siento, ocurrió un error al contactar al asistente. (${error.message})`);
+    } finally {
+        showTypingIndicator(false);
     }
 }
 
@@ -446,39 +447,33 @@ function init() {
         return;
     }
     
+    // Build the optimized response map once
+    buildResponseMap();
+
     // Event Listeners
     chatToggleButton.addEventListener('click', toggleChat);
-    if(internalCloseBtn) {
-        internalCloseBtn.addEventListener('click', toggleChat);
-    }
+    internalCloseBtn.addEventListener('click', toggleChat);
     sendButton.addEventListener('click', handleSendMessage);
     userInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent form submission
             handleSendMessage();
         }
     });
     
-    // --- INICIO: LÓGICA MEJORADA PARA EL TECLADO MÓVIL ---
+    // Mobile keyboard handling
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    userInput.addEventListener('focus', () => {
-        if (isMobile) {
-            // Cuando el usuario comienza a escribir, expande el chat a pantalla completa.
+    if (isMobile) {
+        userInput.addEventListener('focus', () => {
             chatWidgetContainer.classList.add('keyboard-up');
-        }
-    });
+        });
+        // The 'blur' event listener is removed to keep it fullscreen until closed.
+    }
 
-    // Se elimina el 'blur' event listener para que no se cierre al dejar de escribir.
-    // El chat ahora solo se encogerá cuando el usuario presione el botón 'X'.
-    // --- FIN: LÓGICA MEJORADA ---
-
-
-    // Display welcome message with buttons
+    // Display welcome message
     const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
     const welcomeButtons = ["Menú", "Menú O.S.10"];
-    const formattedWelcomeMessage = markdownToHtml(welcomeMessageText);
-    
-    addMessage('bot', formattedWelcomeMessage, welcomeButtons);
+    addMessage('bot', welcomeMessageText, welcomeButtons);
     
     // Add welcome message to history for context
     chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
@@ -487,4 +482,4 @@ function init() {
 }
 
 // Run the chatbot initialization
-init();
+document.addEventListener('DOMContentLoaded', init);
