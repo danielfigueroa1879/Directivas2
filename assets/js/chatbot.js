@@ -79,7 +79,7 @@ const predefinedResponses = {
     'rule_86': { keywords: ["*cuál es la pagina del os10*","*zosepcar*"], response: '*🤖 Está es la página del os10*\nhttps://www.zosepcar.cl/OS10.php' },
     'rule_87': { keywords: ["reglamento"], response: '*Reglamento 11*\nhttps://drive.google.com/file/d/0By_MScWZi3fRLVlIN2dJby1hekU/view?usp=drivesdk&resourcekey=0-3OB6XmcfWnIf9KZU1J65Yw' },
     'rule_88': { keywords: ["ciberseguridad"], response: '🤖 🧙🏻‍♂️ *\"CIBERSEGURIDAD\"*\n➢ *1.-¿Que Hacer?*:\nhttps://www.dal5.short.gy/SIyeI3\n➢ *2.,-¿Cómo notificar?*:\nhttps://www.dal5.short.gy/GFxMgX' },
-    'rule_89': { keywords: ["Menú O.S.10", "menu os10"], response: '*De acuerdo OS10*🧙🏻‍♂️👮🏻‍♂️☝️*Escriba lo que está con negrillas:* \n \n ⬇️ *ESCRIBA El QUE NECESITE:*\n➢ *Bots:* recibirá un listado de bots con Inteligencia Avanzada.\n➢ *Componentes:* Obtendrá las guías\n➢ *Manuales:* Se desplega menu\n➢ *Leyes:* Se desplega menu\n➢ *Editable:* Documentos en Word.\n➢ *Directiva:* Requisitos presentar\n➢ *Valores:* Credenciales, cursos y planes.\n➢ *Independiente:* Requisitos Cred.\n➢ *Menu credencial*: Menú credenciales\n➢ *Nueva Ley:* Nueva ley seguridad privada y reglamento.' },
+    'rule_89': { keywords: ["menu os10"], response: '*De acuerdo OS10*🧙🏻‍♂️👮🏻‍♂️☝️*Escriba lo que está con negrillas:* \n \n ⬇️ ESCRIBA El QUE NECESITE:\n➢ Bots: recibirá un listado de bots con Inteligencia Avanzada.\n➢ Componentes : Obtendrá las guías\n➢ Manuales: Se desplega menu\n➢ Leyes: Se desplega menu\n➢ Editable: Documentos en Word.\n➢ Directiva: Requisitos presentar\n➢ Valores: Cursos y planes.\n➢ Independiente: Requisitos Cred.\n➢ Menu credencial Menú credenciales\n➢ Nueva Ley: Nueva ley seguridad privada y reglamento.' },
     'rule_90': { keywords: ["*directiva*","*directiva de funcionamiento*","*directivas*","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🧙🏻‍♂️🤖 *PRESENTAR DIRECTIVA DE FUNCIONAMIENTO*\n(Instalación - Evento - Partidos de Fútbol Profesional)\nPagina: https://dal5.short.gy/df' },
     'rule_91': { keywords: ["mantra"], response: '*Mantra*\n\nOm: Om es la sílaba semilla que sintoniza cualquier mantra que se recita en su vibración' },
     'rule_92': { keywords: ["usuario diploma"], response: '*PAGINA DIPLOMADO* https://centropyc.carabineros.cl/acipol/login/index.php Usuario: 982083a Contraseña: Flor9820&' },
@@ -97,7 +97,7 @@ const predefinedResponses = {
     'rule_108': { keywords: ["dgac"], response: '🤖 *DGAC SEGURIDAD PRIVADA*\nDirección General de Aeronáutica Civil - Requisitos especiales' },
     'rule_109': { keywords: ["decreto 32"], response: '*DECRETO 32/2024*\nModifica decreto 261\nhttps://www.zosepcar.cl/content/OS10/Resol_32.pdf' },
     'rule_110': { keywords: ["*editable*","*documentos word*"], response: '🤖 *DOCUMENTOS EDITABLES EN WORD*\n✅ Estudio\n✅ Plan\n✅ Medidas\n✅ Directiva\n✅ Todos@ ' },
-    'rule_111': { keywords: ["nueva ley"], response: '🤖 *NUEVA LEY SEGURIDAD PRIVADA*\nLey 21.659 del 21 de marzo de 2024\nhttps://dal5.short.gy/LeySeg' },
+    'rule_111': { keywords: ["nueva ley"], response: '🤖 *NUEVA LEY SEGURIDAD PRIVADA*\nLey 21.659 del 21 de marzo de 2024\nhttps://www.bcn.cl/leychile/navegar?idNorma=1207089' },
     'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor\n- Independiente' },
     'rule_113': { keywords: ["vigilante privado"], response: '🤖 *VIGILANTE PRIVADO*\nSimilar a guardia de seguridad pero con funciones específicas\nhttps://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado.pdf' },
     'rule_149': { keywords: ["empresas recursos humanos"], response: '🤖 *EMPRESAS DE RECURSOS HUMANOS*\nAutorización especial para intermediación laboral\nRequisitos específicos' },
@@ -177,7 +177,7 @@ const predefinedResponses = {
     'rule_255': { keywords: ["*examen moto*","examen para moto","moto"], response: '🤖🧙🏼‍♂️ *Examen moto*\nhttps://dal5.short.gy/ExMoto' },
     'rule_256': { keywords: ["honorarios"], response: '*HONORARIOS*\nhttps://rentab.netlify.app/' },
     'rule_257': { keywords: ["gestudio","estudiar","gestor académico","gestor"], response: '🤖🧙🏼‍♂️✅\n\nhttps://gestudios.netlify.app/' },
-    'rule_258': { keywords: ["*quien es tu creador*","*quien te creo*","*creador*","*creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es todo el equipo de Profesionales que se encuentra trabajando en la oficina de seguridad Privada OS10 Coquimbo y el\n*Ingeniero en Informática y Ciberseguridad*\n      *Daniel Figueroa Chacama*' }
+    'rule_258': { keywords: ["*quien es tu creador*","*quien te creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es todo el equipo de Profesionales que se encuentra trabajando en la oficina de seguridad Privada OS10 Coquimbo y el\n*Ingeniero en Informática y Ciberseguridad Daniel Figueroa Chacama*' }
 };
 
 // --- API Configuration ---
@@ -453,24 +453,24 @@ function init() {
         }
     });
     
-    // Improved logic for mobile keyboard
+    // --- INICIO: NUEVA LÓGICA PARA EL TECLADO MÓVIL ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile && window.visualViewport) {
-        const originalWidgetBottom = window.getComputedStyle(chatWidgetContainer).bottom;
 
-        window.visualViewport.addEventListener('resize', () => {
-            const keyboardHeight = window.innerHeight - window.visualViewport.height;
+    userInput.addEventListener('focus', () => {
+        if (isMobile) {
+            // Cuando el usuario comienza a escribir, expande el chat a pantalla completa para evitar problemas de visualización.
+            chatWidgetContainer.classList.add('keyboard-up');
+        }
+    });
 
-            if (keyboardHeight > 100) { 
-                chatWidgetContainer.style.setProperty('--keyboard-height', `${keyboardHeight}px`);
-                chatWidgetContainer.classList.add('keyboard-visible');
+    userInput.addEventListener('blur', () => {
+        if (isMobile) {
+            // Cuando el usuario deja de escribir, vuelve al widget flotante.
+            chatWidgetContainer.classList.remove('keyboard-up');
+        }
+    });
+    // --- FIN: NUEVA LÓGICA ---
 
-            } else {
-                chatWidgetContainer.classList.remove('keyboard-visible');
-                chatWidgetContainer.style.removeProperty('--keyboard-height');
-            }
-        });
-    }
 
     // Display welcome message with buttons
     const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
