@@ -32,6 +32,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
     
     <!-- Splash screens para iOS (Rutas Corregidas) -->
+    <!-- Nota: Asegúrate de que estos archivos existan en tu carpeta assets/images/ -->
     <link rel="apple-touch-startup-image" href="assets/images/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
@@ -40,6 +41,7 @@
 
     <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- OPTIMIZADO: Carga de fuentes optimizada -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,6 +70,7 @@
             bottom: 10rem;
             right: 1rem; 
             z-index: 1000;
+            transition: bottom 0.2s ease-out;
         }
         @media (min-width: 1280px) {
              #chat-widget-container {
@@ -84,6 +87,7 @@
             max-height: 550px;
             width: 90vw;
             max-width: 400px;
+            transition: all 0.3s ease-out; 
             transform-origin: bottom right;
             --tw-shadow: 0 0 25px -5px var(--glow-color-light);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -92,7 +96,7 @@
             --tw-shadow: 0 0 25px -5px var(--glow-color-dark);
         }
         #chat-popup.hidden {
-            transform: scale(0);
+            transform: scale(0.5);
             opacity: 0;
             pointer-events: none;
         }
@@ -109,7 +113,8 @@
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             animation: float-animation 2.5s infinite ease-in-out;
             transform: translateZ(0);
-            will-change: transform;
+            transition: all 0.3s ease-in-out;
+            will-change: transform; /* OPTIMIZACIÓN: Avisa al navegador sobre la animación */
         }
         #chat-toggle-button:hover {
              --tw-shadow: 0 0 25px 2px var(--glow-color-light);
@@ -179,7 +184,7 @@
                 margin-right: auto;
             }
             #chat-popup {
-                height: 100%; /* El popup debe poder ocupar toda la altura */
+                height: 65vh;
             }
             
             #chat-widget-container.keyboard-up {
@@ -220,6 +225,7 @@
             </p>
         </div>
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
+            <!-- OPTIMIZADO: Carga diferida de imagen -->
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
         </a>
         <header class="text-center">
@@ -270,6 +276,7 @@
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
                 <span>Ingeniero en Informática.</span>
             </div>
+            <!-- OPTIMIZADO: Carga diferida de imagen -->
             <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información" loading="lazy">
         </footer>
    </div>
@@ -277,6 +284,7 @@
     <!-- ===== INICIO DEL CHATBOT FLOTANTE ===== -->
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <div id="chat-widget-container">
+        <!-- Ventana del Chat (inicialmente oculta) -->
         <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] dark:bg-gray-800/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800 dark:text-white">
                 <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center border-2 border-green-400/80 flex-shrink-0 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-500 dark:text-gray-400">Seguridad Privada Chile</p></div></div>
@@ -287,12 +295,14 @@
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
             <footer class="p-3 border-t border-green-500/30"><div class="flex items-center bg-gray-200 dark:bg-gray-900/80 rounded-xl p-2"><input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base"><button id="send-button" class="bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 ml-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg></button></div></footer>
         </div>
+        <!-- Botón para abrir/cerrar el chat -->
         <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual">
             <img id="chat-open-icon" src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
         </button>
     </div>
     <!-- ===== FIN DEL CHATBOT FLOTANTE ===== -->
    
+   <!-- OPTIMIZADO: Scripts diferidos para no bloquear la carga -->
    <script src="assets/js/main.js" defer></script>
    <script type="module" src="assets/js/chatbot.js" defer></script>
    <script type="module" defer>
@@ -339,4 +349,3 @@
    </script>
 </body>
 </html>
-
