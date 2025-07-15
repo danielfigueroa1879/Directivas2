@@ -35,7 +35,7 @@ const predefinedResponses = {
     'rule_17': { keywords: ["1m"], response: '*MANUAL DE FUNCIONAMIENTO* https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf' },
     'rule_18': { keywords: ["3m"], response: '*MANUAL DE ORGANIZACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_organizacion.pdf' },
     'rule_19': { keywords: ["2m"], response: '*MANUAL DE CAPACITACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf' },
-    'rule_20': { keywords: ["leyes"], response: '*ESCRIBE UN NUMERO LEY O DECRETO*.\n 🚦. ⬇️ \n \nDECTO. *261* DEL 31.0 un7.2020\nDECTO. *298* DEL 17.09.2019\n DECTO. *123*  DEL 05.04.2019\nDECTO. *1045*  DEL 12.09.2018\nDECTO. *867* DEL 12.09.2017\nDECTO. *1814* DEL 10.11.2014\nDECTO. *222* DEL 30.10.2014\nDECTO. *1122* DEL 19.10.1994\nDECTO. *41*  DEL 05.03.1996\nDECTO. *1772*  DEL 26.01.1995\nDECTO. *1773*  DEL 14.11.1994\nDECTO. *93* DEL 21.10.1985\nD. LEY. *3607* DEL 08.01.1981\nLEY *19303* DEL 13.04.1994\nResol. *253* DEL 29.10.2013\nResol. *59* DEL 30.09.2014\nResol. *32* DEL 31.01.2024\nResol. *80* DEL 20.03.2024\nLEY. *21659* DEL 21.03.2024' },
+    'rule_20': { keywords: ["leyes"], response: '*ESCRIBE UN NUMERO LEY O DECRETO*.\n 🚦. ⬇️ \n \nDECTO. *261* DEL 31.0 un7.2020\nDECTO. *298* DEL 17.09.2019\n DECTO. *123* DEL 05.04.2019\nDECTO. *1045* DEL 12.09.2018\nDECTO. *867* DEL 12.09.2017\nDECTO. *1814* DEL 10.11.2014\nDECTO. *222* DEL 30.10.2014\nDECTO. *1122* DEL 19.10.1994\nDECTO. *41* DEL 05.03.1996\nDECTO. *1772* DEL 26.01.1995\nDECTO. *1773* DEL 14.11.1994\nDECTO. *93* DEL 21.10.1985\nD. LEY. *3607* DEL 08.01.1981\nLEY *19303* DEL 13.04.1994\nResol. *253* DEL 29.10.2013\nResol. *59* DEL 30.09.2014\nResol. *32* DEL 31.01.2024\nResol. *80* DEL 20.03.2024\nLEY. *21659* DEL 21.03.2024' },
     'rule_21': { keywords: ["261"], response: '*DECRETO NRO 261*. \n\n\nhttps://www.zosepcar.cl/content/OS10/Decreto-261.pdf' },
     'rule_22': { keywords: ["298"], response: '*DECRETO 298*. https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17' },
     'rule_23': { keywords: ["123"], response: '*DECRETO 123*. https://www.bcn.cl/leychile/navegar?idNorma=1130300' },
@@ -241,8 +241,9 @@ function markdownToHtml(text) {
  * Creates and appends a message to the chat UI.
  * @param {string} sender - The sender of the message ('user' or 'bot').
  * @param {string} text - The content of the message (can be raw text for user, HTML for bot).
+ * @param {string[]} [buttons=[]] - An optional array of strings to create as buttons.
  */
-function addMessage(sender, text) {
+function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message-fade-in', 'flex', 'items-start', 'max-w-xs', 'md:max-w-sm');
     
@@ -266,11 +267,31 @@ function addMessage(sender, text) {
             </div>
             <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2">
                 <p class="text-gray-700 dark:text-gray-200 text-sm"></p>
+                <div class="mt-2 flex flex-col space-y-2 button-container"></div>
             </div>
         `;
         messageElement.innerHTML = messageContent;
         // Use innerHTML for bot responses because we want to render the formatted HTML
         messageElement.querySelector('p').innerHTML = text;
+
+        // Add buttons if any
+        const buttonContainer = messageElement.querySelector('.button-container');
+        if (buttons.length > 0) {
+            buttons.forEach(buttonText => {
+                const button = document.createElement('button');
+                button.textContent = buttonText;
+                button.classList.add('bg-green-100', 'dark:bg-gray-700', 'border', 'border-green-500/50', 'text-green-800', 'dark:text-green-300', 'text-sm', 'py-1.5', 'px-3', 'rounded-lg', 'hover:bg-green-200', 'dark:hover:bg-gray-600', 'transition-colors', 'w-full', 'text-left', 'font-medium');
+                button.onclick = () => {
+                    // Simulate user typing and sending the button's text
+                    userInput.value = buttonText;
+                    handleSendMessage();
+                };
+                buttonContainer.appendChild(button);
+            });
+        } else {
+            // If there are no buttons, remove the empty container
+            buttonContainer.remove();
+        }
     }
     
     chatMessages.appendChild(messageElement);
@@ -451,12 +472,15 @@ function init() {
         });
     }
 
-    // Display welcome message
-    const welcomeMessage = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy? Te sugiero puedas ver el menu OS10";
-    addMessage('bot', welcomeMessage);
+    // Display welcome message with buttons
+    const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
+    const welcomeButtons = ["Menú", "Menú O.S.10"];
+    const formattedWelcomeMessage = markdownToHtml(welcomeMessageText);
+    
+    addMessage('bot', formattedWelcomeMessage, welcomeButtons);
     
     // Add welcome message to history for context
-    chatHistory.push({ role: "model", parts: [{ text: welcomeMessage }] });
+    chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
 
     console.log("Chatbot initialized successfully.");
 }
