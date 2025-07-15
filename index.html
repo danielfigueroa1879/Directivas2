@@ -70,7 +70,7 @@
             bottom: 10rem;
             right: 1rem; 
             z-index: 1000;
-            transition: bottom 0.2s ease-out;
+            transition: all 0.3s ease-in-out; /* MODIFICADO: Animación suave para todas las propiedades */
         }
         @media (min-width: 1280px) {
              #chat-widget-container {
@@ -114,7 +114,7 @@
             animation: float-animation 2.5s infinite ease-in-out;
             transform: translateZ(0);
             transition: all 0.3s ease-in-out;
-            will-change: transform; /* OPTIMIZACIÓN: Avisa al navegador sobre la animación */
+            will-change: transform;
         }
         #chat-toggle-button:hover {
              --tw-shadow: 0 0 25px 2px var(--glow-color-light);
