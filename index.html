@@ -70,7 +70,7 @@
             bottom: 10rem;
             right: 1rem; 
             z-index: 1000;
-            transition: all 0.3s ease-in-out; /* MODIFICADO: Animación suave para todas las propiedades */
+            /* MODIFICADO: Se elimina la transición para apertura instantánea */
         }
         @media (min-width: 1280px) {
              #chat-widget-container {
@@ -87,16 +87,16 @@
             max-height: 550px;
             width: 90vw;
             max-width: 400px;
-            transition: all 0.3s ease-out; 
             transform-origin: bottom right;
             --tw-shadow: 0 0 25px -5px var(--glow-color-light);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            /* MODIFICADO: Se elimina la transición para apertura instantánea */
         }
         .dark #chat-popup {
             --tw-shadow: 0 0 25px -5px var(--glow-color-dark);
         }
         #chat-popup.hidden {
-            transform: scale(0.5);
+            transform: scale(0); /* MODIFICADO: Ocultar sin animación de escala */
             opacity: 0;
             pointer-events: none;
         }
@@ -113,7 +113,6 @@
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             animation: float-animation 2.5s infinite ease-in-out;
             transform: translateZ(0);
-            transition: all 0.3s ease-in-out;
             will-change: transform;
         }
         #chat-toggle-button:hover {
