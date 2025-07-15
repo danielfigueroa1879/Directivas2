@@ -71,7 +71,7 @@ const predefinedResponses = {
     'rule_79': { keywords: ["cajero"], response: '*INGRESAR CAJERO*\nhttps://forms.gle/68s4SkMqTooU5EdRA' },
     'rule_80': { keywords: ["comisaria","cuadrante","cuadrantes","comisarías"], response: '🤖👮🏻‍♂️ TEL. CUADRANTES\n- https://www.comisariavirtual.cl\n- https://www.stop.carabineros.cl/\n- BUSCA TU CUADRANTE:\nhttps://www.bit.ly/3Yna7AP\n- CUAD. LA SERENA\nhttps://www.dal5.short.gy/C\n- CUAD. LAS COMPAÑIAS\nhttps://www.dal5.short.gy/C1\n- CUAD. COQUIMBO\nhttps://www.dal5.short.gy/Co\n- MAPA CUAD LA SERENA\nhttps://www.d6.short.gy/LS\n- MAPA CUAD COQUIMBO\nhttps://www.d6.short.gy/CQ\n- CEROFILAS\nhttps://www.dal5.short.gy/CFil' },
     'rule_81': { keywords: ["placa patente","ppu"], response: '🤖 🚗 *BUSCAR PATENTES* 🏎️ \npatentechile.com\nvolanteomaleta.com\nwww.autoseguro.gob.cl/\n*RUT*\nhttps://www.rutificador.co/rut/\nhttps://www.elrutificador.com/' },
-    'rule_82': { keywords: ["rut","ver un rut"], response: '🤖 🧙🏻‍♂️ *Consultar R.U.T.* 👇�\nhttps://www.elrutificador.com/\nhttps://www.nombrerutyfirma.com\nhttps://www.rutynombre.com/\nhttps://www.rutificador.co/rut/' },
+    'rule_82': { keywords: ["rut","ver un rut"], response: '🤖 🧙🏻‍♂️ *Consultar R.U.T.* 👇🏽\nhttps://www.elrutificador.com/\nhttps://www.nombrerutyfirma.com\nhttps://www.rutynombre.com/\nhttps://www.rutificador.co/rut/' },
     'rule_83': { keywords: ["aaff"], response: '*AA.FF. A NIVEL NACIONAL* 🤖Busque la comuna que necesita en el mapa. \nhttps://www.zosepcar.cl/OS10.php#autoridad' },
     'rule_84': { keywords: ["actas"], response: '🤖 *DESCARGAR ACTAS* \nhttps://dal5.short.gy/Acta' },
     'rule_85': { keywords: ["reclamo","fiscalizacion","fiscalizar"], response: '*REQUERIMIENTO* \n https://dal5.short.gy/R3' },
@@ -245,7 +245,6 @@ function toggleChat() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
         chatWidgetContainer.classList.remove('keyboard-up');
-        chatPopup.style.height = ''; // Reset inline style
     }
 }
 
@@ -448,6 +447,7 @@ function init() {
         return;
     }
     
+    // Build the optimized response map once
     buildResponseMap();
 
     // Event Listeners
@@ -456,26 +456,18 @@ function init() {
     sendButton.addEventListener('click', handleSendMessage);
     userInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault();
+            e.preventDefault(); // Prevent form submission
             handleSendMessage();
         }
     });
     
-    // Mobile keyboard handling using visualViewport API
+    // Mobile keyboard handling
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
         userInput.addEventListener('focus', () => {
             chatWidgetContainer.classList.add('keyboard-up');
         });
-        
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', () => {
-                if (chatWidgetContainer.classList.contains('keyboard-up')) {
-                    // Adjust the height of the popup to fit the visible area above the keyboard
-                    chatPopup.style.height = `${window.visualViewport.height}px`;
-                }
-            });
-        }
+        // The 'blur' event listener is removed to keep it fullscreen until closed.
     }
 
     // Display welcome message
@@ -489,4 +481,5 @@ function init() {
     console.log("Chatbot initialized successfully.");
 }
 
+// Run the chatbot initialization
 document.addEventListener('DOMContentLoaded', init);
