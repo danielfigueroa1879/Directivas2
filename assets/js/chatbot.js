@@ -468,42 +468,41 @@ function init() {
     if (isMobile) {
         let isFirstFocus = true;
 
-        userInput.addEventListener('focus', () => {
-             // On first focus, go fullscreen.
+        const setFullscreen = () => {
             if (isFirstFocus) {
                 chatWidgetContainer.classList.add('fullscreen');
                 isFirstFocus = false;
             }
-            // Adjust view to keep input above keyboard
             if (window.visualViewport) {
-                // A small delay allows the keyboard to start appearing before we adjust.
-                setTimeout(() => {
-                    const viewport = window.visualViewport;
-                    chatWidgetContainer.style.height = `${viewport.height}px`;
-                    chatWidgetContainer.style.bottom = '0';
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 100);
+                // Set the container height to the visible area and scroll to the bottom
+                const viewportHeight = window.visualViewport.height;
+                chatWidgetContainer.style.height = `${viewportHeight}px`;
+                chatWidgetContainer.style.bottom = '0';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-        });
+        };
+
+        userInput.addEventListener('focus', setFullscreen);
 
         if (window.visualViewport) {
             window.visualViewport.addEventListener('resize', () => {
-                // If we are in fullscreen mode, keep adjusting the height.
+                // Only adjust if we are in fullscreen mode
                 if (chatWidgetContainer.classList.contains('fullscreen')) {
-                    const viewport = window.visualViewport;
-                    chatWidgetContainer.style.height = `${viewport.height}px`;
+                    setFullscreen();
                 }
             });
         }
         
-        // When chat is closed, reset the 'first focus' state.
-        internalCloseBtn.addEventListener('click', () => {
+        // Reset the fullscreen state when the chat is closed
+        const resetMobileState = () => {
             isFirstFocus = true;
-        });
-        chatBackdrop.addEventListener('click', () => {
-             isFirstFocus = true;
-        });
+            chatWidgetContainer.classList.remove('fullscreen');
+            chatWidgetContainer.style.height = '';
+            chatWidgetContainer.style.bottom = '';
+        };
 
+        internalCloseBtn.addEventListener('click', resetMobileState);
+        chatBackdrop.addEventListener('click', resetMobileState);
     }
 
     // Display welcome message
