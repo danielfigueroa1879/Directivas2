@@ -271,28 +271,21 @@
             </header>
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
             
-            <!-- ****** SECCIÓN CORREGIDA ****** -->
-            <!-- Este es el footer del chat con la estructura corregida para ser responsivo en móviles. -->
             <footer class="p-3 border-t border-green-500/30">
-                <!-- El contenedor usa 'flex' para alinear el input y el botón horizontalmente. -->
                 <div class="flex items-center space-x-2 bg-gray-200 dark:bg-gray-900/80 rounded-xl p-2">
-                    <!-- 
-                      - 'flex-1' hace que el input crezca para ocupar el espacio disponible.
-                      - 'w-full' ayuda a evitar problemas de cálculo de ancho en algunos navegadores.
-                    -->
                     <input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 w-full bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base">
                     
-                    <!-- 
-                      - 'flex-shrink-0' es la clave: previene que el botón se encoja o desaparezca 
-                        cuando el espacio es limitado (como cuando aparece el teclado móvil).
-                    -->
+                    <!-- ****** SECCIÓN CORREGIDA ****** -->
+                    <!-- Se ha reemplazado el SVG del ícono de envío por una flecha que apunta a la derecha. -->
                     <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                           <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
                     </button>
+                    <!-- ****** FIN DE LA SECCIÓN CORREGIDA ****** -->
+
                 </div>
             </footer>
-            <!-- ****** FIN DE LA SECCIÓN CORREGIDA ****** -->
-
         </div>
         <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual">
             <img id="chat-open-icon" src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
