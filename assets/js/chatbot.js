@@ -52,7 +52,7 @@ const predefinedResponses = {
     'rule_34': { keywords: ["19303"], response: '*LEY 19303*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=30648' },
     'rule_35': { keywords: ["253"], response: '*Resol. 253*. https://www.zosepcar.cl/content/OS10/Resol_253.pdf' },
     'rule_36': { keywords: ["59"], response: '*Resol. 59*. https://www.zosepcar.cl/content/OS10/Resol_59.pdf' },
-    'rule_37': { keywords: ["32"], response: '*Resol. 32*. https://www.zosepcar.cl/content/OS10/Resol_32.pdf' },
+    'rule_37': { keywords: ["32"], response: '*Decreto. 32*. https://www.bcn.cl/leychile/navegar?idNorma=1200633' },
     'rule_38': { keywords: ["80"], response: '*Resol. 80*. https://www.zosepcar.cl/content/OS10/Resol_80.pdf' },
     'rule_39': { keywords: ["21659"], response: '*LEY 21659*. https://www.bcn.cl/leychile/navegar?idNorma=1207089' },
     'rule_60': { keywords: ["cursos","curso"], response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*CF.-* CURSO FORMACIÓN GUARDIA\n*CJ.-* CURSO JEFE DE SEGURIDAD\n*CE.-* CURSO ENCARGADO\n*CS.-* CURSO SUPERVISOR\n*CT.-* CURSO TÉCNICO\n*CI.-* CURSO INSTALADOR\n*CC.-* CURSO OPERADOR CAJEROS\n*CV.-* CURSO OPERADOR CCTV\n*CP.-* CURSO PERFECCIONAMIENTO' },
