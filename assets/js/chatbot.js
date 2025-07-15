@@ -205,8 +205,13 @@ Genera respuestas usando Markdown para formato, como **negrita** para énfasis y
 function toggleChat() {
     chatPopup.classList.toggle('hidden');
     chatBackdrop.classList.toggle('hidden');
-    // MODIFICADO: Se oculta el botón principal en lugar de cambiar íconos
     chatToggleButton.classList.toggle('hidden');
+
+    // MODIFICADO: Asegurarse de quitar el modo de pantalla completa al cerrar.
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+        chatWidgetContainer.classList.remove('keyboard-up');
+    }
 }
 
 /**
@@ -453,23 +458,19 @@ function init() {
         }
     });
     
-    // --- INICIO: NUEVA LÓGICA PARA EL TECLADO MÓVIL ---
+    // --- INICIO: LÓGICA MEJORADA PARA EL TECLADO MÓVIL ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     userInput.addEventListener('focus', () => {
         if (isMobile) {
-            // Cuando el usuario comienza a escribir, expande el chat a pantalla completa para evitar problemas de visualización.
+            // Cuando el usuario comienza a escribir, expande el chat a pantalla completa.
             chatWidgetContainer.classList.add('keyboard-up');
         }
     });
 
-    userInput.addEventListener('blur', () => {
-        if (isMobile) {
-            // Cuando el usuario deja de escribir, vuelve al widget flotante.
-            chatWidgetContainer.classList.remove('keyboard-up');
-        }
-    });
-    // --- FIN: NUEVA LÓGICA ---
+    // Se elimina el 'blur' event listener para que no se cierre al dejar de escribir.
+    // El chat ahora solo se encogerá cuando el usuario presione el botón 'X'.
+    // --- FIN: LÓGICA MEJORADA ---
 
 
     // Display welcome message with buttons
