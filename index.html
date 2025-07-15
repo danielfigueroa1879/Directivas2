@@ -114,6 +114,7 @@
             animation: float-animation 2.5s infinite ease-in-out;
             transform: translateZ(0);
             transition: all 0.3s ease-in-out;
+            will-change: transform; /* OPTIMIZACIÓN: Avisa al navegador sobre la animación */
         }
         #chat-toggle-button:hover {
              --tw-shadow: 0 0 25px 2px var(--glow-color-light);
@@ -186,35 +187,30 @@
                 height: 65vh;
             }
             
-            /* --- INICIO: NUEVOS ESTILOS PARA EL TECLADO MÓVIL --- */
             #chat-widget-container.keyboard-up {
-                /* Cuando el teclado está activo, el contenedor se expande a pantalla completa */
-                bottom: 0 !important; /* ¡Importante para anular otros estilos! */
+                bottom: 0 !important;
                 top: 0;
                 right: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                animation: none; /* Desactiva la animación flotante */
+                animation: none;
                 border-radius: 0;
             }
 
             #chat-widget-container.keyboard-up #chat-popup {
-                /* La ventana del chat llena el nuevo contenedor de pantalla completa */
                 width: 100%;
                 height: 100%;
                 max-width: 100%;
                 max-height: 100%;
-                border-radius: 0; /* Sin bordes redondeados en modo de pantalla completa */
+                border-radius: 0;
                 border: none;
                 box-shadow: none;
             }
             
             #chat-widget-container.keyboard-up #chat-toggle-button {
-                /* El botón flotante debe ocultarse */
                 display: none;
             }
-            /* --- FIN: NUEVOS ESTILOS PARA EL TECLADO MÓVIL --- */
         }
     </style>
 </head>
