@@ -175,9 +175,9 @@ const predefinedResponses = {
 };
 
 // --- API Configuration ---
-// CORRECCIÓN 1: Se deja la clave API (aunque no es seguro) y se corrige la URL de la API.
+// CORRECCIÓN FINAL: Se cambia el nombre del modelo a "gemini-1.0-pro", que es compatible con la API v1.
 const API_KEY = 'AIzaSyCUMr9SRpaPJEmB1dhG_g67GZtT8n4_3CI';
-const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
 let chatHistory = [];
@@ -406,8 +406,6 @@ async function handleSendMessage() {
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
-        // CORRECCIÓN 2: Se elimina el campo "systemInstruction" del payload.
-        // El contexto del sistema ya se estableció en la función init().
         const payload = {
             contents: chatHistory,
             generationConfig: { 
@@ -508,8 +506,7 @@ function init() {
         chatBackdrop.addEventListener('click', resetMobileState);
     }
 
-    // CORRECCIÓN 3: Se inicializa el historial del chat con las instrucciones del sistema.
-    // Esto le da al modelo su contexto y rol desde el principio.
+    // Initialize chat history with the system prompt to set the context
     chatHistory = [
         {
             role: "user",
@@ -521,7 +518,7 @@ function init() {
         }
     ];
     
-    // Se muestra un mensaje de bienvenida amigable al usuario, que es independiente del historial del modelo.
+    // Display a friendly welcome message to the user, which is independent of the model's history
     const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
     const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
     addMessage('bot', welcomeMessageText, welcomeButtons);
