@@ -275,13 +275,13 @@ function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
     const isUser = sender === 'user';
 
-    // Apply different max-width for user and bot
+    // CORRECCIÓN: Se ajusta el ancho máximo de las burbujas
     let widthClasses = '';
     if (isUser) {
         widthClasses = 'max-w-xs md:max-w-sm';
     } else {
-        // Make bot bubble wider on mobile
-        widthClasses = 'max-w-[85%] md:max-w-sm';
+        // Se usa un ancho mayor para el bot en móviles para aprovechar el espacio
+        widthClasses = 'max-w-[95%] md:max-w-sm';
     }
     
     messageElement.className = `message-fade-in flex items-start ${widthClasses}`;
@@ -498,7 +498,7 @@ function init() {
                     chatWidgetContainer.style.bottom = '0';
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
-            }, 150);
+            }, 100);
         };
 
         const openChat = () => {
@@ -522,7 +522,6 @@ function init() {
         if (window.visualViewport) {
             window.visualViewport.addEventListener('resize', adjustSizeForKeyboard);
         }
-        // Expose the manager for other parts of the app if needed
         window.mobileChatManager = { exitKeyboardMode };
     } else {
         // Desktop-only listeners
