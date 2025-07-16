@@ -175,7 +175,7 @@ const predefinedResponses = {
 };
 
 // --- API Configuration ---
-const API_KEY = 'AIzaSyB2Gv6BvDX5UpWUMnIsx-CxyL5s8fWezyc';
+const API_KEY = 'AIzaSyCUMr9SRpaPJEmB1dhG_g67GZtT8n4_3CI';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
