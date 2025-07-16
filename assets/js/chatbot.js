@@ -233,13 +233,6 @@ function toggleChat() {
     chatPopup.classList.toggle('hidden');
     chatBackdrop.classList.toggle('hidden');
     chatToggleButton.classList.toggle('hidden');
-
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) {
-        chatWidgetContainer.classList.remove('fullscreen');
-        chatWidgetContainer.style.height = '';
-        chatWidgetContainer.style.bottom = '';
-    }
 }
 
 /**
@@ -439,7 +432,7 @@ function init() {
     
     buildResponseMap();
 
-    // Event Listeners
+    // --- Event Listeners ---
     chatToggleButton.addEventListener('click', toggleChat);
     sendButton.addEventListener('click', handleSendMessage);
     userInput.addEventListener('keypress', (e) => {
@@ -449,50 +442,62 @@ function init() {
         }
     });
     
-    // CORRECCIÓN: Lógica persistente y robusta para el teclado en móviles
+    // --- Mobile-Specific Logic ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
         let isKeyboardMode = false;
 
         const enterKeyboardMode = () => {
-            if (isKeyboardMode) return; // Ya estamos en modo teclado
+            if (isKeyboardMode) return;
             isKeyboardMode = true;
             chatWidgetContainer.classList.add('fullscreen');
             adjustSizeForKeyboard();
         };
 
         const exitKeyboardMode = () => {
-            if (!isKeyboardMode) return; // No estamos en modo teclado
+            if (!isKeyboardMode) return;
             isKeyboardMode = false;
             chatWidgetContainer.classList.remove('fullscreen');
-            // Restablecer estilos para que las clases CSS tomen el control
             chatWidgetContainer.style.height = '';
             chatWidgetContainer.style.bottom = '';
         };
 
         const adjustSizeForKeyboard = () => {
-            if (!isKeyboardMode) return; // Solo ajustar si estamos en modo teclado
+            if (!isKeyboardMode) return;
             setTimeout(() => {
                 if (window.visualViewport) {
                     const viewportHeight = window.visualViewport.height;
+                    // Set the container height to the visible area of the viewport
                     chatWidgetContainer.style.height = `${viewportHeight}px`;
+                    // Ensure it's pinned to the bottom of the visible area
                     chatWidgetContainer.style.bottom = '0';
+                    // Scroll to the latest message
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
-            }, 100); // Un pequeño retardo para que el navegador termine de animar el teclado
+            }, 150); // Delay to allow keyboard animation to finish
         };
-
-        // Entrar en modo teclado al enfocar el input
+        
+        // Enter keyboard mode on focus
         userInput.addEventListener('focus', enterKeyboardMode);
 
+        // Adjust size on viewport resize (keyboard show/hide)
         if (window.visualViewport) {
-            // Reajustar el tamaño cada vez que el viewport cambie (teclado aparece/desaparece)
             window.visualViewport.addEventListener('resize', adjustSizeForKeyboard);
         }
 
-        // Salir del modo teclado SÓLO al cerrar el chat
-        internalCloseBtn.addEventListener('click', exitKeyboardMode);
-        chatBackdrop.addEventListener('click', exitKeyboardMode);
+        // Combined function for closing the chat on mobile
+        const closeChatAndKeyboardMode = () => {
+            toggleChat();
+            exitKeyboardMode();
+        };
+        
+        internalCloseBtn.addEventListener('click', closeChatAndKeyboardMode);
+        chatBackdrop.addEventListener('click', closeChatAndKeyboardMode);
+
+    } else {
+        // Simpler listeners for desktop
+        internalCloseBtn.addEventListener('click', toggleChat);
+        chatBackdrop.addEventListener('click', toggleChat);
     }
 
     chatHistory = [];
