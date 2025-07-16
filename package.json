@@ -1,5 +1,5 @@
 {
-  "name": "directivas-os10-con-proxy",
+  "name": "https://directiva.netlify.app/.netlify/functions/gemini-proxy",
   "version": "1.0.0",
   "description": "Proyecto con proxy seguro para la API de Gemini",
   "main": "index.js",
