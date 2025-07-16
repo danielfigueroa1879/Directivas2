@@ -229,7 +229,11 @@ function buildResponseMap() {
 /**
  * Toggles the visibility of the chat popup and the open/close icons.
  */
-function toggleChat() {
+function toggleChat(forceOpen = false) {
+    const isHidden = chatPopup.classList.contains('hidden');
+    if (forceOpen && !isHidden) return; // Do nothing if forcing open and it's already open
+    if (!forceOpen && isHidden) return; // Do nothing if forcing close and it's already closed
+
     chatPopup.classList.toggle('hidden');
     chatBackdrop.classList.toggle('hidden');
     chatToggleButton.classList.toggle('hidden');
@@ -433,7 +437,6 @@ function init() {
     buildResponseMap();
 
     // --- Event Listeners ---
-    chatToggleButton.addEventListener('click', toggleChat);
     sendButton.addEventListener('click', handleSendMessage);
     userInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -444,62 +447,67 @@ function init() {
     
     // --- Mobile-Specific Logic ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    let isKeyboardMode = false;
+
+    const openChat = () => {
+        chatPopup.classList.remove('hidden');
+        chatBackdrop.classList.remove('hidden');
+        chatToggleButton.classList.add('hidden');
+        if (isMobile) {
+            document.body.classList.add('chat-open-mobile');
+        }
+    };
+
+    const closeChat = () => {
+        chatPopup.classList.add('hidden');
+        chatBackdrop.classList.add('hidden');
+        chatToggleButton.classList.remove('hidden');
+        if (isMobile) {
+            document.body.classList.remove('chat-open-mobile');
+            exitKeyboardMode(); // Ensure keyboard mode is exited when chat closes
+        }
+    };
+
+    const enterKeyboardMode = () => {
+        if (isKeyboardMode) return;
+        isKeyboardMode = true;
+        chatWidgetContainer.classList.add('fullscreen');
+        adjustSizeForKeyboard();
+    };
+
+    const exitKeyboardMode = () => {
+        if (!isKeyboardMode) return;
+        isKeyboardMode = false;
+        chatWidgetContainer.classList.remove('fullscreen');
+        chatWidgetContainer.style.height = '';
+        chatWidgetContainer.style.bottom = '';
+    };
+
+    const adjustSizeForKeyboard = () => {
+        if (!isKeyboardMode) return;
+        // Use a small timeout to allow the browser to update the viewport height
+        setTimeout(() => {
+            if (window.visualViewport) {
+                const viewportHeight = window.visualViewport.height;
+                chatWidgetContainer.style.height = `${viewportHeight}px`;
+                chatWidgetContainer.style.bottom = '0';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }, 100);
+    };
+
+    chatToggleButton.addEventListener('click', openChat);
+    internalCloseBtn.addEventListener('click', closeChat);
+    chatBackdrop.addEventListener('click', closeChat);
+    
     if (isMobile) {
-        let isKeyboardMode = false;
-
-        const enterKeyboardMode = () => {
-            if (isKeyboardMode) return;
-            isKeyboardMode = true;
-            chatWidgetContainer.classList.add('fullscreen');
-            adjustSizeForKeyboard();
-        };
-
-        const exitKeyboardMode = () => {
-            if (!isKeyboardMode) return;
-            isKeyboardMode = false;
-            chatWidgetContainer.classList.remove('fullscreen');
-            chatWidgetContainer.style.height = '';
-            chatWidgetContainer.style.bottom = '';
-        };
-
-        const adjustSizeForKeyboard = () => {
-            if (!isKeyboardMode) return;
-            setTimeout(() => {
-                if (window.visualViewport) {
-                    const viewportHeight = window.visualViewport.height;
-                    // Set the container height to the visible area of the viewport
-                    chatWidgetContainer.style.height = `${viewportHeight}px`;
-                    // Ensure it's pinned to the bottom of the visible area
-                    chatWidgetContainer.style.bottom = '0';
-                    // Scroll to the latest message
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-            }, 150); // Delay to allow keyboard animation to finish
-        };
-        
-        // Enter keyboard mode on focus
         userInput.addEventListener('focus', enterKeyboardMode);
-
-        // Adjust size on viewport resize (keyboard show/hide)
         if (window.visualViewport) {
             window.visualViewport.addEventListener('resize', adjustSizeForKeyboard);
         }
-
-        // Combined function for closing the chat on mobile
-        const closeChatAndKeyboardMode = () => {
-            toggleChat();
-            exitKeyboardMode();
-        };
-        
-        internalCloseBtn.addEventListener('click', closeChatAndKeyboardMode);
-        chatBackdrop.addEventListener('click', closeChatAndKeyboardMode);
-
-    } else {
-        // Simpler listeners for desktop
-        internalCloseBtn.addEventListener('click', toggleChat);
-        chatBackdrop.addEventListener('click', toggleChat);
     }
 
+    // --- Initial State ---
     chatHistory = [];
     
     const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
