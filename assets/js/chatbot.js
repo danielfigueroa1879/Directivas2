@@ -176,7 +176,7 @@ const predefinedResponses = {
 
 // --- API Configuration ---
 // CORRECCIÓN FINAL: Se cambia el nombre del modelo a "gemini-1.0-pro", que es compatible con la API v1.
-const API_KEY = 'AIzaSyCUMr9SRpaPJEmB1dhG_g67GZtT8n4_3CI';
+const API_KEY = 'AIzaSyCImbzj0gugZDGN52IqbCFeSOhrqFWySZo';
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
