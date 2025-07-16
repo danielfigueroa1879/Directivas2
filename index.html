@@ -142,19 +142,21 @@
         .typing-indicator span:nth-child(2) { animation-delay: .5s; }
         .typing-indicator span:nth-child(3) { animation-delay: .6666s; }
         @keyframes blink { 50% { opacity: 1; } }
+        
+        /* CAMBIO: Se oscurece la burbuja del bot */
         .bot-bubble {
-            background-color: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.2);
+            background-color: rgba(34, 197, 94, 0.2); /* Más oscuro */
+            border: 1px solid rgba(34, 197, 94, 0.3); /* Borde un poco más oscuro */
         }
         .dark .bot-bubble {
-            background-color: rgba(74, 222, 128, 0.15);
-            border: 1px solid rgba(74, 222, 128, 0.3);
+            background-color: rgba(74, 222, 128, 0.25); /* Más oscuro */
+            border: 1px solid rgba(74, 222, 128, 0.4); /* Borde un poco más oscuro */
         }
+
         #chat-backdrop {
             transition: opacity 0.3s ease-in-out;
         }
         
-        /* CAMBIO: Se aplica el peso de fuente 400 */
         .chatbot-message-text {
             font-size: 0.9rem; /* Letra más pequeña para PC */
             line-height: 1.4;
