@@ -178,8 +178,9 @@ const predefinedResponses = {
 // --- API Configuration ---
 // LA API KEY SE HA ELIMINADO DE AQUÍ PARA MAYOR SEGURIDAD
 // const API_KEY = 'AIzaSy...'; // <-- ELIMINADO
-// La URL ahora apunta a nuestra función de proxy en Netlify
-const API_URL = `/.netlify/functions/gemini-proxy`;
+
+// ¡CAMBIO IMPORTANTE! La URL ahora apunta a nuestra nueva ruta "amigable" definida en netlify.toml
+const API_URL = '/api/gemini';
 
 // --- State Management ---
 let chatHistory = [];
