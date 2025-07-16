@@ -175,9 +175,9 @@ const predefinedResponses = {
 };
 
 // --- API Configuration ---
-// CORRECCIÓN FINAL: Se cambia el nombre del modelo a "gemini-1.0-pro", que es compatible con la API v1.
-const API_KEY = 'AIzaSyCImbzj0gugZDGN52IqbCFeSOhrqFWySZo';
-const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro:generateContent?key=${API_KEY}`;
+const API_KEY = 'AIzaSyCUMr9SRpaPJEmB1dhG_g67GZtT8n4_3CI';
+// FINAL CORRECTION: Use the v1beta endpoint with the gemini-1.5-flash-latest model
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
 let chatHistory = [];
@@ -394,7 +394,6 @@ async function handleSendMessage() {
     if (predefinedResponse) {
         setTimeout(() => {
             addMessage('bot', predefinedResponse);
-            // Add interaction to history for context
             chatHistory.push({ role: "user", parts: [{ text: userText }] });
             chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
         }, 500);
@@ -402,12 +401,15 @@ async function handleSendMessage() {
     }
     
     showTypingIndicator(true);
-    // Add the user's message to the history
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
+        // Re-introducing systemInstruction for gemini-1.5-flash on the v1beta endpoint
         const payload = {
             contents: chatHistory,
+            systemInstruction: {
+                parts: [{ text: systemPrompt }]
+            },
             generationConfig: { 
                 temperature: 0.7, 
                 maxOutputTokens: 1024 
@@ -428,7 +430,6 @@ async function handleSendMessage() {
         const data = await response.json();
         const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No obtuve una respuesta.";
         
-        // Add the bot's response to the history for future context
         chatHistory.push({ role: "model", parts: [{ text: botText }] });
         addMessage('bot', botText);
 
@@ -506,22 +507,16 @@ function init() {
         chatBackdrop.addEventListener('click', resetMobileState);
     }
 
-    // Initialize chat history with the system prompt to set the context
-    chatHistory = [
-        {
-            role: "user",
-            parts: [{ text: systemPrompt }]
-        },
-        {
-            role: "model",
-            parts: [{ text: "Entendido. Estoy listo para asistir como un funcionario experto de la oficina OS10 Coquimbo. ¿En qué puedo ayudar?" }]
-        }
-    ];
+    // Reset chatHistory to be empty at the start
+    chatHistory = [];
     
-    // Display a friendly welcome message to the user, which is independent of the model's history
+    // Display a friendly welcome message to the user
     const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
     const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
     addMessage('bot', welcomeMessageText, welcomeButtons);
+    
+    // Add the welcome message to the history for context, so the bot knows what was said.
+    chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
 
     console.log("Chatbot initialized successfully.");
 }
