@@ -449,29 +449,28 @@ function init() {
         }
     });
     
-    // CORRECCIÓN: Lógica persistente para el teclado en móviles
+    // CORRECCIÓN: Lógica persistente y robusta para el teclado en móviles
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
         let isKeyboardMode = false;
 
         const enterKeyboardMode = () => {
-            if (isKeyboardMode) return;
+            if (isKeyboardMode) return; // Ya estamos en modo teclado
             isKeyboardMode = true;
             chatWidgetContainer.classList.add('fullscreen');
-            adjustSize();
+            adjustSizeForKeyboard();
         };
 
         const exitKeyboardMode = () => {
-            if (!isKeyboardMode) return;
+            if (!isKeyboardMode) return; // No estamos en modo teclado
             isKeyboardMode = false;
             chatWidgetContainer.classList.remove('fullscreen');
-            // Reset styles to how they are defined in CSS
             chatWidgetContainer.style.height = '';
             chatWidgetContainer.style.bottom = '';
         };
 
-        const adjustSize = () => {
-            if (!isKeyboardMode) return;
+        const adjustSizeForKeyboard = () => {
+            if (!isKeyboardMode) return; // Solo ajustar si estamos en modo teclado
             setTimeout(() => {
                 if (window.visualViewport) {
                     const viewportHeight = window.visualViewport.height;
@@ -479,18 +478,18 @@ function init() {
                     chatWidgetContainer.style.bottom = '0';
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
-            }, 150); // A small delay to wait for the browser/keyboard animation
+            }, 100); // Un pequeño retardo para que el navegador termine de animar el teclado
         };
 
-        // Enter mode when user wants to type
+        // Entrar en modo teclado al enfocar el input
         userInput.addEventListener('focus', enterKeyboardMode);
 
         if (window.visualViewport) {
-            // Adjust size whenever the viewport (and keyboard) resizes
-            window.visualViewport.addEventListener('resize', adjustSize);
+            // Reajustar el tamaño cada vez que el viewport cambie (teclado aparece/desaparece)
+            window.visualViewport.addEventListener('resize', adjustSizeForKeyboard);
         }
 
-        // Exit mode ONLY when the chat is explicitly closed
+        // Salir del modo teclado SÓLO al cerrar el chat
         internalCloseBtn.addEventListener('click', exitKeyboardMode);
         chatBackdrop.addEventListener('click', exitKeyboardMode);
     }
