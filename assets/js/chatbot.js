@@ -225,18 +225,30 @@ function buildResponseMap() {
 
 
 // --- UI Functions ---
-
 /**
  * Toggles the visibility of the chat popup and the open/close icons.
  */
-function toggleChat(forceOpen = false) {
+function toggleChat() {
     const isHidden = chatPopup.classList.contains('hidden');
-    if (forceOpen && !isHidden) return; // Do nothing if forcing open and it's already open
-    if (!forceOpen && isHidden) return; // Do nothing if forcing close and it's already closed
-
-    chatPopup.classList.toggle('hidden');
-    chatBackdrop.classList.toggle('hidden');
-    chatToggleButton.classList.toggle('hidden');
+    if (isHidden) {
+        // Opening the chat
+        chatPopup.classList.remove('hidden');
+        chatBackdrop.classList.remove('hidden');
+        chatToggleButton.classList.add('hidden');
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.classList.add('chat-open-mobile');
+        }
+    } else {
+        // Closing the chat
+        chatPopup.classList.add('hidden');
+        chatBackdrop.classList.add('hidden');
+        chatToggleButton.classList.remove('hidden');
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.classList.remove('chat-open-mobile');
+            // Explicitly exit keyboard mode when chat is closed
+            if (window.mobileChatManager) window.mobileChatManager.exitKeyboardMode();
+        }
+    }
 }
 
 /**
@@ -261,9 +273,19 @@ function markdownToHtml(text) {
  */
 function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
-    messageElement.className = 'message-fade-in flex items-start max-w-xs md:max-w-sm';
-
     const isUser = sender === 'user';
+
+    // Apply different max-width for user and bot
+    let widthClasses = '';
+    if (isUser) {
+        widthClasses = 'max-w-xs md:max-w-sm';
+    } else {
+        // Make bot bubble wider on mobile
+        widthClasses = 'max-w-[85%] md:max-w-sm';
+    }
+    
+    messageElement.className = `message-fade-in flex items-start ${widthClasses}`;
+
     messageElement.classList.toggle('ml-auto', isUser);
     messageElement.classList.toggle('flex-row-reverse', isUser);
 
@@ -445,66 +467,68 @@ function init() {
         }
     });
     
-    // --- Mobile-Specific Logic ---
+    // --- Mobile-Specific Keyboard Logic ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    let isKeyboardMode = false;
-
-    const openChat = () => {
-        chatPopup.classList.remove('hidden');
-        chatBackdrop.classList.remove('hidden');
-        chatToggleButton.classList.add('hidden');
-        if (isMobile) {
-            document.body.classList.add('chat-open-mobile');
-        }
-    };
-
-    const closeChat = () => {
-        chatPopup.classList.add('hidden');
-        chatBackdrop.classList.add('hidden');
-        chatToggleButton.classList.remove('hidden');
-        if (isMobile) {
-            document.body.classList.remove('chat-open-mobile');
-            exitKeyboardMode(); // Ensure keyboard mode is exited when chat closes
-        }
-    };
-
-    const enterKeyboardMode = () => {
-        if (isKeyboardMode) return;
-        isKeyboardMode = true;
-        chatWidgetContainer.classList.add('fullscreen');
-        adjustSizeForKeyboard();
-    };
-
-    const exitKeyboardMode = () => {
-        if (!isKeyboardMode) return;
-        isKeyboardMode = false;
-        chatWidgetContainer.classList.remove('fullscreen');
-        chatWidgetContainer.style.height = '';
-        chatWidgetContainer.style.bottom = '';
-    };
-
-    const adjustSizeForKeyboard = () => {
-        if (!isKeyboardMode) return;
-        // Use a small timeout to allow the browser to update the viewport height
-        setTimeout(() => {
-            if (window.visualViewport) {
-                const viewportHeight = window.visualViewport.height;
-                chatWidgetContainer.style.height = `${viewportHeight}px`;
-                chatWidgetContainer.style.bottom = '0';
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-        }, 100);
-    };
-
-    chatToggleButton.addEventListener('click', openChat);
-    internalCloseBtn.addEventListener('click', closeChat);
-    chatBackdrop.addEventListener('click', closeChat);
-    
     if (isMobile) {
+        let isKeyboardMode = false;
+
+        const enterKeyboardMode = () => {
+            if (isKeyboardMode) return;
+            isKeyboardMode = true;
+            document.body.classList.add('chat-open-mobile');
+            chatWidgetContainer.classList.add('fullscreen');
+            adjustSizeForKeyboard();
+        };
+
+        const exitKeyboardMode = () => {
+            if (!isKeyboardMode) return;
+            isKeyboardMode = false;
+            document.body.classList.remove('chat-open-mobile');
+            chatWidgetContainer.classList.remove('fullscreen');
+            chatWidgetContainer.style.height = '';
+            chatWidgetContainer.style.bottom = '';
+        };
+
+        const adjustSizeForKeyboard = () => {
+            if (!isKeyboardMode) return;
+            setTimeout(() => {
+                if (window.visualViewport) {
+                    const viewportHeight = window.visualViewport.height;
+                    chatWidgetContainer.style.height = `${viewportHeight}px`;
+                    chatWidgetContainer.style.bottom = '0';
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }, 150);
+        };
+
+        const openChat = () => {
+            chatPopup.classList.remove('hidden');
+            chatBackdrop.classList.remove('hidden');
+            chatToggleButton.classList.add('hidden');
+        };
+
+        const closeChat = () => {
+            chatPopup.classList.add('hidden');
+            chatBackdrop.classList.add('hidden');
+            chatToggleButton.classList.remove('hidden');
+            exitKeyboardMode();
+        };
+
+        chatToggleButton.addEventListener('click', openChat);
+        internalCloseBtn.addEventListener('click', closeChat);
+        chatBackdrop.addEventListener('click', closeChat);
         userInput.addEventListener('focus', enterKeyboardMode);
+
         if (window.visualViewport) {
             window.visualViewport.addEventListener('resize', adjustSizeForKeyboard);
         }
+        // Expose the manager for other parts of the app if needed
+        window.mobileChatManager = { exitKeyboardMode };
+    } else {
+        // Desktop-only listeners
+        chatToggleButton.addEventListener('click', toggleChat);
+        internalCloseBtn.addEventListener('click', toggleChat);
+        chatBackdrop.addEventListener('click', toggleChat);
     }
 
     // --- Initial State ---
