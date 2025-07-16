@@ -1,7 +1,7 @@
 /**
  * chatbot.js
  * * This module handles all the functionality for the floating chatbot widget.
- * It manages the UI, state, and communication with the Gemini API.
+ * It manages the UI, state, and communication with the Gemini API via a secure serverless proxy.
  * It now includes a system for predefined responses and Markdown to HTML conversion.
  */
 
@@ -176,8 +176,10 @@ const predefinedResponses = {
 };
 
 // --- API Configuration ---
-const API_KEY = 'AIzaSyCfY1STHrtPZwogcnki_3wlqK1PtBTHx70';
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+// LA API KEY SE HA ELIMINADO DE AQUÍ PARA MAYOR SEGURIDAD
+// const API_KEY = 'AIzaSy...'; // <-- ELIMINADO
+// La URL ahora apunta a nuestra función de proxy en Netlify
+const API_URL = `/.netlify/functions/gemini-proxy`;
 
 // --- State Management ---
 let chatHistory = [];
@@ -413,6 +415,7 @@ async function handleSendMessage() {
             },
         };
 
+        // La petición ahora va a nuestro proxy seguro
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -421,7 +424,7 @@ async function handleSendMessage() {
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.error?.message || `API Error: ${response.status}`);
+            throw new Error(errorData.error?.message || `Error del servidor: ${response.status}`);
         }
 
         const data = await response.json();
@@ -431,7 +434,7 @@ async function handleSendMessage() {
         addMessage('bot', botText);
 
     } catch (error) {
-        console.error('Error fetching from Gemini API:', error);
+        console.error('Error al contactar el proxy de la API:', error);
         addMessage('bot', `Lo siento, ocurrió un error al contactar al asistente. (${error.message})`);
     } finally {
         showTypingIndicator(false);
