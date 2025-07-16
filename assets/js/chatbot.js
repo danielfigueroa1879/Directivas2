@@ -146,7 +146,7 @@ const predefinedResponses = {
     'rule_206': { keywords: ["os11","arma","inscripción de un arma","trámites os11","tramites os11"], response: '🧙🏼‍♂️🤖👉🏼 *Portal de consultas de armas*\n https://www.portalarmaschile.gob.cl/' },
     'rule_207': { keywords: ["certificado","certificados","como sacar certificado os10","cerofilas","cero filas","0 filas"], response: '👮🏽‍♂️ 👉🏼 *TRÁMITES CEROFILAS*:\n\nLink: https://dal5.short.gy/CFil' },
     'rule_208': { keywords: ["dpi"], response: '*LOS DPI AFECTAN ÚNICAMENTE LA RESOLUCIÓN DE IMPRESIÓN, NO EL TAMAÑO FÍSICO DE LA IMAGEN EN PÍXELES.*' },
-    'rule_209': { keywords: ["7 puntos","7 puntos accidente de transito"], response: '*1. TIPIFICACIÓN:* ROBO VEHÍCULO AFECTA CONSEJAL COMUNA VITACURA.' },
+    'rule_209': { keywords: ["7 puntos"], response: '*1. TIPIFICACIÓN:* ROBO VEHÍCULO AFECTA CONSEJAL COMUNA VITACURA.' },
     'rule_213': { keywords: ["fotografía","fotito"], response: '*1.- FOTOSTORE:* Calle Prat 629, La Serena.\nUbicación: *https://dal5.short.gy/629*' },
     'rule_215': { keywords: ["sacar hora dental","dentista","sacar hora"], response: '🤖 *SACAR HORA DENTISTA CARABINEROS LA SERENA O SANTIAGO.*\n*https://www.hoscar.cl/v2.0/horasdentales/login.php*' },
     'rule_216': { keywords: ["valor infracciones","valores infracciones","cuanto cuesta una infracción de seguridad privada"], response: ',🤖☝🏼 Dado que las multas establecidas en la Ley 21.659 se expresan en UTM' },
@@ -176,7 +176,7 @@ const predefinedResponses = {
 
 // --- API Configuration ---
 const API_KEY = 'AIzaSyAgOFzsnwwLt4TSb1lO3XZ8Ot9QJUX7Y6A';
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
 let chatHistory = [];
@@ -284,7 +284,9 @@ function addMessage(sender, text, buttons = []) {
         : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2';
 
     const p = document.createElement('p');
-    p.className = isUser ? 'text-white text-base' : 'text-gray-700 dark:text-gray-200 text-sm';
+    // --- MODIFICACIÓN REALIZADA AQUÍ ---
+    // Se cambió 'text-sm' a 'text-base' para los mensajes del bot para aumentar el tamaño de la fuente.
+    p.className = isUser ? 'text-white text-base' : 'text-gray-700 dark:text-gray-200 text-base';
     
     // Sanitize user input, allow HTML for bot responses
     if (isUser) {
