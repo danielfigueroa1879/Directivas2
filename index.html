@@ -51,7 +51,6 @@
             --green-light: #22c55e;
             --green-dark: #4ade80;
         }
-        /* CORRECCIÓN: Clase para bloquear el scroll del body en móviles */
         body.chat-open-mobile {
             overflow: hidden;
         }
@@ -156,15 +155,18 @@
             transition: opacity 0.3s ease-in-out;
         }
         
+        /* CORRECCIÓN: Se añade word-break para evitar desbordes */
         .chatbot-message-text {
             font-size: 0.85rem;
             line-height: 1.4;
             font-weight: 300;
+            word-break: break-word;
         }
 
         @media (max-width: 640px) {
+            /* CORRECCIÓN: Se reduce un poco el tamaño de la fuente en móvil */
             .chatbot-message-text {
-                font-size: 1.15rem;
+                font-size: 1.05rem; 
             }
         }
 
@@ -195,7 +197,6 @@
                 height: 100vh;
                 border-radius: 0;
                 animation: none;
-                /* CORRECCIÓN: Asegura que el contenedor no se pueda arrastrar */
                 touch-action: none;
                 overscroll-behavior: none;
             }
