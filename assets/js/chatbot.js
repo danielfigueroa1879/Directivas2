@@ -441,7 +441,6 @@ function init() {
 
     // Event Listeners
     chatToggleButton.addEventListener('click', toggleChat);
-    internalCloseBtn.addEventListener('click', toggleChat);
     sendButton.addEventListener('click', handleSendMessage);
     userInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -450,14 +449,29 @@ function init() {
         }
     });
     
-    // CAMBIO: Lógica mejorada para el teclado en móviles
+    // CORRECCIÓN: Lógica persistente para el teclado en móviles
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
-        const setFullscreen = () => {
-            if (!chatWidgetContainer.classList.contains('fullscreen')) {
-                chatWidgetContainer.classList.add('fullscreen');
-            }
-            // Usar un timeout para dar tiempo al teclado a aparecer
+        let isKeyboardMode = false;
+
+        const enterKeyboardMode = () => {
+            if (isKeyboardMode) return;
+            isKeyboardMode = true;
+            chatWidgetContainer.classList.add('fullscreen');
+            adjustSize();
+        };
+
+        const exitKeyboardMode = () => {
+            if (!isKeyboardMode) return;
+            isKeyboardMode = false;
+            chatWidgetContainer.classList.remove('fullscreen');
+            // Reset styles to how they are defined in CSS
+            chatWidgetContainer.style.height = '';
+            chatWidgetContainer.style.bottom = '';
+        };
+
+        const adjustSize = () => {
+            if (!isKeyboardMode) return;
             setTimeout(() => {
                 if (window.visualViewport) {
                     const viewportHeight = window.visualViewport.height;
@@ -465,23 +479,20 @@ function init() {
                     chatWidgetContainer.style.bottom = '0';
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
-            }, 150);
+            }, 150); // A small delay to wait for the browser/keyboard animation
         };
 
-        const resetMobileState = () => {
-            chatWidgetContainer.classList.remove('fullscreen');
-            chatWidgetContainer.style.height = '';
-            chatWidgetContainer.style.bottom = '';
-        };
-
-        userInput.addEventListener('focus', setFullscreen);
+        // Enter mode when user wants to type
+        userInput.addEventListener('focus', enterKeyboardMode);
 
         if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', setFullscreen);
+            // Adjust size whenever the viewport (and keyboard) resizes
+            window.visualViewport.addEventListener('resize', adjustSize);
         }
-        
-        internalCloseBtn.addEventListener('click', resetMobileState);
-        chatBackdrop.addEventListener('click', resetMobileState);
+
+        // Exit mode ONLY when the chat is explicitly closed
+        internalCloseBtn.addEventListener('click', exitKeyboardMode);
+        chatBackdrop.addEventListener('click', exitKeyboardMode);
     }
 
     chatHistory = [];
