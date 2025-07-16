@@ -1,11 +1,18 @@
 # netlify.toml
 
-# Configuración base de construcción del sitio
+# Configuración base de construcción del sitio.
 [build]
-  # Esta línea le dice a Netlify dónde encontrar tus funciones del servidor.
-  # Es la única configuración que necesitamos para que el proxy funcione.
+  # Le dice a Netlify dónde encontrar las funciones del servidor.
   functions = "netlify/functions/"
 
-# Hemos eliminado la sección [[redirects]] porque no es necesaria
-# y podría ser la causa del problema visual. Netlify encontrará
-# tu función automáticamente en la ruta correcta.
+# Redirección específica y segura para nuestra API.
+# Esto asegura que la llamada del frontend llegue a la función correcta.
+[[redirects]]
+  # Cuando el código del frontend llame a esta ruta "amigable"...
+  from = "/api/gemini"
+  # ...Netlify ejecutará internamente la función que está en esta ruta real.
+  to = "/.netlify/functions/gemini-proxy"
+  # El status 200 significa que es una reescritura, no una redirección visible.
+  status = 200
+  # 'force = true' asegura que esta regla tenga prioridad.
+  force = true
