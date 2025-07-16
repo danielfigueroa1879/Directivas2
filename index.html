@@ -119,7 +119,12 @@
             0%, 100% { transform: translateY(0) translateZ(0); }
             50% { transform: translateY(-18px) translateZ(0); }
         }
-        .chat-messages-container { scrollbar-width: thin; }
+        /* CORRECCIÓN: Se añaden propiedades para controlar el scroll en móviles */
+        .chat-messages-container { 
+            scrollbar-width: thin;
+            touch-action: pan-y;
+            overscroll-behavior-y: contain;
+        }
         .light .chat-messages-container { scrollbar-color: #a1a1aa #e5e7eb; }
         .dark .chat-messages-container { scrollbar-color: #6b7280 #374151; }
         .chat-messages-container::-webkit-scrollbar { width: 5px; }
@@ -191,7 +196,7 @@
                 right: 0;
                 bottom: 0 !important;
                 width: 100%;
-                height: 100vh; /* Usa 100vh inicialmente, JS lo ajustará */
+                height: 100vh;
                 border-radius: 0;
                 animation: none;
             }
