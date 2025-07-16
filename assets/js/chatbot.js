@@ -1,8 +1,6 @@
 /**
  * chatbot.js
- * * This module handles all the functionality for the floating chatbot widget.
- * It manages the UI, state, and communication with the Gemini API via a secure serverless proxy.
- * It now includes a system for predefined responses and Markdown to HTML conversion.
+ * Se comunica con la API de Gemini a través de un proxy seguro en /api/gemini.
  */
 
 // --- DOM Element Selection ---
@@ -176,10 +174,7 @@ const predefinedResponses = {
 };
 
 // --- API Configuration ---
-// LA API KEY SE HA ELIMINADO DE AQUÍ PARA MAYOR SEGURIDAD
-// const API_KEY = 'AIzaSy...'; // <-- ELIMINADO
-
-// ¡CAMBIO IMPORTANTE! La URL ahora apunta a nuestra nueva ruta "amigable" definida en netlify.toml
+// La URL ahora apunta a nuestra ruta de proxy segura definida en netlify.toml
 const API_URL = '/api/gemini';
 
 // --- State Management ---
@@ -262,7 +257,6 @@ function toggleChat() {
  */
 function markdownToHtml(text) {
     if (!text) return '';
-    // CAMBIO: Se aplica un color azul más oscuro a los enlaces del chat
     let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-700 dark:text-blue-500 hover:underline">$1</a>');
     formattedText = formattedText.replace(/\*(\*?)(.*?)\1\*/g, '<b>$2</b>');
     formattedText = formattedText.replace(/^\s*-\s/gm, '🔹 ');
@@ -540,3 +534,4 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
