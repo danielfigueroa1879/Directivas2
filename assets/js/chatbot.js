@@ -281,7 +281,7 @@ function addMessage(sender, text, buttons = []) {
         widthClasses = 'max-w-xs md:max-w-sm';
     } else {
         // Se usa un ancho mayor para el bot en móviles para aprovechar el espacio
-        widthClasses = 'max-w-[98%] md:max-w-sm';
+        widthClasses = 'max-w-[99%] md:max-w-sm';
     }
     
     messageElement.className = `message-fade-in flex items-start ${widthClasses}`;
