@@ -176,7 +176,6 @@ const predefinedResponses = {
 
 // --- API Configuration ---
 const API_KEY = 'AIzaSyCUMr9SRpaPJEmB1dhG_g67GZtT8n4_3CI';
-// FINAL CORRECTION: Use the v1beta endpoint with the gemini-1.5-flash-latest model
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
@@ -210,13 +209,11 @@ function buildResponseMap() {
             const normalizedKeyword = keyword.toLowerCase().trim();
             
             if (normalizedKeyword.startsWith('*') && normalizedKeyword.endsWith('*')) {
-                // This is a partial match rule (e.g., *word*)
                 const cleanKeyword = normalizedKeyword.substring(1, normalizedKeyword.length - 1);
                 if(cleanKeyword) {
                     newPartialMatchRules.push({ keyword: cleanKeyword, response: item.response });
                 }
             } else {
-                // This is an exact match rule
                 newResponseMap.set(normalizedKeyword, item.response);
             }
         }
@@ -237,11 +234,9 @@ function toggleChat() {
     chatBackdrop.classList.toggle('hidden');
     chatToggleButton.classList.toggle('hidden');
 
-    // Ensure fullscreen mode is exited when chat is closed
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
         chatWidgetContainer.classList.remove('fullscreen');
-        // Reset inline styles to allow CSS classes to take over
         chatWidgetContainer.style.height = '';
         chatWidgetContainer.style.bottom = '';
     }
@@ -254,13 +249,9 @@ function toggleChat() {
  */
 function markdownToHtml(text) {
     if (!text) return '';
-    // 1. Convert URLs to clickable links.
     let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
-    // 2. Convert bold (asterisks): *text* or **text** -> <b>text</b>
     formattedText = formattedText.replace(/\*(\*?)(.*?)\1\*/g, '<b>$2</b>');
-    // 3. Convert bullet points: * item -> 🔹 item
     formattedText = formattedText.replace(/^\s*-\s/gm, '🔹 ');
-    // 4. Convert newlines to <br>
     return formattedText.replace(/\n/g, '<br>');
 }
 
@@ -285,9 +276,8 @@ function addMessage(sender, text, buttons = []) {
         : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2';
 
     const p = document.createElement('p');
-    p.className = isUser ? 'text-white text-base' : 'text-gray-700 dark:text-gray-200 text-base';
+    p.className = isUser ? 'text-white chatbot-message-text' : 'text-gray-700 dark:text-gray-200 chatbot-message-text';
     
-    // Sanitize user input, allow HTML for bot responses
     if (isUser) {
         p.textContent = text;
     } else {
@@ -296,7 +286,6 @@ function addMessage(sender, text, buttons = []) {
     
     bubble.appendChild(p);
     
-    // Handle buttons for bot messages
     if (!isUser && buttons.length > 0) {
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'mt-2 flex flex-col space-y-2';
@@ -313,7 +302,6 @@ function addMessage(sender, text, buttons = []) {
         bubble.appendChild(buttonContainer);
     }
 
-    // Avatar
     const avatar = document.createElement('div');
     if (isUser) {
         avatar.className = 'w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0 text-gray-600 dark:text-gray-300';
@@ -362,19 +350,17 @@ function showTypingIndicator(show) {
 function getPredefinedResponse(text) {
     const lowerCaseText = text.toLowerCase().trim();
     
-    // 1. Check for an exact match (fastest)
     if (responseMap.has(lowerCaseText)) {
         return responseMap.get(lowerCaseText);
     }
 
-    // 2. Check for partial matches (slower, but necessary)
     for (const rule of partialMatchRules) {
         if (lowerCaseText.includes(rule.keyword)) {
             return rule.response;
         }
     }
 
-    return null; // No match found
+    return null;
 }
 
 
@@ -404,7 +390,6 @@ async function handleSendMessage() {
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
-        // Re-introducing systemInstruction for gemini-1.5-flash on the v1beta endpoint
         const payload = {
             contents: chatHistory,
             systemInstruction: {
@@ -465,57 +450,46 @@ function init() {
         }
     });
     
-    // Mobile keyboard handling
+    // CAMBIO: Lógica mejorada para el teclado en móviles
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
-        let isFirstFocus = true;
-
         const setFullscreen = () => {
-            if (isFirstFocus) {
+            if (!chatWidgetContainer.classList.contains('fullscreen')) {
                 chatWidgetContainer.classList.add('fullscreen');
-                isFirstFocus = false;
             }
-            if (window.visualViewport) {
-                // Set the container height to the visible area and scroll to the bottom
-                const viewportHeight = window.visualViewport.height;
-                chatWidgetContainer.style.height = `${viewportHeight}px`;
-                chatWidgetContainer.style.bottom = '0';
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+            // Usar un timeout para dar tiempo al teclado a aparecer
+            setTimeout(() => {
+                if (window.visualViewport) {
+                    const viewportHeight = window.visualViewport.height;
+                    chatWidgetContainer.style.height = `${viewportHeight}px`;
+                    chatWidgetContainer.style.bottom = '0';
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }, 150);
         };
 
-        userInput.addEventListener('focus', setFullscreen);
-
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', () => {
-                // Only adjust if we are in fullscreen mode
-                if (chatWidgetContainer.classList.contains('fullscreen')) {
-                    setFullscreen();
-                }
-            });
-        }
-        
-        // Reset the fullscreen state when the chat is closed
         const resetMobileState = () => {
-            isFirstFocus = true;
             chatWidgetContainer.classList.remove('fullscreen');
             chatWidgetContainer.style.height = '';
             chatWidgetContainer.style.bottom = '';
         };
 
+        userInput.addEventListener('focus', setFullscreen);
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', setFullscreen);
+        }
+        
         internalCloseBtn.addEventListener('click', resetMobileState);
         chatBackdrop.addEventListener('click', resetMobileState);
     }
 
-    // Reset chatHistory to be empty at the start
     chatHistory = [];
     
-    // Display a friendly welcome message to the user
     const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
     const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
     addMessage('bot', welcomeMessageText, welcomeButtons);
     
-    // Add the welcome message to the history for context, so the bot knows what was said.
     chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
 
     console.log("Chatbot initialized successfully.");
