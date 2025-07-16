@@ -258,7 +258,8 @@ function toggleChat() {
  */
 function markdownToHtml(text) {
     if (!text) return '';
-    let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-400 dark:text-blue-300 hover:underline">$1</a>');
+    // CAMBIO: Se aplica un color azul más oscuro a los enlaces del chat
+    let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-700 dark:text-blue-500 hover:underline">$1</a>');
     formattedText = formattedText.replace(/\*(\*?)(.*?)\1\*/g, '<b>$2</b>');
     formattedText = formattedText.replace(/^\s*-\s/gm, '🔹 ');
     return formattedText.replace(/\n/g, '<br>');
@@ -274,25 +275,16 @@ function markdownToHtml(text) {
 function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
     const isUser = sender === 'user';
-
-    // CORRECCIÓN: Se ajusta el ancho máximo de las burbujas
-    let widthClasses = '';
-    if (isUser) {
-        widthClasses = 'max-w-xs md:max-w-sm';
-    } else {
-        // Se usa un ancho mayor para el bot en móviles para aprovechar el espacio
-        widthClasses = 'max-w-[101%] md:max-w-sm';
-    }
     
-    messageElement.className = `message-fade-in flex items-start ${widthClasses}`;
+    messageElement.className = `message-fade-in flex items-start max-w-full`;
 
     messageElement.classList.toggle('ml-auto', isUser);
     messageElement.classList.toggle('flex-row-reverse', isUser);
 
     const bubble = document.createElement('div');
     bubble.className = isUser 
-        ? 'bg-green-500 rounded-xl rounded-br-none p-3 ml-2' 
-        : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2';
+        ? 'bg-green-500 rounded-xl rounded-br-none p-3 ml-2 max-w-xs md:max-w-sm' 
+        : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2 max-w-[95%] md:max-w-sm';
 
     const p = document.createElement('p');
     p.className = isUser ? 'text-white chatbot-message-text' : 'text-gray-700 dark:text-gray-200 chatbot-message-text';
