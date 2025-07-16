@@ -465,6 +465,7 @@ function init() {
             if (!isKeyboardMode) return; // No estamos en modo teclado
             isKeyboardMode = false;
             chatWidgetContainer.classList.remove('fullscreen');
+            // Restablecer estilos para que las clases CSS tomen el control
             chatWidgetContainer.style.height = '';
             chatWidgetContainer.style.bottom = '';
         };
