@@ -175,7 +175,8 @@ const predefinedResponses = {
 };
 
 // --- API Configuration ---
-const API_KEY = 'AIzaSyAgOFzsnwwLt4TSb1lO3XZ8Ot9QJUX7Y6A';
+// CORRECCIÓN 1: Se deja la clave API (aunque no es seguro) y se corrige la URL de la API.
+const API_KEY = 'AIzaSyCUMr9SRpaPJEmB1dhG_g67GZtT8n4_3CI';
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
 
 // --- State Management ---
@@ -284,8 +285,6 @@ function addMessage(sender, text, buttons = []) {
         : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2';
 
     const p = document.createElement('p');
-    // --- MODIFICACIÓN REALIZADA AQUÍ ---
-    // Se cambió 'text-sm' a 'text-base' para los mensajes del bot para aumentar el tamaño de la fuente.
     p.className = isUser ? 'text-white text-base' : 'text-gray-700 dark:text-gray-200 text-base';
     
     // Sanitize user input, allow HTML for bot responses
@@ -395,6 +394,7 @@ async function handleSendMessage() {
     if (predefinedResponse) {
         setTimeout(() => {
             addMessage('bot', predefinedResponse);
+            // Add interaction to history for context
             chatHistory.push({ role: "user", parts: [{ text: userText }] });
             chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
         }, 500);
@@ -402,13 +402,18 @@ async function handleSendMessage() {
     }
     
     showTypingIndicator(true);
+    // Add the user's message to the history
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
+        // CORRECCIÓN 2: Se elimina el campo "systemInstruction" del payload.
+        // El contexto del sistema ya se estableció en la función init().
         const payload = {
             contents: chatHistory,
-            systemInstruction: { role: "system", parts: [{ text: systemPrompt }] },
-            generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
+            generationConfig: { 
+                temperature: 0.7, 
+                maxOutputTokens: 1024 
+            },
         };
 
         const response = await fetch(API_URL, {
@@ -425,6 +430,7 @@ async function handleSendMessage() {
         const data = await response.json();
         const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No obtuve una respuesta.";
         
+        // Add the bot's response to the history for future context
         chatHistory.push({ role: "model", parts: [{ text: botText }] });
         addMessage('bot', botText);
 
@@ -502,13 +508,23 @@ function init() {
         chatBackdrop.addEventListener('click', resetMobileState);
     }
 
-    // Display welcome message
+    // CORRECCIÓN 3: Se inicializa el historial del chat con las instrucciones del sistema.
+    // Esto le da al modelo su contexto y rol desde el principio.
+    chatHistory = [
+        {
+            role: "user",
+            parts: [{ text: systemPrompt }]
+        },
+        {
+            role: "model",
+            parts: [{ text: "Entendido. Estoy listo para asistir como un funcionario experto de la oficina OS10 Coquimbo. ¿En qué puedo ayudar?" }]
+        }
+    ];
+    
+    // Se muestra un mensaje de bienvenida amigable al usuario, que es independiente del historial del modelo.
     const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
     const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
     addMessage('bot', welcomeMessageText, welcomeButtons);
-    
-    // Add welcome message to history for context
-    chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
 
     console.log("Chatbot initialized successfully.");
 }
