@@ -42,7 +42,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Se mantiene el enlace de Google Fonts que ya incluye el peso 400 -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -54,7 +53,7 @@
         }
         body {
             background-color: #f3f4f6;
-            font-family: 'Poppins', sans-serif; /* Fuente principal para la página */
+            font-family: 'Poppins', sans-serif;
         }
         .dark body {
             background-color: #111827;
@@ -143,24 +142,24 @@
         .typing-indicator span:nth-child(3) { animation-delay: .6666s; }
         @keyframes blink { 50% { opacity: 1; } }
         
-        /* CAMBIO: Se oscurece la burbuja del bot */
         .bot-bubble {
-            background-color: rgba(34, 197, 94, 0.2); /* Más oscuro */
-            border: 1px solid rgba(34, 197, 94, 0.3); /* Borde un poco más oscuro */
+            background-color: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
         }
         .dark .bot-bubble {
-            background-color: rgba(74, 222, 128, 0.25); /* Más oscuro */
-            border: 1px solid rgba(74, 222, 128, 0.4); /* Borde un poco más oscuro */
+            background-color: rgba(74, 222, 128, 0.25);
+            border: 1px solid rgba(74, 222, 128, 0.4);
         }
 
         #chat-backdrop {
             transition: opacity 0.3s ease-in-out;
         }
         
+        /* CAMBIO: Se ajusta el tamaño y peso de la fuente */
         .chatbot-message-text {
-            font-size: 0.9rem; /* Letra más pequeña para PC */
+            font-size: 0.85rem; /* Letra más chica para PC */
             line-height: 1.4;
-            font-weight: 400;
+            font-weight: 300; /* Poppins Light */
         }
 
         @media (max-width: 640px) {
@@ -214,7 +213,7 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-800">
 
-    <!-- Contenido Original de la Página -->
+    <!-- Contenido de la página (sin cambios) -->
     <div class="card-container rounded-xl shadow-md space-y-6 relative">
         <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
             <p class="flex items-center">
