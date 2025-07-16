@@ -42,8 +42,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- CAMBIO: Se cambia la fuente a Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CAMBIO: Se actualiza el enlace de Google Fonts para Poppins Light 300 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Estilos para el Chatbot y Layout Adaptativo -->
@@ -76,8 +76,8 @@
              }
         }
         #chat-popup {
-            /* CAMBIO: Se establece la fuente del chatbot a Roboto */
-            font-family: 'Roboto', sans-serif;
+            /* CAMBIO: Se establece la fuente del chatbot a Poppins */
+            font-family: 'Poppins', sans-serif;
             position: absolute;
             bottom: 0; 
             right: 0;
@@ -155,10 +155,11 @@
             transition: opacity 0.3s ease-in-out;
         }
         
-        /* CAMBIO: Nuevas clases para controlar el tamaño de la letra del chat */
+        /* CAMBIO: Se aplica el peso de fuente 300 */
         .chatbot-message-text {
             font-size: 0.9rem; /* Letra más pequeña para PC */
             line-height: 1.4;
+            font-weight: 300;
         }
 
         @media (max-width: 640px) {
