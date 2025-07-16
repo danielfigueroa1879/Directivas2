@@ -155,16 +155,15 @@
             transition: opacity 0.3s ease-in-out;
         }
         
-        /* CORRECCIÓN: Se añade word-break para evitar desbordes */
+        /* CAMBIO: Se ajusta el peso de la fuente a 400 */
         .chatbot-message-text {
             font-size: 0.85rem;
             line-height: 1.4;
-            font-weight: 300;
+            font-weight: 400; /* Poppins Regular */
             word-break: break-word;
         }
 
         @media (max-width: 640px) {
-            /* CORRECCIÓN: Se reduce un poco el tamaño de la fuente en móvil */
             .chatbot-message-text {
                 font-size: 1.05rem; 
             }
