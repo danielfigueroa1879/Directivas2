@@ -51,12 +51,9 @@
             --green-light: #22c55e;
             --green-dark: #4ade80;
         }
-        body {
-            background-color: #f3f4f6;
-            font-family: 'Poppins', sans-serif;
-        }
-        .dark body {
-            background-color: #111827;
+        /* CORRECCIÓN: Clase para bloquear el scroll del body en móviles */
+        body.chat-open-mobile {
+            overflow: hidden;
         }
         .card-container {
             max-width: 800px;
@@ -119,7 +116,6 @@
             0%, 100% { transform: translateY(0) translateZ(0); }
             50% { transform: translateY(-18px) translateZ(0); }
         }
-        /* CORRECCIÓN: Se añaden propiedades para controlar el scroll en móviles */
         .chat-messages-container { 
             scrollbar-width: thin;
             touch-action: pan-y;
@@ -199,6 +195,9 @@
                 height: 100vh;
                 border-radius: 0;
                 animation: none;
+                /* CORRECCIÓN: Asegura que el contenedor no se pueda arrastrar */
+                touch-action: none;
+                overscroll-behavior: none;
             }
             #chat-widget-container.fullscreen #chat-popup {
                 width: 100%;
