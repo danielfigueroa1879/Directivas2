@@ -176,7 +176,7 @@ const predefinedResponses = {
 // El bot analiza las consultas y extrae respuestas de la base de conocimiento de la Nueva Ley de Seguridad Privada
 
 'rule_261': { 
-    keywords: ["hola","buenos días","buenas tardes","buenas noches","saludos"], 
+    keywords: ["*buenos dias*","*buenas tardes*","buenas noches","saludos"], 
     response: function() {
         const hora = new Date().getHours();
         let saludo;
