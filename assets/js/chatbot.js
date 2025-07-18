@@ -170,13 +170,14 @@ const predefinedResponses = {
     'rule_258': { keywords: ["modelos de solicitud","modelo","punto 6","punto 7"], response: '🤖🧙🏼‍♂️✅\n\nhttps://www.zosepcar.cl/OS10.php#Modelo' },
     'rule_259': { keywords: ["*Hola*", "como estamos","que tal","como va", "de que ta las das", ], response: 'Hola que tal, cuenteme en que lo puedo ayudar' },
     'rule_260': { keywords: ["*como estas*"], response: 'Bien aqui trabajando para variar y tu ¿como estas?' },
+    'rule_261': { keywords: ["buenos días","buen día"], response: '🤖👮🏻‍♂️ ¡Buenos días! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+    'rule_261a': { keywords: ["buenas tardes","buena tarde"], response: '🤖👮🏻‍♂️ ¡Buenas tardes! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+    'rule_261b': { keywords: ["buenas noches","buena noche"], response: '🤖👮🏻‍♂️ ¡Buenas noches! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
     // Reglas conversacionales para el chatbot OS10 Coquimbo - Interacciones iniciales y básicas
 
 // Reglas conversacionales para el chatbot OS10 Coquimbo - Interacciones iniciales y análisis inteligente
 // El bot analiza las consultas y extrae respuestas de la base de conocimiento de la Nueva Ley de Seguridad Privada
-'rule_261': { keywords: ["buenos días","buen día"], response: '🤖👮🏻‍♂️ ¡Buenos días! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
-'rule_261a': { keywords: ["buenas tardes","buena tarde"], response: '🤖👮🏻‍♂️ ¡Buenas tardes! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
-'rule_261b': { keywords: ["buenas noches","buena noche"], response: '🤖👮🏻‍♂️ ¡Buenas noches! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+
 'rule_262': { keywords: ["gracias","muchas gracias","te agradezco","agradezco"], response: '🤖😊 ¡Es un placer ayudarle! Para eso estamos aquí en OS10 Coquimbo. Si tiene alguna otra consulta, no dude en escribirme. ¡Que tenga un excelente día!' },
 'rule_263': { keywords: ["chao","adiós","nos vemos","hasta luego","me voy"], response: '🤖👋 ¡Hasta luego! Gracias por contactar a OS10 Coquimbo. Recuerde que estamos de lunes a jueves de 09:00 a 13:00 horas en Cienfuegos 180, La Serena. ¡Que tenga un buen día!' },
 'rule_264': { keywords: ["ayuda","no entiendo","estoy perdido","no sé qué hacer"], response: '🤖🆘 ¡Tranquilo/a! Entiendo que puede ser confuso. Estoy aquí para guiarle paso a paso. Por favor, cuénteme específicamente qué necesita y con mucho gusto le ayudo a encontrar la solución. ¿Se trata de una credencial, curso, o algún trámite específico?' },
