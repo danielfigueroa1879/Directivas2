@@ -4060,7 +4060,3812 @@ certificación
 seguridad y gestión de riesgos 
 Esta transformación del sector aportará previsiblemente a la construcción de 
 un sistema de seguridad más estructurado, profesional y efectivo, 
-contribuyendo positivamente a la seguridad integral del país`;
+contribuyendo positivamente a la seguridad integral del país.
+Decreto 209
+APRUEBA REGLAMENTO DE SEGURIDAD PRIVADA DE LA LEY N° 21.659
+SOBRE SEGURIDAD PRIVADA
+MINISTERIO DE SEGURIDAD PÚBLICA; SUBSECRETARÍA DE PREVENCIÓN
+DEL DELITO
+
+Fecha Publicación: 27-MAY-2025 | Fecha Promulgación: 18-JUN-2024
+Tipo Versión: Con Vigencia Diferida por Fecha De : 28-NOV-2025
+Url Corta: https://bcn.cl/vWLa0b
+
+APRUEBA REGLAMENTO DE SEGURIDAD PRIVADA DE LA LEY N° 21.659 SOBRE SEGURIDAD PRIVADA 
+     
+     Núm. 209.- Santiago, 18 de junio de 2024.
+     
+     Vistos:
+     
+     Lo dispuesto en los artículos 32 N° 6, 35 y 101, inciso 2°, de la
+Constitución Política de la República, cuyo texto refundido, coordinado y
+sistematizado fue fijado mediante el decreto N° 100, de 2005, del Ministerio
+Secretaría General de la Presidencia; la Ley N° 18.575, Orgánica Constitucional de
+Bases Generales de la Administración del Estado, cuyo texto refundido, coordinado y
+sistematizado fue fijado mediante el decreto con fuerza de ley N° 1-19.653, de 2000,
+del Ministerio Secretaría General de la Presidencia; la Ley N° 19.880, que
+Establece Bases de los Procedimientos Administrativos que Rigen los Actos de los
+Órganos de la Administración del Estado; la Ley N° 20.502, que crea el Ministerio
+del Interior y Seguridad Pública y el Servicio Nacional para la Prevención y
+Rehabilitación del Consumo de Drogas y Alcohol, y modifica diversos cuerpos legales;
+el decreto ley N° 3.607, de 1981, que deroga el decreto ley N° 194, de 1973, y
+establece nuevas normas sobre funcionamiento de vigilantes privados; la ley N°
+19.303, que establece obligaciones a entidades que indica, en materia de seguridad de
+las personas, así como sus reglamentos complementarios; la Ley N° 21.659 sobre
+Seguridad Privada; y la resolución N° 7, de 2019, de la Contraloría General de la
+República, sobre exención del trámite de toma de razón en las materias que
+indica.
+     
+     Considerando:
+     
+     1.- Que, con fecha 21 de marzo de 2024, se publicó en el Diario Oficial la Ley
+N° 21.659 sobre Seguridad Privada, cuyo objetivo es regular la seguridad privada,
+entendiéndose por tal el conjunto de actividades o medidas de carácter preventivas,
+coadyuvantes y complementarias de la seguridad pública, destinadas a la protección
+de personas, bienes y procesos productivos, desarrolladas en un área determinada y
+realizadas por personas naturales o jurídicas de derecho privado, debidamente
+autorizadas en la forma y condiciones que establece esta ley.
+     2.- Que, la ley N° 21.659 busca establecer un nuevo régimen jurídico que
+regule de manera orgánica los distintos aspectos que comprende la seguridad privada.
+De esta forma, se busca enfrentar el crecimiento de esta industria y la necesidad de
+una normativa específica en este ámbito dentro del ordenamiento jurídico de
+nuestro país. Asimismo, de acuerdo con lo dispuesto en su artículo 81, corresponde
+al Ministerio encargado de la Seguridad Pública, a través de la Subsecretaría de
+Prevención del Delito, autorizar, regular, supervigilar, controlar y ejercer las
+demás atribuciones legales en materia de seguridad privada, en su calidad de órgano
+rector. 
+     3.- Que, el artículo primero de las disposiciones transitorias de la ley N°
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 2 de 62
+
+21.659 establece que esta ley entrará en vigencia seis meses después de la
+publicación en el Diario Oficial del último de sus reglamentos complementarios,
+debiendo el Ministerio encargado de la Seguridad Pública, dentro del plazo de un
+año contado desde la publicación de la ley, dictar el reglamento referido a
+seguridad privada, además del reglamento sobre eventos masivos mencionado en su
+Título IV.
+     4.- Que, la ley N° 20.502, que crea el Ministerio del Interior y Seguridad
+Pública y el Servicio Nacional para la Prevención y Rehabilitación del Consumo de
+Drogas y Alcohol, y modifica diversos cuerpos legales, establece en su artículo 1°
+que el Ministerio del Interior y Seguridad Pública será el colaborador directo e
+inmediato del Presidente de la República en asuntos relativos al orden público y la
+seguridad pública interior, para cuyos efectos concentrará la decisión política
+en estas materias, y coordinará, evaluará y controlará la ejecución de planes y
+programas que desarrollen los demás Ministerios y Servicios Públicos en materia de
+prevención y control de la delincuencia, rehabilitación de infractores de ley y su
+reinserción social, en la forma que establezca la ley y dentro del marco de la
+Política Nacional de Seguridad Pública Interior. De igual manera, en su artículo
+2°, establece que para los efectos de lo dispuesto en el inciso segundo del
+artículo 101 de la Constitución Política de la República, el Ministerio del
+Interior y Seguridad Pública será el Ministerio encargado de la seguridad pública.
+     5.- Que, en virtud de lo indicado en los considerandos precedentes, vengo en
+decretar lo siguiente:
+     
+     Decreto:
+     
+     Apruébase el Reglamento de Seguridad Privada de la Ley N° 21.659 sobre
+Seguridad Privada, cuyo texto es el siguiente:  Ley N° 21.659 
+     
+     REGLAMENTO DE SEGURIDAD PRIVADA DE LA LEY N° 21.659 SOBRE SEGURIDAD PRIVADA
+
+     TÍTULO I
+     Disposiciones Generales
+
+     Artículo 1°.- Objeto. El presente reglamento tiene por objeto complementar las
+disposiciones de la ley N° 21.659, sobre Seguridad Privada, con excepción de su
+Título IV, así como precisar las obligaciones y demás aspectos técnicos,
+operativos y de cualquier otra especie necesarios para su adecuada implementación.
+     Se entenderá por seguridad privada el conjunto de actividades o medidas de
+carácter preventivas, coadyuvantes y complementarias de la seguridad pública,
+destinadas a la protección de personas, bienes y procesos productivos, desarrolladas
+en un área determinada y realizadas por personas naturales o jurídicas de derecho
+privado, debidamente autorizadas en la forma y condiciones que establece la ley N°
+21.659 y el presente reglamento. 
+     Las personas naturales y jurídicas que presten servicios de seguridad privada
+quedarán sujetas, en la ejecución material de sus actividades, a las normas e
+instrucciones que al efecto imparta el Ministerio encargado de la Seguridad Pública,
+a través de la Subsecretaría de Prevención del Delito, en su calidad de órgano
+rector en la materia. Asimismo, quedarán sujetas a la autoridad fiscalizadora que
+corresponde a Carabineros de Chile, cuya dependencia técnica recaerá en la
+Prefectura de Seguridad Privada OS-10. 
+     Tratándose de entidades ubicadas en recintos portuarios, aeropuertos u otros
+espacios sometidos al control de la autoridad militar, marítima o aeronáutica, las
+atribuciones que se otorgan en el presente reglamento a Carabineros de Chile, serán
+ejercidas por la autoridad institucional que corresponda.
+     En todo lo no regulado en el presente reglamento, serán aplicables
+supletoriamente las normas contenidas en la ley N° 19.880.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 3 de 62
+
+     Artículo 2°.- Actividades de seguridad privada. Constituyen actividades de
+seguridad privada, especialmente, las siguientes:
+     
+     1. La vigilancia, protección y seguridad de establecimientos, sucursales,
+lugares, faenas y eventos, tanto públicos como privados, así como de las personas o
+bienes que puedan encontrarse en ellos.
+     2. La custodia y el transporte de valores. Se entenderá por valores el dinero
+en efectivo, los documentos bancarios y mercantiles de normal uso en el sistema
+financiero, los metales preciosos sean en barra, amonedados o elaborados, las obras
+de arte, y, en general, cualquier otro bien que, atendidas sus características, haga
+aconsejable su conservación, custodia o traslado bajo medidas especiales de
+seguridad.
+     3. El depósito, custodia, transporte y distribución de objetos que por su
+peligrosidad precisen de vigilancia y protección especial, de acuerdo con la
+regulación sectorial que sea aplicable a una determinada mercancía por el organismo
+público competente. 
+     En estos casos, la vigilancia y protección que deberán prestar las personas
+naturales y jurídicas que custodien estas operaciones, deberá, además, sujetarse a
+las reglas especiales, de conformidad a la naturaleza de los elementos sobre los que
+recaiga. 
+     Sin perjuicio de lo anterior, las medidas especiales en materia de seguridad
+privada deberán implementarse de conformidad al nivel de riesgo de las operaciones,
+de acuerdo a lo dispuesto en el artículo 9 de este reglamento. 
+     4. La instalación y mantenimiento de aparatos, equipos, dispositivos,
+componentes tecnológicos y sistemas de seguridad electrónica conectados a centrales
+receptoras de alarmas, centros de control o de videovigilancia, así como la
+operación de dichas centrales y centros.
+     5. La asesoría en materias de seguridad. Se entenderá para estos efectos por
+tal, aquellas labores que consistan en dar consejo o ilustrar a una persona o
+entidad, con el propósito de ejecutar el buen funcionamiento de una instalación,
+tanto en sus bienes como en los individuos que en ella se encuentren, evitando que
+esta falle, se frustre o sea violentada.
+     6. La formación y capacitación de vigilantes privados, guardias de seguridad y
+demás personas naturales que desarrollen labores de seguridad privada, de
+conformidad a la ley N° 21.659 y al presente reglamento.
+     7. La custodia y transporte de carga sobredimensionada, según lo dispuesto en
+el artículo 63 de la ley N° 18.290, de Tránsito, cuyo texto refundido, coordinado
+y sistematizado fue fijado por el decreto con fuerza de ley N° 1, de 2007, de los
+Ministerios de Transportes y Telecomunicaciones, y de Justicia.
+     8. Cualquier otra actividad o medida de carácter preventivo destinada a la
+protección de personas, bienes y procesos productivos, en los términos del inciso
+segundo del artículo 1° del presente reglamento. 
+
+     Artículo 3°.- Obligaciones de seguridad privada. En cumplimiento de su rol
+preventivo, coadyuvante y complementario de la seguridad pública, las personas
+naturales y jurídicas que ejerzan actividades de seguridad privada y las entidades
+obligadas señaladas en el Título II de este reglamento, tendrán las siguientes
+obligaciones:
+     
+     1. Observar las normas e instrucciones que al efecto imparta el Ministerio
+encargado de la Seguridad Pública, a través de la Subsecretaría de Prevención del
+Delito y la autoridad fiscalizadora. 
+     2. Coordinar sus actividades de seguridad privada con Carabineros de Chile o la
+autoridad militar, marítima o aeronáutica, según corresponda.
+     3. Conservar y poner a disposición de las autoridades respectivas todos los
+antecedentes, instrumentos, efectos y pruebas que obren en su poder y que permitan
+individualizar a los autores y demás partícipes en hechos que revistan caracteres
+de delito.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 4 de 62
+
+     4. Denunciar todo hecho que revista caracteres de delito, dentro de las
+veinticuatro horas siguientes al momento en que tomen conocimiento de él, en los
+términos establecidos en los artículos 173 y siguientes del Código Procesal Penal.
+     Asimismo, dentro del mismo plazo, deberán comunicar a las Fuerzas de Orden y
+Seguridad Pública cualquier circunstancia o información relevante para la
+prevención, el mantenimiento o restablecimiento de la seguridad pública.
+     5. Respetar y proteger los derechos humanos y libertades fundamentales,
+especialmente si se trata de personas en situación de vulnerabilidad, niños, niñas
+o adolescentes y personas en situación de discapacidad. Ello, en cumplimiento de los
+tratados internacionales de derechos humanos, ratificados por Chile y que se
+encuentren vigentes, que prohíben cualquier acto constitutivo de tortura u otros
+tratos crueles, inhumanos o degradantes.
+
+     Artículo 4°.- Deber de colaboración. Los sujetos regulados por este
+reglamento, en el ejercicio de su rol coadyuvante, están especialmente obligados a
+colaborar con las Fuerzas de Orden y Seguridad Pública, así como con la respectiva
+autoridad militar, marítima o aeronáutica, de conformidad a lo dispuesto en el
+inciso cuarto del artículo 1° del presente reglamento. 
+     Por su parte, las Fuerzas de Orden y Seguridad Pública, la Dirección General
+del Territorio Marítimo y de Marina Mercante y la Dirección General de Aeronáutica
+Civil podrán proporcionar a las entidades obligadas y a las municipalidades, en el
+ejercicio de sus funciones, informaciones de seguridad que faciliten su evaluación
+de riesgos y consiguiente implementación de medidas de protección. 
+
+     Artículo 5°.- Obligaciones ante el Ministerio Público y las policías. Las
+entidades obligadas deberán transmitir al Ministerio Público y a las policías,
+previo requerimiento y en el menor plazo posible, los datos personales y las placas
+patentes únicas de los vehículos que ingresen a sus recintos. Para ello, podrán
+utilizar los sistemas instalados por las empresas de seguridad privada que permitan
+comprobar la información de forma simultánea, interoperando para tal efecto. 
+     Con todo, las entidades obligadas podrán convenir con las policías la
+transmisión de informaciones de seguridad que sean necesarias para prevenir los
+riesgos a la seguridad pública. 
+     Para el cumplimiento de lo dispuesto en los incisos precedentes, el tratamiento
+de datos de carácter personal y los sistemas, automatizados o no, creados para el
+cumplimiento de este reglamento se someterán a lo dispuesto en la normativa de
+protección de datos personales. 
+     La comunicación de buena fe de información al Ministerio Público y a las
+policías por parte de las entidades obligadas no constituirá vulneración de las
+restricciones sobre divulgación de información impuestas por vía contractual o por
+cualquier disposición legal, reglamentaria o administrativa. 
+
+     Artículo 6°.- Forma de tramitación y plazos. Las solicitudes, autorizaciones
+y demás procedimientos administrativos establecidos en el presente reglamento se
+llevarán a cabo a través de la plataforma informática establecida en el artículo
+115 de este reglamento, en adelante, también, "la plataforma". 
+     Con excepción de los casos expresamente dispuestos, los plazos que establece
+este reglamento son de días hábiles.
+
+     TÍTULO II
+     Entidades Obligadas
+
+     Párrafo I
+     Aspectos generales
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 5 de 62
+
+     Artículo 7°.- Entidades obligadas. Se entenderá por entidades obligadas a
+mantener medidas de seguridad privada a las personas jurídicas de carácter público
+o privado, cuyas actividades puedan generar un riesgo para la seguridad pública y
+que hayan sido declaradas como obligadas por la ley o por una resolución exenta de
+la Subsecretaría de Prevención del Delito, de conformidad a lo dispuesto en el
+inciso tercero del artículo 7 de la ley N° 21.659. 
+     Corresponden a entidades declaradas como obligadas por la ley N° 21.659 las
+empresas de venta de combustible; las empresas de transporte de valores; las
+instituciones bancarias y financieras de cualquier naturaleza y las de apoyo al giro
+bancario que reciban o mantengan dinero en sus operaciones, según lo dispuesto en el
+inciso final del artículo 8 y en el inciso segundo del artículo 9 de dicho cuerpo
+legal.
+
+     Artículo 8°.- Medidas de seguridad privada. Se entenderá por medidas de
+seguridad privada toda acción que involucre la implementación de recursos humanos,
+materiales, tecnológicos o los procedimientos destinados a otorgar protección a las
+personas y sus bienes dentro de un recinto o área determinada.
+
+     Artículo 9°.- Niveles de riesgo y criterios para determinarlos. Las entidades
+se clasificarán, de acuerdo a su nivel de riesgo en alto, medio o bajo. Aquellas que
+sean determinadas como de riesgo medio o alto serán declaradas por la Subsecretaría
+de Prevención del Delito, a través de resolución exenta, como entidades obligadas
+a mantener medidas de seguridad privada.
+     Los criterios orientadores para determinar el nivel de riesgo de las entidades
+son los siguientes:
+     
+     1. Actividades que desarrolle. Se refiere al conjunto de operaciones, labores o
+tareas que desempeña, de conformidad a su giro, en la medida en que determinadas
+actividades concitan un atractivo mayor para la ocurrencia de delitos; o tienen un
+mayor nivel de criticidad para el funcionamiento de la sociedad. Permite determinar
+el valor, monetario o no, asociado a la actividad.
+     2. Cumplimiento de funciones estratégicas o servicios de utilidad pública.
+Guarda relación con la necesidad de garantizar la continuidad de funcionamiento de
+una entidad, en la medida en que existen áreas diferenciadas dentro de la actividad
+laboral, económica y productiva que involucran un servicio esencial o necesario para
+el mantenimiento de las funciones sociales básicas del país y su normal
+funcionamiento, tales como la salud, el abastecimiento de la población, el bienestar
+social y económico de los ciudadanos, o el funcionamiento de las instituciones del
+Estado. Al igual que el criterio anterior, permite determinar el valor, monetario o
+no, asociado a la actividad.
+     3. Localización de su establecimiento. Se refiere al lugar específico en el
+que la entidad desarrolla sus actividades, considerando características de su
+infraestructura y emplazamiento, tales como, si el lugar es abierto o cerrado, si
+existe o no cierre perimetral, si existe una adecuada visibilidad desde el interior
+al exterior y viceversa, entre otras, a fin de determinar las vulnerabilidades del
+recinto.
+     4. Características del funcionamiento de la entidad. Se relaciona con las
+particularidades y condiciones de los procesos que se llevan a cabo para el
+desarrollo de las labores de la entidad, tales como la cantidad de personal, los
+turnos de trabajo, entre otras. Permite identificar los riesgos de seguridad que
+puedan afectar a la entidad en razón de las dinámicas del lugar, la cantidad de
+personal, entre otras.
+     5. Valor o peligrosidad de los objetos que transporte, almacene o se encuentren
+en su interior. Dice relación con el valor monetario de los bienes que produce o
+requiere la entidad en función de su actividad; o bien, a la peligrosidad potencial
+de estos como precursores o medios facilitadores para la comisión de delitos.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 6 de 62
+
+Permite identificar los riesgos de seguridad que puedan afectar a la entidad, en
+atención a las características de los objetos que mantiene al interior. 
+     6. Concurrencia de público. Se vincula con la afluencia de personas que pueden
+encontrarse al interior del recinto durante su horario de funcionamiento. Permite
+identificar el eventual número de personas en riesgo en caso de que ocurra algún
+delito al interior del lugar, así como las medidas de seguridad que debiesen
+incorporarse para evitar una posible afectación de su integridad física o
+psíquica. 
+     7. Monto de sus transacciones y utilidades. Dice relación con el valor
+monetario vinculado a la actividad. Permite identificar el mayor o menor interés que
+puede suscitar una entidad de verse afectada por un delito, en atención a su flujo
+de dinero.
+     8. Horario de funcionamiento. Se refiere a momentos específicos que representan
+un riesgo a la seguridad, el que varía en función de días y horas en particular,
+por ejemplo, el número de horas de funcionamiento, si este último es diurno o
+nocturno. Este criterio permite determinar las vulnerabilidades del recinto asociadas
+al lapso de tiempo en los cuales lleva a cabo sus actividades.
+     9. La ocurrencia reiterada de delitos en la entidad. Dice relación con el
+número de delitos cometidos en el recinto o área determinada donde esta funciona.
+Al igual que el criterio anterior, permite determinar las vulnerabilidades de la
+respectiva entidad. 
+     10. Características de su entorno. Se vincula con las particularidades de las
+inmediaciones de el o los recintos en el que se encuentra emplazada la entidad,
+atendido a que la distribución de los delitos responde a patrones que se asocian a
+las señales que emite el contexto en relación, por ejemplo, con las
+características físicas, espaciales o culturales. Debe considerar el diseño del
+espacio urbano y los posibles riesgos situacionales que puedan afectarle, tales como
+la falta de visibilidad o iluminación, el deterioro o abandono del sector, entre
+otras. Este criterio permite determinar las vulnerabilidades del entorno.
+     11. El comportamiento delictual en su entorno. Dice relación con el tipo y
+número de delitos cometidos en las inmediaciones del recinto en el que se encuentra
+emplazada la entidad. Al igual que el criterio anterior, permite determinar las
+vulnerabilidades del entorno.
+     12. Los demás criterios que determine la Subsecretaría de Prevención del
+Delito, mediante resolución, basada en fundamentos objetivos y técnicos. 
+     
+     Para efectos de desarrollar la calificación del riesgo de cada entidad, la
+Subsecretaría de Prevención del Delito elaborará una matriz que permita aplicar
+los criterios orientadores referidos en el inciso precedente, la que se aprobará
+mediante resolución. Este instrumento deberá especificar, a lo menos, las
+dimensiones, factores, variables e indicadores que se considerarán en el análisis y
+asignar la ponderación correspondiente. 
+     Para la aplicación de la matriz, se deberán considerar datos estadísticos
+oficiales del Ministerio encargado de la Seguridad Pública, de las policías, del
+Ministerio Público, del Instituto Nacional de Estadísticas o de otros organismos
+del Estado, de conformidad a lo dispuesto en el numeral 4 del artículo 83 de la ley
+N° 21.659, sin perjuicio de solicitar cualquier otra información pertinente que
+pueda requerirse de entidades privadas. 
+     Sin perjuicio de lo anterior, la o el Subsecretario de Prevención del Delito
+ponderará en su mérito el resultado en la aplicación de la matriz, en atención a
+las medidas de seguridad que como consecuencia de ello se originen para la entidad
+obligada, considerando su necesidad, idoneidad y proporcionalidad.
+
+     Párrafo II
+     Procedimiento de determinación de una entidad como obligada
+
+     Artículo 10.- Formas de inicio. El procedimiento de declaración de una entidad
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 7 de 62
+
+obligada podrá iniciarse de oficio por la Subsecretaría de Prevención del Delito,
+a propuesta de la autoridad fiscalizadora respectiva o a solicitud de la propia
+entidad.
+
+     Artículo 11.- Procedimiento de oficio y a propuesta de la autoridad
+fiscalizadora. El procedimiento de declaración de una entidad obligada se iniciará
+de oficio cuando la Subsecretaría de Prevención del Delito tome conocimiento de
+antecedentes que puedan fundar la declaración de una persona jurídica como entidad
+obligada, en cuyo caso se solicitará informe a la autoridad fiscalizadora y se
+determinará como tal en consideración al nivel de riesgo que pueda generar su
+actividad, según lo establecido en el artículo 9° del presente reglamento. 
+     Asimismo, se iniciará a propuesta de la autoridad fiscalizadora cuando estas,
+acompañando toda la información que dispongan para el análisis correspondiente
+conforme el artículo 9° del presente reglamento, soliciten a la Subsecretaría de
+Prevención del Delito que una o más personas jurídicas sean declaradas entidades
+obligadas. 
+
+     Artículo 12.- Procedimiento de declaración de una entidad como obligada a
+solicitud de la propia entidad. Toda persona jurídica podrá solicitar a la
+Subsecretaría de Prevención del Delito que sea declarada como entidad obligada a
+mantener medidas de seguridad, para lo cual deberá presentar, al menos, la siguiente
+información:
+     
+     1. Cumplir con lo establecido en los números 1, 2, 3, 4, 5, 6 y 8 del inciso
+cuarto del artículo 15 del presente reglamento.
+     2. Los motivos que justifiquen la solicitud, señalando los criterios del
+artículo 9° de este reglamento que conllevarían a que dicha entidad genere un
+riesgo medio o alto para la seguridad pública.
+     3. El número de trabajadores con que cuenta. 
+     4. Identificar si atiende o no público en sus establecimientos. 
+     5. Singularizar los recintos, plantas, instalaciones, equipos y, en general, los
+bienes de la entidad.
+     
+     Una vez recibida la solicitud de una persona jurídica para ser declarada como
+obligada, la Subsecretaría de Prevención del Delito requerirá a la autoridad
+fiscalizadora competente informe donde se pronuncie sobre la solicitud en el plazo de
+quince días contado desde la recepción del requerimiento.
+     La Subsecretaría de Prevención del Delito deberá resolver fundadamente, en el
+plazo de veinte días, contado desde la recepción del informe de la autoridad
+fiscalizadora o desde que se reciban los antecedentes complementarios, según lo
+dispuesto en el inciso siguiente.
+     Durante la revisión de los antecedentes presentados por la entidad, la
+Subsecretaría de Prevención del Delito podrá solicitar que estos se complementen,
+se subsanen errores, omisiones formales, así como requerir aclaraciones. La entidad
+tendrá un plazo máximo de cinco días, contado desde la notificación, para cumplir
+con lo solicitado. En caso de que estos fueren insuficientes o no fueren presentados
+dentro del plazo correspondiente, la Subsecretaría tendrá por desistida la
+solicitud, mediante resolución, lo que pondrá fin al procedimiento.
+     La solicitud y los documentos que la fundamenten tendrán el carácter de
+secreto.  
+
+     Artículo 13.- Notificación. La Subsecretaría de Prevención del Delito
+requerirá a la autoridad fiscalizadora respectiva que notifique personalmente al
+propietario, representante legal o administrador de la entidad obligada, la
+resolución que la declara como tal.
+     Si la persona no fuere habida en más de una oportunidad en el respectivo
+recinto o local, la notificación se efectuará mediante carta certificada.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 8 de 62
+
+     Artículo 14.- Recursos. Una vez notificadas, tanto las entidades obligadas como
+aquellas referidas en el artículo 12 del presente reglamento, podrán interponer,
+contra la resolución exenta que las designa como tales o la que rechace la
+solicitud, según corresponda, los recursos que procedan de conformidad con la Ley
+N° 19.880, que establece Bases de los Procedimientos Administrativos que rigen los
+Actos de los Órganos de la Administración del Estado.
+     Asimismo, procederá contra las referidas resoluciones, el reclamo de ilegalidad
+ante la Corte de Apelaciones correspondiente al lugar en el que el acto produce sus
+efectos, el que podrá interponerse en el plazo de quince días contado desde la
+fecha del acto administrativo que resuelve los recursos administrativos o del
+vencimiento del plazo para interponerlos. 
+     Ante la interposición de un reclamo de ilegalidad, la Corte de Apelaciones se
+pronunciará en cuenta sobre su admisibilidad, y declarará admisible el recurso si
+el reclamante señala en su escrito con precisión el acto u omisión objeto del
+reclamo, la norma legal que se supone infringida, la forma en que se ha producido la
+infracción y las razones por las cuales el acto le perjudica. En contra de la
+resolución que declare inadmisible el reclamo se podrá interponer el recurso de
+reposición con apelación subsidiaria. Dicho recurso será igualmente conocido en
+cuenta.
+     La Corte podrá decretar orden de no innovar cuando sea solicitada por el
+recurrente y la ejecución del acto impugnado le produzca un daño irreparable al
+recurrente.
+     Admitido a tramitación el reclamo, la Corte de Apelaciones dará traslado a la
+Subsecretaría de Prevención del Delito, la notificará por oficio y le informará
+que dispone del plazo de diez días para presentar sus descargos u observaciones.
+     Si la Corte de Apelaciones estima que existen hechos sustanciales, pertinentes y
+controvertidos, abrirá un término de prueba de ocho días. Dentro del mismo plazo,
+podrá dictar medidas para mejor resolver en caso de que no se hayan acompañado
+antecedentes relevantes para la resolución o fallo.
+     Vencido el plazo para que la Subsecretaría de Prevención del Delito presente
+sus descargos u observaciones o bien, vencido el término de prueba del inciso
+anterior, la Corte ordenará traer los autos en relación y la causa se agregará
+extraordinariamente a la tabla de la audiencia más próxima, previo sorteo de la
+Sala.
+     La Corte, a solicitud de las partes, oirá sus alegatos y dictará sentencia
+dentro del término de diez días desde la vista de la causa.
+     Si se da lugar al reclamo, la Corte decidirá u ordenará, según sea
+procedente, la anulación total o parcial del acto impugnado y la dictación, por
+parte de la Subsecretaría de Prevención del Delito, de la resolución que
+corresponda para subsanar la omisión o reemplazar la resolución anulada.
+     La sentencia podrá ser apelada para ante la Corte Suprema dentro del plazo de
+diez días, la que resolverá en cuenta.
+
+     Párrafo III
+     Del estudio de seguridad, su procedimiento de aprobación y de la
+implementación de las medidas de seguridad
+
+     Artículo 15.- Estudio de seguridad. Es el instrumento de seguridad privada que
+deben elaborar las entidades obligadas, con el objeto de identificar sus
+vulnerabilidades y establecer la política de seguridad que se implementará acorde
+con sus características y las exigencias de la normativa vigente. 
+     Para la ejecución del estudio de seguridad, la entidad obligada deberá
+elaborar un plan de seguridad por cada sucursal o instalación, si fuere procedente,
+el cual se entenderá como parte integrante de dicho instrumento.
+     Las entidades obligadas deberán contar con un estudio de seguridad vigente
+autorizado por la Subsecretaría de Prevención del Delito para desarrollar sus
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 9 de 62
+
+actividades. Sin perjuicio de lo anterior y lo señalado en el artículo 19 del
+presente reglamento, aquellas entidades que se encuentren en funcionamiento con
+anterioridad a que les sea notificada la resolución que las declare como obligadas
+podrán seguir desarrollando sus actividades durante el proceso de aprobación del
+estudio de seguridad y la implementación de las medidas respectivas. 
+     Los estudios de seguridad deberán incluir los siguientes contenidos:
+     
+     1. Razón social, nombre de fantasía, rol único tributario, giro, domicilio
+legal, correo electrónico y teléfono de contacto.
+     2. Representante legal de la entidad, nombre completo de este, cédula de
+identidad, domicilio, personería, correo electrónico y teléfono de contacto.
+     3. Instalaciones o sucursales de la entidad obligada con indicación de sus
+domicilios respectivos.
+     4. Identificación de los riesgos y/o vulnerabilidades por cada instalación o
+sucursal.
+     5. Personal de seguridad privada que ya se encuentre contratado, en su caso,
+indicando si es contratado directamente o subcontratado.
+     6. Medidas de seguridad que ya se encuentren implementadas, en su caso,
+identificando su ubicación.
+     7. Propuesta de medidas de seguridad concretas, señalando cómo estas permiten
+neutralizar las vulnerabilidades identificadas. Si dentro de las medidas se considera
+la incorporación de personal de seguridad privada distinto a la inicial, deberá
+precisar su forma de contratación.
+     8. Documentos o antecedentes que sirven de fundamento para acreditar las
+vulnerabilidades identificadas y la pertinencia de las medidas de seguridad.
+     
+     Sin perjuicio de lo anterior, el estudio de seguridad de aquellas entidades que
+se encuentren obligadas a mantener un sistema de vigilancia privada deberá contener,
+a lo menos, la siguiente información:
+ 
+     1. La información general y particular de la entidad obligada y sus
+instalaciones.
+     2. El detalle de la estructura del organismo de seguridad interno, la
+identificación de las personas que lo integran y las acciones de contingencia ante
+emergencias o la eventual comisión de ilícitos.
+     Cualquier cambio en los integrantes del organismo de seguridad interno deberá
+ser informado al Ministerio encargado de la Seguridad Pública, a través de la
+Subsecretaría de Prevención del Delito, y a la autoridad fiscalizadora dentro del
+plazo de quince días.
+     3. La identificación de áreas vulnerables, las condiciones de riesgo que se
+identifiquen y la proposición de medidas técnicas y materiales tendientes a
+neutralizar y evitar situaciones delictuales.
+     4. El número de vigilantes con los que contará la entidad obligada y las
+modalidades a las que deberá sujetarse la organización y el funcionamiento de dicho
+servicio.
+     5. Cantidad y tipo de armamento y municiones, acompañando los contratos de
+comodato de acuerdo con lo dispuesto en los artículos 99 y siguientes del reglamento
+complementario de la Ley N° 17.798, sobre Control de Armas y Elementos Similares,
+aprobado por el decreto supremo N° 83, de 2007, del Ministerio de Defensa Nacional.
+     6. Las medidas de seguridad concretas que se adoptarán para dar cabal
+cumplimiento a la ley N° 21.659 y a este reglamento.
+     
+     Para elaborar y presentar la propuesta de estudio de seguridad ante la
+Subsecretaría de Prevención del Delito, la entidad respectiva tendrá el plazo de
+sesenta días contado desde que se notifique la resolución que la determina como
+obligada o aquella que rechaza los recursos presentados, según sea el caso. En el
+cumplimiento de esta obligación, la entidad obligada podrá contratar el servicio de
+asesoría de cualquier persona natural o jurídica que se encuentre autorizada de
+conformidad con las normas de la ley N° 21.659 y del presente reglamento.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 10 de 62
+
+     Artículo 16.- Procedimiento de aprobación de un estudio de seguridad. Recibido
+el estudio de seguridad de la entidad obligada, la Subsecretaría de Prevención del
+Delito requerirá a la autoridad fiscalizadora un informe técnico sobre este para
+que manifieste su opinión. El informe deberá ser remitido a dicha Subsecretaría en
+el plazo de diez días, contado desde la recepción del referido requerimiento, el
+que podrá ser prorrogado, previa solicitud de la autoridad fiscalizadora, hasta por
+cinco días.
+     Una vez recibido el informe técnico de la autoridad fiscalizadora, la
+Subsecretaría de Prevención del Delito deberá aprobar o disponer las
+modificaciones que correspondan, en un solo acto, dentro del plazo de treinta días,
+mediante resolución fundada y notificar a la respectiva entidad. 
+     En este último caso, la entidad obligada deberá efectuar las correcciones que
+se indiquen dentro del plazo de diez días, contado desde que se notifique la
+resolución que solicita las modificaciones, el que podrá ser prorrogado hasta por
+el mismo período, previa solicitud de la entidad interesada.
+     Con todo, transcurrido un plazo de sesenta días, contado desde la recepción de
+las modificaciones ordenadas, sin que dicha Subsecretaría se pronuncie, se
+entenderá aprobado el estudio de seguridad en los términos propuestos por la
+entidad obligada.
+     En contra de la resolución que dispone modificaciones al estudio de seguridad
+propuesto, procederán los recursos de reposición y jerárquico, en la forma
+prevista por la ley N° 19.880.
+     Si la entidad obligada no realiza las modificaciones, o si a juicio de la
+Subsecretaría de Prevención del Delito estas no son las requeridas, se rechazará
+la propuesta de estudio de seguridad. En tal caso, la entidad deberá presentar una
+nueva propuesta que cumpla con el procedimiento y los plazos referidos. 
+
+     Artículo 17.- Vigencia del estudio de seguridad. La vigencia del estudio de
+seguridad será de cuatro años, salvo que dentro de sus medidas se contemple un
+sistema de vigilancia privada, en cuyo caso la vigencia será de dos años. 
+     Sin perjuicio de lo anterior, la vigencia de los estudios de seguridad para una
+empresa de transporte de valores será de un año, renovable, de conformidad a lo
+dispuesto en el artículo 55 del presente reglamento.
+     La renovación del estudio de seguridad se someterá al mismo procedimiento
+señalado en los artículos precedentes. 
+     Al menos tres meses antes del vencimiento de la vigencia del estudio de
+seguridad aprobado, la entidad obligada deberá presentar un nuevo estudio de
+seguridad o solicitar que se prorrogue la vigencia del ya aprobado, por uno, dos o
+cuatro años, según corresponda. En este último caso, si la Subsecretaría de
+Prevención del Delito advierte que las medidas de seguridad privada del estudio cuya
+vigencia se requiere prorrogar son insuficientes en relación al nivel de riesgo de
+la entidad, podrá, mediante resolución fundada, denegar esta prórroga y requerir
+la presentación de un nuevo estudio de seguridad, o bien, aprobar su prórroga por
+un plazo de vigencia inferior.
+     No obstante, cualquier modificación que incida en el estudio de seguridad
+deberá ser presentada a la Subsecretaría de Prevención del Delito, se someterá al
+mismo procedimiento señalado precedentemente y no podrá implementarse sino luego de
+su aprobación. El estudio vigente mantendrá su validez si la demora en resolver,
+dentro de los plazos establecidos, es imputable a la Subsecretaría de Prevención
+del Delito. 
+
+     Artículo 18.- Protocolos conjuntos de dos o más entidades obligadas. Los
+estudios de seguridad de dos o más entidades obligadas que comparten
+infraestructuras o espacios determinados deberán encontrarse debidamente
+coordinados. Para ello, elaborarán conjuntamente un protocolo que contenga
+estrategias y objetivos comunes con el fin de que exista una perspectiva integral y
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 11 de 62
+
+armónica ante los riesgos y amenazas que puedan afectarles.
+     La Subsecretaría de Prevención del Delito notificará a las entidades que
+comparten infraestructuras o espacios el deber de confeccionar un protocolo conjunto.
+Para ello, las entidades deberán nombrar un responsable de seguridad de común
+acuerdo, quien coordinará la elaboración y presentación del referido instrumento.
+En el caso de que el propietario o administrador de la infraestructura común sea
+declarada como entidad obligada, será designado siempre como responsable de
+seguridad.
+     No se requerirá notificar a aquellas entidades obligadas de conformidad a lo
+dispuesto en el inciso final del artículo 8 y en el inciso segundo del artículo 9
+de la ley N° 21.659.
+     El protocolo será autorizado por la Subsecretaría de Prevención del Delito,
+la que deberá aprobarlo o solicitar las modificaciones que correspondan, para lo
+cual estas entidades acompañarán los antecedentes necesarios para que dicha
+Subsecretaría evalúe el cumplimiento de los requisitos aplicables.
+     El protocolo conjunto será secreto y tendrá el siguiente contenido mínimo:
+     
+     1. Un análisis de los espacios comunes de las entidades y de las
+vulnerabilidades que puedan afectarles. 
+     2. La definición de los objetivos de seguridad que se adopten en los espacios
+que comparten.
+     3. La designación de las contrapartes de cada entidad. Estas deberán
+coordinarse para implementar sus respectivos estudios de seguridad, así como para
+enfrentar cualquier emergencia. 
+     4. La determinación de las medidas de seguridad concretas que se implementarán
+en los espacios que comparten las entidades. 
+     En el caso de que las medidas de seguridad incluyan cámaras de televigilancia o
+alarmas de asalto, se deberá señalar la distribución de las mismas en los espacios
+que comparten.
+     5. Acompañar documentos o antecedentes que sirvan de fundamento para acreditar
+las vulnerabilidades identificadas y la pertinencia de las medidas de seguridad.
+     6. La definición de la actuación conjunta de las entidades y su personal de
+seguridad, en caso de enfrentar una emergencia que afecte a una o más entidades que
+suscriban el protocolo. 
+
+     Artículo 19.- Implementación del estudio de seguridad. Desde que se notifique
+la resolución que aprueba el estudio de seguridad, la entidad obligada tendrá un
+plazo de treinta días para implementarlo. La Subsecretaría de Prevención del
+Delito autorizará el funcionamiento de la entidad obligada una vez que verifique,
+previo informe de la autoridad fiscalizadora, que la implementación de las medidas
+de seguridad se ajusta al estudio aprobado y se han individualizado, en su caso, por
+parte de la entidad obligada, todas las personas que integrarán el organismo de
+seguridad interno. La Subsecretaría deberá emitir esta autorización en un plazo
+máximo de treinta días. En caso contrario, la entidad obligada podrá funcionar
+provisoriamente y deberá para ello implementar todas las medidas contenidas en el
+estudio aprobado.
+
+     Artículo 20.- Secreto de la documentación. El estudio de seguridad, su
+propuesta y sus documentos fundantes, así como todas las actuaciones del
+procedimiento pertinente serán secretos y solo tendrán acceso a ellos la entidad
+obligada, el Ministerio encargado de la Seguridad Pública, la Subsecretaría de
+Prevención del Delito y la Autoridad Fiscalizadora respectiva. Lo anterior, sin
+perjuicio de lo dispuesto en el artículo 131 del presente reglamento, sobre
+fiscalización de la normativa laboral y de seguridad social. 
+
+     Párrafo IV
+     Sistema de vigilancia privada
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 12 de 62
+
+     Artículo 21.- Sistema de vigilancia privada. Las entidades que sean
+clasificadas por la Subsecretaría de Prevención del Delito como de riesgo alto
+deberán incorporar, dentro de sus medidas de seguridad, un sistema de vigilancia
+privada en los términos que prevé la ley N° 21.659 y el presente reglamento. 
+     Sin perjuicio de lo anterior, estarán siempre obligadas a mantener sistemas de
+vigilancia privada las empresas de transporte de valores, las instituciones bancarias
+y financieras de cualquier naturaleza y las empresas de apoyo al giro bancario que
+reciban o mantengan dinero en sus operaciones.
+     El sistema de vigilancia privada estará integrado por un organismo de seguridad
+interno, por los recursos tecnológicos y materiales y por el estudio de seguridad
+debidamente autorizado por la Subsecretaría de Prevención del Delito.
+     El sistema de vigilancia privada podrá ser implementado por personal contratado
+directamente por la entidad obligada o subcontratado a una empresa externa. En ambos
+casos serán aplicables las obligaciones establecidas en la ley N° 21.659 y en el
+presente reglamento. Con todo, el armamento que porten los vigilantes privados en el
+ejercicio de sus funciones siempre será de propiedad de la entidad obligada donde se
+presten los servicios, debiendo celebrarse el respectivo comodato de conformidad a la
+normativa vigente en materia de control de armas. 
+     El organismo de seguridad interno estará compuesto por el jefe de seguridad, el
+encargado de seguridad, los encargados de armas, los vigilantes privados y los
+guardias de seguridad que apoyen la función de estos últimos.
+
+     Artículo 22.- Jefe de seguridad. El sistema de vigilancia privada será
+dirigido por el jefe de seguridad.
+     El jefe de seguridad es aquella persona que conoce y domina materias inherentes
+a seguridad privada y que dirige el sistema de vigilancia privada de una entidad
+obligada. La autorización para ejercer como jefe de seguridad será entregada por la
+Subsecretaría de Prevención del Delito, mediante resolución fundada, la que será
+otorgada previo cumplimiento de los requisitos señalados en la ley N° 21.659 y en
+el presente reglamento, de conformidad a lo dispuesto en el artículo 85 de este
+último cuerpo normativo. 
+
+     Artículo 23.- Requisitos del jefe de seguridad. Además de los requisitos
+generales de toda persona natural que ejerce labores de seguridad privada del
+artículo 46 de la ley N° 21.659, deberá cumplir con los siguientes: 
+     
+     1. Estar en posesión de un título profesional de una carrera de, a lo menos,
+ocho semestres de duración, otorgado por instituciones de educación superior del
+Estado o reconocidas oficialmente por este. Asimismo, deberá contar con un curso de
+especialidad en seguridad o materias afines. Para estos efectos, se entenderá por
+curso de materias afines aquellos cuya malla curricular esté relacionada con las
+actividades de seguridad privada, como también aquellas materias que digan relación
+con la prevención de la seguridad física de las personas y de las instalaciones.
+     El curso indicado precedentemente deberá ser impartido por una institución de
+educación superior del Estado o reconocida por este, o por un organismo técnico de
+capacitación acreditado por el Servicio Nacional de Capacitación y Empleo, el que
+deberá tener una duración igual o superior a cuatrocientas horas académicas. Se
+entenderá que cumple con este requisito quien haya aprobado un Diplomado de
+Seguridad Privada, en los mismos términos antes señalados. 
+     Con todo, para el cómputo total de las horas académicas mínimas, se le
+reconocerán al postulante las horas que haya aprobado en los diferentes cursos de
+capacitación en seguridad privada, tales como aquellos impartidos a vigilantes
+privados o a guardias de seguridad, siempre que hayan sido aprobados dentro de los
+cuatro años anteriores a la postulación al cargo de jefe de seguridad.
+     En el caso de quienes hayan ejercido funciones de control o fiscalización como
+integrantes de las Fuerzas Armadas o de Orden y Seguridad Pública, podrán eximirse
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 13 de 62
+
+de cursar aquellas materias que coincidan con el contenido de las asignaturas
+aprobadas previamente en la institución a la que hubieren pertenecido, siempre que
+estas consten en la malla curricular vigente a la época en que se cursaron, lo que
+deberá ser acreditado mediante certificación emitida por la respectiva institución
+y convalidado por la entidad que imparte el curso o diplomado, de conformidad a lo
+dispuesto en el artículo 107, inciso tercero del presente reglamento.
+     2. No haber sido declarado con invalidez de segunda o de tercera clase por el
+sistema previsional de salud y de la Caja de Previsión de la Defensa Nacional o de
+la Dirección de Previsión de Carabineros de Chile, según corresponda. 
+
+     Artículo 24.- Funciones del jefe de seguridad. Son funciones del jefe de
+seguridad las siguientes:
+     
+     1. Visar y ejecutar el estudio de seguridad de la entidad.
+     2. Organizar, dirigir, administrar, controlar y gestionar los recursos humanos,
+materiales y tecnológicos destinados a la protección de personas y bienes en los
+recintos previamente delimitados en que ejerza sus funciones. 
+     3. Detectar y analizar situaciones de riesgo junto a la planificación y
+programación de las actuaciones precisas para prevenirlas.
+     4. Proponer los sistemas de seguridad que resulten pertinentes, así como
+supervisar su utilización, funcionamiento y mantención.
+     5. Proponer las medidas oportunas para subsanar deficiencias o anomalías que
+observen o les comuniquen los encargados de seguridad, vigilantes privados, guardias
+de seguridad u otros.
+     6. Proponer actualizaciones al estudio de seguridad.
+     7. Coordinar y colaborar con la autoridad fiscalizadora respectiva y la
+Subsecretaría de Prevención del Delito.
+     8. Las demás que sean necesarias para el ejercicio de sus labores.
+
+     Artículo 25.- Encargado de seguridad. Es la persona designada por la entidad
+obligada para velar por el cumplimiento de las medidas establecidas en el estudio de
+seguridad en cada recinto, oficina, agencia o sucursal de la misma. El encargado de
+seguridad se relacionará con la autoridad fiscalizadora, en coordinación con el
+jefe de seguridad. 
+     Asimismo, el encargado de seguridad deberá cumplir los mismos requisitos de los
+vigilantes privados, además de aprobar un curso relacionado con el área de
+seguridad o materias afines con una duración de, a lo menos, ciento veinte horas
+académicas. Para estos efectos, se entenderá por curso de materias afines aquellos
+cuya malla curricular esté relacionada con las actividades de seguridad privada,
+como también aquellas materias que digan relación con la prevención de la
+seguridad física de las personas y de las instalaciones. 
+     La autorización para ejercer como encargado de seguridad será entregada por la
+Subsecretaría de Prevención del Delito, mediante resolución fundada, la que será
+otorgada previo cumplimiento de los requisitos anteriormente señalados, de
+conformidad a lo dispuesto en el artículo 85 del presente reglamento.
+
+     Párrafo V
+     Vigilantes privados
+
+     Artículo 26.- Vigilantes privados. Son vigilantes privados aquellos que
+realizan labores de protección a personas y bienes dentro de un recinto o área
+determinada, autorizados para portar armas, credencial y uniforme. 
+     Sin perjuicio de las normas establecidas en el Código del Trabajo, el vigilante
+privado tendrá la calidad de trabajador dependiente de la entidad en la que ejerce
+sus labores o de la empresa de seguridad en el caso del inciso cuarto del artículo
+21 del presente reglamento.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 14 de 62
+
+     Los vigilantes privados, además de los requisitos generales establecidos en el
+artículo 46 de la ley N° 21.659, deberán cumplir específicamente con los
+siguientes: 
+     
+     1. Haber cumplido con lo establecido en el decreto supremo N° 83, de 2007, del
+Ministerio de Defensa Nacional, que aprueba Reglamento Complementario de la ley N°
+17.798, sobre Control de Armas y Elementos Similares, en cuanto al uso de armas de
+fuego. Este requisito se acreditará con el correspondiente certificado de la
+Dirección General de Movilización Nacional. 
+     2. Haber aprobado el curso de formación y perfeccionamiento, de conformidad a
+lo dispuesto en el artículo 27 de este reglamento. Para ello, la Subsecretaría de
+Prevención del Delito verificará dicha circunstancia a través de la plataforma
+establecida en el artículo 115 del presente reglamento. 
+     En el caso de quienes hayan ejercido funciones de control o fiscalización como
+integrantes de las Fuerzas Armadas o de Orden y Seguridad Pública, podrán eximirse
+de cursar aquellas materias que coincidan con el contenido de las asignaturas
+aprobadas previamente en la institución a la que hubieren pertenecido, siempre que
+estas consten en la malla curricular vigente a la época en que se cursaron, lo que
+deberá ser acreditado mediante certificación emitida por la respectiva institución
+y convalidado por la entidad que imparte el curso, de acuerdo a lo dispuesto en el
+artículo 107 inciso tercero del presente reglamento.
+     3. No haber sido declarado con invalidez de segunda o de tercera clase por el
+sistema previsional y de salud de la Caja de Previsión de la Defensa Nacional o de
+la Dirección de Previsión de Carabineros de Chile, según corresponda. Lo anterior,
+será acreditado mediante un certificado emitido por la institución correspondiente.
+     
+     La autorización para ejercer como vigilante privado será entregada por la
+Subsecretaría de Prevención del Delito, mediante resolución fundada, de
+conformidad con lo dispuesto en el artículo 85 del presente reglamento. La
+autorización se otorgará previo cumplimiento de los requisitos señalados en la ley
+N° 21.659 y en el presente reglamento.
+
+     Artículo 27.- Cursos de formación y perfeccionamiento. La formación de los
+vigilantes privados estará compuesta por los siguientes cursos:
+     
+     1. Formación: es aquel que habilita a una persona natural para desempeñarse
+como vigilante privado. Este curso se rendirá una sola vez, con excepción de lo
+dispuesto en el numeral 2. Su duración será de, a lo menos, cien horas
+pedagógicas.
+     2. Perfeccionamiento: es aquel que permite a los vigilantes privados actualizar
+los conocimientos del curso de formación y acreditar sus competencias para seguir
+desempeñando sus funciones. Este curso deberá aprobarse cada dos años y deberá
+tener una duración de, a lo menos, cuarenta horas pedagógicas. Si la persona no
+rinde el curso de perfeccionamiento dentro del plazo establecido precedentemente,
+deberá rendir nuevamente el curso de formación.
+     
+     La Subsecretaría de Prevención del Delito, mediante resolución, previa
+propuesta de la autoridad fiscalizadora determinará el contenido, la forma,
+modalidades y duración de los distintos programas de capacitación de vigilantes
+privados, debiendo actualizarse la malla específica en función de la evolución de
+los riesgos en materia de seguridad y de las capacidades formativas de las entidades
+capacitadoras autorizadas por la Subsecretaría de Prevención del Delito. Sin
+perjuicio de lo anterior, el contenido del curso de formación será, a lo menos, el
+siguiente:
+     
+     1. Legislación aplicada a la seguridad privada. Esta asignatura se orientará a
+desarrollar conocimientos sobre las normas vigentes en materia de seguridad privada
+que permitan un adecuado entendimiento del rol coadyuvante que esta tiene para con la
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 15 de 62
+
+seguridad pública, además del estudio específico de los fundamentos
+constitucionales, de la ley N° 21.659 y sus reglamentos complementarios. Del mismo
+modo, deberá incorporar materias vinculadas con seguridad privada, tales como las
+normas laborales aplicables al personal de seguridad privada y el marco normativo
+sobre control de armas. 
+     2. Respeto y promoción de los derechos humanos. Esta asignatura se orientará a
+desarrollar conocimientos relativos a conceptos y normas nacionales e internacionales
+relacionadas con los derechos humanos, con especial énfasis en grupos de especial
+protección, tales como mujeres, niños, niñas o adolescentes, diversidades y
+disidencias sexo-genéricas, personas en situación de discapacidad o adultos
+mayores. 
+     3. Privacidad y uso de datos personales. Esta asignatura tendrá por objeto
+entregar conocimientos sobre principios, conceptos y normas sobre datos personales y
+sensibles, con énfasis en su adecuada protección.
+     4. Instrucción física. Esta asignatura tiene por objeto que el alumno mantenga
+una condición física que le permita un eficiente desempeño de sus funciones.
+     5. Correcto uso de elementos defensivos y de protección. Esta asignatura
+tendrá por objeto que el alumno adquiera y desarrolle técnicas para el adecuado uso
+de elementos defensivos y de protección, especialmente en casos de legítima defensa
+propia o de terceros.
+     6. Primeros auxilios. Esta asignatura tendrá por objeto entregar al alumno
+conocimientos básicos para la atención y respuesta de una persona víctima de un
+accidente, una agresión o una afección natural. 
+     7. Prevención de riesgos. Esta asignatura tendrá por objeto orientar al alumno
+en lo que se refiere a los riesgos, accidentes y enfermedades profesionales, así
+como las formas de prevenirlos. 
+     8. Seguridad de instalaciones. Esta asignatura tendrá como propósito
+desarrollar conocimientos relacionados con la aplicación de medidas de seguridad
+tendientes a evitar o minimizar los riesgos que puedan afectar a un recinto o área
+determinada, incluyendo el análisis de riesgos potenciales, el manejo de situaciones
+de emergencia, entre otras.
+     9. Probidad, no discriminación y perspectiva de género. Esta asignatura
+abordará principios, conceptos y normas tendientes a promover un actuar íntegro de
+los alumnos, así como a la prevención de actos de discriminación arbitraria y la
+adopción de una perspectiva de género en el desempeño de sus funciones.
+     10. Seguridad electrónica. Esta asignatura tendrá por objeto proporcionar
+conocimientos conceptuales, prácticos y normas operativas relacionadas con los
+diferentes sistemas electrónicos utilizados en el ámbito de la seguridad privada,
+tales como cámaras de televigilancia, alarmas, entre otros.
+     11. Sistema de telecomunicaciones. Esta asignatura tendrá por objeto
+desarrollar en los alumnos conocimientos relacionados con la aplicación, en el
+ámbito de la seguridad privada, de equipos de comunicación y sus características
+técnicas.
+     12. Técnicas de reducción. Esta asignatura tendrá por objeto que el alumno
+desarrolle técnicas de reducción adecuadas y proporcionadas al peligro actual o
+inminente al que se enfrentan en casos de legítima defensa propia o de terceros.
+     13. Conocimiento de arma y tiro, de conformidad al reglamento complementario de
+la ley N° 17.798, sobre Control de Armas y Elementos Similares, aprobado por decreto
+supremo N° 83, de 2007, del Ministerio de Defensa Nacional. Esta asignatura
+orientará al alumno en los conocimientos suficientes para el uso, porte y custodia
+de armas de fuego.
+
+     Artículo 28.- Porte de armas de fuego por parte de los vigilantes privados. Los
+vigilantes privados deberán portar armas de fuego exclusivamente en el ejercicio de
+sus funciones, mientras dure la jornada de trabajo y solo dentro del recinto o área
+para el cual fueron autorizados. 
+     Excepcionalmente, el Ministerio encargado de la Seguridad Pública, a través de
+la Subsecretaría de Prevención del Delito y previo informe de la autoridad
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 16 de 62
+
+fiscalizadora, podrá eximir del porte de armas de fuego en casos debidamente
+calificados. Para ello, deberá considerar, especialmente, el nivel de riesgo de la
+entidad para la cual se desempeña. 
+     La entrega de armas y de municiones a los vigilantes privados y su restitución
+deberá ser registrada, de acuerdo con lo establecido en el presente reglamento y las
+instrucciones que Carabineros de Chile imparta a este respecto. 
+
+     Artículo 29.- Entrega de armas y forma de registro. La entrega de armas y de
+municiones a los vigilantes privados y su restitución deberá ser consignada en un
+registro diario de armas, que deberá cumplir con lo dispuesto en el artículo 104
+del reglamento complementario de la ley N° 17.798, sobre Control de Armas y
+Elementos Similares, aprobado por decreto supremo N° 83, de 2007, del Ministerio de
+Defensa Nacional. 
+     Asimismo, en este registro deberá consignarse el uso del arma de fuego, con
+indicación de la munición utilizada y si resultaron lesiones o muerte de alguna
+persona o daños de cualquier naturaleza, así como el robo o extravío del arma o
+sus municiones. Estas circunstancias deberán ser informadas a la autoridad
+fiscalizadora respectiva, al encargado de armas, al jefe de seguridad o representante
+legal de la entidad o jefe de la oficina o agencia respectiva, sin perjuicio del
+deber de denuncia del artículo 4 numeral 4 de la ley N° 21.659.
+     Cuando la autoridad fiscalizadora verifique el cumplimiento del estudio de
+seguridad, deberá dejar constancia en el registro de las observaciones que hallare
+referidas al armamento. En caso de no encontrar observaciones, deberá señalar esta
+circunstancia.
+
+     Artículo 30.- El encargado de armas. Son encargados de armas aquellos que
+tienen como función mantener a resguardo en un lugar cerrado las armas de fuego que
+posea la entidad obligada. Asimismo, será el encargado de la entrega y recepción de
+estas armas cada vez que los vigilantes privados inicien y terminen la jornada de
+trabajo.
+     El encargado de armas y el encargado de seguridad podrán ser una misma persona.
+El encargado de armas deberá cumplir los mismos requisitos establecidos para los
+vigilantes privados.
+
+     Artículo 31.- Elementos defensivos y de protección. Sin perjuicio del porte de
+armas de fuego, los empleadores deberán proporcionar a los vigilantes privados los
+elementos defensivos y de protección que permitan resguardar su vida e integridad
+física en el ejercicio de sus funciones. 
+     Los elementos deberán constar en el estudio de seguridad autorizado por la
+Subsecretaría de Prevención del Delito. 
+     Los elementos mínimos, por cada vigilante, consistirán en un chaleco
+antibalas, un bastón retráctil y esposas. Sin perjuicio de lo anterior, de oficio o
+a petición del vigilante o de su empleador, la Subsecretaría de Prevención del
+Delito podrá requerir la utilización de uno o más elementos adicionales, mediante
+resolución fundada, previo informe de la autoridad fiscalizadora. 
+     Al término de la jornada de trabajo, el vigilante deberá restituir los
+elementos defensivos a la persona designada por el empleador para su custodia. Para
+estos efectos, el sujeto obligado deberá disponer de un lugar cerrado que ofrezca
+garantías suficientes de seguridad y que se encuentre dentro del mismo recinto
+informado en el estudio de seguridad y sus respectivos planes, en su caso.
+     Los empleadores deberán incorporar, en los respectivos contratos de trabajo de
+los vigilantes privados, estipulaciones tendientes a asegurar la entrega y
+restitución de los elementos defensivos y de protección, de conformidad a lo
+dispuesto en los incisos precedentes, teniendo para ello en consideración las
+directivas que, en esta materia, ha impartido la Dirección del Trabajo y los
+derechos laborales establecidos en los distintos cuerpos normativos que la regulan.
+     El empleador no podrá exigir al vigilante que proporcione estos elementos ni
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 17 de 62
+
+tampoco deducir, retener o compensar, por este concepto, suma alguna de la
+remuneración del trabajador, siendo de su exclusivo cargo y costo.
+     Para el correcto uso de los elementos defensivos y de protección mínimos, la
+Subsecretaría de Prevención del Delito, mediante resolución, podrá contemplar el
+cumplimiento de normas técnicas, para lo cual podrá requerir la información que
+considere necesaria a las instituciones correspondientes. 
+     Sin perjuicio de lo anterior, en relación con el chaleco antibalas, deberá
+cumplirse lo siguiente:
+      
+     1. Entidad certificadora: los chalecos antibalas que utilicen los vigilantes
+privados deberán estar certificados de acuerdo con la normativa técnica de ensayo
+balístico NIJ 0101.04., por el Laboratorio de Resistencia Balística, del Instituto
+de Investigaciones y Control del Ejército de Chile (IDIC). Esta entidad
+certificadora, además, llevará un registro de los elementos a ensayar y cantidad,
+tipo y resultado de los ensayos realizados. Este registro deberá ser comunicado cada
+noventa días corridos a la Subsecretaría de Prevención del Delito, quien lo
+pondrá en conocimiento de las autoridades fiscalizadoras.
+     2. Seguro de vida por 30 UF o su equivalente en dólares americanos: el
+fabricante deberá contar con un seguro de vida en caso de que un chaleco antibalas
+no cumpla su función. Los proveedores deberán acreditar y declarar la póliza al
+comprador, además de adjuntar este documento a la entidad certificadora señalada en
+el numeral anterior.
+     3. Al momento de presentar el producto para su certificación, el proveedor o
+fabricante deberá declarar el lote y la cantidad de unidades que lo componen
+(número de serie), así como su material, cantidad y área de protección, lo que
+permitirá mantener una trazabilidad del producto.
+
+     Artículo 32.- Autorización de uso de armas no letales. Solo podrán portar y
+utilizar armamentos no letales, en los términos dispuestos en el artículo 27 de la
+ley N° 21.659, los vigilantes expresamente autorizados por la Subsecretaría de
+Prevención del Delito. Para obtener la autorización, la entidad obligada deberá
+incorporarlo como medida de seguridad en el respectivo estudio, su modificación o
+renovación, según corresponda. En estos casos, deberá acompañar, adicionalmente,
+lo siguiente:
+     
+     1. Identificación del tipo de arma no letal cuyo uso por parte de los
+vigilantes privados solicita.
+     2. Motivos que justifiquen su solicitud, acompañando todos los documentos o
+antecedentes que permitan acreditar la necesidad de contar con armamentos no letales.
+
+     3. Identificación de los vigilantes privados para los cuales solicita el uso de
+este tipo de armamento y comunicar a la Subsecretaría de Prevención del Delito
+cualquier cambio en los vigilantes a quienes se les asignen estos elementos.
+     
+     La presente solicitud solo puede decir relación con armas permitidas en virtud
+de la ley N° 17.798, cuyo texto refundido, coordinado y sistematizado se fijó por
+el decreto N° 400, de 1977, del Ministerio de Defensa Nacional, y su reglamento,
+aprobado por decreto supremo N° 83, de 2007, del Ministerio de Defensa Nacional,
+debiendo cumplir con las características técnicas y los requisitos exigidos en
+estas normas. La tramitación de dicha solicitud se someterá al mismo procedimiento
+que rige para la aprobación del respectivo estudio de seguridad. 
+     Lo dispuesto en este artículo será sin perjuicio de las autorizaciones y
+demás requisitos que se dispongan en virtud de las normas citadas en el inciso
+anterior.
+
+     Artículo 33.- Uniforme de los vigilantes. El uniforme de los vigilantes
+privados será de tipo slack, debiendo cumplir con los siguientes detalles: 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 18 de 62
+
+     1. Gorra color gris perla azulado, modelo militar, visera negra y barboquejo del
+mismo color. En casos debidamente calificados por la Subsecretaría de Prevención
+del Delito, se podrá utilizar casco de seguridad azul o quepís gris perla azulado. 
+     2. Parte superior del uniforme consistente en una camisa de color gris perla
+azulado, con cuello, palas en los hombros y dos bolsillos. Será confeccionado con
+tela gruesa o delgada, de manga corta o larga abotonada, según la época del año. 
+     3. Corbata negra, cuyo uso será obligatorio al vestir camisa de manga larga. 
+     4. Parte inferior del uniforme consistente en un pantalón, del mismo color y
+tela que la camisa. 
+     5. Calzado y calcetines negros.
+     6. Cinturón negro con cartuchera del mismo color para revólver o pistola,
+según sea el caso. 
+     7. Bastón retráctil con porta bastón. 
+     8. Chaquetón impermeable gris perla azulado, con cierre de cremallera (eclair)
+o abotonado, para uso en la época del año que corresponda. En casos debidamente
+calificados por la Subsecretaría de Prevención del Delito, podrá sustituirse o
+complementarse esta última prenda con chaqueta corta, parka impermeable o manta, del
+mismo color.
+     
+     Las empresas de transporte de valores utilizarán el uniforme descrito
+anteriormente, siendo obligatorio el uso del distintivo de la empresa en la gorra y
+en la manga derecha de la camisa o chaquetón, según el caso.
+     El uso del uniforme será obligatorio para los vigilantes privados mientras se
+encuentran desempeñando sus funciones y quedará estrictamente prohibido usarlo
+fuera del recinto o área en el cual presten sus servicios, incluso en los trayectos
+de ida y regreso de su domicilio al lugar de trabajo.
+     Excepcionalmente, en casos calificados de acuerdo con la naturaleza de las
+funciones que desempeñe, la Subsecretaría de Prevención del Delito, previo informe
+de la autoridad fiscalizadora, podrá eximir a determinados vigilantes privados de la
+obligación de usar uniforme o autorizar el uso de un uniforme alternativo. El
+uniforme a que se refiere este artículo es de uso exclusivo de los vigilantes
+privados, el cual deberá ser proporcionado gratuitamente por el empleador o entidad
+en la que prestan sus servicios, en cantidad y calidad suficientes, de acuerdo con lo
+que se establezca en el estudio de seguridad. 
+     La Subsecretaría de Prevención del Delito podrá dictar instrucciones
+generales, de conformidad a lo dispuesto en el artículo 83 N° 1 de la ley N°
+21.659, que establezcan reglas especiales referidas al uniforme, exclusivamente en
+atención a circunstancias de seguridad, climáticas u otras relativas a la
+naturaleza de la entidad en la que se desempeñan los vigilantes privados, sin
+perjuicio de las obligaciones laborales que sean aplicables al empleador. Asimismo,
+podrá autorizar, mediante resolución fundada, modificaciones en el uso de
+uniformes, en atención a estas mismas circunstancias.
+
+     Artículo 34.- Autorización y licencia de los vigilantes privados. Para
+desempeñarse como vigilante privado se deberá contar con una autorización, emitida
+por la Subsecretaría de Prevención del Delito, de conformidad a lo dispuesto en los
+artículos 26 y 85 del presente reglamento. En virtud de esta autorización, se
+entregará una licencia, personal e intransferible que constará en una credencial
+emitida por la Subsecretaría de Prevención del Delito.
+
+     Artículo 35.- Características de la credencial de los vigilantes privados. La
+credencial de los vigilantes privados consistirá en una tarjeta de plástico de 5.5
+centímetros de ancho por 8.5 centímetros de largo. En su anverso, en la parte
+superior izquierda llevará el membrete de la Subsecretaría de Prevención del
+Delito y, a continuación, el número clasificado que la autoridad le asigne; al
+costado derecho con letra destacada la leyenda "Credencial de Vigilante Privado"; al
+lado izquierdo desde el medio hacia abajo y en orden descendente, el nombre del
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 19 de 62
+
+vigilante privado, su cédula de identidad y la fecha de vencimiento de la
+credencial; en el lado inferior derecho llevará una fotografía en colores con fondo
+rojo de 3.5 centímetros de alto por 2.8 centímetros de ancho sin ninguna
+anotación. Entre la individualización y la fotografía se estampará el timbre de
+la Subsecretaría de Prevención del Delito. 
+     En el reverso, en letras mayúsculas y destacadas contendrá la siguiente
+leyenda "esta credencial identifica al vigilante privado habilitado para ejercer sus
+funciones solo dentro del recinto o área determinada en que la entidad tiene
+autorización. prohibido cualquier otro uso. en caso de extravío devuélvase a la
+autoridad fiscalizadora correspondiente". 
+     La credencial de los vigilantes privados será de color amarillo, con excepción
+de la que porten aquellos que desarrollen la función de transporte de valores, la
+que será de color azul, así como la de quienes trabajen en empresas que, por las
+especiales características del servicio que prestan, deban proteger instalaciones
+ubicadas fuera de sus recintos, la que será de color verde. 
+     En este último caso, la entidad obligada podrá tener otros recintos de
+vigilancia aledaños a esta y donde el vigilante privado debe trasladarse por la vía
+pública hasta este último lugar, estando obligado a realizar solo el trayecto de
+ida y regreso, sin que medie ningún desvío durante el recorrido. 
+     El vigilante privado deberá portar obligatoriamente dicha credencial mientras
+esté desempeñando sus funciones, quedando prohibido otro uso.
+     Todos los gastos que se originen en el otorgamiento de la credencial serán de
+cargo del solicitante. La Subsecretaría de Prevención del Delito, mediante
+resolución, establecerá los costos de la emisión de estas credenciales, las que
+regirán desde la publicación del acto administrativo en el Diario Oficial. 
+     En caso de pérdida o extravío de la credencial, el vigilante deberá dar aviso
+para su bloqueo en el sistema, dentro de un plazo máximo de veinticuatro horas a la
+Subsecretaría de Prevención del Delito, quien deberá otorgarle una nueva, sin
+perjuicio de las infracciones que procedan cuando dicha situación sea imputable al
+vigilante o a la entidad para la que se desempeña. 
+     La omisión de dar aviso de la pérdida o extravío de la credencial en la forma
+establecida en el inciso precedente, constituirá infracción leve, de conformidad
+con lo dispuesto en el artículo 88, en relación al numeral 3 del artículo 98,
+ambos de la ley N° 21.659. 
+
+     Artículo 36.- Los sistemas de registro audiovisual de vigilantes privados. Para
+efectos del presente reglamento, se entenderá por sistemas de registro audiovisual
+el conjunto de dispositivos tecnológicos de grabación, procesamiento y/o
+almacenamiento de imágenes y sonidos, incluyendo su transmisión en tiempo real,
+así como la reconstrucción de una secuencia de imágenes que representen escenas en
+movimiento, utilizados por los vigilantes privados en el ejercicio de sus funciones. 
+     Las características, requisitos y especificaciones de dichos sistemas se
+establecerán siempre con el objetivo de que la calidad del audio y video que se
+obtenga de su utilización permita la adecuada identificación de las situaciones que
+se registraron, tales como su contexto, el o los hechos que las originaron y las
+personas involucradas en las mismas. Sin perjuicio de lo señalado por el presente
+reglamento en los artículos siguientes, la Subsecretaría de Prevención del Delito
+podrá, mediante resolución fundada, complementar las características, requisitos y
+especificaciones de los sistemas de registro audiovisual para cumplir con los
+objetivos dispuestos por la ley y el presente reglamento.
+     Los metadatos asociados a los registros audiovisuales se entenderán parte
+integral del sistema en que se encuentren. 
+
+     Artículo 37.- Requisitos mínimos de hardware. Los sistemas de registro
+audiovisual de los vigilantes privados se conformarán, preferentemente, de
+dispositivos especialmente diseñados para el desempeño de sus labores o, en su
+defecto, de aquellos que permitan un adecuado uso de conformidad a la finalidad de
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 20 de 62
+
+sus funciones y de las condiciones del entorno en el que desarrollan sus actividades.
+     Los dispositivos deberán permitir su debido uso en condiciones adversas, tales
+como movimientos violentos, golpes, caídas o ruido ambiente elevado.
+     La capacidad de almacenamiento y autonomía de la batería de los sistemas no
+podrá ser inferior a la duración de la jornada laboral respectiva; de tal manera
+que permita su utilización continua, sin necesidad de utilizar elementos externos a
+los propios dispositivos. La grabación del dispositivo debe ser encriptada,
+permitiendo su descarga y almacenamiento de modo automático.
+     Además, los dispositivos contarán con sistemas que incorporen, al menos,
+capacidad de recuperación del registro audiovisual e inviolabilidad de la batería,
+la memoria y los metadatos de los registros que capturen.
+
+     Artículo 38.- Requisitos mínimos de software. Los sistemas de registro
+audiovisual de los vigilantes privados contarán con tecnología que permita el
+debido registro de grabaciones en alta definición.
+     Asimismo, el software deberá contar con la capacidad de proporcionar un
+registro de auditoría completo, que incluya los registros originales y todas las
+acciones realizadas con ellos. De igual manera, el software deberá registrar todas
+las imágenes y garantizar la seguridad de los registros originales, evitando su
+edición o manipulación indebida. 
+     Los datos producidos en virtud de la utilización de los sistemas, así como las
+tecnologías utilizadas para su almacenamiento, carga o descarga, serán encriptadas
+de extremo a extremo.
+
+     Artículo 39.- Forma de uso del sistema de registro audiovisual. Los sistemas de
+registro audiovisual deberán usarse adosados a la vestimenta o equipos de seguridad
+del vigilante privado, para que las imágenes se puedan grabar en primera persona.
+Para ello, los dispositivos contarán con mecanismos que posibiliten su instalación
+en cualquier tipo de vestimenta o equipamiento de modo que permitan una grabación
+adecuada de las situaciones que registren. 
+     Cada sistema de registro audiovisual deberá estar en permanente funcionamiento
+y contar con un mecanismo de activación para grabar, de conformidad a lo establecido
+en el artículo siguiente. 
+     En caso de provocarse alguna falla, el vigilante, sin descuidar la prestación
+del servicio, deberá efectuar una revisión minuciosa de la cámara, equipos y
+accesorios que se encuentren a cargo, informando cualquier anomalía al encargado de
+seguridad. 
+     Al finalizar el turno de trabajo, el vigilante privado deberá entregar el
+sistema de registro audiovisual al encargado de seguridad o a la persona que este
+designe, con el objeto de realizar la descarga de la información y almacenarla en la
+forma señalada en los artículos siguientes. 
+
+     Artículo 40.- Criterios de uso del sistema de registro audiovisual y de la
+información registrada. Para su debido registro, y sin perjuicio de mantener el
+sistema de registro audiovisual en permanente funcionamiento, los vigilantes privados
+deberán activar la grabación, especialmente, en los siguientes casos: 
+     
+     1. Cuando presenciaren un hecho que revista carácter de delito.
+     2. Cuando ejerzan la facultad de detención en flagrancia, de conformidad a lo
+dispuesto en el inciso primero del artículo 129 del Código Procesal Penal. 
+     3. Cuando deban hacer uso de elementos defensivos y de protección o de armas de
+fuego, a partir del momento que las circunstancias lo permitan.
+     4. Cuando se encuentren autorizados, de conformidad a la ley, a controlar el
+acceso de personas a las dependencias de la entidad en la cual desempeñan labores.
+     5. Cuando la naturaleza de sus funciones implique el desplazamiento de un sitio
+a otro.
+     6. Cuando se encuentren en cualquier otra circunstancia que implique riesgo para
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 21 de 62
+
+su integridad física o la de un tercero.
+     
+     La información registrada se atendrá a los siguientes criterios: 
+     
+     1. Su conservación formará parte del inventario de cada entidad y se deberá
+mantener en una dependencia específica destinada a dicho propósito. Esta
+conservación estará a cargo de un empleado de la entidad obligada o subcontratada
+con experiencia en la manipulación y extracción de la información que recopilen
+las cámaras.
+     2. En caso de daño, defecto o deterioro, se deberá procurar su reparación o
+reemplazo.
+     3. La supervisión del uso, porte y manipulación de estas cámaras recaerá en
+el jefe de seguridad de la entidad y los encargados de seguridad de cada sucursal,
+quienes deberán instruir al vigilante privado con respecto a su utilización. Lo
+anterior, sin perjuicio de la responsabilidad del vigilante y de la entidad.
+     
+     Los vigilantes privados y toda persona que acceda a los registros estarán
+obligados a guardar secreto respecto de la información obtenida en dichos
+procedimientos, la que deberá ser mantenida y tratada como información reservada.
+Asimismo, deberán tomar los resguardos necesarios para proteger la identidad y
+privacidad de quienes aparezcan en los registros. Tanto el secreto como los
+resguardos para proteger la identidad y privacidad de las personas serán mantenidos
+sin perjuicio de su incorporación íntegra a investigaciones penales, a
+requerimiento del Ministerio Público, o a procedimientos judiciales o
+administrativos. Todo lo anterior, conforme a lo establecido en la Ley N° 19.628,
+sobre Protección a la Vida Privada. 
+
+     Artículo 41.- Almacenamiento de la información. Los registros audiovisuales en
+los dispositivos especialmente destinados para tales efectos contarán con las
+características y especificaciones técnicas necesarias para asegurar su debida
+identificación y fidelidad, así como la integridad de archivos y metadatos y la
+trazabilidad de sus cambios y producciones.
+     Las capacidades de los sistemas de registro deberán permitir que las
+grabaciones almacenadas puedan mantenerse por un período de, al menos, ciento veinte
+días corridos, salvo que la grabación sea susceptible de formar parte de una causa
+o investigación judicial o proceso administrativo, en cuyo caso se deberá almacenar
+hasta finalizar la tramitación legal correspondiente. 
+     Con todo, los registros que se obtengan, que no fueren requeridos por el
+Ministerio Público, un tribunal de la República o un funcionario a cargo de un
+procedimiento administrativo, deberán ser destruidos luego de transcurridos dos
+años desde su captura. En virtud de lo anterior, aquellos registros que fueren
+destruidos deberán constar en un acta en la que se indique, a lo menos, el nombre de
+la persona a cargo de la gestión referida junto con su firma y la causal para su
+procedencia. 
+
+     Artículo 42.- Seguro de vida. Las entidades empleadoras deberán contratar un
+seguro de vida a favor de cada vigilante privado, cuyo monto no podrá ser inferior a
+doscientas cincuenta unidades de fomento. 
+     Este seguro de vida cubrirá los riesgos a los que se encuentre expuesto el
+vigilante privado, siempre que se cumplan las siguientes condiciones:
+     
+     1. Que el siniestro ocurra con motivo u ocasión del desempeño de sus labores.
+     2. Que el asegurado cumpla los requisitos generales y específicos consagrados
+en la ley N° 21.659 y en el presente reglamento al momento en que ocurra el
+siniestro. 
+     3. Que la relación laboral entre el trabajador y la respectiva entidad
+empleadora se encuentre vigente al momento en que ocurra el siniestro.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 22 de 62
+
+     Artículo 43.- Reemplazo de vigilante privado. El reemplazo de vigilantes
+privados se regirá por las reglas siguientes:
+     
+     1. En el evento de que se requiera suplir ausencias temporales producto de
+situaciones no previstas, tales como licencia médica, o ausencia laboral sin
+autorización previa, la entidad obligada procurará que el resguardo del recinto o
+área determinada se verifique siempre mediante el servicio de vigilantes privados
+armados. 
+     En razón de lo anterior, si el estudio de seguridad autoriza una dotación
+correspondiente a un solo vigilante privado por turno, se deberá disponer el
+reemplazo de este por otro vigilante privado que trabaje en alguna de las sucursales
+de la entidad, en la que se desempeñe más de un vigilante privado por turno, el
+cual, a su vez, podrá ser reemplazado en su sucursal de origen por un guardia de
+seguridad contratado directamente o a través de una empresa de seguridad privada,
+durante un plazo máximo de treinta días corridos contado desde que empiece a
+prestar servicios. 
+     Asimismo, en caso de que la entidad afectada por la ausencia temporal imprevista
+no posea otra sucursal, deberá contratar en forma directa o a través de empresas de
+seguridad privada, un vigilante privado por el tiempo que dure la ausencia del
+titular. 
+     Por su parte, si en la sucursal donde presta servicios el vigilante privado
+afectado temporalmente en sus labores, se desempeña más de un vigilante privado por
+turno, se le podrá reemplazar por un guardia de seguridad, contratado de forma
+directa o a través de empresas de seguridad privada, durante un plazo máximo de
+treinta días corridos, contado desde que empiece a prestar servicios.
+     Con todo, cuando los vigilantes de la entidad obligada se encuentren eximidos de
+portar armas de fuego en el recinto o área afectada por la ausencia temporal del
+vigilante, de conformidad a lo establecido en el inciso segundo del artículo 26 de
+la ley N° 21.659, se podrá reemplazar al vigilante privado por un guardia de
+seguridad contratado de forma directa o a través de empresas de seguridad privada,
+durante un plazo máximo de treinta días corridos contado desde que empiece a
+prestar servicios.
+     La entidad obligada deberá comunicar el reemplazo del vigilante privado a la
+Subsecretaría de Prevención del Delito y a la autoridad fiscalizadora respectiva,
+dentro de las veinticuatro horas siguientes contadas desde que la persona
+reemplazante comience a prestar servicios, de conformidad a lo dispuesto en el
+presente numeral, lo que será registrado en la plataforma informática establecida
+en el artículo 115, dejando constancia de la entidad obligada, el personal
+reemplazado y su respectivo reemplazo, la sucursal, la fecha, el motivo y la
+duración del reemplazo. 
+     2. En lo que respecta a las ausencias temporales previstas, como, por ejemplo,
+uso de feriado legal, el vigilante privado deberá ser siempre reemplazado por otro
+vigilante privado, el que podrá ser contratado directamente por la entidad obligada
+o por intermedio de una empresa externa debidamente acreditada. Asimismo, el
+reemplazante podrá corresponder a un vigilante que trabaje en otra sucursal de la
+entidad obligada.
+     Para que opere el reemplazo señalado en el presente numeral, las entidades
+obligadas a tener un sistema de vigilancia privada deberán comunicar a la
+Subsecretaría de Prevención del Delito, una vez al año, una calendarización del
+uso del feriado legal por sus vigilantes privados, así como cualquier modificación
+de la misma, lo que quedará registrado en la plataforma establecida en el artículo
+115 del presente reglamento. 
+
+     Párrafo VI
+     Obligaciones especiales de instituciones bancarias y financieras de cualquier
+naturaleza y empresas de apoyo al giro bancario que reciban o mantengan dineros en
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 23 de 62
+
+sus operaciones
+
+     Artículo 44.- Medidas especiales. Sin perjuicio de contar con un sistema de
+vigilancia privada, así como de implementar las demás medidas que establezca el
+respectivo estudio de seguridad, las instituciones bancarias y financieras de
+cualquier naturaleza y las empresas de apoyo al giro bancario que reciban o mantengan
+dineros en sus operaciones, deberán contar con una o más medidas especiales
+determinadas por la Subsecretaría de Prevención del Delito, previo informe de la
+autoridad fiscalizadora, acorde con la disposición y el diseño de cada sucursal.
+Estas medidas especiales serán las siguientes:
+     
+     1. Sistema de registro de personas. Mecanismo que permita registrar a las
+personas que ingresen a una sucursal o local determinado. Para estos efectos se
+podrán requerir antecedentes que permitan identificar a las personas y/o utilizar
+mecanismos tecnológicos con este fin. Esta información deberá estar disponible
+por, al menos, ciento veinte días corridos.
+     2. Modificación de estructura de asientos de espera. La ubicación de los
+asientos de las zonas de espera de atención de clientes deberá disponerse de modo
+tal que las personas que se sientan den la espalda al sector de las cajas. Se
+exceptúan los asientos destinados a adultos mayores, embarazadas y personas con
+discapacidad. Asimismo, frente a los asientos se deberá instalar una cámara que
+capte la imagen de los usuarios sentados a la espera de atención y un monitor de
+televisión donde dicha imagen se refleje y los usuarios puedan verse a sí mismos en
+todo momento. 
+     3. Barreras visuales. Se deberá contar con barreras visuales para la
+protección de la privacidad en las transacciones en la caja o línea de cajas, de
+forma que las personas que están a la espera de ser atendido no puedan observar las
+actividades que se desarrollan en esos lugares. Estas barreras no deberán impedir la
+normal toma de imágenes de los movimientos mediante el circuito cerrado de
+televisión.
+     4. Silenciamiento de máquinas contadoras de billetes. Todas las máquinas
+contadoras de billetes que se ubiquen en cajas de atención de público deberán
+operar en forma silenciosa. 
+
+     Artículo 45.- Derecho de admisión. Las entidades podrán ejercer el derecho de
+admisión, respecto de quienes infrinjan las condiciones de ingreso y permanencia, o
+cuando existan motivos que justifiquen razonablemente la utilización de dicha
+facultad.
+     Para los efectos del presente reglamento, se entenderá que existen motivos
+razonables para que las entidades obligadas de este párrafo ejerzan el derecho de
+admisión, cuando la conducta de quienes ingresen o se encuentren en el lugar, ponga
+en riesgo o amenace la seguridad de las personas o bienes del establecimiento. 
+     Constituyen especialmente condiciones de ingreso y permanencia las siguientes
+conductas:
+     
+     1. Respetar los horarios de apertura y cierre al público.
+     2. No utilizar atuendos que oculten, dificulten o disimulen su identidad, salvo
+que se utilicen con motivos religiosos, culturales o de salud.
+     3. Someterse a todas las medidas de seguridad implementadas por las entidades,
+de conformidad a lo establecido en el presente párrafo y en el estudio de seguridad.
+     
+     Las sucursales bancarias deberán instalar señalética y publicar en su sitio
+web la información de las condiciones para el ingreso y permanencia.
+     Sin perjuicio de lo anterior, las entidades deberán resguardar lo establecido
+en la ley N° 20.609, que establece medidas contra la discriminación. 
+
+     Párrafo VII
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 24 de 62
+
+     Recursos tecnológicos y materiales de las entidades obligadas
+
+     Artículo 46.- Los recursos tecnológicos y materiales. Los recursos
+tecnológicos y materiales de las instituciones bancarias y financieras de cualquier
+naturaleza y empresas de apoyo al giro bancario deberán cumplir con los siguientes
+requisitos, características, condiciones y forma de implementación:
+     
+     1. De las alarmas de asalto. Estas deberán ser independientes de las alarmas de
+incendio, robo u otras que estén instaladas en la oficina, agencia, sucursal o lugar
+en que estas se emplacen. 
+     Las alarmas de asalto estarán conectadas directamente a la central de
+comunicaciones de Carabineros de Chile. Asimismo, deberán permitir su activación
+desde distintos puntos dentro de la oficina, agencia o sucursal, sin perjuicio que
+dicha activación pueda realizarse, además, a distancia desde las respectivas
+unidades de vigilancia electrónica. Los costos de instalación, mantención y
+desarrollo del sistema de conexión serán de cargo exclusivo de la entidad.
+     En este caso, Carabineros de Chile podrá cobrar a las entidades los siguientes
+valores por la conexión de sus sistemas de alarmas a sus centrales de
+comunicaciones:
+     
+     a) Conexión inicial y reconexión: 2,0 UTM;
+     b) Renta mensual: 0,5 UTM;
+     c) Falsas alarmas: 1,5 UTM cada una.
+     
+     Se entenderá, para los efectos de este numeral, que constituye falsa alarma su
+activación por un hecho que no constituye una emergencia, en cuyo caso será
+responsable la entidad siempre que de ello se derive un procedimiento policial
+inoficioso. Los cobros se formularán semestralmente y se calcularán al valor de la
+UTM correspondiente al mes de enero y julio respectivamente. 
+     Los valores recaudados serán ingresados en la Cuenta Subsidiaria de la Única
+Fiscal - Carabineros de Chile, Seguridad Privada del Banco del Estado de Chile. 
+     Cuando una oficina, agencia o sucursal origine por circunstancias o hechos suyos
+o de sus dependientes más de cuatro falsas alarmas dentro de un mismo mes, deberá
+ser notificada por la autoridad fiscalizadora para que proceda, en el plazo de un
+mes, a subsanar las deficiencias o anomalías, sean humanas o técnicas, que hayan
+dado origen a dichas falsas alarmas. Este plazo será prorrogable por una vez, cuando
+existan circunstancias que lo justifiquen. La autoridad fiscalizadora deberá
+informar, mensualmente, de las circunstancias señaladas en el presente inciso a la
+Subsecretaría de Prevención del Delito. 
+     La entidad que no subsane las deficiencias en el plazo señalado en el inciso
+anterior o reincida en más de cuatro falsas alarmas en un mes, incurrirá en
+infracción leve de conformidad con lo dispuesto en el artículo 88 en relación al
+artículo 98, numeral 3, ambos de la ley N° 21.659. 
+     
+     2. De las bóvedas. Todas las oficinas, agencias o sucursales deberán equipar
+sus bóvedas con mecanismos de relojería para su apertura y cierre. Las alarmas
+conectadas a las bóvedas deberán ser distintas e independientes de aquellas que se
+activen en caso de asalto.
+     3. De las cajas. Las cajas receptoras y pagadoras de dinero y valores ubicadas
+en oficinas, agencias o sucursales en las que se atienda al público, deberán
+instalarse todas juntas, dentro de un mismo recinto, en un lugar que pueda ser
+observado desde el acceso al piso correspondiente y lo más distante posible de él.
+Deberán estar compartimentadas y aisladas del resto de los recintos por una puerta
+con cerradura de seguridad.
+     En aquellas oficinas, agencias o sucursales que cuenten con un gran número de
+cajas receptoras y pagadoras de dineros, que haga imposible el reunirlas todas en una
+misma dependencia, se deberán adoptar las medidas necesarias para agruparlas en
+distintos recintos que reúnan las condiciones señaladas en el inciso anterior. 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 25 de 62
+
+     El recinto donde se encuentran los mesones de los cajeros deberá estar
+igualmente compartimentados con cerraduras de apertura interna e independiente del
+resto de la oficina. 
+     Las oficinas, agencias o sucursales deberán contar con cajas blindadas. Se
+exceptúan las oficinas, agencias o sucursales que cuenten en todos y cada uno de sus
+accesos exteriores con una o más puertas blindadas de funcionamiento electrónico y
+detectores de metales de modo que impidan el ingreso de armas. Estas puertas deben
+contar, además, con dos o más hojas sucesivas de apertura independiente y
+alternativa o bien ser giratorias. En ambos casos, el espacio interior entre hoja y
+hoja debe impedir la permanencia de dos o más personas en el cubículo al mismo
+tiempo, permitiendo el ingreso y salida de personas de una en una.
+     En situaciones de emergencia, las puertas deben disponer de una fuente de
+alimentación de energía independiente y deben poder accionarse mecánicamente de
+modo de garantizar la posibilidad de evacuación del recinto en caso de sismo o
+incendio.
+     4. De los sistemas de filmación. Los sistemas de filmación deberán generar
+registros de alta resolución que permitan la grabación de imágenes nítidas con
+indicación de la hora, día, mes y año de la captura. Dichos sistemas deberán
+permanecer en funcionamiento continuo. 
+     Las cámaras y demás equipos de filmación deben ubicarse de modo que queden
+ocultas o debidamente resguardadas de posible intrusión. Además, deberán permitir
+la grabación de imágenes de las personas que ingresen y salgan de la oficina,
+agencia o sucursal, y de todas aquellas que se dirijan hasta las cajas. 
+     Los archivos serán almacenados por fecha y deberán permanecer inalterables por
+un período de, al menos, ciento veinte días corridos, salvo que la grabación sea
+susceptible de formar parte de una causa o investigación judicial o proceso
+administrativo, en cuyo caso se deberá almacenar hasta finalizar la tramitación
+legal correspondiente.
+     Con todo, los registros que se obtengan, que no fueren requeridos por el
+Ministerio Público, un tribunal de la República o un funcionario a cargo de un
+procedimiento administrativo, deberán ser destruidos luego de transcurridos dos
+años desde su captura. 
+     En virtud de lo anterior, aquellos registros que fueren destruidos deberán
+constar en un acta en la que se indique, a lo menos, el nombre de la persona a cargo
+de la gestión referida junto con su firma y la causal para su procedencia. 
+     El sistema de grabación de imágenes estará conectado en línea a una central
+de monitoreo de la misma entidad obligada o de una empresa externa que se contrate,
+previa autorización de la Subsecretaría de Prevención del Delito. 
+     Estas entidades deberán disponer de un canal oportuno y tecnológico que
+permita disponer de las imágenes en caso de ser requerido por Carabineros de Chile,
+Policía de Investigaciones de Chile y Ministerio Público, garantizando el resguardo
+de su contenido. 
+     5. De los sistemas de comunicaciones de seguridad. Los sistemas de
+comunicaciones entre estas entidades y las empresas de transporte de valores desde o
+hacia sus clientes registrarán toda comunicación que se realice entre un banco o
+una financiera y una empresa de transporte de valores en lo que respecta al envío,
+retiro o manipulación de dineros o especies valoradas. 
+     La comunicación indicada deberá hacerse a través de mensajería electrónica
+encriptada que cumpla con los estándares de seguridad y confiabilidad que la banca
+dispone en su sistema de comunicaciones bancarias. Cuando existan situaciones de
+excepción o contingencia, dicha comunicación podrá hacerse en forma escrita,
+firmada por el tesorero de la entidad financiera y entregada personalmente a la
+empresa de transporte de valores por un trabajador del banco acreditado ante esta.
+     6. Vidrios. Todos los vidrios exteriores de las oficinas, agencias o sucursales
+deberán ser inastillables o adquirir tal carácter mediante la aplicación de
+productos destinados a ese objeto. Además, deberán tener la transparencia necesaria
+para permitir la visión desde el exterior hacia el interior.
+     
+     La Subsecretaría de Prevención del Delito, previo informe de la autoridad
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 26 de 62
+
+fiscalizadora o habiendo requerido la opinión técnica de otras instituciones
+públicas o privadas vinculadas a la innovación tecnológica y la provisión de
+seguridad, podrá dictar una resolución a través de la cual disponga otras
+características tecnológicas y materiales que deban ser implementadas por las
+entidades obligadas. Asimismo, podrá disponer que las medidas señaladas en este
+artículo sean extensivas para otras entidades obligadas, en función de la
+naturaleza de sus funciones y el riesgo al que se enfrentan, las que deberán
+incorporarse a los respectivos estudios de seguridad.
+
+     TÍTULO III
+     Empresas y Personas Naturales en Seguridad Privada
+
+     Párrafo I
+     Empresas de seguridad privada
+
+     Artículo 47.- Empresas de seguridad privada. Las empresas de seguridad privada
+son aquellas que tienen por objeto suministrar bienes o prestar servicios destinados
+a la protección de personas, bienes y procesos productivos de las actividades
+descritas en el artículo 2° de este reglamento, y dotadas de los medios materiales,
+técnicos y humanos para ello, debidamente autorizadas. 
+
+     Artículo 48.- Obligaciones de las empresas de seguridad privada. Las empresas
+de seguridad privada deberán cumplir las siguientes obligaciones:
+     
+     1. Mantener bajo reserva toda información de que dispongan o que les sea
+proporcionada en razón de los servicios que prestan y velar porque su personal
+cumpla con la misma obligación. Esta se mantendrá hasta por un período de cuatro
+años contado desde que haya cesado la prestación de los servicios y su infracción
+se considerará un incumplimiento grave para los efectos de este reglamento. 
+     La infracción de este deber será sancionada de acuerdo con lo previsto en el
+artículo 35 numeral 1 de la ley N° 21.659.
+     Se exceptúa de lo dispuesto en este numeral la entrega de información que se
+lleve a cabo en cumplimiento de lo establecido en los números 3 y 4 del artículo 4
+y en el artículo 6, ambos de la ley N° 21.659. Del mismo modo, no quedarán sujetos
+a este deber de reserva aquellos requerimientos de información realizados por los
+Tribunales de Justicia o por el Ministerio Público.
+     Asimismo, podrá requerir esta información el Ministerio encargado de la
+Seguridad Pública y la autoridad fiscalizadora, cuando sea necesario para el
+adecuado cumplimiento de la ley N° 21.659.
+     2. Cumplir con las normas e instrucciones generales que imparta la
+Subsecretaría de Prevención del Delito. Ella podrá aplicar e interpretar
+administrativamente las disposiciones de la ley y sus reglamentos e impartir
+instrucciones de general aplicación, en las materias de su competencia, sin
+perjuicio de las atribuciones propias del Ministerio encargado de la Seguridad
+Pública.
+     3. Elaborar y enviar cada dos años, en la forma y oportunidad que determine el
+reglamento, un informe a la Subsecretaría de Prevención del Delito, conforme se
+dispone en el artículo 52 del presente reglamento. 
+     4. Remitir cualquier antecedente o información solicitada por la Subsecretaría
+de Prevención del Delito o la autoridad fiscalizadora respectiva, dentro del plazo
+que dichas instituciones determinen.
+     5. Las establecidas en el numeral 3 del artículo 49, sobre el deber de
+contratar los seguros que la ley y el presente reglamento establecen; los artículos
+33 y 90 que dispone el deber de estas empresas de proveerles gratuitamente el
+respectivo uniforme a los vigilantes privados y a los guardias de seguridad,
+respectivamente; y las demás que establezca el presente reglamento. 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 27 de 62
+
+     Artículo 49.- Requisitos para ser autorizadas como empresas de seguridad
+privada. Solo podrán actuar como empresas de seguridad privada las que se encuentran
+autorizadas por la Subsecretaría de Prevención del Delito y cumplan, al menos, con
+los siguientes requisitos:
+     
+     1. Estar legalmente constituidas como personas jurídicas de derecho privado y
+tener por objeto social alguna o algunas de las actividades de seguridad privada
+establecidas en el artículo 2° de este reglamento. No obstante, cuando estas
+instituciones hayan sido formalizadas como organismos técnicos de capacitación,
+quedarán exceptuadas del requisito de objeto social único de los artículos 12 y
+21, número 1, de la ley N° 19.518, que fija el Nuevo Estatuto de Capacitación y
+Empleo, y podrá ejercer ambos objetos sociales.
+     2. Contar con los medios humanos, de formación, financieros, materiales y
+técnicos en función de la naturaleza de las actividades para las que soliciten
+autorización y las características de los servicios que se prestan en relación con
+tales actividades.
+     3. Suscribir los contratos de seguro en favor del personal que corresponda, de
+acuerdo a lo establecido en la ley N° 21.659 y el presente reglamento.
+     4. Que los socios, administradores y representantes legales de este tipo de
+personas jurídicas de derecho privado no hayan sido condenados por crimen o simple
+delito.
+     5. Que los socios, administradores y representantes legales, en el caso de
+personas jurídicas, no se encuentren acusados por alguna de las conductas punibles
+establecidas en la Ley N° 17.798, sobre Control de Armas; en la Ley N° 20.000, que
+sanciona el Tráfico Ilícito de Estupefacientes y Sustancias Sicotrópicas; en la
+Ley N° 18.314, que determina Conductas Terroristas y fija su Penalidad; en la ley
+N° 19.913, que crea la Unidad de Análisis Financiero y modifica diversas
+disposiciones en materia de lavado y blanqueo de activos; en la ley N° 12.927, sobre
+Seguridad del Estado; en la Ley N° 20.066, de Violencia Intrafamiliar, en los
+artículos 141, 142, 150 A, 150 B, 361, 362, 363, 365 bis, 366, 366 bis, 372 bis,
+390, 390 bis, 390 ter, 391 y 411 quáter del Código Penal, u otras asociadas al
+crimen organizado que se encuentren tipificadas en el Párrafo 10 del Título VI del
+Libro II del mismo Código o en otras leyes.
+     6. Que los socios, administradores y representantes legales, en el caso de
+personas jurídicas, no hubiesen dejado de pertenecer a las Fuerzas Armadas, de Orden
+y Seguridad Pública o a Gendarmería de Chile, como consecuencia de la aplicación
+de una medida disciplinaria en los últimos cinco años, salvo en caso de que los
+hechos que dieron origen a esta medida sean posteriormente desestimados mediante
+sentencia judicial firme o ejecutoriada.
+     7. No haber sido condenada la persona jurídica por delitos contemplados en la
+ley N° 20.393, que establece la responsabilidad penal de las mismas. 
+     
+     La Subsecretaría de Prevención del Delito podrá, por sí o por medio de la
+autoridad fiscalizadora competente, solicitar cualquier otro antecedente que permita
+acreditar que la empresa, sus socios o el o los representantes legales cumplen con
+los requisitos establecidos en la ley N° 21.659 y en este reglamento. 
+     Sin perjuicio de los requisitos señalados anteriormente, se prohíbe a las
+empresas de seguridad privada utilizar un nombre o razón social igual o similar al
+de los órganos públicos, especialmente el del Ministerio encargado de la Seguridad
+Pública, el de las Fuerzas Armadas y Fuerzas de Orden y Seguridad Pública, el del
+Ministerio Público o cualquier otro que induzca a error respecto de su naturaleza
+privada. 
+     En caso de incumplir cualquiera de los requisitos anteriores no podrá
+entregarse autorización para realizar labores como empresa de seguridad privada.
+
+     Artículo 50.- Medios humanos, de formación, financieros, materiales y
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 28 de 62
+
+técnicos. Las empresas de seguridad privada deberán contar con los medios humanos,
+de formación, financieros, materiales y técnicos, señalados en el numeral dos del
+artículo anterior, en función de la naturaleza de las actividades para las cuales
+soliciten la debida autorización a la Subsecretaría de Prevención del Delito. Para
+ello deberán cumplir las siguientes características y requisitos: 
+     
+     1. Las empresas especializadas en recursos humanos de servicios de seguridad
+privada deberán contar con personal autorizado y capacitado para desempeñar los
+servicios que ofrece. Para ello, deberán adjuntar una nómina actualizada de los
+guardias de seguridad y demás personas que desempeñen labores de seguridad privada
+bajo su dependencia. Asimismo, cada vez que el personal sea destinado a prestar
+servicios en una entidad determinada, la empresa deberá adjuntar el listado
+actualizado de los lugares donde estas personas se desempeñan. 
+     2. Las instituciones de capacitación de seguridad privada deberán contar con
+instalaciones idóneas, así como con personal autorizado para desempeñar los
+servicios de formación y perfeccionamiento que ofrece. Para ello, deberán adjuntar
+un listado de los capacitadores en materias de seguridad privada que se desempeñen
+bajo su dependencia. Asimismo, corresponderá que cada vez que se tramite un curso de
+formación, de perfeccionamiento o especialización, se señale, en la nómina
+correspondiente, la relación de capacitadores por asignatura, adjuntando los
+antecedentes que se hayan requerido para acreditar el cumplimiento de los requisitos
+del artículo 46 de la ley N° 21.659, de conformidad a lo dispuesto en el inciso
+final del artículo 60 del mismo cuerpo legal, así como de los artículos 104 y 105
+de este reglamento. 
+     3. Las empresas de seguridad electrónica deberán contar con personal idóneo
+para desempeñar los servicios que ofrecen. Para ello, deberán acompañar un listado
+de los técnicos en materias de seguridad privada que presten labores bajo su
+dependencia, así como los respectivos certificados de estudios y/o de las
+capacitaciones que el empleador le haya provisto. Asimismo, deberán contar con los
+medios materiales y técnicos adecuados, para lo cual deberán acompañar una
+descripción de los elementos que ofrecen al mercado. En el caso específico de las
+empresas que administran servicios de circuito cerrado de televisión (CCTV) y de
+alarmas acompañarán, además, los protocolos pertinentes de monitoreo del referido
+sistema, de su verificación en terreno y del sistema de comunicaciones, ante
+activaciones de las mismas.
+     4. Las empresas que otorguen el servicio de asesoría en materias de seguridad
+privada deberán contar con asesores autorizados para desempeñar sus funciones. Para
+ello, acompañarán un listado de los asesores que presten labores en la respectiva
+entidad.
+     
+     Sin perjuicio de lo anterior, la Subsecretaría de Prevención del Delito podrá
+requerir cualquier otro antecedente a las empresas para verificar que cuentan con los
+medios humanos, de formación, financieros, materiales y técnicos adecuados.
+
+     Artículo 51.- Procedimiento de autorización. Solo podrán actuar como empresas
+de seguridad privada las que se encuentren autorizadas por la Subsecretaría de
+Prevención del Delito. Dicha autorización tendrá una vigencia de cuatro años
+contados desde que se notifique la resolución que lo autorice. 
+     La solicitud de autorización deberá ser suscrita por el representante legal y
+deberá contener, a lo menos, lo siguiente:
+     
+     1. Indicar la razón social, rol único tributario, actividad de seguridad
+privada a la que se dedica y que está acreditada en el giro, el domicilio de la
+entidad, el nombre completo de su representante legal y su cédula de identidad; así
+como su correo electrónico y teléfono de contacto. 
+     2. Señalar el número de trabajadores con que cuenta, sus perfiles, formación
+y plan de capacitación continua.
+     3. Indicar la ubicación exacta de los recintos, plantas, instalaciones, equipos
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 29 de 62
+
+y, en general, de los bienes que dispone para el servicio que presta.
+     4. Todos los antecedentes que permitan acreditar el cumplimiento de los
+requisitos para funcionar como empresas de seguridad privada.
+     
+     Durante la revisión de los antecedentes presentados por la empresa, la
+Subsecretaría de Prevención del Delito podrá solicitar que estos se complementen,
+se subsanen errores, omisiones formales, así como requerir aclaraciones. La empresa
+tendrá un plazo máximo de cinco días, contado desde la notificación, para cumplir
+con lo solicitado. En caso de que estos fueren insuficientes o no fueren presentados
+dentro del plazo correspondiente, la Subsecretaría tendrá por desistida la
+solicitud, mediante resolución, lo que pondrá fin al procedimiento. 
+     Una vez recibida la solicitud o los antecedentes complementarios, según el
+caso, la Subsecretaría de Prevención del Delito podrá requerir a la autoridad
+fiscalizadora competente un informe donde esta se pronuncie sobre la solicitud, en
+función de la naturaleza y características de las actividades, para las que
+solicita autorización. La autoridad fiscalizadora deberá remitir el informe en el
+plazo de quince días contado desde la recepción del requerimiento.
+     La Subsecretaría de Prevención del Delito deberá resolver fundadamente, en el
+plazo de veinte días, contado desde la recepción de la solicitud, desde que se
+complementen los antecedentes o desde que se reciba el informe de la autoridad
+fiscalizadora, según sea el caso.
+     Cada vez que se modifiquen los antecedentes acompañados para obtener la
+autorización de funcionamiento, las empresas de seguridad privada deberán
+actualizar esta información en la plataforma informática del artículo 115 de este
+reglamento.
+     Con, a lo menos treinta días de anticipación a la fecha de vencimiento de la
+autorización, las empresas de seguridad privada podrán solicitar su renovación,
+para lo cual deberán acreditar nuevamente el cumplimiento de los requisitos
+señalados en los numerales 2 a 7 del artículo 49 del presente reglamento, así como
+los requisitos especiales que correspondan, según el tipo de actividad que
+desarrollen. Vencido el plazo señalado, deberán presentar la totalidad de la
+documentación demostrando los requisitos para proceder a su autorización como si
+fuera la primera vez.
+
+     Artículo 52.- Informe bianual. Las empresas de seguridad reguladas en este
+título deberán elaborar y remitir un informe a la Subsecretaría de Prevención del
+Delito, de forma bianual. El informe deberá dar cuenta de lo siguiente:
+ 
+     1. El cumplimiento de todos los requisitos de la ley N° 21.659 para actuar como
+empresa de seguridad privada. Si la Subsecretaría de Prevención del Delito verifica
+la pérdida de alguno de los requisitos, podrá revocar la autorización concedida,
+identificando fundadamente el vicio o falta en que incurrieren, de conformidad al
+procedimiento establecido en el párrafo 4 del Título VI de la ley N° 21.659. Si se
+trata de requisitos subsanables, antes de revocar la autorización, la Subsecretaría
+de Prevención del Delito deberá fijar un plazo no inferior a treinta días para que
+la empresa acredite su cumplimiento.
+     2. La nómina de todo el personal vigente durante el período y el cumplimiento
+de los requisitos establecidos para que desempeñen actividades de seguridad privada.
+     3. La celebración de los contratos de prestación de los distintos servicios de
+seguridad privada, los que deberán, en todo caso, formalizarse por escrito.
+     4. Cumplimiento de requisitos y obligaciones especiales, de acuerdo a la
+naturaleza de sus funciones. 
+     5. Análisis y propuestas de mejoras, así como de los verificadores que den
+cuenta del cumplimiento. 
+     6. Remitir cualquier otro antecedente o información solicitada por la
+Subsecretaría de Prevención del Delito o la autoridad fiscalizadora respectiva,
+dentro del plazo que dichas instituciones determinen. 
+     Sin perjuicio de lo anterior, la empresa deberá informar a la Subsecretaría de
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 30 de 62
+
+Prevención del Delito la pérdida de cualquiera de los requisitos establecidos en la
+ley N° 21.659 o en el presente reglamento. 
+     El informe deberá estar disponible en la plataforma informática establecida en
+el artículo 115 de este reglamento para que las autoridades fiscalizadoras puedan
+acceder a este, en el ejercicio de sus funciones. 
+
+     Artículo 53.- Documentos necesarios para acreditar el cumplimiento de los
+requisitos. Para acreditar el cumplimiento de los requisitos legales y
+reglamentarios, las empresas de seguridad privada deberán adjuntar en el informe
+establecido en el artículo anterior, los siguientes documentos:
+     
+     1. Copia de la cédula de identidad por ambos lados, de los socios,
+administradores y representantes legales, según corresponda.
+     2. Certificado de antecedentes para fines especiales de los socios,
+administradores y representantes legales con una vigencia no superior a treinta
+días.
+     3. Declaración jurada simple de no encontrarse acusado por algunos de los
+delitos establecidos en el numeral 5 del artículo 34 de la ley N° 21.659. 
+     4. Certificado de no haber dejado de pertenecer a las Fuerzas Armadas, de Orden
+y Seguridad Pública y Gendarmería de Chile, producto de la aplicación de una
+medida disciplinaria.
+     5. Declaración jurada simple del representante legal de la empresa, de no haber
+sido condenada la persona jurídica mediante sentencia firme por delitos contemplados
+en la ley N° 20.393.
+     6. Póliza de seguros contratados en favor del personal que corresponda, de
+acuerdo con lo establecido en la ley N° 21.659 y el presente reglamento.
+
+     Párrafo II
+     Disposiciones comunes al transporte de valores
+
+     Artículo 54.- Transporte de valores. Se entenderá por transporte de valores el
+conjunto de actividades asociadas a la custodia y traslado de valores desde un lugar
+a otro, dentro y fuera del territorio nacional, por vía terrestre, aérea, fluvial,
+lacustre o marítima.
+     El transporte de valores solo se podrá realizar a través de empresas de
+seguridad privada autorizadas por la Subsecretaría de Prevención del Delito, previo
+informe técnico de la autoridad fiscalizadora.
+     Las personas jurídicas que presten servicios de transporte de valores deberán
+contar con un sistema de vigilancia privado, de conformidad con lo dispuesto en la
+ley N° 21.659 y este reglamento. 
+     La operación del transporte de valores se llevará únicamente a cabo por
+vigilantes privados. Las empresas de transporte de valores deberán considerar,
+especialmente, al momento de contratarlos, la trayectoria y experiencia que tengan en
+materia de seguridad.
+
+     Artículo 55.- Requisitos del estudio de seguridad de las empresas de transporte
+de valores. Las empresas de transporte de valores deberán presentar un estudio de
+seguridad, firmado por el jefe de seguridad que, además de los requisitos generales
+establecidos en el artículo 15 del presente reglamento, contenga los siguientes
+requisitos adicionales: 
+     
+     1. El modo en que se garantizará la protección de la vida e integridad física
+de los vigilantes privados, empleados y del público en general.
+     2. El procedimiento que permita la prevención y neutralización de delitos.
+     3. La constatación de la existencia de un blindaje apropiado y de tecnología
+suficiente para repeler atentados. 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 31 de 62
+
+     4. Las políticas de selección del personal.
+     5. La capacitación del personal involucrado en esta actividad.
+     6. Las características de sus bóvedas y centros de acopio de dinero, con la
+implementación de medidas de seguridad atingentes según su nivel de riesgo.
+     7. Los niveles de riesgo, debidamente fundados con antecedentes técnicos o
+científicos, que comprendan sus actividades.
+     
+     Los aspectos referidos a los numerales 3), 4), 5) y 6) del presente artículo
+deberán estar debidamente fundados, encontrándose obligada la empresa a adjuntar
+todos los antecedentes que sean necesarios para acreditarlo conforme a las
+instrucciones que para tales efectos determine la Subsecretaría de Prevención del
+Delito.
+     Los estudios de seguridad a que se refiere este artículo tendrán una vigencia
+de un año, susceptible de renovación de conformidad a lo dispuesto en el artículo
+17 del presente reglamento. 
+
+     Artículo 56.- Operaciones de alto riesgo. Serán consideradas como operaciones
+de alto riesgo, aquellas que declaren la propia entidad en su estudio de seguridad y
+aquellas que determine la Subsecretaría de Prevención del Delito, a propuesta de la
+autoridad fiscalizadora. 
+     Sin perjuicio de lo señalado en el inciso anterior, siempre serán consideradas
+de alto riesgo las siguientes operaciones:
+     
+     1. Aquellas que se realicen fuera de la franja horaria comprendida entre las
+07:00 y las 23:00 horas, en los términos señalados en el inciso final del artículo
+58. Las operaciones deberán ser autorizadas por la Subsecretaría de Prevención del
+Delito, previo informe de la autoridad fiscalizadora.
+     2. Aquellas operaciones realizadas en zonas urbanas, establecidas por la
+Subsecretaría de Prevención del Delito, previo informe de la autoridad
+fiscalizadora.
+     
+     Las operaciones señaladas en el presente artículo deberán efectuarse siempre
+con una tripulación de, a lo menos, cuatro vigilantes privados o una escolta de
+vigilantes privados de apoyo, de conformidad a lo dispuesto en el artículo
+siguiente.
+
+     Artículo 57.- Vigilantes privados de apoyo. En casos calificados, la
+Subsecretaría de Prevención del Delito, previo informe de la autoridad
+fiscalizadora, podrá exigir o autorizar el uso de vigilantes privados de apoyo a la
+actividad principal del transporte, con uniforme, con armamento y chaleco antibalas,
+en vehículo no blindado con distintivos de la empresa. Este personal de apoyo no
+podrá, en caso alguno, transportar valores.
+
+     Párrafo III
+     Transporte de valores por vía terrestre
+
+     Artículo 58.- Obligaciones especiales de transporte de valores por vía
+terrestre. El transporte de valores por vía terrestre deberá realizarse en
+vehículos blindados, con una tripulación de, a lo menos, tres vigilantes privados,
+incluyendo al conductor. Este último no podrá descender del vehículo mientras se
+encuentre en servicio. Todos ellos deberán estar uniformados, armados y usar un
+chaleco antibalas en el cual deberán llevar el respectivo distintivo de la empresa
+de transporte de valores.
+     El transporte de valores de infantería deberá realizarse con, a lo menos, dos
+vigilantes privados en las mismas condiciones referidas en el inciso anterior. 
+     Sin perjuicio ello, la Subsecretaría de Prevención del Delito podrá autorizar
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 32 de 62
+
+el uso de medidas de seguridad diferentes cuando estas consistan en la utilización
+de tecnología apropiada para la seguridad de la operación. Tales medidas serán
+dispuestas a través del estudio de seguridad correspondiente.
+     Se presumirá que existe tecnología apropiada en los términos del inciso
+anterior, cuando los valores transportados se encuentren equipados con un sistema
+disuasivo de entintado de billetes u otro de similares características.
+     El desplazamiento del vehículo blindado para la realización de las operaciones
+sólo deberá realizarse dentro de una franja horaria, comprendida entre las 07:00 y
+las 23:00 horas, salvo aquellas operaciones interregionales y las que la
+Subsecretaría de Prevención del Delito autorice expresamente a realizarlo fuera del
+horario referido, mediante resolución fundada. 
+
+     Artículo 59.- Autorización de funcionamiento especial de transporte de
+valores. La Subsecretaría de Prevención del Delito, previo informe de la autoridad
+fiscalizadora, considerando los montos transportados, el riesgo que conlleva, y los
+elementos tecnológicos adicionales que pueden utilizarse para la seguridad de la
+actividad, podrá autorizar, en casos calificados y fundados, que el transporte se
+efectúe por vigilantes privados sin armamento, que puedan vestir tenida formal, con
+distintivo de la empresa y en vehículos que se encuentren mecánica y
+tecnológicamente acondicionados a la función. 
+
+     Artículo 60.- Procesos de carga y descarga de valores. Los procesos de carga y
+descarga de valores hacia y desde un vehículo blindado de una empresa de transporte
+de valores, deberán realizarse en estancos debidamente resguardados, que para tales
+efectos habilitarán las entidades emisoras o receptoras o cualquier establecimiento
+que las contenga. 
+     En caso de que las entidades señaladas en el inciso anterior no cuenten con
+estancos, los vehículos blindados deberán realizar los procesos de carga y descarga
+en el lugar más próximo a la entidad emisora o receptora de los mismos. Para la
+seguridad de dichos procesos, estas entidades o los establecimientos que las
+contengan deberán instalar, a lo menos, una cámara de vigilancia, monitoreada por
+las mismas, que permita la captación de imágenes nítidas de dichas operaciones,
+incluyendo el traslado de los valores desde el vehículo blindado al establecimiento
+respectivo o viceversa. 
+     En los procesos a que hacen referencia los incisos anteriores, deberá además
+aislarse transitoriamente por parte de las entidades emisoras o receptoras o
+cualquier establecimiento que las contenga, el lugar de carga y descarga en términos
+tales que impidan a terceras personas acceder al lugar de la faena mientras esta se
+realiza. Para estos efectos, se entenderá por aislamiento idóneo el que se realice
+con barreras u otro elemento similar acorde al lugar en que se deba practicar. 
+     Las entidades emisoras y receptoras, los establecimientos que las contengan y
+los organismos públicos que tengan injerencia en la materia, deberán disponer todos
+los medios que sean necesarios para el cumplimiento de lo establecido en el inciso
+anterior, quedando prohibido todo tipo de acto que lo perturbe o impida. 
+     Durante el procedimiento de carga y descarga de valores, deberá, al menos un
+vigilante privado, realizar la función de cobertura correspondiente sin participar
+del trasbordo de valores, a fin de supervigilar el contexto en que se ejecutan las
+labores. 
+     Tratándose de establecimientos que cuenten con servicios de guardias de
+seguridad, las entidades emisoras o receptoras o cualquier establecimiento que las
+contenga, deberán coordinar la participación de estos en los procedimientos de
+aislamiento referidos en el inciso tercero.
+
+     Artículo 61.- Planificación del transporte terrestre de valores. Las empresas
+de transporte de valores deberán realizar una efectiva y eficiente planificación de
+los horarios y rutas de viaje, estableciendo para ello un método de distribución de
+las operaciones dentro del horario establecido en el artículo 58 inciso final de
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 33 de 62
+
+este reglamento. Esta planificación deberá modificarse al menos una vez al mes, con
+el fin de no otorgar predictibilidad a las operaciones. 
+
+     Artículo 62.- Acopio temporal de valores. Las empresas de transporte de valores
+podrán acopiar temporalmente los valores transportados. En tales casos, los centros
+de acopio y sus bóvedas respectivas deberán cumplir con las medidas señaladas en
+los artículos siguientes.
+
+     Artículo 63.- Protección de los centros de acopio de dinero o valores. La
+estructura física de las bóvedas de los centros de acopio de dinero o valores,
+tales como muros, cielos, pisos y puertas, deberán contar con protección contra
+elementos cortantes, fundentes, mecánicos o de cualquier otro tipo, además de
+poseer sistemas de cerraduras de seguridad y contar con dispositivos electrónicos
+específicos, que permitan detectar, repeler o retardar cualquier ataque.
+
+     Artículo 64.- Seguridad electrónica de las bóvedas. Las bóvedas deben contar
+con sistemas de monitoreo y control electrónico, tales como sensores de alarma;
+controles de acceso; cerraduras electrónicas con retardo y bloqueo horario;
+pulsadores de asalto conectados al sistema que Carabineros de Chile disponga para tal
+efecto; detectores de incendio; un detector de humo y calor conectado al panel de
+alarma del centro de acopio respectivo; un detector de vibración estructural y
+extintores de fuego del tipo y en cantidad suficientes para el tamaño de la bóveda
+y materiales almacenados. 
+     Los pulsadores de alarma con los que deberán contar las bóvedas estarán
+distribuidos estratégicamente en ellas.
+
+     Artículo 65.- Régimen de protección y comunicación en los centros de acopio
+temporal. Las oficinas, agencias o sucursales de las empresas de transporte de
+valores en que se acopie el dinero o valores temporalmente deberán contar con una
+zona de doble puerta para el ingreso de los vehículos blindados y contarán con un
+sistema de vigilantes privados todos los días de la semana durante las veinticuatro
+horas del día. 
+     En las agencias o sucursales referidas, la bóveda, la tesorería y la central
+de monitoreo deberán estar debidamente compartimentadas y aisladas entre sí y
+respecto de las demás dependencias administrativas. 
+     Asimismo, deberán tener sistemas de grabación de alta resolución que permitan
+la captación de imágenes nítidas de las personas que ingresen y salgan de la
+oficina, agencia o sucursal; y de todas aquellas que lleguen hasta las bóvedas de
+acopio. 
+     Dichos sistemas deberán estar conectados en línea a una central de monitoreo
+de la propia entidad. Las cámaras y demás equipos de filmación deberán estar
+instalados de forma tal que queden debidamente resguardados de una posible
+intrusión. 
+     Las capacidades de los sistemas de registro deberán permitir que las
+grabaciones almacenadas puedan mantenerse por un período de, al menos, ciento veinte
+días, salvo que la grabación sea susceptible de formar parte de una causa o
+investigación judicial o proceso administrativo, en cuyo caso se deberá almacenar
+hasta finalizar la tramitación legal correspondiente.
+     Con todo, los registros que se obtengan, que no fueren requeridos por el
+Ministerio Público, tribunales de justicia o un funcionario a cargo de un
+procedimiento administrativo, deberán ser destruidos luego de transcurridos dos
+años desde su captura. En virtud de lo anterior, aquellos registros que fueren
+destruidos deberán constar en un acta en la que se indique, a lo menos, el nombre de
+la persona a cargo de la gestión referida junto con su firma y la causal para su
+procedencia.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 34 de 62
+
+     Artículo 66.- Alarmas de los centros de acopio temporal. Las agencias o
+sucursales referidas deberán contar con un sistema de alarmas instalado por una
+empresa de seguridad electrónica que deberá estar conectada directamente al sistema
+dispuesto por Carabineros de Chile para tal efecto.
+
+     Artículo 67.- Vehículos blindados. Los vehículos blindados deberán tener en
+el techo exterior un círculo de color naranja reflectante de la luz, de a lo menos,
+un metro de diámetro donde deberá ir escrita en color negro la identificación de
+la placa patente única del vehículo. La estructura básica del vehículo constará
+de tres partes principales debidamente aisladas denominadas cabina del conductor,
+habitáculo de la tripulación y bóveda de custodia de valores. Esta última deberá
+contar con cerradura randómica. Las puertas del habitáculo de la tripulación, de
+la bóveda y de la cabina del conductor deberán contar con cerraduras que no
+permitan la apertura de estas simultáneamente. 
+     Todos los vehículos utilizados para el transporte de valores deberán tener, a
+lo menos, equipos de transmisión radial o de transmisión continua para mantenerse
+permanentemente en contacto con la central de comunicaciones de la empresa y contar,
+además, con un sistema de localización ya sea satelital o de efectos similares,
+monitoreados en línea. 
+     Estos vehículos tendrán un blindaje de resistencia mínima a la penetración
+de un proyectil calibre 7.62 x 39 mm y sus neumáticos serán resistentes al
+pinchazo. Sin perjuicio de lo anterior, la Subsecretaría de Prevención del Delito,
+en casos fundados, y especialmente considerando las operaciones de alto riesgo a que
+se refiere el artículo 56 del presente reglamento, podrá, mediante resolución
+fundada, previo informe de la autoridad fiscalizadora, exigir que los vehículos
+tengan un blindaje de 7.62 x 51 mm o superior.
+     Asimismo, los vehículos referidos deberán contar con, a lo menos, cuatro
+cámaras de televigilancia de alta resolución que permitan la captación de
+imágenes nítidas, tres al interior y una al exterior de los vehículos. Una de las
+cámaras que se instalarán al interior deberá estar en la cabina del conductor,
+otra en el interior de la bóveda y la última en el habitáculo de la tripulación.
+Las cámaras deberán estar debidamente resguardadas y conectadas directamente con
+una central de monitoreo de la respectiva empresa de transporte de valores. 
+     Las capacidades de los sistemas de registro deberán permitir que las
+grabaciones almacenadas puedan mantenerse por un período de, al menos, ciento veinte
+días, salvo que la grabación sea susceptible de formar parte de una causa o
+investigación judicial o proceso administrativo, en cuyo caso se deberá almacenar
+hasta finalizar la tramitación legal correspondiente.
+     Con todo, los registros que se obtengan, que no fueren requeridos por el
+Ministerio Público, tribunal de justicia o un funcionario a cargo de un
+procedimiento administrativo, deberán ser destruidos luego de transcurridos dos
+años desde su captura. En virtud de lo anterior, aquellos registros que fueren
+destruidos deberán constar en un acta en la que se indique, a lo menos, el nombre de
+la persona a cargo de la gestión referida junto con su firma y la causal para su
+procedencia.
+     Las centrales referidas en el inciso cuarto deberán ser monitoreadas por, a lo
+menos, un funcionario de la empresa de transporte de valores por cada diez camiones
+blindados. Además, deberán tener un sistema de comunicación directo con
+Carabineros de Chile.
+     Sin perjuicio de lo dispuesto en los incisos anteriores, en casos debidamente
+calificados, en consideración a la geografía del lugar o de factores climáticos,
+la Subsecretaría de Prevención del Delito podrá autorizar la utilización de un
+vehículo motorizado diferente del que normalmente se utiliza para este tipo de
+actividades, previo informe de la autoridad fiscalizadora.
+
+     Artículo 68.- Medidas de seguridad de los envíos de valores. El transporte de
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 35 de 62
+
+dinero en efectivo y de documentos mercantiles, se deberá hacer en bolsas o
+contenedores confeccionados en material resistente al roce y probable intrusión.
+Estos elementos deberán llevar la insignia corporativa, número que lo identifique y
+sellos o precintos de cierre igualmente identificados con el nombre de la empresa de
+transporte de valores. 
+
+     Artículo 69.- Sistemas o dispositivos disuasivos de seguridad de entintado de
+billetes. La Subsecretaría de Prevención del Delito mantendrá, en el subregistro
+de empresas de seguridad privada, una nómina en que las empresas de transporte de
+valores deberán solicitar la inscripción de los sistemas o dispositivos disuasivos
+de seguridad de entintado de billetes que decidan utilizar en las bolsas o
+contenedores.
+     Para este efecto, la empresa solicitante presentará los informes o certificados
+emitidos por el o los fabricantes o proveedores de dichos dispositivos y de las
+tintas especiales que estos utilicen, en que se detallen sus elementos distintivos y
+especificaciones técnicas, además de precisar las pruebas o certificaciones y la
+respectiva tecnología disuasiva de seguridad a que dichos componentes hayan sido
+sometidos, en orden a establecer su buen funcionamiento y eficacia. 
+     En todo caso, de acompañarse documentos otorgados en el extranjero, dichos
+antecedentes deberán presentarse debidamente legalizados.
+     Los sistemas de entintado de billetes y sus respectivos informes o
+certificaciones deberán asegurar que, en caso de accionamiento, los billetes que
+contengan los respectivos dispositivos resulten entintados, al menos, en el veinte
+por ciento de su superficie total, por anverso y reverso, lo cual deberá constar en
+la documentación antes referida.
+     Asimismo, los solicitantes deberán entregar muestras de las tintas que se
+emplearán en los dispositivos disuasivos de seguridad, a las que deberán referirse
+los mencionados informes o certificados que se acompañen.
+     La Subsecretaría de Prevención del Delito entregará un certificado que dé
+cuenta de su incorporación en la nómina, en los términos mencionados, de los
+dispositivos, tecnologías y tintas, con lo que se entenderá autorizada su
+utilización, para los efectos del presente reglamento.
+     Una vez otorgado dicho certificado, la Subsecretaría de Prevención del Delito
+remitirá al Banco Central de Chile copia de este y de la documentación presentada
+por el solicitante para la inscripción de los dispositivos, tecnologías y tintas
+cuyo empleo se autoriza. La autorización se mantendrá vigente por el plazo de dos
+años, contado desde la fecha de la solicitud de inscripción respectiva, lo cual se
+hará constar en el certificado emitido al efecto, pudiendo solicitar su renovación
+dentro del plazo de sesenta días corridos previo a la fecha de expiración de la
+vigencia. 
+     Corresponderá al solicitante de la incorporación en la nómina, informar y
+acreditar ante la Subsecretaría de Prevención del Delito las modificaciones que
+experimenten los referidos dispositivos o la formulación de las tintas especiales
+que utilicen, precisando sus nuevas características en la forma y con la
+documentación antes referida, lo que dará lugar a la emisión del certificado
+correspondiente por parte de dicha Subsecretaría, el que será expedido con
+sujeción a lo previsto en este artículo.
+
+     Artículo 70.- Transporte de valores por vía aérea. Este tipo de transporte se
+regirá por las normas señaladas para el transporte terrestre, en lo que sea
+aplicable, de acuerdo con su naturaleza y características propias.
+     En estos casos, la Dirección General de Aeronáutica Civil ejercerá las
+funciones de autoridad fiscalizadora, conforme a lo establecido en los artículos 1 y
+86 de la ley N° 21.659. Las empresas de transporte de valores deberán coordinar sus
+operaciones con esta autoridad.
+     La Subsecretaría de Prevención del Delito, previa propuesta de la Dirección
+General de Aeronáutica Civil, dictará, mediante resolución, instrucciones
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 36 de 62
+
+generales que complementen las normas aplicables a este tipo de transporte de
+valores, en virtud de lo dispuesto en el numeral 1 del artículo 83 de la ley N°
+21.659. 
+
+     Artículo 71.- Transporte de valores por vía fluvial, lacustre o marítima.
+Este tipo de transporte se regirá por las normas señaladas para el transporte
+terrestre, en lo que sea aplicable, de acuerdo a su naturaleza y características
+propias.
+     En estos casos, la Dirección General del Territorio Marítimo y Marina Mercante
+ejercerá las funciones de autoridad fiscalizadora, conforme a lo establecido en los
+artículos 1 y 86 de la ley N° 21.659. Las empresas de transporte de valores
+deberán coordinar sus operaciones con esta autoridad.
+     La Subsecretaría de Prevención del Delito, previa propuesta de la Dirección
+General del Territorio Marítimo y Marina Mercante, dictará, mediante resolución,
+instrucciones generales que complementen las normas aplicables a este tipo de
+transporte de valores, en virtud de lo dispuesto en el numeral 1 del artículo 83 de
+la ley N° 21.659.
+
+     Artículo 72.- Servicio de pago de remuneraciones. Las empresas de transporte de
+valores podrán realizar, con recursos humanos y materiales propios o subcontratados
+y por cuenta de los respectivos mandantes, servicios de pagos de pensiones y
+remuneraciones a funcionarios o trabajadores de entidades públicas y privadas que lo
+contraten en lugares, días y horas, previamente comunicadas a la autoridad
+fiscalizadora respectiva.
+     Las condiciones generales de seguridad de los lugares o recintos de pago serán
+propuestas por la empresa de transporte de valores a la Subsecretaría de Prevención
+del Delito, las que serán resueltas previo informe de la autoridad fiscalizad ora.
+     No obstante lo anterior, será requisito indispensable para conceder la
+autorización de estos servicios, que se efectúe aislando el recinto de pago, con
+vigilancia armada, control de accesos a cargo de guardias de seguridad, teléfono y
+sistema de alarma interconectado a una central de vigilancia de Carabineros de Chile.
+
+     Tratándose de pagos que se realicen en zonas rurales de difícil acceso, la
+Subsecretaría de Prevención del Delito, previo informe de la autoridad
+fiscalizadora correspondiente, podrá eximir del cumplimiento de una o más medidas
+de seguridad mínimas señaladas en el inciso precedente.
+
+     Artículo 73.- Centros de recaudación y de pagos. Las empresas de transporte de
+valores podrán administrar, por cuenta de terceros, centros de recaudación y de
+pagos.
+     Para que proceda lo dispuesto en el inciso precedente, deberá cumplirse con las
+condiciones de seguridad a continuación indicadas: con vigilantes privados,
+controles de acceso, circuitos cerrados de televisión con respaldo de grabación,
+cajas blindadas y compartimentadas, sistema de alarma, cajas de seguridad tipo buzón
+y recinto aislado para la entrega y retiro de valores, sin perjuicio de lo previsto
+en el artículo 39 de la ley N° 21.659.
+
+     Artículo 74.- Cajeros automáticos. Las empresas de transporte de valores
+estarán autorizadas para mantener los dispensadores de dineros, cajeros automáticos
+u otros sistemas de similares características, de propiedad de entidades bancarias y
+financieras de cualquier naturaleza o de empresas de apoyo al giro bancario que
+reciban o mantengan dineros en sus operaciones; o que estas entidades administren a
+cualquier título.
+     Las operaciones que involucren aper tura de la bóveda deberán realizarse con
+la presencia de, a lo menos, una tripulación de tres vigilantes privados y tendrá
+lugar con ocasión de las recargas o de la reposición de dinero o de asistencia
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 37 de 62
+
+técnica.
+     Para la solución de fallas o de asistencia técnica que involucren apertura de
+bóveda, las empresas de transporte de valores podrán realizar esta actividad usando
+vehículos no blindados con el distintivo de la empresa, con una tripulación de, a
+lo menos, dos vigilantes privados.
+     Cualquier recarga o reposición de dinero a los contenedores de los cajeros
+automáticos, deberá hacerse en una zona aislada del público, en términos tales
+que impida a terceras personas acceder al lugar de la faena mientras esta se realiza.
+Se entenderá por aislamiento idóneo para estos efectos el que se realice con
+barreras u otro elemento similar acorde al lugar en que se deba practicar. Lo
+dispuesto en el presente inciso será de cargo de la entidad en que se encuentra
+emplazado el respectivo cajero automático.
+     El recuento de los valores de los cajeros automáticos solo podrá realizarse en
+lugares aislados especialmente habilitados al efecto o al interior de los camiones
+blindados. En caso alguno, esta operación se hará a la vista o ante la presencia de
+público.
+     Las operaciones que no involucren apertura de bóvedas podrán efectuarse por
+técnicos u operadores de la empresa, debidamente acreditados ante la Subsecretaría
+de Prevención del Delito, de conformidad a los artículos 110 y 113 del presente
+reglamento, respectivamente. 
+
+     Artículo 75.- Comunicación entre instituciones. Toda comunicación que se
+realice entre un banco o una entidad financiera y una empresa de transporte de
+valores que se refiera al envío, retiro o manipulación de dineros o especies
+valoradas desde o hacia sus clientes, otras entidades obligadas, dependencias o
+equipos en que se dispense dinero, deberá hacerse a través de mensajería
+electrónica encriptada que cumpla los estándares de seguridad y confiabilidad que
+la banca dispone en su sistema de comunicaciones bancarias. 
+     En caso de que existan situaciones de excepción o contingencia, dicha
+comunicación podrá hacerse en forma escrita, firmada por el tesorero de la entidad
+financiera y entregada personalmente a la empresa de transporte de valores por un
+trabajador acreditado ante esta.
+
+     Párrafo IV
+     Empresas de seguridad electrónica
+
+     Artículo 76.- Empresas de seguridad electrónica. Son aquellas que tienen por
+objeto:
+     
+     1. La instalación y mantenimiento de aparatos, equipos, dispositivos,
+componentes tecnológicos y sistemas de seguridad con fines privados, conectados a
+centrales receptoras de alarmas, centros de control o de videovigilancia privados;
+     2. La operación de dichas centrales y centros; y
+     3. La disposición de medios materiales, técnicos y humanos para los fines
+anteriormente señalados.
+
+     Artículo 77.- Autorización de funcionamiento. La autorización para el
+funcionamiento de las empresas de seguridad electrónica será otorgada por la
+Subsecretaría de Prevención del Delito, a solicitud de la empresa y previo informe
+de la autoridad fiscalizadora. 
+     La empresa deberá realizar su solicitud de autorización conforme al
+procedimiento dispuesto en el artículo 51 del presente reglamento. No obstante lo
+anterior, se deberá ceñir a las siguientes reglas especiales:
+     
+     Su solicitud deberá:
+     1. Declarar la o las actividades de seguridad electrónica específicas que
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 38 de 62
+
+pretenden desempeñar. 
+     2. Describir en forma pormenorizada todos los equipos, materiales y elementos
+que pretenda proporcionar, instalar, mantener o reparar.
+     3. Adjuntar, en el caso de las empresas que administran servicios de cámaras de
+televigilancia y alarma, los protocolos de monitoreo, de medios de comunicación y
+verificación en caso de activación de las alarmas, suscritos por el representante
+legal de la empresa y por un asesor de seguridad privada.
+     4. Acompañar los certificados emitidos por el o los organismos sectoriales
+pertinentes, de conformidad a lo establecido en el artículo 81 del presente
+reglamento.
+     
+     Las empresas de seguridad electrónica que sean autorizadas deberán inscribirse
+en el subregistro de empresas de seguridad privada señalado en el artículo 122 de
+este reglamento. 
+
+     Artículo 78.- Obligaciones de información a los usuarios de las empresas de
+seguridad electrónicas. Sin perjuicio de las obligaciones establecidas en la ley N°
+19.496 sobre protección de los derechos de los consumidores, las empresas estarán
+obligadas a informar adicionalmente a sus usuarios sobre el funcionamiento del
+servicio que prestan, las características técnicas y funcionales del sistema de
+seguridad electrónico instalado y las responsabilidades que lleva consigo su uso.
+Asimismo, deberán entregar la documentación sobre configuración de los sistemas,
+guías y recomendaciones de uso. Dicha información se entregará a los usuarios por
+vías idóneas, las que deberán asegurar un acceso oportuno. 
+
+     Artículo 79.- Gestión del monitoreo de alarmas y medios de verificación de
+emergencias. Las empresas de seguridad electrónica deberán monitorear la
+activación de aparatos, dispositivos, sistemas de seguridad o de alarmas que se
+encuentren conectados a una central de Carabineros de Chile, cada vez que se produzca
+una activación, para verificar si constituyen efectivamente una emergencia. 
+     La referida verificación deberá efectuarse por, al menos, dos canales
+independientes que permitan la constatación en tiempo real del incidente con el
+objeto de comunicar a las policías y suministrar, en su caso, los antecedentes del
+hecho. Sin perjuicio de esto, una alarma se considerará verificada sin necesidad de
+la constatación por otros medios adicionales, cuando un solo canal permita dar
+cuenta, razonablemente, de la existencia de un acto delictivo.
+     Para la correcta verificación, las empresas de seguridad electrónica podrán
+utilizar sistemas tecnológicos, humanos y/o materiales idóneos, tales como botón
+de pánico, contacto telefónico con el usuario, fotografías o imágenes captadas en
+el domicilio del usuario, concurrencia del personal de la empresa al domicilio, entre
+otras.
+
+     Artículo 80.- Calificación del personal de las empresas de seguridad
+electrónica. Las empresas de seguridad electrónica deberán garantizar que el
+personal de su dependencia cuente con los conocimientos necesarios para desempeñar
+las funciones para las que ha sido contratado. Lo anterior, se acreditará a través
+de los respectivos certificados de estudios y/o de las capacitaciones que el
+empleador le provea en el área, sin perjuicio de las reglas generales y especiales
+que correspondan, dispuestas para las personas naturales que ejercen actividades de
+seguridad privada, de conformidad a los párrafos V y X del presente título,
+respectivamente. 
+     Las empresas de seguridad electrónica deberán acompañar los antecedentes que
+acrediten la calificación de su personal al momento de presentar la solicitud de
+autorización de funcionamiento ante la Subsecretaría de Prevención del Delito. 
+
+     Artículo 81.- Certificación de dispositivos tecnológicos. Los dispositivos
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 39 de 62
+
+tecnológicos que ofrezcan las empresas de seguridad electrónica deberán contar con
+los certificados emitidos por el o los organismos sectoriales pertinentes, tales como
+la Superintendencia de Electricidad y Combustibles, la Dirección General de
+Aeronáutica Civil u otras, las que acreditarán el cumplimiento de la normativa
+vigente, en el ámbito de sus competencias. 
+     Para estos efectos, las empresas de seguridad electrónica deberán acompañar
+el o los certificados emitidos por las instituciones referidas en el inciso
+precedente en la solicitud de autorización de funcionamiento, lo que será evaluado
+por la Subsecretaría de Prevención del Delito para su otorgamiento.
+
+     Párrafo V
+     Las personas naturales que ejercen labores de seguridad privada
+
+     Artículo 82.- Requisitos de las personas naturales que prestan servicios de
+seguridad privada. Para ser autorizados por la Subsecretaría de Prevención del
+Delito, las personas naturales que presten servicios en materias de seguridad privada
+deberán cumplir con los requisitos generales establecidos en el artículo 46 de la
+ley N° 21.659, sin perjuicio de los requisitos especiales que se requieran para el
+ejercicio de determinados cargos, de conformidad a la ley N° 21.659 y del presente
+reglamento.
+
+     Artículo 83.- Periodicidad de la acreditación de las aptitudes físicas y
+psíquicas. Todo empleador, a su cargo y costo, deberá presentar ante la
+Subsecretaría de Prevención del Delito los antecedentes que permitan acreditar que
+las personas naturales que presten servicios en materia de seguridad privada cuenten
+con las condiciones físicas y síquicas compatibles con las labores que desempeñen,
+considerando criterios de inclusión y no discriminación. 
+     Los vigilantes privados deberán acreditar estos requisitos cada año, los
+guardias de seguridad cada dos años y las demás personas naturales que ejercen
+funciones de seguridad privada, cada cuatro años, contados desde que se le notifique
+la autorización o su renovación. 
+
+     Artículo 84.- Modo de acreditar los requisitos generales de las personas
+naturales que presten servicios en materia de seguridad privada. La acreditación de
+los requisitos generales establecidos en el artículo 46 de la ley N° 21.659, para
+las personas naturales que ejercen funciones de seguridad privada, se realizará de
+la siguiente manera:
+     
+     1. La mayoría de edad se acreditará por medio de una copia de la cédula de
+identidad por ambos lados.
+     2. Las condiciones físicas se acreditarán mediante un certificado emitido por
+un médico cirujano, que se encuentre en el Registro Nacional de Prestadores
+Individuales de Salud, consignando, claramente, el nombre completo y el número de
+cédula de identidad del facultativo.
+     Las condiciones psíquicas se acreditarán mediante un certificado emitido por
+un médico psiquiatra o un psicólogo, que se encuentre en el Registro Nacional de
+Prestadores Individuales de Salud, consignando, claramente, el nombre completo y el
+número de cédula de identidad del profesional.
+     3. La educación media o su equivalente se acreditará mediante certificado de
+estudios emitido por el Ministerio de Educación.
+     Los certificados de estudios de personas extranjeras deberán presentarse
+debidamente legalizados o apostillados, según corresponda.
+     4. Los requisitos relativos a la ausencia de condenas de los numerales 4 y 5 del
+artículo 46 de la ley N° 21.659, se acreditarán mediante la presentación de un
+certificado de antecedentes, expedido en los términos dispuestos en el inciso final
+del artículo 38 de la ley N° 18.216 que establece penas que indica como
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 40 de 62
+
+sustitutivas a las penas privativas o restrictivas de libertad. 
+     5. Los requisitos establecidos en los numerales 6 y 9 del artículo 46 de la ley
+N° 21.659 se acreditarán mediante una declaración jurada simple. 
+     6. El requisito establecido en el numeral 7 del artículo 46 de la ley N°
+21.659, se acreditará mediante un certificado de no haber dejado de pertenecer a las
+Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de
+la aplicación de una medida disciplinaria, según corresponda, emitido por la
+institución respectiva. 
+     7. El requisito establecido en el numeral 8 del artículo 46 de la ley N°
+21.659 se acreditará por medio del certificado emitido por la Subsecretaría de
+Prevención del Delito respecto del subregistro de sanciones que afecten a todas las
+personas naturales y jurídicas que ejercen actividades de seguridad privada.
+     8. El requisito establecido en el numeral 10 del artículo 46 de la ley N°
+21.659 se acreditará mediante un certificado otorgado por la institución a la que
+perteneció. 
+     9. El requisito establecido en el numeral 11 del artículo 46 de la ley N°
+21.659 se acreditará mediante un certificado de aprobación de los exámenes de los
+cursos de capacitación requeridos en la ley N° 21.659, emitido por la
+Subsecretaría de Prevención del Delito. 
+     10. El requisito establecido en el numeral 13 del artículo 46 de la ley N°
+21.659 se acreditará mediante el certificado respectivo emanado de la Dirección
+General de Movilización Nacional.
+     11. El requisito establecido en el numeral 14 del artículo 46 de la ley N°
+21.659 se acreditará de conformidad a lo dispuesto en la ley N° 21.325, de
+Migración y Extranjería. 
+
+     Artículo 85.- Procedimiento de autorización de personas naturales. El
+interesado remitirá una solicitud a la Subsecretaría de Prevención del Delito,
+suscrita por este, la cual deberá contener, a lo menos, lo siguiente:
+     
+     1. Indicar nombre completo, domicilio, cédula de identidad, correo electrónico
+y teléfono de contacto.
+     2. Señalar actividad de seguridad privada que pretende ejercer.
+     3. Acompañar los antecedentes que permitan acreditar el cumplimiento de los
+requisitos generales o especiales, según el tipo de actividad de seguridad privada
+que pretenda realizar.
+     
+     Durante la revisión de los antecedentes presentados por el interesado, la
+Subsecretaría de Prevención del Delito podrá solicitar que estos se complementen,
+se subsanen errores, omisiones formales, así como requerir aclaraciones. El
+interesado tendrá un plazo máximo de cinco días, contado desde la notificación,
+para cumplir con lo solicitado. En caso de que estos fueren insuficientes o no fueren
+presentados dentro del plazo correspondiente, la Subsecretaría tendrá por desistida
+la solicitud, mediante resolución, lo que pondrá fin al procedimiento.
+     Una vez recibida la solicitud o los antecedentes complementarios, según el
+caso, la Subsecretaría de Prevención del Delito podrá requerir a la autoridad
+fiscalizadora competente un informe donde esta se pronuncie sobre la solicitud, en
+función de la naturaleza y características de la actividad para las que el
+interesado solicita autorización. La autoridad fiscalizadora deberá remitir el
+informe en el plazo de quince días contado desde la recepción del requerimiento.
+     La Subsecretaría de Prevención del Delito deberá resolver fundadamente, en el
+plazo de veinte días contado desde la recepción de la solicitud, desde que se
+complementen los antecedentes o desde que se reciba el informe de la autoridad
+fiscalizadora, según sea el caso.
+     Cada vez que se modifiquen los antecedentes señalados en el numeral 1), las
+personas naturales deberán actualizar esta información en la plataforma
+informática del artículo 115 de este reglamento.
+     La vigencia de la autorización para las personas naturales que ejerzan
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 41 de 62
+
+actividades de seguridad privada tendrá una vigencia de cuatro años, con excepción
+de aquella que se otorgue a los vigilantes privados, la cual tendrá una vigencia de
+dos años. La vigencia se computará desde que se notifique al interesado la
+resolución que lo autorice.
+     Las personas naturales que ejerzan actividades de seguridad privada con, a lo
+menos treinta días de anticipación a la fecha de vencimiento de la autorización,
+podrán solicitar su renovación por el período correspondiente, según el cargo que
+desempeñen, para lo cual deberán acreditar nuevamente el cumplimiento de los
+requisitos señalados en los numerales 2, 4, 5, 6, 7, 8, 9 y 10 del artículo 46 de
+la ley N° 21.659, además de los requisitos especiales que correspondan. 
+     Asimismo, deberán acreditar el cumplimiento de lo dispuesto en el numeral 11 de
+la misma disposición, en el caso que deban aprobar cursos de capacitación. Vencido
+el plazo señalado, deberán presentar la totalidad de la documentación demostrando
+los requisitos para proceder a su autorización como si fuera la primera vez.
+
+     Párrafo VI
+     Prohibiciones de las personas naturales y jurídicas
+
+     Artículo 86.- Prohibiciones sobre las actividades de seguridad privada. Las
+personas naturales y jurídicas que desempeñen actividades de seguridad privada
+quedarán sujetas a las siguientes prohibiciones:
+     
+     1. Prestar o hacer publicidad de servicios de seguridad privada sin contar con
+la autorización para actuar como empresa de seguridad privada.
+     2. Desarrollar cualquier tipo de investigación sobre hechos que revistan
+caracteres de delito, incluyendo interceptación de comunicaciones, realizar
+interrogatorios o registrar vestimentas. Asimismo, no podrán grabar ni almacenar
+imágenes, audios o datos del recinto o establecimiento donde prestan servicios, para
+fines distintos de seguridad.
+     3. Intervenir, en el ejercicio de sus funciones de seguridad privada, en
+conflictos políticos, laborales, celebración de reuniones o manifestaciones.
+     4. Suministrar información a terceros, salvo las excepciones legales, acerca de
+personas, bienes y procesos productivos obtenidos con motivo u ocasión de la
+prestación del servicio.
+     5. Poseer o almacenar armas sin la autorización respectiva, la que, en todo
+caso, deberá estar siempre en concordancia con la legislación vigente.
+     6. Proporcionar u ofrecer, bajo cualquier forma o denominación, servicios de
+personas que porten o utilicen armas de fuego, con excepción de las empresas de
+transporte de valores autorizadas en conformidad con la ley N° 21.659 y este
+reglamento. 
+     7. Desempeñar u ofrecer servicios de vigilantes privados, guardia de seguridad
+y demás personal que ejerce actividad de seguridad privada sin la autorización de
+la Subsecretaría de Prevención del Delito. 
+
+     Párrafo VII
+     Guardias de seguridad
+
+     Artículo 87.- Guardia de seguridad. Es aquel que, sin ser vigilante privado,
+otorga personalmente protección a personas y bienes, dentro de un recinto o área
+determinada y previamente delimitada.
+
+     Artículo 88.- Seguro de vida a favor de los guardias de seguridad. Los
+empleadores deberán contratar un seguro de vida a favor de cada guardia de
+seguridad, cuyo monto no podrá ser inferior al equivalente a ciento treinta y dos
+unidades de fomento, salvo que este se desempeñe en una entidad obligada a tener un
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 42 de 62
+
+sistema de vigilancia privada, en cuyo caso el monto no podrá ser inferior a
+doscientas cincuenta unidades de fomento. 
+     Este seguro de vida cubrirá los riesgos a los que se encuentre expuesto el
+guardia de seguridad, siempre que se cumplan las siguientes condiciones:
+     
+     1. Que el siniestro ocurra con motivo u ocasión del desempeño de sus labores.
+     2. Que el asegurado cumpla los requisitos generales y específicos consagrados
+en la ley N° 21.659 y en el presente reglamento al momento en que ocurra el
+siniestro. 
+     3. Que la relación laboral entre el trabajador y la respectiva entidad
+empleadora se encuentre vigente al momento en que ocurra el siniestro.
+
+     Artículo 89.- Capacitaciones y especializaciones. La formación de los guardias
+de seguridad estará compuesta por tres cursos: formación, perfeccionamiento y
+especialización:
+     
+     1. Formación: es aquel que habilita a una persona natural para desempeñarse
+como guardia de seguridad, cualquiera sea el nivel de riesgo de la entidad para la
+que se desempeñe. Este curso se rendirá una sola vez, con excepción de lo
+dispuesto en el inciso final del presente artículo. Su duración será de, a lo
+menos, noventa horas pedagógicas y su contenido mínimo se regirá por lo dispuesto
+en el artículo 107 N° 1 de este reglamento. 
+     2. Perfeccionamiento: es aquel que permite a los guardias de seguridad
+actualizar los conocimientos del curso de formación y acreditar sus competencias
+para desempeñarse en entidades que no se encuentren obligadas a tener medidas de
+seguridad privada, de conformidad a lo dispuesto en la ley N° 21.659 y al presente
+reglamento. Este curso deberá aprobarse cada cuatro años y deberá tener una
+duración de, a lo menos, treinta y seis horas pedagógicas.
+     3. Especialización: es aquel que permite a un guardia de seguridad adquirir las
+competencias necesarias para desempeñarse en entidades o actividades de nivel de
+riesgo medio o alto, según el artículo 9° de este reglamento. Este curso
+reemplazará al de perfeccionamiento, deberá aprobarse cada cuatro años y tendrá
+una duración de, a lo menos, treinta y seis horas pedagógicas. 
+     
+     Si la persona no rinde el curso de perfeccionamiento o de especialización en
+los plazos correspondientes, deberá rendir nuevamente el curso de formación.
+
+     Artículo 90.- Uniforme de los guardias. El uniforme de los guardias de
+seguridad deberá cumplir con los siguientes detalles y características:
+ 
+     1. Gorra de color negro, modelo militar, visera negra y barboquejo del mismo
+color o bien, gorra tipo jockey/quepis, de color negro.
+     2. Camisa color negra, confeccionada con tela gruesa o delgada, manga corta o
+larga abotonada, según la época del año.
+     3. Pantalón color negro, confeccionado con tela gruesa o delgada, según la
+época del año.
+     4. Calzado y calcetines negros.
+     5. Cinturón negro con cartuchera del mismo color, para portar bastón
+retráctil, en caso de que sea procedente.
+     6. Chaleco de alta visibilidad, con las siguientes características:
+     
+     a) Material fluorescente, entendiéndose como tal aquel que emite radiación
+óptica de longitud de onda mayor que la absorbida.
+     b) Color rojo, dispuesto dentro del área definida por las siguientes
+coordenadas cromáticas:
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 43 de 62
+
+     c) Bandas de material retrorreflectante plateada de un ancho no inferior a 50
+mm, dispuestas según se ejemplifica a continuación:
+
+     d) El chaleco de alta visibilidad deberá indicar en la parte superior trasera
+las palabras "Seguridad Privada", letras que serán de color blanco, dispuesto dentro
+del área definida por las siguientes coordenadas cromáticas:
+
+     e) Apostar en la parte superior derecha insignias de un ancho máximo de 5
+centímetros por un largo máximo de 5 centímetros cada una, que identifiquen tanto
+a la empresa de seguridad privada que proporciona el personal de seguridad privada
+como a la empresa en donde se están prestando los servicios. Estas insignias podrán
+ser desprendibles del uniforme. 
+     
+     7. Chaquetón impermeable, con cierre eclair o abotonado, para uso en la época
+del año que corresponda, con las siguientes características:
+     
+     a) Color rojo, dispuesto dentro del área definida por las siguientes
+coordenadas cromáticas:
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 44 de 62
+
+     b) Indicar en la parte superior delantera del lado derecho y en la parte
+superior trasera las palabras "Seguridad Privada", en letras de color blanco.
+     
+     El uniforme a que se refiere este artículo es de uso exclusivo de los guardias
+de seguridad, el cual deberá ser proporcionado gratuitamente por el empleador para
+el que prestan sus servicios, en cantidad y calidad suficientes, de conformidad a lo
+dispuesto en la directiva de funcionamiento.
+     La Subsecretaría de Prevención del Delito podrá dictar instrucciones
+generales, de conformidad a lo dispuesto en el artículo 83 N° 1 de la ley N°
+21.659, que establezcan reglas especiales referidas al uniforme, exclusivamente en
+atención a circunstancias de seguridad, climáticas u otras relativas a la
+naturaleza de la entidad en la que se desempeñan los guardias de seguridad, sin
+perjuicio de las obligaciones laborales que sean aplicables al empleador. Asimismo,
+podrá autorizar, mediante resolución fundada, modificaciones en el uso de
+uniformes, en atención a estas mismas circunstancias. 
+
+     Artículo 91.- Credencial de los guardias de seguridad. Para desempeñarse como
+guardia de seguridad se deberá contar con una autorización, emitida por la
+Subsecretaría de Prevención del Delito, a través de una resolución que se
+notificará al interesado.
+     Dicha autorización se concederá a quienes cumplan con los requisitos
+establecidos en el artículo 46 de la ley N° 21.659 y acompañe el certificado de
+aprobación del curso de capacitación correspondiente, de conformidad a lo
+establecido en el artículo 89 de este reglamento. 
+     En virtud de esta autorización, se entregará una licencia, personal e
+intransferible, que constará en una credencial, emitida por la Subsecretaría de
+Prevención del Delito.
+     La credencial consistirá en una tarjeta de plástico de 5,5 centímetros de
+ancho por 8,5 centímetros de largo. En el anverso, en la parte superior izquierda
+llevará el membrete de la Subsecretaría de Prevención del Delito y, a
+continuación, el número clasificado que la autoridad le asigne; al costado derecho
+con letra destacada la leyenda "Credencial de Guardia de Seguridad"; al costado
+izquierdo desde el medio hacia abajo y en orden descendente se indicará el nombre
+del guardia, su cédula de identidad y la fecha de vencimiento de la credencial; en
+el lado inferior derecho llevará una fotografía en colores con el fondo de color
+blanco, de 3,5 centímetros de alto por 2,8 centímetros de ancho sin ninguna
+anotación. Entre la individualización y la fotografía se estampará el timbre de
+la Subsecretaría de Prevención del Delito.
+     En el reverso, en letras mayúsculas y destacadas, contendrá la siguiente
+leyenda: "esta Credencial identifica al guardia de seguridad habilitado para ejercer
+sus funciones solo dentro del recinto o área determinada en que la entidad tiene
+autorización. Prohibido cualquier otro uso. En caso de extravío devuélvase a la
+autoridad fiscalizadora correspondiente". 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 45 de 62
+
+     Todos los gastos que se originen en el otorgamiento de la credencial serán de
+cargo del solicitante. La Subsecretaría de Prevención del Delito, mediante
+resolución, establecerá los costos de la emisión de estas credenciales, las que
+regirán desde la publicación del acto administrativo en el Diario Oficial. 
+     Si a la fecha del inicio de la prestación de servicios de un guardia de
+seguridad aún no se ha expedido la correspondiente credencial, la resolución que lo
+autorizó para desempeñarse como guardia bastará, provisoriamente, para ejercer sus
+labores y acreditar su calidad, debiendo el guardia portar dicha resolución de forma
+física o digital durante su jornada de trabajo. 
+     En caso de pérdida o extravío de la credencial, el guardia deberá dar aviso
+para su bloqueo, dentro de un plazo máximo de veinticuatro horas, a la
+Subsecretaría de Prevención del Delito, quien deberá otorgarle una nueva, a costa
+del solicitante, sin perjuicio de las infracciones que procedan cuando dicha
+situación sea imputable al guardia o a la entidad para la que se desempeña. En el
+tiempo intermedio, el guardia podrá ejercer sus funciones y acreditar su calidad en
+la forma establecida en el inciso anterior.
+     La omisión del deber de dar aviso de la pérdida o extravío de la credencial,
+en la forma establecida en el inciso precedente, constituirá infracción leve de
+conformidad lo dispone el artículo 98 N° 3 de la ley N° 21.659. 
+
+     Artículo 92.- Directiva de funcionamiento de los guardias de seguridad. Es un
+instrumento en el que deben constar los servicios que desarrollen los guardias de
+seguridad, el cual deberá contener, a lo menos, lo siguiente:
+     
+     1. El lugar donde se realizarán los servicios.
+     2. La individualización de las personas que prestan el servicio, con
+indicación de los elementos defensivos y de protección con los que contarán. 
+     3. Contendrá un análisis del entorno de la instalación en la que los guardias
+de seguridad desarrollan sus funciones. Lo anterior, con el objeto de describir sus
+debilidades y amenazas. 
+     4. Las medidas de seguridad que se implementarán para neutralizar el accionar
+delictual, individualizando a la persona a cargo de la supervisión y describiendo su
+responsabilidad.
+     5. La forma en que se desarrollarán las comunicaciones con la Subsecretaría de
+Prevención del Delito y la autoridad fiscalizadora. 
+     La persona natural o jurídica para la cual los guardias de seguridad prestan
+sus funciones deberá presentar una directiva de funcionamiento ante la
+Subsecretaría de Prevención del Delito con, al menos, quince días de anticipación
+a la fecha del inicio de prestación de los servicios. Una vez recibida la solicitud,
+la Subsecretaría la remitirá a la autoridad fiscalizadora para que emita un informe
+en donde entregue su opinión técnica respecto de la directiva de funcionamiento.
+Dicho informe deberá emitirse en el plazo de quince días contado desde la
+recepción de la solicitud. 
+     Una vez recibido el informe por la Subsecretaría, esta tendrá un plazo de
+veinte días para pronunciarse sobre la directiva, la que podrá ser aprobada o
+modificada, en cuyo caso el o los interesados tendrán un plazo de diez días contado
+desde que se notifique el acto administrativo correspondiente, para efectuar las
+modificaciones o en el plazo prudencial que determine la Subsecretaría. Una vez
+incorporadas las modificaciones, la Subsecretaría de Prevención del Delito deberá
+aprobarlas, mediante resolución. 
+     La vigencia de la directiva de funcionamiento será de tres años, a contar de
+la notificación de la resolución aprobatoria. Transcurrido ese plazo, deberá
+presentar una nueva directiva de funcionamiento actualizando las medidas de seguridad
+en ella contenidas. No regirá la vigencia de tres años para la autorización de
+servicios temporales, por ejemplo, eventos masivos, construcción de condominios,
+entre otros. En estos casos, la vigencia se otorgará por el plazo que dure la
+actividad.
+     Una copia de la directiva de funcionamiento deberá permanecer siempre en las
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 46 de 62
+
+dependencias de la instalación, la que debe ser exhibida al momento de su
+fiscalización.
+
+     Artículo 93.- Elementos defensivos y de protección de los guardias de
+seguridad. Los guardias de seguridad deberán contar con elementos defensivos y de
+protección proporcionales a la función y nivel de riesgo de la entidad donde se
+desempeñan. Estos elementos deberán constar en la directiva de funcionamiento
+autorizada por la Subsecretaría de Prevención del Delito. 
+     Los guardias de seguridad deberán contar como elemento mínimo con un chaleco
+anticortes. Sin perjuicio de lo anterior, de oficio o a petición del guardia de
+seguridad o de su empleador, la Subsecretaría de Prevención del Delito, mediante
+resolución fundada, previo informe de la autoridad fiscalizadora, podrá disponer la
+utilización de uno o más elementos adicionales, tales como chaleco antibalas,
+bastón retráctil o esposas considerando el nivel de riesgo al que se enfrenta,
+según lo establecido en el artículo 9 del presente reglamento y la directiva de
+funcionamiento aprobada. 
+     Al término de la jornada de trabajo, el guardia de seguridad deberá restituir
+los elementos defensivos a la persona designada por el empleador para su custodia.
+Para estos efectos, el sujeto obligado deberá disponer en un lugar cerrado que
+ofrezca garantías suficientes de seguridad y que se encuentre dentro del mismo
+recinto informado en el estudio de seguridad y sus respectivos planes, en su caso.
+     Los empleadores deberán incorporar, en los respectivos contratos de trabajo de
+los guardias de seguridad, estipulaciones tendientes a asegurar la entrega y
+restitución de los elementos defensivos y de protección, de conformidad a lo
+dispuesto en los incisos precedentes, teniendo para ello en consideración las
+directivas que, en esta materia, ha impartido la Dirección del Trabajo y los
+derechos laborales establecidos en los distintos cuerpos normativos que regulan la
+materia.
+     El empleador no podrá exigir al guardia de seguridad que proporcione estos
+elementos ni tampoco deducir, retener o compensar, por este concepto, suma alguna de
+la remuneración del trabajador, siendo de su exclusivo cargo y costo.
+     Para el correcto uso de los elementos defensivos y de protección, la
+Subsecretaría de Prevención del Delito, mediante resolución, podrá contemplar el
+cumplimiento de normas técnicas, para lo cual podrá requerir la información que
+considere necesaria a los estamentos correspondientes. 
+     Sin perjuicio de lo anterior, en relación con el chaleco antibalas, se estará
+a lo dispuesto en el artículo 31 del presente reglamento. Asimismo, en lo que se
+refiere al chaleco anticortes, deberá cumplirse lo siguiente:
+     
+     1. Entidad certificadora: los chalecos anticortes que utilicen los guardias de
+seguridad, deberán estar certificados de acuerdo con la normativa técnica
+norteamericana NIJ 0115.00. La entidad certificadora correspondiente, además,
+llevará un registro de los elementos a ensayar y cantidad, tipo y resultado de los
+ensayos realizados. Este registro deberá ser comunicado cada noventa días corridos
+a la Subsecretaría de Prevención del Delito, quien lo pondrá en conocimiento de
+las autoridades fiscalizadoras.
+     2. Seguro de vida por 30 UF o su equivalente en dólares americanos: el
+fabricante deberá contar con un seguro de vida en caso de que un chaleco anticorte
+no cumpla su función. Los proveedores deberán acreditar y declarar la póliza al
+comprador, además de adjuntar este documento a la entidad certificadora de que trata
+el numeral anterior.
+     3. Al momento de presentar el producto para su certificación, el proveedor o
+fabricante deberá declarar el lote y la cantidad de unidades que lo componen
+(número de serie), así como su material, cantidad y área de protección, lo que
+permitirá mantener una trazabilidad del producto.
+     
+     Con todo, los empleadores no podrán proporcionar ningún tipo de máquina,
+instrumento, utensilio u objeto cortante o punzante, armas de fuego y demás
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 47 de 62
+
+elementos regulados en la ley N° 17.798, sobre Control de Armas y su reglamento
+complementario. El uso y porte de estos elementos está prohibido para todo guardia
+de seguridad sin distinción.
+
+     Artículo 94.- Los sistemas de registro audiovisual de guardias de seguridad que
+se enfrenten a un riesgo alto. La regulación de los sistemas de registro audiovisual
+de guardias de seguridad que se enfrenten a un riesgo alto se regirá por lo
+dispuesto en los artículos 36 y siguientes del presente reglamento. 
+
+     Párrafo VIII
+     Porteros, nocheros, rondines u otros de similar carácter
+
+     Artículo 95.- Concepto y funciones. Prestan labores de porteros, nocheros,
+rondines y otros de similar carácter para los efectos de este reglamento, quienes,
+sin tener la calidad de vigilantes privados o guardias de seguridad, otorgan,
+personalmente, protección a personas y/o bienes, dentro de un recinto o área
+determinada, previamente delimitada. En caso alguno, estas personas se encontrarán
+autorizadas para tener o portar armas de fuego en el ejercicio de sus funciones. Sin
+perjuicio de lo anterior, de oficio o a petición de este personal o de su empleador,
+la Subsecretaría de Prevención del Delito, mediante resolución fundada, previo
+informe de la autoridad fiscalizadora, podrá disponer la utilización de alguno de
+los elementos defensivos y de protección con los que pueden contar los guardias de
+seguridad, proporcionales a la función y nivel de riesgo de la entidad donde se
+desempeñan. Estos elementos deberán constar en la directiva de funcionamiento
+autorizada por la Subsecretaría de Prevención del Delito.
+     Las personas que realicen labores de conserjes podrán someterse voluntariamente
+a este régimen en caso de que desempeñen funciones de seguridad. 
+     Las personas naturales o jurídicas podrán contratar los servicios de nocheros,
+porteros, rondines u otros de similar carácter en forma directa o mediante empresas
+debidamente acreditadas, que provean recursos humanos para estos fines. 
+
+     Artículo 96.- Requisitos. Los porteros, nocheros, rondines u otros de similar
+carácter deberán cumplir los requisitos generales de las personas naturales
+establecido en el artículo 46 de la ley N° 21.659, además de aprobar el curso de
+capacitación del artículo 98 de este reglamento.
+
+     Artículo 97.- Autorización. Para ejercer funciones de portero, nochero,
+rondín u otros de similar carácter, el interesado deberá solicitar una
+autorización a la Subsecretaría de Prevención del Delito, de conformidad al
+procedimiento establecido en el artículo 85 del presente reglamento. 
+     En virtud de esta autorización, se entregará una licencia, personal e
+intransferible, que constará en una credencial, emitida por la Subsecretaría de
+Prevención del Delito. Las características de la credencial serán las mismas que
+para los guardias de seguridad, con la salvedad de que deberá señalar, en lugar de
+"Credencial de Guardia de Seguridad", el servicio de seguridad que se presta, según
+corresponda. 
+     Todos los gastos que se originen en el otorgamiento de la credencial serán de
+cargo del solicitante y será entregada a este. La Subsecretaría de Prevención del
+Delito, mediante resolución, establecerá los costos de la emisión de estas
+credenciales, las que regirán desde la publicación del acto administrativo en el
+Diario Oficial. 
+     Los servicios de portero, nochero, rondín u otros de similar carácter
+constarán en una directiva de funcionamiento que se regirá por lo dispuesto en el
+artículo 92 del presente reglamento.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 48 de 62
+
+     Artículo 98.- Capacitación. Los porteros, nocheros, rondines u otros de
+similar carácter deberán tener una capacitación especializada y diferenciada de
+aquella que se le entrega a los guardias de seguridad, en función de las labores que
+cumplen. 
+     Los cursos para desempeñarse como porteros, nocheros, rondines u otros de
+similar carácter serán los siguientes:
+     
+     1. Curso de formación: es aquel que habilita a una persona natural para
+desempeñarse como portero, nochero, rondín u otros de similar carácter. Este curso
+se rendirá una sola vez, con excepción de lo dispuesto en el inciso final del
+presente artículo. Su duración será de, a lo menos, sesenta horas pedagógicas.
+     2. Curso de perfeccionamiento: este curso deberá rendirse cada cuatro años y
+tendrá una duración de, a lo menos, treinta horas pedagógicas. 
+     
+     Si la persona no rinde el curso de perfeccionamiento dentro del plazo
+establecido en el numeral anterior, deberá rendir nuevamente el curso de formación.
+
+     Artículo 99.- Seguro de vida. El empleador deberá proceder a la contratación
+de un seguro de vida en favor de los porteros, nocheros, rondines u otros de similar
+carácter, cuya cifra asegurada no podrá ser inferior a ciento treinta y dos
+unidades de fomento.
+     Este seguro de vida cubrirá los riesgos a los que se encuentre expuesto el
+personal referido en el inciso precedente, siempre que se cumplan las siguientes
+condiciones:
+     
+     1. Que el siniestro ocurra con motivo u ocasión del desempeño de sus labores.
+     2. Que el asegurado cumpla los requisitos generales y específicos consagrados
+en la ley N° 21.659 y en el presente reglamento al momento en que ocurra el
+siniestro. 
+     3. Que la relación laboral entre el trabajador y la respectiva entidad
+empleadora se encuentre vigente al momento en que ocurra el siniestro.
+
+     Párrafo IX
+     Capacitación del personal de seguridad privada
+
+     Artículo 100.- Instituciones de capacitación. Son instituciones de
+capacitación los organismos técnicos de capacitación y las instituciones de
+educación superior acreditadas, tales como universidades, institutos profesionales y
+centros de formación técnica, que obtengan la respectiva autorización de la
+Subsecretaría de Prevención del Delito, que estén encargadas de la formación,
+capacitación y perfeccionamiento del personal de seguridad que desarrolla labores de
+vigilancia privada, guardias de seguridad, porteros, nocheros, rondines y demás
+personas que ejerzan las actividades de seguridad privada señaladas en el artículo
+2 de la ley N° 21.659. 
+
+     Artículo 101.- Requisitos de las instituciones de capacitación. Para efectos
+de obtener la autorización requerida en el artículo anterior por parte de la
+Subsecretaría de Prevención del Delito, las instituciones de capacitación deberán
+cumplir los requisitos señalados en el artículo 49 de este reglamento, en lo que
+correspondiere, además de los siguientes: 
+     
+     1. Adjuntar un listado de las instalaciones donde se desarrollarán las
+capacitaciones. 
+     2. Adjuntar un listado de los capacitadores en materias de seguridad privada que
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 49 de 62
+
+se desempeñen bajo su dependencia, acompañando, cada vez que se solicite renovar la
+autorización, los antecedentes que se hayan requerido para acreditar el cumplimiento
+de los requisitos del artículo 46 de la ley N° 21.659, de conformidad a lo
+dispuesto en el inciso final del artículo 60 del mismo cuerpo legal, así como de
+los artículos 104 y 105 de este reglamento.
+     3. Señalar, cada vez que se tramite un curso de formación, perfeccionamiento o
+especialización, en la nómina correspondiente, la relación de capacitadores por
+asignatura, de conformidad a lo dispuesto en el numeral 2 del artículo 50 del
+presente reglamento, así como su modalidad (presencial o virtual).
+     4. Acreditarse, en caso de que proceda, la correspondiente calidad de Organismo
+Técnico de Capacitación ante el Servicio Nacional de Capacitación y Empleo.
+
+     Artículo 102.- Procedimiento de autorización. Para desempeñarse como
+institución de capacitación, el interesado deberá presentar una solicitud de
+autorización ante la Subsecretaría de Prevención del Delito, acompañando los
+documentos que acrediten el cumplimiento de los requisitos establecidos en el
+artículo anterior y someterse al procedimiento establecido en el artículo 51 del
+presente reglamento, siendo aplicable, en lo que correspondiere, lo requerido
+respecto de las empresas de seguridad privada.
+
+     Artículo 103.- Capacitadores. Se entenderá por capacitadores a los
+profesionales y técnicos autorizados por la Subsecretaría de Prevención del
+Delito, previo informe de la autoridad fiscalizadora, dedicados a la instrucción,
+formación, capacitación y perfeccionamiento de vigilantes privados, guardias de
+seguridad, porteros, nocheros, rondines, conserjes, en su caso, u otros de similar
+carácter.
+
+     Artículo 104.- Requisitos generales para ejercer como capacitadores. Para
+ejercer como capacitador se necesitará cumplir con los siguientes requisitos:
+     
+     1. Aquellos señalados en el artículo 46 de la ley N° 21.659.
+     2. Deberán contar con título profesional, técnico de nivel superior o
+licenciatura, de conformidad a lo dispuesto en el artículo siguiente. 
+     3.  Deberán contar con un diplomado en materias inherentes a seguridad privada
+o gestión de seguridad empresarial, otorgado por una institución de educación
+superior, reconocida oficialmente por el Estado. Se exceptuará de lo anterior a
+quienes acrediten estar en posesión del título profesional de ingeniero en
+seguridad privada o del grado académico de magíster en seguridad privada. 
+
+     Artículo 105.- Requisitos especiales para ejercer como capacitadores. Los
+capacitadores deberán acreditar el cumplimiento de los siguientes requisitos
+especiales, de acuerdo a la asignatura que impartan:
+     
+     1. Legislación aplicada a la seguridad privada. Deberán ser licenciados en
+ciencias jurídicas y sociales o contar con el título de abogado. Podrá eximirse de
+la obligación de contar con diplomado en materias inherentes a seguridad privada o
+gestión de seguridad empresarial señalado en el artículo precedente, si se
+acreditan dos o más años de experiencia profesional en la materia. 
+     2. Respeto y promoción de los derechos humanos. Deberán ser licenciados en
+ciencias jurídicas y sociales o contar con el título de abogado. 
+     3. Privacidad y uso de datos personales. Deberán ser licenciados en ciencias
+jurídicas y sociales o contar con el título de abogado. Asimismo, podrán impartir
+esta asignatura todos los profesionales del área informática que posean título
+profesional de educación superior de una carrera de, a lo menos, ocho semestres de
+duración. 
+     4. Correcto uso de elementos defensivos. Todos aquellos Oficiales y Suboficiales
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 50 de 62
+
+de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o de
+Gendarmería de Chile que hayan obtenido una certificación oficial equivalente a un
+título profesional o técnico de nivel superior de conformidad a la normativa
+correspondiente. Asimismo, deberán acreditar el cumplimiento de los cursos
+respectivos de defensa personal a través de la presentación de la malla curricular
+vigente a la época en que los aprobaron.
+     5. Primeros auxilios. Haber obtenido un título profesional o técnico de nivel
+superior en alguna carrera del área de la salud, de conformidad a la normativa
+vigente. Estos profesionales y técnicos estarán exceptuados de cumplir con el
+diplomado en materias inherentes a seguridad privada o gestión de seguridad
+empresarial, que señala el artículo anterior.
+     6. Prevención de riesgos. Para este tipo de cursos se deberá contar con el
+título profesional o técnico de nivel superior en prevención de riesgos con la
+correspondiente resolución de la Secretaría Regional Ministerial de Salud.
+     7. Probidad, no discriminación y perspectiva de género. Todos aquellos
+profesionales universitarios que cuenten con las respectivas aprobaciones de cursos
+de postgrado en los grados de magister o diplomados en cursos especiales sobre las
+materias indicadas.
+     8. Seguridad de instalaciones. Para este tipo de cursos se deberá contar con el
+título profesional o técnico de nivel superior en prevención de riesgos con la
+correspondiente resolución de la Secretaría Regional Ministerial de Salud.
+     9. Seguridad electrónica. Será necesario contar con el título profesional o
+técnico de nivel superior en electrónica.
+     10. Sistema de telecomunicaciones. Poseer el título profesional de ingeniero o
+técnico nivel superior en telecomunicaciones. 
+     11. Técnicas de reducción. Todos aquellos Oficiales y Suboficiales de las
+Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile
+que hayan obtenido una certificación oficial equivalente a un título profesional o
+técnico de nivel superior, de conformidad a la normativa correspondiente. Asimismo,
+deben acreditar los cursos respectivos de defensa personal a través de la
+presentación de la malla curricular vigente a la época en que los aprobaron.
+Excepcionalmente, podrá impartir dicho curso el deportista experto en artes
+defensivas, debidamente acreditadas.
+     12. Instrucción física. Para este tipo de cursos, se deberá contar con una
+licenciatura en educación física o título técnico en materias afines otorgado por
+entidades reconocidas por el Ministerio de Educación. Estos profesionales estarán
+exceptuados de cumplir con el diplomado en materias inherentes a seguridad privada o
+gestión de seguridad empresarial, que señala el artículo anterior. 
+     13. Conocimiento de arma y tiro. Instructor o experto en manejo y uso de armas y
+tiro, con un mínimo de cinco años de experiencia; así como oficiales y
+suboficiales de las Fuerzas Armadas y de Orden y Seguridad Pública o Gendarmería de
+Chile egresados de sus respectivas escuelas. En cada proceso de acreditación, todos
+y sin exclusión, deberán rendir un examen práctico ante la autoridad fiscalizadora
+competente.
+
+     Artículo 106.- Certificaciones. La Subsecretaría de Prevención del Delito
+otorgará las certificaciones de aprobación de los cursos respectivos a través de
+la plataforma informática establecida en el artículo 115 de este reglamento.
+
+     Artículo 107.- Capacitaciones. La Subsecretaría de Prevención del Delito,
+mediante resolución, previa propuesta de la autoridad fiscalizadora determinará el
+contenido, la forma, modalidades, duración y especializaciones de los distintos
+programas de capacitación debiendo actualizarse la malla específica en función de
+la evolución de los riesgos y de las capacidades formativas de las entidades
+capacitadoras. 
+     Sin perjuicio de lo anterior, los contenidos de los cursos de formación serán,
+a lo menos, los siguientes: 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 51 de 62
+
+     1. Para guardias de seguridad:
+     
+     a) Legislación aplicada a seguridad privada. Esta asignatura se orientará a
+desarrollar conocimientos sobre las normas vigentes en materia de seguridad privada
+que permitan un adecuado entendimiento del rol coadyuvante que esta tiene para con la
+seguridad pública, además del estudio específico de los fundamentos
+constitucionales, de la ley N° 21.659 y sus reglamentos complementarios. Del mismo
+modo, deberá incorporar materias vinculadas con seguridad privada, como las normas
+laborales aplicables al personal de seguridad privada.
+     b) Respeto y promoción de los derechos humanos. Esta asignatura se orientará a
+desarrollar conocimientos relativos a conceptos y normas nacionales e internacionales
+relacionadas con los derechos humanos, con especial énfasis en grupos de especial
+protección, tales como mujeres, niños, niñas o adolescentes, diversidades y
+disidencias sexo-genéricas, personas en situación de discapacidad o adultos
+mayores.
+     c) Privacidad y uso de datos personales. Esta asignatura tendrá por objeto
+entregar conocimientos sobre principios, conceptos y normas sobre datos personales y
+sensibles, con énfasis en su adecuada protección.
+     d) Instrucción física. Esta asignatura tiene por objeto que el alumno mantenga
+una condición física que le permita un eficiente desempeño de sus funciones. 
+     e) Correcto uso de elementos defensivos y de protección. Esta asignatura
+tendrá por objeto que el alumno adquiera y desarrolle técnicas para el adecuado uso
+de elementos defensivos y de protección, especialmente en casos de legítima defensa
+propia o de terceros.
+     f) Primeros auxilios. Esta asignatura tendrá por objeto entregar al alumno
+conocimientos básicos para la atención y respuesta de una persona víctima de un
+accidente, una agresión o una afección natural.
+     g) Prevención de riesgos. Esta asignatura tendrá por objeto orientar al alumno
+en lo que se refiere a los riesgos, accidentes y enfermedades profesionales, así
+como las formas de prevenirlos.
+     h) Seguridad de las instalaciones. Esta asignatura tendrá como propósito
+desarrollar conocimientos relacionados con la aplicación de medidas de seguridad
+tendientes a evitar o minimizar los riesgos que puedan afectar a un recinto o área
+determinada, incluyendo el análisis de riesgos potenciales, el manejo de situaciones
+de emergencia, entre otras.
+     i) Probidad, no discriminación y perspectiva de género. Esta asignatura
+abordará principios, conceptos y normas tendientes a promover un actuar íntegro de
+los alumnos, así como a la prevención de actos de discriminación arbitraria y la
+adopción de una perspectiva de género en el desempeño de sus funciones.
+     j) Seguridad electrónica. Esta asignatura tendrá por objeto proporcionar
+conocimientos conceptuales, prácticos y normas operativas relacionadas con los
+diferentes sistemas y equipos electrónicos utilizados en el ámbito de la seguridad
+privada, tales como cámaras de televigilancia, alarmas, entre otros. 
+     k) Sistema de telecomunicaciones. Esta asignatura tendrá por objeto desarrollar
+en los alumnos conocimientos relacionados con la aplicación, en el ámbito de la
+seguridad privada, de equipos de comunicación y sus características técnicas.
+     l) Técnicas de reducción. Esta asignatura tendrá por objeto que el alumno
+desarrolle técnicas de reducción adecuadas y proporcionadas al peligro actual o
+inminente al que se enfrentan en casos de legítima defensa propia o de terceros.
+     
+     Lo dispuesto en este numeral será sin perjuicio de aquellas asignaturas
+contenidas en el curso de especialización, en atención al nivel de riesgo que
+enfrentan los guardias de seguridad, de conformidad a lo dispuesto en el artículo 89
+N° 3 del presente reglamento. 
+     2. Para porteros, nocheros, rondines u otros de similar carácter:
+     
+     a) Legislación aplicada a seguridad privada. Esta asignatura se orientará a
+desarrollar conocimientos sobre las normas vigentes en materia de seguridad privada
+que permitan un adecuado entendimiento del rol coadyuvante que esta tiene para con la
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 52 de 62
+
+seguridad pública, además del estudio específico de los fundamentos
+constitucionales, de la ley N° 21.659 y sus reglamentos complementarios. Del mismo
+modo, deberá incorporar materias vinculadas con seguridad privada, como las normas
+laborales aplicables al personal de seguridad privada.
+     b) Respeto y promoción de los derechos humanos. Esta asignatura se orientará a
+desarrollar conocimientos relativos a conceptos y normas nacionales e internacionales
+relacionadas con los derechos humanos, con especial énfasis en grupos de especial
+protección, tales como mujeres, niños, niñas o adolescentes, diversidades y
+disidencias sexo-genéricas, personas en situación de discapacidad o adultos
+mayores.
+     c) Privacidad y uso de datos personales. Esta asignatura tendrá por objeto
+entregar conocimientos sobre principios, conceptos y normas sobre datos personales y
+sensibles, con énfasis en su adecuada protección.
+     d) Correcto uso de elementos defensivos y de protección. Esta asignatura
+tendrá por objeto que el alumno adquiera y desarrolle técnicas para el adecuado uso
+de elementos defensivos y de protección, especialmente en casos de legítima defensa
+propia o de terceros.
+     e) Primeros auxilios. Esta asignatura tendrá por objeto entregar al alumno
+conocimientos básicos para la atención y respuesta de una persona víctima de un
+accidente, una agresión o una afección natural.
+     f) Prevención de riesgos: Esta asignatura tendrá por objeto orientar al alumno
+en lo que se refiere a los riesgos, accidentes y enfermedades profesionales, así
+como las formas de prevenirlos.
+     g) Seguridad de las instalaciones. Esta asignatura tendrá como propósito
+desarrollar conocimientos relacionados con la aplicación de medidas de seguridad
+tendientes a evitar o minimizar los riesgos que puedan afectar a un recinto o área
+determinada, incluyendo el análisis de riesgos potenciales, el manejo de situaciones
+de emergencia, entre otras.
+     h) Probidad, no discriminación y perspectiva de género. Esta asignatura
+abordará principios, conceptos y normas tendientes a promover un actuar íntegro de
+los alumnos, así como a la prevención de actos de discriminación arbitraria y la
+adopción de una perspectiva de género en el desempeño de sus funciones.
+     
+     Los programas y planes de estudio impartidos por las instituciones de
+capacitación, así como sus perfiles de ingreso y egreso deberán ser aprobados por
+la Subsecretaría de Prevención del Delito, a través del procedimiento establecido
+en el artículo 102 de este reglamento. Asimismo, las instituciones deberán
+presentar ante esta autoridad un manual, protocolo o procedimiento en el cual consten
+los criterios para la convalidación en los casos de los artículos 23 y 26 del
+presente reglamento. La Subsecretaría de Prevención del Delito podrá dictar
+instrucciones generales sobre esta materia, con el objeto de asegurar una adecuada
+homologación.
+     Estos programas y planes de estudio podrán ser impartidos de forma telemática
+o presencial, salvo los correspondientes a las asignaturas de arma y tiro, técnicas
+de reducción y primeros auxilios, los que serán siempre presenciales.
+     Las capacitaciones podrán efectuarse en lugares autorizados por la
+Subsecretaría de Prevención del Delito y en las sedes propias de los Organismos
+Técnicos de Capacitación acreditadas ante el Servicio Nacional de Capacitación y
+Empleo, pudiendo complementar la enseñanza con procesos y diseños de formación
+práctica en sus puestos de trabajo.
+     Tratándose del personal de seguridad privada que se desempeñe en entidades
+ubicadas en recintos portuarios, aeropuertos u otros espacios sometidos al control de
+la autoridad militar, marítima o aeronáutica, la Subsecretaría de Prevención del
+Delito, mediante resolución, establecerá los cursos de capacitación especializada,
+previa propuesta de la autoridad institucional que corresponda.
+     Con todo, en lo que se refiere a la asignatura de arma y tiro, las horas
+consideradas en los programas de formación o perfeccionamiento de vigilantes
+privados deberán realizarse en el polígono que la respectiva autoridad
+fiscalizadora, en materia de armas de fuego, autorice para tales efectos, previa
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 53 de 62
+
+solicitud de la institución capacitadora. 
+     La Subsecretaría de Prevención del Delito deberá dictar, mediante
+resolución, las normas relativas a la aplicación de exámenes y sus procedimientos
+asociados. 
+
+     Párrafo X
+     Reglas especiales para otras personas naturales que ejercen actividades de
+seguridad privada
+
+     Artículo 108.- Supervisor de seguridad privada. Es la persona que efectúa
+labores de supervigilancia y control de los recursos humanos, materiales,
+tecnológicos o los procedimientos destinados a la protección de personas, bienes y
+procesos productivos, desarrolladas en un recinto o área determinada.
+     Si el supervisor se desempeña en una entidad obligada que deba incorporar,
+dentro de sus medidas de seguridad, un sistema de vigilancia privada, deberá cumplir
+los mismos requisitos que un vigilante privado y encontrarse acreditado como tal.
+Además, será parte del organismo interno de seguridad, debiendo coordinar sus
+actividades con los encargados y jefes de seguridad respectivos. Por el contrario, si
+el supervisor se desempeña en otro tipo de entidad no requerirá encontrarse
+autorizado para ser vigilante privado y deberá cumplir solo con los requisitos
+generales del artículo 46 de la ley N° 21.659. En este último caso no podrá en
+caso alguno portar armas de fuego. 
+     El supervisor deberá ser autorizado por la Subsecretaría de Prevención del
+Delito, de conformidad al artículo 85 del presente reglamento, para lo cual, además
+de cumplir con los requisitos del artículo 46 de la ley N° 21.659 y, en su caso,
+con los requisitos para ser vigilante privado, deberá acreditar la aprobación de un
+curso para desarrollar labores de supervisión y control de una duración mínima de
+ciento veinte horas.
+     Sin perjuicio de lo anterior, si la persona cuenta con un curso de formación
+para guardias de seguridad, se le exigirá un curso de treinta horas propias de la
+labor de supervisión y control. Asimismo, si cuenta con curso de formación para
+vigilantes priva dos, se le exigirá un curso de, al menos, veinte horas propias de
+la labor de supervisión y control. Estos cursos deberán haberse aprobado dentro de
+los cuatro años anteriores a la postulación para el cargo de supervisor. 
+     Con todo, si la persona posee un título técnico de nivel superior de mínimo
+cuatro semestres o un título profesional de mínimo ocho semestres, se le exigirá
+un curso de, al menos, veinte horas propias de la labor de supervisión y control.
+
+     Artículo 109.- Asesor de seguridad. Es la persona natural que, en razón de su
+oficio, debe aconsejar o ilustrar a una persona o entidad, con el propósito de
+ejecutar el buen funcionamiento de una instalación, tanto en sus bienes como en los
+individuos que en ella se encuentren, evitando que esta falle, se frustre o sea
+violentada, precaviendo proponer medidas de seguridad que tiendan a neutralizar o
+disminuir las vulnerabilidades que pueda observar. 
+     En virtud de sus funciones, las entidades obligadas podrán encomendarle la
+elaboración de los estudios de seguridad y planes de seguridad. Asimismo, cualquier
+persona natural o jurídica podrá solicitar su asesoría para la confección de una
+directiva de funcionamiento. 
+     Para poder desempeñarse en este cargo, la persona deberá ser autorizada por la
+Subsecretaría de Prevención del Delito, de conformidad al artículo 85 del presente
+reglamento. Para ello, la persona deberá cumplir los requisitos generales del
+artículo 46 de la ley N° 21.659, poseer un título profesional relacionado con el
+área de seguridad o materias afines y contar con un diplomado en materias inherentes
+a seguridad privada o gestión de seguridad empresarial de una duración no menor a
+cuatrocientas horas académicas, otorgada por una entidad de estudios superiores
+reconocidos por el Ministerio de Educación. Se entenderá como una carrera afín
+aquella cuya malla curricular esté relacionada con las actividades de la seguridad
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 54 de 62
+
+privada, como también aquellas materias que digan relación con la prevención de la
+seguridad física de las personas y de las instalaciones.
+     Se exceptuará del diplomado en materias inherentes a seguridad privada, quienes
+acrediten estar en posesión del título profesional de Ingeniero en Seguridad
+Privada o de un Magíster en Seguridad Privada.
+
+     Artículo 110.- Técnico en seguridad privada. Es aquella persona que
+proporciona, instala, mantiene, repara y/o controla aparatos, equipos, dispositivos,
+componentes tecnológicos y sistemas de seguridad electrónica conectados a centrales
+receptoras de alarmas, centros de control o de videovigilancia, destinados a la
+protección de personas, bienes y procesos productivos, desarrolladas en un recinto o
+área determinada.
+     El técnico en seguridad privada deberá cumplir los requisitos del artículo 46
+de la ley N° 21.659 y acreditar su idoneidad profesional ante la Subsecretaría de
+Prevención del Delito mediante la presentación de un certificado de título
+profesional o técnico en la materia. Asimismo, deberá ser autorizado por la
+Subsecretaría de Prevención del Delito, de conformidad al artículo 85 del presente
+reglamento.
+
+     Artículo 111.- Operador de cámaras de televigilancia y alarmas. Es aquella
+persona que se desempeña en los centros de control o de videovigilancia, a través
+de un sistema de circuito cerrado de televisión o alarma, la seguridad de un recinto
+o área determinada, con el objeto de detectar en forma oportuna los riesgos y
+amenazas para efectuar las comunicaciones y/o coordinaciones necesarias a nivel
+interno, así como con la autoridad policial y procurar neutralizar la amenaza.
+     Para ejercer sus labores, la persona que se desempeñe en este cargo deberá
+cumplir los requisitos del artículo 46 de la ley N° 21.659 y acreditar ante la
+Subsecretaría de Prevención del Delito su idoneidad profesional mediante la
+presentación de un certificado de capacitación en el área respectiva en que se
+desempeña.
+     El operador de cámaras de televigilancia y alarmas deberá ser autorizado por
+la Subsecretaría de Prevención del Delito, de conformidad al artículo 85 de este
+reglamento.
+
+     Artículo 112.- Instalador técnico. Es aquella persona que, por intermedio de
+la prestación de sus servicios en materias de seguridad, instala los sistemas de
+circuito cerrado de televisión y/o alarmas, para precaver el buen funcionamiento de
+una instalación, evitando que esta falle, se frustre o sea violentada.
+     Para desempeñar sus funciones, la persona deberá cumplir los requisitos del
+artículo 46 de la ley N° 21.659 y acreditar ante la Subsecretaría de Prevención
+del Delito que cuenta con un certificado de capacitación en el área. 
+     El instalador técnico deberá ser autorizado por la Subsecretaría de
+Prevención del Delito, de conformidad al artículo 85 del presente reglamento.
+
+     Artículo 113.- Operador de cajero automático. Es aquella persona que se ocupa
+de instalar, mantener o reparar cajeros automáticos, dispensadores o contenedores de
+dinero de cualquier especie, a fin de precaver su buen funcionamiento, evitando que
+estos fallen, se frustren o sean violentados.
+     Para poder desempeñarse en estas funciones, la persona deberá cumplir los
+requisitos del artículo 46 de la ley N° 21.659 y acreditar ante la Subsecretaría
+de Prevención del Delito que cuenta con las competencias necesarias a través de un
+certificado de capacitación en el área y un certificado de competencias laborales
+emitido por el empleador actual o, en su defecto, por uno anterior. 
+     El operador de cajero automático deberá ser autorizado por la Subsecretaría
+de Prevención del Delito, de conformidad al artículo 85 de este reglamento.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 55 de 62
+
+     Artículo 114.- Facultad de dictar instrucciones generales sobre nuevos cargos
+de seguridad privada. Sin perjuicio de lo dispuesto en los artículos precedentes, la
+Subsecretaría de Prevención del Delito, en virtud de lo dispuesto en el numeral 1°
+del artículo 83 de la ley N° 21.659, podrá, mediante resolución, dictar
+instrucciones generales sobre los nuevos cargos que surjan a partir de la
+implementación y operatividad del sistema de seguridad privada.
+
+     Párrafo XI
+     Plataforma informática en materia de seguridad privada
+
+     Artículo 115.- Plataforma informática en materia de seguridad privada. La
+Subsecretaría de Prevención del Delito administrará una plataforma informática
+interconectada con las autoridades fiscalizadoras, la cual servirá de apoyo en las
+diversas etapas de los procedimientos administrativos en materia de seguridad privada
+y de eventos masivos, así como de colaboración para una eficaz y eficiente toma de
+decisiones por parte de la autoridad correspondiente.
+     Esta plataforma albergará el Registro de Seguridad Privada y un sistema de
+tramitación electrónica con los usuarios y cumplirá, al menos, las siguientes
+funciones:
+     
+     1. Otorgar las autorizaciones, certificaciones, revocaciones, suspensiones,
+clausuras y demás decisiones emitidas por la Subsecretaría de Prevención del
+Delito en materia de seguridad privada. 
+     2. Facilitar el procedimiento de declaración de una entidad como obligada, así
+como la aprobación y renovación de los estudios de seguridad.
+     3. Canalizar los requerimientos a la Subsecretaría de Prevención del Delito
+relacionados con materias de seguridad privada. 
+     4. Facilitar el procedimiento administrativo de autorización de eventos
+masivos.
+     5. Las demás materias de seguridad privada que disponga la Subsecretaría de
+Prevención del Delito.
+     
+     La Subsecretaría de Prevención del Delito, a través de resolución, deberá
+aprobar los procedimientos que sean necesarios para autorizar o habilitar a las
+personas que hubieren sido designadas para acceder a la plataforma. Dichos
+procedimientos establecerán niveles de acceso restringido y adaptados a las
+competencias de las instituciones y los perfiles de las personas y entidades.
+
+     TÍTULO IV
+     Autoridades encargadas de la supervisión, control y fiscalización
+
+     Párrafo I
+     Subsecretaría de Prevención del Delito
+
+     Artículo 116.- Órgano rector en materia de seguridad privada. Al Ministerio
+encargado de la Seguridad Pública, a través de la Subsecretaría de Prevención del
+Delito, le corresponderá autorizar, regular, supervigilar, controlar y ejercer las
+demás atribuciones legales en materia de seguridad privada. Para ello, actuará como
+órgano rector, y velará por que las personas naturales y jurídicas reguladas por
+la ley N° 21.659 y este reglamento, cumplan su rol preventivo, coadyuvante y
+complementario de la seguridad pública.
+     En cumplimiento de lo anterior, las autoridades fiscalizadoras reguladas en la
+ley N° 21.659 colaborarán con la Subsecretaría de Prevención del Delito y
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 56 de 62
+
+llevarán a cabo sus labores de conformidad a las instrucciones que esta les imparta.
+
+     Artículo 117.- Funciones y atribuciones de la Subsecretaría de Prevención del
+Delito. A la Subsecretaría de Prevención del Delito, en el ámbito de la ley N°
+21.659 y del presente reglamento, le corresponderá la asesoría y colaboración con
+el Ministro o Ministra encargada de la Seguridad Pública, en todas las funciones y
+atribuciones propias de seguridad privada y podrá ejercerlas directamente, sin
+perjuicio de aquellas que le corresponden al Ministro o la Ministra en forma directa,
+de conformidad a lo establecido en la ley N° 21.659. 
+     La Subsecretaría de Prevención del Delito tendrá, especialmente, las
+siguientes atribuciones o facultades:
+     
+     1. Aplicar e interpretar administrativamente las disposiciones de la ley N°
+21.659 y sus reglamentos e impartir instrucciones de general aplicación en las
+materias de su competencia, sin perjuicio de las atribuciones propias del Ministerio
+encargado de la Seguridad Pública.
+     2. Proponer al Ministerio encargado de la Seguridad Pública políticas sobre
+seguridad privada, así como las modificaciones legales y reglamentarias en esa
+materia.
+     3. Actuar como órgano de consulta, análisis, comunicación y coordinación en
+materias relacionadas con la seguridad privada.
+     4. Requerir a los demás órganos del Estado los informes que estime necesarios
+para el cumplimiento de sus funciones.
+     5. Determinar entidades obligadas, de acuerdo a lo dispuesto en el Título II de
+la ley N° 21.659 y de este reglamento.
+     6. Aprobar o solicitar modificaciones al estudio de seguridad de las entidades
+obligadas establecidas en el Título II de la ley N° 21.659 y aprobar sus
+actualizaciones.
+     7. Otorgar, denegar, suspender y revocar autorizaciones a personas naturales o
+jurídicas que presten servicios de seguridad privada en conformidad con la ley N°
+21.659 y demás normas sobre la materia.
+     En el ejercicio de esta atribución, la Subsecretaría de Prevención del Delito
+podrá suspender temporalmente o revocar la autorización para ejercer actividades de
+seguridad privada, así como ordenar la clausura temporal o definitiva de los
+recintos donde estas funcionen, de conformidad a lo dispuesto en el párrafo 4 del
+Título VI de la ley N° 21.659.
+     8. Fijar y aprobar los contenidos de la capacitación a que debe someterse el
+personal de seguridad privada, previa propuesta de la autoridad fiscalizadora y de
+conformidad a lo establecido en el presente reglamento.
+     9. Mantener un registro actualizado de las entidades obligadas, de las personas
+naturales y jurídicas autorizadas a prestar servicios de seguridad privada, de las
+empresas de alarmas y proveedoras de servicios, de organizadores y productores de
+eventos masivos y de las sanciones que afecten a cualquiera de estas.
+     10. Supervigilar y controlar las labores desarrolladas por las autoridades
+fiscalizadoras de la ley N° 21.659.
+     11. Elaborar un plan de fiscalización en materia de seguridad privada, en el
+que se establezcan criterios uniformes que permitan a las autoridades fiscalizadoras
+desarrollar adecuadamente sus labores.
+     12. Requerir el auxilio de la fuerza pública cuando ello sea necesario para el
+cumplimiento de sus funciones.
+     13. Ejercer las demás atribuciones o facultades que le encomienden la ley N°
+21.659 y la demás normativa aplicable.
+
+     Artículo 118.- El Registro de Seguridad Privada. La Subsecretaría de
+Prevención del Delito creará un Registro de Seguridad Privada, el que estará
+compuesto por seis subregistros que deberán ser parte de la plataforma establecida
+en el artículo 115 del presente reglamento.
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 57 de 62
+
+     Artículo 119.- Subregistro de entidades obligadas. Dentro del Registro de
+Seguridad Privada de la Subsecretaría de Prevención del Delito, existirá un
+subregistro de entidades obligadas, el cual deberá contener lo siguiente: 
+     
+     1. Razón social, nombre de fantasía, rol único tributario, giro, domicilio
+legal, correo electrónico y teléfono de contacto.
+     2. En cuanto a su representante legal deberá consignar su nombre completo,
+cédula de identidad, domicilio, personería, correo electrónico y teléfono de
+contacto.
+     3. Las sucursales obligadas, si corresponde, con identificación de sus
+domicilios respectivos y su nivel de riesgo.
+     4. La indicación de si la entidad debe implementar, dentro de sus medidas de
+seguridad, un sistema de vigilancia privada. 
+     5. La resolución exenta que la determinó como entidad obligada y a cada una de
+sus sucursales, si correspondiera. 
+     6. La resolución que aprobó el estudio de seguridad y la de todas sus
+renovaciones, así como las de cada una de sus sucursales, si correspondiera. 
+     7. La fecha de vencimiento del último estudio de seguridad por cada sucursal.
+     8. La indicación de los teléfonos móviles del encargado de seguridad o del
+contacto que disponga la entidad si no estuviese obligada a mantener un sistema de
+vigilancia privada, por cada sucursal, si correspondiere.
+     9. La identificación de los integrantes que componen el organismo de seguridad
+interno, cuando corresponda.
+     10. La indicación de si la entidad tiene un protocolo conjunto con otra u otras
+entidades obligadas, en cuyo caso deben estar identificadas por cada sucursal. 
+     11. La cantidad de vigilantes privados que fueron autorizados, en su caso, por
+cada sucursal. 
+     12. La cantidad de armas y municiones aprobadas, en su caso, por cada sucursal.
+     13. La cantidad de guardias de seguridad que fueron autorizados, en su caso, por
+cada sucursal. 
+     14. La indicación de si se ha impuesto la sanción de clausura, por cada
+sucursal.
+     15.  La especificación de la autoridad fiscalizadora por cada sucursal.
+
+     Artículo 120.- Subregistro de entidades voluntarias. Dentro del Registro de
+Seguridad Privada de la Subsecretaría de Prevención del Delito, existirá un
+subregistro de aquellas entidades que voluntariamente se hayan sometido a tener
+medidas de seguridad en virtud de lo dispuesto en el artículo 10 de la ley N°
+21.659, el que deberá tener todas las especificaciones señaladas en el artículo
+anterior. 
+
+     Artículo 121.- Subregistro de personas naturales. Dentro del Registro de
+Seguridad Privada de la Subsecretaría de Prevención del Delito, existirá un
+subregistro de personas naturales que ejercen funciones en materia de seguridad
+privada, el que contendrá lo siguiente: 
+     
+     1. Nombre completo, cédula de identidad, domicilio, correo electrónico y
+teléfono de contacto.
+     2. El tipo de autorización que identifique su función sea como jefe de
+seguridad; encargado de seguridad; encargado de armas; vigilante privado; guardia de
+seguridad; portero; nochero; rondín, capacitador u otro.
+     3. La resolución que lo autorizó a ejercer labores de seguridad privada.
+     4. El número de la tarjeta de identificación. 
+     5. La fecha de vencimiento de la respectiva autorización.
+     6. La indicación de si se le ha impuesto o no la sanción de suspensión o
+revocación de la autorización. 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 58 de 62
+
+     7. La autoridad fiscalizadora correspondiente. 
+
+     Artículo 122.- Subregistro de empresas de seguridad privada. Dentro del
+Registro de Seguridad Privada de la Subsecretaría de Prevención del Delito,
+existirá un subregistro de empresas de seguridad privada, el cual contendrá lo
+siguiente: 
+     
+     1. Razón social, nombre de fantasía, rol único tributario, giro, domicilio
+legal, correo electrónico y teléfono de contacto.
+     2. En cuanto a su representante legal deberá consignar su nombre completo,
+cédula de identidad, domicilio, personería, correo electrónico y teléfono de
+contacto.
+     3. La actividad de seguridad privada que ejerce y para la cual está autorizada.
+     4. El número de la resolución que autorizó su funcionamiento.
+     5. La indicación de si se le ha impuesto o no la sanción de suspensión,
+revocación o clausura. 
+     6. La fecha de vencimiento de la autorización de funcionamiento de la empresa.
+     7. La nómina de los sistemas o dispositivos disuasivos de seguridad de
+entintado de billetes, en caso de las empresas de transporte de valores, de
+conformidad a lo dispuesto en el artículo 69 de este reglamento. 
+
+     Artículo 123.- Subregistro de sanciones. Dentro del Registro de Seguridad
+Privada de la Subsecretaría de Prevención del Delito, existirá un subregistro de
+las sanciones que afecten a las entidades obligadas y a todas las personas naturales
+o jurídicas que ejercen actividades de seguridad privada, así como a los
+organizadores y productores de eventos masivos. 
+     Este subregistro contendrá lo siguiente:
+     
+     1. El nombre completo de la persona natural o la razón social de la persona
+jurídica sancionada. 
+     2. El rol único tributario de la persona jurídica o cédula de identidad de la
+persona natural que haya sido sancionada por los juzgados de policía local.
+     3. La función o actividad que ejerce el sujeto o entidad sancionada. 
+     4. Tipo de infracción cursada, el juzgado de policía local que impuso la
+sanción y rol de la causa.
+     5. La existencia de reincidencia. 
+     6. Historial de sanciones de cada uno de los inscritos en el Registro de
+Seguridad Privada.
+     7. La autoridad fiscalizadora correspondiente a cada uno de los sancionados.
+
+     Artículo 124.- Subregistro de eventos masivos. Dentro del Registro de Seguridad
+Privada de la Subsecretaría de Prevención del Delito, existirá un subregistro de
+eventos masivos, el que contendrá los siguientes apartados:
+     
+     1. Recintos habituales: 
+     
+     a) Nombre completo, dirección y aforo del recinto.
+     b) Nombre completo, cédula de identidad, correo electrónico y teléfono móvil
+del propietario y/o administrador. En caso de que se trate de una persona jurídica,
+deberá indicar, además, razón social, nombre de fantasía, rol único tributario,
+giro, domicilio legal, correo electrónico y teléfono de contacto, así como la
+individualización del representante leg al.
+     c) El acto administrativo de la Delegación Presidencial Regional que lo
+declaró como recinto habitual.
+     d) La autoridad fiscalizadora correspondiente.
+     
+     2. Organizadores habituales:
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 59 de 62
+
+     a) Nombre completo, cédula de identidad, correo electrónico y teléfono móvil
+del organizador. En caso de que se trate de una persona jurídica, deberá indicar,
+además, razón social, nombre de fantasía, rol único tributario, giro, domicilio
+legal, correo electrónico y teléfono de contacto, así como la individualización
+del representante legal.
+     b) El acto administrativo que lo declaró como organizador habitual. 
+     
+     3. Responsables de seguridad de eventos masivos: nombre de la persona natural,
+cédula de identidad, domicilio, correo electrónico y teléfono móvil.
+     Sin perjuicio de lo anterior, el responsable de seguridad de eventos masivos que
+ejerza funciones en materia de seguridad privada deberá inscribirse, además, en el
+subregistro de personas naturales que ejercen actividades de seguridad privada.
+
+     Artículo 125.- Los medios de resguardo de la información del Registro de
+Seguridad Privada. La Subsecretaría de Prevención del Delito adoptará las medidas
+establecidas en su política general de seguridad de la información para garantizar
+el debido funcionamiento del registro. 
+
+     Artículo 126.- Forma en que las autoridades fiscalizadoras tendrán acceso al
+Registro de Seguridad Privada. La Subsecretaría de Prevención del Delito deberá
+implementar los protocolos que sean necesarios para autorizar o habilitar a las
+personas que hubieren sido designadas por cada autoridad fiscalizadora quienes
+tendrán acceso al registro. Dichos procedimientos establecerán los niveles de
+acceso conforme a las competencias orgánicas de las citadas instituciones.
+     De conformidad con lo dispuesto en el presente reglamento, la Subsecretaría
+adoptará todas las medidas oportunas para preservar la seguridad de los datos
+tratados en el registro, medidas que serán comunicadas a las autoridades
+fiscalizadoras, a fin de velar por el debido acceso a los registros por parte de cada
+una de ellas. En este sentido, y para dar cumplimiento a lo anterior, las autoridades
+fiscalizadoras deberán prestar apoyo técnico a la Subsecretaría en caso de que
+así lo requiera.
+
+     Artículo 127.- Forma de acceso excepcional al subregistro de sanciones y de
+eventos masivos. La Subsecretaría de Prevención del Delito deberá implementar los
+procedimientos que sean necesarios para autorizar o habilitar a las personas, en el
+ámbito de sus competencias, que hubieren sido designadas por las delegaciones
+presidenciales regionales, los juzgados de policía local, las entidades obligadas y
+las personas naturales y jurídicas que ejercen actividades de seguridad privada y
+que tendrán acceso al subregistro de sanciones y subregistro de eventos masivos.
+Dichos procedimientos establecerán los niveles de acceso restringido y adaptados a
+las competencias de las instituciones y los perfiles de las personas y entidades.
+     De conformidad con lo dispuesto en el presente reglamento, la Subsecretaría
+adoptará todas las medidas oportunas para preservar la seguridad de los datos
+tratados en los subregistros de sanciones y de eventos masivos, medidas que serán
+comunicadas a las instituciones, personas y entidades señaladas en el párrafo
+anterior, a fin de velar por el debido acceso a estos por parte de cada una de ellas.
+En este sentido, y para dar cumplimiento a lo anterior, est as instituciones,
+personas y entidades, según corresponda, deberán prestar apoyo técnico a la
+Subsecretaría en caso de que así lo requiera. 
+
+     Párrafo II
+     Autoridades fiscalizadoras de seguridad privada
+
+     Artículo 128.- Autoridades fiscalizadoras. Carabineros de Chile será la
+autoridad fiscalizadora en materia de seguridad privada y estará encargada de
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 60 de 62
+
+supervisar el cumplimiento de las normas legales y reglamentarias en esta materia,
+bajo la dirección de la Subsecretaría de Prevención del Delito, y de acuerdo a las
+instrucciones generales y específicas que ésta imparta.
+     Tratándose de entidades ubicadas en recintos portuarios, aeropuertos u otros
+espacios sometidos al control de la autoridad militar, marítima o aeronáutica, las
+atribuciones que se otorgan en esta ley a Carabineros de Chile serán ejercidas por
+la autoridad institucional que corresponda.
+     Las actividades fiscalizadoras en materia de seguridad privada no obstarán en
+caso alguno las labores de fiscalización que le corresponda ejercer a otros órganos
+respecto de las entidades obligadas del Título II de la ley N° 21.659 o de las
+personas naturales o jurídicas que ejercen actividades de seguridad privada, en sus
+respectivos ámbitos de competencia y de conformidad a las leyes que las regulen.
+
+     Artículo 129.- Deber de informar. La autoridad fiscalizadora deberá emitir
+todos los informes que al efecto requiera la Subsecretaría de Prevención del
+Delito, respecto al incumplimiento de las normas de esta ley por parte de una
+determinada entidad o sobre cualquier materia de seguridad privada que se le
+solicite, los que deberán ser evacuados dentro de un plazo máximo de quince días,
+salvo que la ley o el presente reglamento establezca un plazo diferente, en cuyo caso
+se estará a lo allí dispuesto.
+
+     Artículo 130.- Deber de denuncia. Cuando la autoridad fiscalizadora respectiva
+verifique el incumplimiento de la ley o este reglamento deberá presentar una
+denuncia ante el juzgado de policía local que corresponda, con el objeto de que se
+inicie un procedimiento contravencional y se aplique, en su caso, alguna de las
+sanciones previstas en el Título VI de la ley N° 21.659 y deberá informar de este
+hecho a la Subsecretaría de Prevención del Delito.
+     Si la Subsecretaría de Prevención del Delito toma conocimiento de una
+infracción a lo dispuesto en la ley N° 21.659 o en ese reglamento, deberá
+presentar directamente una denuncia ante el juzgado de policía local respectivo, con
+el objeto de que se inicie el procedimiento contravencional referido en el inciso
+anterior, previa coordinación con la autoridad fiscalizadora, a la que podrá
+requerir un informe técnico, si lo estima pertinente, para verificar el
+incumplimiento.
+
+     Artículo 131.- Fiscalización del cumplimiento de la normativa laboral y de
+seguridad social. Para efectos de la fiscalización del cumplimiento de la normativa
+laboral y de seguridad social, las entidades obligadas deberán poner a disposición
+de la autoridad fiscalizadora laboral el respectivo estudio de seguridad.
+     Asimismo, la Subsecretaría de Prevención del Delito deberá poner a
+disposición de la Dirección del Trabajo, previo requerimiento, todo antecedente
+relevante para la fiscalización del cumplimiento de la normativa laboral y de
+seguridad social.
+
+     Párrafo III
+     Canal de denuncia anónimo
+
+     Artículo 132.- Canal de denuncia anónimo. La Subsecretaría de Prevención del
+Delito habilitará un canal informático, en adelante el Canal, con el objeto de que
+cualquier persona pueda denunciar anónimamente las infracciones a la ley N° 21.659
+y al presente reglamento. 
+     El Canal deberá garantizar el resguardo de la identidad de la persona y
+permitir que esta pueda adjuntar todos los antecedentes que funden la o las
+infracciones denunciadas y que ayuden a la detección, constatación o acreditación
+de las vulneraciones a lo dispuesto por la ley N° 21.659 y sus reglamentos. 
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 61 de 62
+
+     Por su parte, el Canal deberá cumplir con los principios de neutralidad
+tecnológica, de actualización, de equivalencia funcional, de fidelidad, de
+interoperabilidad y de cooperación, descritos en el artículo 16 bis de la ley N°
+19.880. Asimismo, observará el principio de coordinación, propendiendo a la unidad
+de acción, evitando la duplicidad o interferencia de funciones, conforme se
+establece en el inciso segundo del artículo 5° de la ley N° 18.575.
+
+     Artículo 133.- Aspectos operacionales y técnicos. El Canal será de libre
+acceso, sin requerir algún factor de autenticación y deberá considerar, a lo
+menos, los siguientes aspectos:
+     
+     1. El establecimiento de usuarios diferenciados y asociarlos a distintos
+perfiles de acceso, con funcionalidades diversas que garanticen el anonimato de quien
+realice la denuncia. 
+     2. La habilitación de un formulario de denuncia electrónico. 
+     3. La protección de los antecedentes que se adjunten por quien realice la
+denuncia. 
+
+     Artículo 134.- Contenido de la denuncia. La denuncia que se efectúe a través
+del Canal deberá tener, al menos, el siguiente contenido:
+     
+     1. La narración circunstanciada de los hechos.
+     2. La individualización de quienes los hubieren cometido y de las personas que
+los hubieren presenciado o que tuvieren noticia de ellos, en cuanto le constare al
+denunciante.
+     
+     Asimismo, se podrá acompañar otros antecedentes que le sirvan de fundamento,
+si los hubiere.
+
+     Artículo 135.- Admisibilidad y archivo. Cuando no se cumplan los requisitos
+indicados en el artículo anterior, o bien los hechos denunciados carezcan de
+fundamento plausible, la Subsecretaría de Prevención del Delito podrá proceder al
+archivo de la misma. Los fundamentos de esta decisión deberán quedar reflejados en
+el Canal, para efectos de que el usuario pueda consultarlo, de conformidad a lo
+establecido en el artículo siguiente.
+
+     Artículo 136.- Seguimiento y gestión de la denuncia. Al ingresar la denuncia
+al Canal se le asignará un código único de identificación a través del cual se
+podrá acceder a su estado de tramitación e incorporar nuevos antecedentes.
+
+     DISPOSICIONES TRANSITORIAS
+
+     Artículo primero.- El presente reglamento comenzará a regir desde la entrada
+en vigencia la ley N° 21.659, con excepción de lo dispuesto en las disposiciones
+transitorias siguientes. 
+
+     Artículo segundo.- La plataforma establecida en el artículo 115 de este
+reglamento deberá estar operativa en el plazo máximo de un año desde que entre en
+vigencia la ley N° 21.659.
+     Durante el tiempo intermedio entre el inicio de la vigencia del presente
+reglamento y la implementación de la referida plataforma, la tramitación
+establecida en el artículo 6° de este reglamento, respecto de solicitudes,
+autorizaciones y demás procedimientos administrativos que recaigan sobre materias
+
+
+Decreto 209, SEGURIDAD (2024)
+
+Biblioteca del Congreso Nacional de Chile - www.leychile.cl - documento generado el 18-Jul-2025 página 62 de 62
+
+que ya hubiesen iniciado su vigencia de conformidad a lo dispuesto en los artículos
+transitorios de la ley N° 21.659, se llevará a cabo de forma presencial ante la
+autoridad fiscalizadora respectiva, la que deberá remitir la documentación
+pertinente a la Oficina de Partes de la Subsecretaría de Prevención del Delito
+dentro del plazo de quince días hábiles contado desde su ingreso.
+
+     Artículo tercero.- Las resoluciones a que se refieren los artículos 70 y 71 de
+este reglamento, deberán dictarse en un plazo no superior a seis meses contado desde
+la entrada en vigencia de la ley N° 21.659. Para el cumplimiento de este plazo la
+autoridad fiscalizadora correspondiente deberá remitir a la Subsecretaría de
+Prevención del Delito una propuesta que regule estas materias en un plazo máximo de
+tres meses contado desde su entrada en vigencia.
+     En el tiempo intermedio entre el inicio de la vigencia del presente reglamento y
+la publicación de las resoluciones exentas señaladas en el inciso precedente, las
+normativas internas de las autoridades fiscalizadoras que regulan estas materias se
+mantendrán vigentes.
+
+     Anótese, tómese de razón y publíquese.- GABRIEL BORIC FONT, Presidente de la
+República.- Carolina Tohá Morales, Ministra del Interior y Seguridad Pública.-
+Maya Fernández Allende, Ministra de Defensa Nacional.- Mario Marcel Cullell,
+Ministro de Hacienda.- Juan Carlos Muñoz Abogabir, Ministro de Transportes y
+Telecomunicaciones.
+     Lo que transcribe a Ud. para su conocimiento.- Saluda Atte., Iván Alejandro
+Heredia Riquelme, Encargado Unidad Oficina de Partes y Archivos.
+
+     CONTRALORÍA GENERAL DE LA REPÚBLICA
+     División Jurídica
+     
+     Cursa con alcance el decreto N° 209, de 2024, del Ministerio del Interior y
+Seguridad Pública; Subsecretaría de Prevención del Delito
+     
+     N° E80077/2025.- Santiago, 15 de mayo de 2025.
+     
+     Esta Contraloría General ha dado curso al documento del epígrafe, que aprueba
+el Reglamento de Seguridad Privada de la ley N° 21.659, sobre Seguridad Privada,
+pero, en relación con las resoluciones exentas mencionadas en el artículo tercero
+transitorio de ese decreto, cumple con hacer presente que no es materia propia de la
+potestad reglamentaria, sino que es materia de ley, y facultad privativa de esta
+Entidad de Control disponer que determinados actos administrativos se encuentren
+exentos del trámite de toma de razón, conforme a lo dispuesto en el artículo 10,
+incisos quinto y sexto, de la ley N° 10.336.
+     Con el alcance que antecede, se ha cursado el decreto de la suma.
+     
+     Saluda atentamente a Ud., Dorothy Pérez Gutiérrez, Contralora General de la
+República.
+     
+     Al señor
+     Ministro del Interior y Seguridad Pública`;
 
 // --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
 let responseMap = new Map();
