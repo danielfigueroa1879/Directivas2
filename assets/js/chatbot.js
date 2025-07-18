@@ -265,13 +265,7 @@ Tus reglas principales son:
 Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.
 8.- **Resumen detallado de la nueva ley de seguridad privada 21659 sobre seguridad privada** RESUMEN DETALLADO DE LA LEY 21659 SOBRE 
 SEGURIDAD PRIVADA. 
-
- 
-
 ÍNDICE: 
-
- 
-
 RESUMEN DETALLADO DE LA LEY 21659 SOBRE SEGURIDAD PRIVADA. .......................................................... 1 
 1. Introducción.................................................................................................................................................................................... 3 
 • Contexto y fundamentación de la nueva ley ................................................................................. 3 
