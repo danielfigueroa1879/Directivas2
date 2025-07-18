@@ -170,7 +170,7 @@ const predefinedResponses = {
     'rule_258': { keywords: ["modelos de solicitud","modelo","punto 6","punto 7"], response: '🤖🧙🏼‍♂️✅\n\nhttps://www.zosepcar.cl/OS10.php#Modelo' },
     'rule_259': { keywords: ["*Hola*", "como estamos","que tal","como va", "de que ta las das", ], response: 'Hola que tal, cuenteme en que lo puedo ayudar' },
     'rule_260': { keywords: ["*como estas*"], response: 'Bien aqui trabajando para variar y tu ¿como estas?' },
-    'rule_261': { keywords: ["buenos días","buen día","buenos dias", "buen dia"], response: '🤖👮🏻‍♂️ ¡Buenos días! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+    'rule_261c': { keywords: ["buenos días","buen día","buenos dias", "buen dia"], response: '🤖👮🏻‍♂️ ¡Buenos días! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
     'rule_261a': { keywords: ["buenas tardes","buena tarde"], response: '🤖👮🏻‍♂️ ¡Buenas tardes! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
     'rule_261b': { keywords: ["buenas noches","buena noche"], response: '🤖👮🏻‍♂️ ¡Buenas noches! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo, estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
     // Reglas conversacionales para el chatbot OS10 Coquimbo - Interacciones iniciales y básicas
