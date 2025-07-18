@@ -187,26 +187,74 @@ const predefinedResponses = {
 'rule_273': { keywords: ["reclamo","queja","molesto","disconforme","requerimiento"], response: '🤖📋 Lamento escuchar que tiene una situación que le molesta. Su satisfacción es importante para nosotros. Para formalizar su reclamo o requerimiento, por favor utilice nuestro formulario oficial:', context: 'reclamo_inicial' },
 
 // HILO DE CONVERSACIÓN PARA RECLAMOS
-'rule_273a': { keywords: ["*"], response: '🤖📝 *FORMULARIO OFICIAL DE REQUERIMIENTOS:*\n📋 https://dal5.short.gy/R3\n\n✅ En este formulario podrá:\n• Describir detalladamente su situación\n• Adjuntar documentos si es necesario\n• Recibir un número de seguimiento\n• Obtener respuesta oficial en los plazos establecidos\n\n¿Necesita ayuda para completar el formulario o tiene alguna otra consulta?', context: 'reclamo_enviado', previousContext: 'reclamo_inicial' },
-'rule_273b': { keywords: ["ayuda formulario","como llenar","no entiendo","dificultad"], response: '🤖💡 ¡Por supuesto! Le ayudo con el formulario:\n\n📝 *PASOS PARA COMPLETAR:*\n1️⃣ Ingrese sus datos personales\n2️⃣ Seleccione el tipo de requerimiento\n3️⃣ Describa claramente la situación\n4️⃣ Adjunte documentos (si aplica)\n5️⃣ Envíe y guarde su número de seguimiento\n\n📞 Si necesita ayuda presencial, puede visitarnos en Cienfuegos 180, La Serena, de lunes a jueves de 09:00 a 13:00 horas.', context: 'ayuda_brindada', previousContext: 'reclamo_enviado' },
-'rule_273c': { keywords: ["ya envié","ya mandé","completé","terminé"], response: '🤖✅ Excelente, gracias por completar el formulario oficial. Su requerimiento será procesado según los plazos establecidos.\n\n📋 *SEGUIMIENTO:*\n• Guarde su número de requerimiento\n• Será contactado/a según corresponda\n• Para consultas: 512651024\n\n¿Hay algo más en lo que pueda ayudarle hoy?', context: 'reclamo_completado', previousContext: 'reclamo_enviado' },
-'rule_273d': { keywords: ["no funciona","error","no carga","problema link"], response: '🤖⚠️ Lamento que esté teniendo problemas técnicos con el formulario. Aquí tiene alternativas:\n\n📞 *CONTACTO DIRECTO:*\n• Teléfono: 512651024\n• Presencial: Cienfuegos 180, La Serena\n• Horario: Lunes a jueves, 09:00-13:00 hrs\n\n📧 También puede intentar el link nuevamente: https://dal5.short.gy/R3\n\n¿Prefiere que le proporcione otra forma de contacto?', context: 'problema_tecnico', previousContext: 'reclamo_enviado' },
+// Reglas conversacionales para el chatbot OS10 Coquimbo - Interacciones iniciales y análisis inteligente
+// El bot analiza las consultas y extrae respuestas de la base de conocimiento de la Nueva Ley de Seguridad Privada
+
+// OPCIÓN 1: Saludos separados por horario
+'rule_261': { keywords: ["hola","saludos"], response: '🤖👮🏻‍♂️ ¡Hola! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Mi nombre es AsistentBot y estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+
+'rule_261a': { keywords: ["buenos días","buen día"], response: '🤖👮🏻‍♂️ ¡Buenos días! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Mi nombre es AsistentBot y estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+
+'rule_261b': { keywords: ["buenas tardes","buena tarde"], response: '🤖👮🏻‍♂️ ¡Buenas tardes! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Mi nombre es AsistentBot y estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+
+'rule_261c': { keywords: ["buenas noches","buena noche"], response: '🤖👮🏻‍♂️ ¡Buenas noches! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Mi nombre es AsistentBot y estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+
+'rule_262': { keywords: ["gracias","muchas gracias","te agradezco","agradezco"], response: '🤖😊 ¡Es un placer ayudarle! Para eso estamos aquí en OS10 Coquimbo. Si tiene alguna otra consulta, no dude en escribirme. ¡Que tenga un excelente día!' },
+
+'rule_263': { keywords: ["chao","adiós","nos vemos","hasta luego","me voy"], response: '🤖👋 ¡Hasta luego! Gracias por contactar a OS10 Coquimbo. Recuerde que estamos de lunes a jueves de 09:00 a 13:00 horas en Cienfuegos 180, La Serena. ¡Que tenga un buen día!' },
+
+'rule_264': { keywords: ["ayuda","no entiendo","estoy perdido","no sé qué hacer"], response: '🤖🆘 ¡Tranquilo/a! Entiendo que puede ser confuso. Estoy aquí para guiarle paso a paso. Por favor, cuénteme específicamente qué necesita y con mucho gusto le ayudo a encontrar la solución. ¿Se trata de una credencial, curso, o algún trámite específico?' },
+
+'rule_265': { keywords: ["información","qué hacen","qué es os10","oficina seguridad"], response: '🤖🏢 OS10 Coquimbo es la Oficina de Seguridad Privada que regula y supervisa todo lo relacionado con seguridad privada en la región. Nos encargamos de credenciales, cursos, empresas de seguridad, y cumplimiento normativo. ¿En qué área específica necesita información?' },
+
+'rule_266': { keywords: ["problema","error","no funciona","dificultad"], response: '🤖⚠️ Lamento escuchar que está teniendo dificultades. Por favor, descríbame detalladamente cuál es el problema y haré todo lo posible por ayudarle a solucionarlo. Si es algo técnico, también puede contactarnos directamente al 512651024.' },
+
+'rule_267': { keywords: ["urgente","apurado","rápido","prisa"], response: '🤖🚨 Entiendo que su consulta es urgente. Permítame ayudarle de la manera más eficiente posible. Por favor, indíqueme exactamente qué necesita y le proporcionaré la información de forma directa y clara.' },
+
+'rule_268': { keywords: ["confundido","no encuentro","perdido","desorientado"], response: '🤖🧭 ¡No se preocupe! Es normal sentirse un poco desorientado con tantos procedimientos. Estoy aquí para guiarle correctamente. Cuénteme qué está buscando y le ayudo a encontrar el camino correcto paso a paso.' },
+
+'rule_269': { keywords: ["primera vez","soy nuevo","no conozco","principiante"], response: '🤖🌟 ¡Bienvenido/a al mundo de la seguridad privada! Es un gusto ayudar a personas que recién comienzan. No se preocupe, todos empezamos desde cero. Cuénteme qué le interesa y le explico todo desde el principio de manera sencilla.' },
+
+'rule_270': { keywords: ["recomendación","qué me recomienda","consejo","sugerencia"], response: '🤖💡 ¡Excelente pregunta! Para darle la mejor recomendación, necesito conocer un poco más sobre su situación. ¿Busca trabajar en seguridad privada, tiene una empresa, o necesita contratar servicios? Con esa información podré orientarle perfectamente.' },
+
+'rule_271': { keywords: ["no sé","no estoy seguro","duda","indeciso"], response: '🤖🤔 ¡Perfecto! Las dudas son normales y es mejor aclararlas antes de proceder. No hay problema en no estar seguro, para eso estoy aquí. Cuénteme qué opciones está considerando y juntos encontraremos la mejor alternativa para usted.' },
+
+'rule_272': { keywords: ["complicado","difícil","enredado","complejo"], response: '🤖⚡ ¡Entiendo perfectamente! Los procedimientos pueden parecer complicados al principio, pero no se preocupe. Mi trabajo es simplificar todo para usted. Vamos paso a paso y verá que no es tan difícil como parece. ¿Por dónde empezamos?' },
+
+'rule_273': { keywords: ["reclamo","queja","molesto","disconforme","requerimiento"], response: '🤖📋 Lamento escuchar que tiene una situación que le molesta. Su satisfacción es importante para nosotros. Para formalizar su reclamo o requerimiento, por favor utilice nuestro formulario oficial: 📋 *REQUERIMIENTO:* https://dal5.short.gy/R3 ¿Necesita ayuda para completar el formulario?', context: 'reclamo_inicial' },
+
+'rule_273a': { keywords: ["*"], response: '🤖📝 *FORMULARIO OFICIAL DE REQUERIMIENTOS:* 📋 https://dal5.short.gy/R3 ✅ En este formulario podrá: • Describir detalladamente su situación • Adjuntar documentos si es necesario • Recibir un número de seguimiento • Obtener respuesta oficial en los plazos establecidos ¿Necesita ayuda para completar el formulario o tiene alguna otra consulta?', context: 'reclamo_enviado', previousContext: 'reclamo_inicial' },
+
+'rule_273b': { keywords: ["ayuda formulario","como llenar","no entiendo","dificultad"], response: '🤖💡 ¡Por supuesto! Le ayudo con el formulario: 📝 *PASOS PARA COMPLETAR:* 1️⃣ Ingrese sus datos personales 2️⃣ Seleccione el tipo de requerimiento 3️⃣ Describa claramente la situación 4️⃣ Adjunte documentos (si aplica) 5️⃣ Envíe y guarde su número de seguimiento 📞 Si necesita ayuda presencial, puede visitarnos en Cienfuegos 180, La Serena, de lunes a jueves de 09:00 a 13:00 horas.', context: 'ayuda_brindada', previousContext: 'reclamo_enviado' },
+
+'rule_273c': { keywords: ["ya envié","ya mandé","completé","terminé"], response: '🤖✅ Excelente, gracias por completar el formulario oficial. Su requerimiento será procesado según los plazos establecidos. 📋 *SEGUIMIENTO:* • Guarde su número de requerimiento • Será contactado/a según corresponda • Para consultas: 512651024 ¿Hay algo más en lo que pueda ayudarle hoy?', context: 'reclamo_completado', previousContext: 'reclamo_enviado' },
+
+'rule_273d': { keywords: ["no funciona","error","no carga","problema link"], response: '🤖⚠️ Lamento que esté teniendo problemas técnicos con el formulario. Aquí tiene alternativas: 📞 *CONTACTO DIRECTO:* • Teléfono: 512651024 • Presencial: Cienfuegos 180, La Serena • Horario: Lunes a jueves, 09:00-13:00 hrs 📧 También puede intentar el link nuevamente: https://dal5.short.gy/R3 ¿Prefiere que le proporcione otra forma de contacto?', context: 'problema_tecnico', previousContext: 'reclamo_enviado' },
+
 'rule_274': { keywords: ["felicitaciones","excelente","muy bueno","genial"], response: '🤖😊 ¡Muchas gracias por sus palabras! Es muy gratificante saber que nuestro servicio le parece bueno. Seguiremos trabajando para brindarle la mejor atención. ¿En qué más puedo ayudarle hoy?' },
+
 'rule_275': { keywords: ["bot","robot","artificial","automático"], response: '🤖🤖 ¡Así es! Soy un asistente virtual inteligente creado especialmente para ayudarle con sus consultas de seguridad privada. Aunque soy un bot, estoy programado con toda la información actualizada de OS10 Coquimbo para brindarle respuestas precisas y útiles.' },
 
 // Reglas de análisis inteligente para consultas específicas de la Nueva Ley de Seguridad Privada
 'rule_276': { keywords: ["qué dice la ley","según la ley","ley dice","normativa"], response: '🤖📚 Permítame analizar la Nueva Ley de Seguridad Privada 21.659 y su reglamento para responder su consulta específica. Por favor, sea más específico sobre qué aspecto de la ley necesita conocer y le proporcionaré la información exacta.' },
+
 'rule_277': { keywords: ["multa","sanción","infracción","castigo"], response: '🤖⚖️ Analizando la normativa vigente... Las sanciones están detalladas en la Ley 21.659. Para darle información precisa sobre multas, necesito saber qué tipo de infracción consulta. ¿Se refiere a empresas, guardias, o alguna situación específica?' },
+
 'rule_278': { keywords: ["artículo","según el artículo","art","art."], response: '🤖📖 Perfecto, veo que necesita información específica de un artículo. Por favor indíqueme el número del artículo de la Ley 21.659 o del Reglamento 209 que necesita consultar, y le proporcionaré el contenido exacto y su interpretación.' },
+
 'rule_279': { keywords: ["cambios","modificaciones","diferencias","nuevo"], response: '🤖🔄 Excelente consulta. La Nueva Ley 21.659 introduce importantes cambios. Basándome en mi análisis de la normativa, puedo explicarle las modificaciones específicas. ¿Se refiere a cambios en requisitos, procedimientos, o algún aspecto particular?' },
+
 'rule_280': { keywords: ["obligación","deber","debe","obligatorio"], response: '🤖📋 Analizando las obligaciones según la normativa vigente... Para darle información precisa sobre deberes y obligaciones, necesito saber si consulta por empresas de seguridad, guardias, o algún actor específico del sistema.' },
+
 'rule_281': { keywords: ["prohibido","no se puede","está prohibido","prohibición"], response: '🤖🚫 Revisando las prohibiciones establecidas en la Ley 21.659... Hay varias prohibiciones específicas según el tipo de actor. ¿Su consulta se refiere a guardias, empresas, o alguna actividad en particular?' },
+
 'rule_282': { keywords: ["plazo","tiempo","días","vigencia"], response: '🤖⏰ Consultando los plazos establecidos en la normativa... Los plazos varían según el trámite o procedimiento. Para darle información exacta, ¿a qué tipo de plazo se refiere? ¿Credenciales, cursos, o algún procedimiento específico?' },
+
 'rule_283': { keywords: ["requisito","condición","necesito","exigencia"], response: '🤖✅ Analizando los requisitos según la Nueva Ley de Seguridad Privada... Los requisitos varían según lo que necesite tramitar. ¿Consulta por requisitos para credenciales, empresas, cursos, o algún trámite específico?' },
+
 'rule_284': { keywords: ["fiscalización","inspección","control","supervisión"], response: '🤖🔍 Revisando las disposiciones sobre fiscalización en la normativa... La ley establece claras facultades de fiscalización. ¿Su consulta se refiere a inspecciones a empresas, controles a guardias, o algún aspecto específico del proceso?' },
-'rule_285': { keywords: ["capacitación","formación","entrenamiento","curso obligatorio"], response: '🤖🎓 Analizando los requisitos de capacitación según la Ley 21.659... La normativa establece obligaciones específicas de formación. ¿Necesita información sobre cursos obligatorios, empresas capacitadoras, o algún aspecto particular?' },
-'rule_290': { keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*","*empresa de capacitacion*","punto 7"], response: '🤖🧙🏼‍♂️✅ 🧙🏻‍♂️ Estas son algunas empresas de aqui de la region:\n*EMPRESAS DE CAPACITACIÓN 2025* https://d6.short.gy/Cap'},
-'rule_291': { keywords: ["*quien es tu creador*","*quien te creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es todo el equipo de Profesionales que se encuentra trabajando en la oficina de seguridad Privada OS10 Coquimbo y el\n*Ingeniero en Informática y Ciberseguridad Daniel Figueroa Chacama*' }
+
+'rule_285': { keywords: ["capacitación","formación","entrenamiento","curso obligatorio"], response: '🤖🎓 Analizando los requisitos de capacitación según la Ley 21.659... La normativa establece obligaciones específicas de formación. ¿Necesita información sobre cursos obligatorios, empresas capacitadoras, o algún aspecto particular?' }
 };
 
 // --- API Configuration ---
