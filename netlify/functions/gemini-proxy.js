@@ -1,66 +1,55 @@
-// netlify/functions/gemini-proxy.js
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const fetch = require('node-fetch');
-
-exports.handler = async function(event, context) {
-  // Detector para confirmar que la función se está ejecutando.
-  console.log("--- DETECTOR: La función gemini-proxy se ha iniciado. ---");
-
-  // 1. Validar que la petición sea un POST.
-  if (event.httpMethod !== 'POST') {
-    console.error("ERROR: Se recibió un método no permitido:", event.httpMethod);
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Método no permitido. Solo se aceptan peticiones POST.' }),
-    };
+exports.handler = async (event) => {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
-
-  // 2. Obtener la API Key desde las variables de entorno seguras de Netlify.
-  const API_KEY = process.env.GEMINI_API_KEY;
-  if (!API_KEY) {
-    console.error("ERROR CRÍTICO: La variable de entorno GEMINI_API_KEY no está configurada en Netlify.");
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'La API key no está configurada en el servidor.' }),
-    };
-  }
-
-  // 3. Construir la URL final de la API de Google.
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
   try {
-    const requestBody = JSON.parse(event.body);
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // 4. Realizar la petición a la API de Gemini.
-    const geminiResponse = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(requestBody),
-    });
+    // --- MODIFICADO: Obtenemos el prompt y el nuevo contexto del cuerpo de la solicitud ---
+    const { prompt, context } = JSON.parse(event.body);
 
-    const responseData = await geminiResponse.json();
-    
-    // 5. Manejar la respuesta de Gemini.
-    if (!geminiResponse.ok) {
-      console.error('Error recibido de la API de Gemini:', responseData);
-      return {
-        statusCode: geminiResponse.status,
-        body: JSON.stringify(responseData),
-      };
+    if (!prompt) {
+      return { statusCode: 400, body: "Bad Request: prompt is required" };
     }
 
-    // 6. Si todo sale bien, devolver la respuesta de Gemini al frontend.
+    // --- MODIFICADO: Creamos un prompt mucho más detallado y profesional ---
+    const fullPrompt = `
+      Eres un asistente virtual experto en seguridad privada para la empresa "OS-10". 
+      Tu misión es responder a las preguntas de los usuarios de manera profesional, precisa y amable.
+
+      **Instrucciones estrictas:**
+      1.  Basa tus respuestas ÚNICAMENTE en la siguiente información de contexto proporcionada.
+      2.  NO inventes información. Si la respuesta a la pregunta del usuario no se encuentra en el contexto, responde amablemente: "No tengo información sobre ese tema en específico. ¿Hay algo más en lo que te pueda ayudar relacionado con nuestros servicios?".
+      3.  Sé conciso y ve al grano.
+      4.  Mantén siempre un tono profesional y servicial.
+
+      --- CONTEXTO DE LA PÁGINA WEB ---
+      ${context}
+      --- FIN DEL CONTEXTO ---
+
+      PREGUNTA DEL USUARIO: "${prompt}"
+
+      Respuesta:
+    `;
+
+    const result = await model.generateContent(fullPrompt);
+    const response = await result.response;
+    const text = response.text();
+
     return {
       statusCode: 200,
-      body: JSON.stringify(responseData),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
     };
-
   } catch (error) {
-    console.error('ERROR INESPERADO EN EL BLOQUE TRY/CATCH:', error);
+    console.error("Error calling Gemini API:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Ocurrió un error interno en el servidor.', details: error.message }),
+      body: JSON.stringify({ error: "Internal Server Error" }),
     };
   }
 };
-
