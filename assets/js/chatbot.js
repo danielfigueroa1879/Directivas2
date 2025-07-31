@@ -7945,7 +7945,6 @@ República.
      Al señor
      Ministro del Interior y Seguridad Pública`;
 
-// --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
 let responseMap = new Map();
 let partialMatchRules = [];
 
@@ -7961,11 +7960,14 @@ function buildResponseMap() {
         const item = predefinedResponses[key];
         for (const keyword of item.keywords) {
             const normalizedKeyword = keyword.toLowerCase().trim();
-            
+
             if (normalizedKeyword.startsWith('*') && normalizedKeyword.endsWith('*')) {
                 const cleanKeyword = normalizedKeyword.substring(1, normalizedKeyword.length - 1);
-                if(cleanKeyword) {
-                    newPartialMatchRules.push({ keyword: cleanKeyword, response: item.response });
+                if (cleanKeyword) {
+                    newPartialMatchRules.push({
+                        keyword: cleanKeyword,
+                        response: item.response
+                    });
                 }
             } else {
                 newResponseMap.set(normalizedKeyword, item.response);
@@ -7974,7 +7976,10 @@ function buildResponseMap() {
     }
     responseMap = newResponseMap;
     partialMatchRules = newPartialMatchRules;
-    console.log("Response map built successfully.", {exactMatches: responseMap.size, partialMatches: partialMatchRules.length});
+    console.log("Response map built successfully.", {
+        exactMatches: responseMap.size,
+        partialMatches: partialMatchRules.length
+    });
 }
 
 
@@ -8028,28 +8033,28 @@ function markdownToHtml(text) {
 function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
     const isUser = sender === 'user';
-    
+
     messageElement.className = `message-fade-in flex items-start max-w-full`;
 
     messageElement.classList.toggle('ml-auto', isUser);
     messageElement.classList.toggle('flex-row-reverse', isUser);
 
     const bubble = document.createElement('div');
-    bubble.className = isUser 
-        ? 'bg-green-500 rounded-xl rounded-br-none p-3 ml-2 max-w-xs md:max-w-sm' 
-        : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2 max-w-[95%] md:max-w-sm';
+    bubble.className = isUser ?
+        'bg-green-500 rounded-xl rounded-br-none p-3 ml-2 max-w-xs md:max-w-sm' :
+        'bot-bubble rounded-xl rounded-bl-none p-3 ml-2 max-w-[95%] md:max-w-sm';
 
     const p = document.createElement('p');
     p.className = isUser ? 'text-white chatbot-message-text' : 'text-gray-700 dark:text-gray-200 chatbot-message-text';
-    
+
     if (isUser) {
         p.textContent = text;
     } else {
         p.innerHTML = markdownToHtml(text);
     }
-    
+
     bubble.appendChild(p);
-    
+
     if (!isUser && buttons.length > 0) {
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'mt-2 flex flex-col space-y-2';
@@ -8059,35 +8064,6 @@ function addMessage(sender, text, buttons = []) {
             button.className = 'bg-green-100 dark:bg-gray-700 border border-green-500/50 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg hover:bg-green-200 dark:hover:bg-gray-600 transition-colors w-full text-left font-medium';
             button.onclick = () => {
                 userInput.value = buttonText;
-// --- NUEVA FUNCIÓN PARA OBTENER EL CONTEXTO DE LA PÁGINA ---
-function getPageContext() {
-    let context = "";
-    // Agrega o modifica los selectores para que coincidan con los IDs de las secciones de tu página.
-    const sections = document.querySelectorAll('#nosotros, #servicios, #politicas, #contacto');
-    
-    sections.forEach(section => {
-        if (section) {
-            const title = section.querySelector('h2, h3');
-            context += `--- SECCIÓN: ${title ? title.innerText.toUpperCase() : section.id.toUpperCase()} ---\n`;
-            context += section.innerText + "\n\n";
-        }
-    });
-
-    if (context.trim() === "") {
-        return "No se encontró contexto en la página.";
-    }
-    
-    return context;
-}
-
-// --- API Communication ---
-
-/**
- * Sends the user's message, checking for predefined responses first.
- */
-async function handleSendMessage() {
-    // ... el resto de tu función comienza aquí
-              
                 handleSendMessage();
             };
             buttonContainer.appendChild(button);
@@ -8142,7 +8118,7 @@ function showTypingIndicator(show) {
  */
 function getPredefinedResponse(text) {
     const lowerCaseText = text.toLowerCase().trim();
-    
+
     if (responseMap.has(lowerCaseText)) {
         return responseMap.get(lowerCaseText);
     }
@@ -8156,11 +8132,38 @@ function getPredefinedResponse(text) {
     return null;
 }
 
+// --- CÓDIGO NUEVO AÑADIDO EN EL LUGAR CORRECTO ---
+/**
+ * Scans the page for specific sections and extracts their text content.
+ * This provides context to the AI about the current page.
+ * @returns {string} - The combined text content of the relevant sections.
+ */
+function getPageContext() {
+    let context = "";
+    // You can add or change the selectors here to match the IDs of your content sections.
+    const sections = document.querySelectorAll('#nosotros, #servicios, #politicas, #contacto');
+
+    sections.forEach(section => {
+        if (section) {
+            const title = section.querySelector('h2, h3');
+            context += `--- SECCIÓN: ${title ? title.innerText.toUpperCase() : section.id.toUpperCase()} ---\n`;
+            context += section.innerText + "\n\n";
+        }
+    });
+
+    if (context.trim() === "") {
+        return "No se encontró contexto en la página.";
+    }
+
+    return context;
+}
+
 
 // --- API Communication ---
 
 /**
  * Sends the user's message, checking for predefined responses first.
+ * If no predefined response is found, it sends the message to the Gemini API.
  */
 async function handleSendMessage() {
     const userText = userInput.value.trim();
@@ -8168,47 +8171,66 @@ async function handleSendMessage() {
 
     addMessage('user', userText);
     userInput.value = '';
-    
+
     const predefinedResponse = getPredefinedResponse(userText);
     if (predefinedResponse) {
         setTimeout(() => {
             addMessage('bot', predefinedResponse);
-            chatHistory.push({ role: "user", parts: [{ text: userText }] });
-            chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
+            chatHistory.push({
+                role: "user",
+                parts: [{
+                    text: userText
+                }]
+            });
+            chatHistory.push({
+                role: "model",
+                parts: [{
+                    text: predefinedResponse
+                }]
+            });
         }, 500);
         return;
     }
-    
+
     showTypingIndicator(true);
-    chatHistory.push({ role: "user", parts: [{ text: userText }] });
+    chatHistory.push({
+        role: "user",
+        parts: [{
+            text: userText
+        }]
+    });
 
     try {
+        // --- CÓDIGO MODIFICADO PARA ENVIAR EL CONTEXTO ---
+        // Get the context from the page.
+        const pageContext = getPageContext();
 
-// ESTE ES EL CÓDIGO QUE DEBES BUSCAR Y REEMPLAZAR
-// ESTE ES EL NUEVO CÓDIGO QUE DEBES PEGAR
-// Obtenemos el contexto de la página antes de enviar.
-const pageContext = getPageContext();
-
-// La petición ahora va a nuestro proxy seguro, enviando el prompt y el contexto.
-const response = await fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-        prompt: userText,
-        context: pageContext  // Aquí enviamos el contexto de la página
-    }),
-});
+        // The request now goes to our secure proxy, sending the prompt and the context.
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                prompt: userText,
+                context: pageContext // Here we send the page context
+            }),
+        });
         
-
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.error?.message || `Error del servidor: ${response.status}`);
+            throw new Error(errorData.error ? .message || `Error del servidor: ${response.status}`);
         }
 
         const data = await response.json();
-        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No obtuve una respuesta.";
-        
-        chatHistory.push({ role: "model", parts: [{ text: botText }] });
+        const botText = data.candidates ? .[0] ? .content ? .parts ? .[0] ? .text || "No obtuve una respuesta.";
+
+        chatHistory.push({
+            role: "model",
+            parts: [{
+                text: botText
+            }]
+        });
         addMessage('bot', botText);
 
     } catch (error) {
@@ -8218,102 +8240,3 @@ const response = await fetch(API_URL, {
         showTypingIndicator(false);
     }
 }
-
-// --- Initialization ---
-
-/**
- * Initializes the chatbot, sets up event listeners, and displays a welcome message.
- */
-function init() {
-    if (!chatToggleButton) {
-        console.error("Chatbot UI elements not found. Initialization failed.");
-        return;
-    }
-    
-    buildResponseMap();
-
-    // --- Event Listeners ---
-    sendButton.addEventListener('click', handleSendMessage);
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            handleSendMessage();
-        }
-    });
-    
-    // --- Mobile-Specific Keyboard Logic ---
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) {
-        let isKeyboardMode = false;
-
-        const enterKeyboardMode = () => {
-            if (isKeyboardMode) return;
-            isKeyboardMode = true;
-            document.body.classList.add('chat-open-mobile');
-            chatWidgetContainer.classList.add('fullscreen');
-            adjustSizeForKeyboard();
-        };
-
-        const exitKeyboardMode = () => {
-            if (!isKeyboardMode) return;
-            isKeyboardMode = false;
-            document.body.classList.remove('chat-open-mobile');
-            chatWidgetContainer.classList.remove('fullscreen');
-            chatWidgetContainer.style.height = '';
-            chatWidgetContainer.style.bottom = '';
-        };
-
-        const adjustSizeForKeyboard = () => {
-            if (!isKeyboardMode) return;
-            setTimeout(() => {
-                if (window.visualViewport) {
-                    const viewportHeight = window.visualViewport.height;
-                    chatWidgetContainer.style.height = `${viewportHeight}px`;
-                    chatWidgetContainer.style.bottom = '0';
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-            }, 100);
-        };
-
-        const openChat = () => {
-            chatPopup.classList.remove('hidden');
-            chatBackdrop.classList.remove('hidden');
-            chatToggleButton.classList.add('hidden');
-        };
-
-        const closeChat = () => {
-            chatPopup.classList.add('hidden');
-            chatBackdrop.classList.add('hidden');
-            chatToggleButton.classList.remove('hidden');
-            exitKeyboardMode();
-        };
-
-        chatToggleButton.addEventListener('click', openChat);
-        internalCloseBtn.addEventListener('click', closeChat);
-        chatBackdrop.addEventListener('click', closeChat);
-        userInput.addEventListener('focus', enterKeyboardMode);
-
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', adjustSizeForKeyboard);
-        }
-        window.mobileChatManager = { exitKeyboardMode };
-    } else {
-        // Desktop-only listeners
-        chatToggleButton.addEventListener('click', toggleChat);
-        internalCloseBtn.addEventListener('click', toggleChat);
-        chatBackdrop.addEventListener('click', toggleChat);
-    }
-
-    // --- Initial State ---
-    chatHistory = [];
-    
-    const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
-    const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
-    addMessage('bot', welcomeMessageText, welcomeButtons);
-    
-    chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
-
-    console.log("Chatbot initialized successfully.");
-}
-
-document.addEventListener('DOMContentLoaded', init);
