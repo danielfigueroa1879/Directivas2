@@ -8059,6 +8059,35 @@ function addMessage(sender, text, buttons = []) {
             button.className = 'bg-green-100 dark:bg-gray-700 border border-green-500/50 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg hover:bg-green-200 dark:hover:bg-gray-600 transition-colors w-full text-left font-medium';
             button.onclick = () => {
                 userInput.value = buttonText;
+// --- NUEVA FUNCIÓN PARA OBTENER EL CONTEXTO DE LA PÁGINA ---
+function getPageContext() {
+    let context = "";
+    // Agrega o modifica los selectores para que coincidan con los IDs de las secciones de tu página.
+    const sections = document.querySelectorAll('#nosotros, #servicios, #politicas, #contacto');
+    
+    sections.forEach(section => {
+        if (section) {
+            const title = section.querySelector('h2, h3');
+            context += `--- SECCIÓN: ${title ? title.innerText.toUpperCase() : section.id.toUpperCase()} ---\n`;
+            context += section.innerText + "\n\n";
+        }
+    });
+
+    if (context.trim() === "") {
+        return "No se encontró contexto en la página.";
+    }
+    
+    return context;
+}
+
+// --- API Communication ---
+
+/**
+ * Sends the user's message, checking for predefined responses first.
+ */
+async function handleSendMessage() {
+    // ... el resto de tu función comienza aquí
+              
                 handleSendMessage();
             };
             buttonContainer.appendChild(button);
@@ -8154,23 +8183,22 @@ async function handleSendMessage() {
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
-        const payload = {
-            contents: chatHistory,
-            systemInstruction: {
-                parts: [{ text: systemPrompt }]
-            },
-            generationConfig: { 
-                temperature: 0.7, 
-                maxOutputTokens: 1024 
-            },
-        };
 
-        // La petición ahora va a nuestro proxy seguro
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        });
+// ESTE ES EL CÓDIGO QUE DEBES BUSCAR Y REEMPLAZAR
+// ESTE ES EL NUEVO CÓDIGO QUE DEBES PEGAR
+// Obtenemos el contexto de la página antes de enviar.
+const pageContext = getPageContext();
+
+// La petición ahora va a nuestro proxy seguro, enviando el prompt y el contexto.
+const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+        prompt: userText,
+        context: pageContext  // Aquí enviamos el contexto de la página
+    }),
+});
+        
 
         if (!response.ok) {
             const errorData = await response.json();
