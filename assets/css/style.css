@@ -1,666 +1,421 @@
-/* --- ESTILOS GENERALES Y LAYOUT --- */
+/* Estilos Generales y Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 20px;
-    color: #374151; /* gray-700 */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    background-image: url("../images/101.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.card-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #F2FFFD;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    animation: slideUp 1s ease-out 0.5s forwards;
-    position: relative;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(20%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.logo-os10 {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 80px;
-    height: auto;
-    opacity: 0.7;
-    z-index: 10;
-    transition: opacity 0.3s ease;
-}
-.logo-os10:hover {
-    opacity: 1;
-}
-
-.normal-text {
-    color: #1f2937 !important;
-    font-weight: 400 !important;
-    font-size: 1.05rem !important;
-}
-
-/* --- BANNER DE INSTALACIÓN (ESTILO NUEVO) --- */
-.install-banner, .install-banner-ios {
-    position: fixed;
-    top: -120px; /* Oculto por defecto, se muestra con JS */
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 12px 16px;
-    /* Efecto de vidrio esmerilado */
-    background-color: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: top 0.5s ease-in-out;
-}
-.install-banner.visible, .install-banner-ios.visible {
-    top: 0;
-}
-/* Banner de Android */
-.install-banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.banner-text {
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-.banner-button-install {
-    background-color: white;
-    color: #0a73c3; /* Letras azules */
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-.banner-button-install:hover {
-    background-color: #f0f0f0;
-}
-
-/* Banner de iOS */
-.install-banner-ios {
+    line-height: 1.6;
+    background: #333; /* Fondo oscuro original */
+    color: #fff; /* Texto blanco original */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    text-align: center;
-}
-.ios-text-container {
-    color: white;
-}
-.instructions {
-    font-size: 0.8rem;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 4px;
-}
-.share-icon {
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    display: inline-block;
-    margin: 0 2px;
-}
-.banner-button-close {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #333;
-    font-weight: bold;
-    padding: 6px 14px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    margin-top: 4px;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-
-/* --- SECCIONES/TARJETAS --- */
-.section-card {
-    border-width: 1.5px;
-    border-style: solid;
-    border-radius: 8px;
-    padding: 1.25rem;
-    margin-bottom: 1.2rem;
-    --glow-color: rgba(128, 128, 128, 0.2);
-    box-shadow: 0 0 12px 0px var(--glow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.section-card h3 {
-    font-size: 1.3rem !important;
-    margin-bottom: 0.8rem;
-    padding-left: 0;
-}
-
-.section-card:hover, .section-card.clicked {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 0 22px 4px var(--glow-color);
-}
-
-/* Colores de borde, fondo y resplandor por sección */
-.section-blue { 
-    border-color: #0a73c3; 
-    background-color: #F1F7FF;
-    --glow-color: rgba(10, 115, 195, 0.5);
-}
-.section-green { 
-    border-color: #1ccfc3; 
-    background-color: #F6FFFD;
-    --glow-color: rgba(28, 207, 195, 0.5);
-}
-.section-red { 
-    border-color: #f01317; 
-    background-color: #FFF8F8;
-    --glow-color: rgba(240, 19, 23, 0.5);
-}
-.section-yellow { 
-    border-color: #f5b508; 
-    background-color: #FFFFEF;
-    --glow-color: rgba(245, 181, 8, 0.6);
-}
-
-
-/* --- FOOTER --- */
-/* Se eliminaron los estilos de .footer-qr ya que ahora se usan clases de Tailwind en el HTML */
-
-
-/* --- BOTONES --- */
-.button-container {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 8px;
-}
-
-.download-btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 190px;
-    height: 40px;
-    padding: 10px 15px !important;
-    margin-bottom: 15px;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    color: white !important;
-    text-align: center !important;
-    white-space: nowrap;
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
     overflow: hidden;
-    text-overflow: ellipsis;
-    border: none;
-    border-radius: 8px !important;
-    opacity: 0.95;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease !important;
+    padding: 0 20px;
 }
 
-.download-btn:hover {
-    transform: translateY(-5px) !important;
-    opacity: 1;
-    box-shadow: 0 0 22px 4px var(--glow-color);
+ul {
+    list-style: none;
 }
 
-/* Colores de botones por sección */
-.section-blue .download-btn {
-    background-color: #0a73c3;
-}
-.section-green .download-btn {
-    background-color: #1ccfc3;
-}
-.section-red .download-btn {
-    background-color: #f01317;
-}
-.section-yellow .download-btn {
-    background-color: #f5b508;
+a {
+    text-decoration: none;
+    color: #00aaff; /* Un color de enlace que resalte en fondo oscuro */
 }
 
-
-#tramitarCredencialesBtn.bounce-animation {
-    animation: bounce 2s ease infinite !important;
-}
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-15px); }
-    60% { transform: translateY(-7px); }
+h1, h2, h3 {
+    margin-bottom: 20px;
 }
 
-/* --- MODO OSCURO --- */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #111827;
-        color: #e2e8f0;
-    }
-    .card-container {
-        background-color: #374151;
-        color: #e2e8f0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    }
-    .section-card {
-        background-color: #2d3748 !important;
-    }
-    h1, h2, h3 { color: #f9fafb; }
-    .normal-text { color: #e5e7eb !important; }
-
-    footer .text-gray-600 {
-        color: #9ca3af;
-    }
+p {
+    margin-bottom: 10px;
 }
 
-/* --- DISEÑO RESPONSIVO (MÓVIL) --- */
-@media (max-width: 640px) {
-    body {
-        padding: 12px;
-    }
-    .card-container {
-        padding: 15px;
-    }
-    .logo-os10 {
-        width: 60px;
-        top: 15px;
-        left: 15px;
-    }
-    .normal-text {
-        font-size: 1rem !important;
-    }
-    .section-card h3 {
-        font-size: 1.2rem !important;
-    }
-
-    .download-btn {
-        width: 175px !important;
-        height: 48px !important;
-        font-size: 0.95rem !important;
-    }
-    .button-container {
-        justify-content: flex-start !important;
-    }
-    /* MODIFICADO: Se aumenta el margen y se fuerza con !important */
-    header.text-center {
-        margin-top: 2.5rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    body { padding: 8px; }
-    .logo-os10 { width: 50px; top: 10px; left: 10px; }
-    .download-btn { width: 165px !important; }
-}
-/* --- ESTILOS PARA EL BANNER DE INSTALACIÓN --- */
-.install-banner-custom {
-    position: fixed;
+/* Encabezado */
+header {
+    background: #444;
+    color: #fff;
+    padding: 1rem 0;
+    border-bottom: #777 1px solid;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 1000;
-    padding: 12px 16px;
+}
+
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    background-color: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-    font-family: 'Poppins', sans-serif;
 }
 
-.install-banner-custom button {
-    background-color: white;
-    color: #0a73c3;
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 8px;
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav a {
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #00aaff;
+}
+
+/* Contenido Principal */
+main {
+    flex-grow: 1;
+}
+
+/* Sección Hero */
+.hero {
+    background: url('https://placehold.co/1920x1080/333333/555555?text=Imagen+de+Fondo') no-repeat center center/cover;
+    height: 90vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin-left: 15px;
-    transition: background-color 0.2s;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-.install-banner-custom button:hover {
-    background-color: #f0f0f0;
-}
-
-/* --- ESTILOS PARA EL CONTADOR DE VISITAS (NUEVO) --- */
-#visitor-counter-container {
-    color: #4b5563; /* Color para modo claro (gris oscuro) */
-}
-
-@media (prefers-color-scheme: dark) {
-    #visitor-counter-container {
-        color: #e5e7eb; /* Color para modo oscuro (gris muy claro) */
-    }
-}
-
-
-
-
-
-
-/* === ESTILOS ADICIONALES PARA FUNCIONALIDADES DE VOZ === */
-
-/* Animaciones y efectos para botones de voz */
-.voice-button {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: scale(1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.voice-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.voice-button:active {
-    transform: scale(0.95);
-}
-
-/* Efecto de ondas para botón de micrófono activo */
-.voice-button.listening::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: voice-wave 2s infinite;
-}
-
-.voice-button.listening::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: voice-wave 2s infinite 0.5s;
-}
-
-@keyframes voice-wave {
-    0% {
-        width: 20px;
-        height: 20px;
-        opacity: 1;
-    }
-    100% {
-        width: 60px;
-        height: 60px;
-        opacity: 0;
-    }
-}
-
-/* Indicador de estado de voz flotante */
-.voice-status-indicator {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
+.btn-primary {
+    background-color: #007bff;
     color: white;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px);
 }
 
-.voice-status-indicator.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+.btn-primary:hover {
+    background-color: #0056b3;
 }
 
-.voice-status-indicator.listening {
-    background: linear-gradient(45deg, #ef4444, #dc2626);
-    animation: pulse-red 2s infinite;
+/* Sección de Características */
+.features {
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.voice-status-indicator.speaking {
-    background: linear-gradient(45deg, #22c55e, #16a34a);
-    animation: pulse-green 2s infinite;
+.features h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
 }
 
-@keyframes pulse-red {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-    50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
 }
 
-@keyframes pulse-green {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-    50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+.feature {
+    background: #444;
+    padding: 30px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Estilos para el texto intermedio del reconocimiento de voz */
-.interim-text {
-    color: #3b82f6;
-    font-style: italic;
-    opacity: 0.8;
-    animation: fade-pulse 1.5s infinite;
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-@keyframes fade-pulse {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 0.4; }
+.feature img {
+    max-width: 80px;
+    margin-bottom: 20px;
 }
 
-/* Mejoras visuales para mensajes con contenido de voz */
-.bot-message.speaking {
-    position: relative;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
-    border-left: 4px solid #22c55e;
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
-.bot-message.speaking::before {
-    content: '🔊';
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    font-size: 12px;
-    background: #22c55e;
+/* Sección Sobre Nosotros */
+.about {
+    padding: 60px 20px;
+    text-align: center;
+    background: #3a3a3a;
+}
+
+.about .container {
+    max-width: 800px;
+}
+
+.about h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.1rem;
+}
+
+/* Pie de Página */
+footer {
+    background: #444;
     color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: bounce-soft 2s infinite;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
 }
 
-@keyframes bounce-soft {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-3px); }
-    60% { transform: translateY(-1px); }
+/* --- Estilos del Chatbot --- */
+.chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff; /* Fondo blanco para el botón */
+  transition: all 0.2s ease;
+  z-index: 1050;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+body.show-chatbot .chatbot-toggler {
+  transform: rotate(90deg);
+}
+.chatbot-toggler span {
+  color: #724ae8; /* Ícono en color morado */
+  position: absolute;
+}
+.chatbot-toggler span:last-child,
+body.show-chatbot .chatbot-toggler span:first-child  {
+  opacity: 0;
+}
+body.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
+}
+.chatbot {
+  position: fixed;
+  right: 35px;
+  bottom: 90px;
+  width: 420px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+  transition: all 0.1s ease;
+  z-index: 1050;
+}
+body.show-chatbot .chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.chatbot header {
+  padding: 16px 0;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: #724ae8;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Estilos para indicadores de audio */
-.audio-visualizer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    height: 20px;
+.chatbot header h2 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin: 0;
 }
 
-.audio-bar {
-    width: 3px;
-    background: currentColor;
-    border-radius: 2px;
-    opacity: 0.3;
-    animation: audio-bars 1.5s infinite ease-in-out;
+.chatbot header span {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.chatbox {
+  overflow-y: auto;
+  height: 510px;
+  padding: 30px 20px 100px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
+  width: 6px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 25px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+.chatbox .chat {
+  display: flex;
+  list-style: none;
+}
+.chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+.chatbox .incoming span {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  cursor: default;
+  text-align: center;
+  line-height: 32px;
+  align-self: flex-end;
+  background: #724ae8;
+  border-radius: 4px;
+  margin: 0 10px 7px 0;
+}
+.chatbox .chat p {
+  white-space: pre-wrap;
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 10px;
+  max-width: 75%;
+  color: #fff;
+  font-size: 0.95rem;
+  background: #724ae8;
+}
+.chatbox .chat p.error {
+  border-radius: 10px;
+  background: #f8d7da;
+  color: #721c24;
+}
+.chatbox .incoming p {
+  border-radius: 10px 10px 10px 0;
+  color: #000;
+  background: #f2f2f2;
+}
+.chatbot .chat-input {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 3px 20px;
+  border-top: 1px solid #ddd;
+}
+.chat-input textarea {
+  height: 55px;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  max-height: 180px;
+  padding: 15px 15px 15px 0;
+  font-size: 0.95rem;
+}
+.chat-input span {
+  align-self: flex-end;
+  color: #724ae8;
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  font-size: 1.35rem;
+}
+.chat-input textarea:valid ~ span {
+  visibility: visible;
 }
 
-.audio-bar:nth-child(1) { animation-delay: 0s; }
-.audio-bar:nth-child(2) { animation-delay: 0.15s; }
-.audio-bar:nth-child(3) { animation-delay: 0.3s; }
-.audio-bar:nth-child(4) { animation-delay: 0.45s; }
-.audio-bar:nth-child(5) { animation-delay: 0.6s; }
-
-@keyframes audio-bars {
-    0%, 40%, 100% { 
-        height: 4px; 
-        opacity: 0.3; 
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
     }
-    20% { 
-        height: 16px; 
-        opacity: 1; 
+    header h1 {
+        margin-bottom: 10px;
+    }
+    header nav ul {
+        padding: 0;
     }
 }
 
-/* Tooltip mejorado para botones de voz */
-.voice-tooltip {
-    position: relative;
-}
-
-.voice-tooltip::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 4px 8px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    font-size: 0.75rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    margin-bottom: 5px;
-}
-
-.voice-tooltip:hover::after {
-    opacity: 1;
-}
-
-/* Estilos responsivos para móviles */
-@media (max-width: 640px) {
-    .voice-status-indicator {
-        top: 10px;
-        font-size: 0.8rem;
-        padding: 6px 12px;
-    }
-    
-    .voice-button {
-        padding: 10px;
-    }
-    
-    .voice-button svg {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .audio-visualizer {
-        height: 16px;
-    }
-    
-    .audio-bar {
-        width: 2px;
-    }
-}
-
-/* Modo oscuro para elementos de voz */
-@media (prefers-color-scheme: dark) {
-    .voice-status-indicator {
-        border-color: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-    }
-    
-    .bot-message.speaking {
-        background: linear-gradient(135deg, rgba(74, 222, 128, 0.25), rgba(74, 222, 128, 0.15));
-        border-left-color: #4ade80;
-    }
-    
-    .bot-message.speaking::before {
-        background: #4ade80;
-    }
-    
-    .voice-tooltip::after {
-        background: rgba(255, 255, 255, 0.9);
-        color: #1f2937;
-    }
-}
-
-/* Animación para el indicador de "escuchando" */
-.listening-pulse {
-    animation: listening-glow 2s infinite;
-}
-
-@keyframes listening-glow {
-    0%, 100% {
-        box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 30px rgba(239, 68, 68, 0.6);
-    }
-}
-
-/* Animación para el indicador de "hablando" */
-.speaking-pulse {
-    animation: speaking-glow 2s infinite;
-}
-
-@keyframes speaking-glow {
-    0%, 100% {
-        box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.6);
-    }
-}
-
-/* Transiciones suaves para cambios de estado */
-.voice-state-transition {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Estilo para el texto que se está leyendo */
-.text-being-read {
-    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.2), transparent);
-    background-size: 200% 100%;
-    animation: reading-highlight 3s infinite;
-}
-
-@keyframes reading-highlight {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+@media (max-width: 490px) {
+  .chatbot-toggler {
+    right: 20px;
+    bottom: 20px;
+  }
+  .chatbot {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+  }
+  .chatbot .chatbox {
+    height: 90%;
+    padding: 25px 15px 100px;
+  }
+  .chatbot .chat-input {
+    padding: 5px 15px;
+  }
+  .chatbot header span {
+    display: inline-block;
+  }
 }
 
