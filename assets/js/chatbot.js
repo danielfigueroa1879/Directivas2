@@ -1,35 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Referencias a los elementos del DOM
-    const chatToggle = document.getElementById('chat-toggle');
-    const chatWindow = document.getElementById('chat-window');
-    const closeChat = document.getElementById('close-chat');
-    const chatMessages = document.getElementById('chat-messages');
-    const userInput = document.getElementById('user-input');
-    const sendButton = document.getElementById('send-button');
+/**
+ * chatbot.js
+ * Se comunica con la API de Gemini a través de un proxy seguro en /api/gemini.
+ */
 
-    // Muestra u oculta la ventana del chat
-    chatToggle.addEventListener('click', () => {
-        chatWindow.classList.toggle('hidden');
-        chatToggle.classList.toggle('hidden');
-    });
+// --- DOM Element Selection ---
+const chatPopup = document.getElementById('chat-popup');
+const chatToggleButton = document.getElementById('chat-toggle-button');
+const chatMessages = document.getElementById('chat-messages');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+const chatBackdrop = document.getElementById('chat-backdrop');
+const chatWidgetContainer = document.getElementById('chat-widget-container');
+const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
-    closeChat.addEventListener('click', () => {
-        chatWindow.classList.add('hidden');
-        chatToggle.classList.remove('hidden');
-    });
-
-    // Envía el mensaje al presionar el botón
-    sendButton.addEventListener('click', sendMessage);
-
-    // Envía el mensaje al presionar "Enter"
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-
-// --- Predefined Responses ---
-// (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
 // --- Predefined Responses ---
 const predefinedResponses = {
@@ -7963,101 +7946,346 @@ República.
      Ministro del Interior y Seguridad Pública`;
 
 // --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
+let responseMap = new Map();
+let partialMatchRules = [];
+
+/**
+ * Processes the predefinedResponses object into faster lookup structures.
+ * This function runs only once on initialization.
  */
-    function appendMessage(sender, html) {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message', `${sender}-message`);
-        // Usamos innerHTML para que el texto formateado por marked.js se renderice correctamente
-        messageElement.innerHTML = html;
-        chatMessages.appendChild(messageElement);
-        // Hace scroll hacia el último mensaje
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+function buildResponseMap() {
+    const newResponseMap = new Map();
+    const newPartialMatchRules = [];
+
+    for (const key in predefinedResponses) {
+        const item = predefinedResponses[key];
+        for (const keyword of item.keywords) {
+            const normalizedKeyword = keyword.toLowerCase().trim();
+            
+            if (normalizedKeyword.startsWith('*') && normalizedKeyword.endsWith('*')) {
+                const cleanKeyword = normalizedKeyword.substring(1, normalizedKeyword.length - 1);
+                if(cleanKeyword) {
+                    newPartialMatchRules.push({ keyword: cleanKeyword, response: item.response });
+                }
+            } else {
+                newResponseMap.set(normalizedKeyword, item.response);
+            }
+        }
+    }
+    responseMap = newResponseMap;
+    partialMatchRules = newPartialMatchRules;
+    console.log("Response map built successfully.", {exactMatches: responseMap.size, partialMatches: partialMatchRules.length});
+}
+
+
+// --- UI Functions ---
+/**
+ * Toggles the visibility of the chat popup and the open/close icons.
+ */
+function toggleChat() {
+    const isHidden = chatPopup.classList.contains('hidden');
+    if (isHidden) {
+        // Opening the chat
+        chatPopup.classList.remove('hidden');
+        chatBackdrop.classList.remove('hidden');
+        chatToggleButton.classList.add('hidden');
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.classList.add('chat-open-mobile');
+        }
+    } else {
+        // Closing the chat
+        chatPopup.classList.add('hidden');
+        chatBackdrop.classList.add('hidden');
+        chatToggleButton.classList.remove('hidden');
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.classList.remove('chat-open-mobile');
+            // Explicitly exit keyboard mode when chat is closed
+            if (window.mobileChatManager) window.mobileChatManager.exitKeyboardMode();
+        }
+    }
+}
+
+/**
+ * Converts basic Markdown syntax (and URLs) to HTML for rendering in the chat.
+ * @param {string} text - The raw text from the API or predefined responses.
+ * @returns {string} - The text formatted with HTML tags.
+ */
+function markdownToHtml(text) {
+    if (!text) return '';
+    let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-700 dark:text-blue-500 hover:underline">$1</a>');
+    formattedText = formattedText.replace(/\*(\*?)(.*?)\1\*/g, '<b>$2</b>');
+    formattedText = formattedText.replace(/^\s*-\s/gm, '🔹 ');
+    return formattedText.replace(/\n/g, '<br>');
+}
+
+
+/**
+ * Creates and appends a message to the chat UI.
+ * @param {string} sender - The sender of the message ('user' or 'bot').
+ * @param {string} text - The content of the message (raw text for user, HTML for bot).
+ * @param {string[]} [buttons=[]] - An optional array of strings to create as buttons.
+ */
+function addMessage(sender, text, buttons = []) {
+    const messageElement = document.createElement('div');
+    const isUser = sender === 'user';
+    
+    messageElement.className = `message-fade-in flex items-start max-w-full`;
+
+    messageElement.classList.toggle('ml-auto', isUser);
+    messageElement.classList.toggle('flex-row-reverse', isUser);
+
+    const bubble = document.createElement('div');
+    bubble.className = isUser 
+        ? 'bg-green-500 rounded-xl rounded-br-none p-3 ml-2 max-w-xs md:max-w-sm' 
+        : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2 max-w-[95%] md:max-w-sm';
+
+    const p = document.createElement('p');
+    p.className = isUser ? 'text-white chatbot-message-text' : 'text-gray-700 dark:text-gray-200 chatbot-message-text';
+    
+    if (isUser) {
+        p.textContent = text;
+    } else {
+        p.innerHTML = markdownToHtml(text);
     }
     
-    // Muestra el mensaje de bienvenida inicial
-    appendMessage('assistant', marked.parse(history[1].parts[0].text));
+    bubble.appendChild(p);
+    
+    if (!isUser && buttons.length > 0) {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'mt-2 flex flex-col space-y-2';
+        buttons.forEach(buttonText => {
+            const button = document.createElement('button');
+            button.textContent = buttonText;
+            button.className = 'bg-green-100 dark:bg-gray-700 border border-green-500/50 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg hover:bg-green-200 dark:hover:bg-gray-600 transition-colors w-full text-left font-medium';
+            button.onclick = () => {
+                userInput.value = buttonText;
+                handleSendMessage();
+            };
+            buttonContainer.appendChild(button);
+        });
+        bubble.appendChild(buttonContainer);
+    }
 
+    const avatar = document.createElement('div');
+    if (isUser) {
+        avatar.className = 'w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0 text-gray-600 dark:text-gray-300';
+        avatar.textContent = 'U';
+    } else {
+        avatar.className = 'w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1';
+        avatar.innerHTML = `<img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">`;
+    }
 
-    /**
-     * Muestra un indicador de "escribiendo..."
-     */
-    function showTypingIndicator() {
-        const typingElement = document.createElement('div');
-        typingElement.classList.add('message', 'assistant-message', 'typing-indicator');
-        typingElement.innerHTML = '<span></span><span></span><span></span>';
-        chatMessages.appendChild(typingElement);
+    messageElement.appendChild(avatar);
+    messageElement.appendChild(bubble);
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/**
+ * Shows or hides the typing indicator in the chat.
+ * @param {boolean} show - Whether to show or hide the indicator.
+ */
+function showTypingIndicator(show) {
+    let indicator = document.getElementById('typing-indicator');
+    if (show && !indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'typing-indicator';
+        indicator.className = 'message-fade-in flex items-start';
+        indicator.innerHTML = `
+            <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                 <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+            </div>
+            <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
+                <span></span><span></span><span></span>
+            </div>
+        `;
+        chatMessages.appendChild(indicator);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+    } else if (!show && indicator) {
+        indicator.remove();
+    }
+}
+
+/**
+ * Finds a predefined response using the optimized maps.
+ * @param {string} text - The user's input text.
+ * @returns {string|null} The predefined response or null if no match.
+ */
+function getPredefinedResponse(text) {
+    const lowerCaseText = text.toLowerCase().trim();
+    
+    if (responseMap.has(lowerCaseText)) {
+        return responseMap.get(lowerCaseText);
     }
 
-    /**
-     * Elimina el indicador de "escribiendo..."
-     */
-    function removeTypingIndicator() {
-        const indicator = document.querySelector('.typing-indicator');
-        if (indicator) {
-            indicator.remove();
+    for (const rule of partialMatchRules) {
+        if (lowerCaseText.includes(rule.keyword)) {
+            return rule.response;
         }
     }
 
-    /**
-     * Envía el mensaje del usuario a la API de Gemini y muestra la respuesta.
-     */
-    async function sendMessage() {
-        const message = userInput.value.trim();
-        if (message === '') return;
+    return null;
+}
 
-        // Muestra el mensaje del usuario y limpia el input
-        appendMessage('user', message);
-        userInput.value = '';
-        showTypingIndicator();
 
-        // Prepara el historial para la llamada a la API
-        const chatHistoryForAPI = [...history, { role: "user", parts: [{ text: message }] }];
+// --- API Communication ---
 
-        // La clave de API se dejará vacía para que el entorno de Canvas la inyecte.
-        const apiKey = ""; 
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+/**
+ * Sends the user's message, checking for predefined responses first.
+ */
+async function handleSendMessage() {
+    const userText = userInput.value.trim();
+    if (!userText) return;
 
-        try {
-            // Llamada directa a la API de Google
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ contents: chatHistoryForAPI }),
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error("Error en la respuesta de la API:", errorData);
-                throw new Error(`Error del servidor: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            // Valida que la respuesta tenga el formato esperado
-            if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.length > 0) {
-                const assistantMessage = data.candidates[0].content.parts[0].text;
-                
-                removeTypingIndicator();
-                // Usa marked.parse para renderizar la respuesta con formato
-                appendMessage('assistant', marked.parse(assistantMessage));
-
-                // Actualiza el historial de conversación
-                history.push({ role: "user", parts: [{ text: message }] });
-                history.push({ role: "model", parts: [{ text: assistantMessage }] });
-
-            } else {
-                console.error("Estructura de respuesta inválida:", data);
-                throw new Error("Respuesta inesperada del asistente.");
-            }
-
-        } catch (error) {
-            removeTypingIndicator();
-            // Muestra un mensaje de error en el chat
-            appendMessage('assistant', `Lo siento, ocurrió un error. (${error.message})`);
-            console.error('Error al enviar mensaje:', error);
-        }
+    addMessage('user', userText);
+    userInput.value = '';
+    
+    const predefinedResponse = getPredefinedResponse(userText);
+    if (predefinedResponse) {
+        setTimeout(() => {
+            addMessage('bot', predefinedResponse);
+            chatHistory.push({ role: "user", parts: [{ text: userText }] });
+            chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
+        }, 500);
+        return;
     }
-});
+    
+    showTypingIndicator(true);
+    chatHistory.push({ role: "user", parts: [{ text: userText }] });
+
+    try {
+        const payload = {
+            contents: chatHistory,
+            systemInstruction: {
+                parts: [{ text: systemPrompt }]
+            },
+            generationConfig: { 
+                temperature: 0.7, 
+                maxOutputTokens: 1024 
+            },
+        };
+
+        // La petición ahora va a nuestro proxy seguro
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error?.message || `Error del servidor: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No obtuve una respuesta.";
+        
+        chatHistory.push({ role: "model", parts: [{ text: botText }] });
+        addMessage('bot', botText);
+
+    } catch (error) {
+        console.error('Error al contactar el proxy de la API:', error);
+        addMessage('bot', `Lo siento, ocurrió un error al contactar al asistente. (${error.message})`);
+    } finally {
+        showTypingIndicator(false);
+    }
+}
+
+// --- Initialization ---
+
+/**
+ * Initializes the chatbot, sets up event listeners, and displays a welcome message.
+ */
+function init() {
+    if (!chatToggleButton) {
+        console.error("Chatbot UI elements not found. Initialization failed.");
+        return;
+    }
+    
+    buildResponseMap();
+
+    // --- Event Listeners ---
+    sendButton.addEventListener('click', handleSendMessage);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSendMessage();
+        }
+    });
+    
+    // --- Mobile-Specific Keyboard Logic ---
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+        let isKeyboardMode = false;
+
+        const enterKeyboardMode = () => {
+            if (isKeyboardMode) return;
+            isKeyboardMode = true;
+            document.body.classList.add('chat-open-mobile');
+            chatWidgetContainer.classList.add('fullscreen');
+            adjustSizeForKeyboard();
+        };
+
+        const exitKeyboardMode = () => {
+            if (!isKeyboardMode) return;
+            isKeyboardMode = false;
+            document.body.classList.remove('chat-open-mobile');
+            chatWidgetContainer.classList.remove('fullscreen');
+            chatWidgetContainer.style.height = '';
+            chatWidgetContainer.style.bottom = '';
+        };
+
+        const adjustSizeForKeyboard = () => {
+            if (!isKeyboardMode) return;
+            setTimeout(() => {
+                if (window.visualViewport) {
+                    const viewportHeight = window.visualViewport.height;
+                    chatWidgetContainer.style.height = `${viewportHeight}px`;
+                    chatWidgetContainer.style.bottom = '0';
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }, 100);
+        };
+
+        const openChat = () => {
+            chatPopup.classList.remove('hidden');
+            chatBackdrop.classList.remove('hidden');
+            chatToggleButton.classList.add('hidden');
+        };
+
+        const closeChat = () => {
+            chatPopup.classList.add('hidden');
+            chatBackdrop.classList.add('hidden');
+            chatToggleButton.classList.remove('hidden');
+            exitKeyboardMode();
+        };
+
+        chatToggleButton.addEventListener('click', openChat);
+        internalCloseBtn.addEventListener('click', closeChat);
+        chatBackdrop.addEventListener('click', closeChat);
+        userInput.addEventListener('focus', enterKeyboardMode);
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', adjustSizeForKeyboard);
+        }
+        window.mobileChatManager = { exitKeyboardMode };
+    } else {
+        // Desktop-only listeners
+        chatToggleButton.addEventListener('click', toggleChat);
+        internalCloseBtn.addEventListener('click', toggleChat);
+        chatBackdrop.addEventListener('click', toggleChat);
+    }
+
+    // --- Initial State ---
+    chatHistory = [];
+    
+    const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
+    const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
+    addMessage('bot', welcomeMessageText, welcomeButtons);
+    
+    chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
+
+    console.log("Chatbot initialized successfully.");
+}
+
+document.addEventListener('DOMContentLoaded', init);
