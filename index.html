@@ -38,12 +38,13 @@
         }
         .card-container { 
             max-width: 600px; 
-            margin: 2rem auto; 
+            width: 90%; /* Asegura que se vea bien en móviles */
+            margin: 2rem auto; /* Centrado horizontal y margen vertical */
         }
         .logo-os10-container { 
             position: absolute;
             top: 1.5rem;
-            left: 1.5rem; /* Movido a la izquierda */
+            left: 1.5rem;
             height: 60px;
             z-index: 10;
         }
@@ -51,23 +52,6 @@
             border-left-width: 4px; 
             padding: 1rem; 
             border-radius: 0.5rem; 
-        }
-        .section-card ul li { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .download-btn { 
-            background-color: #3b82f6; 
-            color: white; 
-            padding: 4px 10px; 
-            border-radius: 6px; 
-            font-size: 0.8rem; 
-            text-decoration: none; 
-            transition: background-color 0.2s; 
-        }
-        .download-btn:hover { 
-            background-color: #2563eb; 
         }
         
         .voice-button { transition: all 0.3s ease; }
@@ -83,11 +67,11 @@
         #chat-widget-container { 
             position: fixed; 
             bottom: 1.5rem; 
-            left: 1.5rem; /* Posición a la izquierda */
+            right: 1.5rem;
             z-index: 1000; 
             display: flex; 
             flex-direction: column; 
-            align-items: flex-start; 
+            align-items: flex-end;
         }
         #chat-popup { 
             width: 350px; 
@@ -95,7 +79,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
         }
         #chat-toggle-button { 
-            width: 80px; /* Tamaño del botón */
+            width: 80px;
             height: 80px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
         }
@@ -106,7 +90,7 @@
         /* Ajuste para pantallas más grandes */
         @media (min-width: 1024px) {
             #chat-toggle-button {
-                width: 90px; /* Botón más grande en PC */
+                width: 90px;
                 height: 90px;
             }
         }
@@ -149,28 +133,55 @@
             
             <section class="section-card border-green-500 bg-green-100/80 dark:bg-green-900/50">
                 <h3 class="font-bold text-green-800 dark:text-green-300">2️⃣ Documentación</h3>
-                <ul class="space-y-3 pl-5 text-sm text-gray-700 dark:text-gray-300">
-                    <li><span>02 Solicitudes Simple.</span><a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn" title="Descargar Solicitud">Descargar</a></li>
-                    <li><span>01 copia DD.FF. completa.</span><a href="https://dal5.short.gy/D" target="_blank" class="download-btn" title="Descargar Word">Descargar</a></li>
-                    <li><span>Requisitos según tipo.</span><a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn" title="Descargar Requisi.">Descargar</a></li>
-                    <li><span>Uniforme Decreto 32/2024.</span><a href="https://dal5.short.gy/0u" target="_blank" class="download-btn" title="Ejemplo Uniforme">Ejemplo</a></li>
-                    <li><span>Análisis de Vulnerabilidades.</span><a href="https://dal5.short.gy/6ydn" target="_blank" class="download-btn" title="Descargar Análisis">Descargar</a></li>
-                    <li><span>Solicitud Uniforme Distinto.</span><a href="https://d6.short.gy/G8" target="_blank" class="download-btn" title="Descargar Word">Descargar</a></li>
+                <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+                    <li>
+                        <p class="mb-1">02 Solicitudes Simple.</p>
+                        <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
+                    </li>
+                    <li>
+                        <p class="mb-1">01 copia DD.FF. completa.</p>
+                        <a href="https://dal5.short.gy/D" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                    </li>
+                    <li>
+                        <p class="mb-1">Requisitos según tipo.</p>
+                        <a href="https://dal5.short.gy/Re24" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
+                    </li>
+                    <li>
+                        <p class="mb-1">Uniforme Decreto 32/2024.</p>
+                        <a href="https://dal5.short.gy/0u" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a>
+                    </li>
+                    <li>
+                        <p class="mb-1">Análisis de Vulnerabilidades.</p>
+                        <a href="https://dal5.short.gy/6ydn" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a>
+                    </li>
+                    <li>
+                        <p class="mb-1">Solicitud Uniforme Distinto.</p>
+                        <a href="https://d6.short.gy/G8" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                    </li>
                 </ul>
             </section>
             
             <section class="section-card border-red-500 bg-red-100/80 dark:bg-red-900/50">
                 <h3 class="font-bold text-red-800 dark:text-red-300">3️⃣ Todo escaneado en Digital.</h3>
-                <ul class="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300">
-                    <li><span>Escanear en 01 archivo PDF.</span><a href="https://dal5.short.gy/I" target="_blank" class="download-btn" title="Herramienta para unir PDF">Herramienta</a></li>
+                <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+                    <li>
+                        <p class="mb-1">Escanear en 01 archivo PDF.</p>
+                        <a href="https://dal5.short.gy/I" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a>
+                    </li>
                 </ul>
             </section>
             
             <section class="section-card border-yellow-500 bg-yellow-100/80 dark:bg-yellow-900/50">
                 <h3 class="font-bold text-yellow-800 dark:text-yellow-300">4️⃣ Tramitar Credenciales</h3>
-                <ul class="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300">
-                    <li><span>Resol. 1480 (10.04.2025).</span><a href="https://d6.short.gy/dsds" target="_blank" class="download-btn" title="Descargar Documentos">Descargar</a></li>
-                    <li><span>Tramitar credenciales.</span><a href="credenciales.html" class="download-btn" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar</a></li>
+                <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+                    <li>
+                        <p class="mb-1">Resol. 1480 (10.04.2025).</p>
+                        <a href="https://d6.short.gy/dsds" target="_blank" class="inline-block px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Descargar Documentos">Descargar</a>
+                    </li>
+                    <li>
+                        <p class="mb-1">Tramitar credenciales.</p>
+                        <a href="credenciales.html" class="inline-block px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar</a>
+                    </li>
                 </ul>
             </section>
         </main>
@@ -281,6 +292,20 @@
             const speechSynth = window.speechSynthesis;
             let recognition;
             let isListening = false;
+            let availableVoices = [];
+
+            function loadVoices() {
+                availableVoices = speechSynth.getVoices();
+                if (availableVoices.length > 0) {
+                     console.log("Voces cargadas.");
+                }
+            }
+
+            loadVoices();
+            if (speechSynth.onvoiceschanged !== undefined) {
+                speechSynth.onvoiceschanged = loadVoices;
+            }
+
 
             if (SpeechRecognition) {
                 recognition = new SpeechRecognition();
@@ -328,27 +353,26 @@
                 const utterance = new SpeechSynthesisUtterance(cleanText);
 
                 // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
-                const voices = speechSynth.getVoices();
                 let selectedVoice = null;
 
-                if (voices.length > 0) {
+                if (availableVoices.length > 0) {
                     // Prioridad 1: Buscar "Diego"
-                    selectedVoice = voices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
+                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
 
                     // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
                     if (!selectedVoice) {
-                        selectedVoice = voices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
+                        selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
                     }
 
                     // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
                     if (!selectedVoice) {
                         const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
-                        selectedVoice = voices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
+                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
                     }
 
                     // Prioridad 4: Como último recurso, tomar la primera voz en español
                     if (!selectedVoice) {
-                        selectedVoice = voices.find(voice => voice.lang.startsWith('es'));
+                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
                     }
                 }
 
