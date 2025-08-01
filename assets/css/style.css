@@ -363,4 +363,14 @@ body {
   right: 20px;  /* <--- Ajusta la posición horizontal si es necesario */
   z-index: 50;
 }
-
+/* Estilos para el chatbot en PC */
+@media (min-width: 1024px) {
+    #chat-widget-container {
+        bottom: 50px; /* Ajusta este valor para mover el chatbot más abajo */
+        right: 50px;
+    }
+    #chat-toggle-button {
+        width: 80px; /* Aumenta el tamaño del botón */
+        height: 80px;
+    }
+}
