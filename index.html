@@ -492,7 +492,7 @@
             setTimeout(() => addMessage('bot', response), 500);
         }
 
-        // Funciones de voz MEJORADAS
+        // Funciones de voz MEJORADAS con Diego como predeterminada
         function speakText(text) {
             const cleanText = text.replace(/🤖|👮🏻‍♂️|📋|🕐|💰|😊|👋|⬇️|👇🏽|☝🏼|✅|⚠️|❌/g, '').replace(/<br>/g, '. ').replace(/<strong>/g, '').replace(/<\/strong>/g, '');
             if (!cleanText.trim()) return;
@@ -500,27 +500,70 @@
             speechSynth.cancel();
             const utterance = new SpeechSynthesisUtterance(cleanText);
             
-            // Configurar voz masculina y más rápida
+            // Configurar DIEGO como voz predeterminada
             const voices = speechSynth.getVoices();
-            const maleVoice = voices.find(voice => 
-                (voice.lang.startsWith('es') || voice.lang.includes('ES')) && 
-                (voice.name.toLowerCase().includes('male') || 
-                 voice.name.toLowerCase().includes('diego') ||
-                 voice.name.toLowerCase().includes('jorge') ||
-                 voice.name.toLowerCase().includes('carlos') ||
-                 !voice.name.toLowerCase().includes('female') && 
-                 !voice.name.toLowerCase().includes('maria') && 
-                 !voice.name.toLowerCase().includes('carmen'))
-            ) || voices.find(voice => voice.lang.startsWith('es'));
             
-            if (maleVoice) {
-                utterance.voice = maleVoice;
+            // Buscar Diego primero (voz predeterminada)
+            let selectedVoice = voices.find(voice => 
+                voice.name.toLowerCase().includes('diego')
+            );
+            
+            // Si no encuentra Diego, buscar otras voces masculinas en español
+            if (!selectedVoice) {
+                selectedVoice = voices.find(voice => 
+                    (voice.lang.startsWith('es') || voice.lang.includes('ES')) && 
+                    (voice.name.toLowerCase().includes('jorge') ||
+                     voice.name.toLowerCase().includes('carlos') ||
+                     voice.name.toLowerCase().includes('male') ||
+                     (!voice.name.toLowerCase().includes('female') && 
+                      !voice.name.toLowerCase().includes('maria') && 
+                      !voice.name.toLowerCase().includes('carmen') &&
+                      !voice.name.toLowerCase().includes('monica') &&
+                      !voice.name.toLowerCase().includes('paloma')))
+                );
             }
             
-            utterance.rate = 1.2; // Más rápido (era 0.9)
+            // Si no encuentra ninguna masculina, usar cualquier voz en español
+            if (!selectedVoice) {
+                selectedVoice = voices.find(voice => voice.lang.startsWith('es'));
+            }
+            
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+                console.log('🎤 Usando voz:', selectedVoice.name);
+            }
+            
+            utterance.rate = 1.2; // Más rápido
             utterance.pitch = 0.8; // Tono más grave para sonar masculino
             utterance.volume = 0.9;
             speechSynth.speak(utterance);
+        }
+
+        // Función para listar todas las voces disponibles (para debug)
+        function listAvailableVoices() {
+            const voices = speechSynth.getVoices();
+            console.log('🎤 Voces disponibles:');
+            voices.forEach((voice, index) => {
+                if (voice.lang.startsWith('es')) {
+                    console.log(`${index}: ${voice.name} (${voice.lang}) - ${voice.gender || 'N/A'}`);
+                }
+            });
+        }
+
+        // Función para forzar el uso de Diego
+        function setDiegoVoice() {
+            const voices = speechSynth.getVoices();
+            const diego = voices.find(voice => voice.name.toLowerCase().includes('diego'));
+            if (diego) {
+                console.log('✅ Diego encontrado:', diego.name);
+                return diego;
+            } else {
+                console.log('❌ Diego no encontrado. Voces disponibles en español:');
+                voices.filter(v => v.lang.startsWith('es')).forEach(v => {
+                    console.log(`- ${v.name} (${v.lang})`);
+                });
+                return null;
+            }
         }
 
         function startVoiceInput() {
@@ -574,6 +617,24 @@
 
         // Event listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // Configurar voces al cargar la página
+            function initializeVoices() {
+                const voices = speechSynth.getVoices();
+                if (voices.length > 0) {
+                    listAvailableVoices();
+                    setDiegoVoice();
+                } else {
+                    // Si las voces no están listas, esperar
+                    speechSynth.addEventListener('voiceschanged', function() {
+                        listAvailableVoices();
+                        setDiegoVoice();
+                    });
+                }
+            }
+            
+            // Inicializar voces
+            initializeVoices();
+            
             // Botones principales
             document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
             document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
@@ -596,6 +657,21 @@
                 const welcomeButtons = ['Menú', 'Menú O.S.10', 'Valores', 'Horarios de atención'];
                 addMessage('bot', '¡Hola! Soy tu asistente virtual con capacidades de voz de la oficina OS10 Coquimbo. Puedes escribir o usar el micrófono para hacer consultas. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
+            
+            // Atajos de teclado
+            document.addEventListener('keydown', function(e) {
+                // Alt + S: Activar/desactivar auto-lectura
+                if (e.altKey && e.key === 's') {
+                    e.preventDefault();
+                    console.log('🔊 Función de auto-lectura (siempre activa)');
+                }
+                // Alt + D: Forzar voz de Diego
+                if (e.altKey && e.key === 'd') {
+                    e.preventDefault();
+                    setDiegoVoice();
+                    console.log('🎤 Configurando voz de Diego...');
+                }
+            });
         });
     </script>
 </body>
