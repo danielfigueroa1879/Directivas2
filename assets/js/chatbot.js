@@ -13,6 +13,7 @@ const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
+
 // --- Estilos del Chatbot ---
 const styles = `
     /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
@@ -27,45 +28,67 @@ const styles = `
 
     /* --- ESTILOS DE LA VENTANA DEL CHAT --- */
     #chat-widget-container {
-        position: fixed;
-        /* --- CAMBIO: Icono movido más abajo --- */
-        bottom: 15px;
-        right: 15px;
-        z-index: 1000;
+        position: fixed !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        z-index: 1000 !important;
     }
+    
     #chat-popup {
-        width: 350px;
-        max-width: 90vw;
-        /* --- CORRECCIÓN DEFINITIVA: Altura adaptable --- */
-        /* Esta regla garantiza que la ventana nunca sea más alta que la pantalla,
-           dejando siempre un margen visible arriba y abajo para que no se corte. */
-        max-height: calc(100vh - 35px); /* 15px de margen inferior + 20px de margen superior */
+        width: 350px !important;
+        max-width: 90vw !important;
+        max-height: calc(100vh - 100px) !important; /* Más espacio de margen */
         
-        /* AGREGAR ESTAS LÍNEAS PARA FIJAR LA POSICIÓN */
-        position: fixed;
-        bottom: 95px; /* Posiciona la ventana justo encima del botón flotante */
-        right: 15px;
+        /* POSICIONAMIENTO FIJO DESDE ABAJO */
+        position: fixed !important;
+        bottom: 95px !important;
+        right: 15px !important;
+        top: auto !important; /* Importante: anula cualquier posición desde arriba */
         
-        border-radius: 1rem;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        border-radius: 1rem !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+        
+        /* Asegurar que siempre sea visible */
+        transform: none !important;
+        margin: 0 !important;
     }
+    
     #chat-messages {
         flex-grow: 1;
         overflow-y: auto;
+        max-height: calc(100vh - 200px) !important; /* Limitar altura del área de mensajes */
     }
     
-    /* AGREGAR ESTILOS PARA PANTALLAS PEQUEÑAS */
+    /* Asegurar que el header del chat con el botón de cerrar sea visible */
+    #chat-popup .bg-gradient-to-r {
+        position: relative !important;
+        z-index: 10 !important;
+    }
+    
+    /* Para pantallas pequeñas */
     @media (max-height: 600px) {
         #chat-popup {
-            bottom: 15px; /* Reduce el espacio en pantallas muy pequeñas */
-            max-height: calc(100vh - 30px);
+            bottom: 75px !important;
+            max-height: calc(100vh - 90px) !important;
+        }
+        #chat-messages {
+            max-height: calc(100vh - 180px) !important;
+        }
+    }
+    
+    /* Para pantallas muy grandes, limitar la altura máxima */
+    @media (min-height: 900px) {
+        #chat-popup {
+            max-height: 600px !important;
+        }
+        #chat-messages {
+            max-height: 500px !important;
         }
     }
 `;
-
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
 // --- Predefined Responses ---
