@@ -470,12 +470,12 @@
                     addTypingIndicator();
                     const callApiWithBackoff = async (retries = 3, delay = 1000) => {
                         try {
-                            const prompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nConsulta: "${text}"`;
+                            const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
+                            const prompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nBase de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
 
                             let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                             const payload = { contents: chatHistory };
-                            const apiKey = ""; 
-                            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                            const apiUrl = '/api/gemini'; // --- URL DEL PROXY ---
                             
                             const apiResponse = await fetch(apiUrl, {
                                 method: 'POST',
@@ -614,4 +614,5 @@
     </script>
 </body>
 </html>
+
 
