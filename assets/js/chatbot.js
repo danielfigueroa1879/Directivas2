@@ -13,8 +13,41 @@ const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
+ const styles = `
+        /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
+        /* Puedes cambiar los valores aquí para agrandar el ícono */
+        #chat-toggle-button {
+            width: 70px;  /* <-- Aumenta este valor para el ancho */
+            height: 70px; /* <-- Aumenta este valor para el alto */
+        }
+        #chat-toggle-button svg {
+            width: 36px;  /* <-- Aumenta este valor para el ícono de adentro */
+            height: 36px; /* <-- Aumenta este valor para el ícono de adentro */
+        }
 
-// --- Predefined Responses ---
+        /* --- ESTILOS DE LA VENTANA DEL CHAT --- */
+        /* Estos estilos aseguran que la ventana del chat se vea completa */
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        #chat-popup {
+            width: 350px;
+            max-width: 90vw;
+            max-height: 70vh; /* <-- Altura máxima para que no se corte */
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+    `;
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+    // --- FIN DEL CÓDIGO NUEVO ---
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
 // --- Predefined Responses ---
