@@ -36,18 +36,39 @@
             background-position: center;
             background-attachment: fixed;
         }
-        .card-container { max-width: 600px; margin: 2rem auto; }
-        .logo-os10-fixed { 
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            height: 60px;
-            z-index: 1100; /* Encima de otros elementos */
+        .card-container { 
+            max-width: 600px; 
+            margin: 2rem auto; 
         }
-        .section-card { border-left-width: 4px; padding: 1rem; border-radius: 0.5rem; }
-        .section-card ul li { display: flex; justify-content: space-between; align-items: center; }
-        .download-btn { background-color: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: background-color 0.2s; }
-        .download-btn:hover { background-color: #2563eb; }
+        .logo-os10-container { 
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem; /* Movido a la izquierda */
+            height: 60px;
+            z-index: 10;
+        }
+        .section-card { 
+            border-left-width: 4px; 
+            padding: 1rem; 
+            border-radius: 0.5rem; 
+        }
+        .section-card ul li { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .download-btn { 
+            background-color: #3b82f6; 
+            color: white; 
+            padding: 4px 10px; 
+            border-radius: 6px; 
+            font-size: 0.8rem; 
+            text-decoration: none; 
+            transition: background-color 0.2s; 
+        }
+        .download-btn:hover { 
+            background-color: #2563eb; 
+        }
         
         .voice-button { transition: all 0.3s ease; }
         .voice-button:hover { transform: scale(1.05); }
@@ -58,36 +79,48 @@
         .response-button { transition: all 0.2s ease; }
         .response-button:hover { transform: translateX(4px); }
 
-        /* Estilos Chatbot Móvil */
-        #chat-widget-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; }
-        #chat-popup { width: 350px; height: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        #chat-toggle-button { box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .chat-messages-container { scroll-behavior: smooth; }
+        /* Estilos Chatbot */
+        #chat-widget-container { 
+            position: fixed; 
+            bottom: 1.5rem; 
+            left: 1.5rem; /* Posición a la izquierda */
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+        }
+        #chat-popup { 
+            width: 350px; 
+            height: 500px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+        }
+        #chat-toggle-button { 
+            width: 80px; /* Tamaño del botón */
+            height: 80px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        }
+        .chat-messages-container { 
+            scroll-behavior: smooth; 
+        }
 
-        /* Estilos Chatbot PC */
+        /* Ajuste para pantallas más grandes */
         @media (min-width: 1024px) {
-            #chat-widget-container {
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 2rem;
-                align-items: center;
-            }
             #chat-toggle-button {
-                width: 80px; /* Más grande */
-                height: 80px;
+                width: 90px; /* Botón más grande en PC */
+                height: 90px;
             }
         }
     </style>
 </head>
 <body>
     
-    <!-- Logo Fijo -->
-    <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
-        <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10-fixed" loading="lazy">
-    </a>
-
     <!-- Contenido de la página -->
     <div class="card-container bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
+        <!-- Logo dentro del contenedor -->
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR" class="logo-os10-container">
+            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="h-full" loading="lazy">
+        </a>
+
         <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
             <p class="flex items-center">
                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
@@ -95,7 +128,7 @@
             </p>
         </div>
         
-        <header class="text-center pt-8"> <!-- Añadido padding top para que no choque con el logo -->
+        <header class="text-center pt-8">
             <h1 class="text-2xl font-bold text-gray-800 dark:text-white">DIRECTIVA DE FUNCIONAMIENTO</h1>
             <h2 class="text-lg font-semibold text-gray-600 dark:text-gray-300">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
         </header>
@@ -181,7 +214,7 @@
                 </div>
             </footer>
         </div>
-        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voz">
+        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voz">
             <img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
         </button>
     </div>
@@ -290,12 +323,45 @@
             function speakText(text) {
                 const cleanText = text.replace(/🤖|👮🏻‍♂️|📋|🕐|💰|😊|👋|⬇️|👇🏽|☝🏼|✅|⚠️|❌|🧙🏻‍♂️|🚦|➢/g, '').replace(/<br>/g, '. ').replace(/<strong>/g, '').replace(/<\/strong>/g, '').replace(/\n/g, '. ').replace(/\*/g, '');
                 if (!cleanText.trim() || !speechSynth) return;
-                
+
                 speechSynth.cancel();
                 const utterance = new SpeechSynthesisUtterance(cleanText);
+
+                // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
+                const voices = speechSynth.getVoices();
+                let selectedVoice = null;
+
+                if (voices.length > 0) {
+                    // Prioridad 1: Buscar "Diego"
+                    selectedVoice = voices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
+
+                    // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
+                    if (!selectedVoice) {
+                        selectedVoice = voices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
+                    }
+
+                    // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
+                    if (!selectedVoice) {
+                        const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
+                        selectedVoice = voices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
+                    }
+
+                    // Prioridad 4: Como último recurso, tomar la primera voz en español
+                    if (!selectedVoice) {
+                        selectedVoice = voices.find(voice => voice.lang.startsWith('es'));
+                    }
+                }
+
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                    console.log('Usando voz:', selectedVoice.name);
+                } else {
+                    console.warn('No se encontró una voz en español preferida. Se usará la voz por defecto del sistema.');
+                }
+
                 utterance.lang = 'es-CL';
                 utterance.rate = 1.1;
-                utterance.pitch = 1;
+                utterance.pitch = 1; // A neutral pitch
                 speechSynth.speak(utterance);
             }
 
