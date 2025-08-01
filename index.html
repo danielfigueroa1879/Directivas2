@@ -10,59 +10,53 @@
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
     <meta name="mobile-web-app-capable" content="yes">
-    <!-- <link rel="manifest" href="manifest.json"> --> <!-- Deshabilitado temporalmente para evitar errores 404 si no existe -->
+    <!-- <link rel="manifest" href="manifest.json"> -->
 
     <!-- Configuración para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
 
-    <!-- Favicons y Iconos Estándar (Usando placeholders) -->
-    <link rel="icon" href="https://placehold.co/32x32/003366/FFFFFF?text=Fav" type="image/png">
-    <link rel="apple-touch-icon" href="https://placehold.co/192x192/003366/FFFFFF?text=Icon">
+    <!-- Favicons y Iconos Estándar -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
     
     <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css"> <!-- Asegúrate que este archivo exista -->
-
-    <!-- Estilos adicionales para el Chatbot con Voz -->
+    
+    <!-- Estilos personalizados -->
     <style>
-        /* Estilos base del CSS externo para que funcione sin el archivo style.css */
         body { font-family: 'Poppins', sans-serif; }
-        .card-container { max-width: 600px; margin: 2rem auto; background: white; padding: 1.5rem; }
+        .card-container { max-width: 600px; margin: 2rem auto; }
         .logo-os10 { display: block; margin: 0 auto 1rem; height: 80px; }
-        .section-card { border-left-width: 4px; padding: 1rem; border-radius: 0.5rem; background: #f9fafb; }
-        .section-card h3 { margin-bottom: 0.5rem; }
+        .section-card { border-left-width: 4px; padding: 1rem; border-radius: 0.5rem; }
         .section-card ul li { display: flex; justify-content: space-between; align-items: center; }
-        .download-btn { background-color: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; }
+        .download-btn { background-color: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: background-color 0.2s; }
         .download-btn:hover { background-color: #2563eb; }
         
-        /* Estilos adicionales para funciones de voz */
-        .voice-button { transition: all 0.3s ease; transform: scale(1); }
+        .voice-button { transition: all 0.3s ease; }
         .voice-button:hover { transform: scale(1.05); }
         .voice-button:active { transform: scale(0.95); }
         .voice-button.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
         
-        /* Mejoras para los botones de respuesta */
         .response-button { transition: all 0.2s ease; }
         .response-button:hover { transform: translateX(4px); }
 
-        /* Posicionamiento del Chatbot Flotante */
         #chat-widget-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; }
         #chat-popup { width: 350px; height: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
         #chat-toggle-button { box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .chat-messages-container { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 dark:bg-gray-800">
 
     <!-- Contenido de la página -->
-    <div class="card-container rounded-xl shadow-md space-y-6 relative">
-        <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500">
+    <div class="card-container bg-white dark:bg-gray-900 rounded-xl shadow-md space-y-6 relative p-6">
+        <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
             <p class="flex items-center">
                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
@@ -70,31 +64,31 @@
         </div>
         
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
-            <img src="https://placehold.co/200x80/FFFFFF/000000?text=Logo+OS10" alt="Logo OS10" class="logo-os10" loading="lazy">
+            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
         </a>
         
         <header class="text-center">
-            <h1 class="text-2xl font-bold text-gray-800">DIRECTIVA DE FUNCIONAMIENTO</h1>
-            <h2 class="text-lg font-semibold text-gray-600">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">DIRECTIVA DE FUNCIONAMIENTO</h1>
+            <h2 class="text-lg font-semibold text-gray-600 dark:text-gray-300">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
         </header>
         
         <main class="space-y-4">
-            <section class="section-card border-blue-500">
-                <h3 class="font-bold">1️⃣ Presentar Directiva DD.FF.</h3>
-                <ul class="list-disc pl-5 text-sm">
+            <section class="section-card bg-gray-50 dark:bg-gray-800 border-blue-500">
+                <h3 class="font-bold text-gray-800 dark:text-white">1️⃣ Presentar Directiva DD.FF.</h3>
+                <ul class="list-disc pl-5 text-sm text-gray-600 dark:text-gray-300">
                     <li>Vigencia 03 años en instalación.</li>
                     <li>Presentar con 15 días hábiles de anticipación.</li>
                     <li>
-                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-800 hover:underline">Dec. 93/1985</a>,
-                        <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-800 hover:underline">Dec. 261</a>,
-                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-800 hover:underline">Dec. 32/2024</a>.
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Dec. 93/1985</a>,
+                        <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Dec. 261</a>,
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Dec. 32/2024</a>.
                    </li>
                </ul>
             </section>
             
-            <section class="section-card border-green-500">
-                <h3 class="font-bold">2️⃣ Documentación</h3>
-                <ul class="space-y-3 pl-5 text-sm">
+            <section class="section-card bg-gray-50 dark:bg-gray-800 border-green-500">
+                <h3 class="font-bold text-gray-800 dark:text-white">2️⃣ Documentación</h3>
+                <ul class="space-y-3 pl-5 text-sm text-gray-600 dark:text-gray-300">
                     <li><span>02 Solicitudes Simple.</span><a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn" title="Descargar Solicitud">Descargar</a></li>
                     <li><span>01 copia DD.FF. completa.</span><a href="https://dal5.short.gy/D" target="_blank" class="download-btn" title="Descargar Word">Descargar</a></li>
                     <li><span>Requisitos según tipo.</span><a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn" title="Descargar Requisi.">Descargar</a></li>
@@ -104,63 +98,63 @@
                 </ul>
             </section>
             
-            <section class="section-card border-red-500">
-                <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
-                <ul class="list-disc pl-5 text-sm">
+            <section class="section-card bg-gray-50 dark:bg-gray-800 border-red-500">
+                <h3 class="font-bold text-gray-800 dark:text-white">3️⃣ Todo escaneado en Digital.</h3>
+                <ul class="list-disc pl-5 text-sm text-gray-600 dark:text-gray-300">
                     <li><span>Escanear en 01 archivo PDF.</span><a href="https://dal5.short.gy/I" target="_blank" class="download-btn" title="Herramienta para unir PDF">Herramienta</a></li>
                 </ul>
             </section>
             
-            <section class="section-card border-yellow-500">
-                <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
-                <ul class="list-disc pl-5 text-sm">
+            <section class="section-card bg-gray-50 dark:bg-gray-800 border-yellow-500">
+                <h3 class="font-bold text-gray-800 dark:text-white">4️⃣ Tramitar Credenciales</h3>
+                <ul class="list-disc pl-5 text-sm text-gray-600 dark:text-gray-300">
                     <li><span>Resol. 1480 (10.04.2025).</span><a href="https://d6.short.gy/dsds" target="_blank" class="download-btn" title="Descargar Documentos">Descargar</a></li>
                     <li><span>Tramitar credenciales.</span><a href="credenciales.html" class="download-btn" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar</a></li>
                 </ul>
             </section>
         </main>
         
-        <footer class="relative mt-6 border-t border-gray-200 pt-4">
-            <div class="text-center text-sm text-gray-600 leading-tight pr-16">
+        <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
+            <div class="text-center text-sm text-gray-600 dark:text-gray-400 leading-tight pr-16">
                 <span>Haga clic para descargar.</span><br>
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
                 <span>Ingeniero en Informática.</span>
             </div>
-            <img src="https://placehold.co/60x60/FFFFFF/000000?text=QR" alt="Código QR" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información" loading="lazy">
+            <img src="assets/images/qr.png" alt="Código QR" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información" loading="lazy">
         </footer>
    </div>
 
     <!-- ===== CHATBOT FLOTANTE CON VOZ ===== -->
     <div id="chat-widget-container">
-        <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
+        <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] dark:bg-gray-800/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <!-- Header -->
-            <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
+            <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800 dark:text-white">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
-                        <img src="https://placehold.co/48x48/FFFFFF/000000?text=B" alt="Bot Icon" class="h-full w-full object-contain" onerror="this.src='https://placehold.co/48x48/FFFFFF/000000?text=B'">
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                     </div>
                     <div>
                         <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
-                        <p class="text-xs text-gray-500">Con funciones de voz</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Con funciones de voz</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
                     <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
-                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                 </div>
             </header>
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
             <footer class="p-3 border-t border-green-500/30">
-                <div class="mb-2 text-xs text-center text-gray-500"><span>🔊 Auto-lectura activada | Alt+V para micrófono</span></div>
-                <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
+                <div class="mb-2 text-xs text-center text-gray-500 dark:text-gray-400"><span>🔊 Auto-lectura activada | Alt+V para micrófono</span></div>
+                <div class="flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 rounded-xl p-2">
                     <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg></button>
-                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
+                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base">
                     <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></button>
                 </div>
             </footer>
         </div>
-        <button id="chat-toggle-button" class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voz">
-            <img src="https://placehold.co/64x64/FFFFFF/000000?text=B" alt="Icono del Chatbot" class="h-full w-full object-contain" onerror="this.src='https://placehold.co/64x64/FFFFFF/000000?text=B'">
+        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voz">
+            <img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
         </button>
     </div>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
@@ -213,7 +207,14 @@
     <script>
         // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
         document.addEventListener('DOMContentLoaded', function() {
-            
+
+            // Lógica para detectar preferencia de modo oscuro del sistema
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+
             // --- Lógica del Chatbot ---
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const speechSynth = window.speechSynthesis;
@@ -296,14 +297,14 @@
                     messageDiv.className = 'flex items-start space-x-2 mb-3';
                     const formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
-                        `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
+                        `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
                     ).join('') + '</div>' : '';
                     
                     content = `
                         <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
-                            <img src="https://placehold.co/48x48/FFFFFF/000000?text=B" alt="Bot Icon" class="h-full w-full object-contain" onerror="this.src='https://placehold.co/48x48/FFFFFF/000000?text=B'">
+                            <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                         </div>
-                        <div class="bg-white p-3 rounded-lg max-w-sm text-gray-800">
+                        <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200">
                             ${formattedText}
                             ${buttonsHtml}
                         </div>
@@ -378,7 +379,7 @@
             }
 
             function readLastMessage() {
-                const messages = document.querySelectorAll('#chat-messages .text-gray-800'); // Bot messages
+                const messages = document.querySelectorAll('#chat-messages .dark\\:text-gray-200');
                 if (messages.length > 0) {
                     const lastMessage = messages[messages.length - 1];
                     const text = lastMessage.innerText;
@@ -414,4 +415,5 @@
     </script>
 </body>
 </html>
+
 
