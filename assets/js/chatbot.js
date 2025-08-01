@@ -1,106 +1,5 @@
 /**
- * Muestra indicador de síntesis de voz con texto
- */
-function showSpeechIndicator(text) {
-    let indicator = document.getElementById('speech-indicator');
-    if (!indicator) {
-        indicator = document.createElement('div');
-        indicator.id = 'speech-indicator';
-        indicator.className = 'voice-status-indicator speaking show';
-        document.body.appendChild(indicator);
-    }
-    
-    // Actualizar contenido
-    indicator.innerHTML = `
-        <div class="flex items-center space-x-2">
-            <div class="audio-visualizer">
-                <div class="audio-bar"></div>
-                <div class="audio-bar"></div>
-                <div class="audio-bar"></div>
-                <div class="audio-bar"></div>
-                <div class="audio-bar"></div>
-            </div>
-            <span>Reproduciendo mensaje...</span>
-        </div>
-    `;
-    indicator.className = 'voice-status-indicator speaking show';
-}
-
-/**
- * Muestra indicador de escucha mejorado
- */
-function showListeningIndicator() {
-    let indicator = document.getElementById('listening-indicator');
-    if (!indicator) {
-        indicator = document.createElement('div');
-        indicator.id = 'listening-indicator';
-        indicator.className = 'message-fade-in flex items-start';
-        indicator.innerHTML = `
-            <div class="w-8 h-8 rounded-full bg-white border-2 border-red-400 flex items-center justify-center flex-shrink-0 p-1 listening-pulse">
-                <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                    <line x1="12" x2="12" y1="19" y2="23"/>
-                    <line x1="8" x2="16" y1="23" y2="23"/>
-                </svg>
-            </div>
-            <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2">
-                <p class="text-gray-700 dark:text-gray-200 text-sm">
-                    🎤 Escuchando... <span class="text-red-500 font-medium">Habla ahora</span>
-                    <br><span id="interim-text" class="interim-text"></span>
-                </p>
-            </div>
-        `;
-        chatMessages.appendChild(indicator);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Mostrar indicador superior
-    showListeningStatusIndicator();
-}
-
-/**
- * Muestra indicador de estado superior para escucha
- */
-function showListeningStatusIndicator() {
-    let indicator = document.getElementById('voice-status-top');
-    if (!indicator) {
-        indicator = document.createElement('div');
-        indicator.id = 'voice-status-top';
-        indicator.className = 'voice-status-indicator listening';
-        document.body.appendChild(indicator);
-    }
-    
-    indicator.innerHTML = `
-        <div class="flex items-center space-x-2">
-            <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                <line x1="12" x2="12" y1="19" y2="23"/>
-                <line x1="8" x2="16" y1="23" y2="23"/>
-            </svg>
-            <span>Escuchando...</span>
-        </div>
-    `;
-    indicator.classList.add('show');
-}
-
-/**
- * Oculta todos los indicadores de voz
- */
-function hideAllVoiceIndicators() {
-    const indicators = ['speech-indicator', 'voice-status-top', 'listening-indicator'];
-    indicators.forEach(id => {
-        const indicator = document.getElementById(id);
-        if (indicator) {
-            if (id === 'listening-indicator') {
-                indicator.remove();
-            } else {
-                indicator.classList.remove('show');
-                setTimeout(() => {
-                    if (indicator.parentNode) {
-                        indicator.remove();/**
- * chatbot.js - Versión con funcionalidades de voz
+ * chatbot.js - Versión con funcionalidades de voz CORREGIDA
  * Se comunica con la API de Gemini a través de un proxy seguro en /api/gemini.
  * Incluye síntesis de voz (TTS) y reconocimiento de voz (STT)
  */
@@ -115,15 +14,11 @@ const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
-// --- Voice Elements ---
-const voiceButton = document.getElementById('voice-button');
-const speakButton = document.getElementById('speak-button');
-
 // --- Voice Configuration ---
 let speechSynthesis = window.speechSynthesis;
 let speechRecognition = null;
 let isListening = false;
-let isAutoSpeakEnabled = true; // Auto-hablar respuestas del bot
+let isAutoSpeakEnabled = true;
 let currentUtterance = null;
 let voices = [];
 
@@ -149,7 +44,6 @@ if (speechRecognition) {
 function initializeVoices() {
     voices = speechSynthesis.getVoices();
     
-    // Si no hay voces aún, esperar al evento
     if (voices.length === 0) {
         speechSynthesis.addEventListener('voiceschanged', () => {
             voices = speechSynthesis.getVoices();
@@ -166,7 +60,6 @@ function getSpanishVoice() {
         voice.lang.startsWith('es') || voice.lang.includes('ES')
     );
     
-    // Preferir voces específicas de España o México
     const preferredVoice = spanishVoices.find(voice => 
         voice.lang === 'es-ES' || voice.lang === 'es-MX'
     );
@@ -180,57 +73,55 @@ function getSpanishVoice() {
 function speakText(text, isAutoSpeak = false) {
     if (!text.trim()) return;
     
-    // Cancelar cualquier habla anterior
     speechSynthesis.cancel();
     
-    // Limpiar texto de markdown y HTML
     const cleanText = text
-        .replace(/\*\*(.*?)\*\*/g, '$1') // Quitar negritas
-        .replace(/\*(.*?)\*/g, '$1')     // Quitar cursivas
-        .replace(/<[^>]*>/g, '')         // Quitar HTML
-        .replace(/https?:\/\/[^\s]+/g, 'enlace') // Reemplazar URLs
-        .replace(/🤖|👮🏻‍♂️|🧙🏻‍♂️|⬇️|👇🏽|📋|☝🏼|✅/g, '') // Quitar emojis comunes
+        .replace(/\*\*(.*?)\*\*/g, '$1')
+        .replace(/\*(.*?)\*/g, '$1')
+        .replace(/<[^>]*>/g, '')
+        .replace(/https?:\/\/[^\s]+/g, 'enlace web')
+        .replace(/🤖|👮🏻‍♂️|🧙🏻‍♂️|⬇️|👇🏽|📋|☝🏼|✅|❌|⚠️|🚫|🔊|🎤|👋|😊/g, '')
+        .replace(/\n+/g, '. ')
+        .replace(/\s+/g, ' ')
         .trim();
     
     if (!cleanText) return;
     
     currentUtterance = new SpeechSynthesisUtterance(cleanText);
     
-    // Configurar la voz
     const voice = getSpanishVoice();
     if (voice) {
         currentUtterance.voice = voice;
     }
     
-    // Configuraciones de voz
-    currentUtterance.rate = 0.9;    // Velocidad
-    currentUtterance.pitch = 1.0;   // Tono
-    currentUtterance.volume = 0.8;  // Volumen
+    currentUtterance.rate = 0.85;
+    currentUtterance.pitch = 1.0;
+    currentUtterance.volume = 0.9;
     
-    // Eventos de la síntesis de voz
     currentUtterance.onstart = () => {
         updateSpeakButton(true);
-        console.log('Iniciando síntesis de voz');
+        if (isAutoSpeak) {
+            showSpeechIndicator();
+        }
     };
     
     currentUtterance.onend = () => {
         updateSpeakButton(false);
         currentUtterance = null;
-        console.log('Síntesis de voz completada');
+        hideSpeechIndicator();
     };
     
     currentUtterance.onerror = (event) => {
         console.error('Error en síntesis de voz:', event.error);
         updateSpeakButton(false);
         currentUtterance = null;
+        hideSpeechIndicator();
     };
     
-    // Hablar
-    speechSynthesis.speak(currentUtterance);
-    
-    // Si es auto-speak, mostrar indicador visual
-    if (isAutoSpeak) {
-        showSpeechIndicator(cleanText);
+    try {
+        speechSynthesis.speak(currentUtterance);
+    } catch (error) {
+        console.error('Error al iniciar síntesis de voz:', error);
     }
 }
 
@@ -251,7 +142,6 @@ function toggleSpeech() {
     if (speechSynthesis.speaking) {
         stopSpeaking();
     } else {
-        // Obtener el último mensaje del bot
         const botMessages = document.querySelectorAll('.bot-message');
         if (botMessages.length > 0) {
             const lastBotMessage = botMessages[botMessages.length - 1];
@@ -266,7 +156,7 @@ function toggleSpeech() {
  */
 function startListening() {
     if (!speechRecognition) {
-        addMessage('bot', 'Lo siento, tu navegador no soporta reconocimiento de voz. Intenta con Chrome o Edge.');
+        addMessage('bot', '❌ Lo siento, tu navegador no soporta reconocimiento de voz. Intenta con Chrome o Edge.');
         return;
     }
     
@@ -275,18 +165,14 @@ function startListening() {
         return;
     }
     
-    // Detener cualquier síntesis de voz activa
     stopSpeaking();
     
     isListening = true;
     updateVoiceButton(true);
-    
-    // Mostrar indicador de escucha
     showListeningIndicator();
     
     try {
         speechRecognition.start();
-        console.log('Iniciando reconocimiento de voz');
     } catch (error) {
         console.error('Error al iniciar reconocimiento de voz:', error);
         stopListening();
@@ -304,7 +190,11 @@ function stopListening() {
     hideListeningIndicator();
     
     if (speechRecognition) {
-        speechRecognition.stop();
+        try {
+            speechRecognition.stop();
+        } catch (error) {
+            console.error('Error al detener reconocimiento:', error);
+        }
     }
 }
 
@@ -312,6 +202,7 @@ function stopListening() {
  * Actualiza el botón de voz
  */
 function updateVoiceButton(listening) {
+    const voiceButton = document.getElementById('voice-button');
     if (!voiceButton) return;
     
     const icon = voiceButton.querySelector('svg');
@@ -319,7 +210,6 @@ function updateVoiceButton(listening) {
         voiceButton.classList.add('bg-red-500', 'animate-pulse');
         voiceButton.classList.remove('bg-blue-500');
         voiceButton.title = 'Detener grabación';
-        // Cambiar icono a stop
         if (icon) {
             icon.innerHTML = '<rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/>';
         }
@@ -327,7 +217,6 @@ function updateVoiceButton(listening) {
         voiceButton.classList.remove('bg-red-500', 'animate-pulse');
         voiceButton.classList.add('bg-blue-500');
         voiceButton.title = 'Usar micrófono';
-        // Cambiar icono a micrófono
         if (icon) {
             icon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/>';
         }
@@ -338,6 +227,7 @@ function updateVoiceButton(listening) {
  * Actualiza el botón de hablar
  */
 function updateSpeakButton(speaking) {
+    const speakButton = document.getElementById('speak-button');
     if (!speakButton) return;
     
     const icon = speakButton.querySelector('svg');
@@ -345,7 +235,6 @@ function updateSpeakButton(speaking) {
         speakButton.classList.add('bg-red-500', 'animate-pulse');
         speakButton.classList.remove('bg-green-500');
         speakButton.title = 'Detener lectura';
-        // Cambiar icono a stop
         if (icon) {
             icon.innerHTML = '<rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/>';
         }
@@ -353,7 +242,6 @@ function updateSpeakButton(speaking) {
         speakButton.classList.remove('bg-red-500', 'animate-pulse');
         speakButton.classList.add('bg-green-500');
         speakButton.title = 'Leer último mensaje';
-        // Cambiar icono a speaker
         if (icon) {
             icon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
         }
@@ -403,7 +291,7 @@ function hideListeningIndicator() {
 /**
  * Muestra indicador de síntesis de voz
  */
-function showSpeechIndicator(text) {
+function showSpeechIndicator() {
     let indicator = document.getElementById('speech-indicator');
     if (!indicator) {
         indicator = document.createElement('div');
@@ -413,7 +301,6 @@ function showSpeechIndicator(text) {
             <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
             </svg>
             <span class="text-sm font-medium">Reproduciendo...</span>
         `;
@@ -431,7 +318,7 @@ function hideSpeechIndicator() {
     }
 }
 
-// --- Predefined Responses (Todas las reglas completas) ---
+// --- Predefined Responses ---
 const predefinedResponses = {
     'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '*ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
     'rule_5': { keywords: ["guardia de seguridad","guardia","guardia seguridad"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de *GUARDIA DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
@@ -445,8 +332,6 @@ const predefinedResponses = {
     'rule_261c': { keywords: ["buenas noches","buena noche"], response: '🤖👮🏻‍♂️ ¡Buenas noches! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
     'rule_262': { keywords: ["gracias","muchas gracias","te agradezco","agradezco"], response: '🤖😊 ¡Es un placer ayudarle! Para eso estamos aquí en OS10 Coquimbo. Si tiene alguna otra consulta, no dude en escribirme. ¡Que tenga un excelente día!' },
     'rule_263': { keywords: ["chao","adiós","nos vemos","hasta luego","me voy"], response: '🤖👋 ¡Hasta luego! Gracias por contactar a OS10 Coquimbo. Recuerde que estamos de lunes a jueves de 09:00 a 13:00 horas en Cienfuegos 180, La Serena. ¡Que tenga un buen día!' },
-    'rule_286': { keywords: ["guardia sin curso","vigilante sin capacitación","sin formación","no tengo curso","no tiene curso","falta curso","sin curso","no hice curso","no ha hecho curso","capacitación pendiente","curso vencido","certificado vencido"], response: '🤖⚠️ Un guardia sin curso de capacitación NO puede ejercer funciones. Según Decreto 93 art. 13° y DL 3607, es OBLIGATORIO contar con curso básico de formación vigente (3 años). Sin curso = INFRACCIÓN GRAVE. Multa: 25 a 125 ingresos mínimos mensuales (primera vez), hasta 250 en reincidencia.' },
-    'rule_287': { keywords: ["guardia sin credencial","vigilante sin autorización","sin credencial","no tengo credencial","no tiene credencial","falta credencial","credencial vencida","sin licencia","no tengo licencia","no tiene licencia","autorización vencida","permiso vencido"], response: '🤖❌ Un guardia sin credencial vigente NO puede trabajar. Según Decreto 93 art. 93° la credencial es requisito ESENCIAL para ejercer. Sin credencial = EJERCICIO ILEGAL. Multa: 25 a 125 ingresos mínimos mensuales, duplicándose en reincidencia + posible clausura.' },
     'rule_350': { keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*","*empresa de capacitacion*","punto 7"], response: '🤖🧙🏼‍♂️✅ 🧙🏻‍♂️ Estas son algunas empresas de aqui de la region:\n*EMPRESAS DE CAPACITACIÓN 2025* https://d6.short.gy/Cap'}
 };
 
@@ -456,13 +341,10 @@ const API_URL = '/api/gemini';
 // --- State Management ---
 let chatHistory = [];
 
-// --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
+// --- Response Map ---
 let responseMap = new Map();
 let partialMatchRules = [];
 
-/**
- * Processes the predefinedResponses object into faster lookup structures.
- */
 function buildResponseMap() {
     const newResponseMap = new Map();
     const newPartialMatchRules = [];
@@ -484,18 +366,13 @@ function buildResponseMap() {
     }
     responseMap = newResponseMap;
     partialMatchRules = newPartialMatchRules;
-    console.log("Response map built successfully.", {exactMatches: responseMap.size, partialMatches: partialMatchRules.length});
 }
 
 // --- UI Functions ---
 
-/**
- * Toggles the visibility of the chat popup and the open/close icons.
- */
 function toggleChat() {
     const isHidden = chatPopup.classList.contains('hidden');
     if (isHidden) {
-        // Opening the chat
         chatPopup.classList.remove('hidden');
         chatBackdrop.classList.remove('hidden');
         chatToggleButton.classList.add('hidden');
@@ -503,7 +380,6 @@ function toggleChat() {
             document.body.classList.add('chat-open-mobile');
         }
     } else {
-        // Closing the chat
         chatPopup.classList.add('hidden');
         chatBackdrop.classList.add('hidden');
         chatToggleButton.classList.remove('hidden');
@@ -511,15 +387,11 @@ function toggleChat() {
             document.body.classList.remove('chat-open-mobile');
             if (window.mobileChatManager) window.mobileChatManager.exitKeyboardMode();
         }
-        // Detener funciones de voz al cerrar
         stopListening();
         stopSpeaking();
     }
 }
 
-/**
- * Converts basic Markdown syntax (and URLs) to HTML for rendering in the chat.
- */
 function markdownToHtml(text) {
     if (!text) return '';
     let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-700 dark:text-blue-500 hover:underline">$1</a>');
@@ -528,9 +400,6 @@ function markdownToHtml(text) {
     return formattedText.replace(/\n/g, '<br>');
 }
 
-/**
- * Creates and appends a message to the chat UI.
- */
 function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
     const isUser = sender === 'user';
@@ -594,9 +463,6 @@ function addMessage(sender, text, buttons = []) {
     }
 }
 
-/**
- * Shows or hides the typing indicator in the chat.
- */
 function showTypingIndicator(show) {
     let indicator = document.getElementById('typing-indicator');
     if (show && !indicator) {
@@ -618,9 +484,6 @@ function showTypingIndicator(show) {
     }
 }
 
-/**
- * Finds a predefined response using the optimized maps.
- */
 function getPredefinedResponse(text) {
     const lowerCaseText = text.toLowerCase().trim();
     
@@ -638,10 +501,6 @@ function getPredefinedResponse(text) {
 }
 
 // --- API Communication ---
-
-/**
- * Sends the user's message, checking for predefined responses first.
- */
 async function handleSendMessage() {
     const userText = userInput.value.trim();
     if (!userText) return;
@@ -702,10 +561,9 @@ async function handleSendMessage() {
 }
 
 // --- Speech Recognition Event Handlers ---
-
 if (speechRecognition) {
     speechRecognition.onstart = () => {
-        console.log('Reconocimiento de voz iniciado');
+        console.log('🎤 Reconocimiento de voz iniciado');
     };
 
     speechRecognition.onresult = (event) => {
@@ -729,48 +587,56 @@ if (speechRecognition) {
 
         // Si hay resultado final, procesarlo
         if (finalTranscript.trim()) {
+            console.log('🎤 Texto reconocido:', finalTranscript.trim());
             stopListening();
             userInput.value = finalTranscript.trim();
-            handleSendMessage();
+            setTimeout(() => {
+                handleSendMessage();
+            }, 300);
         }
     };
 
     speechRecognition.onerror = (event) => {
-        console.error('Error en reconocimiento de voz:', event.error);
+        console.error('❌ Error en reconocimiento de voz:', event.error);
         stopListening();
         
-        let errorMessage = 'Error en el reconocimiento de voz: ';
+        let errorMessage = '';
         switch (event.error) {
             case 'no-speech':
-                errorMessage += 'No se detectó voz. Inténtalo de nuevo.';
+                errorMessage = '🎤 No se detectó voz. Intenta hablar más cerca del micrófono.';
                 break;
             case 'audio-capture':
-                errorMessage += 'No se pudo acceder al micrófono.';
+                errorMessage = '🎤 No se pudo acceder al micrófono. Verifica los permisos.';
                 break;
             case 'not-allowed':
-                errorMessage += 'Permisos de micrófono denegados.';
+                errorMessage = '🎤 Permisos de micrófono denegados. Habilita el micrófono en tu navegador.';
                 break;
+            case 'network':
+                errorMessage = '🎤 Error de conexión. Verifica tu conexión a internet.';
+                break;
+            case 'aborted':
+                return;
             default:
-                errorMessage += event.error;
+                errorMessage = `🎤 Error en reconocimiento de voz: ${event.error}`;
         }
         
-        addMessage('bot', errorMessage);
+        if (errorMessage) {
+            addMessage('bot', errorMessage);
+        }
     };
 
     speechRecognition.onend = () => {
-        console.log('Reconocimiento de voz terminado');
-        stopListening();
+        console.log('⏹️ Reconocimiento de voz terminado');
+        if (isListening) {
+            stopListening();
+        }
     };
 }
 
 // --- Initialization ---
-
-/**
- * Initializes the chatbot, sets up event handlers, and displays a welcome message.
- */
 function init() {
     if (!chatToggleButton) {
-        console.error("Chatbot UI elements not found. Initialization failed.");
+        console.error("❌ Chatbot UI elements not found. Initialization failed.");
         return;
     }
     
@@ -787,6 +653,9 @@ function init() {
     });
 
     // Voice button event listeners
+    const voiceButton = document.getElementById('voice-button');
+    const speakButton = document.getElementById('speak-button');
+    
     if (voiceButton) {
         voiceButton.addEventListener('click', startListening);
     }
@@ -794,8 +663,41 @@ function init() {
     if (speakButton) {
         speakButton.addEventListener('click', toggleSpeech);
     }
+
+    // --- Keyboard Shortcuts ---
+    document.addEventListener('keydown', (e) => {
+        // Alt + S: Toggle auto-speak
+        if (e.altKey && e.key === 's') {
+            e.preventDefault();
+            isAutoSpeakEnabled = !isAutoSpeakEnabled;
+            updateAutoSpeakStatus();
+            addMessage('bot', `🔊 Auto-lectura ${isAutoSpeakEnabled ? 'activada' : 'desactivada'}.`);
+        }
+        
+        // Alt + V: Toggle voice input
+        if (e.altKey && e.key === 'v') {
+            e.preventDefault();
+            if (isListening) {
+                stopListening();
+            } else {
+                startListening();
+            }
+        }
+        
+        // Alt + R: Read last message
+        if (e.altKey && e.key === 'r') {
+            e.preventDefault();
+            toggleSpeech();
+        }
+        
+        // Escape: Stop all voice functions
+        if (e.key === 'Escape') {
+            stopListening();
+            stopSpeaking();
+        }
+    });
     
-    // --- Mobile-Specific Keyboard Logic ---
+    // --- Mobile-Specific Logic ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
         let isKeyboardMode = false;
@@ -840,7 +742,6 @@ function init() {
             chatBackdrop.classList.add('hidden');
             chatToggleButton.classList.remove('hidden');
             exitKeyboardMode();
-            // Detener funciones de voz al cerrar en móvil
             stopListening();
             stopSpeaking();
         };
@@ -861,25 +762,30 @@ function init() {
         chatBackdrop.addEventListener('click', toggleChat);
     }
 
-    // --- Auto-speak toggle (Alt + S) ---
-    document.addEventListener('keydown', (e) => {
-        if (e.altKey && e.key === 's') {
-            e.preventDefault();
-            isAutoSpeakEnabled = !isAutoSpeakEnabled;
-            addMessage('bot', `Auto-lectura ${isAutoSpeakEnabled ? 'activada' : 'desactivada'}.`);
-        }
-    });
-
     // --- Initial State ---
     chatHistory = [];
     
-    const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
-    const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
+    const welcomeMessageText = "¡Hola! Soy tu asistente virtual con capacidades de voz de la oficina OS10 Coquimbo. Puedes escribir o usar el micrófono para hacer consultas. ¿En qué puedo ayudarte hoy?";
+    const welcomeButtons = ["Menú", "Menú O.S.10", "Valores", "Horarios de atención"];
     addMessage('bot', welcomeMessageText, welcomeButtons);
     
     chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
 
-    console.log("Chatbot with voice capabilities initialized successfully.");
+    // --- Initialize auto-speak indicator ---
+    updateAutoSpeakStatus();
+    
+    console.log("✅ Chatbot with voice capabilities initialized successfully.");
+    console.log("🎤 Shortcuts: Alt+V (micrófono), Alt+R (leer), Alt+S (auto-lectura), Esc (parar)");
+}
+
+// --- Actualizar estado de auto-speak ---
+function updateAutoSpeakStatus() {
+    const indicator = document.getElementById('auto-speak-status');
+    if (indicator) {
+        indicator.innerHTML = isAutoSpeakEnabled ? 
+            '🔊 Auto-lectura activada (Alt+S para desactivar)' : 
+            '🔇 Auto-lectura desactivada (Alt+S para activar)';
+    }
 }
 
 // --- Auto-initialize when DOM is ready ---
