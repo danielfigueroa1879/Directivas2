@@ -68,7 +68,7 @@
              #chat-widget-container {
                 right: calc((100vw - 800px) / 2);
                 bottom: 20rem; 
-             }
+            }
         }
         #chat-popup {
             font-family: 'Poppins', sans-serif;
@@ -104,12 +104,12 @@
             will-change: transform;
         }
         #chat-toggle-button:hover {
-             transform: scale(1.05) translateZ(0);
+            transform: scale(1.05) translateZ(0);
         }
         .dark #chat-toggle-button {
-             border-color: var(--green-dark);
-             background-color: #1f2937;
-             box-shadow: 0 4px 15px -2px rgba(74,222,128,0.4);
+            border-color: var(--green-dark);
+            background-color: #1f2937;
+            box-shadow: 0 4px 15px -2px rgba(74,222,128,0.4);
         }
         @keyframes float-animation {
             0%, 100% { transform: translateY(0) translateZ(0); }
@@ -242,7 +242,7 @@
                         <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 261 (IV.4)</a>, y
                         <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 32/2024</a>.
                    </li>
-               </ul>
+                </ul>
             </section>
             <section class="section-card border-green-500 section-green">
                 <h3 class="font-bold">2️⃣ Documentación</h3>
@@ -309,7 +309,7 @@
         </button>
     </div>
     <!-- ===== FIN DEL CHATBOT FLOTANTE ===== -->
-   
+    
    <script src="assets/js/main.js" defer></script>
    <script type="module" src="assets/js/chatbot.js" defer></script>
    <script type="module" defer>
@@ -317,16 +317,18 @@
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
+        // Configuración de Firebase para el contador de visitas
         const firebaseConfig = {
-          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
-          authDomain: "cuenta-946e2.firebaseapp.com",
-          projectId: "cuenta-946e2",
-          storageBucket: "cuenta-946e2.firebasestorage.app",
-          messagingSenderId: "816979648502",
-          appId: "1:816979648502:web:809beffeea8ba7968031d7",
-          measurementId: "G-RX9KZSC0F4"
+         apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+         authDomain: "cuenta-946e2.firebaseapp.com",
+         projectId: "cuenta-946e2",
+         storageBucket: "cuenta-946e2.firebasestorage.app",
+         messagingSenderId: "816979648502",
+         appId: "1:816979648502:web:809beffeea8ba7968031d7",
+         measurementId: "G-RX9KZSC0F4"
         };
         
+        // Función asincrónica para ejecutar el contador de visitas
         async function runCounter() {
             const counterSpan = document.getElementById('visit-counter');
             try {
@@ -352,6 +354,7 @@
                 if (counterSpan) counterSpan.textContent = "Error";
             }
         }
+        // Ejecutar el contador al cargar la página
         runCounter();
    </script>
 </body>
