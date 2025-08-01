@@ -27,7 +27,7 @@ const styles = `
     }
     #chat-widget-container {
         position: fixed;
-        bottom: 0,5rem; /* Más cerca del borde inferior */
+        bottom: 0.5rem; /* Más cerca del borde inferior */
         right: 1rem; 
         z-index: 1000;
     }
