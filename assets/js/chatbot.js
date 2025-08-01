@@ -7982,7 +7982,7 @@ function buildResponseMap() {
 /**
  * Toggles the visibility of the chat popup and the open/close icons.
  */
-unction toggleChat() {
+function toggleChat() {
     const isHidden = chatPopup.classList.contains('hidden');
     if (isHidden) {
         // Opening the chat
@@ -8106,10 +8106,32 @@ function showTypingIndicator(show) {
     }
 }
 
+/**
+ * Finds a predefined response using the optimized maps.
+ * @param {string} text - The user's input text.
+ * @returns {string|null} The predefined response or null if no match.
+ */
+function getPredefinedResponse(text) {
+    const lowerCaseText = text.toLowerCase().trim();
+    
+    if (responseMap.has(lowerCaseText)) {
+        return responseMap.get(lowerCaseText);
+    }
+
+    for (const rule of partialMatchRules) {
+        if (lowerCaseText.includes(rule.keyword)) {
+            return rule.response;
+        }
+    }
+
+    return null;
+}
+
+
 // --- API Communication ---
 
 /**
- * Sends the user's message to the Gemini API.
+ * Sends the user's message, checking for predefined responses first.
  */
 async function handleSendMessage() {
     const userText = userInput.value.trim();
@@ -8117,6 +8139,16 @@ async function handleSendMessage() {
 
     addMessage('user', userText);
     userInput.value = '';
+    
+    const predefinedResponse = getPredefinedResponse(userText);
+    if (predefinedResponse) {
+        setTimeout(() => {
+            addMessage('bot', predefinedResponse);
+            chatHistory.push({ role: "user", parts: [{ text: userText }] });
+            chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
+        }, 500);
+        return;
+    }
     
     showTypingIndicator(true);
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
@@ -8170,6 +8202,8 @@ function init() {
         return;
     }
     
+    buildResponseMap();
+
     // --- Event Listeners ---
     sendButton.addEventListener('click', handleSendMessage);
     userInput.addEventListener('keypress', (e) => {
@@ -8255,9 +8289,3 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-
-
-
-
-

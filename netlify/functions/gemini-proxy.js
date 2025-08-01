@@ -1,63 +1,65 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+// netlify/functions/gemini-proxy.js
 
-exports.handler = async (event) => {
-  // Solo permitir peticiones POST
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+const fetch = require('node-fetch');
+
+exports.handler = async function(event, context) {
+  // Detector para confirmar que la función se está ejecutando.
+  console.log("--- DETECTOR: La función gemini-proxy se ha iniciado. ---");
+
+  // 1. Validar que la petición sea un POST.
+  if (event.httpMethod !== 'POST') {
+    console.error("ERROR: Se recibió un método no permitido:", event.httpMethod);
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Método no permitido. Solo se aceptan peticiones POST.' }),
+    };
   }
 
-  try {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    
-    // --- CÓDIGO MODIFICADO: Se extrae el historial, el contexto y las instrucciones del sistema ---
-    const { contents, context, systemInstruction } = JSON.parse(event.body);
-
-    if (!contents || contents.length === 0) {
-      return { statusCode: 400, body: "Bad Request: 'contents' (chat history) is required" };
-    }
-    
-    // Extraemos la última pregunta del usuario y el resto del historial
-    const userPrompt = contents[contents.length - 1].parts[0].text;
-    const history = contents.slice(0, -1);
-    
-    // --- CÓDIGO NUEVO: Combinamos las instrucciones originales con las nuevas para usar el contexto ---
-    const fullSystemInstruction = `
-      ${systemInstruction.parts[0].text}
-
-      **Instrucciones adicionales estrictas:**
-      1.  Basa tus respuestas ÚNICAMENTE en la siguiente información de contexto proporcionada.
-      2.  NO inventes información. Si la respuesta a la pregunta del usuario no se encuentra en el contexto, responde amablemente: "No tengo información sobre ese tema en específico. ¿Hay algo más en lo que te pueda ayudar relacionado con nuestros servicios?".
-      
-      --- CONTEXTO DE LA PÁGINA WEB ---
-      ${context || "No se proporcionó contexto."}
-      --- FIN DEL CONTEXTO ---
-    `;
-
-    // Configuramos el modelo con las nuevas instrucciones del sistema
-    const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash",
-        systemInstruction: {
-            parts: [{ text: fullSystemInstruction }]
-        }
-    });
-
-    // Iniciamos un chat con el historial previo
-    const chat = model.startChat({ history: history });
-    // Enviamos solo la última pregunta del usuario para obtener la nueva respuesta
-    const result = await chat.sendMessage(userPrompt);
-    const response = await result.response;
-    const text = response.text();
-
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text }),
-    };
-  } catch (error) {
-    console.error("Error calling Gemini API:", error);
+  // 2. Obtener la API Key desde las variables de entorno seguras de Netlify.
+  const API_KEY = process.env.GEMINI_API_KEY;
+  if (!API_KEY) {
+    console.error("ERROR CRÍTICO: La variable de entorno GEMINI_API_KEY no está configurada en Netlify.");
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Internal Server Error", details: error.message }),
+      body: JSON.stringify({ error: 'La API key no está configurada en el servidor.' }),
+    };
+  }
+
+  // 3. Construir la URL final de la API de Google.
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+
+  try {
+    const requestBody = JSON.parse(event.body);
+
+    // 4. Realizar la petición a la API de Gemini.
+    const geminiResponse = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    });
+
+    const responseData = await geminiResponse.json();
+    
+    // 5. Manejar la respuesta de Gemini.
+    if (!geminiResponse.ok) {
+      console.error('Error recibido de la API de Gemini:', responseData);
+      return {
+        statusCode: geminiResponse.status,
+        body: JSON.stringify(responseData),
+      };
+    }
+
+    // 6. Si todo sale bien, devolver la respuesta de Gemini al frontend.
+    return {
+      statusCode: 200,
+      body: JSON.stringify(responseData),
+    };
+
+  } catch (error) {
+    console.error('ERROR INESPERADO EN EL BLOQUE TRY/CATCH:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Ocurrió un error interno en el servidor.', details: error.message }),
     };
   }
 };
