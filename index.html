@@ -110,6 +110,10 @@
 
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
+            /* Mueve el widget del chat más a la izquierda en pantallas grandes */
+            #chat-widget-container {
+                right: 20rem; 
+            }
             #chat-toggle-button {
                 width: 90px;
                 height: 90px;
@@ -370,7 +374,7 @@
                     .replace(emojiRegex, '')
                     .replace(/<br>/g, '. ')
                     .replace(/<strong>/g, '')
-                    .replace(/<\/strong>/g, '')
+                    .replace(/<\/strong/g, '')
                     .replace(/\n/g, '. ')
                     .replace(/\*/g, '');
                 
@@ -546,7 +550,6 @@
                     }
                 };
                 
-                // --- MODIFICACIÓN AQUÍ ---
                 let finalPrompt;
                 const brevityInstruction = `**Regla Importante:** Sé conciso y directo. Da respuestas cortas por defecto. Solo proporciona respuestas largas y detalladas si el usuario pide explícitamente "explica", "detalla", "profundiza" o si la pregunta es inherentemente compleja y requiere una explicación exhaustiva.`;
 
@@ -556,7 +559,6 @@
                     const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
                     finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. ${brevityInstruction} Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nBase de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
                 }
-                // --- FIN DE LA MODIFICACIÓN ---
                 
                 callApiWithBackoff(finalPrompt);
             }
