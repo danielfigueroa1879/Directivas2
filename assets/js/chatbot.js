@@ -13,49 +13,58 @@ const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
-    // --- Estilos del Chatbot ---
-    const styles = `
-        /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
-        #chat-toggle-button {
-            width: 70px;
-            height: 70px;
-        }
-        #chat-toggle-button svg {
-            width: 36px;
-            height: 36px;
-        }
+// --- Estilos del Chatbot ---
+const styles = `
+    /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
+    #chat-toggle-button {
+        width: 70px;
+        height: 70px;
+    }
+    #chat-toggle-button svg {
+        width: 36px;
+        height: 36px;
+    }
 
-        /* --- ESTILOS DE LA VENTANA DEL CHAT --- */
-        #chat-widget-container {
-            position: fixed;
-            /* --- CAMBIO: Icono movido más abajo --- */
-            bottom: 15px;
-            right: 15px;
-            z-index: 1000;
-        }
+    /* --- ESTILOS DE LA VENTANA DEL CHAT --- */
+    #chat-widget-container {
+        position: fixed;
+        /* --- CAMBIO: Icono movido más abajo --- */
+        bottom: 15px;
+        right: 15px;
+        z-index: 1000;
+    }
+    #chat-popup {
+        width: 350px;
+        max-width: 90vw;
+        /* --- CORRECCIÓN DEFINITIVA: Altura adaptable --- */
+        /* Esta regla garantiza que la ventana nunca sea más alta que la pantalla,
+           dejando siempre un margen visible arriba y abajo para que no se corte. */
+        max-height: calc(100vh - 35px); /* 15px de margen inferior + 20px de margen superior */
+        
+        /* AGREGAR ESTAS LÍNEAS PARA FIJAR LA POSICIÓN */
+        position: fixed;
+        bottom: 95px; /* Posiciona la ventana justo encima del botón flotante */
+        right: 15px;
+        
+        border-radius: 1rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    #chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+    
+    /* AGREGAR ESTILOS PARA PANTALLAS PEQUEÑAS */
+    @media (max-height: 600px) {
         #chat-popup {
-            width: 350px;
-            max-width: 90vw;
-            /* --- CORRECCIÓN DEFINITIVA: Altura adaptable --- */
-            /* Esta regla garantiza que la ventana nunca sea más alta que la pantalla,
-               dejando siempre un margen visible arriba y abajo para que no se corte. */
-            max-height: calc(100vh - 35px); /* 15px de margen inferior + 20px de margen superior */
-            border-radius: 1rem;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            bottom: 15px; /* Reduce el espacio en pantallas muy pequeñas */
+            max-height: calc(100vh - 30px);
         }
-        #chat-messages {
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-    `;
-    const styleSheet = document.createElement("style");
-    styleSheet.type = "text/css";
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-
+    }
+`;
 
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
