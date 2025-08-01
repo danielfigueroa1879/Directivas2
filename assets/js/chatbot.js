@@ -17,12 +17,12 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
         /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
         /* Puedes cambiar los valores aquí para agrandar el ícono */
         #chat-toggle-button {
-            width: 70px;  /* <-- Aumenta este valor para el ancho */
-            height: 70px; /* <-- Aumenta este valor para el alto */
+            width: 80px;  /* <-- Aumenta este valor para el ancho */
+            height: 80px; /* <-- Aumenta este valor para el alto */
         }
         #chat-toggle-button svg {
-            width: 36px;  /* <-- Aumenta este valor para el ícono de adentro */
-            height: 36px; /* <-- Aumenta este valor para el ícono de adentro */
+            width: 38px;  /* <-- Aumenta este valor para el ícono de adentro */
+            height: 38px; /* <-- Aumenta este valor para el ícono de adentro */
         }
 
         /* --- ESTILOS DE LA VENTANA DEL CHAT --- */
@@ -36,7 +36,7 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
         #chat-popup {
             width: 350px;
             max-width: 90vw;
-            max-height: 70vh; /* <-- Altura máxima para que no se corte */
+            max-height: 60vh; /* <-- Altura máxima para que no se corte */
             border-radius: 1rem;
             overflow: hidden;
             display: flex;
