@@ -67,7 +67,7 @@
         @media (min-width: 1280px) {
              #chat-widget-container {
                 right: calc((100vw - 800px) / 2);
-                bottom: 20rem; 
+                bottom: 15rem; 
              }
         }
         #chat-popup {
@@ -102,6 +102,12 @@
             transform: translateZ(0);
             transition: all 0.3s ease-in-out;
             will-change: transform;
+        }
+        @media (min-width: 1280px) {
+            #chat-toggle-button {
+                width: 80px;
+                height: 80px;
+            }
         }
         #chat-toggle-button:hover {
              transform: scale(1.05) translateZ(0);
