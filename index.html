@@ -66,7 +66,7 @@
         /* Estilos Chatbot */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 1.5rem; 
+            bottom: 6rem; /* Elevado para no tapar el QR */
             right: 1.5rem;
             z-index: 1000; 
             display: flex; 
@@ -121,16 +121,8 @@
             .card-container {
                 width: 98%;
             }
-            #chat-widget-container {
-                width: 97%;
-                left: 50%;
-                transform: translateX(-50%);
-                right: auto;
-                bottom: 1rem;
-                align-items: center; 
-            }
             #chat-popup {
-                width: 100%; 
+                width: calc(100vw - 3rem); /* Ancho completo menos los márgenes */
             }
         }
     </style>
@@ -675,4 +667,3 @@
     </script>
 </body>
 </html>
-
