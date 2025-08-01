@@ -38,8 +38,8 @@
         }
         .card-container { 
             max-width: 600px; 
-            width: 90%; /* Asegura que se vea bien en móviles */
-            margin: 2rem auto; /* Centrado horizontal y margen vertical */
+            width: 90%; 
+            margin: 2rem auto; 
         }
         .logo-os10-container { 
             position: absolute;
@@ -108,11 +108,29 @@
         }
 
 
-        /* Ajuste para pantallas más grandes */
+        /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
             #chat-toggle-button {
                 width: 90px;
                 height: 90px;
+            }
+        }
+        
+        /* Ajuste para pantallas pequeñas (Celular) */
+        @media (max-width: 767px) {
+            .card-container {
+                width: 98%;
+            }
+            #chat-widget-container {
+                width: 97%;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+                bottom: 1rem;
+                align-items: center; 
+            }
+            #chat-popup {
+                width: 100%; 
             }
         }
     </style>
@@ -657,3 +675,4 @@
     </script>
 </body>
 </html>
+
