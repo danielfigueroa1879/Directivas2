@@ -186,4 +186,148 @@ function addMessage(sender, text, buttons = []) {
     if (isUser) {
         p.textContent = text;
     } else {
-        p.innerHTML = markdown    
+        p.innerHTML = markdown   
+    // ==== CÓDIGO DE VOZ PARA AGREGAR AL FINAL DE TU CHATBOT.JS ====
+// NO TOQUES NADA DE TU CÓDIGO ORIGINAL, SOLO AGREGA ESTO AL FINAL
+
+// Variables de voz
+let speechSynth = window.speechSynthesis;
+let recognition = null;
+let isRecording = false;
+
+// Configurar reconocimiento de voz
+if ('webkitSpeechRecognition' in window) {
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'es-ES';
+}
+
+// Función para hablar texto
+function speakMessage(text) {
+    if (!text) return;
+    
+    // Limpiar texto
+    const cleanText = text
+        .replace(/\*\*/g, '')
+        .replace(/\*/g, '')
+        .replace(/<[^>]*>/g, '')
+        .replace(/🤖|👮🏻‍♂️|🧙🏻‍♂️|⬇️|👇🏽|📋|☝🏼|✅/g, '')
+        .replace(/https?:\/\/[^\s]+/g, 'enlace')
+        .trim();
+    
+    if (!cleanText) return;
+    
+    speechSynth.cancel();
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.rate = 0.9;
+    utterance.volume = 0.8;
+    speechSynth.speak(utterance);
+}
+
+// Función para usar micrófono
+function startVoiceInput() {
+    if (!recognition) {
+        alert('Tu navegador no soporta reconocimiento de voz. Usa Chrome.');
+        return;
+    }
+    
+    if (isRecording) {
+        recognition.stop();
+        return;
+    }
+    
+    isRecording = true;
+    recognition.start();
+    
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        const input = document.getElementById('user-input');
+        if (input) {
+            input.value = transcript;
+            // Enviar automáticamente
+            const sendBtn = document.getElementById('send-button');
+            if (sendBtn) sendBtn.click();
+        }
+    };
+    
+    recognition.onerror = function() {
+        isRecording = false;
+    };
+    
+    recognition.onend = function() {
+        isRecording = false;
+    };
+}
+
+// Función para leer último mensaje
+function readLastMessage() {
+    const messages = document.querySelectorAll('#chat-messages .message-fade-in');
+    if (messages.length > 0) {
+        const lastMessage = messages[messages.length - 1];
+        const text = lastMessage.textContent || lastMessage.innerText;
+        speakMessage(text);
+    }
+}
+
+// Agregar botones de voz después de que el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        // Buscar el input del chat
+        const inputContainer = document.querySelector('#chat-popup footer .flex');
+        if (inputContainer) {
+            // Crear botón de micrófono
+            const voiceBtn = document.createElement('button');
+            voiceBtn.innerHTML = '🎤';
+            voiceBtn.className = 'bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white';
+            voiceBtn.onclick = startVoiceInput;
+            voiceBtn.title = 'Hablar';
+            
+            // Crear botón de altavoz
+            const speakBtn = document.createElement('button');
+            speakBtn.innerHTML = '🔊';
+            speakBtn.className = 'bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white';
+            speakBtn.onclick = readLastMessage;
+            speakBtn.title = 'Leer mensaje';
+            
+            // Insertar botones
+            const input = inputContainer.querySelector('input');
+            if (input) {
+                inputContainer.insertBefore(voiceBtn, input);
+                inputContainer.insertBefore(speakBtn, input);
+            }
+        }
+        
+        // Auto-leer respuestas del bot
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1 && node.classList && node.classList.contains('message-fade-in')) {
+                        // Si es un mensaje del bot (no del usuario)
+                        if (!node.querySelector('.bg-green-500')) {
+                            setTimeout(function() {
+                                const text = node.textContent || node.innerText;
+                                speakMessage(text);
+                            }, 1000);
+                        }
+                    }
+                });
+            });
+        });
+        
+        const chatMessages = document.getElementById('chat-messages');
+        if (chatMessages) {
+            observer.observe(chatMessages, { childList: true });
+        }
+    }, 2000);
+});
+
+// Atajo Alt+S para activar/desactivar voz
+let voiceEnabled = true;
+document.addEventListener('keydown', function(e) {
+    if (e.altKey && e.key === 's') {
+        e.preventDefault();
+        voiceEnabled = !voiceEnabled;
+        console.log('Voz ' + (voiceEnabled ? 'activada' : 'desactivada'));
+    }
+});
