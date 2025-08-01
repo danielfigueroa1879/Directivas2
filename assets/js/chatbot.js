@@ -8097,10 +8097,8 @@ function getPredefinedResponse(text) {
     return null;
 }
 
-// --- CÓDIGO NUEVO: Función para obtener el contexto de la página ---
 function getPageContext() {
     let context = "";
-    // Asegúrate de que los IDs (#nosotros, #servicios, etc.) existan en tu archivo index.html
     const sections = document.querySelectorAll('#nosotros, #servicios, #politicas, #contacto');
     
     sections.forEach(section => {
@@ -8141,7 +8139,6 @@ async function handleSendMessage() {
     chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
-        // --- CÓDIGO MODIFICADO: Se obtiene el contexto y se envía a la API ---
         const pageContext = getPageContext();
 
         const payload = {
@@ -8149,7 +8146,6 @@ async function handleSendMessage() {
             systemInstruction: {
                 parts: [{ text: systemPrompt }]
             },
-            // Se agrega el contexto al payload que se envía al backend
             context: pageContext 
         };
 
@@ -8199,7 +8195,7 @@ function init() {
     // --- Mobile-Specific Keyboard Logic ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
-        // ... (Tu lógica para móviles va aquí, la he omitido por brevedad)
+        // ... (Tu lógica para móviles)
     } else {
         // Desktop-only listeners
         chatToggleButton.addEventListener('click', toggleChat);
@@ -8220,3 +8216,4 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
