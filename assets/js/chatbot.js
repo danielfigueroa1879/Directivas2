@@ -15,6 +15,9 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
 
 // --- Predefined Responses ---
+// (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
+
+// --- Predefined Responses ---
 const predefinedResponses = {
     'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '*ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
     'rule_5': { keywords: ["guardia de seguridad","guardia","guardia seguridad"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de *GUARDIA DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
@@ -7945,13 +7948,10 @@ República.
      Al señor
      Ministro del Interior y Seguridad Pública`;
 
+// --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
 let responseMap = new Map();
 let partialMatchRules = [];
 
-/**
- * Processes the predefinedResponses object into faster lookup structures.
- * This function runs only once on initialization.
- */
 function buildResponseMap() {
     const newResponseMap = new Map();
     const newPartialMatchRules = [];
@@ -7960,14 +7960,11 @@ function buildResponseMap() {
         const item = predefinedResponses[key];
         for (const keyword of item.keywords) {
             const normalizedKeyword = keyword.toLowerCase().trim();
-
+            
             if (normalizedKeyword.startsWith('*') && normalizedKeyword.endsWith('*')) {
                 const cleanKeyword = normalizedKeyword.substring(1, normalizedKeyword.length - 1);
-                if (cleanKeyword) {
-                    newPartialMatchRules.push({
-                        keyword: cleanKeyword,
-                        response: item.response
-                    });
+                if(cleanKeyword) {
+                    newPartialMatchRules.push({ keyword: cleanKeyword, response: item.response });
                 }
             } else {
                 newResponseMap.set(normalizedKeyword, item.response);
@@ -7976,21 +7973,13 @@ function buildResponseMap() {
     }
     responseMap = newResponseMap;
     partialMatchRules = newPartialMatchRules;
-    console.log("Response map built successfully.", {
-        exactMatches: responseMap.size,
-        partialMatches: partialMatchRules.length
-    });
 }
 
 
 // --- UI Functions ---
-/**
- * Toggles the visibility of the chat popup and the open/close icons.
- */
 function toggleChat() {
     const isHidden = chatPopup.classList.contains('hidden');
     if (isHidden) {
-        // Opening the chat
         chatPopup.classList.remove('hidden');
         chatBackdrop.classList.remove('hidden');
         chatToggleButton.classList.add('hidden');
@@ -7998,23 +7987,16 @@ function toggleChat() {
             document.body.classList.add('chat-open-mobile');
         }
     } else {
-        // Closing the chat
         chatPopup.classList.add('hidden');
         chatBackdrop.classList.add('hidden');
         chatToggleButton.classList.remove('hidden');
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             document.body.classList.remove('chat-open-mobile');
-            // Explicitly exit keyboard mode when chat is closed
             if (window.mobileChatManager) window.mobileChatManager.exitKeyboardMode();
         }
     }
 }
 
-/**
- * Converts basic Markdown syntax (and URLs) to HTML for rendering in the chat.
- * @param {string} text - The raw text from the API or predefined responses.
- * @returns {string} - The text formatted with HTML tags.
- */
 function markdownToHtml(text) {
     if (!text) return '';
     let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-700 dark:text-blue-500 hover:underline">$1</a>');
@@ -8023,38 +8005,30 @@ function markdownToHtml(text) {
     return formattedText.replace(/\n/g, '<br>');
 }
 
-
-/**
- * Creates and appends a message to the chat UI.
- * @param {string} sender - The sender of the message ('user' or 'bot').
- * @param {string} text - The content of the message (raw text for user, HTML for bot).
- * @param {string[]} [buttons=[]] - An optional array of strings to create as buttons.
- */
 function addMessage(sender, text, buttons = []) {
     const messageElement = document.createElement('div');
     const isUser = sender === 'user';
-
+    
     messageElement.className = `message-fade-in flex items-start max-w-full`;
-
     messageElement.classList.toggle('ml-auto', isUser);
     messageElement.classList.toggle('flex-row-reverse', isUser);
 
     const bubble = document.createElement('div');
-    bubble.className = isUser ?
-        'bg-green-500 rounded-xl rounded-br-none p-3 ml-2 max-w-xs md:max-w-sm' :
-        'bot-bubble rounded-xl rounded-bl-none p-3 ml-2 max-w-[95%] md:max-w-sm';
+    bubble.className = isUser 
+        ? 'bg-green-500 rounded-xl rounded-br-none p-3 ml-2 max-w-xs md:max-w-sm' 
+        : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2 max-w-[95%] md:max-w-sm';
 
     const p = document.createElement('p');
     p.className = isUser ? 'text-white chatbot-message-text' : 'text-gray-700 dark:text-gray-200 chatbot-message-text';
-
+    
     if (isUser) {
         p.textContent = text;
     } else {
         p.innerHTML = markdownToHtml(text);
     }
-
+    
     bubble.appendChild(p);
-
+    
     if (!isUser && buttons.length > 0) {
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'mt-2 flex flex-col space-y-2';
@@ -8086,10 +8060,6 @@ function addMessage(sender, text, buttons = []) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-/**
- * Shows or hides the typing indicator in the chat.
- * @param {boolean} show - Whether to show or hide the indicator.
- */
 function showTypingIndicator(show) {
     let indicator = document.getElementById('typing-indicator');
     if (show && !indicator) {
@@ -8111,14 +8081,9 @@ function showTypingIndicator(show) {
     }
 }
 
-/**
- * Finds a predefined response using the optimized maps.
- * @param {string} text - The user's input text.
- * @returns {string|null} The predefined response or null if no match.
- */
 function getPredefinedResponse(text) {
     const lowerCaseText = text.toLowerCase().trim();
-
+    
     if (responseMap.has(lowerCaseText)) {
         return responseMap.get(lowerCaseText);
     }
@@ -8132,17 +8097,12 @@ function getPredefinedResponse(text) {
     return null;
 }
 
-// --- CÓDIGO NUEVO AÑADIDO EN EL LUGAR CORRECTO ---
-/**
- * Scans the page for specific sections and extracts their text content.
- * This provides context to the AI about the current page.
- * @returns {string} - The combined text content of the relevant sections.
- */
+// --- CÓDIGO NUEVO: Función para obtener el contexto de la página ---
 function getPageContext() {
     let context = "";
-    // You can add or change the selectors here to match the IDs of your content sections.
+    // Asegúrate de que los IDs (#nosotros, #servicios, etc.) existan en tu archivo index.html
     const sections = document.querySelectorAll('#nosotros, #servicios, #politicas, #contacto');
-
+    
     sections.forEach(section => {
         if (section) {
             const title = section.querySelector('h2, h3');
@@ -8154,83 +8114,60 @@ function getPageContext() {
     if (context.trim() === "") {
         return "No se encontró contexto en la página.";
     }
-
+    
     return context;
 }
 
 
 // --- API Communication ---
-
-/**
- * Sends the user's message, checking for predefined responses first.
- * If no predefined response is found, it sends the message to the Gemini API.
- */
 async function handleSendMessage() {
     const userText = userInput.value.trim();
     if (!userText) return;
 
     addMessage('user', userText);
     userInput.value = '';
-
+    
     const predefinedResponse = getPredefinedResponse(userText);
     if (predefinedResponse) {
         setTimeout(() => {
             addMessage('bot', predefinedResponse);
-            chatHistory.push({
-                role: "user",
-                parts: [{
-                    text: userText
-                }]
-            });
-            chatHistory.push({
-                role: "model",
-                parts: [{
-                    text: predefinedResponse
-                }]
-            });
+            chatHistory.push({ role: "user", parts: [{ text: userText }] });
+            chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
         }, 500);
         return;
     }
-
+    
     showTypingIndicator(true);
-    chatHistory.push({
-        role: "user",
-        parts: [{
-            text: userText
-        }]
-    });
+    chatHistory.push({ role: "user", parts: [{ text: userText }] });
 
     try {
-        // --- CÓDIGO MODIFICADO PARA ENVIAR EL CONTEXTO ---
-        // Get the context from the page.
+        // --- CÓDIGO MODIFICADO: Se obtiene el contexto y se envía a la API ---
         const pageContext = getPageContext();
 
-        // The request now goes to our secure proxy, sending the prompt and the context.
+        const payload = {
+            contents: chatHistory,
+            systemInstruction: {
+                parts: [{ text: systemPrompt }]
+            },
+            // Se agrega el contexto al payload que se envía al backend
+            context: pageContext 
+        };
+
         const response = await fetch(API_URL, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                prompt: userText,
-                context: pageContext // Here we send the page context
-            }),
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
         });
-        
+
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.error ? .message || `Error del servidor: ${response.status}`);
+            throw new Error(errorData.error?.message || `Error del servidor: ${response.status}`);
         }
 
         const data = await response.json();
-        const botText = data.candidates ? .[0] ? .content ? .parts ? .[0] ? .text || "No obtuve una respuesta.";
-
-        chatHistory.push({
-            role: "model",
-            parts: [{
-                text: botText
-            }]
-        });
+        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No obtuve una respuesta.";
+        
+        chatHistory.push({ role: "model", parts: [{ text: botText }] });
         addMessage('bot', botText);
 
     } catch (error) {
@@ -8240,3 +8177,46 @@ async function handleSendMessage() {
         showTypingIndicator(false);
     }
 }
+
+// --- Initialization ---
+function init() {
+    if (!chatToggleButton) {
+        console.error("Chatbot UI elements not found. Initialization failed.");
+        return;
+    }
+    
+    buildResponseMap();
+
+    // --- Event Listeners ---
+    sendButton.addEventListener('click', handleSendMessage);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSendMessage();
+        }
+    });
+    
+    // --- Mobile-Specific Keyboard Logic ---
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+        // ... (Tu lógica para móviles va aquí, la he omitido por brevedad)
+    } else {
+        // Desktop-only listeners
+        chatToggleButton.addEventListener('click', toggleChat);
+        internalCloseBtn.addEventListener('click', toggleChat);
+        chatBackdrop.addEventListener('click', toggleChat);
+    }
+
+    // --- Initial State ---
+    chatHistory = [];
+    
+    const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
+    const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
+    addMessage('bot', welcomeMessageText, welcomeButtons);
+    
+    chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
+
+    console.log("Chatbot initialized successfully.");
+}
+
+document.addEventListener('DOMContentLoaded', init);
