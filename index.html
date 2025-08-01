@@ -546,13 +546,17 @@
                     }
                 };
                 
+                // --- MODIFICACIÓN AQUÍ ---
                 let finalPrompt;
+                const brevityInstruction = `**Regla Importante:** Sé conciso y directo. Da respuestas cortas por defecto. Solo proporciona respuestas largas y detalladas si el usuario pide explícitamente "explica", "detalla", "profundiza" o si la pregunta es inherentemente compleja y requiere una explicación exhaustiva.`;
+
                 if (response) {
-                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Un usuario preguntó sobre "${text}". La información relevante encontrada en nuestra base de datos es: "${response}". Por favor, analiza esta información y úsala para darle al usuario una respuesta completa y amigable. No te limites a repetir la información, explícala en el contexto de su pregunta.`;
+                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. ${brevityInstruction} Un usuario preguntó sobre "${text}". La información relevante encontrada en nuestra base de datos es: "${response}". Por favor, analiza esta información y úsala para darle al usuario una respuesta completa y amigable. No te limites a repetir la información, explícala en el contexto de su pregunta.`;
                 } else {
                     const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
-                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nBase de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
+                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. ${brevityInstruction} Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nBase de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
                 }
+                // --- FIN DE LA MODIFICACIÓN ---
                 
                 callApiWithBackoff(finalPrompt);
             }
