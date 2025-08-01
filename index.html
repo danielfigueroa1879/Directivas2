@@ -379,48 +379,25 @@
                 speechSynth.cancel();
                 const utterance = new SpeechSynthesisUtterance(cleanText);
 
-                // Lógica mejorada para seleccionar voz masculina moderna
+                // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
                 let selectedVoice = null;
-                
-                // Lista de nombres femeninos a evitar
-                const femaleNames = ['maria', 'carmen', 'laura', 'helena', 'paulina', 'isabelle', 
-                                   'sofia', 'camila', 'elena', 'isabel', 'monica', 'marta', 
-                                   'lucia', 'ana', 'cristina', 'patricia', 'francisca', 'catalina'];
 
                 if (availableVoices.length > 0) {
-                    // Prioridad 1: Buscar voces masculinas específicas
-                    selectedVoice = availableVoices.find(voice => 
-                        voice.lang.includes('es') && 
-                        (voice.name.toLowerCase().includes('diego') ||
-                         voice.name.toLowerCase().includes('pedro') ||
-                         voice.name.toLowerCase().includes('jorge') ||
-                         voice.name.toLowerCase().includes('carlos') ||
-                         voice.name.toLowerCase().includes('antonio') ||
-                         voice.name.toLowerCase().includes('miguel'))
-                    );
+                    // Prioridad 1: Buscar "Diego"
+                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
 
-                    // Prioridad 2: Buscar por indicadores de género masculino
+                    // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
                     if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => 
-                            voice.lang.includes('es') && 
-                            (voice.name.toLowerCase().includes('male') ||
-                             voice.name.toLowerCase().includes('masculino') ||
-                             voice.name.toLowerCase().includes('hombre'))
-                        );
+                        selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
                     }
 
-                    // Prioridad 3: Buscar cualquier voz que NO sea femenina
+                    // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
                     if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => 
-                            voice.lang.includes('es') && 
-                            !femaleNames.some(fname => voice.name.toLowerCase().includes(fname)) &&
-                            !voice.name.toLowerCase().includes('female') &&
-                            !voice.name.toLowerCase().includes('femenino') &&
-                            !voice.name.toLowerCase().includes('mujer')
-                        );
+                        const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
+                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
                     }
 
-                    // Prioridad 4: Como último recurso, cualquier voz en español
+                    // Prioridad 4: Como último recurso, tomar la primera voz en español
                     if (!selectedVoice) {
                         selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
                     }
@@ -434,9 +411,8 @@
                 }
 
                 utterance.lang = 'es-CL';
-                utterance.rate = 1.15; // Velocidad moderna, no muy lenta
-                utterance.pitch = 0.9; // Tono masculino pero no muy grave
-                utterance.volume = 1.0; // Volumen completo
+                utterance.rate = 1.1;
+                utterance.pitch = 0.8; // Tono más bajo para sonar más masculino
                 speechSynth.speak(utterance);
             }
 
@@ -569,8 +545,8 @@
                         }
                     }
                 };
-                
-                let finalPrompt;
+       
+            let finalPrompt;
                 if (response) {
                     finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Un usuario preguntó sobre "${text}". La información relevante encontrada en nuestra base de datos es: "${response}". 
 
@@ -582,10 +558,10 @@ IMPORTANTE: Sé BREVE y DIRECTO. Da una respuesta corta y concisa (máximo 2-3 l
 IMPORTANTE: Sé BREVE y DIRECTO. Da respuestas cortas y concisas (máximo 2-3 líneas) a menos que la pregunta sea compleja. Si no tienes información sobre el tema, di brevemente que no tienes esa información y sugiere escribir "menú".
 
 Base de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
-                }
-                
-                callApiWithBackoff(finalPrompt);
+
+                    callApiWithBackoff(finalPrompt);
             }
+
             
             function addTypingIndicator() {
                 const chatMessages = document.getElementById('chat-messages');
