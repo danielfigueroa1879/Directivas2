@@ -28,8 +28,8 @@ body {
   right: 35px;
   outline: none;
   border: none;
-  height: 60px; /* Aumentado de 50px */
-  width: 60px;  /* Aumentado de 50px */
+  height: 70px; /* Aumentado de 50px */
+  width: 70px;  /* Aumentado de 50px */
   display: flex;
   cursor: pointer;
   align-items: center;
