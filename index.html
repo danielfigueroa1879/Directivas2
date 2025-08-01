@@ -8,11 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --green-light: #22c55e;
-            --green-dark: #4ade80;
-        }
-        
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -37,6 +32,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
+        /* Estilos del chat */
         #chat-widget-container {
             position: fixed;
             bottom: 2rem;
@@ -45,7 +41,6 @@
         }
         
         #chat-popup {
-            font-family: 'Poppins', sans-serif;
             position: absolute;
             bottom: 0;
             right: 0;
@@ -55,11 +50,11 @@
             max-width: 400px;
             transform-origin: bottom right;
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transition: all 0.3s ease;
         }
         
         #chat-popup.hidden {
-            transform: scale(0.5);
+            transform: scale(0);
             opacity: 0;
             pointer-events: none;
         }
@@ -71,30 +66,30 @@
             width: 68px;
             height: 68px;
             border-radius: 1.25rem;
-            border: 3px solid var(--green-light);
+            border: 3px solid #22c55e;
             background-color: white;
             box-shadow: 0 4px 15px -2px rgba(34,197,94,0.4);
-            animation: float-animation 2.5s infinite ease-in-out;
+            animation: float 2.5s infinite ease-in-out;
+            cursor: pointer;
         }
         
-        @keyframes float-animation {
+        @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
         
-        .chat-messages-container {
-            scrollbar-width: thin;
-            scrollbar-color: #a1a1aa #e5e7eb;
-        }
-        
         .message-fade-in {
             opacity: 0;
-            transform: translateY(10px);
             animation: fadeIn 0.4s ease-out forwards;
         }
         
         @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; }
+        }
+        
+        .bot-bubble {
+            background-color: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
         }
         
         .typing-indicator span {
@@ -114,25 +109,6 @@
         
         @keyframes blink {
             50% { opacity: 1; }
-        }
-        
-        .bot-bubble {
-            background-color: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
-        
-        .chatbot-message-text {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            word-break: break-word;
-        }
-        
-        .voice-button {
-            transition: all 0.3s ease;
-        }
-        
-        .voice-button:hover {
-            transform: scale(1.05);
         }
         
         /* Estilos para secciones */
@@ -192,46 +168,12 @@
         .section-green .download-btn { background-color: #1ccfc3; }
         .section-red .download-btn { background-color: #f01317; }
         .section-yellow .download-btn { background-color: #f5b508; }
-        
-        @media (max-width: 640px) {
-            body { padding: 12px; }
-            .card-container { padding: 15px; margin: 0.5rem auto; }
-            .download-btn { width: 160px; font-size: 0.85rem; }
-            
-            #chat-widget-container.fullscreen {
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                height: 100vh;
-            }
-            
-            #chat-widget-container.fullscreen #chat-popup {
-                width: 100%;
-                height: 100%;
-                max-width: 100%;
-                max-height: 100%;
-                border-radius: 0;
-            }
-        }
     </style>
 </head>
 <body class="bg-gray-100">
 
     <!-- Contenido principal -->
     <div class="card-container">
-        <!-- Contador de visitas -->
-        <div class="absolute top-5 right-6 text-xs text-gray-500">
-            <p class="flex items-center">
-                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                </svg>
-                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
-            </p>
-        </div>
-
         <header class="text-center mb-6">
             <h1 class="text-2xl font-bold text-gray-800 mb-2">DIRECTIVA DE FUNCIONAMIENTO</h1>
             <h2 class="text-lg font-semibold text-gray-600">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
@@ -303,98 +245,219 @@
         </footer>
     </div>
 
-    <!-- ===== CHATBOT CON VOZ ===== -->
+    <!-- CHATBOT CON VOZ -->
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
-            <!-- Header del chat -->
+            <!-- Header -->
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
-                        🤖
-                    </div>
+                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">🤖</div>
                     <div>
-                        <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
+                        <h1 class="text-base font-bold">Asistente OS10</h1>
                         <p class="text-xs text-gray-500">Con funciones de voz</p>
                     </div>
                 </div>
-                
-                <!-- Controles de voz -->
-                <div class="flex items-center space-x-2">
-                    <button id="speak-button" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="Leer último mensaje">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                        </svg>
-                    </button>
-                    
-                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 p-1">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
+                <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </header>
             
-            <!-- Mensajes del chat -->
-            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
+            <!-- Mensajes -->
+            <main id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4"></main>
             
             <!-- Footer con controles -->
             <footer class="p-3 border-t border-green-500/30">
-                <!-- Indicador de auto-lectura -->
-                <div class="mb-2 text-xs text-center text-gray-500">
-                    <span id="auto-speak-status">🔊 Auto-lectura activada (Alt+S para cambiar)</span>
-                </div>
-                
-                <!-- Input y botones -->
                 <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
-                    <!-- Botón de micrófono -->
-                    <button id="voice-button" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="Usar micrófono">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                            <line x1="12" x2="12" y1="19" y2="23"/>
-                            <line x1="8" x2="16" y1="23" y2="23"/>
-                        </svg>
-                    </button>
-                    
-                    <!-- Input de texto -->
-                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
-                    
-                    <!-- Botón de enviar -->
+                    <button id="voice-btn" class="bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar">🎤</button>
+                    <button id="speak-btn" class="bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer">🔊</button>
+                    <input type="text" id="user-input" placeholder="Escribe o habla..." class="flex-1 bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2">
                     <button id="send-button" class="bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white">
                         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <!-- Dentro del footer del chat, antes del input -->
-                 <button id="voice-button">🎤</button>
-                 <button id="speak-button">🔊</button>
-                <!-- Instrucciones -->
-                <div class="mt-2 text-xs text-center text-gray-500">
-                    <span>🎤 Micrófono | 🔊 Auto-lectura | Alt+V, Alt+R, Alt+S para atajos</span>
-                </div>
             </footer>
         </div>
         
-        <!-- Botón flotante para abrir chat -->
-        <button id="chat-toggle-button" class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente con Voz">
+        <!-- Botón flotante -->
+        <button id="chat-toggle-button" class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center">
             <span class="text-2xl">🤖</span>
         </button>
     </div>
 
-    <!-- Scripts -->
+    <!-- JavaScript completo -->
     <script>
-        // Script del chatbot con voz se cargará aquí
-        // Reemplazar con el contenido del artefact anterior
-    </script>
-    
-    <script>
-        // Contador de visitas simplificado
-        document.getElementById('visit-counter').textContent = Math.floor(Math.random() * 1000) + 500;
-    </script>
+        // Variables globales
+        let chatHistory = [];
+        let isListening = false;
+        let speechSynth = window.speechSynthesis;
+        let recognition = null;
 
+        // Configurar reconocimiento de voz
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'es-ES';
+        }
+
+        // Respuestas predefinidas
+        const responses = {
+            'hola': '🤖👮🏻‍♂️ ¡Hola! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. ¿En qué puedo ayudarte?',
+            'menu': '📋 Menú principal:\n• Componentes del sistema\n• Valores y costos\n• Horarios de atención\n• Directivas de funcionamiento',
+            'horario': '🕐 OS10 COQUIMBO\nDe lunes a jueves de 09:00 a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022',
+            'valores': '💰 Valores 2025:\n• Credencial: Consultar\n• Cursos: Consultar\n• Trámites: Consultar',
+            'gracias': '😊 ¡De nada! Estoy aquí para ayudarte con cualquier consulta sobre seguridad privada.',
+            'chao': '👋 ¡Hasta luego! Que tengas un buen día.'
+        };
+
+        // Funciones del chat
+        function toggleChat() {
+            const popup = document.getElementById('chat-popup');
+            const backdrop = document.getElementById('chat-backdrop');
+            const button = document.getElementById('chat-toggle-button');
+            
+            if (popup.classList.contains('hidden')) {
+                popup.classList.remove('hidden');
+                backdrop.classList.remove('hidden');
+                button.classList.add('hidden');
+            } else {
+                popup.classList.add('hidden');
+                backdrop.classList.add('hidden');
+                button.classList.remove('hidden');
+            }
+        }
+
+        function addMessage(sender, text) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-fade-in flex items-start space-x-2';
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">U</div>
+                    <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">🤖</div>
+                    <div class="bot-bubble p-3 rounded-lg max-w-xs">${text.replace(/\n/g, '<br>')}</div>
+                `;
+                // Auto-leer respuestas del bot
+                setTimeout(() => speakText(text), 500);
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleMessage() {
+            const input = document.getElementById('user-input');
+            const text = input.value.trim().toLowerCase();
+            
+            if (!text) return;
+            
+            addMessage('user', input.value);
+            input.value = '';
+            
+            // Buscar respuesta
+            let response = responses[text] || 
+                         responses[Object.keys(responses).find(key => text.includes(key))] ||
+                         '🤖 Disculpa, no entendí tu consulta. Puedes escribir: hola, menu, horario, valores, gracias o chao.';
+            
+            setTimeout(() => addMessage('bot', response), 500);
+        }
+
+        // Funciones de voz
+        function speakText(text) {
+            const cleanText = text.replace(/🤖|👮🏻‍♂️|📋|🕐|💰|😊|👋/g, '').replace(/<br>/g, '. ');
+            if (!cleanText.trim()) return;
+            
+            speechSynth.cancel();
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.rate = 0.9;
+            utterance.volume = 0.8;
+            speechSynth.speak(utterance);
+        }
+
+        function startVoiceInput() {
+            if (!recognition) {
+                alert('Tu navegador no soporta reconocimiento de voz. Usa Chrome.');
+                return;
+            }
+
+            const voiceBtn = document.getElementById('voice-btn');
+            
+            if (isListening) {
+                recognition.stop();
+                voiceBtn.style.backgroundColor = '#3b82f6';
+                voiceBtn.textContent = '🎤';
+                isListening = false;
+                return;
+            }
+
+            isListening = true;
+            voiceBtn.style.backgroundColor = '#ef4444';
+            voiceBtn.textContent = '⏹️';
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('user-input').value = transcript;
+                handleMessage();
+            };
+
+            recognition.onerror = function() {
+                isListening = false;
+                voiceBtn.style.backgroundColor = '#3b82f6';
+                voiceBtn.textContent = '🎤';
+            };
+
+            recognition.onend = function() {
+                isListening = false;
+                voiceBtn.style.backgroundColor = '#3b82f6';
+                voiceBtn.textContent = '🎤';
+            };
+        }
+
+        function readLastMessage() {
+            const messages = document.querySelectorAll('#chat-messages .message-fade-in');
+            if (messages.length > 0) {
+                const lastMessage = messages[messages.length - 1];
+                const text = lastMessage.textContent;
+                speakText(text);
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botones principales
+            document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
+            document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
+            document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
+            document.getElementById('send-button').addEventListener('click', handleMessage);
+            
+            // Botones de voz
+            document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
+            document.getElementById('speak-btn').addEventListener('click', readLastMessage);
+            
+            // Enter en input
+            document.getElementById('user-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleMessage();
+                }
+            });
+
+            // Mensaje de bienvenida
+            setTimeout(() => {
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de OS10 Coquimbo. Puedes escribir o usar el micrófono. ¿En qué puedo ayudarte?');
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
