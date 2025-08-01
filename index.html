@@ -2,281 +2,213 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Directivas de Funcionamiento OS10</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <!-- Meta Tags Principales y de PWA -->
+    <title>Directivas de Funcionamiento OS10</title>
+    <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff"/>
+    <meta name="application-name" content="Directivas OS10">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Configuración para iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
+
+    <!-- Favicons y Iconos Estándar -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
+    <link rel="icon" type="image/png" href="assets/images/os.png">
+
+    <!-- Iconos para iOS -->
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
+    
+    <!-- Splash screens para iOS -->
+    <link rel="apple-touch-startup-image" href="assets/images/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="assets/images/splash-1536x2048.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2)">
+
+    <!-- Dependencias y Estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Estilos adicionales para el Chatbot con Voz -->
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-image: url("assets/images/101.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        
-        body.chat-open-mobile {
-            overflow: hidden;
-        }
-        
-        .card-container {
-            max-width: 800px;
-            margin: 1.5rem auto;
-            padding: 30px;
-            background-color: #F2FFFD;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Estilos del chat */
-        #chat-widget-container {
-            position: fixed;
-            bottom: 2rem;
-            right: 1rem;
-            z-index: 1000;
-        }
-        
-        #chat-popup {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            height: 70vh;
-            max-height: 550px;
-            width: 90vw;
-            max-width: 400px;
-            transform-origin: bottom right;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        /* Estilos adicionales para funciones de voz */
+        .voice-button {
             transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        .voice-button:hover {
+            transform: scale(1.05);
+        }
+        .voice-button:active {
+            transform: scale(0.95);
+        }
+        .voice-button.animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
         
-        #chat-popup.hidden {
-            transform: scale(0);
-            opacity: 0;
-            pointer-events: none;
+        /* Mejoras para los botones de respuesta */
+        .response-button {
+            transition: all 0.2s ease;
         }
-        
-        #chat-toggle-button {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 68px;
-            height: 68px;
-            border-radius: 1.25rem;
-            border: 3px solid #22c55e;
-            background-color: white;
-            box-shadow: 0 4px 15px -2px rgba(34,197,94,0.4);
-            animation: float 2.5s infinite ease-in-out;
-            cursor: pointer;
+        .response-button:hover {
+            transform: translateX(4px);
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        
-        .message-fade-in {
-            opacity: 0;
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-        
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        
-        .bot-bubble {
-            background-color: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
-        
-        .typing-indicator span {
-            height: 8px;
-            width: 8px;
-            float: left;
-            margin: 0 1px;
-            background-color: #9ca3af;
-            display: block;
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: 1s blink infinite .3333s;
-        }
-        
-        .typing-indicator span:nth-child(2) { animation-delay: .5s; }
-        .typing-indicator span:nth-child(3) { animation-delay: .6666s; }
-        
-        @keyframes blink {
-            50% { opacity: 1; }
-        }
-        
-        /* Estilos para secciones */
-        .section-card {
-            border: 2px solid;
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .section-card:hover {
-            transform: translateY(-2px);
-        }
-        
-        .section-blue {
-            border-color: #0a73c3;
-            background-color: #F1F7FF;
-        }
-        
-        .section-green {
-            border-color: #1ccfc3;
-            background-color: #F6FFFD;
-        }
-        
-        .section-red {
-            border-color: #f01317;
-            background-color: #FFF8F8;
-        }
-        
-        .section-yellow {
-            border-color: #f5b508;
-            background-color: #FFFFEF;
-        }
-        
-        .download-btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 180px;
-            height: 40px;
-            padding: 10px 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            margin-top: 8px;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        .section-blue .download-btn { background-color: #0a73c3; }
-        .section-green .download-btn { background-color: #1ccfc3; }
-        .section-red .download-btn { background-color: #f01317; }
-        .section-yellow .download-btn { background-color: #f5b508; }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 dark:bg-gray-800">
 
-    <!-- Contenido principal -->
-    <div class="card-container">
-        <header class="text-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">DIRECTIVA DE FUNCIONAMIENTO</h1>
-            <h2 class="text-lg font-semibold text-gray-600">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+    <!-- Contenido de la página -->
+    <div class="card-container rounded-xl shadow-md space-y-6 relative">
+        <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
+            <p class="flex items-center">
+                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+            </p>
+        </div>
+        
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
+            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
+        </a>
+        
+        <header class="text-center">
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">DIRECTIVA DE FUNCIONAMIENTO</h1>
+            <h2 class="text-lg font-semibold text-gray-600 dark:text-gray-300">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
         </header>
-
+        
         <main class="space-y-4">
-            <section class="section-card section-blue">
-                <h3 class="font-bold text-lg mb-3">1️⃣ Presentar Directiva DD.FF.</h3>
-                <ul class="list-disc pl-5 text-sm space-y-2">
+            <section class="section-card border-blue-500 section-blue">
+                <h3 class="font-bold">1️⃣ Presentar Directiva DD.FF.</h3>
+                <ul class="list-disc pl-5 text-sm normal-text">
                     <li>Vigencia 03 años en instalación.</li>
                     <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
                     <li>
-                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-800 hover:underline">Dec. 93/1985</a>,
-                        <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-800 hover:underline">Dec. 261 (IV.4)</a>, y
-                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-800 hover:underline">Dec. 32/2024</a>.
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 93/1985</a>,
+                        <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 261 (IV.4)</a>, y
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 32/2024</a>.
                    </li>
                </ul>
             </section>
-
-            <section class="section-card section-green">
-                <h3 class="font-bold text-lg mb-3">2️⃣ Documentación</h3>
-                <ul class="space-y-3 text-sm">
-                    <li>
-                        <span>02 Solicitudes Simple.</span>
-                        <a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn">Descargar Solicitud</a>
-                    </li>
-                    <li>
-                        <span>01 copia DD.FF. completa.</span>
-                        <a href="https://dal5.short.gy/D" target="_blank" class="download-btn">Descargar Word</a>
-                    </li>
-                    <li>
-                        <span>Requisitos según tipo.</span>
-                        <a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn">Descargar Requisitos</a>
-                    </li>
-                    <li>
-                        <span>Uniforme Decreto 32/2024.</span>
-                        <a href="https://dal5.short.gy/0u" target="_blank" class="download-btn">Ejemplo Uniforme</a>
-                    </li>
+            
+            <section class="section-card border-green-500 section-green">
+                <h3 class="font-bold">2️⃣ Documentación</h3>
+                <ul class="space-y-3 pl-5 text-sm normal-text">
+                    <li><span>02 Solicitudes Simple.</span><div class="button-container"><a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn" title="Descargar Solicitud">Descargar Solicit.</a></div></li>
+                    <li><span>01 copia DD.FF. completa.</span><div class="button-container"><a href="https://dal5.short.gy/D" target="_blank" class="download-btn" title="Descargar Word">Descargar Word</a></div></li>
+                    <li><span>Requisitos según tipo, Instalación, Eventos, Partidos de Fútbol Prof.</span><div class="button-container"><a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn" title="Descargar Requisi.">Descargar Requis.</a></div></li>
+                    <li><span>Uniforme Decreto 32/2024.</span><div class="button-container"><a href="https://dal5.short.gy/0u" target="_blank" class="download-btn" title="Ejemplo Uniforme">Ejemplo Uniforme</a></div></li>
+                    <li><span>Análisis de Vulnerabilidades.</span><div class="button-container"><a href="https://dal5.short.gy/6ydn" target="_blank" class="download-btn" title="Descargar Análisis">Descargar Anális.</a></div></li>
+                    <li><span>Solicitud de Uniforme Distinto.</span><div class="button-container"><a href="https://d6.short.gy/G8" target="_blank" class="download-btn" title="Descargar Word">Descargar Word</a></div></li>
                 </ul>
             </section>
-
-            <section class="section-card section-red">
-                <h3 class="font-bold text-lg mb-3">3️⃣ Todo escaneado en Digital</h3>
-                <ul class="text-sm">
-                    <li>
-                        <span>Escanear todo en 01 archivo PDF.</span>
-                        <a href="https://dal5.short.gy/I" target="_blank" class="download-btn">Herramienta PDF</a>
-                    </li>
+            
+            <section class="section-card border-red-500 section-red">
+                <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
+                <ul class="list-disc pl-5 text-sm normal-text">
+                    <li><span>Escanear todo en 01 archivo PDF (Pendrive) y/o Página Unir PDF.</span><div class="button-container"><a href="https://dal5.short.gy/I" target="_blank" class="download-btn" title="Herramienta para unir PDF">Herramienta</a></div></li>
                 </ul>
             </section>
-
-            <section class="section-card section-yellow">
-                <h3 class="font-bold text-lg mb-3">4️⃣ Tramitar Credenciales</h3>
-                <ul class="text-sm">
-                    <li>
-                        <span>Resol. 1480 (10.04.2025).</span>
-                        <a href="https://d6.short.gy/dsds" target="_blank" class="download-btn">Descargar Documentos</a>
-                    </li>
-                    <li>
-                        <span>Tramitar credenciales.</span>
-                        <a href="credenciales.html" class="download-btn">Tramitar Credenciales</a>
-                    </li>
+            
+            <section class="section-card border-yellow-500 section-yellow">
+                <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
+                <ul class="list-disc pl-5 text-sm normal-text">
+                    <li><span>Resol. 1480 (10.04.2025) revoca resolución 1.199 para confección de tarjetas.</span><div class="button-container"><a href="https://d6.short.gy/dsds" target="_blank" class="download-btn" title="Descargar Documentos">Descargar Docum.</a></div></li>
+                    <li><span>Tramitar credenciales.</span><div class="button-container"><a href="credenciales.html" class="download-btn" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar Credenc.</a></div></li>
                 </ul>
             </section>
         </main>
-
-        <footer class="mt-6 border-t border-gray-200 pt-4 text-center text-sm text-gray-600">
-            <p>©2025 - Daniel Figueroa Ch. - Ingeniero en Informática</p>
+        
+        <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-600 pt-4">
+            <div class="text-center text-sm text-gray-600 dark:text-gray-400 leading-tight transform -translate-x-8 md:-translate-x-6">
+                <span>Haga clic para descargar.</span><br>
+                <span>©2025 - Daniel Figueroa Ch.</span><br>
+                <span>Ingeniero en Informática.</span>
+            </div>
+            <img src="assets/images/qr.png" alt="Código QR para más información" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información" loading="lazy">
         </footer>
-    </div>
+   </div>
 
-    <!-- CHATBOT CON VOZ -->
+    <!-- ===== CHATBOT FLOTANTE CON VOZ ===== -->
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
-    
     <div id="chat-widget-container">
-        <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
+        <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] dark:bg-gray-800/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <!-- Header -->
-            <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
+            <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800 dark:text-white">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">🤖</div>
+                    <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='🤖';">
+                    </div>
                     <div>
-                        <h1 class="text-base font-bold">Asistente OS10</h1>
-                        <p class="text-xs text-gray-500">Con funciones de voz</p>
+                        <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Con funciones de voz</p>
                     </div>
                 </div>
-                <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 p-1">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
+                
+                <!-- Botón de altavoz en el header -->
+                <div class="flex items-center space-x-2">
+                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                        </svg>
+                    </button>
+                    
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
             </header>
             
             <!-- Mensajes -->
-            <main id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4"></main>
+            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
             
             <!-- Footer con controles -->
             <footer class="p-3 border-t border-green-500/30">
-                <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
-                    <button id="voice-btn" class="bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar">🎤</button>
-                    <button id="speak-btn" class="bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer">🔊</button>
-                    <input type="text" id="user-input" placeholder="Escribe o habla..." class="flex-1 bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2">
-                    <button id="send-button" class="bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white">
-                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <!-- Indicador de auto-lectura -->
+                <div class="mb-2 text-xs text-center text-gray-500 dark:text-gray-400">
+                    <span>🔊 Auto-lectura activada | Alt+D para Diego | Alt+V para micrófono</span>
+                </div>
+                
+                <div class="flex items-center space-x-2 bg-gray-200 dark:bg-gray-900/80 rounded-xl p-2">
+                    <!-- Botón de micrófono -->
+                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" x2="12" y1="19" y2="23"/>
+                            <line x1="8" x2="16" y1="23" y2="23"/>
+                        </svg>
+                    </button>
+                    
+                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base">
+                    
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                     </button>
@@ -285,13 +217,14 @@
         </div>
         
         <!-- Botón flotante -->
-        <button id="chat-toggle-button" class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center p-1">
+        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual con Voz">
             <img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-2xl\'>🤖</span>';">
         </button>
     </div>
 
-    <!-- JavaScript completo -->
-    <script>
+    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
+    <script defer>
         // Variables globales
         let chatHistory = [];
         let isListening = false;
@@ -306,7 +239,7 @@
             recognition.lang = 'es-ES';
         }
 
-        // Respuestas predefinidas COMPLETAS
+        // Respuestas predefinidas COMPLETAS - TODAS TUS REGLAS ORIGINALES
         const responses = {
             // Saludos
             'hola': '🤖👮🏻‍♂️ ¡Hola! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?',
@@ -354,6 +287,7 @@
             
             // Horarios y ubicación
             'horario': '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6',
+            'horarios de atención': '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6',
             'direccion': '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6',
             'donde': '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6',
             'telefono': '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6',
@@ -370,6 +304,8 @@
             '261': '*DECRETO NRO 261*. \n\n\nhttps://www.zosepcar.cl/content/OS10/Decreto-261.pdf',
             '298': '*DECRETO 298*. https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17',
             '93': '*DECRETO 93*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=9081',
+            '123': '*DECRETO 123*. https://www.bcn.cl/leychile/navegar?idNorma=1130300',
+            '3607': '*D. LEY 3607*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=7193',
             
             // Cursos
             'cursos': '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*CF.-* CURSO FORMACIÓN GUARDIA\n*CJ.-* CURSO JEFE DE SEGURIDAD\n*CE.-* CURSO ENCARGADO\n*CS.-* CURSO SUPERVISOR\n*CT.-* CURSO TÉCNICO\n*CI.-* CURSO INSTALADOR\n*CC.-* CURSO OPERADOR CAJEROS\n*CV.-* CURSO OPERADOR CCTV\n*CP.-* CURSO PERFECCIONAMIENTO',
@@ -389,112 +325,26 @@
             
             // Nueva ley
             'nueva ley': 'Entra en vigencia el 28-NOV-2025 *LEY 21659*. https://dal5.short.gy/LeySeg',
-            '21659': 'Entra en vigencia el 28-NOV-2025 *LEY 21659*. https://dal5.short.gy/LeySeg'
+            '21659': 'Entra en vigencia el 28-NOV-2025 *LEY 21659*. https://dal5.short.gy/LeySeg',
+            
+            // Credenciales
+            'credencial empresa': '🤖 *CREDENCIAL EMPRESA*\nhttps://dal5.short.gy/C.emp',
+            'independiente': '🤖 *INDEPENDIENTE 1ER. SEM. 2025* \n*Descargar Guía:* \nhttps://os10.short.gy/I25',
+            
+            // Infracciones y sanciones
+            'sin curso': '🤖⚠️ Un guardia sin curso de capacitación NO puede ejercer funciones. Según Decreto 93 art. 13° y DL 3607, es OBLIGATORIO contar con curso básico de formación vigente (3 años). Sin curso = INFRACCIÓN GRAVE. Multa: 25 a 125 ingresos mínimos mensuales (primera vez), hasta 250 en reincidencia.',
+            'sin credencial': '🤖❌ Un guardia sin credencial vigente NO puede trabajar. Según Decreto 93 art. 93° la credencial es requisito ESENCIAL para ejercer. Sin credencial = EJERCICIO ILEGAL. Multa: 25 a 125 ingresos mínimos mensuales, duplicándose en reincidencia + posible clausura.',
+            
+            // Comisarias y cuadrantes
+            'comisaria': '🤖👮🏻‍♂️ TEL. CUADRANTES\n- https://www.comisariavirtual.cl\n- https://www.stop.carabineros.cl/\n- BUSCA TU CUADRANTE:\nhttps://www.bit.ly/3Yna7AP',
+            
+            // Ciberseguridad
+            'ciberseguridad': '🤖 🧙🏻‍♂️ *"CIBERSEGURIDAD"*\n➢ *1.-¿Que Hacer?*:\nhttps://www.dal5.short.gy/SIyeI3\n➢ *2.,-¿Cómo notificar?*:\nhttps://www.dal5.short.gy/GFxMgX'
         };
-
-        // Funciones del chat
-        function toggleChat() {
-            const popup = document.getElementById('chat-popup');
-            const backdrop = document.getElementById('chat-backdrop');
-            const button = document.getElementById('chat-toggle-button');
-            
-            if (popup.classList.contains('hidden')) {
-                popup.classList.remove('hidden');
-                backdrop.classList.remove('hidden');
-                button.classList.add('hidden');
-            } else {
-                popup.classList.add('hidden');
-                backdrop.classList.add('hidden');
-                button.classList.remove('hidden');
-            }
-        }
-
-        function addMessage(sender, text, buttons = []) {
-            const chatMessages = document.getElementById('chat-messages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message-fade-in flex items-start space-x-2 mb-3';
-            
-            if (sender === 'user') {
-                messageDiv.innerHTML = `
-                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">U</div>
-                    <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs text-sm">${text}</div>
-                `;
-            } else {
-                const formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
-                const messageContent = `
-                    <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
-                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='🤖';">
-                    </div>
-                    <div class="bot-bubble p-3 rounded-lg max-w-sm text-sm">
-                        ${formattedText}
-                        ${buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
-                            `<button class="block w-full text-left bg-green-100 hover:bg-green-200 text-green-800 text-xs py-1 px-2 rounded border border-green-300 transition-colors" onclick="document.getElementById('user-input').value='${btn}'; handleMessage();">${btn}</button>`
-                        ).join('') + '</div>' : ''}
-                    </div>
-                `;
-                messageDiv.innerHTML = messageContent;
-                
-                // Auto-leer respuestas del bot
-                setTimeout(() => speakText(text), 500);
-            }
-            
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function handleMessage() {
-            const input = document.getElementById('user-input');
-            const text = input.value.trim();
-            const lowerText = text.toLowerCase();
-            
-            if (!text) return;
-            
-            addMessage('user', input.value);
-            input.value = '';
-            
-            // Buscar respuesta exacta primero
-            let response = responses[lowerText];
-            
-            // Si no hay respuesta exacta, buscar palabras clave
-            if (!response) {
-                for (let key in responses) {
-                    if (lowerText.includes(key) || key.includes(lowerText)) {
-                        response = responses[key];
-                        break;
-                    }
-                }
-            }
-            
-            // Búsquedas más específicas
-            if (!response) {
-                if (lowerText.includes('curso') && lowerText.includes('donde')) {
-                    response = responses['donde puedo hacer el curso'];
-                } else if (lowerText.includes('valor') || lowerText.includes('cuesta') || lowerText.includes('precio') || lowerText.includes('costo')) {
-                    response = responses['valores'];
-                } else if (lowerText.includes('direccion') || lowerText.includes('ubicacion') || lowerText.includes('donde esta') || lowerText.includes('donde queda')) {
-                    response = responses['direccion'];
-                } else if (lowerText.includes('fono') || lowerText.includes('telefono') || lowerText.includes('contacto')) {
-                    response = responses['telefono'];
-                } else if (lowerText.includes('credencial') && lowerText.includes('empresa')) {
-                    response = '🤖 *CREDENCIAL EMPRESA*\nhttps://dal5.short.gy/C.emp';
-                } else if (lowerText.includes('sin curso') || lowerText.includes('no tengo curso')) {
-                    response = '🤖⚠️ Un guardia sin curso de capacitación NO puede ejercer funciones. Según Decreto 93 art. 13° y DL 3607, es OBLIGATORIO contar con curso básico de formación vigente (3 años). Sin curso = INFRACCIÓN GRAVE.';
-                } else if (lowerText.includes('sin credencial') || lowerText.includes('no tengo credencial')) {
-                    response = '🤖❌ Un guardia sin credencial vigente NO puede trabajar. Según Decreto 93, la credencial es requisito ESENCIAL para ejercer. Sin credencial = EJERCICIO ILEGAL.';
-                }
-            }
-            
-            // Respuesta por defecto
-            if (!response) {
-                response = '🤖 No encontré información específica sobre esa consulta. Puedes escribir:\n• "menu" para ver opciones principales\n• "componentes" para guías\n• "valores" para costos\n• "horario" para ubicación\n• "cursos" para capacitación\n• "leyes" para normativas';
-            }
-            
-            setTimeout(() => addMessage('bot', response), 500);
-        }
 
         // Funciones de voz MEJORADAS con Diego como predeterminada
         function speakText(text) {
-            const cleanText = text.replace(/🤖|👮🏻‍♂️|📋|🕐|💰|😊|👋|⬇️|👇🏽|☝🏼|✅|⚠️|❌/g, '').replace(/<br>/g, '. ').replace(/<strong>/g, '').replace(/<\/strong>/g, '');
+            const cleanText = text.replace(/🤖|👮🏻‍♂️|📋|🕐|💰|😊|👋|⬇️|👇🏽|☝🏼|✅|⚠️|❌|🧙🏻‍♂️|🚦|➢/g, '').replace(/<br>/g, '. ').replace(/<strong>/g, '').replace(/<\/strong>/g, '').replace(/\n/g, '. ').replace(/\*/g, '');
             if (!cleanText.trim()) return;
             
             speechSynth.cancel();
@@ -539,33 +389,118 @@
             speechSynth.speak(utterance);
         }
 
-        // Función para listar todas las voces disponibles (para debug)
-        function listAvailableVoices() {
-            const voices = speechSynth.getVoices();
-            console.log('🎤 Voces disponibles:');
-            voices.forEach((voice, index) => {
-                if (voice.lang.startsWith('es')) {
-                    console.log(`${index}: ${voice.name} (${voice.lang}) - ${voice.gender || 'N/A'}`);
+        // Funciones del chat
+        function toggleChat() {
+            const popup = document.getElementById('chat-popup');
+            const backdrop = document.getElementById('chat-backdrop');
+            const button = document.getElementById('chat-toggle-button');
+            
+            if (popup.classList.contains('hidden')) {
+                popup.classList.remove('hidden');
+                backdrop.classList.remove('hidden');
+                button.classList.add('hidden');
+                
+                // Lógica móvil original
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    document.body.classList.add('chat-open-mobile');
                 }
-            });
-        }
-
-        // Función para forzar el uso de Diego
-        function setDiegoVoice() {
-            const voices = speechSynth.getVoices();
-            const diego = voices.find(voice => voice.name.toLowerCase().includes('diego'));
-            if (diego) {
-                console.log('✅ Diego encontrado:', diego.name);
-                return diego;
             } else {
-                console.log('❌ Diego no encontrado. Voces disponibles en español:');
-                voices.filter(v => v.lang.startsWith('es')).forEach(v => {
-                    console.log(`- ${v.name} (${v.lang})`);
-                });
-                return null;
+                popup.classList.add('hidden');
+                backdrop.classList.add('hidden');
+                button.classList.remove('hidden');
+                
+                // Lógica móvil original
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    document.body.classList.remove('chat-open-mobile');
+                    if (window.mobileChatManager) window.mobileChatManager.exitKeyboardMode();
+                }
             }
         }
 
+        function addMessage(sender, text, buttons = []) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-fade-in flex items-start space-x-2 mb-3';
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">U</div>
+                    <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs chatbot-message-text">${text}</div>
+                `;
+            } else {
+                const formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+                const messageContent = `
+                    <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='🤖';">
+                    </div>
+                    <div class="bot-bubble p-3 rounded-lg max-w-sm chatbot-message-text">
+                        ${formattedText}
+                        ${buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
+                            `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 border border-green-500/50 text-green-800 dark:text-green-300 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="document.getElementById('user-input').value='${btn}'; handleMessage();">${btn}</button>`
+                        ).join('') + '</div>' : ''}
+                    </div>
+                `;
+                messageDiv.innerHTML = messageContent;
+                
+                // Auto-leer respuestas del bot
+                setTimeout(() => speakText(text), 500);
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleMessage() {
+            const input = document.getElementById('user-input');
+            const text = input.value.trim();
+            const lowerText = text.toLowerCase();
+            
+            if (!text) return;
+            
+            addMessage('user', input.value);
+            input.value = '';
+            
+            // Buscar respuesta exacta primero
+            let response = responses[lowerText];
+            
+            // Si no hay respuesta exacta, buscar palabras clave
+            if (!response) {
+                for (let key in responses) {
+                    if (lowerText.includes(key) || key.includes(lowerText)) {
+                        response = responses[key];
+                        break;
+                    }
+                }
+            }
+            
+            // Búsquedas más específicas (tu lógica original)
+            if (!response) {
+                if (lowerText.includes('curso') && lowerText.includes('donde')) {
+                    response = responses['donde puedo hacer el curso'];
+                } else if (lowerText.includes('valor') || lowerText.includes('cuesta') || lowerText.includes('precio') || lowerText.includes('costo')) {
+                    response = responses['valores'];
+                } else if (lowerText.includes('direccion') || lowerText.includes('ubicacion') || lowerText.includes('donde esta') || lowerText.includes('donde queda')) {
+                    response = responses['direccion'];
+                } else if (lowerText.includes('fono') || lowerText.includes('telefono') || lowerText.includes('contacto')) {
+                    response = responses['telefono'];
+                } else if (lowerText.includes('credencial') && lowerText.includes('empresa')) {
+                    response = responses['credencial empresa'];
+                } else if (lowerText.includes('sin curso') || lowerText.includes('no tengo curso')) {
+                    response = responses['sin curso'];
+                } else if (lowerText.includes('sin credencial') || lowerText.includes('no tengo credencial')) {
+                    response = responses['sin credencial'];
+                }
+            }
+            
+            // Respuesta por defecto
+            if (!response) {
+                response = '🤖 No encontré información específica sobre esa consulta. Puedes escribir:\n• "menu" para ver opciones principales\n• "componentes" para guías\n• "valores" para costos\n• "horario" para ubicación\n• "cursos" para capacitación\n• "leyes" para normativas';
+            }
+            
+            setTimeout(() => addMessage('bot', response), 500);
+        }
+
+        // Funciones de voz
         function startVoiceInput() {
             if (!recognition) {
                 alert('Tu navegador no soporta reconocimiento de voz. Usa Chrome.');
@@ -577,14 +512,19 @@
             if (isListening) {
                 recognition.stop();
                 voiceBtn.style.backgroundColor = '#3b82f6';
-                voiceBtn.textContent = '🎤';
+                voiceBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" x2="12" y1="19" y2="23"/>
+                    <line x1="8" x2="16" y1="23" y2="23"/>
+                </svg>`;
                 isListening = false;
                 return;
             }
 
             isListening = true;
             voiceBtn.style.backgroundColor = '#ef4444';
-            voiceBtn.textContent = '⏹️';
+            voiceBtn.innerHTML = '<div class="w-3 h-3 bg-white rounded-sm"></div>';
             recognition.start();
 
             recognition.onresult = function(event) {
@@ -596,13 +536,23 @@
             recognition.onerror = function() {
                 isListening = false;
                 voiceBtn.style.backgroundColor = '#3b82f6';
-                voiceBtn.textContent = '🎤';
+                voiceBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" x2="12" y1="19" y2="23"/>
+                    <line x1="8" x2="16" y1="23" y2="23"/>
+                </svg>`;
             };
 
             recognition.onend = function() {
                 isListening = false;
                 voiceBtn.style.backgroundColor = '#3b82f6';
-                voiceBtn.textContent = '🎤';
+                voiceBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" x2="12" y1="19" y2="23"/>
+                    <line x1="8" x2="16" y1="23" y2="23"/>
+                </svg>`;
             };
         }
 
@@ -615,19 +565,31 @@
             }
         }
 
-        // Event listeners
+        // Event listeners principales
         document.addEventListener('DOMContentLoaded', function() {
             // Configurar voces al cargar la página
             function initializeVoices() {
                 const voices = speechSynth.getVoices();
                 if (voices.length > 0) {
-                    listAvailableVoices();
-                    setDiegoVoice();
+                    console.log('🎤 Voces disponibles en español:');
+                    voices.filter(v => v.lang.startsWith('es')).forEach(v => {
+                        console.log(`- ${v.name} (${v.lang})`);
+                    });
+                    const diego = voices.find(voice => voice.name.toLowerCase().includes('diego'));
+                    if (diego) {
+                        console.log('✅ Diego encontrado:', diego.name);
+                    }
                 } else {
-                    // Si las voces no están listas, esperar
                     speechSynth.addEventListener('voiceschanged', function() {
-                        listAvailableVoices();
-                        setDiegoVoice();
+                        const voices = speechSynth.getVoices();
+                        console.log('🎤 Voces disponibles en español:');
+                        voices.filter(v => v.lang.startsWith('es')).forEach(v => {
+                            console.log(`- ${v.name} (${v.lang})`);
+                        });
+                        const diego = voices.find(voice => voice.name.toLowerCase().includes('diego'));
+                        if (diego) {
+                            console.log('✅ Diego encontrado:', diego.name);
+                        }
                     });
                 }
             }
@@ -652,7 +614,7 @@
                 }
             });
 
-            // Mensaje de bienvenida con botones
+            // Mensaje de bienvenida con botones (como tu original)
             setTimeout(() => {
                 const welcomeButtons = ['Menú', 'Menú O.S.10', 'Valores', 'Horarios de atención'];
                 addMessage('bot', '¡Hola! Soy tu asistente virtual con capacidades de voz de la oficina OS10 Coquimbo. Puedes escribir o usar el micrófono para hacer consultas. ¿En qué puedo ayudarte hoy?', welcomeButtons);
@@ -660,19 +622,69 @@
             
             // Atajos de teclado
             document.addEventListener('keydown', function(e) {
-                // Alt + S: Activar/desactivar auto-lectura
-                if (e.altKey && e.key === 's') {
+                // Alt + V: Activar micrófono
+                if (e.altKey && e.key === 'v') {
                     e.preventDefault();
-                    console.log('🔊 Función de auto-lectura (siempre activa)');
+                    startVoiceInput();
                 }
                 // Alt + D: Forzar voz de Diego
                 if (e.altKey && e.key === 'd') {
                     e.preventDefault();
-                    setDiegoVoice();
                     console.log('🎤 Configurando voz de Diego...');
+                    const voices = speechSynth.getVoices();
+                    const diego = voices.find(voice => voice.name.toLowerCase().includes('diego'));
+                    if (diego) {
+                        console.log('✅ Diego configurado:', diego.name);
+                    } else {
+                        console.log('❌ Diego no encontrado');
+                    }
                 }
             });
         });
+    </script>
+    
+    <!-- Tu script original de Firebase (sin cambios) -->
+    <script type="module" defer>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+          authDomain: "cuenta-946e2.firebaseapp.com",
+          projectId: "cuenta-946e2",
+          storageBucket: "cuenta-946e2.firebasestorage.app",
+          messagingSenderId: "816979648502",
+          appId: "1:816979648502:web:809beffeea8ba7968031d7",
+          measurementId: "G-RX9KZSC0F4"
+        };
+        
+        async function runCounter() {
+            const counterSpan = document.getElementById('visit-counter');
+            try {
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                await signInAnonymously(auth);
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    let count = 1;
+                    if (counterDoc.exists()) {
+                        count = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: count });
+                    } else {
+                        transaction.set(counterRef, { count: count });
+                    }
+                    return count;
+                });
+                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+            } catch (error) {
+                console.error("ERROR: Falló el proceso del contador.", error);
+                if (counterSpan) counterSpan.textContent = "Error";
+            }
+        }
+        runCounter();
     </script>
 </body>
 </html>
