@@ -12,18 +12,18 @@ const sendButton = document.getElementById('send-button');
 const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
-
- // He movido los estilos aquí para que puedas editarlos fácilmente.
+  // --- CÓDIGO NUEVO: Estilos del Chatbot ---
+    // He movido los estilos aquí para que puedas editarlos fácilmente.
     const styles = `
         /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
         /* Puedes cambiar los valores aquí para agrandar el ícono */
         #chat-toggle-button {
-            width: 80px;  /* <-- Aumenta este valor para el ancho */
-            height:80px; /* <-- Aumenta este valor para el alto */
+            width: 70px;  /* <-- Aumenta este valor para el ancho */
+            height: 70px; /* <-- Aumenta este valor para el alto */
         }
         #chat-toggle-button svg {
-            width: 38px;  /* <-- Aumenta este valor para el ícono de adentro */
-            height: 38px; /* <-- Aumenta este valor para el ícono de adentro */
+            width: 36px;  /* <-- Aumenta este valor para el ícono de adentro */
+            height: 36px; /* <-- Aumenta este valor para el ícono de adentro */
         }
 
         /* --- ESTILOS DE LA VENTANA DEL CHAT --- */
@@ -37,15 +37,15 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
         #chat-popup {
             width: 350px;
             max-width: 90vw;
-            /* --- CAMBIO: Altura máxima ajustada para que siempre quepa en pantalla --- */
-            height: 600px; /* Altura deseada */
-            max-height: calc(100vh - 40px); /* Altura máxima que deja 20px de margen arriba y abajo */
+            /* --- CORRECCIÓN: Se elimina la altura fija para que se ajuste a la pantalla --- */
+            max-height: calc(100vh - 110px); /* Altura máxima que deja espacio para el ícono y un margen superior */
             border-radius: 1rem;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-        /* --- CAMBIO: Regla para asegurar que el área de mensajes se desplace correctamente --- */
+        /* --- Regla para asegurar que el área de mensajes se desplace correctamente --- */
         #chat-messages {
             flex-grow: 1;      /* Permite que el área de mensajes crezca */
             overflow-y: auto;  /* Añade una barra de desplazamiento si es necesario */
@@ -55,6 +55,7 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
     styleSheet.type = "text/css";
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet);
+    
     // --- FIN DEL CÓDIGO NUEVO ---
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
