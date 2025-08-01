@@ -27,14 +27,14 @@ const styles = `
     }
     #chat-widget-container {
         position: fixed;
-        bottom: 0.2rem; /* Más cerca del borde inferior */
+        bottom: 1rem; /* Posición base más abajo */
         right: 1rem; 
         z-index: 1000;
     }
     @media (min-width: 1280px) {
         #chat-widget-container {
             right: calc((100vw - 800px) / 2);
-            bottom: 1rem; /* Más abajo también en pantallas grandes */
+            bottom: 1rem !important; /* Forzar la posición más abajo en PC */
         }
     }
     #chat-popup {
