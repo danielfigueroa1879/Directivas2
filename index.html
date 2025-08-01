@@ -17,7 +17,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
 
-    <!-- Favicons y Iconos Estándar (Rutas Corregidas) -->
+    <!-- Favicons y Iconos Estándar -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -25,13 +25,13 @@
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icon-512x512.png">
     <link rel="icon" type="image/png" href="assets/images/os.png">
 
-    <!-- Iconos para iOS (Rutas Corregidas) -->
+    <!-- Iconos para iOS -->
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
     
-    <!-- Splash screens para iOS (Rutas Corregidas) -->
+    <!-- Splash screens para iOS -->
     <link rel="apple-touch-startup-image" href="assets/images/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
     <link rel="apple-touch-startup-image" href="assets/images/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
@@ -45,7 +45,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Estilos para el Chatbot y Layout Adaptativo -->
+    <!-- Estilos para el Chatbot con Voz -->
     <style>
         :root {
             --green-light: #22c55e;
@@ -168,6 +168,32 @@
             word-break: break-word;
         }
 
+        /* Estilos para botones de voz */
+        .voice-button {
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        .voice-button:hover {
+            transform: scale(1.05);
+        }
+        .voice-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Animación de pulso para botones activos */
+        .voice-button.animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
         @media (max-width: 640px) {
             .chatbot-message-text {
                 font-size: 1rem;
@@ -243,7 +269,6 @@
                     <li>Vigencia 03 años en instalación.</li>
                     <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
                     <li>
-                        <!-- CAMBIO: Se aplica un color azul más oscuro a los enlaces -->
                         <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 93/1985</a>,
                         <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 261 (IV.4)</a>, y
                         <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-800 dark:text-blue-400 hover:underline">Dec. 32/2024</a>.
@@ -285,40 +310,86 @@
         </footer>
    </div>
 
-    <!-- ===== INICIO DEL CHATBOT FLOTANTE ===== -->
+    <!-- ===== INICIO DEL CHATBOT FLOTANTE CON VOZ ===== -->
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] dark:bg-gray-800/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800 dark:text-white">
-                <div class="flex items-center space-x-3"><div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center border-2 border-green-400/80 flex-shrink-0 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" /></svg></div><div><h1 class="text-base font-bold">Asistente OS10</h1><p class="text-xs text-gray-500 dark:text-gray-400">Seguridad Privada Chile</p></div></div>
-                <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center border-2 border-green-400/80 flex-shrink-0 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L2.024 5.215A12.003 12.003 0 0010 18.056l.002.002.002-.002a12.003 12.003 0 007.974-12.841L17.834 5.002A11.954 11.954 0 0110 1.944zM8.75 11.25a.75.75 0 001.5 0v-2.5a.75.75 0 00-1.5 0v2.5zM10 6a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Seguridad Privada Chile</p>
+                    </div>
+                </div>
+                
+                <!-- Botones de control de voz en el header -->
+                <div class="flex items-center space-x-2">
+                    <button id="speak-button" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white transition-all" title="Leer último mensaje">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                        </svg>
+                    </button>
+                    
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
             </header>
+            
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
             
             <footer class="p-3 border-t border-green-500/30">
+                <!-- Indicador de auto-lectura -->
+                <div class="mb-2 text-xs text-center text-gray-500 dark:text-gray-400">
+                    <span id="auto-speak-status">🔊 Auto-lectura activada (Alt+S para cambiar)</span>
+                </div>
+                
                 <div class="flex items-center space-x-2 bg-gray-200 dark:bg-gray-900/80 rounded-xl p-2">
-                    <input type="text" id="user-input" placeholder="Escribe tu consulta..." class="flex-1 w-full bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base">
+                    <!-- Botón de micrófono -->
+                    <button id="voice-button" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white transition-all" title="Usar micrófono">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" x2="12" y1="19" y2="23"/>
+                            <line x1="8" x2="16" y1="23" y2="23"/>
+                        </svg>
+                    </button>
+                    
+                    <input type="text" id="user-input" placeholder="Escribe tu consulta o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base">
                     
                     <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                     </button>
-
+                </div>
+                
+                <!-- Instrucciones de voz -->
+                <div class="mt-2 text-xs text-center text-gray-500 dark:text-gray-400">
+                    <span>🎤 Click en micrófono para hablar | 🔊 Los mensajes se leen automáticamente</span>
                 </div>
             </footer>
         </div>
-        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual">
+        
+        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual con Voz">
             <img id="chat-open-icon" src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
         </button>
     </div>
-    <!-- ===== FIN DEL CHATBOT FLOTANTE ===== -->
+    <!-- ===== FIN DEL CHATBOT FLOTANTE CON VOZ ===== -->
    
    <script src="assets/js/main.js" defer></script>
    <script type="module" src="assets/js/chatbot.js" defer></script>
    <script type="module" defer>
+        // Firebase counter script (mantenido igual)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -359,6 +430,31 @@
             }
         }
         runCounter();
+
+        // Script para actualizar el indicador de auto-lectura
+        document.addEventListener('DOMContentLoaded', () => {
+            const autoSpeakStatus = document.getElementById('auto-speak-status');
+            let isAutoSpeakEnabled = true;
+            
+            function updateAutoSpeakStatus() {
+                if (autoSpeakStatus) {
+                    autoSpeakStatus.textContent = isAutoSpeakEnabled ? 
+                        '🔊 Auto-lectura activada (Alt+S para desactivar)' : 
+                        '🔇 Auto-lectura desactivada (Alt+S para activar)';
+                }
+            }
+            
+            // Escuchar cambios en auto-speak
+            document.addEventListener('keydown', (e) => {
+                if (e.altKey && e.key === 's') {
+                    e.preventDefault();
+                    isAutoSpeakEnabled = !isAutoSpeakEnabled;
+                    updateAutoSpeakStatus();
+                }
+            });
+            
+            updateAutoSpeakStatus();
+        });
    </script>
 </body>
 </html>
