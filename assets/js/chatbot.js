@@ -7963,274 +7963,101 @@ República.
      Ministro del Interior y Seguridad Pública`;
 
 // --- OPTIMIZATION: Pre-build a map for faster predefined response lookups ---
-let responseMap = new Map();
-let partialMatchRules = [];
-
-function buildResponseMap() {
-    const newResponseMap = new Map();
-    const newPartialMatchRules = [];
-
-    for (const key in predefinedResponses) {
-        const item = predefinedResponses[key];
-        for (const keyword of item.keywords) {
-            const normalizedKeyword = keyword.toLowerCase().trim();
-            
-            if (normalizedKeyword.startsWith('*') && normalizedKeyword.endsWith('*')) {
-                const cleanKeyword = normalizedKeyword.substring(1, normalizedKeyword.length - 1);
-                if(cleanKeyword) {
-                    newPartialMatchRules.push({ keyword: cleanKeyword, response: item.response });
-                }
-            } else {
-                newResponseMap.set(normalizedKeyword, item.response);
-            }
-        }
-    }
-    responseMap = newResponseMap;
-    partialMatchRules = newPartialMatchRules;
-}
-
-
-// --- UI Functions ---
-function toggleChat() {
-    const isHidden = chatPopup.classList.contains('hidden');
-    if (isHidden) {
-        chatPopup.classList.remove('hidden');
-        chatBackdrop.classList.remove('hidden');
-        chatToggleButton.classList.add('hidden');
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            document.body.classList.add('chat-open-mobile');
-        }
-    } else {
-        chatPopup.classList.add('hidden');
-        chatBackdrop.classList.add('hidden');
-        chatToggleButton.classList.remove('hidden');
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            document.body.classList.remove('chat-open-mobile');
-            if (window.mobileChatManager) window.mobileChatManager.exitKeyboardMode();
-        }
-    }
-}
-
-function markdownToHtml(text) {
-    if (!text) return '';
-    let formattedText = text.replace(/(https?:\/\/[^\s"'<>`]+)/g, '<a href="$1" target="_blank" class="text-blue-700 dark:text-blue-500 hover:underline">$1</a>');
-    formattedText = formattedText.replace(/\*(\*?)(.*?)\1\*/g, '<b>$2</b>');
-    formattedText = formattedText.replace(/^\s*-\s/gm, '🔹 ');
-    return formattedText.replace(/\n/g, '<br>');
-}
-
-function addMessage(sender, text, buttons = []) {
-    const messageElement = document.createElement('div');
-    const isUser = sender === 'user';
-    
-    messageElement.className = `message-fade-in flex items-start max-w-full`;
-    messageElement.classList.toggle('ml-auto', isUser);
-    messageElement.classList.toggle('flex-row-reverse', isUser);
-
-    const bubble = document.createElement('div');
-    bubble.className = isUser 
-        ? 'bg-green-500 rounded-xl rounded-br-none p-3 ml-2 max-w-xs md:max-w-sm' 
-        : 'bot-bubble rounded-xl rounded-bl-none p-3 ml-2 max-w-[95%] md:max-w-sm';
-
-    const p = document.createElement('p');
-    p.className = isUser ? 'text-white chatbot-message-text' : 'text-gray-700 dark:text-gray-200 chatbot-message-text';
-    
-    if (isUser) {
-        p.textContent = text;
-    } else {
-        p.innerHTML = markdownToHtml(text);
-    }
-    
-    bubble.appendChild(p);
-    
-    if (!isUser && buttons.length > 0) {
-        const buttonContainer = document.createElement('div');
-        buttonContainer.className = 'mt-2 flex flex-col space-y-2';
-        buttons.forEach(buttonText => {
-            const button = document.createElement('button');
-            button.textContent = buttonText;
-            button.className = 'bg-green-100 dark:bg-gray-700 border border-green-500/50 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg hover:bg-green-200 dark:hover:bg-gray-600 transition-colors w-full text-left font-medium';
-            button.onclick = () => {
-                userInput.value = buttonText;
-                handleSendMessage();
-            };
-            buttonContainer.appendChild(button);
-        });
-        bubble.appendChild(buttonContainer);
-    }
-
-    const avatar = document.createElement('div');
-    if (isUser) {
-        avatar.className = 'w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center font-bold text-sm flex-shrink-0 text-gray-600 dark:text-gray-300';
-        avatar.textContent = 'U';
-    } else {
-        avatar.className = 'w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1';
-        avatar.innerHTML = `<img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">`;
-    }
-
-    messageElement.appendChild(avatar);
-    messageElement.appendChild(bubble);
-    chatMessages.appendChild(messageElement);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function showTypingIndicator(show) {
-    let indicator = document.getElementById('typing-indicator');
-    if (show && !indicator) {
-        indicator = document.createElement('div');
-        indicator.id = 'typing-indicator';
-        indicator.className = 'message-fade-in flex items-start';
-        indicator.innerHTML = `
-            <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
-                 <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
-            </div>
-            <div class="bot-bubble rounded-xl rounded-bl-none p-3 ml-2 typing-indicator">
-                <span></span><span></span><span></span>
-            </div>
-        `;
-        chatMessages.appendChild(indicator);
+ */
+    function appendMessage(sender, html) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', `${sender}-message`);
+        // Usamos innerHTML para que el texto formateado por marked.js se renderice correctamente
+        messageElement.innerHTML = html;
+        chatMessages.appendChild(messageElement);
+        // Hace scroll hacia el último mensaje
         chatMessages.scrollTop = chatMessages.scrollHeight;
-    } else if (!show && indicator) {
-        indicator.remove();
     }
-}
-
-function getPredefinedResponse(text) {
-    const lowerCaseText = text.toLowerCase().trim();
     
-    if (responseMap.has(lowerCaseText)) {
-        return responseMap.get(lowerCaseText);
+    // Muestra el mensaje de bienvenida inicial
+    appendMessage('assistant', marked.parse(history[1].parts[0].text));
+
+
+    /**
+     * Muestra un indicador de "escribiendo..."
+     */
+    function showTypingIndicator() {
+        const typingElement = document.createElement('div');
+        typingElement.classList.add('message', 'assistant-message', 'typing-indicator');
+        typingElement.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(typingElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    for (const rule of partialMatchRules) {
-        if (lowerCaseText.includes(rule.keyword)) {
-            return rule.response;
+    /**
+     * Elimina el indicador de "escribiendo..."
+     */
+    function removeTypingIndicator() {
+        const indicator = document.querySelector('.typing-indicator');
+        if (indicator) {
+            indicator.remove();
         }
     }
 
-    return null;
-}
+    /**
+     * Envía el mensaje del usuario a la API de Gemini y muestra la respuesta.
+     */
+    async function sendMessage() {
+        const message = userInput.value.trim();
+        if (message === '') return;
 
-// --- CÓDIGO NUEVO: Función para obtener el contexto de la página ---
-function getPageContext() {
-    let context = "";
-    // Asegúrate de que los IDs (#nosotros, #servicios, etc.) existan en tu archivo index.html
-    const sections = document.querySelectorAll('#nosotros, #servicios, #politicas, #contacto');
-    
-    sections.forEach(section => {
-        if (section) {
-            const title = section.querySelector('h2, h3');
-            context += `--- SECCIÓN: ${title ? title.innerText.toUpperCase() : section.id.toUpperCase()} ---\n`;
-            context += section.innerText + "\n\n";
+        // Muestra el mensaje del usuario y limpia el input
+        appendMessage('user', message);
+        userInput.value = '';
+        showTypingIndicator();
+
+        // Prepara el historial para la llamada a la API
+        const chatHistoryForAPI = [...history, { role: "user", parts: [{ text: message }] }];
+
+        // La clave de API se dejará vacía para que el entorno de Canvas la inyecte.
+        const apiKey = ""; 
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        try {
+            // Llamada directa a la API de Google
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ contents: chatHistoryForAPI }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Error en la respuesta de la API:", errorData);
+                throw new Error(`Error del servidor: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Valida que la respuesta tenga el formato esperado
+            if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.length > 0) {
+                const assistantMessage = data.candidates[0].content.parts[0].text;
+                
+                removeTypingIndicator();
+                // Usa marked.parse para renderizar la respuesta con formato
+                appendMessage('assistant', marked.parse(assistantMessage));
+
+                // Actualiza el historial de conversación
+                history.push({ role: "user", parts: [{ text: message }] });
+                history.push({ role: "model", parts: [{ text: assistantMessage }] });
+
+            } else {
+                console.error("Estructura de respuesta inválida:", data);
+                throw new Error("Respuesta inesperada del asistente.");
+            }
+
+        } catch (error) {
+            removeTypingIndicator();
+            // Muestra un mensaje de error en el chat
+            appendMessage('assistant', `Lo siento, ocurrió un error. (${error.message})`);
+            console.error('Error al enviar mensaje:', error);
         }
-    });
-
-    if (context.trim() === "") {
-        return "No se encontró contexto en la página.";
     }
-    
-    return context;
-}
-
-
-// --- API Communication ---
-async function handleSendMessage() {
-    const userText = userInput.value.trim();
-    if (!userText) return;
-
-    addMessage('user', userText);
-    userInput.value = '';
-    
-    const predefinedResponse = getPredefinedResponse(userText);
-    if (predefinedResponse) {
-        setTimeout(() => {
-            addMessage('bot', predefinedResponse);
-            chatHistory.push({ role: "user", parts: [{ text: userText }] });
-            chatHistory.push({ role: "model", parts: [{ text: predefinedResponse }] });
-        }, 500);
-        return;
-    }
-    
-    showTypingIndicator(true);
-    chatHistory.push({ role: "user", parts: [{ text: userText }] });
-
-    try {
-        // --- CÓDIGO MODIFICADO: Se obtiene el contexto y se envía a la API ---
-        const pageContext = getPageContext();
-
-        const payload = {
-            contents: chatHistory,
-            systemInstruction: {
-                parts: [{ text: systemPrompt }]
-            },
-            // Se agrega el contexto al payload que se envía al backend
-            context: pageContext 
-        };
-
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error?.message || `Error del servidor: ${response.status}`);
-        }
-
-        const data = await response.json();
-        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No obtuve una respuesta.";
-        
-        chatHistory.push({ role: "model", parts: [{ text: botText }] });
-        addMessage('bot', botText);
-
-    } catch (error) {
-        console.error('Error al contactar el proxy de la API:', error);
-        addMessage('bot', `Lo siento, ocurrió un error al contactar al asistente. (${error.message})`);
-    } finally {
-        showTypingIndicator(false);
-    }
-}
-
-// --- Initialization ---
-function init() {
-    if (!chatToggleButton) {
-        console.error("Chatbot UI elements not found. Initialization failed.");
-        return;
-    }
-    
-    buildResponseMap();
-
-    // --- Event Listeners ---
-    sendButton.addEventListener('click', handleSendMessage);
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            handleSendMessage();
-        }
-    });
-    
-    // --- Mobile-Specific Keyboard Logic ---
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) {
-        // ... (Tu lógica para móviles va aquí, la he omitido por brevedad)
-    } else {
-        // Desktop-only listeners
-        chatToggleButton.addEventListener('click', toggleChat);
-        internalCloseBtn.addEventListener('click', toggleChat);
-        chatBackdrop.addEventListener('click', toggleChat);
-    }
-
-    // --- Initial State ---
-    chatHistory = [];
-    
-    const welcomeMessageText = "¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?";
-    const welcomeButtons = ["Menú", "Menú O.S.10", "Valores"];
-    addMessage('bot', welcomeMessageText, welcomeButtons);
-    
-    chatHistory.push({ role: "model", parts: [{ text: welcomeMessageText }] });
-
-    console.log("Chatbot initialized successfully.");
-}
-
-document.addEventListener('DOMContentLoaded', init);
+});
