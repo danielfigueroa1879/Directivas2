@@ -12,8 +12,6 @@ const sendButton = document.getElementById('send-button');
 const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
-
-
 // --- Estilos del Chatbot Adaptados ---
 const styles = `
     :root {
@@ -29,14 +27,14 @@ const styles = `
     }
     #chat-widget-container {
         position: fixed;
-        bottom: 2rem; /* Reducido para dar más espacio vertical */
+        bottom: 1rem; /* Más cerca del borde inferior */
         right: 1rem; 
         z-index: 1000;
     }
     @media (min-width: 1280px) {
         #chat-widget-container {
             right: calc((100vw - 800px) / 2);
-            bottom: 2rem; /* Ajustado también aquí */
+            bottom: 1rem; /* Más abajo también en pantallas grandes */
         }
     }
     #chat-popup {
@@ -181,7 +179,7 @@ const styles = `
             margin-right: auto;
         }
         #chat-widget-container {
-            bottom: 1rem; /* Menos espacio en móvil */
+            bottom: 0.5rem; /* Aún más abajo en móvil */
         }
         #chat-widget-container.fullscreen {
             top: 0;
@@ -214,7 +212,6 @@ const styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = styles;
 document.head.appendChild(styleSheet);
-
 // --- Predefined Responses ---
 const predefinedResponses = {
     'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '*ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
