@@ -545,23 +545,17 @@
                         }
                     }
                 };
-       
-            let finalPrompt;
+                
+                let finalPrompt;
                 if (response) {
-                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Un usuario preguntó sobre "${text}". La información relevante encontrada en nuestra base de datos es: "${response}". 
-
-IMPORTANTE: Sé BREVE y DIRECTO. Da una respuesta corta y concisa (máximo 2-3 líneas) a menos que la pregunta sea compleja o requiera explicación detallada. No repitas información innecesaria.`;
+                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Un usuario preguntó sobre "${text}". La información relevante encontrada en nuestra base de datos es: "${response}". Por favor, analiza esta información y úsala para darle al usuario una respuesta completa y amigable. No te limites a repetir la información, explícala en el contexto de su pregunta.`;
                 } else {
                     const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
-                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada.
-
-IMPORTANTE: Sé BREVE y DIRECTO. Da respuestas cortas y concisas (máximo 2-3 líneas) a menos que la pregunta sea compleja. Si no tienes información sobre el tema, di brevemente que no tienes esa información y sugiere escribir "menú".
-
-Base de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
-
-                    callApiWithBackoff(finalPrompt);
+                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nBase de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
+                }
+                
+                callApiWithBackoff(finalPrompt);
             }
-
             
             function addTypingIndicator() {
                 const chatMessages = document.getElementById('chat-messages');
