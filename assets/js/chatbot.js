@@ -13,12 +13,13 @@ const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
- const styles = `
+ // He movido los estilos aquí para que puedas editarlos fácilmente.
+    const styles = `
         /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
         /* Puedes cambiar los valores aquí para agrandar el ícono */
         #chat-toggle-button {
             width: 80px;  /* <-- Aumenta este valor para el ancho */
-            height: 80px; /* <-- Aumenta este valor para el alto */
+            height:80px; /* <-- Aumenta este valor para el alto */
         }
         #chat-toggle-button svg {
             width: 38px;  /* <-- Aumenta este valor para el ícono de adentro */
@@ -36,11 +37,18 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
         #chat-popup {
             width: 350px;
             max-width: 90vw;
-            max-height: 60vh; /* <-- Altura máxima para que no se corte */
+            /* --- CAMBIO: Altura máxima ajustada para que siempre quepa en pantalla --- */
+            height: 600px; /* Altura deseada */
+            max-height: calc(100vh - 40px); /* Altura máxima que deja 20px de margen arriba y abajo */
             border-radius: 1rem;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+        }
+        /* --- CAMBIO: Regla para asegurar que el área de mensajes se desplace correctamente --- */
+        #chat-messages {
+            flex-grow: 1;      /* Permite que el área de mensajes crezca */
+            overflow-y: auto;  /* Añade una barra de desplazamiento si es necesario */
         }
     `;
     const styleSheet = document.createElement("style");
