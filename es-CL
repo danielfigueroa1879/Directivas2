@@ -379,42 +379,52 @@
                 speechSynth.cancel();
                 const utterance = new SpeechSynthesisUtterance(cleanText);
 
-                // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
-                let selectedVoice = null;
+// Lógica mejorada para seleccionar voz masculina moderna
+let selectedVoice = null;
 
-                if (availableVoices.length > 0) {
-                    // Prioridad 1: Buscar "Diego"
-                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
+// Lista de nombres femeninos a evitar
+const femaleNames = ['maria', 'carmen', 'laura', 'helena', 'paulina', 'isabelle', 
+                   'sofia', 'camila', 'elena', 'isabel', 'monica', 'marta', 
+                   'lucia', 'ana', 'cristina', 'patricia', 'francisca', 'catalina'];
 
-                    // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
-                    if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
-                    }
+if (availableVoices.length > 0) {
+    // Prioridad 1: Buscar voces masculinas específicas
+    selectedVoice = availableVoices.find(voice => 
+        voice.lang.includes('es') && 
+        (voice.name.toLowerCase().includes('diego') ||
+         voice.name.toLowerCase().includes('pedro') ||
+         voice.name.toLowerCase().includes('jorge') ||
+         voice.name.toLowerCase().includes('carlos') ||
+         voice.name.toLowerCase().includes('antonio') ||
+         voice.name.toLowerCase().includes('miguel'))
+    );
 
-                    // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
-                    if (!selectedVoice) {
-                        const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
-                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
-                    }
+    // Prioridad 2: Buscar por indicadores de género masculino
+    if (!selectedVoice) {
+        selectedVoice = availableVoices.find(voice => 
+            voice.lang.includes('es') && 
+            (voice.name.toLowerCase().includes('male') ||
+             voice.name.toLowerCase().includes('masculino') ||
+             voice.name.toLowerCase().includes('hombre'))
+        );
+    }
 
-                    // Prioridad 4: Como último recurso, tomar la primera voz en español
-                    if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
-                    }
-                }
+    // Prioridad 3: Buscar cualquier voz que NO sea femenina
+    if (!selectedVoice) {
+        selectedVoice = availableVoices.find(voice => 
+            voice.lang.includes('es') && 
+            !femaleNames.some(fname => voice.name.toLowerCase().includes(fname)) &&
+            !voice.name.toLowerCase().includes('female') &&
+            !voice.name.toLowerCase().includes('femenino') &&
+            !voice.name.toLowerCase().includes('mujer')
+        );
+    }
 
-                if (selectedVoice) {
-                    utterance.voice = selectedVoice;
-                    console.log('Usando voz:', selectedVoice.name);
-                } else {
-                    console.warn('No se encontró una voz en español preferida. Se usará la voz por defecto del sistema.');
-                }
-
-                utterance.lang = 'es-CL';
-                utterance.rate = 1.1;
-                utterance.pitch = 0.8; // Tono más bajo para sonar más masculino
-                speechSynth.speak(utterance);
-            }
+    // Prioridad 4: Como último recurso, cualquier voz en español
+    if (!selectedVoice) {
+        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
+    }
+}
 
             function toggleChat() {
                 const popup = document.getElementById('chat-popup');
