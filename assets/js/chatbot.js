@@ -28,17 +28,18 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
         /* --- ESTILOS DE LA VENTANA DEL CHAT --- */
         #chat-widget-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            /* --- CAMBIO: Icono movido más abajo --- */
+            bottom: 15px;
+            right: 15px;
             z-index: 1000;
         }
         #chat-popup {
             width: 350px;
             max-width: 90vw;
-            /* --- CORRECCIÓN FINAL: Se elimina la altura fija --- */
-            /* Ahora la altura se adapta al contenido, con un máximo que respeta los bordes de la pantalla. */
-            /* Esto garantiza que la parte superior y el botón de cerrar SIEMPRE sean visibles. */
-            max-height: calc(100vh - 110px); /* Altura máxima para dejar espacio para el ícono y un margen superior */
+            /* --- CORRECCIÓN DEFINITIVA: Altura adaptable --- */
+            /* Esta regla garantiza que la ventana nunca sea más alta que la pantalla,
+               dejando siempre un margen visible arriba y abajo para que no se corte. */
+            max-height: calc(100vh - 35px); /* 15px de margen inferior + 20px de margen superior */
             border-radius: 1rem;
             overflow: hidden;
             display: flex;
@@ -54,7 +55,8 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
     styleSheet.type = "text/css";
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet);
-    // --- FIN DEL CÓDIGO NUEVO ---
+
+
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
 // --- Predefined Responses ---
