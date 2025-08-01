@@ -321,8 +321,19 @@
         runCounter();
     </script>
     
+    <!-- ===== MODIFICACIÓN AQUÍ ===== -->
     <!-- Cargar las reglas antes que la lógica del chatbot -->
-    <script src="chatbot-rules.js"></script>
+    <script>
+        // Inicializa un objeto de respuestas vacío.
+        // Este objeto será llenado por los archivos de reglas.
+        let responses = {};
+    </script>
+    <!-- Asume que has creado una carpeta llamada "rules" -->
+    <script src="rules/chatbot-rules1.js"></script>
+    <script src="rules/chatbot-rules2.js"></script>
+    <!-- Puedes agregar más archivos de reglas aquí, como chatbot-rules3.js -->
+    <!-- <script src="rules/chatbot-rules3.js"></script> -->
+    
 
     <script>
         // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
@@ -490,6 +501,7 @@
                 let response = null;
                 let matchedRule = null;
 
+                // La variable 'responses' ahora contiene las reglas de todos los archivos cargados.
                 for (const ruleKey in responses) {
                     const rule = responses[ruleKey];
                     for (const keyword of rule.keywords) {
@@ -676,3 +688,4 @@
     </script>
 </body>
 </html>
+
