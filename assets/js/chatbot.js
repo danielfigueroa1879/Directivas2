@@ -12,6 +12,7 @@ const sendButton = document.getElementById('send-button');
 const chatBackdrop = document.getElementById('chat-backdrop');
 const chatWidgetContainer = document.getElementById('chat-widget-container');
 const internalCloseBtn = document.getElementById('chat-close-btn-internal');
+
     // --- Estilos del Chatbot ---
     const styles = `
         /* --- ESTILOS DEL ÍCONO DEL CHATBOT --- */
@@ -34,12 +35,10 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
         #chat-popup {
             width: 350px;
             max-width: 90vw;
-            /* --- CORRECCIÓN DEFINITIVA: Altura adaptable --- */
-            /* Se establece una altura base (65% de la pantalla) y un límite máximo
-               para asegurar que siempre haya un margen de 20px arriba y abajo.
-               Esto evita que la ventana se corte. */
-            height: 65vh;
-            max-height: calc(100vh - 40px);
+            /* --- CORRECCIÓN FINAL: Se elimina la altura fija --- */
+            /* Ahora la altura se adapta al contenido, con un máximo que respeta los bordes de la pantalla. */
+            /* Esto garantiza que la parte superior y el botón de cerrar SIEMPRE sean visibles. */
+            max-height: calc(100vh - 110px); /* Altura máxima para dejar espacio para el ícono y un margen superior */
             border-radius: 1rem;
             overflow: hidden;
             display: flex;
@@ -51,6 +50,12 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
             overflow-y: auto;
         }
     `;
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+
+
     // --- FIN DEL CÓDIGO NUEVO ---
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
