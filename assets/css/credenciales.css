@@ -398,9 +398,3 @@ h3, h4 {
     .table-container { overflow: visible; }
     img { max-width: 300px !important; }
 }
-#chat-widget-container {
-  position: fixed;
-  bottom: 20px; /* <--- Reduce este valor para bajar el ícono (ej: 10px) */
-  right: 20px;  /* <--- Ajusta la posición horizontal si es necesario */
-  z-index: 50;
-}
