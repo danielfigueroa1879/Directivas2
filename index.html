@@ -86,6 +86,27 @@
         .chat-messages-container { 
             scroll-behavior: smooth; 
         }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            margin: 0 2px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
 
         /* Ajuste para pantallas más grandes */
         @media (min-width: 1024px) {
@@ -635,7 +656,7 @@
                  handleMessage();
             }
 
-            function handleMessage() {
+            async function handleMessage() {
                 const input = document.getElementById('user-input');
                 const text = input.value.trim();
                 const lowerText = text.toLowerCase();
@@ -647,30 +668,87 @@
                 
                 let response = null;
 
-                // Iterate through all rules
                 for (const ruleKey in responses) {
                     const rule = responses[ruleKey];
-                    // Iterate through keywords for each rule
                     for (const keyword of rule.keywords) {
-                        // Clean the keyword by removing asterisks for matching
                         const cleanedKeyword = keyword.replace(/\*/g, '');
                         if (lowerText.includes(cleanedKeyword)) {
                             response = rule.response;
-                            break; // Exit the inner loop once a match is found
+                            break;
                         }
                     }
-                    if (response) {
-                        break; // Exit the outer loop as well
+                    if (response) break;
+                }
+                
+                if (response) {
+                    setTimeout(() => addMessage('bot', response), 500);
+                } else {
+                    addTypingIndicator();
+                    try {
+                        const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
+                        const prompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Tu base de conocimiento se limita estrictamente a las siguientes reglas. Responde la consulta del usuario basándote únicamente en estas reglas. Si la consulta no se puede responder con las reglas proporcionadas, indica amablemente que no tienes información sobre ese tema. No utilices ningún conocimiento externo.\n\nReglas:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
+
+                        let chatHistory = [];
+                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                        const payload = { contents: chatHistory };
+                        const apiKey = ""; 
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                        
+                        const apiResponse = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!apiResponse.ok) {
+                            throw new Error(`API request failed with status ${apiResponse.status}`);
+                        }
+
+                        const result = await apiResponse.json();
+                        removeTypingIndicator();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const apiText = result.candidates[0].content.parts[0].text;
+                            addMessage('bot', apiText);
+                        } else {
+                            addMessage('bot', 'Lo siento, no pude procesar tu solicitud en este momento.');
+                        }
+                    } catch (error) {
+                        console.error("Error calling Gemini API:", error);
+                        removeTypingIndicator();
+                        addMessage('bot', 'Hubo un problema al conectar con el asistente. Por favor, intenta de nuevo.');
                     }
                 }
-                
-                // Default response if no match is found
-                if (!response) {
-                    response = '🤖 No encontré información sobre eso. Escribe "menú" para ver las opciones principales.';
-                }
-                
-                setTimeout(() => addMessage('bot', response), 500);
             }
+            
+            function addTypingIndicator() {
+                const chatMessages = document.getElementById('chat-messages');
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.className = 'flex items-start space-x-2 mb-3';
+                typingDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg">
+                        <div class="typing-indicator">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function removeTypingIndicator() {
+                const indicator = document.getElementById('typing-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            }
+
 
             function startVoiceInput() {
                 if (!recognition) return;
@@ -731,11 +809,12 @@
 
             // Mensaje de bienvenida
             setTimeout(() => {
-                const welcomeButtons = ['Menú', 'Valores', 'Horario'];
+                const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario'];
                 addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
 </body>
 </html>
+
 
