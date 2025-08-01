@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Estilos del Chatbot Adaptados ---
     // He tomado los estilos de tu HTML y los he puesto aquí.
+
+    // --- Estilos del Chatbot Adaptados ---
+    // He simplificado y corregido los estilos para bajar el ícono en PC.
     const styles = `
         :root {
             --green-light: #22c55e;
@@ -19,22 +22,23 @@ document.addEventListener('DOMContentLoaded', function () {
         body.chat-open-mobile {
             overflow: hidden;
         }
-        .card-container {
-            max-width: 800px;
-            margin: 1.5rem auto;
-        }
+        
+        /* --- CORRECCIÓN DE POSICIÓN --- */
         #chat-widget-container {
             position: fixed;
-            bottom: 1rem; /* Posición base más abajo */
-            right: 1rem; 
+            bottom: 20px; /* Posición base para móviles */
+            right: 20px; 
             z-index: 1000;
         }
-        @media (min-width: 1280px) {
+
+        /* Regla específica para PC (pantallas de 1024px o más) */
+        @media (min-width: 1024px) {
             #chat-widget-container {
-                right: calc((100vw - 800px) / 2);
-                bottom: 1rem !important; /* Forzar la posición más abajo en PC */
+                bottom: 30px; /* <-- Mueve el ícono MÁS ABAJO en PC */
+                right: 30px;  /* <-- Lo separa un poco más del borde en PC */
             }
         }
+        
         #chat-popup {
             font-family: 'Poppins', sans-serif;
             position: absolute;
@@ -42,8 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 0;
             width: 90vw;
             max-width: 400px;
-            /* Altura dinámica que se ajusta al viewport */
-            height: min(70vh, 500px); /* Usa el menor entre 70vh y 500px */
             max-height: calc(100vh - 120px); /* Asegura que no se salga de la pantalla */
             transform-origin: bottom right;
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
@@ -51,21 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
             overflow: hidden;
             display: flex;
             flex-direction: column;
-        }
-        
-        /* Para pantallas muy pequeñas en altura */
-        @media (max-height: 600px) {
-            #chat-popup {
-                height: calc(100vh - 150px);
-                bottom: 80px;
-            }
-        }
-        
-        @media (max-height: 700px) and (min-height: 601px) {
-            #chat-popup {
-                height: 60vh;
-                max-height: 400px;
-            }
         }
         
         #chat-popup.hidden {
@@ -88,11 +75,11 @@ document.addEventListener('DOMContentLoaded', function () {
             transition: all 0.3s ease-in-out;
             will-change: transform;
             cursor: pointer;
-            z-index: 1; /* Asegurar que esté sobre el popup */
+            z-index: 1;
         }
         #chat-toggle-button:hover {
             transform: scale(1.05) translateZ(0);
-            animation-play-state: paused; /* Pausa la animación al hover */
+            animation-play-state: paused;
         }
         .dark #chat-toggle-button {
             border-color: var(--green-dark);
@@ -107,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
             scrollbar-width: thin;
             touch-action: pan-y;
             overscroll-behavior-y: contain;
-            flex: 1; /* Permite que crezca dentro del flex container */
+            flex: 1;
             overflow-y: auto;
         }
         .light .chat-messages-container { scrollbar-color: #a1a1aa #e5e7eb; }
@@ -156,30 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .chatbot-message-text {
                 font-size: 1rem;
             }
-        }
-
-        @media (min-width: 1200px) {
-            #chat-backdrop {
-                display: none;
-            }
-        }
-        @media (max-width: 640px) {
-            .card-container {
-                width: 99.7%;
-                margin: 0.5rem auto;
-                padding: 1rem; 
-                box-sizing: border-box;
-                border-radius: 0.75rem;
-            }
-            .section-card {
-                width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            #chat-widget-container {
-                bottom: 0.5rem; /* Aún más abajo en móvil */
-            }
-            #chat-widget-container.fullscreen {
+             #chat-widget-container.fullscreen {
                 top: 0;
                 left: 0;
                 right: 0;
