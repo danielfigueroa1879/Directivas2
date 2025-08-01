@@ -1,18 +1,32 @@
-/**
- * chatbot.js
- * Se comunica con la API de Gemini a través de un proxy seguro en /api/gemini.
- */
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a los elementos del DOM
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const closeChat = document.getElementById('close-chat');
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
 
-// --- DOM Element Selection ---
-const chatPopup = document.getElementById('chat-popup');
-const chatToggleButton = document.getElementById('chat-toggle-button');
-const chatMessages = document.getElementById('chat-messages');
-const userInput = document.getElementById('user-input');
-const sendButton = document.getElementById('send-button');
-const chatBackdrop = document.getElementById('chat-backdrop');
-const chatWidgetContainer = document.getElementById('chat-widget-container');
-const internalCloseBtn = document.getElementById('chat-close-btn-internal');
+    // Muestra u oculta la ventana del chat
+    chatToggle.addEventListener('click', () => {
+        chatWindow.classList.toggle('hidden');
+        chatToggle.classList.toggle('hidden');
+    });
 
+    closeChat.addEventListener('click', () => {
+        chatWindow.classList.add('hidden');
+        chatToggle.classList.remove('hidden');
+    });
+
+    // Envía el mensaje al presionar el botón
+    sendButton.addEventListener('click', sendMessage);
+
+    // Envía el mensaje al presionar "Enter"
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
 
 // --- Predefined Responses ---
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
