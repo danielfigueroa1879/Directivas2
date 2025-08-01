@@ -684,42 +684,56 @@
                     setTimeout(() => addMessage('bot', response), 500);
                 } else {
                     addTypingIndicator();
-                    try {
-                        const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
-                        const prompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Tu base de conocimiento se limita estrictamente a las siguientes reglas. Responde la consulta del usuario basándote únicamente en estas reglas. Si la consulta no se puede responder con las reglas proporcionadas, indica amablemente que no tienes información sobre ese tema. No utilices ningún conocimiento externo.\n\nReglas:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
+                    const callApiWithBackoff = async (retries = 3, delay = 1000) => {
+                        try {
+                            const prompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nConsulta: "${text}"`;
 
-                        let chatHistory = [];
-                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                        const payload = { contents: chatHistory };
-                        const apiKey = ""; 
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                        
-                        const apiResponse = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
+                            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                            const payload = { contents: chatHistory };
+                            const apiKey = ""; 
+                            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                            
+                            const apiResponse = await fetch(apiUrl, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(payload)
+                            });
 
-                        if (!apiResponse.ok) {
-                            throw new Error(`API request failed with status ${apiResponse.status}`);
+                            if ((apiResponse.status === 429 || apiResponse.status >= 500) && retries > 0) {
+                                console.log(`Retrying API call... ${retries} retries left.`);
+                                await new Promise(resolve => setTimeout(resolve, delay));
+                                return callApiWithBackoff(retries - 1, delay * 2);
+                            }
+
+                            if (!apiResponse.ok) {
+                                throw new Error(`API request failed with status ${apiResponse.status}`);
+                            }
+
+                            const result = await apiResponse.json();
+                            removeTypingIndicator();
+
+                            if (result.candidates && result.candidates.length > 0 &&
+                                result.candidates[0].content && result.candidates[0].content.parts &&
+                                result.candidates[0].content.parts.length > 0) {
+                                const apiText = result.candidates[0].content.parts[0].text;
+                                addMessage('bot', apiText);
+                            } else {
+                                addMessage('bot', 'No pude generar una respuesta. Por favor, reformula tu pregunta.');
+                            }
+                        } catch (error) {
+                             if (retries > 0) {
+                                console.log(`Retrying API call due to error... ${retries} retries left.`);
+                                await new Promise(resolve => setTimeout(resolve, delay));
+                                return callApiWithBackoff(retries - 1, delay * 2);
+                            } else {
+                                console.error("Error calling Gemini API after retries:", error);
+                                removeTypingIndicator();
+                                addMessage('bot', 'Hubo un problema al conectar con el asistente. Por favor, intenta de nuevo más tarde.');
+                            }
                         }
-
-                        const result = await apiResponse.json();
-                        removeTypingIndicator();
-
-                        if (result.candidates && result.candidates.length > 0 &&
-                            result.candidates[0].content && result.candidates[0].content.parts &&
-                            result.candidates[0].content.parts.length > 0) {
-                            const apiText = result.candidates[0].content.parts[0].text;
-                            addMessage('bot', apiText);
-                        } else {
-                            addMessage('bot', 'Lo siento, no pude procesar tu solicitud en este momento.');
-                        }
-                    } catch (error) {
-                        console.error("Error calling Gemini API:", error);
-                        removeTypingIndicator();
-                        addMessage('bot', 'Hubo un problema al conectar con el asistente. Por favor, intenta de nuevo.');
-                    }
+                    };
+                    
+                    callApiWithBackoff();
                 }
             }
             
@@ -816,5 +830,4 @@
     </script>
 </body>
 </html>
-
 
