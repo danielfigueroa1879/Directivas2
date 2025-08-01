@@ -9,10 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatWidgetContainer = document.getElementById('chat-widget-container');
     const internalCloseBtn = document.getElementById('chat-close-btn-internal');
 
-    // --- Estilos del Chatbot Adaptados ---
-    // He tomado los estilos de tu HTML y los he puesto aquí.
-
-    // --- Estilos del Chatbot Adaptados ---
+       // --- Estilos del Chatbot Adaptados ---
     // He simplificado y corregido los estilos para bajar el ícono en PC.
     const styles = `
         :root {
@@ -26,16 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
         /* --- CORRECCIÓN DE POSICIÓN --- */
         #chat-widget-container {
             position: fixed;
-            bottom: 20px; /* Posición base para móviles */
+            bottom: 20px; /* Posición base para móviles y pantallas pequeñas */
             right: 20px; 
             z-index: 1000;
+            transition: bottom 0.3s ease, right 0.3s ease; /* Añade una transición suave */
         }
 
         /* Regla específica para PC (pantallas de 1024px o más) */
+        /* AHORA EL CAMBIO ES MÁS GRANDE Y NOTABLE */
         @media (min-width: 1024px) {
             #chat-widget-container {
-                bottom: 30px; /* <-- Mueve el ícono MÁS ABAJO en PC */
-                right: 30px;  /* <-- Lo separa un poco más del borde en PC */
+                bottom: 50px; /* <-- Mueve el ícono MÁS ARRIBA (lejos del borde inferior) en PC */
+                right: 50px;  /* <-- Lo separa más del borde derecho en PC */
             }
         }
         
