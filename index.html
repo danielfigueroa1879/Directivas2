@@ -353,7 +353,17 @@
             }
 
             function speakText(text) {
-                const cleanText = text.replace(/🤖|👮🏻‍♂️|📋|🕐|💰|😊|👋|⬇️|👇🏽|☝🏼|✅|⚠️|❌|🧙🏻‍♂️|🚦|➢/g, '').replace(/<br>/g, '. ').replace(/<strong>/g, '').replace(/<\/strong>/g, '').replace(/\n/g, '. ').replace(/\*/g, '');
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
+                const cleanText = text
+                    .replace(urlRegex, '')
+                    .replace(emojiRegex, '')
+                    .replace(/<br>/g, '. ')
+                    .replace(/<strong>/g, '')
+                    .replace(/<\/strong>/g, '')
+                    .replace(/\n/g, '. ')
+                    .replace(/\*/g, '');
+                
                 if (!cleanText.trim() || !speechSynth) return;
 
                 speechSynth.cancel();
@@ -647,5 +657,3 @@
     </script>
 </body>
 </html>
-
-
