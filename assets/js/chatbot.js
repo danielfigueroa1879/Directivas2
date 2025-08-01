@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
             z-index: 1;
         }
         #chat-toggle-button:hover {
-            transform: scale(1.05) translateZ(0);
+            transform: scale(0.05) translateZ(0);
             animation-play-state: paused;
         }
         .dark #chat-toggle-button {
