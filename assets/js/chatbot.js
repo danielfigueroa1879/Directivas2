@@ -54,8 +54,6 @@ const internalCloseBtn = document.getElementById('chat-close-btn-internal');
     styleSheet.type = "text/css";
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet);
-
-
     // --- FIN DEL CÓDIGO NUEVO ---
 // (Tu lista de respuestas predefinidas va aquí, la he omitido por brevedad pero debe estar en tu archivo)
 
