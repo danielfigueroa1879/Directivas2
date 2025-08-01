@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
             position: absolute; 
             bottom: 0;
             right: 0;
-            width: 68px;
-            height: 68px;
-            border-radius: 1.25rem;
+            width: 90px;
+            height: 90px;
+            border-radius: 0.25rem;
             border: 3px solid var(--green-light);
             background-color: white;
             box-shadow: 0 4px 15px -2px rgba(34,197,94,0.4);
