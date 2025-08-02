@@ -137,7 +137,7 @@ const responses =  {
     'rule_255': { keywords: ["*examen moto*","examen para moto","moto"], response: '🤖🧙🏼‍♂️ *Examen moto*\nhttps://dal5.short.gy/ExMoto' },
     'rule_257': { keywords: ["gestudio","estudiar","gestor académico","gestor"], response: '🤖🧙🏼‍♂️✅\n\nhttps://gestudios.netlify.app/' },
     'rule_258': { keywords: ["modelos de solicitud","modelo","punto 6","punto 7"], response: '🤖🧙🏼‍♂️✅\n\nhttps://www.zosepcar.cl/OS10.php#Modelo' },
-    //'rule_259': { keywords: ["*Hola*", "como estamos","que tal","como va", "de que ta las das", ], response: 'Hola que tal, cuenteme en que lo puedo ayudar' },
+    'rule_259': { keywords: ["*Hola*", "como estamos","que tal","como va", "de que ta las das", ], response: 'Hola que tal, cuenteme en que lo puedo ayudar' },
     'rule_260': { keywords: ["*como estas*"], response: 'Bien aqui trabajando para variar y tu ¿como estas?' },
     // Reglas conversacionales para el chatbot OS10 Coquimbo - Interacciones iniciales y análisis inteligente
 // Reglas conversacionales para el chatbot OS10 Coquimbo - Interacciones iniciales y análisis inteligente
