@@ -445,11 +445,37 @@
                     `;
                 } else {
                     messageDiv.className = 'flex items-start space-x-2 mb-3';
-                    const urlRegex = /(https?:\/\/[^\s]+)/g;
-                    const formattedText = text
+                    
+                    // =================================================================
+                    // INICIO DE LA CORRECCIÓN: Lógica mejorada para detectar enlaces
+                    // =================================================================
+                    
+                    // 1. Expresión regular mejorada para detectar URLs con o sin http/https
+                    const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^\s]*)?)/g;
+
+                    // 2. Primero, aplicamos los formatos básicos como saltos de línea y negritas
+                    let formattedText = text
                         .replace(/\n/g, '<br>')
-                        .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
-                        .replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline break-all">$1</a>');
+                        .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+
+                    // 3. Luego, usamos la nueva regex con una función de reemplazo para crear los enlaces
+                    formattedText = formattedText.replace(urlRegex, (url) => {
+                        // Limpiamos la URL de posible puntuación al final (ej. un punto o coma)
+                        const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
+                        
+                        // Añadimos 'https://' si el enlace no lo tiene, para que sea un enlace válido
+                        let fullUrl = cleanedUrl;
+                        if (!/^https?:\/\//i.test(fullUrl)) {
+                            fullUrl = 'https://' + fullUrl;
+                        }
+                        
+                        // Devolvemos la etiqueta <a> completa y funcional
+                        return `<a href="${fullUrl}" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${cleanedUrl}</a>`;
+                    });
+
+                    // =================================================================
+                    // FIN DE LA CORRECCIÓN
+                    // =================================================================
 
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
                         `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
@@ -678,4 +704,3 @@
     </script>
 </body>
 </html>
-
