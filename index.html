@@ -367,6 +367,17 @@
                 document.getElementById('voice-btn').style.display = 'none';
             }
 
+            /* 
+            ===== MEJORAS DE VOZ IMPLEMENTADAS =====
+            - Velocidad reducida (0.95) para mayor naturalidad
+            - Tono más grave (0.75) para voz masculina
+            - Volumen ajustado (0.9) para suavidad
+            - Pausas naturales mejoradas en puntuación
+            - Selección inteligente de voces masculinas
+            - Priorización de voces Natural/Neural de alta calidad
+            - Eventos de control para mejor experiencia
+            */
+            
             function speakText(text) {
                 const urlRegex = /(https?:\/\/[^\s]+)/g;
                 const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
@@ -384,25 +395,50 @@
                 speechSynth.cancel();
                 const utterance = new SpeechSynthesisUtterance(cleanText);
 
-                // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
+                // Lógica mejorada para seleccionar la mejor voz masculina disponible
                 let selectedVoice = null;
 
                 if (availableVoices.length > 0) {
-                    // Prioridad 1: Buscar "Diego"
-                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
-
-                    // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
-                    if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
+                    // Prioridad 1: Buscar voces específicamente masculinas y naturales
+                    const preferredMaleVoices = ['diego', 'jorge', 'carlos', 'miguel', 'antonio', 'manuel', 'pablo', 'alejandro'];
+                    for (const maleName of preferredMaleVoices) {
+                        selectedVoice = availableVoices.find(voice => 
+                            voice.name.toLowerCase().includes(maleName) && 
+                            voice.lang.startsWith('es')
+                        );
+                        if (selectedVoice) break;
                     }
 
-                    // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
+                    // Prioridad 2: Buscar voces que contengan "male" o "masculino"
                     if (!selectedVoice) {
-                        const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
-                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
+                        selectedVoice = availableVoices.find(voice => 
+                            (voice.name.toLowerCase().includes('male') || 
+                             voice.name.toLowerCase().includes('masculino') ||
+                             voice.name.toLowerCase().includes('hombre')) && 
+                            voice.lang.startsWith('es')
+                        );
                     }
 
-                    // Prioridad 4: Como último recurso, tomar la primera voz en español
+                    // Prioridad 3: Buscar voces que NO sean explícitamente femeninas
+                    if (!selectedVoice) {
+                        const femaleIndicators = /female|femenino|mujer|maria|carmen|laura|helena|paulina|isabelle|sofia|camila|elena|isabel|ana|lucia|patricia|monica|andrea|cristina/i;
+                        selectedVoice = availableVoices.find(voice => 
+                            voice.lang.startsWith('es') && 
+                            !femaleIndicators.test(voice.name)
+                        );
+                    }
+
+                    // Prioridad 4: Buscar voces "Natural" o "Neural" que suelen ser de mejor calidad
+                    if (!selectedVoice) {
+                        selectedVoice = availableVoices.find(voice => 
+                            voice.lang.startsWith('es') && 
+                            (voice.name.toLowerCase().includes('natural') || 
+                             voice.name.toLowerCase().includes('neural') ||
+                             voice.name.toLowerCase().includes('wavenet'))
+                        );
+                    }
+
+                    // Prioridad 5: Como último recurso, tomar la primera voz en español
                     if (!selectedVoice) {
                         selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
                     }
@@ -416,8 +452,37 @@
                 }
 
                 utterance.lang = 'es-CL';
-                utterance.rate = 1.1;
-                utterance.pitch = 0.8; // Tono más bajo para sonar más masculino
+                
+                // Configuración mejorada para voz más natural y menos robótica
+                utterance.rate = 0.95;     // Velocidad más lenta y natural
+                utterance.pitch = 0.75;    // Tono más grave y masculino
+                utterance.volume = 0.9;    // Volumen ligeramente reducido para suavidad
+                
+                // Agregar pausas naturales para mejorar la fluidez
+                const textWithPauses = cleanText
+                    .replace(/\./g, '. ')
+                    .replace(/,/g, ', ')
+                    .replace(/:/g, ': ')
+                    .replace(/;/g, '; ')
+                    .replace(/\?/g, '? ')
+                    .replace(/!/g, '! ')
+                    .replace(/\s+/g, ' ');
+                
+                utterance.text = textWithPauses;
+                
+                // Eventos para mejorar la experiencia
+                utterance.onstart = function() {
+                    console.log('Iniciando síntesis de voz...');
+                };
+                
+                utterance.onend = function() {
+                    console.log('Síntesis de voz completada.');
+                };
+                
+                utterance.onerror = function(event) {
+                    console.error('Error en síntesis de voz:', event.error);
+                };
+                
                 speechSynth.speak(utterance);
             }
 
