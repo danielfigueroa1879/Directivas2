@@ -228,20 +228,7 @@ const responses =  {
     
 'rule_350': { keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*","*empresa de capacitacion*","punto 7"], response: '🤖🧙🏼‍♂️✅ 🧙🏻‍♂️ Estas son algunas empresas de aqui de la region:\n*EMPRESAS DE CAPACITACIÓN 2025* https://d6.short.gy/Cap'},
 'rule_351': { keywords: ["*quien es tu creador*","*quien te creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es el\n*Ingeniero en Informática y Ciberseguridad \nDaniel Elías Figueroa Chacama*' },
-'rule_352': { keywords: ["*bots*", "*bots IA*"], response: 
-'🤖 Bots con IA avanzada:
-➢ Bot Seguridad Privada
-dal5.short.gy/SePriv
-➢ Bot de Ciberseguridad 2024
-dal5.short.gy/Cib
-➢ Bot Abogado Virtual GPT:
-dal5.short.gy/Ab0
-➢ Bot Ley de Tránsito Chile
-dal5.short.gy/LeyTto
-➢ Bot Ley Karin
-dal5.short.gy/lkar'}
-
-
+'rule_352': { keywords: ["*bots*", "*bots IA*"], response: '🤖 Bots con IA avanzada: \n➢ Bot Seguridad Privada \ndal5.short.gy/SePriv\n➢ Bot de Ciberseguridad 2024\ndal5.short.gy/Cib\n➢ Bot Abogado Virtual GPT\ndal5.short.gy/Ab0\n➢ Bot Ley de Tránsito Chile\ndal5.short.gy/LeyTt\n➢ Bot Ley Karin\ndal5.short.gy/lkar'}
     
 };
 
