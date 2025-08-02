@@ -21,7 +21,7 @@ const responses =  {
     'rule_23': { keywords: ["123"], response: '*DECRETO 123*. https://www.bcn.cl/leychile/navegar?idNorma=1130300' },
     'rule_24': { keywords: ["1045"], response: '*DECRETO 1045*. https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12' },
     'rule_25': { keywords: ["867"], response: '*DECRETO 867*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=1116274' },
-    'rule_26': { keywords: ["1814"], response: '*DECRETO 1814 empresa de trasnporte de valores*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=1069299' },
+    'rule_26': { keywords: ["1814"], response: '*DECRETO 1814* DISPONE MEDIDAS QUE REGULEN EL TRANSPORTE DE VALORES. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=1069299' },
     'rule_27': { keywords: ["222"], response: '*DECRETO 222*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=1055580' },
     'rule_28': { keywords: ["1122"], response: '*DECRETO 1122*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=1072929' },
     'rule_29': { keywords: ["41"], response: '*DECRETO 41*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=19870' },
