@@ -229,7 +229,7 @@ const responses =  {
 'rule_350': { keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*","*empresa de capacitacion*","punto 7"], response: '🤖🧙🏼‍♂️✅ 🧙🏻‍♂️ Estas son algunas empresas de aqui de la region:\n*EMPRESAS DE CAPACITACIÓN 2025* https://d6.short.gy/Cap'},
 'rule_351': { keywords: ["*quien es tu creador*","*quien te creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es el\n*Ingeniero en Informática y Ciberseguridad \nDaniel Elías Figueroa Chacama*' },
 'rule_352': { keywords: ["*bots*", "*bots IA*"], response: 
-🤖 Bots con IA avanzada:
+'🤖 Bots con IA avanzada:
 ➢ Bot Seguridad Privada
 dal5.short.gy/SePriv
 ➢ Bot de Ciberseguridad 2024
