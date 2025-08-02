@@ -1,5 +1,6 @@
 const responses =  {
-    'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '*ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
+    'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 Bots con IA avanzada: \n ➢ Bot Seguridad Privada \ndal5.short.gy/SePriv \n➢ Bot de Ciberseguridad 2024\ndal5.short.gy/Cib\n➢ Bot Abogado Virtual GPT\ndal5.short.gy/Ab0\n➢ Bot Ley de Tránsito Chile\ndal5.short.gy/LeyTt\n➢ Bot Ley Karin\ndal5.short.gy/lkar'},
+    'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: 'ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
     'rule_5': { keywords: ["la guia de guardia"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de GUARDIA DE SEGURIDAD la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
     'rule_6': { keywords: ["jefe de seguridad"], response: 'OK..en este link encontrará la guía de *JEFE DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf' },
     'rule_7': { keywords: ["supervisor","acreditación supervisor","supervisor seguridad","para supervisor","acreditar un supervisor","supervisores","acreditar supervisores"], response: '🤖. *SUPERVISOR* \n1.- *GUIA*\nhttps://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf\n2.- *CREDENCIAL*\nhttps://os10.short.gy/Sup' },
@@ -224,8 +225,8 @@ const responses =  {
 // Reglas conversacionales para el chatbot OS10 Coquimbo solo region de Coquimbo.
     
 'rule_350': { keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*","*empresa de capacitacion*","punto 7"], response: '🤖🧙🏼‍♂️✅ 🧙🏻‍♂️ Estas son algunas empresas de aqui de la region:\n*EMPRESAS DE CAPACITACIÓN 2025* https://d6.short.gy/Cap'},
-'rule_351': { keywords: ["*quien es tu creador*","*quien te creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es el\n*Ingeniero en Informática y Ciberseguridad \nDaniel Elías Figueroa Chacama*' },
-'rule_370': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 Bots con IA avanzada: \n ➢ Bot Seguridad Privada \ndal5.short.gy/SePriv \n➢ Bot de Ciberseguridad 2024\ndal5.short.gy/Cib\n➢ Bot Abogado Virtual GPT\ndal5.short.gy/Ab0\n➢ Bot Ley de Tránsito Chile\ndal5.short.gy/LeyTt\n➢ Bot Ley Karin\ndal5.short.gy/lkar'}
+'rule_351': { keywords: ["*quien es tu creador*","*quien te creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es el\n*Ingeniero en Informática y Ciberseguridad \nDaniel Elías Figueroa Chacama*' }
+
     
 };
 
