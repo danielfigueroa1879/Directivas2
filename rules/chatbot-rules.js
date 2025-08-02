@@ -32,7 +32,7 @@ const responses =  {
     'rule_34': { keywords: ["19303"], response: '*LEY 19303*. \n\nhttps://www.bcn.cl/leychile/navegar?idNorma=30670' },
     'rule_35': { keywords: ["253"], response: '*Resol. 253*. https://www.zosepcar.cl/content/OS10/resolucion_253.pdf' },
     'rule_36': { keywords: ["59"], response: '*Resol. 59*. https://www.zosepcar.cl/content/OS10/resolucion_59.pdf' },
-    'rule_37': { keywords: ["32"], response: '*Decreto. 32*. https://www.bcn.cl/leychile/navegar?idNorma=1200633' },
+    'rule_37': { keywords: ["32"], response: '*Decreto. 32 DECRETO 32 EXENTO MODIFICA EN TÉRMINOS QUE INDICA DECRETO N°261 EXENTO, DE 2020, DEL MINISTERIO DEL INTERIOR Y SEGURIDAD PÚBLICA, QUE APRUEBA MANUAL OPERATIVO EN MATERIAS DE SEGURIDAD PRIVADA Y FIJA SU TEXTO ACTUALIZADO*. https://www.bcn.cl/leychile/navegar?idNorma=1200633' },
     'rule_38': { keywords: ["80"], response: '*Resol. 80*. https://www.zosepcar.cl/content/OS10/resolucion_80.pdf' },
     'rule_39': { keywords: ["*21659*", "*nueva ley de seguridad*"], response: 'Entra en vigencia el 28-NOV-2025 *LEY 21659*. https://dal5.short.gy/LeySeg' },
     'rule_65': { keywords: ["*fono*", "*telefono*","*numero*","*ubicados*","*dirección*","*atención*","*horario*","*horarios*","*ubicación*","*direccion oficina*","*cual es la dirección del os10*","*horario atención publico*", "*donde estan*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*"], response: '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
