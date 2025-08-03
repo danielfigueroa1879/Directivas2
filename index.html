@@ -10,7 +10,6 @@
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
     <meta name="mobile-web-app-capable" content="yes">
-    <!-- <link rel="manifest" href="manifest.json"> -->
 
     <!-- Configuración para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,7 +65,7 @@
         /* Estilos Chatbot */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 6rem; /* Elevado para no tapar el QR */
+            bottom: 6rem; 
             right: 1.5rem;
             z-index: 1000; 
             display: flex; 
@@ -107,10 +106,28 @@
             40% { transform: scale(1.0); }
         }
 
+        /* === ESTILOS PARA EL SELECTOR DE VOZ === */
+        #voice-selection-panel {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .voice-option {
+            transition: all 0.2s ease;
+        }
+        
+        .voice-option:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .voice-gender-badge {
+            font-size: 10px;
+            font-weight: bold;
+        }
 
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
-            /* Mueve el widget del chat más a la izquierda en pantallas grandes */
             #chat-widget-container {
                 right: 33rem; 
             }
@@ -126,7 +143,14 @@
                 width: 98%;
             }
             #chat-popup {
-                width: calc(100vw - 3rem); /* Ancho completo menos los márgenes */
+                width: calc(100vw - 3rem);
+            }
+            #voice-selection-panel {
+                left: 1rem !important;
+                right: 1rem !important;
+                top: 2rem !important;
+                max-width: none !important;
+                width: auto !important;
             }
         }
     </style>
@@ -231,7 +255,7 @@
         </footer>
    </div>
 
-    <!-- ===== CHATBOT FLOTANTE CON VOZ ===== -->
+    <!-- ===== CHATBOT FLOTANTE CON VOZ MEJORADA ===== -->
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] dark:bg-gray-800/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <!-- Header -->
@@ -242,12 +266,31 @@
                     </div>
                     <div>
                         <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">Con funciones de voz</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Con funciones de voz avanzadas</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
-                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    <!-- Botón de configuración de voz -->
+                    <button id="voice-settings-btn" class="voice-button bg-purple-500 hover:bg-purple-600 rounded-lg p-2 text-white" title="⚙️ Configurar voz">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                        </svg>
+                    </button>
+                    
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
                 </div>
             </header>
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
@@ -255,18 +298,27 @@
                 <div class="mb-2 text-xs text-center text-gray-500 dark:text-gray-400"><span>Alt+V para micrófono</span></div>
                 <div class="flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 rounded-xl p-2">
                     <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Activar/Desactivar Auto-Lectura">
-                        <!-- Speaker On Icon -->
                         <svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
-                        <!-- Speaker Off Icon (hidden by default) -->
                         <svg id="speaker-off-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg></button>
+                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" x2="12" y1="19" y2="23"/>
+                            <line x1="8" x2="16" y1="23" y2="23"/>
+                        </svg>
+                    </button>
                     <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base">
-                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></button>
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
                 </div>
             </footer>
         </div>
@@ -274,6 +326,12 @@
             <img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
         </button>
     </div>
+    
+    <!-- Panel de selección de voz -->
+    <div id="voice-selection-panel" class="fixed top-4 left-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg p-4 rounded-lg shadow-lg z-50 hidden max-w-sm border border-gray-200 dark:border-gray-600">
+        <!-- Se generará dinámicamente con JavaScript -->
+    </div>
+    
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
 
     <!-- Scripts -->
@@ -326,9 +384,649 @@
     <script src="rules/chatbot-rules2.js"></script>
 
     <script>
+        // === SISTEMA DE VOZ MASCULINA MEJORADO ===
+        class ModernVoiceSystem {
+            constructor() {
+                this.speechSynth = window.speechSynthesis;
+                this.availableVoices = [];
+                this.selectedVoice = null;
+                this.isInitialized = false;
+                this.currentUtterance = null;
+                
+                // Configuración de voces masculinas optimizada
+                this.maleVoicePatterns = {
+                    premium: [
+                        // Voces de Google (muy buenas en Android/Chrome)
+                        'google español (españa)', 'google español (méxico)', 'google español (argentina)',
+                        'google español (colombia)', 'google español (chile)', 'google español (perú)',
+                        
+                        // Voces de Apple (iOS/macOS) - masculinas
+                        'jorge', 'carlos', 'diego', 'alejandro', 'pau (enhanced)', 'pau',
+                        
+                        // Voces de Microsoft Edge
+                        'microsoft pablo - spanish (spain)', 'microsoft jorge - spanish (mexico)',
+                        'microsoft raul - spanish (mexico)',
+                        
+                        // Voces alternativas
+                        'spanish male', 'español masculino', 'male spanish'
+                    ],
+                    
+                    maleIdentifiers: [
+                        'jorge', 'carlos', 'diego', 'alejandro', 'pablo', 'pau', 'raul',
+                        'male', 'masculino', 'hombre', 'man', 'enhanced'
+                    ],
+                    
+                    femaleIdentifiers: [
+                        'helena', 'sabina', 'monica', 'paloma', 'lucia', 'carmen',
+                        'maria', 'ana', 'laura', 'female', 'femenino', 'mujer', 'woman',
+                        'esperanza', 'pilar', 'marisol'
+                    ]
+                };
+                
+                this.init();
+            }
+            
+            async init() {
+                await this.loadVoices();
+                this.createVoiceSelectionUI();
+                this.loadSavedVoice();
+                console.log('🎤 Sistema de voz masculina mejorado inicializado');
+            }
+            
+            async loadVoices() {
+                return new Promise((resolve) => {
+                    const loadVoicesHandler = () => {
+                        this.availableVoices = this.speechSynth.getVoices();
+                        if (this.availableVoices.length > 0) {
+                            this.analyzeAvailableVoices();
+                            this.selectBestMaleVoice();
+                            this.isInitialized = true;
+                            resolve();
+                        }
+                    };
+                    
+                    loadVoicesHandler();
+                    this.speechSynth.onvoiceschanged = loadVoicesHandler;
+                    
+                    // Timeout de seguridad
+                    setTimeout(() => {
+                        if (this.availableVoices.length === 0) {
+                            console.warn('⚠️ No se pudieron cargar las voces del sistema');
+                            resolve();
+                        }
+                    }, 2000);
+                });
+            }
+            
+            analyzeAvailableVoices() {
+                console.log('🔍 Analizando voces disponibles:');
+                const spanishVoices = this.getSpanishVoices();
+                
+                spanishVoices.forEach(voice => {
+                    const isMale = this.isMaleVoice(voice);
+                    const quality = this.getVoiceQuality(voice);
+                    console.log(`📢 ${voice.name} (${voice.lang}) - ${isMale ? '👨 Masculina' : '👩 Femenina'} - Calidad: ${quality}`);
+                });
+            }
+            
+            getSpanishVoices() {
+                return this.availableVoices.filter(voice => 
+                    voice.lang.toLowerCase().includes('es') || 
+                    voice.name.toLowerCase().includes('spanish') ||
+                    voice.name.toLowerCase().includes('español')
+                );
+            }
+            
+            isMaleVoice(voice) {
+                const name = voice.name.toLowerCase();
+                
+                // Verificar identificadores femeninos (excluir)
+                if (this.maleVoicePatterns.femaleIdentifiers.some(pattern => name.includes(pattern))) {
+                    return false;
+                }
+                
+                // Verificar identificadores masculinos (incluir)
+                if (this.maleVoicePatterns.maleIdentifiers.some(pattern => name.includes(pattern))) {
+                    return true;
+                }
+                
+                // Para voces de Google sin género específico, asumir masculina
+                if (name.includes('google') && name.includes('español')) {
+                    return true;
+                }
+                
+                // Por defecto neutral (trataremos como masculina)
+                return true;
+            }
+            
+            getVoiceQuality(voice) {
+                const name = voice.name.toLowerCase();
+                
+                if (name.includes('google')) return 'Premium';
+                if (name.includes('enhanced') || name.includes('premium')) return 'Alta';
+                if (name.includes('microsoft')) return 'Buena';
+                if (name.includes('apple')) return 'Buena';
+                
+                return 'Estándar';
+            }
+            
+            selectBestMaleVoice() {
+                const spanishVoices = this.getSpanishVoices();
+                
+                if (spanishVoices.length === 0) {
+                    console.warn('⚠️ No se encontraron voces en español');
+                    return;
+                }
+                
+                // Buscar voces premium primero
+                for (const preferredPattern of this.maleVoicePatterns.premium) {
+                    const voice = spanishVoices.find(v => 
+                        v.name.toLowerCase().includes(preferredPattern.toLowerCase())
+                    );
+                    if (voice) {
+                        this.selectedVoice = voice;
+                        console.log(`✅ Voz premium seleccionada: ${voice.name}`);
+                        return;
+                    }
+                }
+                
+                // Buscar voces masculinas generales
+                const maleVoices = spanishVoices.filter(voice => this.isMaleVoice(voice));
+                
+                if (maleVoices.length > 0) {
+                    // Priorizar voces de mejor calidad
+                    const sortedVoices = maleVoices.sort((a, b) => {
+                        const qualityA = this.getVoiceQuality(a);
+                        const qualityB = this.getVoiceQuality(b);
+                        const qualityOrder = ['Premium', 'Alta', 'Buena', 'Estándar'];
+                        return qualityOrder.indexOf(qualityA) - qualityOrder.indexOf(qualityB);
+                    });
+                    
+                    this.selectedVoice = sortedVoices[0];
+                    console.log(`✅ Voz masculina encontrada: ${this.selectedVoice.name}`);
+                } else {
+                    this.selectedVoice = spanishVoices[0];
+                    console.log(`⚠️ Usando voz por defecto: ${this.selectedVoice.name}`);
+                }
+            }
+            
+            createVoiceSelectionUI() {
+                const panel = document.getElementById('voice-selection-panel');
+                const spanishVoices = this.getSpanishVoices();
+                
+                if (spanishVoices.length === 0) {
+                    panel.innerHTML = `
+                        <div class="text-center">
+                            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">🎤 Voces no disponibles</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">No se encontraron voces en español en tu dispositivo.</p>
+                            <button id="show-voice-guide" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium">
+                                📥 Cómo instalar voces
+                            </button>
+                        </div>
+                    `;
+                    this.setupEmptyPanelEvents();
+                    return;
+                }
+                
+                panel.innerHTML = `
+                    <div class="mb-3">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                            🎤 Seleccionar Voz Masculina
+                            <button id="voice-help-btn" class="ml-2 text-blue-500 hover:text-blue-700" title="Ayuda">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">
+                            Voz actual: <span class="font-medium">${this.selectedVoice ? this.selectedVoice.name : 'No seleccionada'}</span>
+                        </p>
+                    </div>
+                    <div class="space-y-2 max-h-64 overflow-y-auto">
+                        ${spanishVoices.map((voice, index) => {
+                            const isMale = this.isMaleVoice(voice);
+                            const quality = this.getVoiceQuality(voice);
+                            const isSelected = this.selectedVoice && this.selectedVoice.name === voice.name;
+                            const qualityColors = {
+                                'Premium': 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
+                                'Alta': 'bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100',
+                                'Buena': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100',
+                                'Estándar': 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100'
+                            };
+                            
+                            return `
+                                <button 
+                                    class="voice-option w-full text-left p-3 rounded-lg border hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${isSelected ? 'bg-green-50 dark:bg-green-900/30 border-green-500 shadow-md' : 'border-gray-300 dark:border-gray-600'}"
+                                    data-voice-index="${index}"
+                                    data-voice-name="${voice.name}"
+                                >
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-800 dark:text-white truncate">${voice.name}</span>
+                                        <div class="flex space-x-1 ml-2">
+                                            <span class="voice-gender-badge px-2 py-1 rounded-full ${isMale ? 'bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100' : 'bg-pink-100 text-pink-800 dark:bg-pink-800 dark:text-pink-100'}">${isMale ? '👨' : '👩'}</span>
+                                            <span class="voice-gender-badge px-2 py-1 rounded-full ${qualityColors[quality]}">${quality}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-gray-500 dark:text-gray-400">${voice.lang}</div>
+                                    ${isSelected ? '<div class="text-xs text-green-600 dark:text-green-400 font-medium mt-1">✓ Seleccionada</div>' : ''}
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                    <div class="mt-4 flex space-x-2">
+                        <button id="test-voice-btn" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">
+                            🔊 Probar Voz
+                        </button>
+                        <button id="install-voices-btn" class="bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">
+                            📥 Instalar
+                        </button>
+                        <button id="close-voice-panel" class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">
+                            Cerrar
+                        </button>
+                    </div>
+                `;
+                
+                this.setupVoicePanelEvents();
+            }
+            
+            setupVoicePanelEvents() {
+                const panel = document.getElementById('voice-selection-panel');
+                
+                // Selección de voz
+                panel.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('voice-option') || e.target.closest('.voice-option')) {
+                        const button = e.target.closest('.voice-option');
+                        const voiceIndex = parseInt(button.dataset.voiceIndex);
+                        const spanishVoices = this.getSpanishVoices();
+                        
+                        this.selectedVoice = spanishVoices[voiceIndex];
+                        this.saveVoicePreference();
+                        this.updateVoiceSelection();
+                        
+                        console.log(`🎤 Voz cambiada a: ${this.selectedVoice.name}`);
+                        
+                        // Feedback visual
+                        this.showNotification(`Voz cambiada a: ${this.selectedVoice.name}`, 'success');
+                    }
+                });
+                
+                // Probar voz
+                const testBtn = panel.querySelector('#test-voice-btn');
+                if (testBtn) {
+                    testBtn.addEventListener('click', () => {
+                        if (this.selectedVoice) {
+                            this.testVoice();
+                        } else {
+                            this.showNotification('Por favor selecciona una voz primero', 'warning');
+                        }
+                    });
+                }
+                
+                // Mostrar guía de instalación
+                const installBtn = panel.querySelector('#install-voices-btn');
+                if (installBtn) {
+                    installBtn.addEventListener('click', () => {
+                        this.showVoiceInstallationGuide();
+                    });
+                }
+                
+                // Ayuda
+                const helpBtn = panel.querySelector('#voice-help-btn');
+                if (helpBtn) {
+                    helpBtn.addEventListener('click', () => {
+                        this.showVoiceHelp();
+                    });
+                }
+                
+                // Cerrar panel
+                const closeBtn = panel.querySelector('#close-voice-panel');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        this.hideVoicePanel();
+                    });
+                }
+            }
+            
+            setupEmptyPanelEvents() {
+                const panel = document.getElementById('voice-selection-panel');
+                const guideBtn = panel.querySelector('#show-voice-guide');
+                if (guideBtn) {
+                    guideBtn.addEventListener('click', () => {
+                        this.showVoiceInstallationGuide();
+                    });
+                }
+            }
+            
+            updateVoiceSelection() {
+                const options = document.querySelectorAll('.voice-option');
+                options.forEach(option => {
+                    const isSelected = option.dataset.voiceName === this.selectedVoice.name;
+                    option.className = option.className.replace(/bg-green-\S+|border-green-\S+|shadow-\S+/g, '');
+                    
+                    if (isSelected) {
+                        option.classList.add('bg-green-50', 'dark:bg-green-900/30', 'border-green-500', 'shadow-md');
+                        
+                        // Actualizar texto de selección
+                        let selectedIndicator = option.querySelector('.text-green-600');
+                        if (!selectedIndicator) {
+                            const indicator = document.createElement('div');
+                            indicator.className = 'text-xs text-green-600 dark:text-green-400 font-medium mt-1';
+                            indicator.textContent = '✓ Seleccionada';
+                            option.appendChild(indicator);
+                        }
+                    } else {
+                        option.classList.add('border-gray-300', 'dark:border-gray-600');
+                        
+                        // Remover indicador de selección
+                        const selectedIndicator = option.querySelector('.text-green-600');
+                        if (selectedIndicator) {
+                            selectedIndicator.remove();
+                        }
+                    }
+                });
+                
+                // Actualizar texto en el header
+                const currentVoiceSpan = document.querySelector('#voice-selection-panel p span');
+                if (currentVoiceSpan) {
+                    currentVoiceSpan.textContent = this.selectedVoice ? this.selectedVoice.name : 'No seleccionada';
+                }
+            }
+            
+            testVoice() {
+                const testMessages = [
+                    "Hola, soy tu asistente virtual del OS10. ¿Te gusta cómo suena mi voz?",
+                    "Esta es una prueba de la calidad de audio. Mi nombre es Diego y estoy aquí para ayudarte.",
+                    "Perfecto, ahora puedes escuchar respuestas con una voz masculina moderna y clara."
+                ];
+                
+                const randomMessage = testMessages[Math.floor(Math.random() * testMessages.length)];
+                this.speak(randomMessage, {
+                    onStart: () => {
+                        const testBtn = document.getElementById('test-voice-btn');
+                        if (testBtn) {
+                            testBtn.textContent = '🔊 Reproduciendo...';
+                            testBtn.disabled = true;
+                        }
+                    },
+                    onEnd: () => {
+                        const testBtn = document.getElementById('test-voice-btn');
+                        if (testBtn) {
+                            testBtn.textContent = '🔊 Probar Voz';
+                            testBtn.disabled = false;
+                        }
+                    }
+                });
+            }
+            
+            showVoiceInstallationGuide() {
+                const guide = document.createElement('div');
+                guide.className = 'fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4';
+                guide.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-lg w-full max-h-[80vh] overflow-y-auto">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white flex items-center">
+                            🎤 Cómo instalar voces masculinas modernas
+                        </h3>
+                        
+                        <div class="space-y-5 text-sm text-gray-600 dark:text-gray-300">
+                            <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-700 dark:text-blue-300 mb-2">📱 Android / Chrome:</h4>
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>Ve a <strong>Configuración</strong> → <strong>Accesibilidad</strong></li>
+                                    <li>Busca <strong>"Salida de texto a voz"</strong></li>
+                                    <li>Selecciona <strong>"Google Text-to-Speech"</strong> como motor preferido</li>
+                                    <li>Toca <strong>"Configuración"</strong> → <strong>"Instalar datos de voz"</strong></li>
+                                    <li>Descarga <strong>"Español (España)"</strong> o <strong>"Español (México)"</strong></li>
+                                </ol>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-700 dark:text-green-300 mb-2">🍎 iOS / Safari:</h4>
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>Ve a <strong>Configuración</strong> → <strong>Accesibilidad</strong></li>
+                                    <li>Toca <strong>"Contenido hablado"</strong></li>
+                                    <li>Selecciona <strong>"Voces"</strong> → <strong>"Español"</strong></li>
+                                    <li>Descarga <strong>"Jorge"</strong>, <strong>"Diego"</strong> o <strong>"Carlos"</strong> (voces masculinas)</li>
+                                    <li>Activa <strong>"Voces mejoradas"</strong> para mejor calidad</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-700 dark:text-purple-300 mb-2">💻 Windows / Edge:</h4>
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>Ve a <strong>Configuración</strong> → <strong>"Tiempo e idioma"</strong></li>
+                                    <li>Selecciona <strong>"Voz"</strong></li>
+                                    <li>Haz clic en <strong>"Agregar voces"</strong></li>
+                                    <li>Busca y descarga voces en <strong>"Español"</strong></li>
+                                    <li>Elige <strong>"Pablo"</strong> o <strong>"Jorge"</strong> para voces masculinas</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="bg-yellow-50 dark:bg-yellow-900/30 p-3 rounded-lg">
+                                <p class="text-yellow-800 dark:text-yellow-200 text-xs">
+                                    💡 <strong>Tip:</strong> Las voces de Google suelen ser las más naturales y modernas. 
+                                    Si no aparecen nuevas voces, reinicia el navegador después de la instalación.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900/30 p-3 rounded-lg">
+                                <p class="text-gray-700 dark:text-gray-300 text-xs">
+                                    <strong>¿No funciona?</strong> Algunos dispositivos requieren conexión a internet 
+                                    para usar voces en línea. Las voces descargadas funcionan sin conexión.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 flex space-x-3">
+                            <button id="test-browser-speech" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg font-medium text-sm">
+                                🔧 Probar Compatibilidad
+                            </button>
+                            <button id="close-installation-guide" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg font-medium text-sm">
+                                Entendido
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(guide);
+                
+                guide.querySelector('#close-installation-guide').addEventListener('click', () => {
+                    guide.remove();
+                });
+                
+                guide.querySelector('#test-browser-speech').addEventListener('click', () => {
+                    this.testBrowserCompatibility();
+                });
+                
+                guide.addEventListener('click', (e) => {
+                    if (e.target === guide) {
+                        guide.remove();
+                    }
+                });
+            }
+            
+            testBrowserCompatibility() {
+                const results = {
+                    speechSynthesis: !!window.speechSynthesis,
+                    speechRecognition: !!(window.SpeechRecognition || window.webkitSpeechRecognition),
+                    voicesAvailable: this.availableVoices.length,
+                    spanishVoices: this.getSpanishVoices().length,
+                    selectedVoice: this.selectedVoice?.name || 'Ninguna'
+                };
+                
+                alert(`🔧 Compatibilidad del navegador:
+                
+✅ Síntesis de voz: ${results.speechSynthesis ? 'Soportada' : 'No soportada'}
+✅ Reconocimiento de voz: ${results.speechRecognition ? 'Soportado' : 'No soportado'}
+📢 Voces disponibles: ${results.voicesAvailable}
+🇪🇸 Voces en español: ${results.spanishVoices}
+🎤 Voz seleccionada: ${results.selectedVoice}
+
+${results.speechSynthesis ? 'Tu navegador es compatible' : 'Tu navegador no soporta síntesis de voz'}`);
+            }
+            
+            showVoiceHelp() {
+                this.showNotification('💡 Selecciona una voz de la lista y haz clic en "Probar Voz" para escuchar cómo suena. Las voces marcadas como "Premium" ofrecen mejor calidad.', 'info', 5000);
+            }
+            
+            showNotification(message, type = 'info', duration = 3000) {
+                const notification = document.createElement('div');
+                const colors = {
+                    success: 'bg-green-500',
+                    warning: 'bg-yellow-500',
+                    error: 'bg-red-500',
+                    info: 'bg-blue-500'
+                };
+                
+                notification.className = `fixed top-4 right-4 ${colors[type]} text-white px-4 py-2 rounded-lg shadow-lg z-[70] max-w-sm text-sm`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, duration);
+            }
+            
+            toggleVoicePanel() {
+                const panel = document.getElementById('voice-selection-panel');
+                const isHidden = panel.classList.contains('hidden');
+                
+                if (isHidden) {
+                    this.showVoicePanel();
+                } else {
+                    this.hideVoicePanel();
+                }
+            }
+            
+            showVoicePanel() {
+                const panel = document.getElementById('voice-selection-panel');
+                panel.classList.remove('hidden');
+                this.updateVoiceSelection();
+            }
+            
+            hideVoicePanel() {
+                const panel = document.getElementById('voice-selection-panel');
+                panel.classList.add('hidden');
+            }
+            
+            saveVoicePreference() {
+                if (this.selectedVoice) {
+                    try {
+                        localStorage.setItem('preferredVoice', JSON.stringify({
+                            name: this.selectedVoice.name,
+                            lang: this.selectedVoice.lang
+                        }));
+                        console.log('💾 Preferencia de voz guardada');
+                    } catch (error) {
+                        console.warn('⚠️ No se pudo guardar la preferencia de voz:', error);
+                    }
+                }
+            }
+            
+            loadSavedVoice() {
+                try {
+                    const saved = localStorage.getItem('preferredVoice');
+                    if (saved) {
+                        const voiceData = JSON.parse(saved);
+                        const voice = this.availableVoices.find(v => 
+                            v.name === voiceData.name && v.lang === voiceData.lang
+                        );
+                        if (voice) {
+                            this.selectedVoice = voice;
+                            console.log(`🎤 Voz guardada cargada: ${voice.name}`);
+                        }
+                    }
+                } catch (error) {
+                    console.warn('⚠️ No se pudo cargar la voz guardada:', error);
+                }
+            }
+            
+            speak(text, options = {}) {
+                if (!text.trim() || !this.speechSynth) return null;
+                
+                const cleanText = this.cleanTextForSpeech(text);
+                if (!cleanText) return null;
+                
+                // Cancelar síntesis anterior
+                this.stop();
+                
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                
+                // Configurar voz
+                if (this.selectedVoice) {
+                    utterance.voice = this.selectedVoice;
+                }
+                
+                // Parámetros optimizados para voz masculina
+                utterance.rate = options.rate || 1.1;
+                utterance.pitch = options.pitch || 0.8; // Tono más grave
+                utterance.volume = options.volume || 0.9;
+                utterance.lang = this.selectedVoice?.lang || 'es-ES';
+                
+                // Eventos
+                utterance.onstart = () => {
+                    console.log('🎤 Iniciando síntesis de voz');
+                    if (options.onStart) options.onStart();
+                };
+                
+                utterance.onend = () => {
+                    console.log('🎤 Síntesis de voz finalizada');
+                    this.currentUtterance = null;
+                    if (options.onEnd) options.onEnd();
+                };
+                
+                utterance.onerror = (event) => {
+                    console.error('❌ Error en síntesis de voz:', event.error);
+                    this.currentUtterance = null;
+                    if (options.onError) options.onError(event);
+                };
+                
+                // Reproducir
+                try {
+                    this.currentUtterance = utterance;
+                    this.speechSynth.speak(utterance);
+                } catch (error) {
+                    console.error('❌ Error al iniciar síntesis:', error);
+                    this.currentUtterance = null;
+                }
+                
+                return utterance;
+            }
+            
+            cleanTextForSpeech(text) {
+                return text
+                    .replace(/https?:\/\/[^\s]+/g, 'enlace web')
+                    .replace(/[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}\u{1f1e6}-\u{1f1ff}\u{1f191}-\u{1f251}\u{1f004}\u{1f0cf}\u{1f170}-\u{1f171}\u{1f17e}-\u{1f17f}\u{1f18e}\u{3030}\u{2b50}\u{2b55}\u{2934}-\u{2935}\u{2b05}-\u{2b07}\u{2b1b}-\u{2b1c}\u{3297}\u{3299}\u{303d}\u{00a9}\u{00ae}\u{2122}\u{23f3}\u{24c2}\u{23e9}-\u{23ef}\u{25b6}\u{23f8}-\u{23fa}]/gu, '')
+                    .replace(/\*\*(.*?)\*\*/g, '$1')
+                    .replace(/\*(.*?)\*/g, '$1')
+                    .replace(/<[^>]*>/g, '')
+                    .replace(/\n+/g, '. ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+            
+            stop() {
+                this.speechSynth.cancel();
+                this.currentUtterance = null;
+            }
+            
+            getCurrentVoiceInfo() {
+                if (!this.selectedVoice) return null;
+                
+                return {
+                    name: this.selectedVoice.name,
+                    lang: this.selectedVoice.lang,
+                    gender: this.isMaleVoice(this.selectedVoice) ? 'male' : 'female',
+                    quality: this.getVoiceQuality(this.selectedVoice),
+                    isDefault: this.selectedVoice.default
+                };
+            }
+        }
+
         // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
         document.addEventListener('DOMContentLoaded', function() {
-
             // Lógica para detectar preferencia de modo oscuro del sistema
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark')
@@ -336,26 +1034,17 @@
                 document.documentElement.classList.remove('dark')
             }
 
-            // --- Lógica del Chatbot ---
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const speechSynth = window.speechSynthesis;
-            let recognition;
-            let isListening = false;
-            let availableVoices = [];
+            // === INICIALIZACIÓN DEL SISTEMA DE VOZ MEJORADO ===
+            let modernVoiceSystem = null;
             let isAutoReadEnabled = true;
 
-            function loadVoices() {
-                availableVoices = speechSynth.getVoices();
-                if (availableVoices.length > 0) {
-                     console.log("Voces cargadas.");
-                }
-            }
+            // Inicializar sistema de voz
+            modernVoiceSystem = new ModernVoiceSystem();
 
-            loadVoices();
-            if (speechSynth.onvoiceschanged !== undefined) {
-                speechSynth.onvoiceschanged = loadVoices;
-            }
-
+            // --- Lógica del Reconocimiento de Voz ---
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            let recognition;
+            let isListening = false;
 
             if (SpeechRecognition) {
                 recognition = new SpeechRecognition();
@@ -364,63 +1053,12 @@
                 recognition.interimResults = false;
             } else {
                 console.warn("El reconocimiento de voz no es compatible con este navegador.");
-                document.getElementById('voice-btn').style.display = 'none';
+                const voiceBtn = document.getElementById('voice-btn');
+                if (voiceBtn) voiceBtn.style.display = 'none';
             }
 
-            function speakText(text) {
-                const urlRegex = /(https?:\/\/[^\s]+)/g;
-                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
-                const cleanText = text
-                    .replace(urlRegex, '')
-                    .replace(emojiRegex, '')
-                    .replace(/<br>/g, '. ')
-                    .replace(/<strong>/g, '')
-                    .replace(/<\/strong/g, '')
-                    .replace(/\n/g, '. ')
-                    .replace(/\*/g, '');
-                
-                if (!cleanText.trim() || !speechSynth) return;
-
-                speechSynth.cancel();
-                const utterance = new SpeechSynthesisUtterance(cleanText);
-
-                // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
-                let selectedVoice = null;
-
-                if (availableVoices.length > 0) {
-                    // Prioridad 1: Buscar "Diego"
-                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
-
-                    // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
-                    if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
-                    }
-
-                    // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
-                    if (!selectedVoice) {
-                        const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
-                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
-                    }
-
-                    // Prioridad 4: Como último recurso, tomar la primera voz en español
-                    if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
-                    }
-                }
-
-                if (selectedVoice) {
-                    utterance.voice = selectedVoice;
-                    console.log('Usando voz:', selectedVoice.name);
-                } else {
-                    console.warn('No se encontró una voz en español preferida. Se usará la voz por defecto del sistema.');
-                }
-
-                utterance.lang = 'es-CL';
-                utterance.rate = 1.1;
-                utterance.pitch = 0.8; // Tono más bajo para sonar más masculino
-                speechSynth.speak(utterance);
-            }
-
+            // === FUNCIONES DEL CHATBOT ===
+            
             function toggleChat() {
                 const popup = document.getElementById('chat-popup');
                 const backdrop = document.getElementById('chat-backdrop');
@@ -446,12 +1084,7 @@
                 } else {
                     messageDiv.className = 'flex items-start space-x-2 mb-3';
                     
-                    // =================================================================
-                    // INICIO DE LA CORRECCIÓN: Expresión regular más precisa
-                    // =================================================================
-                    
-                    // Esta regex es más específica sobre los caracteres permitidos en una URL
-                    // para evitar que capture etiquetas HTML como <br> al final.
+                    // Expresión regular mejorada para URLs
                     const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
 
                     let formattedText = text
@@ -459,7 +1092,6 @@
                         .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
 
                     formattedText = formattedText.replace(urlRegex, (url) => {
-                        // Limpiamos la URL de posible puntuación al final
                         const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
                         let fullUrl = cleanedUrl;
                         if (!/^https?:\/\//i.test(fullUrl)) {
@@ -467,10 +1099,6 @@
                         }
                         return `<a href="${fullUrl}" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${cleanedUrl}</a>`;
                     });
-                    
-                    // =================================================================
-                    // FIN DE LA CORRECCIÓN
-                    // =================================================================
 
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
                         `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
@@ -485,8 +1113,15 @@
                             ${buttonsHtml}
                         </div>
                     `;
-                    if (isAutoReadEnabled) {
-                        setTimeout(() => speakText(text), 300);
+                    
+                    // Auto-hablar con el sistema mejorado
+                    if (isAutoReadEnabled && modernVoiceSystem) {
+                        setTimeout(() => {
+                            modernVoiceSystem.speak(text, {
+                                onStart: () => console.log('🎤 Hablando respuesta del bot'),
+                                onEnd: () => console.log('🎤 Terminó de hablar')
+                            });
+                        }, 300);
                     }
                 }
                 messageDiv.innerHTML = content;
@@ -510,15 +1145,14 @@
                 input.value = '';
                 
                 let response = null;
-                let matchedRule = null;
 
+                // Buscar en respuestas predefinidas
                 for (const ruleKey in responses) {
                     const rule = responses[ruleKey];
                     for (const keyword of rule.keywords) {
                         const cleanedKeyword = keyword.replace(/\*/g, '');
                         if (lowerText.includes(cleanedKeyword)) {
                             response = rule.response;
-                            matchedRule = rule;
                             break;
                         }
                     }
@@ -526,6 +1160,7 @@
                 }
                 
                 addTypingIndicator();
+                
                 const callApiWithBackoff = async (prompt, retries = 3, delay = 1000) => {
                     try {
                         let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
@@ -626,7 +1261,6 @@ ${rulesAsText}
                 }
             }
 
-
             function startVoiceInput() {
                 if (!recognition) return;
 
@@ -657,21 +1291,26 @@ ${rulesAsText}
             }
 
             function readLastMessage() {
-                const messages = document.querySelectorAll('#chat-messages .dark\\:text-gray-200');
-                if (messages.length > 0) {
-                    const lastMessage = messages[messages.length - 1];
-                    const text = lastMessage.innerText;
-                    speakText(text);
+                if (modernVoiceSystem) {
+                    const messages = document.querySelectorAll('#chat-messages .bg-gray-100 div');
+                    if (messages.length > 0) {
+                        const lastMessage = messages[messages.length - 1];
+                        const text = lastMessage.textContent || lastMessage.innerText;
+                        modernVoiceSystem.speak(text);
+                    }
                 }
             }
             
-            // --- Asignación de Eventos ---
+            // === ASIGNACIÓN DE EVENTOS ===
+            
+            // Eventos del chat
             document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
             document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
             document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
             document.getElementById('send-button').addEventListener('click', handleMessage);
             document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
             
+            // Eventos de voz
             const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
             const speakerOnIcon = document.getElementById('speaker-on-icon');
             const speakerOffIcon = document.getElementById('speaker-off-icon');
@@ -679,7 +1318,7 @@ ${rulesAsText}
             toggleSpeakBtn.addEventListener('click', () => {
                 isAutoReadEnabled = !isAutoReadEnabled;
                 if (!isAutoReadEnabled) {
-                    speechSynth.cancel(); // Stop any current speech
+                    if (modernVoiceSystem) modernVoiceSystem.stop();
                     toggleSpeakBtn.classList.remove('bg-yellow-500', 'hover:bg-yellow-600');
                     toggleSpeakBtn.classList.add('bg-gray-500', 'hover:bg-gray-600');
                     speakerOnIcon.classList.add('hidden');
@@ -692,11 +1331,22 @@ ${rulesAsText}
                 }
             });
 
+            // Eventos del reconocimiento de voz
             if (recognition) {
                 document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
             }
+            
+            // Evento para leer último mensaje
             document.getElementById('speak-btn').addEventListener('click', readLastMessage);
+            
+            // Evento para configuración de voz
+            document.getElementById('voice-settings-btn').addEventListener('click', () => {
+                if (modernVoiceSystem) {
+                    modernVoiceSystem.toggleVoicePanel();
+                }
+            });
 
+            // Atajo de teclado para micrófono
             document.addEventListener('keydown', e => {
                 if (e.altKey && e.key === 'v') {
                     e.preventDefault();
@@ -707,7 +1357,7 @@ ${rulesAsText}
             // Mensaje de bienvenida
             setTimeout(() => {
                 const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario'];
-                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo con funciones de voz mejoradas. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
