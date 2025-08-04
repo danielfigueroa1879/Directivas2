@@ -2,479 +2,613 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solución: Carga de Reglas Chatbot</title>
+    
+    <!-- Meta Tags Principales y de PWA -->
+    <title>Directivas de Funcionamiento OS10</title>
+    <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff"/>
+    <meta name="application-name" content="Directivas OS10">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Configuración para iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
+
+    <!-- Favicons y Iconos Estándar -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
+    
+    <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-image: url('assets/images/101.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .card-container { 
+            max-width: 600px; 
+            width: 90%; 
+            margin: 2rem auto; 
+        }
+        .logo-os10-container { 
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            height: 60px;
+            z-index: 10;
+        }
+        .section-card { 
+            border-left-width: 4px; 
+            padding: 1rem; 
+            border-radius: 0.5rem; 
+        }
+        
+        .voice-button { transition: all 0.3s ease; }
+        .voice-button:hover { transform: scale(1.05); }
+        .voice-button:active { transform: scale(0.95); }
+        .voice-button.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        
+        .response-button { transition: all 0.2s ease; }
+        .response-button:hover { transform: translateX(4px); }
+
+        /* Estilos Chatbot */
+        #chat-widget-container { 
+            position: fixed; 
+            bottom: 6rem;
+            right: 1.5rem;
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end;
+        }
+        #chat-popup { 
+            width: 450px; 
+            height: 600px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+        }
+        #chat-toggle-button { 
+            width: 80px;
+            height: 80px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        }
+        .chat-messages-container { 
+            scroll-behavior: smooth; 
+        }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            margin: 0 2px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        /* Ajuste para pantallas más grandes (PC) */
+        @media (min-width: 1024px) {
+            #chat-widget-container {
+                right: 33rem; 
+            }
+            #chat-toggle-button {
+                width: 90px;
+                height: 90px;
+            }
+        }
+        
+        /* Ajuste para pantallas pequeñas (Celular) */
+        @media (max-width: 767px) {
+            .card-container {
+                width: 98%;
+            }
+            #chat-popup {
+                width: calc(100vw - 3rem);
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 p-6">
-    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
-        <h1 class="text-3xl font-bold text-blue-600 mb-6">🔧 Solución: Carga de Base de Datos de Reglas</h1>
-        
-        <!-- Diagnóstico del Problema -->
-        <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-            <h2 class="text-xl font-semibold text-red-800 mb-3">🔍 Problema Identificado</h2>
-            <p class="text-red-700 mb-2">El archivo <code>rules/chatbot-rules.js</code> no se está cargando correctamente.</p>
-            <p class="text-sm text-red-600">Esto puede deberse a:</p>
-            <ul class="list-disc pl-5 text-sm text-red-600 mt-2">
-                <li>Estructura del archivo JavaScript incorrecta</li>
-                <li>Orden de carga de scripts</li>
-                <li>Problemas de ruta relativa</li>
-                <li>Variables globales no accesibles</li>
-            </ul>
-        </div>
+<body>
+    
+    <!-- Contenido de la página -->
+    <div class="card-container bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
+        <!-- Logo dentro del contenedor -->
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR" class="logo-os10-container">
+            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="h-full" loading="lazy">
+        </a>
 
-        <!-- Herramienta de Diagnóstico en Vivo -->
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <h2 class="text-xl font-semibold text-blue-800 mb-3">🧪 Herramienta de Diagnóstico</h2>
-            <div class="space-y-3">
-                <button onclick="checkRulesLoading()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                    📋 Verificar Carga de Reglas
-                </button>
-                <button onclick="testRulesStructure()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                    🔍 Probar Estructura de Reglas
-                </button>
-                <button onclick="simulateRulesSearch()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
-                    🔎 Simular Búsqueda en Reglas
-                </button>
-                <button onclick="downloadCorrectRulesFile()" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
-                    📥 Generar Archivo Corregido
-                </button>
+        <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
+            <p class="flex items-center">
+                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+            </p>
+        </div>
+        
+        <header class="text-center pt-8">
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">DIRECTIVA DE FUNCIONAMIENTO</h1>
+            <h2 class="text-lg font-semibold text-gray-600 dark:text-gray-300">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+        </header>
+        
+        <main class="space-y-4">
+            <section class="section-card border-blue-500 bg-blue-100/80 dark:bg-blue-900/50">
+                <h3 class="font-bold text-blue-800 dark:text-blue-300">1️⃣ Presentar Directiva DD.FF.</h3>
+                <ul class="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300">
+                    <li>Vigencia 03 años en instalación.</li>
+                    <li>Presentar con 15 días hábiles de anticipación.</li>
+                    <li>
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Dec. 93/1985</a>,
+                        <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Dec. 261</a>,
+                        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Dec. 32/2024</a>.
+                   </li>
+               </ul>
+            </section>
+            
+            <section class="section-card border-green-500 bg-green-100/80 dark:bg-green-900/50">
+                <h3 class="font-bold text-green-800 dark:text-green-300">2️⃣ Documentación</h3>
+                <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+                    <li>
+                        <p>02 Solicitudes Simple.</p>
+                        <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
+                    </li>
+                    <li>
+                        <p>01 copia DD.FF. completa.</p>
+                        <a href="https://dal5.short.gy/D" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                    </li>
+                    <li>
+                        <p>Requisitos según tipo.</p>
+                        <a href="https://dal5.short.gy/Re24" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
+                    </li>
+                    <li>
+                        <p>Uniforme Decreto 32/2024.</p>
+                        <a href="https://dal5.short.gy/0u" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a>
+                    </li>
+                    <li>
+                        <p>Análisis de Vulnerabilidades.</p>
+                        <a href="https://dal5.short.gy/6ydn" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a>
+                    </li>
+                    <li>
+                        <p>Solicitud Uniforme Distinto.</p>
+                        <a href="https://d6.short.gy/G8" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="section-card border-red-500 bg-red-100/80 dark:bg-red-900/50">
+                <h3 class="font-bold text-red-800 dark:text-red-300">3️⃣ Todo escaneado en Digital.</h3>
+                <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+                    <li>
+                        <p>Escanear en 01 archivo PDF.</p>
+                        <a href="https://dal5.short.gy/I" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a>
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="section-card border-yellow-500 bg-yellow-100/80 dark:bg-yellow-900/50">
+                <h3 class="font-bold text-yellow-800 dark:text-yellow-300">4️⃣ Tramitar Credenciales</h3>
+                <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+                    <li>
+                        <p>Resol. 1480 (10.04.2025).</p>
+                        <a href="https://d6.short.gy/dsds" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Descargar Documentos">Descargar</a>
+                    </li>
+                    <li>
+                        <p>Tramitar credenciales.</p>
+                        <a href="credenciales.html" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" id="tramitarCredencialesBtn" title="Tramitar Credenciales">Tramitar</a>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        
+        <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
+            <div class="text-center text-sm text-gray-600 dark:text-gray-400 leading-tight pr-16">
+                <span>Haga clic para descargar.</span><br>
+                <span>©2025 - Daniel Figueroa Ch.</span><br>
+                <span>Ingeniero en Informática.</span>
             </div>
-            <div id="diagnostic-output" class="mt-4 p-3 bg-gray-50 rounded min-h-[150px] font-mono text-sm whitespace-pre-wrap">
-Haz clic en los botones para ejecutar diagnósticos...
-            </div>
-        </div>
+            <img src="assets/images/qr.png" alt="Código QR" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información" loading="lazy">
+        </footer>
+   </div>
 
-        <!-- Solución 1: Estructura Correcta del Archivo -->
-        <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-            <h2 class="text-xl font-semibold text-green-800 mb-3">✅ Solución 1: Estructura Correcta de chatbot-rules.js</h2>
-            <p class="text-green-700 mb-3">Asegúrate de que tu archivo <code>rules/chatbot-rules.js</code> tenga esta estructura:</p>
-            
-            <pre class="bg-black text-green-400 p-4 rounded text-xs overflow-x-auto"><code>// ===== ARCHIVO: rules/chatbot-rules.js =====
-
-// Sistema de Respuestas del Chatbot OS10 Coquimbo
-console.log('🔄 Cargando base de datos de reglas OS10...');
-
-// Objeto principal de respuestas
-const responses = {
-    'rule_1': { 
-        keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], 
-        response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib' 
-    },
-    'rule_2': { 
-        keywords: ["infracciones", "sanciones guardias"], 
-        response: 'Infracciones de Guardias (Decreto Supremo N° 93)...' 
-    },
-    // ... todas tus reglas aquí
-    'rule_350': { 
-        keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*"], 
-        response: '🤖🧙🏼‍♂️✅ Estas son algunas empresas de aqui de la region...' 
-    },
-    'rule_351': { 
-        keywords: ["*quien es tu creador*","*quien te creo*"], 
-        response: '🤖🧙🏼‍♂️✅ Mi creador es el\n*Ingeniero en Informática y Ciberseguridad \nDaniel Elías Figueroa Chacama*' 
-    }
-};
-
-// Prompt del sistema
-const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada OS10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada, profesional.
-
-Tus reglas principales son:
-1. **Asume tu Rol:** Responde siempre como si fueras un miembro del equipo de la oficina OS10 Coquimbo.
-2. **Prioridad a los documentos:** Tu máxima prioridad es buscar y entregar primero cualquier documento, guía o PDF.
-3. **Respuestas cortas y reales:** Sé conciso y factual. No inventes respuestas.
-4. **Formato claro:** Usa Markdown para dar formato.
-5. **OS10 COQUIMBO:** Oficina ubicada en Calle Cienfuegos N°180, La Serena, fono: 51 2 651024.
-6. **Infracciones principales:** sin curso os10 art. 13, sin directiva art. 15, sin credencial art 18, etc.
-7. **Nueva Ley:** Ley 21.659 entra en vigencia el 28-NOV-2025.
-8. **Infracciones ordenadas:** Siempre enumerar con negrillas.
-9. **Resumen de ley:** Proporcionar información detallada cuando se solicite.`;
-
-// Función de verificación de carga
-function verifyRulesLoaded() {
-    console.log('✅ Verificando carga de reglas...');
-    console.log(`📊 Total de reglas cargadas: ${Object.keys(responses).length}`);
-    console.log('📋 Primeras 5 reglas:', Object.keys(responses).slice(0, 5));
-    return {
-        loaded: true,
-        count: Object.keys(responses).length,
-        sample: Object.keys(responses).slice(0, 5)
-    };
-}
-
-// Función para buscar reglas
-function searchRules(userInput) {
-    const lowerInput = userInput.toLowerCase();
-    console.log(`🔍 Buscando reglas para: "${userInput}"`);
-    
-    for (const [ruleId, rule] of Object.entries(responses)) {
-        if (rule && rule.keywords) {
-            for (const keyword of rule.keywords) {
-                const cleanKeyword = keyword.replace(/\*/g, '');
-                if (lowerInput.includes(cleanKeyword)) {
-                    console.log(`✅ Regla encontrada: ${ruleId} -> ${cleanKeyword}`);
-                    return rule.response;
-                }
-            }
-        }
-    }
-    console.log('❌ No se encontró regla matching');
-    return null;
-}
-
-// Hacer las variables globalmente accesibles
-window.responses = responses;
-window.systemPrompt = systemPrompt;
-window.verifyRulesLoaded = verifyRulesLoaded;
-window.searchRules = searchRules;
-
-// Verificación automática al cargar
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 DOM cargado, verificando reglas...');
-    const verification = verifyRulesLoaded();
-    console.log('📋 Resultado verificación:', verification);
-});
-
-console.log('✅ Base de datos de reglas OS10 cargada correctamente');
-console.log(`📊 ${Object.keys(responses).length} reglas disponibles`);</code></pre>
-        </div>
-
-        <!-- Solución 2: Orden de Scripts en HTML -->
-        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-            <h2 class="text-xl font-semibold text-yellow-800 mb-3">⚡ Solución 2: Orden Correcto de Scripts en HTML</h2>
-            <p class="text-yellow-700 mb-3">En tu archivo HTML, asegúrate de que los scripts estén en este orden:</p>
-            
-            <pre class="bg-black text-yellow-400 p-4 rounded text-xs overflow-x-auto"><code>&lt;!-- 1. PRIMERO: Cargar las reglas --&gt;
-&lt;script src="./rules/chatbot-rules.js"&gt;&lt;/script&gt;
-
-&lt;!-- 2. SEGUNDO: Script principal del chatbot --&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🔍 Verificando carga de reglas al iniciar...');
-    
-    // Verificar que las reglas se cargaron
-    if (window.responses && Object.keys(window.responses).length > 0) {
-        console.log(`✅ Reglas cargadas: ${Object.keys(window.responses).length} reglas`);
-    } else {
-        console.error('❌ ERROR: No se cargaron las reglas!');
-        console.log('🔧 Intentando cargar reglas manualmente...');
-        loadRulesManually();
-    }
-    
-    // ... resto de tu código del chatbot
-});
-
-// Función de carga manual como fallback
-function loadRulesManually() {
-    const script = document.createElement('script');
-    script.src = './rules/chatbot-rules.js';
-    script.onload = function() {
-        console.log('✅ Reglas cargadas manualmente');
-    };
-    script.onerror = function() {
-        console.error('❌ Error cargando reglas manualmente');
-    };
-    document.head.appendChild(script);
-}
-&lt;/script&gt;</code></pre>
-        </div>
-
-        <!-- Solución 3: Función handleMessage Mejorada -->
-        <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-            <h2 class="text-xl font-semibold text-purple-800 mb-3">🔧 Solución 3: Función handleMessage Mejorada</h2>
-            <p class="text-purple-700 mb-3">Reemplaza tu función <code>handleMessage()</code> con esta versión mejorada:</p>
-            
-            <pre class="bg-black text-purple-400 p-4 rounded text-xs overflow-x-auto"><code>async function handleMessage() {
-    const input = document.getElementById('user-input');
-    const text = input.value.trim();
-    const lowerText = text.toLowerCase();
-    
-    if (!text) return;
-    
-    addMessage('user', text);
-    input.value = '';
-    
-    let response = null;
-
-    // 1. VERIFICAR CARGA DE REGLAS
-    console.log('🔍 Verificando disponibilidad de reglas...');
-    console.log('window.responses existe:', !!window.responses);
-    console.log('window.searchRules existe:', !!window.searchRules);
-    
-    if (window.responses) {
-        console.log(`📊 Reglas disponibles: ${Object.keys(window.responses).length}`);
-    }
-
-    // 2. BUSCAR EN REGLAS LOCALES CON MEJOR LOGGING
-    if (window.responses && Object.keys(window.responses).length > 0) {
-        console.log(`🔍 Buscando "${text}" en ${Object.keys(window.responses).length} reglas...`);
-        
-        // Usar la función de búsqueda si está disponible
-        if (window.searchRules) {
-            response = window.searchRules(text);
-        } else {
-            // Búsqueda manual como fallback
-            const allRules = Object.values(window.responses);
-            for (const rule of allRules) {
-                if (rule && rule.keywords) {
-                    for (const keyword of rule.keywords) {
-                        const cleanedKeyword = keyword.replace(/\*/g, '');
-                        if (lowerText.includes(cleanedKeyword)) {
-                            response = rule.response;
-                            console.log(`✅ Regla encontrada: ${cleanedKeyword}`);
-                            break;
-                        }
-                    }
-                }
-                if (response) break;
-            }
-        }
-    } else {
-        console.warn('⚠️ No hay reglas disponibles - intentando recargar...');
-        
-        // Intentar recargar reglas
-        if (window.verifyRulesLoaded) {
-            window.verifyRulesLoaded();
-        }
-        
-        // Mostrar mensaje al usuario
-        addMessage('bot', '⚠️ Estoy teniendo problemas para acceder a mi base de conocimiento local. Consultaré con mi IA...');
-    }
-    
-    // 3. SI HAY RESPUESTA LOCAL, USARLA
-    if (response) {
-        console.log('✅ Usando respuesta de reglas locales');
-        setTimeout(() => addMessage('bot', response), 500);
-        return;
-    }
-
-    // 4. SI NO HAY RESPUESTA LOCAL, USAR IA
-    console.log('🤖 No se encontró respuesta local, consultando IA...');
-    addTypingIndicator();
-    
-    try {
-        const systemPrompt = window.systemPrompt || 
-            'Eres un asistente virtual de la oficina OS10 Coquimbo de Carabineros de Chile.';
-        
-        const contextualPrompt = `${systemPrompt}
-
-CONTEXTO: El usuario pregunta "${text}" y no encontré respuesta en mi base de conocimiento local.
-
-IMPORTANTE: Como soy un asistente de OS10 Coquimbo, debo responder sobre:
-- Trámites de seguridad privada
-- Credenciales de guardias
-- Directivas de funcionamiento  
-- Cursos y capacitaciones
-- Leyes y decretos de seguridad privada
-- Información de contacto de la oficina
-
-Responde de manera profesional, concisa y útil.`;
-
-        const geminiPayload = {
-            contents: [{ parts: [{ text: contextualPrompt }] }],
-            safetySettings: [
-                { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
-            ]
-        };
-
-        const apiResponse = await fetch('/api/gemini', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(geminiPayload),
-        });
-
-        removeTypingIndicator();
-
-        if (!apiResponse.ok) {
-            throw new Error(`Error API: ${apiResponse.status}`);
-        }
-
-        const data = await apiResponse.json();
-        const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || 
-                          "No pude procesar tu consulta. Intenta reformular tu pregunta.";
-        
-        addMessage('bot', aiResponse);
-
-    } catch (error) {
-        console.error('💥 Error en consulta IA:', error);
-        removeTypingIndicator();
-        
-        // Mensaje de error amigable
-        addMessage('bot', 'Hubo un problema temporal. Por favor, intenta de nuevo o contacta directamente a la oficina OS10 Coquimbo: 📞 512651024');
-    }
-}</code></pre>
-        </div>
-
-        <!-- Verificación Final -->
-        <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
-            <h2 class="text-xl font-semibold text-indigo-800 mb-3">🎯 Lista de Verificación Final</h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold mb-2">📁 Estructura de Archivos:</h3>
-                    <ul class="text-sm space-y-1">
-                        <li>☐ <code>rules/chatbot-rules.js</code> existe</li>
-                        <li>☐ Archivo inicia con <code>const responses = {</code></li>
-                        <li>☐ Termina con <code>window.responses = responses;</code></li>
-                        <li>☐ No hay errores de sintaxis JavaScript</li>
-                    </ul>
+    <!-- ===== CHATBOT FLOTANTE CON VOZ ===== -->
+    <div id="chat-widget-container">
+        <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] dark:bg-gray-800/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
+            <!-- Header -->
+            <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800 dark:text-white">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+                    </div>
+                    <div>
+                        <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Con funciones de voz</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold mb-2">🔧 En el HTML:</h3>
-                    <ul class="text-sm space-y-1">
-                        <li>☐ Script de reglas se carga ANTES que el principal</li>
-                        <li>☐ Función <code>handleMessage()</code> actualizada</li>
-                        <li>☐ Console.log muestra reglas cargadas</li>
-                        <li>☐ Variables <code>window.responses</code> accesibles</li>
-                    </ul>
+                <div class="flex items-center space-x-2">
+                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                 </div>
-            </div>
+            </header>
+            <!-- contenedor de mensajes del chat -->
+            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto"></main>
+            <footer class="p-3 border-t border-green-500/30">
+                <div class="mb-2 text-xs text-center text-gray-500 dark:text-gray-400"><span>Alt+V para micrófono</span></div>
+                <div class="flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 rounded-xl p-2">
+                    <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Activar/Desactivar Auto-Lectura">
+                        <!-- Speaker On Icon -->
+                        <svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                        </svg>
+                        <!-- Speaker Off Icon (hidden by default) -->
+                        <svg id="speaker-off-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                        </svg>
+                    </button>
+                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg></button>
+                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none px-2 text-base">
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></button>
+                </div>
+            </footer>
         </div>
+        <button id="chat-toggle-button" class="bg-white dark:bg-gray-800 rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voz">
+            <img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
+        </button>
     </div>
+    <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
 
-    <script>
-        function checkRulesLoading() {
-            const output = document.getElementById('diagnostic-output');
-            output.textContent = '🔍 Verificando carga de reglas...\n\n';
-            
-            // Simular carga de reglas para diagnóstico
-            const mockRules = {
-                'rule_1': { keywords: ["test"], response: "test response" },
-                'rule_2': { keywords: ["hola"], response: "hola response" }
-            };
-            
-            window.testResponses = mockRules;
-            
-            setTimeout(() => {
-                if (window.testResponses) {
-                    output.textContent += '✅ ÉXITO: Las reglas se pueden cargar correctamente\n';
-                    output.textContent += `📊 Reglas de prueba: ${Object.keys(window.testResponses).length}\n`;
-                    output.textContent += '🔧 Problema: Tu archivo rules/chatbot-rules.js no sigue la estructura correcta\n\n';
-                    output.textContent += '💡 SOLUCIÓN:\n';
-                    output.textContent += '1. Verificar que el archivo termine con: window.responses = responses;\n';
-                    output.textContent += '2. Verificar que no haya errores de sintaxis JavaScript\n';
-                    output.textContent += '3. Usar la estructura del archivo corregido de arriba\n';
-                } else {
-                    output.textContent += '❌ ERROR: Problema fundamental con JavaScript\n';
-                }
-            }, 1000);
-        }
+    <!-- Scripts -->
+    <script type="module">
+        // SCRIPT FIREBASE (Contador de visitas)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        function testRulesStructure() {
-            const output = document.getElementById('diagnostic-output');
-            output.textContent = '🔍 Probando estructura de reglas...\n\n';
-            
-            // Probar estructura correcta
-            const testStructure = `
-// Estructura correcta esperada:
-const responses = {
-    'rule_1': { 
-        keywords: ["palabra1", "palabra2"], 
-        response: "respuesta aquí" 
-    }
-};
-window.responses = responses;
-            `;
-            
-            output.textContent += '📋 Estructura esperada:\n';
-            output.textContent += testStructure;
-            output.textContent += '\n\n✅ VERIFICACIONES:\n';
-            output.textContent += '☐ Archivo debe empezar con: const responses = {\n';
-            output.textContent += '☐ Cada regla tiene keywords y response\n';
-            output.textContent += '☐ Archivo debe terminar con: window.responses = responses;\n';
-            output.textContent += '☐ No debe haber errores de sintaxis JavaScript\n';
-        }
-
-        function simulateRulesSearch() {
-            const output = document.getElementById('diagnostic-output');
-            output.textContent = '🔎 Simulando búsqueda en reglas...\n\n';
-            
-            // Simular reglas de ejemplo
-            const exampleRules = {
-                'rule_1': { keywords: ["hola", "saludos"], response: "¡Hola! ¿En qué puedo ayudarte?" },
-                'rule_2': { keywords: ["credencial", "tramitar"], response: "Para tramitar credencial necesitas..." },
-                'rule_3': { keywords: ["curso", "capacitacion"], response: "Los cursos de capacitación..." }
-            };
-            
-            const testQueries = ["hola", "necesito credencial", "donde hago curso", "información"];
-            
-            output.textContent += '📝 Probando búsquedas:\n\n';
-            
-            testQueries.forEach(query => {
-                let found = false;
-                let matchedRule = null;
-                
-                for (const [ruleId, rule] of Object.entries(exampleRules)) {
-                    for (const keyword of rule.keywords) {
-                        if (query.toLowerCase().includes(keyword)) {
-                            found = true;
-                            matchedRule = ruleId;
-                            break;
-                        }
+        const firebaseConfig = {
+          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+          authDomain: "cuenta-946e2.firebaseapp.com",
+          projectId: "cuenta-946e2",
+          storageBucket: "cuenta-946e2.firebasestorage.app",
+          messagingSenderId: "816979648502",
+          appId: "1:816979648502:web:809beffeea8ba7968031d7",
+          measurementId: "G-RX9KZSC0F4"
+        };
+        
+        async function runCounter() {
+            const counterSpan = document.getElementById('visit-counter');
+            try {
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                await signInAnonymously(auth);
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    let count = 1;
+                    if (counterDoc.exists()) {
+                        count = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: count });
+                    } else {
+                        transaction.set(counterRef, { count: count });
                     }
-                    if (found) break;
+                    return count;
+                });
+                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+            } catch (error) {
+                console.error("ERROR: Falló el proceso del contador.", error);
+                if (counterSpan) counterSpan.textContent = "Error";
+            }
+        }
+        runCounter();
+    </script>
+    
+    <!-- Cargar las reglas desde el archivo externo -->
+    <script src="./rules/chatbot-rules.js"></script>
+    
+    <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Lógica para detectar preferencia de modo oscuro del sistema
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+
+            // --- Lógica del Chatbot ---
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const speechSynth = window.speechSynthesis;
+            let recognition;
+            let isListening = false;
+            let availableVoices = [];
+            let isAutoReadEnabled = true;
+            
+            // Cargar reglas desde el único archivo
+            const allRules = Object.values(window.responses || {});
+            const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; 
+
+            function loadVoices() {
+                availableVoices = speechSynth.getVoices();
+                if (availableVoices.length > 0) {
+                     console.log("Voces cargadas.");
+                }
+            }
+
+            loadVoices();
+            if (speechSynth.onvoiceschanged !== undefined) {
+                speechSynth.onvoiceschanged = loadVoices;
+            }
+
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.lang = 'es-CL';
+                recognition.continuous = false;
+                recognition.interimResults = false;
+            } else {
+                console.warn("El reconocimiento de voz no es compatible con este navegador.");
+                document.getElementById('voice-btn').style.display = 'none';
+            }
+
+            function speakText(text) {
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
+                const cleanText = text
+                    .replace(urlRegex, '')
+                    .replace(emojiRegex, '')
+                    .replace(/<br>/g, '. ')
+                    .replace(/<strong>/g, '')
+                    .replace(/<\/strong>/g, '')
+                    .replace(/\n/g, '. ')
+                    .replace(/\*/g, '');
+                
+                if (!cleanText.trim() || !speechSynth) return;
+
+                speechSynth.cancel();
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+
+                let selectedVoice = null;
+                if (availableVoices.length > 0) {
+                    const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
+                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                                    availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es')) ||
+                                    availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name)) ||
+                                    availableVoices.find(voice => voice.lang.startsWith('es'));
+                }
+
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                    console.log('Usando voz:', selectedVoice.name);
+                } else {
+                    console.warn('No se encontró una voz en español preferida.');
+                }
+
+                utterance.lang = 'es-CL';
+                utterance.rate = 1.1;
+                utterance.pitch = 0.8;
+                speechSynth.speak(utterance);
+            }
+
+            function toggleChat() {
+                const popup = document.getElementById('chat-popup');
+                const backdrop = document.getElementById('chat-backdrop');
+                const button = document.getElementById('chat-toggle-button');
+                
+                const isHidden = popup.classList.contains('hidden');
+                popup.classList.toggle('hidden');
+                backdrop.classList.toggle('hidden');
+                button.classList.toggle('hidden', isHidden);
+            }
+
+            function addMessage(sender, text, buttons = []) {
+                const chatMessages = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+                
+                let content = '';
+                if (sender === 'user') {
+                    messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
+                    content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
+                } else {
+                    messageDiv.className = 'flex items-start space-x-2 mb-1';
+                    const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+                    let formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+                    formattedText = formattedText.replace(urlRegex, (url) => {
+                        const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
+                        let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
+                        let buttonText = "🔗 Abrir";
+                        if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "📄 Descargar";
+                        else if (cleanedUrl.includes('bcn.cl')) buttonText = "⚖️ Ver ley";
+                        else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "🏢 Ver OS10";
+                        return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
+                    });
+
+                    const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
+                    
+                    content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200 leading-tight">${formattedText}${buttonsHtml}</div>`;
+                    if (isAutoReadEnabled) setTimeout(() => speakText(text), 300);
+                }
+                messageDiv.innerHTML = content;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            window.handleUserButtonClick = (text) => {
+                 document.getElementById('user-input').value = text;
+                 handleMessage();
+            }
+
+            async function handleMessage() {
+                const input = document.getElementById('user-input');
+                const text = input.value.trim();
+                const lowerText = text.toLowerCase();
+                
+                if (!text) return;
+                
+                addMessage('user', text);
+                input.value = '';
+                
+                let response = null;
+
+                // 1. Buscar en las reglas locales primero
+                if (allRules.length > 0) {
+                    for (const rule of allRules) {
+                        if (rule && rule.keywords) {
+                            for (const keyword of rule.keywords) {
+                                const cleanedKeyword = keyword.replace(/\*/g, '');
+                                if (lowerText.includes(cleanedKeyword)) {
+                                    response = rule.response;
+                                    break;
+                                }
+                            }
+                        }
+                        if (response) break;
+                    }
                 }
                 
-                if (found) {
-                    output.textContent += `✅ "${query}" → Encontrada en ${matchedRule}\n`;
-                } else {
-                    output.textContent += `❌ "${query}" → No encontrada (consultaría IA)\n`;
+                // 2. Si se encuentra una respuesta en las reglas, mostrarla
+                if (response) {
+                    setTimeout(() => addMessage('bot', response), 500);
+                    return; // Termina la ejecución aquí
                 }
+
+                // 3. Si NO se encuentra respuesta, consultar a la IA
+                addTypingIndicator();
+                try {
+                    // Combinar el prompt del sistema con la pregunta del usuario
+                    const fullPrompt = `${systemPrompt}\n\n**Consulta del Usuario:**\n${text}\n\n**Base de Conocimiento para referencia (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Respuesta:**`;
+
+                    // Construir el cuerpo de la solicitud para la API de Gemini
+                    const geminiPayload = {
+                        contents: [{ parts: [{ text: fullPrompt }] }],
+                        safetySettings: [
+                            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                        ],
+                    };
+
+                    const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(geminiPayload),
+                    });
+
+                    removeTypingIndicator();
+
+                    if (!apiResponse.ok) {
+                        const errorData = await apiResponse.json();
+                        console.error("Error desde el proxy:", errorData);
+                        throw new Error(`Error del servidor: ${apiResponse.status}`);
+                    }
+
+                    const data = await apiResponse.json();
+                    
+                    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
+                    addMessage('bot', aiResponse);
+
+                } catch (error) {
+                    console.error("Error al contactar al asistente de IA:", error);
+                    removeTypingIndicator();
+                    addMessage('bot', "Hubo un problema de conexión con el asistente inteligente. Por favor, intenta de nuevo más tarde.");
+                }
+            }
+            
+            function addTypingIndicator() {
+                const chatMessages = document.getElementById('chat-messages');
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.className = 'flex items-start space-x-2 mb-3';
+                typingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain"></div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function removeTypingIndicator() {
+                const indicator = document.getElementById('typing-indicator');
+                if (indicator) indicator.remove();
+            }
+
+            function startVoiceInput() {
+                if (!recognition) return;
+                const voiceBtn = document.getElementById('voice-btn');
+                if (isListening) {
+                    recognition.stop();
+                    return;
+                }
+                isListening = true;
+                voiceBtn.classList.add('animate-pulse');
+                recognition.start();
+                recognition.onresult = (event) => {
+                    document.getElementById('user-input').value = event.results[0][0].transcript;
+                    handleMessage();
+                };
+                recognition.onerror = (event) => console.error("Error en reconocimiento de voz:", event.error);
+                recognition.onend = () => {
+                    isListening = false;
+                    voiceBtn.classList.remove('animate-pulse');
+                };
+            }
+
+            function readLastMessage() {
+                const messages = document.querySelectorAll('#chat-messages .dark\\:text-gray-200');
+                if (messages.length > 0) speakText(messages[messages.length - 1].innerText);
+            }
+            
+            // --- Asignación de Eventos ---
+            document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
+            document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
+            document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
+            document.getElementById('send-button').addEventListener('click', handleMessage);
+            document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
+            
+            const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
+            const speakerOnIcon = document.getElementById('speaker-on-icon');
+            const speakerOffIcon = document.getElementById('speaker-off-icon');
+
+            toggleSpeakBtn.addEventListener('click', () => {
+                isAutoReadEnabled = !isAutoReadEnabled;
+                speakerOnIcon.classList.toggle('hidden', !isAutoReadEnabled);
+                speakerOffIcon.classList.toggle('hidden', isAutoReadEnabled);
+                toggleSpeakBtn.classList.toggle('bg-yellow-500', isAutoReadEnabled);
+                toggleSpeakBtn.classList.toggle('hover:bg-yellow-600', isAutoReadEnabled);
+                toggleSpeakBtn.classList.toggle('bg-gray-500', !isAutoReadEnabled);
+                toggleSpeakBtn.classList.toggle('hover:bg-gray-600', !isAutoReadEnabled);
+                if (!isAutoReadEnabled) speechSynth.cancel();
             });
-            
-            output.textContent += '\n💡 Tu sistema debería funcionar igual con tus reglas reales\n';
-        }
 
-        function downloadCorrectRulesFile() {
-            const output = document.getElementById('diagnostic-output');
-            output.textContent = '📥 Generando archivo corregido...\n\n';
-            
-            const correctedFileContent = `// ===== ARCHIVO CORREGIDO: rules/chatbot-rules.js =====
-console.log('🔄 Cargando base de datos de reglas OS10...');
+            if (recognition) document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
+            document.getElementById('speak-btn').addEventListener('click', readLastMessage);
+            document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
 
-const responses = {
-    'rule_1': { 
-        keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], 
-        response: '🤖 *Bots con IA avanzada:* \\n *1 Bot Seguridad Privada* \\n dal5.short.gy/SePriv' 
-    },
-    'rule_2': { 
-        keywords: ["infracciones", "sanciones guardias", "multas guardias"], 
-        response: 'Infracciones de Guardias (Decreto Supremo N° 93):\\n\\n*Guardia sin curso OS10:*\\nInfringe el *artículo 13*.' 
-    },
-    // AQUÍ AGREGAR TODAS TUS REGLAS...
-    'rule_350': { 
-        keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*"], 
-        response: '🤖🧙🏼‍♂️✅ Estas son algunas empresas de aqui de la region...' 
-    }
-};
+            // --- Verificación de carga de reglas y mensaje de bienvenida ---
+            if(allRules.length === 0) {
+                console.error("¡Advertencia! No se pudieron cargar las reglas desde 'rules/chatbot-rules.js'. El bot funcionará en modo 'solo IA'.");
+            }
 
-const systemPrompt = \`Eres un asistente virtual y funcionario de la oficina de Seguridad Privada OS10 de Carabineros en Coquimbo, Chile.\`;
-
-// Hacer variables globalmente accesibles
-window.responses = responses;
-window.systemPrompt = systemPrompt;
-
-// Verificación
-console.log(\`✅ \${Object.keys(responses).length} reglas cargadas correctamente\`);
-`;
-            
-            // Crear y descargar archivo
-            const blob = new Blob([correctedFileContent], { type: 'text/javascript' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'chatbot-rules-corregido.js';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            output.textContent += '✅ Archivo descargado: chatbot-rules-corregido.js\n';
-            output.textContent += '📁 Reemplaza tu archivo actual con este\n';
-            output.textContent += '🔧 Agrega todas tus reglas en el formato mostrado\n';
-        }
+            // El bot siempre dará la bienvenida.
+            setTimeout(() => {
+                const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+            }, 1000);
+        });
     </script>
 </body>
 </html>
