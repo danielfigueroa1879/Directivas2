@@ -247,7 +247,8 @@
                     <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                 </div>
             </header>
-            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto space-y-4"></main>
+            <!-- contenedor de mensajes del chat -->
+            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto"></main>
             <footer class="p-3 border-t border-green-500/30">
                 <div class="mb-2 text-xs text-center text-gray-500 dark:text-gray-400"><span>Alt+V para micrófono</span></div>
                 <div class="flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 rounded-xl p-2">
@@ -434,22 +435,22 @@
                 
                 let content = '';
                 if (sender === 'user') {
-                    messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
+                    // Se aumenta el margen inferior para separar más del mensaje del bot
+                    messageDiv.className = 'flex items-start space-x-2 mb-4 justify-end';
                     content = `
                         <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div>
                         <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>
                     `;
                 } else {
-                    messageDiv.className = 'flex items-start space-x-2 mb-3';
+                    // Se reduce el margen inferior para que los mensajes del bot estén más juntos
+                    messageDiv.className = 'flex items-start space-x-2 mb-2';
                     
-                    // Expresión regular para detectar URLs y convertirlas a botones VERDES
                     const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
 
                     let formattedText = text
                         .replace(/\n/g, '<br>')
                         .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
 
-                    // Convertir URLs a botones VERDES con ESTILOS IDÉNTICOS a los de la página
                     formattedText = formattedText.replace(urlRegex, (url) => {
                         const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
                         let fullUrl = cleanedUrl;
@@ -457,7 +458,6 @@
                             fullUrl = 'https://' + fullUrl;
                         }
                         
-                        // Crear texto descriptivo para el botón
                         let buttonText = "🔗 Abrir";
                         if (cleanedUrl.includes('dal5.short.gy') || cleanedUrl.includes('os10.short.gy') || cleanedUrl.includes('d6.short.gy')) {
                             buttonText = "📄 Descargar";
@@ -475,7 +475,6 @@
                             buttonText = "🚀 Ir a app";
                         }
                         
-                        // Botón VERDE con estilos IDÉNTICOS a los botones de bienvenida
                         return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
                     });
 
@@ -519,11 +518,9 @@
                 let response = null;
                 let matchedRule = null;
 
-                // Verificar si existe la variable responses del archivo externo
                 if (typeof responses !== 'undefined' && responses) {
                     console.log('Reglas cargadas correctamente:', Object.keys(responses).length);
                     
-                    // Buscar respuesta en las reglas del archivo externo
                     for (const ruleKey in responses) {
                         const rule = responses[ruleKey];
                         if (rule && rule.keywords) {
@@ -542,7 +539,6 @@
                     console.error('No se pudieron cargar las reglas del chatbot');
                 }
                 
-                // Mostrar respuesta
                 setTimeout(() => {
                     if (response) {
                         addMessage('bot', response);
