@@ -319,9 +319,8 @@
         runCounter();
     </script>
     
-    <!-- Cargar las reglas desde archivos externos -->
+    <!-- Cargar las reglas desde el archivo externo -->
     <script src="./rules/chatbot-rules.js"></script>
-  
     
     <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
     <script>
@@ -342,15 +341,9 @@
             let availableVoices = [];
             let isAutoReadEnabled = true;
             
-            // Combinar reglas de ambos archivos
-            const combinedResponses = { ...(window.responses || {}), ...(window.responses2 || {}) };
-            const allRules = Object.values(combinedResponses);
-            // El systemPrompt se toma del primer archivo de reglas (chatbot-rules.js)
+            // Cargar reglas desde el único archivo
+            const allRules = Object.values(window.responses || {});
             const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; 
-
-            if(allRules.length === 0) {
-                console.error("¡Advertencia! No se pudieron cargar las reglas. Asegúrate de que los archivos 'rules/chatbot-rules.js' y 'rules/chatbot-rules2.js' existan y definan las variables 'responses' y 'responses2' globalmente (usando 'var').");
-            }
 
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
@@ -603,7 +596,12 @@
             document.getElementById('speak-btn').addEventListener('click', readLastMessage);
             document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
 
-            // Mensaje de bienvenida
+            // --- Verificación de carga de reglas y mensaje de bienvenida ---
+            if(allRules.length === 0) {
+                console.error("¡Advertencia! No se pudieron cargar las reglas desde 'rules/chatbot-rules.js'. El bot funcionará en modo 'solo IA'.");
+            }
+
+            // El bot siempre dará la bienvenida.
             setTimeout(() => {
                 const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
                 addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
@@ -612,23 +610,3 @@
     </script>
 </body>
 </html>
-```
-
-**Importante:** Para que esto funcione, necesitas asegurarte de que tu archivo `rules/chatbot-rules2.js` también defina su variable de reglas de forma global.
-
-Aquí tienes un ejemplo de cómo debería ser tu archivo `rules/chatbot-rules2.js`. Es crucial que la variable se llame `responses2` (con un 2) para no sobreescribir las del primer archivo.
-
-
-```javascript
-// Asegúrate de que la variable se llame 'responses2' y use 'var'
-var responses2 = {
-  'rule_400': { 
-    keywords: ["palabra clave nueva", "otra consulta"], 
-    response: "Esta es una respuesta desde el segundo archivo de reglas." 
-  },
-  'rule_401': { 
-    keywords: ["ejemplo adicional"], 
-    response: "Aquí tienes más información desde chatbot-rules2.js."
-  }
-  // ... Agrega aquí todas las reglas de tu segundo archivo
-};
