@@ -1,4 +1,4 @@
-var responses =  {
+var responses =  {'
 
 "DECRETO 1773":
 
