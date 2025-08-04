@@ -488,6 +488,203 @@
                         } else if (cleanedUrl.includes('maps.app.goo.gl')) {
                             buttonText = "📍 Ver mapa";
                         } else if (cleanedUrl.includes('bit.ly')) {
+                            buttonText = "🔗 Abrir";
+                        } else if (cleanedUrl.includes('drive.google.com')) {
+                            buttonText = "📁 Ver documento";
+                        } else if (cleanedUrl.includes('netlify.app')) {
+                            buttonText = "🚀 Ir a app";
+                        }
+                        
+                        return ` <button onclick="window.open('${fullUrl}', '_blank')" class="inline-block mx-1 px-2 py-1 text-xs font-medium text-white bg-green-500 hover:bg-green-600 rounded-md transition-colors cursor-pointer shadow-sm">${buttonText}</button>`;
+                    });
+
+                    const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
+                        `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
+                    ).join('') + '</div>' : '';
+                    
+                    content = `
+                        <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                            <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+                        </div>
+                        <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200">
+                            ${formattedText}
+                            ${buttonsHtml}
+                        </div>
+                    `;
+                    if (isAutoReadEnabled) {
+                        setTimeout(() => speakText(text), 300);
+                    }
+                }
+                messageDiv.innerHTML = content;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            window.handleUserButtonClick = (text) => {
+                 document.getElementById('user-input').value = text;
+                 handleMessage();
+            }
+
+            async function handleMessage() {
+                const input = document.getElementById('user-input');
+                const text = input.value.trim();
+                const lowerText = text.toLowerCase();
+                
+                if (!text) return;
+                
+                addMessage('user', text);
+                input.value = '';
+                
+                let response = null;
+                let matchedRule = null;
+
+                // Buscar respuesta en las reglas del archivo externo
+                if (typeof responses !== 'undefined') {
+                    for (const ruleKey in responses) {
+                        const rule = responses[ruleKey];
+                        for (const keyword of rule.keywords) {
+                            const cleanedKeyword = keyword.replace(/\*/g, '');
+                            if (lowerText.includes(cleanedKeyword)) {
+                                response = rule.response;
+                                matchedRule = rule;
+                                break;
+                            }
+                        }
+                        if (response) break;
+                    }
+                }
+                
+                // Si encontramos una respuesta, mostrarla directamente
+                if (response) {
+                    setTimeout(() => {
+                        addMessage('bot', response);
+                    }, 500);
+                } else {
+                    // Si no hay respuesta predefinida, mostrar mensaje por defecto
+                    setTimeout(() => {
+                        addMessage('bot', 'Lo siento, no tengo información específica sobre esa consulta. Escriba "menú" para ver las opciones disponibles o intente con otra pregunta relacionada con seguridad privada.');
+                    }, 500);
+                }
+            }
+            
+            function addTypingIndicator() {
+                const chatMessages = document.getElementById('chat-messages');
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.className = 'flex items-start space-x-2 mb-3';
+                typingDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                        <img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg">
+                        <div class="typing-indicator">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function removeTypingIndicator() {
+                const indicator = document.getElementById('typing-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            }
+
+            function startVoiceInput() {
+                if (!recognition) return;
+
+                const voiceBtn = document.getElementById('voice-btn');
+                if (isListening) {
+                    recognition.stop();
+                    return;
+                }
+
+                isListening = true;
+                voiceBtn.classList.add('animate-pulse');
+                recognition.start();
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('user-input').value = transcript;
+                    handleMessage();
+                };
+
+                recognition.onerror = function(event) {
+                    console.error("Error en reconocimiento de voz:", event.error);
+                };
+
+                recognition.onend = function() {
+                    isListening = false;
+                    voiceBtn.classList.remove('animate-pulse');
+                };
+            }
+
+            function readLastMessage() {
+                const messages = document.querySelectorAll('#chat-messages .dark\\:text-gray-200');
+                if (messages.length > 0) {
+                    const lastMessage = messages[messages.length - 1];
+                    const text = lastMessage.innerText;
+                    speakText(text);
+                }
+            }
+            
+            // --- Asignación de Eventos ---
+            document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
+            document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
+            document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
+            document.getElementById('send-button').addEventListener('click', handleMessage);
+            document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
+            
+            const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
+            const speakerOnIcon = document.getElementById('speaker-on-icon');
+            const speakerOffIcon = document.getElementById('speaker-off-icon');
+
+            toggleSpeakBtn.addEventListener('click', () => {
+                isAutoReadEnabled = !isAutoReadEnabled;
+                if (!isAutoReadEnabled) {
+                    speechSynth.cancel();
+                    toggleSpeakBtn.classList.remove('bg-yellow-500', 'hover:bg-yellow-600');
+                    toggleSpeakBtn.classList.add('bg-gray-500', 'hover:bg-gray-600');
+                    speakerOnIcon.classList.add('hidden');
+                    speakerOffIcon.classList.remove('hidden');
+                } else {
+                    toggleSpeakBtn.classList.add('bg-yellow-500', 'hover:bg-yellow-600');
+                    toggleSpeakBtn.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+                    speakerOnIcon.classList.remove('hidden');
+                    speakerOffIcon.classList.add('hidden');
+                }
+            });
+
+            if (recognition) {
+                document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
+            }
+            document.getElementById('speak-btn').addEventListener('click', readLastMessage);
+
+            document.addEventListener('keydown', e => {
+                if (e.altKey && e.key === 'v') {
+                    e.preventDefault();
+                    startVoiceInput();
+                }
+            });
+
+            // Mensaje de bienvenida
+            setTimeout(() => {
+                const welcomeButtons = ['Menú', 'Valores', 'Horario', 'Directiva'];
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>')) {
+                            buttonText = "⚖️ Ver ley";
+                        } else if (cleanedUrl.includes('zosepcar.cl')) {
+                            buttonText = "🏢 Ver OS10";
+                        } else if (cleanedUrl.includes('maps.app.goo.gl')) {
+                            buttonText = "📍 Ver mapa";
+                        } else if (cleanedUrl.includes('bit.ly')) {
                             buttonText = "🔗 Abrir enlace";
                         } else if (cleanedUrl.includes('drive.google.com')) {
                             buttonText = "📁 Ver documento";
