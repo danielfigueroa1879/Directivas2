@@ -290,9 +290,138 @@ const responses = {
 // REEMPLAZO DE VIGILANTES
 'rule_429': { keywords: ["reemplazo vigilantes", "ausencias vigilantes", "suplencias"], response: '🤖🔄 **REEMPLAZO VIGILANTES** (Art. 43 Reglamento):\n**AUSENCIAS IMPREVISTAS:**\n- Reemplazar por vigilante de otra sucursal\n- Si no hay: contratar vigilante externo\n- Último recurso: guardia máximo 30 días\n**AUSENCIAS PREVISTAS (feriados):**\n- SIEMPRE reemplazar por vigilante privado\n- Calendarización anual obligatoria\n**COMUNICACIÓN:** 24 horas a Subsecretaría y autoridad fiscalizadora\n**EXENCIÓN ARMAS:** Puede reemplazar con guardia si está autorizado' },
 // CANAL DENUNCIA ANÓNIMO
-'rule_430': { keywords: ["denuncia anónima", "canal denuncia", "denunciar irregularidades"], response: '🤖📢 **CANAL DENUNCIA ANÓNIMO** (Art. 132-136 Reglamento):\n**FUNCIÓN:** Denunciar infracciones Ley 21.659\n**CARACTERÍSTICAS:**\n- Acceso libre sin autenticación\n- Garantiza anonimato\n- Formulario electrónico\n- Adjuntar evidencias\n**CONTENIDO DENUNCIA:**\n- Narración circunstanciada hechos\n- Individualización responsables\n- Antecedentes fundantes\n**SEGUIMIENTO:** Código único identificación\n**ARCHIVO:** Si carece fundamento plausible\n**ADMINISTRA:** Subsecretaría Prevención Delito' }
+'rule_430': { keywords: ["denuncia anónima", "canal denuncia", "denunciar irregularidades"], response: '🤖📢 **CANAL DENUNCIA ANÓNIMO** (Art. 132-136 Reglamento):\n**FUNCIÓN:** Denunciar infracciones Ley 21.659\n**CARACTERÍSTICAS:**\n- Acceso libre sin autenticación\n- Garantiza anonimato\n- Formulario electrónico\n- Adjuntar evidencias\n**CONTENIDO DENUNCIA:**\n- Narración circunstanciada hechos\n- Individualización responsables\n- Antecedentes fundantes\n**SEGUIMIENTO:** Código único identificación\n**ARCHIVO:** Si carece fundamento plausible\n**ADMINISTRA:** Subsecretaría Prevención Delito' },
 
+// REGLAS ADICIONALES CHATBOT SEGURIDAD PRIVADA - DECRETOS Y LEYES COMPLEMENTARIAS
 
+// DECRETO 1773 - REGLAMENTO VIGILANTES PRIVADOS
+'rule_431': {
+  keywords: ["decreto 1773", "reglamento vigilantes", "autorización vigilancia"],
+  response: '🤖📋 **DECRETO 1773 - REGLAMENTO VIGILANTES** (Arts. 1-25):\n**OBJETO:** Protección y seguridad interior edificios, oficinas, conjuntos habitacionales, instalaciones empresariales\n**AUTORIZACIÓN:** Presidente República vía decreto supremo firmado Ministro Interior\n**VIGENCIA:** Máximo 2 años renovables\n**SOLICITUD:** A través Intendencia/Gobernación con estudio seguridad\n**INFORME:** Prefectura Carabineros obligatorio\n**REVOCACIÓN:** Cualquier tiempo por infracciones'
+},
+'rule_432': {
+  keywords: ["estudio seguridad", "secreto estudio", "implementación estudio"],
+  response: '🤖🔒 **ESTUDIO DE SEGURIDAD** (Art. 9° bis Decreto 1773):\n**CARÁCTER:** Secreto obligatorio\n**EJEMPLARES:** 2 (uno Prefectura, uno interesado)\n**PLAZO IMPLEMENTACIÓN:** 60 días desde decreto aprobatorio\n**INCUMPLIMIENTO:** Pérdida aprobación de pleno derecho\n**CONTENIDO:** Estructura y funcionamiento servicio vigilantes\n**RESPONSABLE:** Elaboración por interesado con asesoría autorizada'
+},
+'rule_433': {
+  keywords: ["entidades estratégicas", "decreto secreto", "empresas estratégicas"],
+  response: '🤖🏭 **ENTIDADES ESTRATÉGICAS** (Art. 7° bis Decreto 1773):\n**DETERMINACIÓN:** Decreto supremo secreto\n**FIRMADO:** Ministros Interior y Defensa Nacional\n**NOTIFICACIÓN:** Conducto Intendencia respectiva\n**PERSONALIZADA:** Al representante legal entidad\n**CARÁCTER:** Clasificado y reservado\n**OBLIGACIÓN:** Servicio vigilancia privada obligatorio'
+},
+'rule_434': {
+  keywords: ["transporte valores", "empresas valores", "traslado valores"],
+  response: '🤖💰 **TRANSPORTE DE VALORES** (Art. 10 Decreto 1773):\n**DEFINICIÓN:** Traslado valores desde/hacia recintos determinados\n**VALORES:** Dinero efectivo, documentos bancarios/mercantiles, metales preciosos, obras arte\n**CRITERIO:** Cualquier objeto que requiera traslado bajo medidas especiales\n**AUTORIDAD:** Fiscalizadora determina según características\n**RÉGIMEN:** Normas generales + especiales por naturaleza actividad'
+},
+'rule_435': {
+  keywords: ["credencial vigilante", "tarjeta identificación", "colores credencial"],
+  response: '🤖🆔 **CREDENCIAL VIGILANTES** (Art. 13 Decreto 1773):\n**DIMENSIONES:** 5.5 x 8.5 cms plástico\n**COLORES:**\n- AZUL: Transporte valores\n- VERDE: Protección instalaciones fuera recintos\n- AMARILLO: Demás vigilantes\n**CONTENIDO:** Membrete Carabineros, número, entidad, nombre, RUN, vencimiento, fotografía\n**USO:** Obligatorio durante funciones únicamente\n**OTORGA:** Prefectura Carabineros correspondiente'
+},
+'rule_436': {
+  keywords: ["uniforme vigilantes", "uniforme gris", "color uniforme"],
+  response: '🤖👕 **UNIFORME VIGILANTES** (Art. 17 Decreto 1773):\n**TIPO:** "Slack" gris perla azulado\n**COMPONENTES:**\n- Gorra militar/casco/quepís gris perla azulado\n- Camisa gris perla azulado con cuello y palas\n- Corbata negra (manga larga obligatoria)\n- Pantalón mismo color y tela\n- Calzado y calcetines negros\n- Cinturón cuero negro con cartuchera\n- Bastón negro modelo Carabineros\n**USO:** Obligatorio durante funciones, prohibido fuera recinto'
+},
+'rule_437': {
+  keywords: ["capacitación vigilantes", "cursos vigilantes", "formación vigilantes"],
+  response: '🤖📚 **CAPACITACIÓN VIGILANTES** (Art. 18 bis Decreto 1773):\n**MATERIAS:** Conocimientos legales, primeros auxilios, emergencias, armas, alarmas, comunicaciones, educación física\n**PERIODICIDAD:** Según programa Dirección General Carabineros\n**NIVELES:** Distintos según especialización función\n**EXAMEN:** Ante autoridad fiscalizadora con certificado\n**PROHIBICIÓN:** No ejercer sin curso aprobado (incumplimiento grave)\n**VALIDEZ:** Certificado válido al cambiar entidad'
+},
+'rule_438': {
+  keywords: ["armas vigilantes", "portación armas", "entrega armas"],
+  response: '🤖🔫 **ARMAS VIGILANTES** (Art. 19-20 Decreto 1773):\n**HABILITADOS:** Armas cortas y bastón dentro recinto/área\n**ENTREGA:** Solo inicio funciones con registro libro especial\n**REGISTRO:** Individualización arma, munición, receptor, entregador, firmas\n**INSCRIPCIÓN:** Todas armas ante autoridad Ley 17.798\n**DEVOLUCIÓN:** Al término jornada a funcionario designado\n**ALMACENAMIENTO:** Lugar cerrado con garantías seguridad dentro recinto\n**USO:** Registro obligatorio con detalles munición y consecuencias'
+},
+'rule_439': {
+  keywords: ["organismo seguridad interno", "oficina seguridad", "estructura seguridad"],
+  response: '🤖🏢 **ORGANISMO SEGURIDAD INTERNO** (Art. 21 Decreto 1773):\n**OBLIGATORIO:** Todas entidades Art. 3° DL 3607\n**DEPENDENCIA:** Más alto nivel jerárquico\n**MISIÓN:** Proponer política general seguridad\n**ESTRUCTURA:** Según magnitud entidad\n**FUNCIONES:** Estudiar vulnerabilidades, detectar/impedir/neutralizar actividades contrarias\n**COORDINACIÓN:** Jerárquica entre niveles regional/provincial/central\n**VOLUNTARIO:** Entidades acogidas voluntariamente'
+},
+'rule_440': {
+  keywords: ["fiscalización carabineros", "control carabineros", "inspecciones"],
+  response: '🤖👮 **FISCALIZACIÓN CARABINEROS** (Art. 22-24 Decreto 1773):\n**AUTORIDAD:** Prefectura Carabineros respectiva\n**FACULTADES:** Instrucciones, inspecciones, cumplimiento normas y estudio\n**POLÍTICAS:** Ministerio Defensa vía Dirección General Carabineros\n**REGISTROS:** Entidades y vigilantes actualizados\n**REQUERIMIENTOS:** Prefecto puede solicitar antecedentes necesarios\n**VISITAS:** Todas las que estime conveniente\n**OBLIGACIÓN:** Entidad proporcionar información requerida'
+},
+
+// DECRETO LEY 3607 - NORMAS VIGILANTES PRIVADOS
+'rule_441': {
+  keywords: ["decreto ley 3607", "vigilantes privados", "autorización vigilantes"],
+  response: '🤖📜 **DECRETO LEY 3607** (Arts. 1-11):\n**OBJETO:** Protección y seguridad interior edificios, habitaciones, oficinas, conjuntos habitacionales, plantas, establecimientos\n**AUTORIZACIÓN:** Decreto firmado Ministro Interior "Por orden Presidente"\n**INFORME:** Prefectura Carabineros favorable previo\n**ÁMBITO:** Dentro recinto/área empresa, uniforme obligatorio diferente FF.AA.\n**SOLICITUD:** Cualquier persona natural/jurídica\n**CONTROL:** Carabineros Chile sin perjuicio Ley 17.798'
+},
+'rule_442': {
+  keywords: ["entidades obligadas", "instituciones bancarias", "servicios públicos"],
+  response: '🤖🏛️ **ENTIDADES OBLIGADAS** (Art. 3° DL 3607):\n**OBLIGATORIAS:**\n- Instituciones bancarias/financieras\n- Entidades públicas\n- Empresas transporte valores\n- Empresas estratégicas\n- Servicios utilidad pública\n**REQUISITOS:** Servicio vigilantes privados + organismo seguridad interno\n**NOTIFICACIÓN:** Intendentes vía Prefecturas Carabineros\n**PLAZO:** 60 días presentar estudio seguridad\n**MULTAS:** 5-100 ingresos mínimos por incumplimiento'
+},
+'rule_443': {
+  keywords: ["reclamos vigilancia", "recurso corte", "impugnación decreto"],
+  response: '🤖⚖️ **RECLAMOS VIGILANCIA** (Art. 3° incisos 12-17 DL 3607):\n**COMPETENCIA:** Ministro Corte Apelaciones respectiva\n**PLAZO:** 10 días desde notificación\n**INSTANCIA:** Única\n**PROCEDIMIENTO:** Informe autoridad + sentencia 15 días\n**PRÓRROGA:** 10 días adicionales medidas mejor resolver\n**CASACIÓN:** No procede recurso forma\n**CARÁCTER:** Proceso secreto bajo custodia\n**ACCESO:** Solo partes y representantes'
+},
+'rule_444': {
+  keywords: ["prohibición suministro", "delito vigilantes", "penas vigilancia"],
+  response: '🤖🚫 **PROHIBICIÓN SUMINISTRO VIGILANTES** (Art. 5° bis DL 3607):\n**PROHIBIDO:** Proporcionar/ofrecer vigilantes privados bajo cualquier forma\n**DELITO:** Presidio menor grado mínimo a medio\n**MULTA:** 200-500 ingresos mínimos mensuales\n**INHABILITACIÓN:** Perpetua para labores requieren autorización\n**REINCIDENCIA:** Presidio menor grado medio a máximo + multa 500-1000\n**COMPETENCIA:** Justicia ordinaria\n**PERSONAS JURÍDICAS:** Aplican normas Art. 39 CPP'
+},
+'rule_445': {
+  keywords: ["jornada vigilantes", "duración trabajo", "horas semanales"],
+  response: '🤖⏰ **JORNADA VIGILANTES** (Art. 5° DL 3607):\n**CALIDAD:** Trabajadores dependientes\n**CÓDIGO:** Trabajo aplicable\n**DURACIÓN:** Máximo 48 horas semanales ordinarias\n**SEGURO:** Vida obligatorio empleador\n**RÉGIMEN:** Cualquier naturaleza jurídica organismo contratante\n**APLICACIÓN:** También nocheros, porteros, rondines función similar'
+},
+'rule_446': {
+  keywords: ["asesoría seguridad", "empresas seguridad", "autorización prefectura"],
+  response: '🤖🏢 **ASESORÍA Y SERVICIOS SEGURIDAD** (Art. 5° bis DL 3607):\n**AUTORIZACIÓN:** Prefectura Carabineros previa obligatoria\n**ACTIVIDADES:** Asesoría, prestación servicios, capacitación vigilantes\n**REQUISITOS:**\n- Idoneidad cívica, moral, profesional\n- Informar personal permanentemente\n- Contratar seguro vida personal\n- Instalaciones físicas/técnicas capacitación\n- Instrucciones Prefectura Carabineros\n**JORNADA:** Máximo 48 horas semanales\n**PROHIBICIÓN:** Portar armas fuego'
+},
+'rule_447': {
+  keywords: ["control carabineros", "tuición carabineros", "revocación autorización"],
+  response: '🤖👮‍♂️ **CONTROL CARABINEROS** (Art. 6° DL 3607):\n**TUICIÓN:** Todas actividades seguridad privada\n**SUSPENSIÓN:** Servicio vigilantes por anomalías\n**REVOCACIÓN:** Autorización actividades Art. 5° bis\n**AUTORIDAD:** Prefecturas Carabineros\n**APLICACIÓN:** Sin perjuicio Ley 17.798\n**FACULTADES:** Controlar oficinas seguridad y organismos internos\n**ALCANCE:** Vigilantes privados y empresas servicios'
+},
+'rule_448': {
+  keywords: ["infracciones vigilancia", "multas vigilancia", "procedimiento multas"],
+  response: '🤖💰 **INFRACCIONES Y MULTAS** (Art. 8° DL 3607):\n**COMPETENCIA:** Juzgado Policía Local\n**PROCEDIMIENTO:** Ley 18.287\n**REQUERIMIENTO:** Intendente directamente o vía Gobernador\n**INFORME:** Prefectura Carabineros fiscalizadora previo\n**MONTOS:**\n- Primera infracción: 25-125 ingresos mínimos\n- Reincidencia: 125-250 ingresos mínimos\n**ABSOLUCIÓN:** Si acredita cumplimiento durante proceso\n**EXCEPCIÓN:** Delito Art. 5° bis (justicia ordinaria)'
+},
+'rule_449': {
+  keywords: ["empresas defensa", "excepción defensa", "ministerio defensa"],
+  response: '🤖🛡️ **EMPRESAS DEFENSA** (Art. 10 DL 3607):\n**EXCEPCIÓN:** Empresas dependientes/relacionadas Ministerio Defensa\n**SISTEMAS:** Propios seguridad y vigilancia\n**NORMAS:** Impuestas por Ministerio Defensa\n**CARÁCTER:** Cualquiera que sea\n**LIBERTAD:** Establecer sistemas según criterio ministerial\n**AUTONOMÍA:** No aplicación normas generales vigilancia privada'
+},
+
+// DECRETO 93 - ASESORÍA Y SERVICIOS SEGURIDAD
+'rule_450': {
+  keywords: ["decreto 93", "asesoría seguridad", "prestación servicios"],
+  response: '🤖📋 **DECRETO 93 - ASESORÍA Y SERVICIOS** (Arts. 1-18):\n**ASESORÍA:** Consejar/ilustrar para precaver buen funcionamiento instalación\n**SERVICIOS:** Proporcionar/instalar/mantener/reparar recursos materiales\n**CAPACITACIÓN:** Instruir vigilantes aspectos teóricos/prácticos\n**AUTORIZACIÓN:** Prefectura Carabineros previa obligatoria\n**RECURSOS HUMANOS:** Proporcionar personal terceros con propósitos seguridad'
+},
+'rule_451': {
+  keywords: ["equipos seguridad", "libro existencias", "materiales seguridad"],
+  response: '🤖📦 **EQUIPOS Y MATERIALES** (Art. 7° Decreto 93):\n**RELACIÓN:** Pormenorizada equipos/materiales/elementos a proporcionar\n**LIBRO:** Existencias actualizado permanente\n**EXHIBICIÓN:** Requerimiento Prefectura Carabineros\n**AUTORIZACIÓN:** Previa para actividades Art. 3°\n**CONTROL:** Fiscalización equipos en poder empresa\n**ACTUALIZACIÓN:** Permanente inventario'
+},
+'rule_452': {
+  keywords: ["nocheros porteros", "guardias seguridad", "personal similar"],
+  response: '🤖👥 **NOCHEROS, PORTEROS, RONDINES** (Arts. 12-16 Decreto 93):\n**DEFINICIÓN:** Sin calidad vigilantes, brindan seguridad bienes/personas\n**CALIDAD:** Trabajadores dependientes\n**CÓDIGO:** Trabajo aplicable\n**SEGURO:** Vida mínimo 75 UTM\n**INFORMACIÓN:** Lugares exactos servicio a Prefectura\n**CAPACITACIÓN:** Según determine Prefectura\n**PROHIBICIÓN:** Armas fuego bajo concepto alguno\n**CONTRATACIÓN:** Directa o través empresas autorizadas'
+},
+'rule_453': {
+  keywords: ["prohibición armas", "implementos seguridad", "autorización implementos"],
+  response: '🤖🚫 **PROHIBICIÓN ARMAS** (Art. 14 Decreto 93):\n**PROHIBIDO:** Armas fuego bajo concepto alguno\n**AUTORIZACIÓN:** Previa Prefectura para implementos no fuego\n**ESPECÍFICO:** Cada servicio particular\n**SANCIÓN:** DL 3607 + Ley 17.798 aplicables\n**INFRACCIÓN:** Denunciable Juzgado Policía Local\n**CONTROL:** Prefectura Carabineros competente'
+},
+'rule_454': {
+  keywords: ["tarjeta identificación", "credencial guardias", "identificación personal"],
+  response: '🤖🆔 **TARJETA IDENTIFICACIÓN** (Art. 18 Decreto 93):\n**OBLIGATORIO:** Guardias, nocheros, porteros, rondines\n**UBICACIÓN:** Extremo superior izquierdo tenida\n**DIMENSIONES:** 5.5 x 8.5 cms plástico\n**CONTENIDO:** Membrete Carabineros, número, leyenda identificación, entidad, funcionario, RUN, vencimiento, fotografía fondo blanco\n**REVERSO:** "ACREDITA IDENTIDAD SOLO DENTRO LÍMITES JURISDICCIÓN. PROHIBIDO OTRO USO. EXTRAVÍO DEVOLVER CARABINEROS"\n**COSTOS:** Cargo entidad interesada'
+},
+'rule_455': {
+  keywords: ["control tuición", "revocación autorización", "anomalías funcionamiento"],
+  response: '🤖🔍 **CONTROL Y TUICIÓN** (Arts. 16-17 Decreto 93):\n**AUTORIDAD:** Carabineros Chile\n**ALCANCE:** Todas actividades Art. 1°\n**LEY 17.798:** Sin perjuicio aplicación\n**REVOCACIÓN:** Cualquier tiempo por anomalías\n**CRITERIO:** Juicio autoridad obstaculice buen funcionamiento\n**DISCRECIONAL:** Facultad Prefectura Carabineros\n**INFORME:** Suficiente para determinar revocación'
+},
+
+// DECRETO 32 - MANUAL OPERATIVO
+'rule_456': {
+  keywords: ["manual operativo", "decreto 32", "actualización manual"],
+  response: '🤖📖 **MANUAL OPERATIVO** (Decreto 32/2024):\n**FUNCIÓN:** Sistematizar normativa seguridad privada\n**ACTUALIZACIÓN:** Mínimo cada 2 años\n**CONTENIDO:** Procedimientos, requisitos, estándares\n**NOTIFICACIONES:** Correo electrónico domicilio válido\n**PAGOS:** Vale vista "Carabineros Chile - Seguridad Privada"\n**VIGENCIA:** Desde publicación Diario Oficial\n**RESPONSABLE:** Carabineros propone, Ministerio Interior aprueba'
+},
+'rule_457': {
+  keywords: ["educación media", "guardias primera vez", "exigencia estudios"],
+  response: '🤖🎓 **EDUCACIÓN MEDIA** (Decreto 32):\n**GENERAL:** Educación media completa o equivalente\n**EXCEPCIÓN:** Guardias, Conserjes, Nocheros, Porteros, Rondines\n**PRIMERA VEZ:** Solo exigible quienes soliciten acreditación primera vez\n**RENOVACIÓN:** No aplicable requisito letra c) apartado II\n**EXTRANJEROS:** Validación estudios obligatoria\n**CERTIFICACIÓN:** Ministerio Educación u oficinas OIRS'
+},
+'rule_458': {
+  keywords: ["antecedentes comerciales", "autorización excepcional", "deudas comerciales"],
+  response: '🤖💳 **ANTECEDENTES COMERCIALES** (Decreto 32):\n**EXIGENCIA:** Certificado código verificador vigencia 30 días\n**EXCEPCIÓN:** Autorización excepcional 1 año si presenta antecedentes\n**CONDICIÓN:** Acreditar gestiones solución deuda\n**PERSONAS JURÍDICAS:** Socios, administradores, representantes legales\n**EMPRESAS:** No excepción deudas laborales/previsionales\n**FINALIDAD:** Demostrar idoneidad moral'
+},
+'rule_459': {
+  keywords: ["gorra negra", "uniforme guardias", "chaleco alta visibilidad"],
+  response: '🤖👕 **UNIFORME GUARDIAS** (Decreto 32):\n**GORRA:** Negra militar/jockey/quepis con visera y barboquejo\n**CONJUNTO:** Camisa y pantalón negro\n**CALZADO:** Negro con calcetines negros\n**CINTURÓN:** Cuero negro con cartuchera bastón retráctil\n**CHALECO:** Alta visibilidad fluorescente rojo con bandas retrorreflectantes\n**IDENTIFICACIÓN:** "SEGURIDAD PRIVADA" parte trasera\n**INSIGNIAS:** Máximo 5x5 cms empresa y cliente'
+},
+'rule_460': {
+  keywords: ["modalidad telemática", "cursos presenciales", "arma tiro presencial"],
+  response: '🤖💻 **MODALIDAD ENSEÑANZA** (Decreto 32):\n**TELEMÁTICA:** Programas formativos y perfeccionamiento permitidos\n**PRESENCIAL OBLIGATORIO:**\n- Arma y tiro\n- Primeros auxilios\n**LUGARES:** Habilitados por autoridad fiscalizadora o sedes OTEC\n**PRÁCTICA:** Complemento en puestos trabajo\n**POLÍGONO:** 20 horas arma/tiro en polígono autorizado\n**EVALUACIÓN:** Responsabilidad exclusiva Autoridad Fiscalizadora'
+}
+    
 };
 
 const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada OS10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada, profesional
