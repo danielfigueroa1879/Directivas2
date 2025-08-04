@@ -1,4 +1,4 @@
-var responses =  {
+const responses =  {
     'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib *3 Bot Abogado Virtual GPT* \n dal5.short.gy/Ab0 *4 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTt 5 Bot Ley Karin*\n dal5.short.gy/lkar'},
     'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: 'Infracciones de Guardias (Decreto Supremo N° 93):\n\n*Guardia sin curso OS10:*\nInfringe el *artículo 13*. La empresa que contrata al guardia sin este requisito es la infractora.\n\n*Guardia sin credencial vigente:*\nInfringe el *artículo 18*. La responsabilidad es de la empresa contratante.\n\n*Sin Directiva de Funcionamiento (DD.FF.):*\nInfringe el *artículo 15*. Es una infracción de la empresa si opera sin esta autorización.\n\n*Portando elementos no autorizados:*\nInfringe el *artículo 14*. Los implementos deben estar especificados en la DD.FF. Infracción aplicable a la empresa.\n\n*Portando arma de fuego:*\nInfringe el *artículo 14*. Los guardias tienen prohibido portar armas de fuego. Grave infracción atribuible a la empresa.' },
     'rule_3': { keywords: ["tipos de empresas", "tipo de empresa"], response: '*EMPRESA DE RR.HH. CAPACITACION O ASESORIAS* https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf'},
@@ -7918,4 +7918,4 @@ incisos quinto y sexto, de la ley N° 10.336.
 República.
      
      Al señor
-     Ministro del Interior y Seguridad Pública };
+     Ministro del Interior y Seguridad Pública '};
