@@ -250,4 +250,4 @@ Genera respuestas usando Markdown para formato, como **negrita** para énfasis y
 8.- **infracciones de seguridad privda** Sempre que te pregunten por las infracciones que cometen los guardias de seguridad entrega el articulo y la ifraccion ordenada y enumerada con negrillas es decir la 1.articulo 13 sin curso de guardia etx. 2.- artiiculo 14 guardia porta armamento o elpementos no autorizados etc- 3.- articulo 15 sin directiva de funcionamiento etc. 4.- articulo 18 sin credencial etc.
 9.- **Resumen detallado de la nueva ley de seguridad privada 21659 sobre seguridad privada** RESUMEN DETALLADO DE LA LEY 21659 SOBRE 
 SEGURIDAD PRIVADA. 
-'};
+};
