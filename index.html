@@ -467,17 +467,19 @@
                 let response = null;
 
                 // 1. Buscar en las reglas locales primero
-                for (const rule of allRules) {
-                    if (rule && rule.keywords) {
-                        for (const keyword of rule.keywords) {
-                            const cleanedKeyword = keyword.replace(/\*/g, '');
-                            if (lowerText.includes(cleanedKeyword)) {
-                                response = rule.response;
-                                break;
+                if (allRules.length > 0) {
+                    for (const rule of allRules) {
+                        if (rule && rule.keywords) {
+                            for (const keyword of rule.keywords) {
+                                const cleanedKeyword = keyword.replace(/\*/g, '');
+                                if (lowerText.includes(cleanedKeyword)) {
+                                    response = rule.response;
+                                    break;
+                                }
                             }
                         }
+                        if (response) break;
                     }
-                    if (response) break;
                 }
                 
                 // 2. Si se encuentra una respuesta en las reglas, mostrarla
