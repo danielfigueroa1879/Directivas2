@@ -1,4 +1,7 @@
-const responses =  {
+// ===== ARCHIVO CORREGIDO: rules/chatbot-rules.js =====
+console.log('🔄 Cargando base de datos de reglas OS10...');
+
+const responses = {
     'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib *3 Bot Abogado Virtual GPT* \n dal5.short.gy/Ab0 *4 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTt 5 Bot Ley Karin*\n dal5.short.gy/lkar'},
     'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: 'Infracciones de Guardias (Decreto Supremo N° 93):\n\n*Guardia sin curso OS10:*\nInfringe el *artículo 13*. La empresa que contrata al guardia sin este requisito es la infractora.\n\n*Guardia sin credencial vigente:*\nInfringe el *artículo 18*. La responsabilidad es de la empresa contratante.\n\n*Sin Directiva de Funcionamiento (DD.FF.):*\nInfringe el *artículo 15*. Es una infracción de la empresa si opera sin esta autorización.\n\n*Portando elementos no autorizados:*\nInfringe el *artículo 14*. Los implementos deben estar especificados en la DD.FF. Infracción aplicable a la empresa.\n\n*Portando arma de fuego:*\nInfringe el *artículo 14*. Los guardias tienen prohibido portar armas de fuego. Grave infracción atribuible a la empresa.' },
     'rule_3': { keywords: ["tipos de empresas", "tipo de empresa"], response: '*EMPRESA DE RR.HH. CAPACITACION O ASESORIAS* https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf'},
@@ -222,21 +225,14 @@ const responses =  {
 'rule_328': { keywords: ["qué pasa si trabajo sin credencial","consecuencias sin licencia","multa por no tener credencial","sanción trabajar sin autorización"], response: '🤖⚖️ Consecuencias trabajar sin credencial: 1) Multa personal: 25-125 ingresos mínimos 2) Multa empresa: hasta 250 ingresos mínimos 3) Inhabilitación temporal 4) Antecedentes penales posibles 5) Clausura del servicio de seguridad.' },
 'rule_329': { keywords: ["qué pasa empresa sin directiva","consecuencias operar sin autorización","multa empresa sin directiva","sanción compañía ilegal"], response: '🤖⚖️ Consecuencias empresa sin directiva: 1) Clausura INMEDIATA 2) Multa directivos: 25-250 ingresos mínimos 3) Inhabilitación directivos 4) Pérdida inversión 5) Responsabilidad civil por daños 6) Posible querella criminal por ejercicio ilegal.' },
 
-
 // Reglas conversacionales para el chatbot OS10 Coquimbo solo region de Coquimbo.
     
 'rule_350': { keywords: ["*donde puedo hacer el curso*","*empresa capacitadora*","*empresa de capacitacion*","punto 7"], response: '🤖🧙🏼‍♂️✅ 🧙🏻‍♂️ Estas son algunas empresas de aqui de la region:\n*EMPRESAS DE CAPACITACIÓN 2025* https://d6.short.gy/Cap'},
 'rule_351': { keywords: ["*quien es tu creador*","*quien te creo*"], response: '🤖🧙🏼‍♂️✅ Mi creador es el\n*Ingeniero en Informática y Ciberseguridad \nDaniel Elías Figueroa Chacama*' }
 
-    
+
 };
 
-// --- API Configuration ---
-// La URL ahora apunta a nuestra ruta de proxy segura definida en netlify.toml
-const API_URL = '/api/gemini';
-
-// --- State Management ---
-let chatHistory = [];
 const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada OS10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada, profesional
 Tus reglas principales son:
 1.  **Asume tu Rol:** Responde siempre como si fueras un miembro del equipo de la oficina OS10 Coquimbo. Usa un tono servicial y profesional, se preciso y concreto para responder, responde corto y preciso, no te explayes deja tu respuesta corta y buena.
@@ -249,5 +245,11 @@ Tus reglas principales son:
 Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.
 8.- **infracciones de seguridad privda** Sempre que te pregunten por las infracciones que cometen los guardias de seguridad entrega el articulo y la ifraccion ordenada y enumerada con negrillas es decir la 1.articulo 13 sin curso de guardia etx. 2.- artiiculo 14 guardia porta armamento o elpementos no autorizados etc- 3.- articulo 15 sin directiva de funcionamiento etc. 4.- articulo 18 sin credencial etc.
 9.- **Resumen detallado de la nueva ley de seguridad privada 21659 sobre seguridad privada** RESUMEN DETALLADO DE LA LEY 21659 SOBRE 
-SEGURIDAD PRIVADA. 
-};
+SEGURIDAD PRIVADA.`;
+
+// Hacer variables globalmente accesibles
+window.responses = responses;
+window.systemPrompt = systemPrompt;
+
+// Verificación
+console.log(`✅ ${Object.keys(responses).length} reglas cargadas correctamente`);
