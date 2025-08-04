@@ -599,7 +599,7 @@
             document.getElementById('speak-btn').addEventListener('click', readLastMessage);
             document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
 
-            // --- CORRECCIÓN: Verificación de carga de reglas y mensaje de bienvenida ---
+            // --- Verificación de carga de reglas y mensaje de bienvenida ---
             if(allRules.length > 0) {
                  // Si las reglas se cargaron, mostrar bienvenida normal
                 setTimeout(() => {
@@ -616,3 +616,4 @@
     </script>
 </body>
 </html>
+
