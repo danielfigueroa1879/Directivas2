@@ -348,10 +348,6 @@
             // El systemPrompt se toma del primer archivo de reglas (chatbot-rules.js)
             const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; 
 
-            if(allRules.length === 0) {
-                console.error("¡Advertencia! No se pudieron cargar las reglas. Asegúrate de que los archivos 'rules/chatbot-rules.js' y 'rules/chatbot-rules2.js' existan y definan las variables 'responses' y 'responses2' globalmente (usando 'var').");
-            }
-
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
                 if (availableVoices.length > 0) {
@@ -603,16 +599,23 @@
             document.getElementById('speak-btn').addEventListener('click', readLastMessage);
             document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
 
-            // Mensaje de bienvenida
-            setTimeout(() => {
-                const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
-            }, 1000);
+            // --- CORRECCIÓN: Verificación de carga de reglas y mensaje de bienvenida ---
+            if(allRules.length > 0) {
+                 // Si las reglas se cargaron, mostrar bienvenida normal
+                setTimeout(() => {
+                    const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
+                    addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                }, 1000);
+            } else {
+                // Si las reglas NO se cargaron, mostrar mensaje de error en el chat
+                setTimeout(() => {
+                    addMessage('bot', '⚠️ **Error de Configuración:** No pude cargar mi base de conocimiento. Por favor, revisa que los archivos `rules/chatbot-rules.js` y `rules/chatbot-rules2.js` estén correctos y usen `var responses = {...}` y `var responses2 = {...}`.');
+                }, 1000);
+            }
         });
     </script>
 </body>
 </html>
-```
 
 **Importante:** Para que esto funcione, necesitas asegurarte de que tu archivo `rules/chatbot-rules2.js` también defina su variable de reglas de forma global.
 
