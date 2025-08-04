@@ -7918,4 +7918,4 @@ incisos quinto y sexto, de la ley N° 10.336.
 República.
      
      Al señor
-     Ministro del Interior y Seguridad Pública`};
+     Ministro del Interior y Seguridad Pública };
