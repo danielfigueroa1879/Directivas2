@@ -10,7 +10,6 @@
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
     <meta name="mobile-web-app-capable" content="yes">
-    <!-- <link rel="manifest" href="manifest.json"> -->
 
     <!-- Configuración para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,7 +65,7 @@
         /* Estilos Chatbot */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 6rem; /* Elevado para no tapar el QR */
+            bottom: 6rem;
             right: 1.5rem;
             z-index: 1000; 
             display: flex; 
@@ -107,10 +106,8 @@
             40% { transform: scale(1.0); }
         }
 
-
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
-            /* Mueve el widget del chat más a la izquierda en pantallas grandes */
             #chat-widget-container {
                 right: 33rem; 
             }
@@ -126,7 +123,7 @@
                 width: 98%;
             }
             #chat-popup {
-                width: calc(100vw - 3rem); /* Ancho completo menos los márgenes */
+                width: calc(100vw - 3rem);
             }
         }
     </style>
@@ -321,11 +318,373 @@
         runCounter();
     </script>
     
-    <!-- Carga de los scripts del chatbot -->
-    <!-- 'defer' asegura que el script se ejecute después de que el HTML sea analizado -->
-    <script src="rules/chatbot-rules.js" defer></script>
-    <script src="assets/js/chatbot.js" defer></script>
+    <!-- Definición de respuestas del chatbot integrada -->
+    <script>
+        // RESPUESTAS DEL CHATBOT INTEGRADAS
+        const responses = {
+            'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada\n dal5.short.gy/SePriv \n *2 Bot de Ciberseguridad 2024 \n dal5.short.gy/Cib\n➢ *3 Bot Abogado Virtual GPT* \n *4 dal5.short.gy/Ab0* \n *5 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTt\n *6 Bot Ley Karin*\n dal5.short.gy/lkar'},
 
+            'rule_65': { keywords: ["*fono*", "*telefono*","*numero*","*ubicados*","*dirección*","*atención*","*horario*","*horarios*","*ubicación*","*direccion oficina*","*cual es la dirección del os10*","*horario atención publico*", "*donde estan*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*"], response: '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
+
+            'rule_89': { keywords: ["menu os10", "menú OS10", "menu"], response: '*De acuerdo OS10*🧙🏻‍♂️👮🏻‍♂️☝️*Escriba lo que está con negrillas:* \n \n ⬇️ ESCRIBA El QUE NECESITE:\n➢ *Bots:* recibirá un listado de bots con Inteligencia Avanzada.\n➢ *Componentes:* Obtendrá las guías\n➢ *Manuales:* Se desplega menu\n➢ *Leyes:* Se desplega menu\n➢ *Editable:* Documentos en Word.\n➢ *Directiva:* Requisitos presentar\n➢ *Valores:* Cursos y planes.\n➢ *Independiente:* Requisitos Cred.\n➢ *Menu credencial:* Menú credenciales\n➢ *Nueva Ley:* Nueva ley seguridad privada y reglamento.' },
+
+            'rule_90': { keywords: ["*directiva*","*directiva de funcionamiento*","*directivas*","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🧙🏻‍♂️🤖 *PRESENTAR DIRECTIVA DE FUNCIONAMIENTO*\n(Instalación - Evento - Partidos de Fútbol Profesional)\nPagina: https://dal5.short.gy/df' },
+
+            'rule_98': { keywords: ["Valores","cuanto cuesta","cual es el valor","valor plan","valores planes","valores plan","*valor*","*cuesta*"], response: '🤖🧙🏻‍♂️ *AQUI ESTAN LOS VALORES 2DO. SEMESTRE 2025*\n *1 CREDENCIAL* \n https://dal5.short.gy/val \n *2 CREDENCIAL EMPRESA* \n https://dal5.short.gy/C.emp \n *3 CURSO FORMACIÓN* \n https://dal5.short.gy/Form \n *4 CURSO PERFECC* \n https://dal5.short.gy/BjzkHI \n *5 VALOR PLAN* \n https://os10.short.gy/Pl4n  ' },
+
+            'rule_240': { keywords: ["credencial empresa","credencial empleador","cred empresa","*credencial empresas*","credenciales empresas","credencial","*credencial independiente*","*independiente*","credencial independientes","*tramitar credencial*"], response: '*TRAMITAR CREDENCIALES* 🤖👉🏼 https://directiva.netlify.app/credenciales \naquí salen los pasos a seguir para tramitar una credencial.' },
+
+            'rule_259': { keywords: ["*Hola*", "como estamos","que tal","como va", "de que ta las das"], response: 'Hola que tal, cuenteme en que lo puedo ayudar' },
+            'rule_260': { keywords: ["*como estas*"], response: 'Bien aqui trabajando para variar y tu ¿como estas?' },
+            'rule_261': { keywords: ["hola","saludos"], response: '🤖👮🏻‍♂️ ¡Hola! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+            'rule_262': { keywords: ["gracias","muchas gracias","te agradezco","agradezco"], response: '🤖😊 ¡Es un placer ayudarle! Para eso estamos aquí en OS10 Coquimbo. Si tiene alguna otra consulta, no dude en escribirme. ¡Que tenga un excelente día!' },
+            'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: 'ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' }
+        };
+    </script>
+
+    <script>
+        // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Lógica para detectar preferencia de modo oscuro del sistema
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+
+            // --- Lógica del Chatbot ---
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const speechSynth = window.speechSynthesis;
+            let recognition;
+            let isListening = false;
+            let availableVoices = [];
+            let isAutoReadEnabled = true;
+
+            function loadVoices() {
+                availableVoices = speechSynth.getVoices();
+                if (availableVoices.length > 0) {
+                     console.log("Voces cargadas.");
+                }
+            }
+
+            loadVoices();
+            if (speechSynth.onvoiceschanged !== undefined) {
+                speechSynth.onvoiceschanged = loadVoices;
+            }
+
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.lang = 'es-CL';
+                recognition.continuous = false;
+                recognition.interimResults = false;
+            } else {
+                console.warn("El reconocimiento de voz no es compatible con este navegador.");
+                document.getElementById('voice-btn').style.display = 'none';
+            }
+
+            function speakText(text) {
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
+                const cleanText = text
+                    .replace(urlRegex, '')
+                    .replace(emojiRegex, '')
+                    .replace(/<br>/g, '. ')
+                    .replace(/<strong>/g, '')
+                    .replace(/<\/strong>/g, '')
+                    .replace(/\n/g, '. ')
+                    .replace(/\*/g, '');
+                
+                if (!cleanText.trim() || !speechSynth) return;
+
+                speechSynth.cancel();
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+
+                // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
+                let selectedVoice = null;
+
+                if (availableVoices.length > 0) {
+                    // Prioridad 1: Buscar "Diego"
+                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
+
+                    // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
+                    if (!selectedVoice) {
+                        selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
+                    }
+
+                    // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
+                    if (!selectedVoice) {
+                        const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
+                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
+                    }
+
+                    // Prioridad 4: Como último recurso, tomar la primera voz en español
+                    if (!selectedVoice) {
+                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
+                    }
+                }
+
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                    console.log('Usando voz:', selectedVoice.name);
+                } else {
+                    console.warn('No se encontró una voz en español preferida. Se usará la voz por defecto del sistema.');
+                }
+
+                utterance.lang = 'es-CL';
+                utterance.rate = 1.1;
+                utterance.pitch = 0.8; // Tono más bajo para sonar más masculino
+                speechSynth.speak(utterance);
+            }
+
+            function toggleChat() {
+                const popup = document.getElementById('chat-popup');
+                const backdrop = document.getElementById('chat-backdrop');
+                const button = document.getElementById('chat-toggle-button');
+                
+                const isHidden = popup.classList.contains('hidden');
+                popup.classList.toggle('hidden');
+                backdrop.classList.toggle('hidden');
+                button.classList.toggle('hidden', isHidden);
+            }
+
+            function addMessage(sender, text, buttons = []) {
+                const chatMessages = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+                
+                let content = '';
+                if (sender === 'user') {
+                    messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
+                    content = `
+                        <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div>
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>
+                    `;
+                } else {
+                    messageDiv.className = 'flex items-start space-x-2 mb-3';
+                    
+                    // Expresión regular para detectar URLs y convertirlas a botones
+                    const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+
+                    let formattedText = text
+                        .replace(/\n/g, '<br>')
+                        .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+
+                    // Convertir URLs a botones
+                    formattedText = formattedText.replace(urlRegex, (url) => {
+                        const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
+                        let fullUrl = cleanedUrl;
+                        if (!/^https?:\/\//i.test(fullUrl)) {
+                            fullUrl = 'https://' + fullUrl;
+                        }
+                        
+                        // Crear texto descriptivo para el botón basado en la URL
+                        let buttonText = "🔗 Abrir enlace";
+                        if (cleanedUrl.includes('dal5.short.gy') || cleanedUrl.includes('os10.short.gy') || cleanedUrl.includes('d6.short.gy')) {
+                            buttonText = "📄 Descargar";
+                        } else if (cleanedUrl.includes('bcn.cl')) {
+                            buttonText = "⚖️ Ver ley";
+                        } else if (cleanedUrl.includes('zosepcar.cl')) {
+                            buttonText = "🏢 Ver OS10";
+                        } else if (cleanedUrl.includes('maps.app.goo.gl')) {
+                            buttonText = "📍 Ver mapa";
+                        } else if (cleanedUrl.includes('bit.ly')) {
+                            buttonText = "🔗 Abrir enlace";
+                        } else if (cleanedUrl.includes('drive.google.com')) {
+                            buttonText = "📁 Ver documento";
+                        } else if (cleanedUrl.includes('netlify.app')) {
+                            buttonText = "🚀 Ir a aplicación";
+                        }
+                        
+                        return `<br><button onclick="window.open('${fullUrl}', '_blank')" class="inline-block mt-2 mx-1 px-3 py-1.5 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition-colors cursor-pointer shadow-sm">${buttonText}</button>`;
+                    });
+
+                    const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
+                        `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
+                    ).join('') + '</div>' : '';
+                    
+                    content = `
+                        <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                            <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+                        </div>
+                        <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200">
+                            ${formattedText}
+                            ${buttonsHtml}
+                        </div>
+                    `;
+                    if (isAutoReadEnabled) {
+                        setTimeout(() => speakText(text), 300);
+                    }
+                }
+                messageDiv.innerHTML = content;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            window.handleUserButtonClick = (text) => {
+                 document.getElementById('user-input').value = text;
+                 handleMessage();
+            }
+
+            async function handleMessage() {
+                const input = document.getElementById('user-input');
+                const text = input.value.trim();
+                const lowerText = text.toLowerCase();
+                
+                if (!text) return;
+                
+                addMessage('user', text);
+                input.value = '';
+                
+                let response = null;
+                let matchedRule = null;
+
+                // Buscar respuesta en las reglas definidas
+                for (const ruleKey in responses) {
+                    const rule = responses[ruleKey];
+                    for (const keyword of rule.keywords) {
+                        const cleanedKeyword = keyword.replace(/\*/g, '');
+                        if (lowerText.includes(cleanedKeyword)) {
+                            response = rule.response;
+                            matchedRule = rule;
+                            break;
+                        }
+                    }
+                    if (response) break;
+                }
+                
+                // Si encontramos una respuesta, mostrarla directamente
+                if (response) {
+                    setTimeout(() => {
+                        addMessage('bot', response);
+                    }, 500);
+                } else {
+                    // Si no hay respuesta predefinida, usar API
+                    addTypingIndicator();
+                    
+                    const systemPrompt = `Eres un asistente virtual de la oficina de Seguridad Privada OS10 de Carabineros en Coquimbo, Chile. Responde de manera concisa y profesional sobre temas de seguridad privada, trámites, credenciales, cursos y normativas. Si no tienes información específica, sugiere amablemente que escriba "menú" para ver las opciones disponibles.`;
+                    
+                    try {
+                        // Simulación de API - en producción aquí iría la llamada real
+                        setTimeout(() => {
+                            removeTypingIndicator();
+                            addMessage('bot', 'Lo siento, no tengo información específica sobre esa consulta. Escriba "menú" para ver las opciones disponibles o intente con otra pregunta relacionada con seguridad privada.');
+                        }, 1500);
+                    } catch (error) {
+                        removeTypingIndicator();
+                        addMessage('bot', 'Hubo un problema al procesar su consulta. Por favor, intente nuevamente o escriba "menú" para ver las opciones disponibles.');
+                    }
+                }
+            }
+            
+            function addTypingIndicator() {
+                const chatMessages = document.getElementById('chat-messages');
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.className = 'flex items-start space-x-2 mb-3';
+                typingDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+                        <img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain">
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg">
+                        <div class="typing-indicator">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function removeTypingIndicator() {
+                const indicator = document.getElementById('typing-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            }
+
+            function startVoiceInput() {
+                if (!recognition) return;
+
+                const voiceBtn = document.getElementById('voice-btn');
+                if (isListening) {
+                    recognition.stop();
+                    return;
+                }
+
+                isListening = true;
+                voiceBtn.classList.add('animate-pulse');
+                recognition.start();
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('user-input').value = transcript;
+                    handleMessage();
+                };
+
+                recognition.onerror = function(event) {
+                    console.error("Error en reconocimiento de voz:", event.error);
+                };
+
+                recognition.onend = function() {
+                    isListening = false;
+                    voiceBtn.classList.remove('animate-pulse');
+                };
+            }
+
+            function readLastMessage() {
+                const messages = document.querySelectorAll('#chat-messages .dark\\:text-gray-200');
+                if (messages.length > 0) {
+                    const lastMessage = messages[messages.length - 1];
+                    const text = lastMessage.innerText;
+                    speakText(text);
+                }
+            }
+            
+            // --- Asignación de Eventos ---
+            document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
+            document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
+            document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
+            document.getElementById('send-button').addEventListener('click', handleMessage);
+            document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
+            
+            const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
+            const speakerOnIcon = document.getElementById('speaker-on-icon');
+            const speakerOffIcon = document.getElementById('speaker-off-icon');
+
+            toggleSpeakBtn.addEventListener('click', () => {
+                isAutoReadEnabled = !isAutoReadEnabled;
+                if (!isAutoReadEnabled) {
+                    speechSynth.cancel();
+                    toggleSpeakBtn.classList.remove('bg-yellow-500', 'hover:bg-yellow-600');
+                    toggleSpeakBtn.classList.add('bg-gray-500', 'hover:bg-gray-600');
+                    speakerOnIcon.classList.add('hidden');
+                    speakerOffIcon.classList.remove('hidden');
+                } else {
+                    toggleSpeakBtn.classList.add('bg-yellow-500', 'hover:bg-yellow-600');
+                    toggleSpeakBtn.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+                    speakerOnIcon.classList.remove('hidden');
+                    speakerOffIcon.classList.add('hidden');
+                }
+            });
+
+            if (recognition) {
+                document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
+            }
+            document.getElementById('speak-btn').addEventListener('click', readLastMessage);
+
+            document.addEventListener('keydown', e => {
+                if (e.altKey && e.key === 'v') {
+                    e.preventDefault();
+                    startVoiceInput();
+                }
+            });
+
+            // Mensaje de bienvenida
+            setTimeout(() => {
+                const welcomeButtons = ['Menú', 'Valores', 'Horario', 'Directiva'];
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
-
