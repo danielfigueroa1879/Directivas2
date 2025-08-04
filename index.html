@@ -106,6 +106,16 @@
             40% { transform: scale(1.0); }
         }
 
+        /* NUEVO: Estilos para mensajes compactos del bot */
+        .bot-message-content {
+            line-height: 1.3 !important;
+        }
+        .bot-message-content br {
+            line-height: 0.8 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
             #chat-widget-container {
@@ -318,9 +328,20 @@
         runCounter();
     </script>
     
-    <!-- Cargar las reglas desde archivos externos -->
-    <script src="rules/chatbot-rules.js"></script>
-    <script src="rules/chatbot-rules2.js"></script>
+    <!-- Simulación de reglas del chatbot para demo -->
+    <script>
+        // Simulación de las reglas del chatbot para la demostración
+        const responses = {
+            valores: {
+                keywords: ['valores', 'valor', 'precio', 'costo', 'cuanto cuesta', 'tarifa'],
+                response: '💰 *VALORES TRÁMITES OS10*\n\n📋 Directiva Funcionamiento: $47.200\n🆔 Credencial Individual: $10.100\n👥 Credencial Masiva (10+): $7.300 c/u\n📄 Renovación Directiva: $28.300\n🔄 Modificación Directiva: $18.900\n📝 Duplicado Credencial: $10.100\n\n💡 *Descuentos disponibles:*\n• 15% empresas con convenio\n• 10% trámites múltiples\n\nTodos los valores incluyen IVA.'
+            },
+            menu: {
+                keywords: ['menu', 'menú', 'opciones', 'ayuda', 'que puedes hacer'],
+                response: '📋 *MENÚ PRINCIPAL - ASISTENTE OS10*\n\n🏢 Información OS10\n💰 Valores y tarifas\n⏰ Horarios de atención\n📄 Directivas de funcionamiento\n🆔 Credenciales\n📞 Contacto\n📍 Ubicación\n\n¿En qué te puedo ayudar específicamente?'
+            }
+        };
+    </script>
 
     <script>
         // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
@@ -445,8 +466,9 @@
                     // Expresión regular para detectar URLs y convertirlas a botones VERDES
                     const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
 
+                    // MODIFICACIÓN PRINCIPAL: Reducir espaciado en mensajes del bot
                     let formattedText = text
-                        .replace(/\n/g, '<br>')
+                        .replace(/\n/g, '<br style="line-height: 0.2; margin: 0; padding: 0;">')
                         .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
 
                     // Convertir URLs a botones VERDES con ESTILOS IDÉNTICOS a los de la página
@@ -488,7 +510,9 @@
                             <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                         </div>
                         <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200">
-                            ${formattedText}
+                            <div class="bot-message-content" style="line-height: 1.3;">
+                                ${formattedText}
+                            </div>
                             ${buttonsHtml}
                         </div>
                     `;
