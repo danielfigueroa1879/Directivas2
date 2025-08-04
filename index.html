@@ -323,7 +323,6 @@
     <script type="module">
         // Importamos las reglas aquí para que estén disponibles en el scope del módulo
         import { chatbotRules } from './rules/chatbot-rules.js';
-        import { responses as chatbotRules2 } from './rules/chatbot-rules2.js';
 
         // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
         document.addEventListener('DOMContentLoaded', function() {
@@ -343,8 +342,8 @@
             let availableVoices = [];
             let isAutoReadEnabled = true;
             
-            // Combinamos todas las reglas en un solo array
-            const allRules = [...chatbotRules, ...Object.values(chatbotRules2)];
+            // Usamos directamente la variable importada
+            const allRules = chatbotRules;
 
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
