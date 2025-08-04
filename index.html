@@ -321,7 +321,7 @@
     
     <!-- Cargar las reglas desde archivos externos -->
     <script src="./rules/chatbot-rules.js"></script>
-    <!-- <script src="./rules/chatbot-rules2.js"></script> -->
+    <script src="./rules/chatbot-rules2.js"></script>
     
     <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
     <script>
@@ -599,25 +599,20 @@
             document.getElementById('speak-btn').addEventListener('click', readLastMessage);
             document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
 
-            // --- Mensaje de bienvenida y verificación de carga de reglas ---
-            if(allRules.length === 0) {
-                // Si las reglas NO se cargaron, muestra un aviso en la consola para el desarrollador.
-                console.error("--- AVISO IMPORTANTE PARA EL DESARROLLADOR ---");
-                console.error("El chatbot no pudo cargar las reglas locales desde los archivos .js.");
-                console.error("Causas posibles:");
-                console.error("1. Los archivos 'rules/chatbot-rules.js' o 'rules/chatbot-rules2.js' no existen o la ruta es incorrecta.");
-                console.error("2. Las variables dentro de esos archivos no son globales. Deben empezar con 'var responses = ...' y 'var responses2 = ...'");
-                console.error("El bot funcionará en modo 'solo IA', pero no usará las reglas predefinidas.");
-                console.error("-------------------------------------------------");
+            // --- CORRECCIÓN: Verificación de carga de reglas y mensaje de bienvenida ---
+            if(allRules.length > 0) {
+                 // Si las reglas se cargaron, mostrar bienvenida normal
+                setTimeout(() => {
+                    const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
+                    addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                }, 1000);
+            } else {
+                // Si las reglas NO se cargaron, mostrar mensaje de error en el chat
+                setTimeout(() => {
+                    addMessage('bot', '⚠️ **Error de Configuración:** No pude cargar mi base de conocimiento. Por favor, revisa que los archivos `rules/chatbot-rules.js` y `rules/chatbot-rules2.js` estén correctos y usen `var responses = {...}` y `var responses2 = {...}`.');
+                }, 1000);
             }
-
-            // El bot siempre dará la bienvenida, independientemente de si las reglas cargaron o no.
-            setTimeout(() => {
-                const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
-            }, 1000);
         });
     </script>
 </body>
 </html>
-
