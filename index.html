@@ -318,20 +318,9 @@
         runCounter();
     </script>
     
-    <!-- Simulación de reglas del chatbot para demo -->
-    <script>
-        // Simulación de las reglas del chatbot para la demostración
-        const responses = {
-            valores: {
-                keywords: ['valores', 'valor', 'precio', 'costo', 'cuanto cuesta', 'tarifa'],
-                response: '💰 *VALORES TRÁMITES OS10*\n\n📋 Directiva Funcionamiento: $47.200\n🆔 Credencial Individual: $10.100\n👥 Credencial Masiva (10+): $7.300 c/u\n📄 Renovación Directiva: $28.300\n🔄 Modificación Directiva: $18.900\n📝 Duplicado Credencial: $10.100\n\n💡 *Descuentos disponibles:*\n• 15% empresas con convenio\n• 10% trámites múltiples\n\nTodos los valores incluyen IVA.'
-            },
-            menu: {
-                keywords: ['menu', 'menú', 'opciones', 'ayuda', 'que puedes hacer'],
-                response: '📋 *MENÚ PRINCIPAL - ASISTENTE OS10*\n\n🏢 Información OS10\n💰 Valores y tarifas\n⏰ Horarios de atención\n📄 Directivas de funcionamiento\n🆔 Credenciales\n📞 Contacto\n📍 Ubicación\n\n¿En qué te puedo ayudar específicamente?'
-            }
-        };
-    </script>
+    <!-- Cargar las reglas desde archivos externos -->
+    <script src="rules/chatbot-rules.js"></script>
+    <script src="rules/chatbot-rules2.js"></script>
 
     <script>
         // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
@@ -498,7 +487,7 @@
                         <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
                             <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                         </div>
-                        <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200" style="line-height: 1.1;">
+                        <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200">
                             ${formattedText}
                             ${buttonsHtml}
                         </div>
@@ -675,4 +664,3 @@
     </script>
 </body>
 </html>
-
