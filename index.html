@@ -492,21 +492,59 @@
                 // 3. Si NO se encuentra respuesta, consultar a la IA
                 addTypingIndicator();
                 try {
-                    const context = JSON.stringify(allRules, null, 2);
+                    // Construir el prompt detallado para Gemini
+                    const fullPrompt = `
+                        Actúa como un asistente experto y profesional en materias de seguridad privada en Chile.
+                        Tu única y exclusiva fuente de información es el siguiente texto en formato JSON que contiene la normativa y directivas.
+                        No debes usar conocimiento externo ni inventar información.
+                        Tu tarea es analizar profundamente el contenido de este JSON para formular una respuesta precisa, completa y profesional a la pregunta del usuario.
+                        Basa tu respuesta en la sección "response" de la regla que sea más relevante para la pregunta.
+                        Si la respuesta no se puede deducir del texto proporcionado, indica amablemente que la información no está disponible en tu base de datos actual. No sugieras buscar en otro lado.
+
+                        **Base de Conocimiento (JSON de Reglas):**
+                        \`\`\`json
+                        ${JSON.stringify(allRules, null, 2)}
+                        \`\`\`
+
+                        **Pregunta del Usuario:**
+                        "${text}"
+
+                        **Respuesta Profesional y Detallada:**
+                    `;
+
+                    // Construir el cuerpo de la solicitud para la API de Gemini
+                    const geminiPayload = {
+                        contents: [{
+                            parts: [{
+                                text: fullPrompt
+                            }]
+                        }],
+                        safetySettings: [
+                            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                        ],
+                    };
+
                     const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ prompt: text, context: context }),
+                        body: JSON.stringify(geminiPayload), // Enviar el payload completo de Gemini
                     });
 
                     removeTypingIndicator();
 
                     if (!apiResponse.ok) {
+                        const errorData = await apiResponse.json();
+                        console.error("Error desde el proxy:", errorData);
                         throw new Error(`Error del servidor: ${apiResponse.status}`);
                     }
 
                     const data = await apiResponse.json();
-                    const aiResponse = data.response || "No pude obtener una respuesta del asistente inteligente.";
+                    
+                    // Extraer el texto de la respuesta de Gemini de forma segura
+                    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
                     addMessage('bot', aiResponse);
 
                 } catch (error) {
