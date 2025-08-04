@@ -321,10 +321,6 @@
         runCounter();
     </script>
     
-    <!-- Cargar las reglas desde un solo archivo para evitar errores de ruta -->
-    <script src="rules/chatbot-rules.js"></script>
-    <script src="rules/chatbot-rules2.js"></script>
-
     <script>
         // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
         document.addEventListener('DOMContentLoaded', function() {
@@ -335,6 +331,64 @@
             } else {
                 document.documentElement.classList.remove('dark')
             }
+
+            // --- Base de Conocimiento del Chatbot ---
+            const responses =  {
+                'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada\n dal5.short.gy/SePriv \n *2 Bot de Ciberseguridad 2024 \n dal5.short.gy/Cib\n➢ *3 Bot Abogado Virtual GPT* \n *4 dal5.short.gy/Ab0* \n *5 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTt\n *6 Bot Ley Karin*\n dal5.short.gy/lkar'},
+                'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: 'Infracciones de Guardias (Decreto Supremo N° 93):\n\n*Guardia sin curso OS10:*\nInfringe el *artículo 13*. La empresa que contrata al guardia sin este requisito es la infractora.\n\n*Guardia sin credencial vigente:*\nInfringe el *artículo 18*. La responsabilidad es de la empresa contratante.\n\n*Sin Directiva de Funcionamiento (DD.FF.):*\nInfringe el *artículo 15*. Es una infracción de la empresa si opera sin esta autorización.\n\n*Portando elementos no autorizados:*\nInfringe el *artículo 14*. Los implementos deben estar especificados en la DD.FF. Infracción aplicable a la empresa.\n\n*Portando arma de fuego:*\nInfringe el *artículo 14*. Los guardias tienen prohibido portar armas de fuego. Grave infracción atribuible a la empresa.' },
+                'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: 'ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
+                'rule_5': { keywords: ["la guia de guardia"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de GUARDIA DE SEGURIDAD la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
+                'rule_6': { keywords: ["jefe de seguridad"], response: 'OK..en este link encontrará la guía de *JEFE DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf' },
+                'rule_7': { keywords: ["supervisor","acreditación supervisor","supervisor seguridad","para supervisor","acreditar un supervisor","supervisores","acreditar supervisores"], response: '🤖. *SUPERVISOR* \n1.- *GUIA*\nhttps://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf\n2.- *CREDENCIAL*\nhttps://os10.short.gy/Sup' },
+                'rule_8': { keywords: ["*encargado de seguridad*","*encargado*"], response: '🤖 *ENCARGADO DE SEGURIDAD*\n*CREDENCIAL:*\nhttps://bit.ly/3H6pIOu\n*GUIA:*\nhttps://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf' },
+                'rule_9': { keywords: ["capacitador"], response: '🤖 *CAPACITADOR*\nhttps://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf' },
+                'rule_10': { keywords: ["tecnico"], response: '*TÉCNICO* https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf' },
+                'rule_11': { keywords: ["la guia de asesor"], response: '🤖 ASESOR\n**GUÍA:* \nhttps://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf' },
+                'rule_12': { keywords: ["*instalador tecnico","*técnico*","instalador*"], response: '*INSTALADOR TÉCNICO*\n https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf' },
+                'rule_13': { keywords: ["operador de cajeros"], response: '*OPERADOR DE CAJEROS AUTOMÁTICOS* \nhttps://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf' },
+                'rule_14': { keywords: ["*operador cctv","cctv*"], response: '🤖 *OPERADOR CCTV*\n*GUÍA:* https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf' },
+                'rule_15': { keywords: ["manuales"], response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*1M.-* MANUAL DE FUNCIONAMIENTO\n*2M.-* MANUAL DE CAPACITACIÓN \n*3M.-* MANUAL DE ORGANIZACIÓN' },
+                'rule_16': { keywords: ["empresas","empresa"], response: '*EMPRESAS* https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf'},
+                'rule_17': { keywords: ["1m"], response: '*MANUAL DE FUNCIONAMIENTO* https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf' },
+                'rule_18': { keywords: ["3m"], response: '*MANUAL DE ORGANIZACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_organizacion.pdf' },
+                'rule_19': { keywords: ["2m"], response: '*MANUAL DE CAPACITACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf' },
+                'rule_20': { keywords: ["leyes", "*leyes de seguridad privada*"], response: '*ESCRIBE UN NUMERO LEY O DECRETO*.\n 🚦. ⬇️ \n \nDECTO. *261* DEL 31.0 un7.2020\nDECTO. *298* DEL 17.09.2019\n DECTO. *123* DEL 05.04.2019\nDECTO. *1045* DEL 12.09.2018\nDECTO. *867* DEL 12.09.2017\nDECTO. *1814* DEL 10.11.2014\nDECTO. *222* DEL 30.10.2014\nDECTO. *1122* DEL 19.10.1994\nDECTO. *41* DEL 05.03.1996\nDECTO. *1772* DEL 26.01.1995\nDECTO. *1773* DEL 14.11.1994\nDECTO. *93* DEL 21.10.1985\nD. LEY. *3607* DEL 08.01.1981\nLEY *19303* DEL 13.04.1994\nResol. *253* DEL 29.10.2013\nResol. *59* DEL 30.09.2014\nResol. *32* DEL 31.01.2024\nResol. *80* DEL 20.03.2024\nLEY. *21659* DEL 21.03.2024' },
+                'rule_65': { keywords: ["*fono*", "*telefono*","*numero*","*ubicados*","*dirección*","*atención*","*horario*","*horarios*","*ubicación*","*direccion oficina*","*cual es la dirección del os10*","*horario atención publico*", "*donde estan*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*"], response: '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
+                'rule_89': { keywords: ["menu os10", "menú OS10", "menu"], response: '*De acuerdo OS10*🧙🏻‍♂️👮🏻‍♂️☝️*Escriba lo que está con negrillas:* \n \n ⬇️ ESCRIBA El QUE NECESITE:\n➢ *Bots:* recibirá un listado de bots con Inteligencia Avanzada.\n➢ *Componentes:* Obtendrá las guías\n➢ *Manuales:* Se desplega menu\n➢ *Leyes:* Se desplega menu\n➢ *Editable:* Documentos en Word.\n➢ *Directiva:* Requisitos presentar\n➢ *Valores:* Cursos y planes.\n➢ *Independiente:* Requisitos Cred.\n➢ *Menu credencial:* Menú credenciales\n➢ *Nueva Ley:* Nueva ley seguridad privada y reglamento.' },
+                
+                // REGLA MODIFICADA Y NUEVAS REGLAS PARA VALORES
+                'rule_98': { 
+                    keywords: ["valores","cuanto cuesta","cual es el valor","valor plan","valores planes","valores plan","*valor*","*cuesta*"], 
+                    response: '🤖🧙🏻‍♂️ *AQUÍ ESTÁN LOS VALORES 2DO. SEMESTRE 2025*. Por favor, selecciona una opción:',
+                    buttons: ["Valor Credencial", "Valor Credencial Empresa", "Valor Curso Formación", "Valor Curso Perfeccionamiento", "Valor Plan"]
+                },
+                'rule_98_1': {
+                    keywords: ["valor credencial"],
+                    response: '🤖 *VALOR CREDENCIAL*: https://dal5.short.gy/val'
+                },
+                'rule_98_2': {
+                    keywords: ["valor credencial empresa"],
+                    response: '🤖 *VALOR CREDENCIAL EMPRESA*: https://dal5.short.gy/C.emp'
+                },
+                'rule_98_3': {
+                    keywords: ["valor curso formación"],
+                    response: '🤖 *VALOR CURSO FORMACIÓN*: https://dal5.short.gy/Form'
+                },
+                'rule_98_4': {
+                    keywords: ["valor curso perfeccionamiento"],
+                    response: '🤖 *VALOR CURSO PERFECCIONAMIENTO*: https://dal5.short.gy/BjzkHI'
+                },
+                'rule_98_5': {
+                    keywords: ["valor plan"],
+                    response: '🤖 *VALOR PLAN*: https://os10.short.gy/Pl4n'
+                },
+                // FIN DE LA MODIFICACIÓN
+
+                'rule_261': { keywords: ["hola","saludos"], response: '🤖👮🏻‍♂️ ¡Hola! Bienvenido/a a la Oficina de Seguridad Privada OS10 Coquimbo. Estoy aquí para ayudarle con sus consultas. ¿En qué puedo asistirle hoy?' },
+                'rule_262': { keywords: ["gracias","muchas gracias","te agradezco","agradezco"], response: '🤖😊 ¡Es un placer ayudarle! Para eso estamos aquí en OS10 Coquimbo. Si tiene alguna otra consulta, no dude en escribirme. ¡Que tenga un excelente día!' },
+                'rule_263': { keywords: ["chao","adiós","nos vemos","hasta luego","me voy"], response: '🤖👋 ¡Hasta luego! Gracias por contactar a OS10 Coquimbo. Recuerde que estamos de lunes a jueves de 09:00 a 13:00 horas en Cienfuegos 180, La Serena. ¡Que tenga un buen día!' },
+            };
+
 
             // --- Lógica del Chatbot ---
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -384,40 +438,25 @@
                 speechSynth.cancel();
                 const utterance = new SpeechSynthesisUtterance(cleanText);
 
-                // Lógica mejorada para seleccionar la voz de Diego o una voz masculina
-                let selectedVoice = null;
-
-                if (availableVoices.length > 0) {
-                    // Prioridad 1: Buscar "Diego"
-                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
-
-                    // Prioridad 2: Buscar otras voces masculinas comunes si no se encuentra a Diego
-                    if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
-                    }
-
-                    // Prioridad 3: Buscar cualquier voz en español que no parezca femenina
-                    if (!selectedVoice) {
-                        const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
-                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
-                    }
-
-                    // Prioridad 4: Como último recurso, tomar la primera voz en español
-                    if (!selectedVoice) {
-                        selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
-                    }
+                let selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es'));
+                if (!selectedVoice) {
+                    selectedVoice = availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es'));
+                }
+                if (!selectedVoice) {
+                    const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
+                    selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name));
+                }
+                if (!selectedVoice) {
+                    selectedVoice = availableVoices.find(voice => voice.lang.startsWith('es'));
                 }
 
                 if (selectedVoice) {
                     utterance.voice = selectedVoice;
-                    console.log('Usando voz:', selectedVoice.name);
-                } else {
-                    console.warn('No se encontró una voz en español preferida. Se usará la voz por defecto del sistema.');
-                }
+                } 
 
                 utterance.lang = 'es-CL';
                 utterance.rate = 1.1;
-                utterance.pitch = 0.8; // Tono más bajo para sonar más masculino
+                utterance.pitch = 0.8;
                 speechSynth.speak(utterance);
             }
 
@@ -446,12 +485,6 @@
                 } else {
                     messageDiv.className = 'flex items-start space-x-2 mb-3';
                     
-                    // =================================================================
-                    // INICIO DE LA CORRECCIÓN: Expresión regular más precisa
-                    // =================================================================
-                    
-                    // Esta regex es más específica sobre los caracteres permitidos en una URL
-                    // para evitar que capture etiquetas HTML como <br> al final.
                     const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
 
                     let formattedText = text
@@ -459,7 +492,6 @@
                         .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
 
                     formattedText = formattedText.replace(urlRegex, (url) => {
-                        // Limpiamos la URL de posible puntuación al final
                         const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
                         let fullUrl = cleanedUrl;
                         if (!/^https?:\/\//i.test(fullUrl)) {
@@ -467,10 +499,6 @@
                         }
                         return `<a href="${fullUrl}" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${cleanedUrl}</a>`;
                     });
-                    
-                    // =================================================================
-                    // FIN DE LA CORRECCIÓN
-                    // =================================================================
 
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
                         `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-xs py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
@@ -502,35 +530,43 @@
             async function handleMessage() {
                 const input = document.getElementById('user-input');
                 const text = input.value.trim();
-                const lowerText = text.toLowerCase();
-                
                 if (!text) return;
-                
+
                 addMessage('user', text);
                 input.value = '';
-                
-                let response = null;
+
+                const lowerText = text.toLowerCase();
                 let matchedRule = null;
 
+                // Buscar una regla que coincida
                 for (const ruleKey in responses) {
                     const rule = responses[ruleKey];
                     for (const keyword of rule.keywords) {
                         const cleanedKeyword = keyword.replace(/\*/g, '');
                         if (lowerText.includes(cleanedKeyword)) {
-                            response = rule.response;
                             matchedRule = rule;
                             break;
                         }
                     }
-                    if (response) break;
+                    if (matchedRule) break;
                 }
-                
+
+                // Si se encuentra una regla, usarla directamente
+                if (matchedRule) {
+                    setTimeout(() => {
+                        addMessage('bot', matchedRule.response, matchedRule.buttons || []);
+                    }, 500);
+                    return; // Detener aquí, no llamar a la API
+                }
+
+                // --- Fallback a la API de Gemini si no se encuentra ninguna regla ---
                 addTypingIndicator();
+
                 const callApiWithBackoff = async (prompt, retries = 3, delay = 1000) => {
                     try {
                         let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                         const payload = { contents: chatHistory };
-                        const apiUrl = '/api/gemini';
+                        const apiUrl = '/api/gemini'; // Usando el proxy
                         
                         const apiResponse = await fetch(apiUrl, {
                             method: 'POST',
@@ -539,7 +575,6 @@
                         });
 
                         if ((apiResponse.status === 429 || apiResponse.status >= 500) && retries > 0) {
-                            console.log(`Retrying API call... ${retries} retries left.`);
                             await new Promise(resolve => setTimeout(resolve, delay));
                             return callApiWithBackoff(prompt, retries - 1, delay * 2);
                         }
@@ -551,9 +586,7 @@
                         const result = await apiResponse.json();
                         removeTypingIndicator();
 
-                        if (result.candidates && result.candidates.length > 0 &&
-                            result.candidates[0].content && result.candidates[0].content.parts &&
-                            result.candidates[0].content.parts.length > 0) {
+                        if (result.candidates && result.candidates[0]?.content?.parts?.[0]) {
                             const apiText = result.candidates[0].content.parts[0].text;
                             addMessage('bot', apiText);
                         } else {
@@ -561,7 +594,6 @@
                         }
                     } catch (error) {
                          if (retries > 0) {
-                            console.log(`Retrying API call due to error... ${retries} retries left.`);
                             await new Promise(resolve => setTimeout(resolve, delay));
                             return callApiWithBackoff(prompt, retries - 1, delay * 2);
                         } else {
@@ -572,30 +604,8 @@
                     }
                 };
                 
-                let finalPrompt;
-                const brevityInstruction = `**Regla Importante:** Sé conciso y directo. Da respuestas cortas por defecto. Solo proporciona respuestas largas y detalladas si el usuario pide explícitamente "explica", "detalla", "profundiza" o si la pregunta es inherentemente compleja y requiere una explicación exhaustiva.`;
-
-                if (response) {
-                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Un usuario preguntó sobre "${text}". La información relevante encontrada en nuestra base de datos es: "${response}".
-Analiza esta información y úsala para darle al usuario una respuesta completa y amigable.
-**REGLAS DE FORMATO MUY IMPORTANTES:**
-1.  ${brevityInstruction}
-2.  Cuando la información contenga un texto seguido de una URL (como "1.- CREDENCIAL \\n https://dal5.short.gy/val"), **NO uses formato Markdown como [texto](url).**
-3.  En su lugar, presenta la información como una lista clara, manteniendo el texto original. Por ejemplo, si la base de datos dice "*1.- CREDENCIAL* \\n https://...", tu respuesta debe ser similar a "Aquí tienes los valores: \\n *1.- CREDENCIAL* \\n https://dal5.short.gy/val".
-4.  El sistema se encargará de hacer los enlaces clickeables. Tu única tarea es presentar el texto y la URL de forma limpia, sin añadir formato de enlace.`;
-                } else {
-                    const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
-                    finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada.
-**REGLAS DE FORMATO MUY IMPORTANTES:**
-1.  ${brevityInstruction}
-2.  **NO uses formato Markdown para los enlaces como [texto](url).** Simplemente presenta la URL como texto plano. El sistema se encargará de hacer los enlaces clickeables.
-3.  Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".
-
-**Base de conocimiento:**
-${rulesAsText}
-
-**Consulta del usuario:** "${text}"`;
-                }
+                const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
+                const finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada. Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".\n\nBase de conocimiento:\n${rulesAsText}\n\nConsulta del usuario: "${text}"`;
                 
                 callApiWithBackoff(finalPrompt);
             }
