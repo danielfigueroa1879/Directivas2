@@ -495,7 +495,9 @@
                             buttonText = "🚀 Ir a app";
                         }
                         
-                        return ` <button onclick="window.open('${fullUrl}', '_blank')" class="inline-block mx-1 px-2 py-1 text-xs font-medium text-white bg-green-500 hover:bg-green-600 rounded-md transition-colors cursor-pointer shadow-sm">${buttonText}</button>`;
+                        // Botón VERDE con los mismos estilos que los botones principales
+                        return ` <button onclick="window.open('${fullUrl}', '_blank')" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors">${buttonText}</button>`;
+                    });
                     });
 
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => 
@@ -560,10 +562,80 @@
                         addMessage('bot', response);
                     }, 500);
                 } else {
-                    // Si no hay respuesta predefinida, mostrar mensaje por defecto
-                    setTimeout(() => {
-                        addMessage('bot', 'Lo siento, no tengo información específica sobre esa consulta. Escriba "menú" para ver las opciones disponibles o intente con otra pregunta relacionada con seguridad privada.');
-                    }, 500);
+                    // Usar Gemini API como respaldo si no encuentra respuesta en las reglas
+                    addTypingIndicator();
+                    const callApiWithBackoff = async (prompt, retries = 3, delay = 1000) => {
+                        try {
+                            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                            const payload = { contents: chatHistory };
+                            const apiUrl = '/api/gemini';
+                            
+                            const apiResponse = await fetch(apiUrl, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(payload)
+                            });
+
+                            if ((apiResponse.status === 429 || apiResponse.status >= 500) && retries > 0) {
+                                console.log(`Retrying API call... ${retries} retries left.`);
+                                await new Promise(resolve => setTimeout(resolve, delay));
+                                return callApiWithBackoff(prompt, retries - 1, delay * 2);
+                            }
+
+                            if (!apiResponse.ok) {
+                                throw new Error(`API request failed with status ${apiResponse.status}`);
+                            }
+
+                            const result = await apiResponse.json();
+                            removeTypingIndicator();
+
+                            if (result.candidates && result.candidates.length > 0 &&
+                                result.candidates[0].content && result.candidates[0].content.parts &&
+                                result.candidates[0].content.parts.length > 0) {
+                                const apiText = result.candidates[0].content.parts[0].text;
+                                addMessage('bot', apiText);
+                            } else {
+                                addMessage('bot', 'No pude generar una respuesta. Por favor, reformula tu pregunta.');
+                            }
+                        } catch (error) {
+                             if (retries > 0) {
+                                console.log(`Retrying API call due to error... ${retries} retries left.`);
+                                await new Promise(resolve => setTimeout(resolve, delay));
+                                return callApiWithBackoff(prompt, retries - 1, delay * 2);
+                            } else {
+                                console.error("Error calling Gemini API after retries:", error);
+                                removeTypingIndicator();
+                                addMessage('bot', 'Hubo un problema al conectar con el asistente. Por favor, intenta de nuevo más tarde.');
+                            }
+                        }
+                    };
+                    
+                    let finalPrompt;
+                    const brevityInstruction = `**Regla Importante:** Sé conciso y directo. Da respuestas cortas por defecto. Solo proporciona respuestas largas y detalladas si el usuario pide explícitamente "explica", "detalla", "profundiza" o si la pregunta es inherentemente compleja y requiere una explicación exhaustiva.`;
+
+                    if (response) {
+                        finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Un usuario preguntó sobre "${text}". La información relevante encontrada en nuestra base de datos es: "${response}".
+Analiza esta información y úsala para darle al usuario una respuesta completa y amigable.
+**REGLAS DE FORMATO MUY IMPORTANTES:**
+1.  ${brevityInstruction}
+2.  Cuando la información contenga un texto seguido de una URL (como "1.- CREDENCIAL \\n https://dal5.short.gy/val"), **NO uses formato Markdown como [texto](url).**
+3.  En su lugar, presenta la información como una lista clara, manteniendo el texto original. Por ejemplo, si la base de datos dice "*1.- CREDENCIAL* \\n https://...", tu respuesta debe ser similar a "Aquí tienes los valores: \\n *1.- CREDENCIAL* \\n https://dal5.short.gy/val".
+4.  El sistema se encargará de hacer los enlaces clickeables. Tu única tarea es presentar el texto y la URL de forma limpia, sin añadir formato de enlace.`;
+                    } else {
+                        const rulesAsText = Object.values(responses).map(r => `Si el usuario pregunta por "${r.keywords.join(', ')}", responde: "${r.response}"`).join('\n');
+                        finalPrompt = `Eres un asistente experto de la Oficina de Seguridad Privada OS10 de Coquimbo, Chile. Responde la siguiente consulta del usuario basándote únicamente en la base de conocimiento proporcionada.
+**REGLAS DE FORMATO MUY IMPORTANTES:**
+1.  ${brevityInstruction}
+2.  **NO uses formato Markdown para los enlaces como [texto](url).** Simplemente presenta la URL como texto plano. El sistema se encargará de hacer los enlaces clickeables.
+3.  Si la respuesta no se encuentra en la base de conocimiento, indica amablemente que no tienes información sobre ese tema y sugiere que intente con otra pregunta o escriba "menú".
+
+**Base de conocimiento:**
+${rulesAsText}
+
+**Consulta del usuario:** "${text}"`;
+                    }
+                    
+                    callApiWithBackoff(finalPrompt);
                 }
             }
             
