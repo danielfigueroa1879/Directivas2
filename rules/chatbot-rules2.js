@@ -1,4 +1,4 @@
-export const responses = {
+const responses =  {
 
 "DECRETO 1773":
 
