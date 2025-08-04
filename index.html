@@ -319,9 +319,9 @@
         runCounter();
     </script>
     
-    <!-- Cargar las reglas desde archivos externos -->
+    <!-- Cargar las reglas desde un archivo externo -->
+    <!-- Este script carga la variable 'responses' y 'systemPrompt' en el scope global -->
     <script src="./rules/chatbot-rules.js"></script>
-    <script src="./rules/chatbot-rules2.js"></script>
     
     <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
     <script>
@@ -342,11 +342,13 @@
             let availableVoices = [];
             let isAutoReadEnabled = true;
             
-            // Combinar reglas de ambos archivos
-            const combinedResponses = { ...(window.responses || {}), ...(window.responses2 || {}) };
-            const allRules = Object.values(combinedResponses);
-            // El systemPrompt se toma del primer archivo de reglas (chatbot-rules.js)
-            const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; 
+            // Convertimos el objeto 'responses' a un array para poder iterarlo
+            const allRules = Object.values(window.responses || {});
+            const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; // Prompt por defecto
+
+            if(allRules.length === 0) {
+                console.error("¡Advertencia! No se pudieron cargar las reglas desde 'rules/chatbot-rules.js'.");
+            }
 
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
@@ -599,19 +601,11 @@
             document.getElementById('speak-btn').addEventListener('click', readLastMessage);
             document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
 
-            // --- CORRECCIÓN: Verificación de carga de reglas y mensaje de bienvenida ---
-            if(allRules.length > 0) {
-                 // Si las reglas se cargaron, mostrar bienvenida normal
-                setTimeout(() => {
-                    const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
-                    addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
-                }, 1000);
-            } else {
-                // Si las reglas NO se cargaron, mostrar mensaje de error en el chat
-                setTimeout(() => {
-                    addMessage('bot', '⚠️ **Error de Configuración:** No pude cargar mi base de conocimiento. Por favor, revisa que los archivos `rules/chatbot-rules.js` y `rules/chatbot-rules2.js` estén correctos y usen `var responses = {...}` y `var responses2 = {...}`.');
-                }, 1000);
-            }
+            // Mensaje de bienvenida
+            setTimeout(() => {
+                const welcomeButtons = ['Menú', 'Menú OS10', 'Valores', 'Horario', 'Directiva'];
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+            }, 1000);
         });
     </script>
 </body>
