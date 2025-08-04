@@ -320,7 +320,7 @@
     </script>
     
     <!-- Cargar las reglas desde un archivo externo -->
-    <!-- Este script carga la variable 'chatbotRules' en el scope global -->
+    <!-- Este script carga la variable 'responses' y 'systemPrompt' en el scope global -->
     <script src="./rules/chatbot-rules.js"></script>
     
     <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
@@ -342,10 +342,12 @@
             let availableVoices = [];
             let isAutoReadEnabled = true;
             
-            // La variable 'chatbotRules' ahora está disponible globalmente desde el script anterior
-            const allRules = window.chatbotRules || [];
+            // Convertimos el objeto 'responses' a un array para poder iterarlo
+            const allRules = Object.values(window.responses || {});
+            const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; // Prompt por defecto
+
             if(allRules.length === 0) {
-                console.error("¡Advertencia! No se pudieron cargar las reglas desde 'rules/chatbot-rules.js'. Asegúrate de que el archivo exista y la variable 'chatbotRules' esté definida globalmente.");
+                console.error("¡Advertencia! No se pudieron cargar las reglas desde 'rules/chatbot-rules.js'.");
             }
 
             function loadVoices() {
@@ -492,33 +494,12 @@
                 // 3. Si NO se encuentra respuesta, consultar a la IA
                 addTypingIndicator();
                 try {
-                    // Construir el prompt detallado para Gemini
-                    const fullPrompt = `
-                        Actúa como un asistente experto y profesional en materias de seguridad privada en Chile.
-                        Tu única y exclusiva fuente de información es el siguiente texto en formato JSON que contiene la normativa y directivas.
-                        No debes usar conocimiento externo ni inventar información.
-                        Tu tarea es analizar profundamente el contenido de este JSON para formular una respuesta precisa, completa y profesional a la pregunta del usuario.
-                        Basa tu respuesta en la sección "response" de la regla que sea más relevante para la pregunta.
-                        Si la respuesta no se puede deducir del texto proporcionado, indica amablemente que la información no está disponible en tu base de datos actual. No sugieras buscar en otro lado.
-
-                        **Base de Conocimiento (JSON de Reglas):**
-                        \`\`\`json
-                        ${JSON.stringify(allRules, null, 2)}
-                        \`\`\`
-
-                        **Pregunta del Usuario:**
-                        "${text}"
-
-                        **Respuesta Profesional y Detallada:**
-                    `;
+                    // Combinar el prompt del sistema con la pregunta del usuario
+                    const fullPrompt = `${systemPrompt}\n\n**Consulta del Usuario:**\n${text}\n\n**Base de Conocimiento para referencia (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Respuesta:**`;
 
                     // Construir el cuerpo de la solicitud para la API de Gemini
                     const geminiPayload = {
-                        contents: [{
-                            parts: [{
-                                text: fullPrompt
-                            }]
-                        }],
+                        contents: [{ parts: [{ text: fullPrompt }] }],
                         safetySettings: [
                             { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
                             { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
@@ -530,7 +511,7 @@
                     const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(geminiPayload), // Enviar el payload completo de Gemini
+                        body: JSON.stringify(geminiPayload),
                     });
 
                     removeTypingIndicator();
@@ -543,7 +524,6 @@
 
                     const data = await apiResponse.json();
                     
-                    // Extraer el texto de la respuesta de Gemini de forma segura
                     const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
                     addMessage('bot', aiResponse);
 
