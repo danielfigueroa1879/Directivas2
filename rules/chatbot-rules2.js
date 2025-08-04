@@ -1,4 +1,4 @@
-Object.assign(responses, `
+export const responses = {
 
 "DECRETO 1773":
 
@@ -2340,4 +2340,4 @@ comenzarán a regir una vez publicado en el Diario Oficial.
 Interior y Seguridad Pública.
      Lo que trasncribe a Ud. para su conocimiento.- Saluda Atte., Iván Alejandro
 Heredia Riquelme, Encargado Oficina de Partes, Subsecretaría de Prevención del
-Delito.´);
+Delito.´};
