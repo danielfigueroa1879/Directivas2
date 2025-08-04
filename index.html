@@ -319,12 +319,12 @@
         runCounter();
     </script>
     
-    <!-- Cargar las reglas desde archivos externos -->
-    <script type="module">
-        // Importamos las reglas aquí para que estén disponibles en el scope del módulo
-        import { chatbotRules } from './rules/chatbot-rules.js';
-
-        // SCRIPT DEL CHATBOT Y LÓGICA PRINCIPAL
+    <!-- Cargar las reglas desde un archivo externo -->
+    <!-- Este script carga la variable 'chatbotRules' en el scope global -->
+    <script src="./rules/chatbot-rules.js"></script>
+    
+    <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
 
             // Lógica para detectar preferencia de modo oscuro del sistema
@@ -342,8 +342,11 @@
             let availableVoices = [];
             let isAutoReadEnabled = true;
             
-            // Usamos directamente la variable importada
-            const allRules = chatbotRules;
+            // La variable 'chatbotRules' ahora está disponible globalmente desde el script anterior
+            const allRules = window.chatbotRules || [];
+            if(allRules.length === 0) {
+                console.error("¡Advertencia! No se pudieron cargar las reglas desde 'rules/chatbot-rules.js'. Asegúrate de que el archivo exista y la variable 'chatbotRules' esté definida globalmente.");
+            }
 
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
