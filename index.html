@@ -278,102 +278,46 @@
     <script type="module">
         // SCRIPT FIREBASE (Contador de visitas)
         // SCRIPT FIREBASE MEJORADO (Contador de visitas)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import { getFirestore, doc, runTransaction, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
-  authDomain: "cuenta-946e2.firebaseapp.com",
-  projectId: "cuenta-946e2",
-  storageBucket: "cuenta-946e2.firebasestorage.app",
-  messagingSenderId: "816979648502",
-  appId: "1:816979648502:web:809beffeea8ba7968031d7",
-  measurementId: "G-RX9KZSC0F4"
-};
-
-async function runCounter() {
-    const counterSpan = document.getElementById('visit-counter');
-    
-    try {
-        // Mostrar "Cargando..." mientras se inicializa
-        if (counterSpan) counterSpan.textContent = "...";
+        const firebaseConfig = {
+          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+          authDomain: "cuenta-946e2.firebaseapp.com",
+          projectId: "cuenta-946e2",
+          storageBucket: "cuenta-946e2.firebasestorage.app",
+          messagingSenderId: "816979648502",
+          appId: "1:816979648502:web:809beffeea8ba7968031d7",
+          measurementId: "G-RX9KZSC0F4"
+        };
         
-        // Inicializar Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-        
-        // Autenticar anónimamente
-        await signInAnonymously(auth);
-        console.log("Usuario autenticado anónimamente");
-        
-        // Referencia al documento contador
-        const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-        
-        // Intentar incrementar el contador usando transacción
-        const newCount = await runTransaction(db, async (transaction) => {
-            const counterDoc = await transaction.get(counterRef);
-            let count = 1;
-            
-            if (counterDoc.exists()) {
-                const currentCount = counterDoc.data().count || 0;
-                count = currentCount + 1;
-                transaction.update(counterRef, { 
-                    count: count,
-                    lastUpdate: new Date().toISOString()
+        async function runCounter() {
+            const counterSpan = document.getElementById('visit-counter');
+            try {
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                await signInAnonymously(auth);
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    let count = 1;
+                    if (counterDoc.exists()) {
+                        count = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: count });
+                    } else {
+                        transaction.set(counterRef, { count: count });
+                    }
+                    return count;
                 });
-            } else {
-                // Si no existe, crear el documento
-                transaction.set(counterRef, { 
-                    count: count,
-                    created: new Date().toISOString(),
-                    lastUpdate: new Date().toISOString()
-                });
-            }
-            
-            return count;
-        });
-        
-        // Mostrar el contador actualizado
-        if (counterSpan) {
-            counterSpan.textContent = newCount.toLocaleString('es-CL');
-        }
-        
-        console.log(`Contador actualizado: ${newCount}`);
-        
-    } catch (error) {
-        console.error("ERROR: Falló el proceso del contador.", error);
-        
-        // Mostrar diferentes mensajes según el tipo de error
-        if (counterSpan) {
-            if (error.code === 'permission-denied') {
-                counterSpan.textContent = "Sin permisos";
-                console.error("Error de permisos: Verifica las reglas de Firestore");
-            } else if (error.code === 'unavailable') {
-                counterSpan.textContent = "No disponible";
-                console.error("Servicio no disponible: Verifica tu conexión");
-            } else {
-                counterSpan.textContent = "Error";
+                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+            } catch (error) {
+                console.error("ERROR: Falló el proceso del contador.", error);
+                if (counterSpan) counterSpan.textContent = "Error";
             }
         }
-        
-        // Fallback: intentar mostrar un número desde localStorage
-        try {
-            const localCount = localStorage.getItem('local-visit-count') || '0';
-            const newLocalCount = parseInt(localCount) + 1;
-            localStorage.setItem('local-visit-count', newLocalCount.toString());
-            if (counterSpan && counterSpan.textContent === "Error") {
-                counterSpan.textContent = newLocalCount.toLocaleString('es-CL') + "*";
-            }
-        } catch (localError) {
-            console.error("También falló el contador local:", localError);
-        }
-    }
-}
-
-// Ejecutar el contador cuando la página se carga
-runCounter();
+        runCounter();        
     </script>
     
     <!-- Cargar las reglas desde el archivo externo -->
