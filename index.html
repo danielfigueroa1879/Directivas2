@@ -494,66 +494,480 @@
                 return null;
             }
 
-            async function handleMessage() {
-                const input = document.getElementById('user-input');
-                const text = input.value.trim();
-                
-                if (!text) return;
-                
-                addMessage('user', text);
-                input.value = '';
-                
-                // Usar la nueva función de búsqueda mejorada
-                const response = findExactMatch(text, allRules);
-                
-                // Si se encuentra una respuesta en las reglas, mostrarla
-                if (response) {
-                    setTimeout(() => addMessage('bot', response), 500);
-                    return; // Termina la ejecución aquí
+// ========================================
+// CÓDIGO PARA INTEGRAR EN TU index.html
+// Reemplaza la función handleMessage() actual con esta versión mejorada
+// ========================================
+
+// Clase para manejar el conocimiento centralizado
+class CentralizedKnowledgeBot {
+    constructor() {
+        this.knowledge = this.loadProductionKnowledge();
+        this.config = this.loadBotConfig();
+        this.conversationContext = [];
+    }
+
+    // Cargar conocimientos de producción
+    loadProductionKnowledge() {
+        const saved = localStorage.getItem('os10_bot_production_knowledge');
+        if (saved) {
+            const data = JSON.parse(saved);
+            console.log(`✅ Base de conocimientos cargada: ${data.knowledge.length} documentos`);
+            return data;
+        }
+        console.warn('⚠️ No se encontró base de conocimientos de producción');
+        return { knowledge: [], config: {} };
+    }
+
+    // Cargar configuración del bot
+    loadBotConfig() {
+        const saved = localStorage.getItem('os10_bot_config');
+        return saved ? JSON.parse(saved) : {
+            botName: 'Asistente OS10',
+            personality: 'professional',
+            context: 'Eres un funcionario experto de la oficina OS10 de Seguridad Privada en Coquimbo.'
+        };
+    }
+
+    // Buscar en la base de conocimientos
+    searchKnowledge(query) {
+        const queryLower = query.toLowerCase();
+        const queryWords = queryLower.split(/\s+/);
+        const results = [];
+
+        // Buscar en cada documento de conocimiento
+        if (this.knowledge.knowledge) {
+            this.knowledge.knowledge.forEach(doc => {
+                let relevanceScore = 0;
+                let matchedSections = [];
+                let matchedEntities = [];
+
+                // Buscar coincidencias exactas en el contenido
+                if (doc.content && doc.content.toLowerCase().includes(queryLower)) {
+                    relevanceScore += 10;
                 }
 
-                // Si NO se encuentra respuesta, consultar a la IA
-                addTypingIndicator();
-                try {
-                    // Combinar el prompt del sistema con la pregunta del usuario
-                    const fullPrompt = `${systemPrompt}\n\n**Consulta del Usuario:**\n${text}\n\n**Base de Conocimiento para referencia (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Respuesta:**`;
+                // Buscar por palabras clave
+                queryWords.forEach(word => {
+                    if (word.length > 3 && doc.content && doc.content.toLowerCase().includes(word)) {
+                        relevanceScore += 2;
+                    }
+                });
 
-                    // Construir el cuerpo de la solicitud para la API de Gemini
-                    const geminiPayload = {
-                        contents: [{ parts: [{ text: fullPrompt }] }],
-                        safetySettings: [
-                            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                        ],
-                    };
-
-                    const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(geminiPayload),
+                // Buscar en secciones
+                if (doc.sections) {
+                    doc.sections.forEach(section => {
+                        if (section.content && section.content.toLowerCase().includes(queryLower)) {
+                            matchedSections.push(section);
+                            relevanceScore += 5;
+                        }
                     });
+                }
 
-                    removeTypingIndicator();
-
-                    if (!apiResponse.ok) {
-                        const errorData = await apiResponse.json();
-                        console.error("Error desde el proxy:", errorData);
-                        throw new Error(`Error del servidor: ${apiResponse.status}`);
+                // Buscar en entidades (artículos, decretos, leyes)
+                if (doc.entities) {
+                    // Buscar artículos mencionados
+                    if (query.match(/art[íi]culo\s*(\d+)/i)) {
+                        const articleNum = query.match(/art[íi]culo\s*(\d+)/i)[1];
+                        if (doc.entities.articles && doc.entities.articles.includes(articleNum)) {
+                            relevanceScore += 15;
+                            matchedEntities.push(`Artículo ${articleNum}`);
+                        }
                     }
 
-                    const data = await apiResponse.json();
-                    
-                    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
-                    addMessage('bot', aiResponse);
+                    // Buscar decretos
+                    if (query.match(/decreto\s*(\d+)/i)) {
+                        const decreeNum = query.match(/decreto\s*(\d+)/i)[1];
+                        if (doc.entities.decrees && doc.entities.decrees.includes(decreeNum)) {
+                            relevanceScore += 15;
+                            matchedEntities.push(`Decreto ${decreeNum}`);
+                        }
+                    }
 
-                } catch (error) {
-                    console.error("Error al contactar al asistente de IA:", error);
-                    removeTypingIndicator();
-                    addMessage('bot', "Hubo un problema de conexión con el asistente inteligente. Por favor, intenta de nuevo más tarde.");
+                    // Buscar leyes
+                    if (query.match(/ley\s*([\d.]+)/i)) {
+                        const lawNum = query.match(/ley\s*([\d.]+)/i)[1];
+                        if (doc.entities.laws && doc.entities.laws.includes(lawNum)) {
+                            relevanceScore += 15;
+                            matchedEntities.push(`Ley ${lawNum}`);
+                        }
+                    }
                 }
+
+                // Verificar si el documento trata sobre el tema consultado
+                if (doc.topics) {
+                    doc.topics.forEach(topic => {
+                        if (queryLower.includes(topic.toLowerCase()) || topic.toLowerCase().includes(queryLower)) {
+                            relevanceScore += 8;
+                        }
+                    });
+                }
+
+                if (relevanceScore > 0) {
+                    results.push({
+                        source: doc.title,
+                        content: doc.content,
+                        sections: matchedSections,
+                        entities: matchedEntities,
+                        topics: doc.topics,
+                        relevance: relevanceScore
+                    });
+                }
+            });
+        }
+
+        // Ordenar por relevancia
+        return results.sort((a, b) => b.relevance - a.relevance);
+    }
+
+    // Construir respuesta basada en conocimientos
+    buildResponse(query) {
+        const searchResults = this.searchKnowledge(query);
+        
+        if (searchResults.length === 0) {
+            return this.getDefaultResponse(query);
+        }
+
+        // Tomar los mejores resultados
+        const topResults = searchResults.slice(0, 3);
+        let response = '';
+
+        // Personalizar según el tipo de personalidad configurada
+        const personality = this.config.personality || 'professional';
+        
+        if (personality === 'professional') {
+            response = this.buildProfessionalResponse(topResults, query);
+        } else if (personality === 'friendly') {
+            response = this.buildFriendlyResponse(topResults, query);
+        } else {
+            response = this.buildTechnicalResponse(topResults, query);
+        }
+
+        return response;
+    }
+
+    // Respuesta profesional
+    buildProfessionalResponse(results, query) {
+        let response = '';
+        const mainResult = results[0];
+
+        // Identificar si es una consulta sobre artículos, decretos o leyes específicas
+        if (mainResult.entities && mainResult.entities.length > 0) {
+            response = `De acuerdo a la normativa vigente, específicamente ${mainResult.entities.join(', ')}:\n\n`;
+        } else {
+            response = `Según la información disponible en nuestros registros:\n\n`;
+        }
+
+        // Extraer la parte más relevante del contenido
+        const relevantContent = this.extractRelevantContent(mainResult.content, query);
+        response += relevantContent;
+
+        // Si hay secciones específicas relevantes
+        if (mainResult.sections && mainResult.sections.length > 0) {
+            response += '\n\n**Información adicional relevante:**\n';
+            mainResult.sections.slice(0, 2).forEach(section => {
+                response += `• ${section.content.substring(0, 200)}...\n`;
+            });
+        }
+
+        // Citar fuente
+        response += `\n\n📚 **Fuente:** ${mainResult.source}`;
+
+        // Si hay más documentos relacionados
+        if (results.length > 1) {
+            response += '\n\n**También puede consultar:**\n';
+            results.slice(1, 3).forEach(r => {
+                response += `• ${r.source}\n`;
+            });
+        }
+
+        return response;
+    }
+
+    // Respuesta amigable
+    buildFriendlyResponse(results, query) {
+        let response = '¡Hola! He encontrado información que puede ayudarte 😊\n\n';
+        const mainResult = results[0];
+
+        const relevantContent = this.extractRelevantContent(mainResult.content, query);
+        response += relevantContent;
+
+        response += `\n\n💡 Esta información proviene de: ${mainResult.source}`;
+
+        if (results.length > 1) {
+            response += '\n\n¿Te gustaría saber más? También tengo información en estos documentos:\n';
+            results.slice(1, 3).forEach(r => {
+                response += `• ${r.source}\n`;
+            });
+        }
+
+        return response;
+    }
+
+    // Respuesta técnica
+    buildTechnicalResponse(results, query) {
+        let response = '**RESPUESTA TÉCNICA**\n\n';
+        const mainResult = results[0];
+
+        if (mainResult.entities && mainResult.entities.length > 0) {
+            response += `**Referencias Normativas:** ${mainResult.entities.join(', ')}\n\n`;
+        }
+
+        response += '**Análisis:**\n';
+        const relevantContent = this.extractRelevantContent(mainResult.content, query);
+        response += relevantContent;
+
+        if (mainResult.topics && mainResult.topics.length > 0) {
+            response += `\n\n**Temas Relacionados:** ${mainResult.topics.join(', ')}`;
+        }
+
+        response += `\n\n**Documento Base:** ${mainResult.source}`;
+        response += `\n**Índice de Relevancia:** ${mainResult.relevance}/100`;
+
+        return response;
+    }
+
+    // Extraer contenido relevante alrededor de la consulta
+    extractRelevantContent(content, query) {
+        if (!content) return 'No se encontró contenido específico.';
+
+        const queryLower = query.toLowerCase();
+        const contentLower = content.toLowerCase();
+        const index = contentLower.indexOf(queryLower.split(' ')[0]);
+
+        if (index === -1) {
+            // Si no encuentra coincidencia exacta, devolver el inicio del contenido
+            return content.substring(0, 500) + '...';
+        }
+
+        // Extraer contexto alrededor de la coincidencia
+        const start = Math.max(0, index - 200);
+        const end = Math.min(content.length, index + 500);
+        let extract = content.substring(start, end);
+
+        // Limpiar el extracto
+        if (start > 0) extract = '...' + extract;
+        if (end < content.length) extract = extract + '...';
+
+        // Resaltar términos importantes
+        const importantTerms = ['debe', 'obligatorio', 'prohibido', 'requisito', 'plazo', 'sanción', 'multa'];
+        importantTerms.forEach(term => {
+            const regex = new RegExp(`\\b(${term})\\b`, 'gi');
+            extract = extract.replace(regex, '**$1**');
+        });
+
+        return extract;
+    }
+
+    // Respuesta por defecto cuando no encuentra información
+    getDefaultResponse(query) {
+        const queryLower = query.toLowerCase();
+
+        // Respuestas predefinidas para consultas comunes
+        const commonResponses = {
+            'hola': '¡Hola! Soy el asistente de OS10 Coquimbo. ¿En qué puedo ayudarte hoy?',
+            'gracias': '¡De nada! Es un placer ayudarte. Si tienes más preguntas, no dudes en consultarme.',
+            'horario': 'La oficina OS10 Coquimbo atiende de lunes a jueves de 09:00 a 13:00 horas.',
+            'dirección': 'Estamos ubicados en Cienfuegos 180, La Serena.',
+            'teléfono': 'Puedes contactarnos al 512651024 o 512651023.',
+            'credencial': 'Para información sobre credenciales, necesitas presentar: solicitud, foto carnet, certificado OS10 vigente y certificado de antecedentes.',
+            'curso': 'Los cursos de capacitación tienen diferentes duraciones según el tipo. Puedo darte información más específica si me indicas qué tipo de curso necesitas.'
+        };
+
+        // Buscar coincidencias en respuestas comunes
+        for (const [key, value] of Object.entries(commonResponses)) {
+            if (queryLower.includes(key)) {
+                return value;
             }
+        }
+
+        // Si no hay conocimientos cargados
+        if (!this.knowledge.knowledge || this.knowledge.knowledge.length === 0) {
+            return `No tengo información específica sobre "${query}" en mi base de conocimientos actual. 
+
+Por favor, verifica que el administrador haya cargado los documentos relevantes o reformula tu pregunta.
+
+Mientras tanto, puedo ayudarte con información general sobre:
+• Requisitos para credenciales
+• Horarios de atención
+• Ubicación de la oficina
+• Trámites básicos de seguridad privada`;
+        }
+
+        // Respuesta genérica
+        return `No encontré información específica sobre "${query}" en los documentos disponibles. 
+
+Te sugiero:
+1. Reformular tu pregunta con términos más específicos
+2. Consultar sobre temas como: guardias de seguridad, vigilantes privados, credenciales, capacitación, etc.
+3. Contactar directamente a la oficina al 512651024 para consultas más específicas.`;
+    }
+
+    // Agregar contexto de conversación
+    addToContext(role, message) {
+        this.conversationContext.push({ role, message, timestamp: new Date() });
+        // Mantener solo las últimas 10 interacciones
+        if (this.conversationContext.length > 10) {
+            this.conversationContext = this.conversationContext.slice(-10);
+        }
+    }
+}
+
+// ========================================
+// NUEVA FUNCIÓN handleMessage() MEJORADA
+// ========================================
+
+// Crear instancia global del bot con conocimientos
+const knowledgeBot = new CentralizedKnowledgeBot();
+
+async function handleMessage() {
+    const input = document.getElementById('user-input');
+    const text = input.value.trim();
+    
+    if (!text) return;
+    
+    // Agregar mensaje del usuario
+    addMessage('user', text);
+    input.value = '';
+    
+    // Agregar al contexto
+    knowledgeBot.addToContext('user', text);
+    
+    // Mostrar indicador de escritura
+    addTypingIndicator();
+    
+    // Buscar primero en la base de conocimientos centralizada
+    const knowledgeResponse = knowledgeBot.buildResponse(text);
+    
+    // Si encuentra una buena respuesta en los conocimientos, usarla
+    if (knowledgeResponse && !knowledgeResponse.includes('No encontré información')) {
+        setTimeout(() => {
+            removeTypingIndicator();
+            addMessage('bot', knowledgeResponse);
+            knowledgeBot.addToContext('assistant', knowledgeResponse);
+        }, 1000);
+        return;
+    }
+    
+    // Si no encuentra en conocimientos, buscar en reglas predefinidas
+    const rulesResponse = findExactMatch(text, allRules);
+    if (rulesResponse) {
+        setTimeout(() => {
+            removeTypingIndicator();
+            addMessage('bot', rulesResponse);
+            knowledgeBot.addToContext('assistant', rulesResponse);
+        }, 500);
+        return;
+    }
+    
+    // Si no encuentra nada, usar la API de Gemini con el contexto de conocimientos
+    try {
+        // Construir un prompt enriquecido con los conocimientos
+        const enrichedPrompt = buildEnrichedPrompt(text);
+        
+        const geminiPayload = {
+            contents: [{ parts: [{ text: enrichedPrompt }] }],
+            safetySettings: [
+                { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+            ],
+        };
+
+        const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(geminiPayload),
+        });
+
+        removeTypingIndicator();
+
+        if (!apiResponse.ok) {
+            throw new Error(`Error del servidor: ${apiResponse.status}`);
+        }
+
+        const data = await apiResponse.json();
+        const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || 
+                         "No pude obtener una respuesta. Por favor, intenta reformular tu pregunta.";
+        
+        addMessage('bot', aiResponse);
+        knowledgeBot.addToContext('assistant', aiResponse);
+
+    } catch (error) {
+        console.error("Error:", error);
+        removeTypingIndicator();
+        
+        // Usar respuesta por defecto
+        const defaultResponse = knowledgeBot.getDefaultResponse(text);
+        addMessage('bot', defaultResponse);
+    }
+}
+
+// Función para construir un prompt enriquecido con conocimientos
+function buildEnrichedPrompt(query) {
+    const searchResults = knowledgeBot.searchKnowledge(query);
+    let contextInfo = '';
+    
+    if (searchResults.length > 0) {
+        contextInfo = '\n\nInformación relevante de la base de conocimientos:\n';
+        searchResults.slice(0, 2).forEach(result => {
+            contextInfo += `\nFuente: ${result.source}\n`;
+            contextInfo += `Contenido: ${result.content.substring(0, 500)}...\n`;
+        });
+    }
+    
+    const systemContext = knowledgeBot.config.context || 
+                          'Eres un funcionario experto de la oficina OS10 de Seguridad Privada en Coquimbo.';
+    
+    return `${systemContext}
+
+${contextInfo}
+
+Contexto de la conversación:
+${knowledgeBot.conversationContext.map(c => `${c.role}: ${c.message}`).join('\n')}
+
+Usuario pregunta: ${query}
+
+Responde de manera profesional y precisa, basándote en la información disponible. Si no tienes información específica, indícalo claramente y sugiere contactar a la oficina.`;
+}
+
+// ========================================
+// FUNCIONES AUXILIARES (mantener las existentes)
+// ========================================
+
+function addTypingIndicator() {
+    const chatMessages = document.getElementById('chat-messages');
+    const typingDiv = document.createElement('div');
+    typingDiv.id = 'typing-indicator';
+    typingDiv.className = 'flex items-start space-x-2 mb-3';
+    typingDiv.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1">
+            <img src="assets/images/poli.png" alt="Bot" class="h-full w-full object-contain">
+        </div>
+        <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg">
+            <div class="typing-indicator">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    `;
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    const indicator = document.getElementById('typing-indicator');
+    if (indicator) indicator.remove();
+}
+
+
+
+
+
+
+
+
+
             
             function addTypingIndicator() {
                 const chatMessages = document.getElementById('chat-messages');
