@@ -3,7 +3,7 @@ console.log('🔄 Cargando base de datos de reglas OS10...');
 
 const responses = {
     'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib *3 Bot Abogado Virtual GPT* \n dal5.short.gy/Ab0 *4 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTt 5 Bot Ley Karin*\n dal5.short.gy/lkar'},
-    'rule_2': { keywords: ["sanciones guardias", "multas guardias", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: 'Infracciones de Guardias (Decreto Supremo N° 93):\n\n*Guardia sin curso OS10:*\nInfringe el *artículo 13*. La empresa que contrata al guardia sin este requisito es la infractora.\n\n*Guardia sin credencial vigente:*\nInfringe el *artículo 18*. La responsabilidad es de la empresa contratante.\n\n*Sin Directiva de Funcionamiento (DD.FF.):*\nInfringe el *artículo 15*. Es una infracción de la empresa si opera sin esta autorización.\n\n*Portando elementos no autorizados:*\nInfringe el *artículo 14*. Los implementos deben estar especificados en la DD.FF. Infracción aplicable a la empresa.\n\n*Portando arma de fuego:*\nInfringe el *artículo 14*. Los guardias tienen prohibido portar armas de fuego. Grave infracción atribuible a la empresa.' },
+    'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: 'Infracciones de Guardias (Decreto Supremo N° 93):\n\n*Guardia sin curso OS10:*\nInfringe el *artículo 13*. La empresa que contrata al guardia sin este requisito es la infractora.\n\n*Guardia sin credencial vigente:*\nInfringe el *artículo 18*. La responsabilidad es de la empresa contratante.\n\n*Sin Directiva de Funcionamiento (DD.FF.):*\nInfringe el *artículo 15*. Es una infracción de la empresa si opera sin esta autorización.\n\n*Portando elementos no autorizados:*\nInfringe el *artículo 14*. Los implementos deben estar especificados en la DD.FF. Infracción aplicable a la empresa.\n\n*Portando arma de fuego:*\nInfringe el *artículo 14*. Los guardias tienen prohibido portar armas de fuego. Grave infracción atribuible a la empresa.' },
     'rule_3': { keywords: ["tipos de empresas", "tipo de empresa"], response: '*EMPRESA DE RR.HH. CAPACITACION O ASESORIAS* https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf'},
     'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: 'ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
     'rule_5': { keywords: ["la guia de guardia","guardia de segurridad"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de GUARDIA DE SEGURIDAD la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
@@ -75,7 +75,7 @@ const responses = {
     'rule_110': { keywords: ["*editable*","*documentos word*"], response: '🤖 *DOCUMENTOS EDITABLES EN WORD*\n✅ Estudio\n✅ Plan\n✅ Medidas\n✅ Directiva\n✅ Todos@ ' },
     'rule_111': { keywords: ["nueva ley"], response: '🤖 *NUEVA LEY SEGURIDAD PRIVADA*\nLey 21.659 del 21 de marzo de 2024\nhttps://dal5.short.gy/LeySeg' },
     'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor\n- Independiente' },
-    'rule_113': { keywords: ["Guia vigilante privado"], response: '🤖 *VIGILANTE PRIVADO*\nSimilar a guardia de seguridad pero con funciones específicas\nhttps://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado.pdf' },
+    'rule_113': { keywords: ["vigilante privado"], response: '🤖 *VIGILANTE PRIVADO*\nSimilar a guardia de seguridad pero con funciones específicas\nhttps://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado.pdf' },
     'rule_149': { keywords: ["empresas recursos humanos"], response: '🤖 *EMPRESAS DE RECURSOS HUMANOS*\nAutorización especial para intermediación laboral\nRequisitos específicos' },
     'rule_150': { keywords: ["*supermercados*","*sobre 500 uf*","*requisitos sobre 500 uf*"], response: '🤖 *REQUISITOS SOBRE 500 UF.*\n\nhttps://dal5.short.gy/S500' },
     'rule_152': { keywords: ["linkedin"], response: '🧙🏻‍♂️.*LinkedIn* \nhttps://dal5.short.gy/Lin' },
@@ -547,6 +547,266 @@ const responses = {
 'rule_490': {
   keywords: ["información carabineros", "facilidades inspección", "fiscalización medidas"],
   response: '🤖🔍 **FACILIDADES FISCALIZACIÓN** (Art. 9 Ley 19.303):\n**INFORMACIÓN:** Proporcionar datos requeridos Carabineros\n**FACILIDADES:** Otorgar para inspeccionar recintos\n**MEDIDAS:** Donde implementadas medidas seguridad\n**OBLIGACIÓN:** Todas entidades obligadas\n**FISCALIZACIÓN:** Durante verificación cumplimiento\n**INFRACCIÓN:** No otorgar facilidades/información'
+},
+'rule_491': {
+keywords: ["bóveda", "relojería", "apertura", "cierre", "alarmas"],
+response: '🤖🏦 **BÓVEDAS BANCARIAS** (Art. 3° inc. 9° DL 3607):\n**REQUISITO:** Bóvedas con mecanismos relojería apertura/cierre\n**ALARMAS:** Sistema distinto al de asalto\n**OBLIGACIÓN:** Oficinas/agencias/sucursales sin bóveda equipada\n**SANCIÓN:** Requerimiento Prefecto Casa Matriz\n**NORMATIVA:** Decreto Exento 1122/1998 Art. 14°\n**INFRACCIÓN:** No contar con sistema relojería/alarmas'
+},
+'rule_492': {
+keywords: ["cajas receptoras", "pagadoras", "compartimentadas", "cerraduras seguridad"],
+response: '🤖💰 **CAJAS BANCARIAS** (Art. 3° inc. 7° DL 3607):\n**UBICACIÓN:** Todas juntas mismo recinto observable\n**REQUISITO:** Compartimentadas y aisladas del resto\n**CERRADURA:** Seguridad obligatoria\n**DISTANCIA:** Más distante posible del acceso\n**NORMATIVA:** Decreto Exento 1122/1998 Art. 15°\n**INFRACCIÓN:** No reunidas/compartimentadas/sin cerraduras'
+},
+'rule_493': {
+keywords: ["alto riesgo", "cajas blindadas", "puertas blindadas", "detectores metales"],
+response: '🤖🛡️ **OFICINAS ALTO RIESGO** (Art. 3° inc. 7° DL 3607):\n**DESDE 1999:** Cajas blindadas obligatorias\n**EXCEPCIÓN:** Puertas blindadas electrónicas + detectores metales\n**ACCESOS:** Todos exteriores con protección\n**APERTURA:** Dos o más hojas sucesivas independientes\n**CALIFICACIÓN:** Decreto Supremo Ministerios Interior/Defensa\n**INFRACCIÓN:** Sin cajas blindadas ni puertas/detectores'
+},
+'rule_494': {
+keywords: ["vidrios exteriores", "inastillables", "transparencia", "visión exterior"],
+response: '🤖🪟 **VIDRIOS BANCARIOS** (Art. 3° inc. 7° DL 3607):\n**MATERIAL:** Inastillables obligatorios\n**TRANSPARENCIA:** Permitir visión exterior hacia interior\n**APLICACIÓN:** Productos destinados ese objeto\n**OBLIGACIÓN:** Todos vidrios exteriores\n**NORMATIVA:** Decreto Exento 1122/1998 Art. 16°\n**INFRACCIÓN:** Vidrios no inastillables/impiden visión'
+},
+'rule_495': {
+keywords: ["cámaras filmación", "alta resolución", "grabación nítida", "digitalización"],
+response: '🤖📹 **FILMACIÓN BANCARIA** (Art. 3° inc. 7° DL 3607):\n**CALIDAD:** Alta resolución imágenes nítidas asalto\n**ALTO RIESGO:** Digitalización hora/día/mes/año\n**PROTECCIÓN:** Equipos ocultos o resguardados\n**COBERTURA:** Entrada/salida y llegada cajas\n**NORMATIVA:** Decreto Exento 1122/1998 Art. 17°\n**INFRACCIÓN:** Sin sistemas cámaras/filmación alta resolución'
+},
+
+'rule_496': {
+keywords: ["mensajería electrónica", "encriptada", "transporte valores", "tesorero"],
+response: '🤖📧 **COMUNICACIÓN BANCARIA** (Art. 3° inc. 7° DL 3607):\n**MEDIO:** Mensajería electrónica encriptada obligatoria\n**USO:** Envío/retiro/manipulación dineros con transportadoras\n**EXCEPCIÓN:** Escrita firmada tesorero en contingencias\n**ESTÁNDAR:** Sistema comunicaciones bancarias\n**NORMATIVA:** Decreto Exento 1122/1998 Art. 18°\n**INFRACCIÓN:** No comunicarse mediante mensajería encriptada'
+},
+
+'rule_497': {
+keywords: ["cajeros automáticos", "estudio seguridad", "medidas mínimas", "DS 222"],
+response: '🤖🏧 **CAJEROS - ESTUDIO SEGURIDAD** (Art. 3° inc. 1° DL 3607):\n**OBLIGACIÓN:** Incorporar medidas DS 222 en estudio\n**APLICACIÓN:** Cajeros propiedad entidades bancarias/financieras\n**REGULACIÓN:** DL 3607/1981 Art. 5°\n**DECRETO:** Supremo 222/2013 Art. 3°\n**SANCIÓN:** Requerimiento Prefecto Casa Matriz\n**INFRACCIÓN:** Medidas no incorporadas estudio seguridad'
+},
+
+'rule_498': {
+keywords: ["listado cajeros", "ubicación", "medidas seguridad", "15 días"],
+response: '🤖📋 **LISTADO CAJEROS** (Art. 3° inc. 1° DL 3607):\n**CONTENIDO:** Ubicación y medidas seguridad adoptadas\n**PLAZO:** 15 días desde habilitación operación\n**OBLIGACIÓN:** Nuevo/reinstalación/reemplazo cajero\n**INFORME:** Detalle ubicación y medidas aplicadas\n**DOCUMENTACIÓN:** Certificación correspondiente\n**INFRACCIÓN:** No incorporar listado estudios seguridad'
+},
+
+'rule_499': {
+keywords: ["sistema alarma", "sensores movimiento", "inclinación", "corte cables"],
+response: '🤖🚨 **ALARMA CAJEROS** (Art. 3° inc. 1° DL 3607):\n**MONITOREO:** Sistema línea central permanente\n**SENSORES:** Movimiento/inclinación/corte cables/eléctrica\n**ADICIONALES:** Temperatura/humo/apertura no autorizada\n**COMUNICACIÓN:** Carabineros/PDI más breve plazo\n**RESPALDO:** Energía eléctrica interrupciones\n**INFRACCIÓN:** Sin sistema alarma/sensores/mal funcionamiento'
+},
+'rule_500': {
+keywords: ["grabación imágenes", "alta definición", "cámara externa", "cámara interna"],
+response: '🤖📱 **GRABACIÓN CAJEROS** (Art. 3° inc. 1° DL 3607):\n**CALIDAD:** Alta definición\n**EXTERNA:** Actividad torno cajero operación\n**INTERNA:** Rostro y características físicas usuarios\n**MONITOREO:** Central línea acceso inmediato\n**ALMACENAMIENTO:** Mínimo 45 días / 24 meses ataques\n**INFRACCIÓN:** Sin sistema grabación/mal funcionamiento'
+},
+'rule_501': {
+keywords: ["cajas fuertes", "bóvedas", "protección cortantes", "fundentes", "EN-1143-1"],
+response: '🤖🔒 **PROTECCIÓN BÓVEDAS CAJEROS** (Art. 3° inc. 1° DL 3607):\n**PROTECCIÓN:** Contra elementos cortantes/fundentes\n**CERRADURAS:** Dispositivos seguridad\n**RETARDO:** Efectividad ataque herramientas\n**GRADO:** Seguridad IV superior norma EN-1143-1\n**CERTIFICACIÓN:** Fabricante o entidad certificadora\n**INFRACCIÓN:** Sin protección/cerraduras seguridad norma'
+},
+'rule_502': {
+keywords: ["anclado", "empotramiento", "blindaje", "sistema entintado", "pilote frontal"],
+response: '🤖⚓ **ANCLAJE CAJEROS** (Art. 3° inc. 1° DL 3607):\n**ANCLADO:** Suelo o estructura edificación obligatorio\n**GRADO:** Seguridad IV superior EN-1143-1\n**ADICIONALES:** Empotramiento/blindaje/entintado billetes\n**REPOSICIÓN:** Mínimo dos medidas vulneración\n**EXCEPCIÓN:** Pilote frontal lugares especiales\n**INFRACCIÓN:** No anclado/sin medidas adicionales'
+},
+'rule_503': {
+keywords: ["pilote frontal", "estaciones subterráneas", "aeropuertos", "vigilantes privados"],
+response: '🤖🏗️ **PILOTE FRONTAL CAJEROS** (Art. 3° inc. 1° DL 3607):\n**LUGARES:** Estaciones subterráneas/aeropuertos/impedimentos\n**REQUISITO:** Protección Vigilantes Privados\n**ESPECIFICACIONES:** Acero 100x100x850mm cubierto 150mm\n**CERRADURA:** Electromagnética conectada alarma\n**TERMINACIONES:** Acero inoxidable\n**INFRACCIÓN:** Lugares indicados sin pilote frontal'
+},
+'rule_504': {
+keywords: ["plan revisiones", "clonación tarjetas", "skimmers", "cámaras ocultas"],
+response: '🤖🔍 **PLAN REVISIONES CAJEROS** (Art. 3° inc. 1° DL 3607):\n**OBJETIVO:** Evitar clonación tarjetas/obtención claves\n**VERIFICACIÓN:** Dispositivos capturar información\n**DETECCIÓN:** Skimmers/cámaras ocultas/alteraciones\n**PERIODICIDAD:** Plan detalle frecuencia visitas\n**RESULTADO:** Disponible inmediato entidad\n**INFRACCIÓN:** No implementar plan revisión seguridad'
+},
+'rule_505': {
+keywords: ["transporte valores", "funciones seguridad", "estudio seguridad", "vigilantes"],
+response: '🤖🚛 **FUNCIONES VIGILANTES TRANSPORTE** (Art. 3° inc. 10° DL 3607):\n**LIMITACIÓN:** Solo funciones seguridad contempladas\n**DOCUMENTO:** Estudio seguridad respectivo\n**PROHIBICIÓN:** Actividades no contempladas\n**SANCIÓN:** Requerimiento Prefecto Casa Matriz\n**NORMATIVA:** DS 1814/2014 Art. 4°\n**INFRACCIÓN:** Actividades no contempladas estudio'
+},
+'rule_506': {
+keywords: ["vehículos blindados", "tripulación tres", "uniformados", "armados", "chaleco antibalas"],
+response: '🤖🚚 **TRANSPORTE TERRESTRE VALORES** (Art. 3° inc. 1° DL 3607):\n**VEHÍCULOS:** Blindados obligatorios\n**TRIPULACIÓN:** Mínimo tres vigilantes privados\n**CONDUCTOR:** No descender durante servicio\n**EQUIPAMIENTO:** Uniformados/armados/chaleco antibalas\n**NORMATIVA:** DS 1814/2014 Art. 6° inc. 1°\n**INFRACCIÓN:** Vehículos no blindados/tripulación inferior'
+},
+'rule_507': {
+keywords: ["transporte infantería", "dos vigilantes", "uniformados", "armados", "antibalas"],
+response: '🤖👥 **TRANSPORTE INFANTERÍA** (Art. 3° inc. 10° DL 3607):\n**TRIPULACIÓN:** Mínimo dos Vigilantes Privados\n**EQUIPAMIENTO:** Uniformados/armados/chaleco antibalas\n**MODALIDAD:** Transporte valores infantería\n**NORMATIVA:** DS 1814/2014 Art. 6° inc. 2°\n**SANCIÓN:** Requerimiento Prefecto Casa Matriz\n**INFRACCIÓN:** Menos dos vigilantes/sin equipamiento'
+},
+'rule_508': {
+keywords: ["franja horaria", "07:00 23:00", "operaciones interregionales", "autorización carabineros"],
+response: '🤖⏰ **HORARIO TRANSPORTE** (Art. 3° inc. 1° DL 3607):\n**FRANJA:** 07:00 a 23:00 horas obligatorio\n**EXCEPCIONES:** Operaciones interregionales\n**AUTORIZACIÓN:** Carabineros resolución fundada\n**NORMATIVA:** DS 1814/2014 Art. 6° inc. 5°\n**SANCIÓN:** Requerimiento Prefecto Casa Matriz\n**INFRACCIÓN:** Operaciones fuera horario sin autorización'
+},
+'rule_509': {
+keywords: ["carga descarga", "estancos resguardados", "lugar próximo", "medidas seguridad"],
+response: '🤖📦 **CARGA/DESCARGA VALORES** (Art. 3° inc. 1° DL 3607):\n**LUGAR:** Estancos debidamente resguardados\n**HABILITACIÓN:** Entidades emisoras/receptoras\n**ALTERNATIVA:** Lugar más próximo entidad\n**CONDICIÓN:** Sin medidas seguridad establecidas\n**NORMATIVA:** DS 1814/2014 Art. 8°\n**INFRACCIÓN:** Lugar sin medidas seguridad'
+},
+'rule_510': {
+keywords: ["planificación horarios", "rutas viajes", "distribución operaciones", "método eficiente"],
+response: '🤖🗺️ **PLANIFICACIÓN TRANSPORTE** (Art. 3° inc. 1° DL 3607):\n**OBLIGACIÓN:** Planificación horarios y rutas\n**MÉTODO:** Distribución operaciones efectiva\n**FRANJA:** Dentro 07:00 a 23:00 horas\n**EFICIENCIA:** Método distribución obligatorio\n**NORMATIVA:** DS 1814/2014 Art. 9°\n**INFRACCIÓN:** No planificación efectiva/eficiente'
+},
+'rule_511': {
+keywords: ["círculo naranja", "reflectante", "techo exterior", "vehículo blindado"],
+response: '🤖🟠 **IDENTIFICACIÓN VEHÍCULOS** (Art. 3° inc. 1° DL 3607):\n**MARCA:** Círculo color naranja reflectante\n**UBICACIÓN:** Techo exterior vehículo blindado\n**OBLIGACIÓN:** Todos vehículos transporte valores\n**VISIBILIDAD:** Reflectante a la luz\n**NORMATIVA:** DS 1814/2014 Art. 10° inc. 1°\n**INFRACCIÓN:** Sin círculo naranja reflectante techo'
+},
+'rule_512': {
+keywords: ["estructura básica", "cabina conductor", "habitáculo tripulación", "bóveda custodia"],
+response: '🤖🏗️ **ESTRUCTURA VEHÍCULOS BLINDADOS** (Art. 3° inc. 1° DL 3607):\n**CABINA:** Conductor separada\n**HABITÁCULO:** Tripulación específico\n**BÓVEDA:** Custodia valores independiente\n**OBLIGACIÓN:** Estructura básica completa\n**NORMATIVA:** DS 1814/2014 Art. 10° inc. 1°\n**INFRACCIÓN:** Sin estructura básica completa'
+},
+'rule_513': {
+keywords: ["cerraduras randómicas", "apertura simultánea", "puertas habitáculo", "bóveda"],
+response: '🤖🔐 **CERRADURAS VEHÍCULOS** (Art. 3° inc. 1° DL 3607):\n**TIPO:** Randómicas imposibilitan apertura simultánea\n**APLICACIÓN:** Habitáculo/bóveda/cabina conductor\n**SEGURIDAD:** No permitir apertura conjunta\n**PROTECCIÓN:** Sistema cerradura específico\n**NORMATIVA:** DS 1814/2014 Art. 10° inc. 1°\n**INFRACCIÓN:** Sin cerraduras randómicas'
+},
+'rule_514': {
+keywords: ["transmisión radial", "sistema localización", "satelital", "central comunicaciones"],
+response: '🤖📡 **COMUNICACIONES VEHÍCULOS** (Art. 3° inc. 1° DL 3607):\n**TRANSMISIÓN:** Radial o continua obligatoria\n**CONTACTO:** Permanente central comunicaciones\n**LOCALIZACIÓN:** Satelital o efectos similares\n**MONITOREO:** En línea permanente\n**NORMATIVA:** DS 1814/2014 Art. 10° inc. 1°\n**INFRACCIÓN:** Sin equipo transmisión/localización'
+},
+'rule_515': {
+keywords: ["blindaje resistencia", "proyectil calibre", "7.62 x 39", "penetración mínima"],
+response: '🤖🛡️ **BLINDAJE VEHÍCULOS** (Art. 3° inc. 1° DL 3607):\n**RESISTENCIA:** Mínima penetración proyectil\n**CALIBRE:** 7.62 x 39 mm obligatorio\n**APLICACIÓN:** Todos vehículos transporte valores\n**PROTECCIÓN:** Resistencia específica requerida\n**NORMATIVA:** DS 1814/2014 Art. 10° inc. 2°\n**INFRACCIÓN:** Sin blindaje resistencia señalada'
+},
+'rule_516': {
+keywords: ["neumáticos resistentes", "pinchazos", "vehículos blindados", "transporte valores"],
+response: '🤖🛞 **NEUMÁTICOS VEHÍCULOS** (Art. 3° inc. 1° DL 3607):\n**TIPO:** Resistentes pinchazos obligatorios\n**APLICACIÓN:** Todos vehículos transporte valores\n**PROTECCIÓN:** Contra pinchazos específica\n**SEGURIDAD:** Continuidad operacional\n**NORMATIVA:** DS 1814/2014 Art. 10° inc. 2°\n**INFRACCIÓN:** Sin neumáticos resistentes pinchazos'
+},
+'rule_517': {
+keywords: ["tres cámaras", "televigilancia", "alta resolución", "interior exterior"],
+response: '🤖📹 **CÁMARAS VEHÍCULOS** (Art. 3° inc. 1° DL 3607):\n**CANTIDAD:** Mínimo tres cámaras alta resolución\n**DISTRIBUCIÓN:** Dos interior/una exterior\n**UBICACIÓN:** Cabina conductor/habitáculo tripulación\n**CONEXIÓN:** Central monitoreo empresa\n**PROTECCIÓN:** Debidamente resguardadas\n**INFRACCIÓN:** Sin tres cámaras televigilancia'
+},
+'rule_518': {
+keywords: ["central monitoreo", "funcionario", "diez camiones", "comunicación carabineros"],
+response: '🤖🖥️ **CENTRAL MONITOREO** (Art. 3° inc. 1° DL 3607):\n**PERSONAL:** Mínimo un funcionario cada diez camiones\n**OPERACIÓN:** Funcionario entidad obligatorio\n**COMUNICACIÓN:** Directa centrales Carabineros\n**CONEXIÓN:** Sistema permanente\n**NORMATIVA:** DS 1814/2014 Art. 10° inc. 4°\n**INFRACCIÓN:** Central no funciona términos establecidos'
+},
+'rule_519': {
+keywords: ["bolsas contenedores", "material resistente", "insignia corporativa", "precintos"],
+response: '🤖👝 **BOLSAS/CONTENEDORES** (Art. 3° inc. 1° DL 3607):\n**MATERIAL:** Resistente roce/probable intrusión\n**IDENTIFICACIÓN:** Insignia corporativa/número\n**PRECINTOS:** Cierre identificados empresa\n**USO:** Dinero efectivo/documentos mercantiles\n**NORMATIVA:** DS 1814/2014 Art. 11°\n**INFRACCIÓN:** Bolsas no resistentes/sin identificación'
+},
+'rule_520': {
+keywords: ["sistemas entintado", "billetes", "registro", "carabineros chile"],
+response: '🤖🎨 **SISTEMAS ENTINTADO** (Art. 3° inc. 1° DL 3607):\n**DISPOSITIVOS:** Disuasivos seguridad entintado billetes\n**REGISTRO:** Inscripción Carabineros Chile\n**OBLIGACIÓN:** Solicitar inscripción previa\n**MANTENIMIENTO:** Registro específico\n**NORMATIVA:** DS 1814/2014 Art. 12°\n**INFRACCIÓN:** Operar sin inscripción registro'
+},
+'rule_521': {
+keywords: ["operaciones alto riesgo", "cuatro vigilantes", "escolta apoyo", "zonas urbanas"],
+response: '🤖⚠️ **OPERACIONES ALTO RIESGO** (Art. 3° inc. 1° DL 3607):\n**TRIPULACIÓN:** Cuatro vigilantes o escolta apoyo\n**DECLARACIÓN:** Propia entidad estudio seguridad\n**CARABINEROS:** Determina operaciones riesgo\n**HORARIO:** Fuera 7:00-23:00 hrs autorizadas\n**ZONAS:** Viña del Mar/Valparaíso/Concepción/Temuco/Rancagua/RM\n**INFRACCIÓN:** Sin tripulación/escolta requerida'
+},
+'rule_522': {
+keywords: ["vigilantes apoyo", "uniforme", "armamento", "vehículo no blindado", "distintivos"],
+response: '🤖👮 **VIGILANTES APOYO** (Art. 3° inc. 1° DL 3607):\n**AUTORIZACIÓN:** Carabineros casos calificados\n**EQUIPAMIENTO:** Uniforme/armamento/chaleco antibalas\n**VEHÍCULO:** No blindado con distintivos empresa\n**PROHIBICIÓN:** No transportar valores\n**NORMATIVA:** DS 1814/2014 Art. 14°\n**INFRACCIÓN:** Sin autorización/no implementar exigida'
+},
+'rule_523': {
+keywords: ["bóvedas centros acopio", "protección cortantes", "cerraduras seguridad", "dispositivos electrónicos"],
+response: '🤖🏛️ **BÓVEDAS CENTROS ACOPIO** (Art. 3° inc. 1° DL 3607):\n**ESTRUCTURA:** Muros/cielos/pisos/puertas protegidos\n**PROTECCIÓN:** Cortantes/fundentes/mecánicos\n**CERRADURAS:** Seguridad obligatorias\n**DISPOSITIVOS:** Electrónicos detectar/repeler/retardar\n**NORMATIVA:** DS 1814/2014 Art. 16°\n**INFRACCIÓN:** Estructura no cumple medidas mínimas'
+},
+'rule_524': {
+keywords: ["seguridad electrónica", "sensores alarma", "controles acceso", "alpha ii"],
+response: '🤖⚡ **SEGURIDAD ELECTRÓNICA BÓVEDAS** (Art. 3° inc. 1° DL 3607):\n**SISTEMAS:** Monitoreo/control electrónico\n**SENSORES:** Alarma/controles acceso\n**CERRADURAS:** Electrónicas retardo/bloqueo horario\n**PULSADORES:** Asalto conectados ALPHA II\n**DETECTORES:** Incendio/humo/calor/vibración\n**INFRACCIÓN:** Sin totalidad seguridad electrónica'
+},
+'rule_525': {
+keywords: ["doble puerta", "ingreso vehículos", "vigilantes 24 horas", "acopio temporal"],
+response: '🤖🚪 **OFICINAS ACOPIO TEMPORAL** (Art. 3° inc. 1° DL 3607):\n**ACCESO:** Zona doble puerta vehículos blindados\n**VIGILANCIA:** Privados 24 horas todos días\n**ACOPIO:** Dinero/valores temporalmente\n**PROTECCIÓN:** Sistema vigilantes permanente\n**NORMATIVA:** DS 1814/2014 Art. 18° inc. 1°\n**INFRACCIÓN:** Sin doble puerta/sin vigilantes 24hrs'
+},
+'rule_526': {
+keywords: ["compartimentadas", "aisladas", "bóveda tesorería", "central monitoreo"],
+response: '🤖🏢 **COMPARTIMENTACIÓN AGENCIAS** (Art. 3° inc. 1° DL 3607):\n**ÁREAS:** Bóveda/tesorería/central monitoreo\n**REQUISITO:** Compartimentadas y aisladas entre sí\n**SEPARACIÓN:** Respecto dependencias administrativas\n**OBLIGACIÓN:** Agencias/sucursales empresas\n**NORMATIVA:** DS 1814/2014 Art. 18° inc. 2°\n**INFRACCIÓN:** No compartimentadas/aisladas'
+},
+'rule_527': {
+keywords: ["grabación alta resolución", "personas ingresan", "salen", "bóvedas acopio"],
+response: '🤖📽️ **GRABACIÓN AGENCIAS** (Art. 3° inc. 1° DL 3607):\n**CALIDAD:** Alta resolución imágenes nítidas\n**COBERTURA:** Ingreso/salida/llegada bóvedas\n**CONEXIÓN:** Central monitoreo entidad\n**PROTECCIÓN:** Equipos resguardados intrusión\n**NORMATIVA:** DS 1814/2014 Art. 18° inc. 3°-4°\n**INFRACCIÓN:** Sin sistema grabación/mal resguardadas'
+},
+'rule_528': {
+keywords: ["grabaciones 30 días", "un año delito", "resguardo", "antecedentes comisión"],
+response: '🤖💾 **RESGUARDO GRABACIONES** (Art. 3° inc. 1° DL 3607):\n**MÍNIMO:** Treinta días hábiles\n**DELITO:** Un año antecedentes comisión\n**OBLIGACIÓN:** Resguardar grabaciones cámaras\n**PERÍODO:** Según corresponda situación\n**NORMATIVA:** DS 1814/2014 Art. 18° inc. 5°\n**INFRACCIÓN:** No mantener período dispuesto'
+},
+'rule_529': {
+keywords: ["sistema alarmas", "empresa certificada", "alpha ii", "conexión carabineros"],
+response: '🤖🚨 **ALARMAS AGENCIAS** (Art. 3° inc. 1° DL 3607):\n**INSTALACIÓN:** Empresa certificada Carabineros\n**CONEXIÓN:** Sistema ALPHA II Carabineros\n**OBLIGACIÓN:** Agencias/sucursales empresas\n**CERTIFICACIÓN:** Empresa autorizada\n**NORMATIVA:** DS 1814/2014 Art. 19°\n**INFRACCIÓN:** No conectada sistema ALPHA II'
+},
+'rule_530': {
+keywords: ["operaciones cajeros", "apertura bóveda", "tres vigilantes", "recargas reposición"],
+response: '🤖🏧 **OPERACIONES CAJEROS** (Art. 3° inc. 1° DL 3607):\n**TRIPULACIÓN:** Mínimo tres vigilantes privados\n**OCASIÓN:** Recargas/reposición dinero/asistencia técnica\n**APERTURA:** Bóveda cajeros automáticos\n**PRESENCIA:** Obligatoria tripulación completa\n**NORMATIVA:** DS 1814/2014 Art. 25° inc. 1°\n**INFRACCIÓN:** Sin tripulación vigilantes dispuesta'
+},
+'rule_531': {
+keywords: ["asistencia técnica", "vehículo no blindado", "distintivo empresa", "dos vigilantes"],
+response: '🤖🔧 **ASISTENCIA TÉCNICA CAJEROS** (Art. 3° inc. 1° DL 3607):\n**VEHÍCULO:** No blindado con distintivo empresa\n**TRIPULACIÓN:** Dos vigilantes privados mínimo\n**APERTURA:** Bóveda para fallas/asistencia\n**ESTUDIO:** Señalar expresamente actividad\n**NORMATIVA:** DS 1814/2014 Art. 25° inc. 2°\n**INFRACCIÓN:** Sin distintivo/tripulación inferior'
+},
+'rule_532': {
+keywords: ["zona aislada", "recarga reposición", "barreras", "impedir acceso terceros"],
+response: '🤖🚧 **ZONA AISLADA CAJEROS** (Art. 3° inc. 1° DL 3607):\n**AISLAMIENTO:** Zona aislada público obligatoria\n**OBJETIVO:** Impedir acceso terceras personas\n**MEDIOS:** Barreras u elemento similar\n**ACTIVIDAD:** Recarga/reposición dinero contenedores\n**NORMATIVA:** DS 1814/2014 Art. 25° inc. 3°\n**INFRACCIÓN:** Zona no aislada'
+},
+'rule_533': {
+keywords: ["recuento valores", "lugares aislados", "camiones blindados", "no público"],
+response: '🤖🔢 **RECUENTO VALORES CAJEROS** (Art. 3° inc. 1° DL 3607):\n**LUGARES:** Aislados especialmente habilitados\n**ALTERNATIVA:** Interior camiones blindados\n**PROHIBICIÓN:** Vista/presencia público\n**RECUENTO:** Solo valores cajeros automáticos\n**NORMATIVA:** DS 1814/2014 Art. 25° inc. 4°\n**INFRACCIÓN:** Recuento lugares no aislados'
+},
+'rule_534': {
+keywords: ["operadores técnicos", "acreditados carabineros", "sin apertura bóvedas"],
+response: '🤖👨‍🔧 **OPERADORES SIN APERTURA** (Art. 3° inc. 10° DL 3607):\n**PERSONAL:** Operadores/técnicos empresa\n**ACREDITACIÓN:** Carabineros Chile obligatoria\n**OPERACIONES:** Sin involucrar apertura bóvedas\n**REQUISITO:** Debidamente acreditados\n**NORMATIVA:** DS 1814/2014 Art. 26°\n**INFRACCIÓN:** Sin acreditación Carabineros'
+},
+'rule_535': {
+keywords: ["pagos pensiones", "remuneraciones", "comunicación previa", "autorización prefectura"],
+response: '🤖💰 **PAGOS PENSIONES/REMUNERACIONES** (Art. 3° inc. 1° DL 3607):\n**SERVICIOS:** Personal/materiales propios/subcontratados\n**COMUNICACIÓN:** Previa Prefecturas Carabineros\n**AUTORIZACIÓN:** Prefectura respectiva\n**LUGARES:** Días/horas previamente comunicadas\n**NORMATIVA:** DS 1814/2014 Art. 28°-30°\n**INFRACCIÓN:** Sin comunicación/autorización Prefectura'
+},
+'rule_536': {
+keywords: ["centros recaudación", "vigilantes privados", "circuitos televisión", "cajas blindadas"],
+response: '🤖🏪 **CENTROS RECAUDACIÓN/PAGOS** (Art. 3° inc. 1° DL 3607):\n**ADMINISTRACIÓN:** Por cuenta terceros\n**SEGURIDAD:** Vigilantes privados/controles acceso\n**EQUIPOS:** Circuitos TV/cajas blindadas/compartimentadas\n**SISTEMAS:** Alarma/cajas seguridad/recinto aislado\n**NORMATIVA:** DS 1814/2014 Art. 31°\n**INFRACCIÓN:** Sin implementar medidas seguridad'
+},
+'rule_537': {
+keywords: ["autorización prefectura", "actividades seguridad privada", "recursos humanos", "capacitación"],
+response: '🤖📋 **AUTORIZACIÓN ACTIVIDADES** (Art. 5° Bis DL 3607):\n**OBLIGACIÓN:** Autorización Prefectura Carabineros\n**ACTIVIDADES:** RR.HH./RR.TT./Asesorías/Capacitación\n**DOMICILIO:** Prefectura correspondiente comercial\n**REQUISITO:** Debidamente autorizadas\n**NORMATIVA:** DS 93/1985 Art. 1° y 5°\n**INFRACCIÓN:** No autorizada desarrollar actividades'
+},
+'rule_538': {
+keywords: ["prohibición ofrecer", "vigilantes privados", "cualquier denominación", "delito"],
+response: '🤖🚫 **PROHIBICIÓN OFRECER VIGILANTES** (Art. 5° Bis DL 3607):\n**PROHIBICIÓN:** Proporcionar/ofrecer Vigilantes Privados\n**FORMAS:** Cualquier forma/denominación\n**CONVENCIONES:** Destinadas proporcionar personal\n**INTERÉS:** Nacional prohíbe actividad\n**DELITO:** Transgresión constitutiva delito\n**INFRACCIÓN:** Ofrecer servicio Vigilantes Privados'
+},
+'rule_539': {
+keywords: ["contrato trabajo", "guardias seguridad", "nochero", "portero", "rondín"],
+response: '🤖📄 **CONTRATO TRABAJO GUARDIAS** (Art. 5° Bis DL 3607):\n**OBLIGACIÓN:** Suscribir contrato trabajo\n**PERSONAL:** Guardias/nocheros/porteros/rondines\n**SIMILAR:** Carácter análogo funciones\n**CÓDIGO:** Trabajo D.F.L. 1/1994\n**NORMATIVA:** DS 93/1985 Art. 13° inc. 1°\n**INFRACCIÓN:** Sin suscribir contrato trabajo'
+},
+'rule_540': {
+keywords: ["seguro vida", "75 UTM", "guardias seguridad", "favor personal"],
+response: '🤖💼 **SEGURO VIDA GUARDIAS** (Art. 5° Bis DL 3607):\n**OBLIGACIÓN:** Contratar seguro vida\n**MONTO:** No inferior 75 UTM\n**BENEFICIARIO:** Favor personal guardias\n**COBERTURA:** Guardias/nocheros/porteros/rondines\n**NORMATIVA:** DS 93/1985 Art. 13° inc. 3°\n**INFRACCIÓN:** No contratar seguro vida'
+},
+'rule_541': {
+keywords: ["capacitación personal", "materias carabineros", "oportunidades dispuestas"],
+response: '🤖🎓 **CAPACITACIÓN GUARDIAS** (Art. 5° Bis DL 3607):\n**OBLIGACIÓN:** Capacitar personal guardias\n**MATERIAS:** Dispuestas Carabineros Chile\n**OPORTUNIDADES:** Según determine Carabineros\n**PERSONAL:** Guardias/nocheros/porteros/rondines\n**NORMATIVA:** DS 93/1985 Art. 13° inc. 1°\n**INFRACCIÓN:** Sin capacitar materias/oportunidades'
+},
+'rule_542': {
+keywords: ["implementos seguridad", "autorización prefectura", "no armas fuego"],
+response: '🤖🛡️ **IMPLEMENTOS SEGURIDAD** (Art. 5° Bis DL 3607):\n**AUTORIZACIÓN:** Prefectura Carabineros previa\n**IMPLEMENTOS:** Cualquier tipo excepto armas fuego\n**LABOR:** Guardias/nocheros/porteros/rondines\n**REQUISITO:** Previamente autorizado\n**NORMATIVA:** DS 93/1985 Art. 14° inc. 1°\n**INFRACCIÓN:** Implementos no autorizados Directiva'
+},
+'rule_543': {
+keywords: ["prohibición armas fuego", "guardias seguridad", "emplear", "desempeño labor"],
+response: '🤖🔫 **PROHIBICIÓN ARMAS FUEGO** (Art. 5° Bis DL 3607):\n**PROHIBICIÓN:** Emplear armas fuego\n**PERSONAL:** Guardias/nocheros/porteros/rondines\n**DESEMPEÑO:** Durante cumplimiento funciones\n**LEY:** 17.798 Art. 6°\n**NORMATIVA:** DS 93/1985 Art. 14°\n**INFRACCIÓN:** Emplear armas fuego funciones'
+},
+'rule_544': {
+keywords: ["credencial obligatoria", "extremo superior izquierdo", "permanentemente portada"],
+response: '🤖🆔 **CREDENCIAL GUARDIAS** (Art. 5° Bis DL 3607):\n**PORTE:** Obligatorio desempeño funciones\n**UBICACIÓN:** Extremo superior izquierdo tenida\n**PERMANENCIA:** Portada permanentemente\n**OTORGADA:** Prefectura Carabineros respectiva\n**NORMATIVA:** DS 93/1985 Art. 18°\n**INFRACCIÓN:** No portar credencial vigente'
+},
+'rule_545': {
+keywords: ["requisitos guardias", "chileno", "18 años", "octavo básico", "sin condenas"],
+response: '🤖✅ **REQUISITOS GUARDIAS** (Art. 5° Bis DL 3607):\n**NACIONALIDAD:** Ser chileno\n**EDAD:** 18 años cumplidos\n**EDUCACIÓN:** Octavo básico aprobado mínimo\n**ANTECEDENTES:** Sin condenas/procesos crimen/delito\n**SALUD:** Condiciones físicas compatibles función\n**INFRACCIÓN:** Personal sin cumplir requisitos'
+},
+'rule_546': {
+keywords: ["uniforme autorizado", "prefectura carabineros", "directiva funcionamiento"],
+response: '🤖👕 **UNIFORME GUARDIAS** (Art. 5° Bis DL 3607):\n**OBLIGACIÓN:** Vestir uniforme autorizado\n**AUTORIZACIÓN:** Prefectura Carabineros respectiva\n**DOCUMENTO:** Incorporado Directiva Funcionamiento\n**DESEMPEÑO:** Durante funciones guardias\n**NORMATIVA:** DS 93/1985 Art. 15° inc. 2°\n**INFRACCIÓN:** Uniforme no autorizado Directiva'
+},
+'rule_547': {
+keywords: ["directiva funcionamiento", "comunicado prefectura", "lugar", "misión", "uniforme"],
+response: '🤖📋 **DIRECTIVA FUNCIONAMIENTO** (Art. 5° Bis DL 3607):\n**COMUNICACIÓN:** Prefecturas Carabineros\n**CONTENIDO:** Lugar/misión/tipo uniforme\n**APROBACIÓN:** Puede ser aprobada/modificada/rechazada\n**MODIFICACIÓN:** Interesados deben modificar\n**NORMATIVA:** DS 93/1985 Art. 15° inc. 2°\n**INFRACCIÓN:** Sin Directiva aprobada Prefectura'
+},
+'rule_548': {
+keywords: ["libro existencia", "equipos materiales", "recursos técnicos", "exhibir"],
+response: '🤖📚 **LIBRO EXISTENCIA** (Art. 5° Bis DL 3607):\n**OBLIGACIÓN:** Mantener libro existencia\n**CONTENIDO:** Equipos/materiales/elementos poder\n**ACTUALIZACIÓN:** Forma actualizada/permanente\n**EXHIBICIÓN:** Cada vez requiera Prefectura\n**NORMATIVA:** DS 93/1985 Art. 3° inc. 1° y 7°\n**INFRACCIÓN:** No mantener actualizado/permanente'
+},
+'rule_549': {
+keywords: ["programas cursos", "aprobación prefectura", "capacitación vigilantes", "10 días"],
+response: '🤖🎯 **PROGRAMAS CAPACITACIÓN** (Art. 5° Bis DL 3607):\n**INDIVIDUALIZACIÓN:** 10 días anticipación inicio\n**CONTENIDO:** Materias/alumnos participantes\n**ENTIDAD:** Indicar donde prestan servicios\n**APROBACIÓN:** Prefectura Carabineros\n**NORMATIVA:** DS 93/1985 Art. 9°\n**INFRACCIÓN:** Sin aprobación programas cursos'
+},
+'rule_550': {
+keywords: ["medidas seguridad", "60 días", "decreto supremo", "500 UF"],
+response: '🤖⏰ **MEDIDAS SEGURIDAD OBLIGADAS** (Art. 1° Ley 19303):\n**PLAZO:** 60 días desde notificación\n**MONTO:** Iguales/superiores 500 UF caja\n**DECRETO:** Supremo cataloga obligadas\n**PRESENTACIÓN:** Prefectura Carabineros respectiva\n**NORMATIVA:** DS 1772/1995 Art. 7°\n**INFRACCIÓN:** No presentar dentro plazo'
+},
+'rule_551': {
+keywords: ["combustible público", "medidas seguridad", "precisas concretas"],
+response: '🤖⛽ **COMBUSTIBLE PÚBLICO** (Art. 1° inc. 2° Ley 19303):\n**OBLIGACIÓN:** Presentar medidas seguridad\n**TIPO:** Precisas y concretas\n**ESTABLECIMIENTOS:** Venta combustible público\n**PRESENTACIÓN:** Prefectura Carabineros\n**NORMATIVA:** DS 1772/1995 Art. 7°\n**INFRACCIÓN:** No presentar medidas seguridad'
+},
+'rule_552': {
+keywords: ["implementación medidas", "30 días hábiles", "aprobadas prefectura"],
+response: '🤖✅ **IMPLEMENTACIÓN MEDIDAS** (Art. 7° Ley 19303):\n**PLAZO:** 30 días hábiles\n**APROBACIÓN:** Prefectura Carabineros respectiva\n**OBLIGADOS:** Entidades Decreto/combustible público\n**EJECUCIÓN:** Poner en ejecución medidas\n**NORMATIVA:** Ley 19303/1994 Art. 7°\n**INFRACCIÓN:** No implementar medidas aprobadas'
+},
+'rule_553': {
+keywords: ["vigilantes privados", "estudio seguridad", "decreto ley 3607", "ley 17798"],
+response: '🤖👮‍♂️ **VIGILANTES EN MEDIDAS** (Art. 16° Ley 19303):\n**CONTEMPLEN:** Servicio vigilantes privados\n**CUMPLIMIENTO:** DL 3607/1981 y Ley 17798\n**TENENCIA:** Porte armas según normativa\n**ESTUDIO:** Seguridad debidamente aprobado\n**NORMATIVA:** DS 1772/1995 Art. 9°\n**INFRACCIÓN:** Sin Estudio seguridad DL 3607'
+},
+'rule_554': {
+keywords: ["facilidades carabineros", "información recintos", "medidas implementadas"],
+response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGACIÓN:** Otorgar facilidades Carabineros\n**INFORMACIÓN:** Recintos/locales medidas seguridad\n**OBLIGADOS:** Combustible/entidades Decreto Supremo\n**ACCESO:** Para obtener información\n**NORMATIVA:** Ley 19303/1994 Art. 9°\n**INFRACCIÓN:** No proporcionar información requerida'
 }
     
 };
@@ -571,3 +831,4 @@ window.systemPrompt = systemPrompt;
 
 // Verificación
 console.log(`✅ ${Object.keys(responses).length} reglas cargadas correctamente`);
+
