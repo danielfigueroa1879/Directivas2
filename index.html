@@ -276,9 +276,10 @@
 
     <!-- Scripts -->
     <script type="module">
-            // CONTADOR SIMPLIFICADO CON MÁXIMO PERMISO
+            // SCRIPT FIREBASE (Contador de visitas)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
@@ -292,60 +293,29 @@
         
         async function runCounter() {
             const counterSpan = document.getElementById('visit-counter');
-            
             try {
-                if (counterSpan) counterSpan.textContent = "...";
-                
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
-                
-                // Usar ruta más simple sin autenticación
-                const counterRef = doc(db, 'visits', 'counter');
-                
-                // Intentar leer el contador actual
-                const counterDoc = await getDoc(counterRef);
-                let newCount = 1;
-                
-                if (counterDoc.exists()) {
-                    const currentCount = counterDoc.data().count || 0;
-                    newCount = currentCount + 1;
-                } 
-                
-                // Actualizar el contador
-                await setDoc(counterRef, { 
-                    count: newCount,
-                    lastUpdate: new Date().toISOString(),
-                    timestamp: Date.now()
-                });
-                
-                if (counterSpan) {
-                    counterSpan.textContent = newCount.toLocaleString('es-CL');
-                }
-                
-                console.log(`✅ Contador actualizado: ${newCount}`);
-                
-            } catch (error) {
-                console.error("❌ Error del contador:", error);
-                
-                if (counterSpan) {
-                    counterSpan.textContent = "Error";
-                }
-                
-                // Fallback local
-                try {
-                    const localCount = localStorage.getItem('local-visit-count') || '0';
-                    const newLocalCount = parseInt(localCount) + 1;
-                    localStorage.setItem('local-visit-count', newLocalCount.toString());
-                    if (counterSpan) {
-                        counterSpan.textContent = newLocalCount.toLocaleString('es-CL') + "*";
+                const auth = getAuth(app);
+                await signInAnonymously(auth);
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    let count = 1;
+                    if (counterDoc.exists()) {
+                        count = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: count });
+                    } else {
+                        transaction.set(counterRef, { count: count });
                     }
-                    console.log(`📱 Usando contador local: ${newLocalCount}`);
-                } catch (localError) {
-                    console.error("❌ También falló el contador local:", localError);
-                }
+                    return count;
+                });
+                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+            } catch (error) {
+                console.error("ERROR: Falló el proceso del contador.", error);
+                if (counterSpan) counterSpan.textContent = "Error";
             }
         }
-        
         runCounter();
         
     </script>
