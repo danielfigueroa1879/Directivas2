@@ -548,8 +548,6 @@ const responses = {
   keywords: ["información carabineros", "facilidades inspección", "fiscalización medidas"],
   response: '🤖🔍 **FACILIDADES FISCALIZACIÓN** (Art. 9 Ley 19.303):\n**INFORMACIÓN:** Proporcionar datos requeridos Carabineros\n**FACILIDADES:** Otorgar para inspeccionar recintos\n**MEDIDAS:** Donde implementadas medidas seguridad\n**OBLIGACIÓN:** Todas entidades obligadas\n**FISCALIZACIÓN:** Durante verificación cumplimiento\n**INFRACCIÓN:** No otorgar facilidades/información'
 }
-
-// FIN REGLAS ADICIONALES SEGURIDAD PRIVADA   
     
 };
 
