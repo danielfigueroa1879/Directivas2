@@ -455,41 +455,64 @@
                  handleMessage();
             }
 
+            // FUNCIÓN MEJORADA PARA BUSCAR COINCIDENCIAS EXACTAS
+            function findExactMatch(userText, allRules) {
+                const normalizedUserText = userText.toLowerCase().trim();
+                
+                // 1. Buscar coincidencia exacta primero
+                for (const rule of allRules) {
+                    if (rule && rule.keywords) {
+                        for (const keyword of rule.keywords) {
+                            const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
+                            
+                            // Coincidencia exacta
+                            if (normalizedUserText === normalizedKeyword) {
+                                console.log(`🎯 Coincidencia EXACTA encontrada: "${normalizedUserText}" === "${normalizedKeyword}"`);
+                                return rule.response;
+                            }
+                        }
+                    }
+                }
+                
+                // 2. Si no hay coincidencia exacta, buscar por inclusión (solo para frases más largas)
+                if (normalizedUserText.length > 5) {
+                    for (const rule of allRules) {
+                        if (rule && rule.keywords) {
+                            for (const keyword of rule.keywords) {
+                                const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
+                                
+                                // Solo buscar inclusión si la palabra clave tiene más de 3 caracteres
+                                if (normalizedKeyword.length > 3 && normalizedUserText.includes(normalizedKeyword)) {
+                                    console.log(`🔍 Coincidencia por INCLUSIÓN: "${normalizedUserText}" incluye "${normalizedKeyword}"`);
+                                    return rule.response;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                return null;
+            }
+
             async function handleMessage() {
                 const input = document.getElementById('user-input');
                 const text = input.value.trim();
-                const lowerText = text.toLowerCase();
                 
                 if (!text) return;
                 
                 addMessage('user', text);
                 input.value = '';
                 
-                let response = null;
-
-                // 1. Buscar en las reglas locales primero
-                if (allRules.length > 0) {
-                    for (const rule of allRules) {
-                        if (rule && rule.keywords) {
-                            for (const keyword of rule.keywords) {
-                                const cleanedKeyword = keyword.replace(/\*/g, '');
-                                if (lowerText.includes(cleanedKeyword)) {
-                                    response = rule.response;
-                                    break;
-                                }
-                            }
-                        }
-                        if (response) break;
-                    }
-                }
+                // Usar la nueva función de búsqueda mejorada
+                const response = findExactMatch(text, allRules);
                 
-                // 2. Si se encuentra una respuesta en las reglas, mostrarla
+                // Si se encuentra una respuesta en las reglas, mostrarla
                 if (response) {
                     setTimeout(() => addMessage('bot', response), 500);
                     return; // Termina la ejecución aquí
                 }
 
-                // 3. Si NO se encuentra respuesta, consultar a la IA
+                // Si NO se encuentra respuesta, consultar a la IA
                 addTypingIndicator();
                 try {
                     // Combinar el prompt del sistema con la pregunta del usuario
@@ -575,7 +598,7 @@
             
             // --- Asignación de Eventos ---
             document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
-            document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
+            document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
             document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
             document.getElementById('send-button').addEventListener('click', handleMessage);
             document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
