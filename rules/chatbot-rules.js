@@ -420,7 +420,136 @@ const responses = {
 'rule_460': {
   keywords: ["modalidad telemática", "cursos presenciales", "arma tiro presencial"],
   response: '🤖💻 **MODALIDAD ENSEÑANZA** (Decreto 32):\n**TELEMÁTICA:** Programas formativos y perfeccionamiento permitidos\n**PRESENCIAL OBLIGATORIO:**\n- Arma y tiro\n- Primeros auxilios\n**LUGARES:** Habilitados por autoridad fiscalizadora o sedes OTEC\n**PRÁCTICA:** Complemento en puestos trabajo\n**POLÍGONO:** 20 horas arma/tiro en polígono autorizado\n**EVALUACIÓN:** Responsabilidad exclusiva Autoridad Fiscalizadora'
+},
+/ INFRACCIONES ENTIDADES OBLIGADAS
+'rule_461': {
+  keywords: ["reemplazo vigilantes", "guardia sin autorización", "suplir ausencias"],
+  response: '🤖🔄 **REEMPLAZO VIGILANTES** (Art. 1-3 Infracciones):\n**OBLIGATORIO:** Vigilantes privados en entidades bancarias/financieras\n**REEMPLAZO:** Solo con autorización escrita Prefectura Seguridad Privada\n**PROCEDIMIENTO:** Solicitud fundada dentro 24 horas\n**PLAZOS:** Máximo 15 días corridos renovables una vez\n**CALENDARIZACIÓN:** Feriados presentar anualmente\n**INFRACCIÓN:** Usar guardias sin autorización es ilegal'
+},
+'rule_462': {
+  keywords: ["libro armas", "control armas", "visado prefectura"],
+  response: '🤖📚 **LIBRO CONTROL ARMAS** (Art. 20 DS 1773):\n**OBLIGATORIO:** Sello y firma Prefecto Carabineros\n**FOLIADO:** Cada hoja timbrada por Prefectura\n**REGISTRO:** Individualización arma, munición, receptor, entregador, firmas\n**CONTROL:** Observaciones cada fiscalización\n**USO ARMA:** Constancia obligatoria con munición utilizada\n**PÉRDIDA:** Informar por escrito a Prefectura respectiva'
+},
+'rule_463': {
+  keywords: ["recarga cajeros", "reposición dinero", "vista público"],
+  response: '🤖💰 **OPERACIONES CAJEROS** (DS 1814 Art. 25):\n**PROHIBIDO:** Recarga/reposición dinero a vista público\n**LUGARES:** Solo en zonas aisladas especialmente habilitadas\n**VIGILANTES:** Mínimo 2 vigilantes privados presentes\n**RECUENTO:** Lugares aislados, nunca ante presencia público\n**SEGURIDAD:** Medidas adecuadas obligatorias\n**INFRACCIÓN:** Realizar operaciones vista público'
+},
+'rule_464': {
+  keywords: ["cámaras filmación", "sistemas grabación", "alta resolución"],
+  response: '🤖📹 **SISTEMAS FILMACIÓN** (Decreto 1122):\n**OBLIGATORIO:** Cámaras alta resolución bancos/financieras\n**FUNCIONAMIENTO:** Continuo entre 15 min antes apertura y 1 hora después cierre\n**ESTADO:** Mantener en buenas condiciones y bien instaladas\n**VERIFICACIÓN:** Monitor existente en entidad\n**GRABACIÓN:** Imágenes nítidas caso asalto\n**CONTROL:** Verificar operatividad permanente'
+},
+'rule_465': {
+  keywords: ["vidrios inastillables", "visión exterior", "protección explosión"],
+  response: '🤖🪟 **VIDRIOS SEGURIDAD** (Art. 16 Decreto 1122):\n**OBLIGATORIO:** Vidrios exteriores inastillables\n**VISIBILIDAD:** Permitir visión exterior hacia interior\n**PROTECCIÓN:** Evitar daños por expansión ante explosión\n**DEMOSTRACIÓN:** Cada entidad debe acreditar cumplimiento\n**FUNCIONALIDAD:** No impedir visión desde exterior\n**SEGURIDAD:** Resistentes a impactos'
+},
+'rule_466': {
+  keywords: ["cajas compartimentadas", "cerraduras independientes", "seguridad cajas"],
+  response: '🤖🗄️ **CAJAS RECEPTORAS** (Art. 15 Decreto 1122):\n**OBLIGATORIO:** Todas compartimentadas\n**CERRADURAS:** Seguridad independientes cada compartimento\n**BANCOS:** Todos deben cumplir requisito\n**FINANCIERAS:** Obligatorio también\n**SEGURIDAD:** Cada caja cerradura propia\n**CONTROL:** Verificar compartimentación adecuada'
+},
+'rule_467': {
+  keywords: ["bóvedas alarmas", "sistemas relojería", "mecanismos apertura"],
+  response: '🤖🏦 **BÓVEDAS SEGURIDAD** (Arts. 13-14 Decreto 1122):\n**RELOJERÍA:** Mecanismos apertura y cierre obligatorios\n**ALARMAS:** Sistemas distintos a alarmas asalto general\n**INDEPENDIENTES:** Alarmas propias bóvedas\n**DEMOSTRACIÓN:** Cada entidad probar funcionamiento\n**OFICINAS:** Todas agencias/sucursales deben tener\n**DIFERENCIACIÓN:** Alarmas específicas por sector'
+},
+'rule_468': {
+  keywords: ["falsas alarmas", "4 falsas mes", "desconexión sistema"],
+  response: '🤖🚨 **FALSAS ALARMAS** (Art. 12 Decreto 1122):\n**LÍMITE:** Máximo 4 falsas alarmas por mes\n**NOTIFICACIÓN:** Autoridad fiscalizadora subsanar en 1 mes\n**REINCIDENCIA:** Desconexión sistema + infracción\n**PROCEDIMIENTO:** Conformidad Art. 3 inciso 8° DL 3607\n**REPOSICIÓN:** Cuando acredite subsanación deficiencias\n**RESPONSABILIDAD:** Entidad corregir problemas técnicos/humanos'
+},
+'rule_469': {
+  keywords: ["alarmas asalto", "conexión carabineros", "activación múltiple"],
+  response: '🤖🚨 **ALARMAS ASALTO** (Art. 8 Decreto 1122):\n**CONEXIÓN:** Directa con Central Comunicaciones Carabineros/PDI\n**ACTIVACIÓN:** Desde distintos puntos oficina/sucursal\n**DISTANCIA:** También desde unidades vigilancia electrónica\n**INDEPENDIENTE:** Separada alarmas incendio/robo\n**OBLIGATORIO:** Entidades DL 3607\n**PRUEBA:** Verificar funcionamiento con vigilantes/encargados'
+},
+'rule_470': {
+  keywords: ["encargado seguridad", "jefe seguridad", "personal autorizado"],
+  response: '🤖👨‍💼 **PERSONAL SEGURIDAD** (Arts. 2-3 Decreto 1122):\n**JEFE SEGURIDAD:** Solo casas matrices\n**ENCARGADO:** Sucursales bancarias y financieras\n**ACREDITACIÓN:** Documento Autoridad Fiscalizadora o credencial\n**OBLIGATORIO:** Todas las sucursales deben tener\n**FUNCIONES:** Coordinación medidas seguridad\n**AUTORIZACIÓN:** Prefectura Carabineros respectiva'
+},
+
+// INFRACCIONES VIGILANTES PRIVADOS
+'rule_471': {
+  keywords: ["vigilante sin capacitación", "reentrenamiento vencido", "curso obligatorio"],
+  response: '🤖🎓 **CAPACITACIÓN VIGILANTES** (Art. 7 DL 3607):\n**OBLIGATORIO:** Curso capacitación aprobado\n**REENTRENAMIENTO:** Vigente y actualizado\n**CREDENCIAL:** Solo se extiende con curso aprobado\n**VERIFICACIÓN:** Posesión credencial acredita capacitación\n**INFRACCIÓN:** Trabajar sin capacitación vigente\n**RENOVACIÓN:** Cursos periódicos según normativa'
+},
+'rule_472': {
+  keywords: ["vigilante sin autorización", "contratación ilegal", "prefectura autorización"],
+  response: '🤖✅ **AUTORIZACIÓN VIGILANTES** (Art. 12 DS 1773):\n**PREREQUISITO:** Autorización Prefectura antes contratación\n**CONTRATACIÓN:** Solo después fecha autorización\n**COPIA:** Remitir en 96 horas a Prefectura\n**VERIFICACIÓN:** Personal autorizado para funciones\n**REQUISITOS:** Cumplir Art. 11 DS 1773\n**INFRACCIÓN:** Contratar sin autorización previa'
+},
+'rule_473': {
+  keywords: ["número vigilantes", "dotación autorizada", "inferior decreto"],
+  response: '🤖👥 **DOTACIÓN VIGILANTES** (Art. 5 Decreto 1122):\n**AUTORIZADO:** Número según Decreto Exento\n**ESTUDIO:** Cantidad aprobada en Estudio Seguridad\n**MÍNIMO:** No inferior a autorizado\n**INFRACCIÓN:** Mantener menos vigilantes autorizados\n**CONTROL:** Verificar dotación completa\n**CUMPLIMIENTO:** Según Art. 5 letra c) DS 1173'
+},
+'rule_474': {
+  keywords: ["vigilante civil", "uniforme obligatorio", "autorización no uniforme"],
+  response: '🤖👔 **USO UNIFORME** (Art. 1 DL 3607):\n**OBLIGATORIO:** Uniforme durante funciones\n**EXCEPCIÓN:** Solo con autorización Prefectura\n**CIVIL:** Prohibido sin autorización escrita\n**MÁS DE UNO:** Al menos uno debe vestir civil\n**CONTROL:** Art. 4 DL 3607 autoriza excepción\n**INFRACCIÓN:** Vestir civil sin autorización'
+},
+'rule_475': {
+  keywords: ["vigilante sin arma", "portación obligatoria", "autorización sin arma"],
+  response: '🤖🔫 **PORTACIÓN ARMAS** (Art. 1 DL 3607):\n**OBLIGATORIO:** Todo vigilante debe portar arma fuego\n**EXCEPCIÓN:** Autorización Prefectura Carabineros\n**SERVICIO:** Durante desempeño funciones\n**AUTORIZACIÓN:** Art. 4 DL 3607 permite excepción\n**INFRACCIÓN:** No portar arma sin autorización\n**SEGURIDAD:** Arma parte esencial función'
+},
+'rule_476': {
+  keywords: ["vigilante vía pública", "fuera recinto", "transporte valores"],
+  response: '🤖🚶 **ÁMBITO VIGILANTES** (Art. 1 DL 3607):\n**LÍMITE:** Solo dentro recinto/área asignada\n**PROHIBIDO:** Vía pública con arma\n**EXCEPCIÓN:** Vigilantes transporte valores\n**DETENCIÓN:** Ley Control Armas si sorprendido\n**FUNCIONES:** Solo dominios empresa\n**INFRACCIÓN:** Salir área autorizada armado'
+},
+'rule_477': {
+  keywords: ["seguro vida vigilante", "250 uf", "obligatorio empleador"],
+  response: '🤖💰 **SEGURO VIDA** (Art. 5 DL 3607):\n**OBLIGATORIO:** Empleador contratar seguro\n**MONTO:** Mínimo 250 UF vigilantes privados\n**COBERTURA:** Durante desempeño funciones\n**VERIFICACIÓN:** Solo personal AA.FF. Prefectura\n**TRABAJADORES:** Calidad dependientes\n**INFRACCIÓN:** No mantener seguro vigente'
+},
+'rule_478': {
+  keywords: ["renovación decreto", "3 meses anticipación", "vencimiento autorización"],
+  response: '🤖📅 **RENOVACIÓN AUTORIZACIÓN** (Art. 7 DS 1773):\n**PLAZO:** Mínimo 3 meses antes vencimiento\n**ESCRITO:** Comunicar a Prefectura Carabineros\n**VIGENCIA:** Decreto autorización 2 años\n**CERTIFICADO:** Prefectura cumplimiento reglamento\n**INFRACCIÓN:** No solicitar renovación plazo\n**TRÁMITE:** Por intermedio Intendencia/Gobernación'
+},
+'rule_479': {
+  keywords: ["credencial vencida", "tarjeta identificación", "fecha vencimiento"],
+  response: '🤖🆔 **CREDENCIAL VIGILANTE** (Art. 13 DS 1773):\n**OBLIGATORIO:** Portar durante funciones\n**VIGENCIA:** Fecha vencimiento en anverso\n**COLORES:** Amarillo/verde/azul según función\n**DIMENSIONES:** 5.5 x 8.5 cms plástico\n**INFRACCIÓN:** Portar credencial vencida\n**RENOVACIÓN:** Antes fecha vencimiento'
+},
+'rule_480': {
+  keywords: ["uniforme fuera recinto", "trayecto domicilio", "prohibido usar"],
+  response: '🤖🚫 **USO UNIFORME** (Art. 17 DS 1773):\n**OBLIGATORIO:** Solo durante funciones\n**PROHIBIDO:** Fuera recinto/área trabajo\n**TRAYECTOS:** No usar ida/regreso domicilio\n**EXCLUSIVO:** Vigilantes autorizados únicamente\n**EMPRESA:** Debe proporcionar cantidad/calidad suficiente\n**INFRACCIÓN:** Usar uniforme fuera lugar trabajo'
+},
+
+// INFRACCIONES GUARDIAS SEGURIDAD
+'rule_481': {
+  keywords: ["guardias sin capacitación", "curso obligatorio", "carabineros capacitación"],
+  response: '🤖📚 **CAPACITACIÓN GUARDIAS** (Art. 13 DS 93):\n**OBLIGATORIO:** Toda empresa capacitar personal\n**CURSO:** Dispuesto por Carabineros Chile\n**MATERIAS:** Seguridad según especialidad\n**EXAMEN:** Ante autoridad fiscalizadora\n**CERTIFICADO:** Aprobación curso requerido\n**INFRACCIÓN:** Mantener personal sin capacitar'
+},
+'rule_482': {
+  keywords: ["implementos no autorizados", "bastón esposas", "autorización previa"],
+  response: '🤖🛡️ **IMPLEMENTOS SEGURIDAD** (Art. 14 DS 93):\n**AUTORIZACIÓN:** Previa Prefectura Carabineros\n**ESPECÍFICO:** Cada servicio particular\n**PROHIBIDO:** Armas fuego bajo concepto alguno\n**IMPLEMENTOS:** Bastón, esposas, otros no fuego\n**INFRACCIÓN:** Usar implementos sin autorización\n**LEY 17.798:** Sin perjuicio aplicación'
+},
+'rule_483': {
+  keywords: ["guardias armas fuego", "prohibición absoluta", "ley control armas"],
+  response: '🤖🚫 **PROHIBICIÓN ARMAS** (Art. 14 DS 93):\n**PROHIBIDO:** Armas fuego bajo concepto alguno\n**GUARDIAS:** Nocheros, porteros, rondines similares\n**PROCEDIMIENTO:** Ley 17.798 aplicable\n**INFRACCIÓN:** Emplear armas fuego cumpliendo cometido\n**ABSOLUTA:** Sin excepciones para guardias\n**SANCIÓN:** Según normativa control armas'
+},
+'rule_484': {
+  keywords: ["seguro guardias", "75 utm", "seguro obligatorio"],
+  response: '🤖💼 **SEGURO GUARDIAS** (Art. 13 DS 93):\n**OBLIGATORIO:** Empleador contratar seguro vida\n**MONTO:** Mínimo 75 UTM\n**COBERTURA:** Cada persona función seguridad\n**NOTIFICACIÓN:** Infracción personas naturales/jurídicas\n**INFRACCIÓN:** No mantener seguro contratado\n**VERIFICACIÓN:** Autoridad fiscalizadora competente'
+},
+'rule_485': {
+  keywords: ["directiva funcionamiento", "aprobación prefectura", "guardias seguridad"],
+  response: '🤖📋 **DIRECTIVA FUNCIONAMIENTO** (Art. 15 DS 93):\n**OBLIGATORIO:** Presentar ante Prefectura\n**CONTENIDO:** Lugar, misión, uniformes, procedimientos\n**RESOLUCIÓN:** Aprobar, modificar o rechazar\n**EMPRESAS:** Ambas partes responsables si subcontratado\n**15 DÍAS:** Anticipación establecimiento servicio\n**INFRACCIÓN:** Operar sin directiva aprobada'
+},
+'rule_486': {
+  keywords: ["credencial guardias", "extremo superior izquierdo", "tarjeta obligatoria"],
+  response: '🤖🏷️ **CREDENCIAL GUARDIAS** (Art. 18 DS 93):\n**OBLIGATORIO:** Porte durante funciones\n**UBICACIÓN:** Extremo superior izquierdo tenida\n**DIMENSIONES:** 5.5 x 8.5 cms plástico\n**CONTENIDO:** Membrete, número, entidad, funcionario, RUN, vencimiento\n**FOTOGRAFÍA:** Colores fondo blanco 3.5 x 2.8 cms\n**COSTOS:** Cargo entidad interesada'
+},
+
+// LEY 19.303 ENTIDADES OBLIGADAS
+'rule_487': {
+  keywords: ["medidas seguridad", "60 días", "notificación carabineros"],
+  response: '🤖⏰ **MEDIDAS SEGURIDAD** (Art. 4 Ley 19.303):\n**PLAZO:** 60 días después notificación Carabineros\n**OBLIGACIÓN:** Entidades designadas Ley 19.303\n**PRESENTAR:** Ante Autoridad Fiscalizadora\n**500 UF:** Umbral montos caja\n**COMBUSTIBLE:** Cualquier monto para bencineras\n**INFRACCIÓN:** No presentar medidas en plazo'
+},
+'rule_488': {
+  keywords: ["armas medidas", "cantidad características", "inscripciones permisos"],
+  response: '🤖🔫 **ARMAS EN MEDIDAS** (Art. 4 Ley 19.303):\n**ESPECIFICAR:** Cantidad y características armas\n**PRECISAR:** A nombre quién inscripciones/permisos\n**LEY 17.798:** Cumplir normativa control armas\n**MEDIDAS:** Incluir forma precisa y concreta\n**TENENCIA:** Detalle completo armamento\n**INFRACCIÓN:** No especificar datos armas'
+},
+'rule_489': {
+  keywords: ["implementar medidas", "30 días aprobación", "entidad obligada"],
+  response: '🤖✅ **IMPLEMENTACIÓN MEDIDAS** (Art. 7 Ley 19.303):\n**PLAZO:** 30 días siguientes aprobación\n**OBLIGACIÓN:** Dar cumplimiento medidas aprobadas\n**PREFECTURA:** Carabineros aprueba medidas\n**CONTROL:** Verificar implementación efectiva\n**INFRACCIÓN:** No implementar medidas aprobadas\n**SEGUIMIENTO:** Fiscalización posterior cumplimiento'
+},
+'rule_490': {
+  keywords: ["información carabineros", "facilidades inspección", "fiscalización medidas"],
+  response: '🤖🔍 **FACILIDADES FISCALIZACIÓN** (Art. 9 Ley 19.303):\n**INFORMACIÓN:** Proporcionar datos requeridos Carabineros\n**FACILIDADES:** Otorgar para inspeccionar recintos\n**MEDIDAS:** Donde implementadas medidas seguridad\n**OBLIGACIÓN:** Todas entidades obligadas\n**FISCALIZACIÓN:** Durante verificación cumplimiento\n**INFRACCIÓN:** No otorgar facilidades/información'
 }
+
+// FIN REGLAS ADICIONALES SEGURIDAD PRIVADA   
     
 };
 
