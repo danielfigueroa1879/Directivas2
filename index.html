@@ -276,8 +276,8 @@
 
     <!-- Scripts -->
     <script type="module">
-        // SCRIPT FIREBASE (Contador de visitas)
-        // SCRIPT FIREBASE MEJORADO (Contador de visitas)
+
+            // SCRIPT FIREBASE (Contador de visitas)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -317,7 +317,10 @@
                 if (counterSpan) counterSpan.textContent = "Error";
             }
         }
-        runCounter();        
+        runCounter();
+
+
+        
     </script>
     
     <!-- Cargar las reglas desde el archivo externo -->
