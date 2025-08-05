@@ -421,7 +421,7 @@ const responses = {
   keywords: ["modalidad telemática", "cursos presenciales", "arma tiro presencial"],
   response: '🤖💻 **MODALIDAD ENSEÑANZA** (Decreto 32):\n**TELEMÁTICA:** Programas formativos y perfeccionamiento permitidos\n**PRESENCIAL OBLIGATORIO:**\n- Arma y tiro\n- Primeros auxilios\n**LUGARES:** Habilitados por autoridad fiscalizadora o sedes OTEC\n**PRÁCTICA:** Complemento en puestos trabajo\n**POLÍGONO:** 20 horas arma/tiro en polígono autorizado\n**EVALUACIÓN:** Responsabilidad exclusiva Autoridad Fiscalizadora'
 },
-/ INFRACCIONES ENTIDADES OBLIGADAS
+
 'rule_461': {
   keywords: ["reemplazo vigilantes", "guardia sin autorización", "suplir ausencias"],
   response: '🤖🔄 **REEMPLAZO VIGILANTES** (Art. 1-3 Infracciones):\n**OBLIGATORIO:** Vigilantes privados en entidades bancarias/financieras\n**REEMPLAZO:** Solo con autorización escrita Prefectura Seguridad Privada\n**PROCEDIMIENTO:** Solicitud fundada dentro 24 horas\n**PLAZOS:** Máximo 15 días corridos renovables una vez\n**CALENDARIZACIÓN:** Feriados presentar anualmente\n**INFRACCIÓN:** Usar guardias sin autorización es ilegal'
