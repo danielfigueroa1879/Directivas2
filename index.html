@@ -575,7 +575,7 @@
             
             // --- Asignación de Eventos ---
             document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
-            document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
+            document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
             document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
             document.getElementById('send-button').addEventListener('click', handleMessage);
             document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
