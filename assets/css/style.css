@@ -267,6 +267,12 @@ body {
     footer .text-gray-600 {
         color: #9ca3af;
     }
+
+
+
+
+
+    
 }
 
 /* --- DISEÑO RESPONSIVO (MÓVIL) --- */
@@ -356,13 +362,26 @@ body {
     #visitor-counter-container {
         color: #e5e7eb; /* Color para modo oscuro (gris muy claro) */
     }
+    .w-8.h-8.rounded-full.bg-white.border-2.border-yellow-400,
+    .w-10.h-10.rounded-full.bg-white.border-2.border-green-400 {
+        border-radius: 12px !important; /* Cambia de circular a redondeado */
+        background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+    
+    /* Imagen poli.png específicamente */
+    img[src="assets/images/poli.png"] {
+        border-radius: 8px;
+        padding: 2px;
+        background-color: white;
+    }
+    
+    /* Botón flotante del chatbot */
+    #chat-toggle-button {
+        border-radius: 16px !important; /* Más suave que rounded-2xl */
+        background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+    
 }
-
-
-
-
-
-
 /* === ESTILOS ADICIONALES PARA FUNCIONALIDADES DE VOZ === */
 
 /* Animaciones y efectos para botones de voz */
