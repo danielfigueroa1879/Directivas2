@@ -1,8 +1,8 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    
     <!-- Meta Tags Principales y de PWA -->
     <title>Directivas de Funcionamiento OS10</title>
     <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
@@ -10,22 +10,18 @@
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
     <meta name="mobile-web-app-capable" content="yes">
-
     <!-- Configuración para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
-
     <!-- Favicons y Iconos Estándar -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
-    
     <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <!-- Estilos personalizados -->
     <style>
         body { 
@@ -52,16 +48,13 @@
             padding: 1rem; 
             border-radius: 0.5rem; 
         }
-        
         .voice-button { transition: all 0.3s ease; }
         .voice-button:hover { transform: scale(1.05); }
         .voice-button:active { transform: scale(0.95); }
         .voice-button.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-        
         .response-button { transition: all 0.2s ease; }
         .response-button:hover { transform: translateX(4px); }
-
         /* Estilos Chatbot */
         #chat-widget-container { 
             position: fixed; 
@@ -105,7 +98,6 @@
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1.0); }
         }
-
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
             #chat-widget-container {
@@ -116,7 +108,6 @@
                 height: 90px;
             }
         }
-        
         /* Ajuste para pantallas pequeñas (Celular) */
         @media (max-width: 767px) {
             .card-container {
@@ -129,26 +120,22 @@
     </style>
 </head>
 <body>
-    
     <!-- Contenido de la página -->
     <div class="card-container bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
         <!-- Logo dentro del contenedor -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR" class="logo-os10-container">
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="h-full" loading="lazy">
         </a>
-
         <div id="visitor-counter-container" class="absolute top-5 right-6 text-xs text-gray-500 dark:text-gray-400">
             <p class="flex items-center">
                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
             </p>
         </div>
-        
         <header class="text-center pt-8">
             <h1 class="text-2xl font-bold text-gray-800 dark:text-white">DIRECTIVA DE FUNCIONAMIENTO</h1>
             <h2 class="text-lg font-semibold text-gray-600 dark:text-gray-300">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
         </header>
-        
         <main class="space-y-4">
             <section class="section-card border-blue-500 bg-blue-100/80 dark:bg-blue-900/50">
                 <h3 class="font-bold text-blue-800 dark:text-blue-300">1️⃣ Presentar Directiva DD.FF.</h3>
@@ -162,7 +149,6 @@
                    </li>
                </ul>
             </section>
-            
             <section class="section-card border-green-500 bg-green-100/80 dark:bg-green-900/50">
                 <h3 class="font-bold text-green-800 dark:text-green-300">2️⃣ Documentación</h3>
                 <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
@@ -192,7 +178,6 @@
                     </li>
                 </ul>
             </section>
-            
             <section class="section-card border-red-500 bg-red-100/80 dark:bg-red-900/50">
                 <h3 class="font-bold text-red-800 dark:text-red-300">3️⃣ Todo escaneado en Digital.</h3>
                 <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
@@ -202,7 +187,6 @@
                     </li>
                 </ul>
             </section>
-            
             <section class="section-card border-yellow-500 bg-yellow-100/80 dark:bg-yellow-900/50">
                 <h3 class="font-bold text-yellow-800 dark:text-yellow-300">4️⃣ Tramitar Credenciales</h3>
                 <ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
@@ -217,7 +201,6 @@
                 </ul>
             </section>
         </main>
-        
         <footer class="relative mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
             <div class="text-center text-sm text-gray-600 dark:text-gray-400 leading-tight pr-16">
                 <span>Haga clic para descargar.</span><br>
@@ -227,7 +210,6 @@
             <img src="assets/images/qr.png" alt="Código QR" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="Más información" loading="lazy">
         </footer>
    </div>
-
     <!-- ===== CHATBOT FLOTANTE CON VOZ ===== -->
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/[.95] dark:bg-gray-800/[.95] backdrop-blur-lg border border-green-500/50 rounded-2xl">
@@ -273,14 +255,12 @@
         </button>
     </div>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
-
     <!-- Scripts -->
     <script type="module">
             // SCRIPT FIREBASE (Contador de visitas)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
         const firebaseConfig = {
           apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
           authDomain: "cuenta-946e2.firebaseapp.com",
@@ -290,7 +270,6 @@
           appId: "1:816979648502:web:809beffeea8ba7968031d7",
           measurementId: "G-RX9KZSC0F4"
         };
-        
         async function runCounter() {
             const counterSpan = document.getElementById('visit-counter');
             try {
@@ -317,16 +296,12 @@
             }
         }
         runCounter();
-        
     </script>
-    
     <!-- Cargar las reglas desde el archivo externo -->
     <script src="./rules/chatbot-rules.js"></script>
-    
     <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-
             // Lógica para detectar preferencia de modo oscuro del sistema
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark')
@@ -334,281 +309,610 @@
                 document.documentElement.classList.remove('dark')
             }
 
-            // --- Lógica del Chatbot ---
+            // === CONFIGURACIÓN PRINCIPAL ===
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const speechSynth = window.speechSynthesis;
-            let recognition;
+            let recognition = null;
             let isListening = false;
             let availableVoices = [];
             let isAutoReadEnabled = true;
-            
-            // Cargar reglas desde el único archivo
-            const allRules = Object.values(window.responses || {});
-            const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; 
+            let isVoiceEnabled = localStorage.getItem('chatbot-voice-enabled') !== 'false';
 
+            // Elementos del DOM
+            const chatToggleButton = document.getElementById('chat-toggle-button');
+            const chatPopup = document.getElementById('chat-popup');
+            const chatCloseBtn = document.getElementById('chat-close-btn-internal');
+            const chatBackdrop = document.getElementById('chat-backdrop');
+            const chatForm = document.getElementById('chat-popup').querySelector('footer');
+            const chatbotInput = document.getElementById('user-input');
+            const chatbotMessages = document.getElementById('chat-messages');
+            const voiceBtn = document.getElementById('voice-btn');
+            const speakBtn = document.getElementById('speak-btn');
+            const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
+            const speakerOnIcon = document.getElementById('speaker-on-icon');
+            const speakerOffIcon = document.getElementById('speaker-off-icon');
+
+            // Verificar elementos críticos
+            if (!chatToggleButton || !chatPopup || !chatCloseBtn || !chatBackdrop || !chatbotInput || !chatbotMessages || !voiceBtn) {
+                console.error("❌ Elementos críticos del chatbot no encontrados");
+                return;
+            }
+            console.log("✅ Elementos del chatbot verificados correctamente");
+
+            // === BASE DE CONOCIMIENTO RECYBERSEG ===
+            const recybersegRules = [
+                {
+                    keywords: ['hola', 'buenos días', 'buenas tardes', 'buenas noches', 'saludos', 'hi'],
+                    response: '¡Hola! Soy <strong>Cyber Asistente</strong> de RECYBERSEG. ¡Estoy aquí para ayudarte con toda la información sobre nuestros servicios de ciberseguridad! ¿En qué puedo asistirte hoy?',
+                    buttons: ['Servicios', 'Auditorías', 'Monitoreo', 'IoT', 'Contacto']
+                },
+                {
+                    keywords: ['servicios', 'qué hacen', 'ofrecen', 'productos'],
+                    response: '🛡️ <strong>Nuestros Servicios TOP:</strong><br><br>1.- <strong>Auditorías de Seguridad:</strong> ¡Evaluación COMPLETA de tu infraestructura!<br>2.- <strong>Monitoreo de Redes:</strong> ¡Supervisión CONSTANTE 24/7!<br>3.- <strong>Consultoría en Ciberseguridad:</strong> ¡Asesoramiento EXPERTO personalizado!<br>4.- <strong>Implementación de Sistemas:</strong> ¡Configuración PROFESIONAL de firewalls!<br>5.- <strong>Seguridad IoT:</strong> ¡Protección TOTAL de dispositivos inteligentes!',
+                    buttons: ['Auditorías', 'Monitoreo 24/7', 'Consultoría', 'IoT', 'Cotizar']
+                },
+                {
+                    keywords: ['auditorías', 'auditoria', 'evaluación', 'análisis de seguridad'],
+                    response: '🔍 <strong>Auditorías de Seguridad RECYBERSEG:</strong><br><br>✅ <strong>Evaluación completa</strong> de infraestructura digital<br>✅ <strong>Análisis de vulnerabilidades</strong> en tiempo real<br>✅ <strong>Reportes detallados</strong> con recomendaciones<br>✅ <strong>Pruebas de penetración</strong> profesionales<br>✅ <strong>Certificaciones de seguridad</strong><br><br>¡Protegemos tu empresa desde la base!',
+                    buttons: ['Precio Auditoría', 'Tiempo estimado', 'Contactar', 'Otros servicios']
+                },
+                {
+                    keywords: ['monitoreo', '24/7', 'supervisión', 'vigilancia', 'redes'],
+                    response: '🔒 <strong>Monitoreo de Redes 24/7:</strong><br><br>🚨 <strong>Supervisión CONSTANTE</strong> de tu red corporativa<br>⚡ <strong>Detección inmediata</strong> de amenazas<br>📊 <strong>Reportes en tiempo real</strong><br>🛡️ <strong>Respuesta automática</strong> a incidentes<br>📱 <strong>Alertas instantáneas</strong><br><br>¡Tu red NUNCA duerme, nosotros TAMPOCO!',
+                    buttons: ['Precio Monitoreo', 'Demo gratis', 'Contactar', 'Más info']
+                },
+                {
+                    keywords: ['iot', 'internet de las cosas', 'dispositivos inteligentes', 'smart'],
+                    response: '🌐 <strong>Seguridad IoT RECYBERSEG:</strong><br><br>📱 <strong>Protección TOTAL</strong> de dispositivos inteligentes<br>🔐 <strong>Cifrado avanzado</strong> de comunicaciones<br>🛡️ <strong>Monitoreo especializado</strong> IoT<br>⚙️ <strong>Configuración segura</strong> de dispositivos<br>🚨 <strong>Detección de anomalías</strong><br><br>¡El futuro es IoT, la seguridad es RECYBERSEG!',
+                    buttons: ['Evaluar IoT', 'Precio', 'Consultoría', 'Contactar']
+                },
+                {
+                    keywords: ['consultoría', 'asesoramiento', 'consultor', 'ayuda experta'],
+                    response: '👨‍💻 <strong>Consultoría en Ciberseguridad:</strong><br><br>🎯 <strong>Asesoramiento EXPERTO</strong> personalizado<br>📋 <strong>Análisis de riesgos</strong> específicos<br>🔧 <strong>Diseño de políticas</strong> de seguridad<br>📚 <strong>Capacitación</strong> de equipos<br>🏆 <strong>Mejores prácticas</strong> del mercado<br><br>¡Tu éxito en ciberseguridad es NUESTRA especialidad!',
+                    buttons: ['Agendar consulta', 'Precio', 'Especialistas', 'Contactar']
+                },
+                {
+                    keywords: ['precios', 'cotización', 'costo', 'cuánto cuesta', 'precio'],
+                    response: '💰 <strong>¡Cotización PERSONALIZADA!</strong><br><br>Cada empresa es ÚNICA, por eso nuestros precios se adaptan a:<br><br>📊 <strong>Tamaño de tu empresa</strong><br>🔧 <strong>Servicios específicos</strong> requeridos<br>⏰ <strong>Nivel de urgencia</strong><br>🎯 <strong>Objetivos de seguridad</strong><br><br>¡Solicita tu cotización GRATUITA y sin compromiso!',
+                    buttons: ['Solicitar cotización', 'Contactar', 'Más servicios']
+                },
+                {
+                    keywords: ['contacto', 'contactar', 'hablar', 'comunicar', 'teléfono', 'email'],
+                    response: '📞 <strong>¡Contacta con RECYBERSEG!</strong><br><br>🏢 <strong>Ubicación:</strong> La Serena, Chile<br>📧 <strong>Email:</strong> danielfigueroa1879@gmail.com<br>📱 <strong>Teléfono:</strong> +56 9 5997 8963<br>💬 <strong>WhatsApp:</strong> ¡Disponible!<br><br>¡Un especialista se comunicará contigo DE INMEDIATO![CONTACT_BUTTON]',
+                    buttons: ['WhatsApp', 'Llamar', 'Email', 'Formulario']
+                },
+                {
+                    keywords: ['misión', 'objetivo', 'propósito'],
+                    response: '🎯 <strong>Nuestra MISIÓN:</strong><br><br>Proteger y fortalecer el ecosistema digital de nuestros clientes mediante soluciones <strong>INNOVADORAS, confiables y personalizadas</strong> en ciberseguridad.<br><br>Garantizamos la <strong>integridad, disponibilidad y confidencialidad</strong> de tus datos, impulsando un entorno más seguro para enfrentar los desafíos del mundo digital.',
+                    buttons: ['Visión', 'Servicios', 'Contactar']
+                },
+                {
+                    keywords: ['visión', 'futuro', 'metas'],
+                    response: '🚀 <strong>Nuestra VISIÓN:</strong><br><br>Ser reconocidos como <strong>LÍDERES en soluciones tecnológicas</strong> de seguridad digital, destacándonos por nuestra innovación, profesionalismo y capacidad de adaptación.<br><br>Aspiramos a construir un <strong>mundo digital más seguro</strong>, donde la tecnología y la confianza vayan de la mano.',
+                    buttons: ['Misión', 'Servicios', 'Contactar']
+                }
+            ];
+            const systemPrompt = `Eres 'Cyber Asistente', el asistente virtual ENERGÉTICO de RECYBERSEG, empresa chilena líder en ciberseguridad.
+PERSONALIDAD:
+- Responde con ENERGÍA y ENTUSIASMO profesional
+- Sé RÁPIDO, DIRECTO y DINÁMICO
+- Usa palabras como "¡Perfecto!", "¡Excelente!", "¡Genial!"
+- Mantén tono profesional pero ENTUSIASTA
+INSTRUCCIONES ESPECIALES:
+- Usa <strong>texto</strong> para negritas y <br> para saltos de línea
+- Pronuncia "RECYBERSEG" como "Reci-Ber-Seg"
+- Para "IoT" di "Internet de las Cosas"
+- Para "24/7" di "veinticuatro siete"
+Si preguntan por contacto, incluye [CONTACT_BUTTON] al final de tu respuesta.
+SERVICIOS principales de RECYBERSEG:
+1. Auditorías de Seguridad - Evaluación COMPLETA
+2. Monitoreo de Redes 24/7 - Supervisión CONSTANTE  
+3. Consultoría en Ciberseguridad - Asesoramiento EXPERTO
+4. Implementación de Sistemas - Configuración PROFESIONAL
+5. Seguridad IoT - Protección TOTAL
+Responde de forma ENERGÉTICA y PROFESIONAL siempre.`;
+
+            // === SISTEMA DE VOCES ===
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
                 if (availableVoices.length > 0) {
-                     console.log("Voces cargadas.");
+                    console.log("🎤 Voces cargadas:", availableVoices.length);
                 }
             }
-
             loadVoices();
             if (speechSynth.onvoiceschanged !== undefined) {
                 speechSynth.onvoiceschanged = loadVoices;
             }
-
-            if (SpeechRecognition) {
-                recognition = new SpeechRecognition();
-                recognition.lang = 'es-CL';
-                recognition.continuous = false;
-                recognition.interimResults = false;
-            } else {
-                console.warn("El reconocimiento de voz no es compatible con este navegador.");
-                document.getElementById('voice-btn').style.display = 'none';
-            }
-
             function speakText(text) {
-                const urlRegex = /(https?:\/\/[^\s]+)/g;
-                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
+                if (!isAutoReadEnabled || !isVoiceEnabled) return;
                 const cleanText = text
-                    .replace(urlRegex, '')
-                    .replace(emojiRegex, '')
-                    .replace(/<br>/g, '. ')
-                    .replace(/<strong>/g, '')
-                    .replace(/<\/strong>/g, '')
-                    .replace(/\n/g, '. ')
-                    .replace(/\*/g, '');
-                
-                if (!cleanText.trim() || !speechSynth) return;
-
+                    .replace(/<[^>]*>/g, ' ')
+                    .replace(/\[CONTACT_BUTTON\]/g, '')
+                    .replace(/RECYBERSEG/gi, 'Reci-Ber-Seg')
+                    .replace(/IoT/g, 'Internet de las Cosas')
+                    .replace(/24\/7/g, 'veinticuatro siete')
+                    .replace(/&nbsp;/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+                if (!cleanText || !speechSynth) return;
                 speechSynth.cancel();
                 const utterance = new SpeechSynthesisUtterance(cleanText);
-
+                // Seleccionar la mejor voz masculina
                 let selectedVoice = null;
                 if (availableVoices.length > 0) {
-                    const femaleNames = /laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i;
-                    selectedVoice = availableVoices.find(voice => voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
-                                    availableVoices.find(voice => (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es')) ||
-                                    availableVoices.find(voice => voice.lang.startsWith('es') && !femaleNames.test(voice.name)) ||
-                                    availableVoices.find(voice => voice.lang.startsWith('es'));
+                    selectedVoice = availableVoices.find(voice => 
+                        voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                        availableVoices.find(voice => 
+                            (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es')) ||
+                        availableVoices.find(voice => 
+                            voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
+                        availableVoices.find(voice => voice.lang.startsWith('es'));
                 }
-
                 if (selectedVoice) {
                     utterance.voice = selectedVoice;
-                    console.log('Usando voz:', selectedVoice.name);
-                } else {
-                    console.warn('No se encontró una voz en español preferida.');
+                    console.log('🗣️ Usando voz:', selectedVoice.name);
                 }
-
-                utterance.lang = 'es-CL';
-                utterance.rate = 1.1;
-                utterance.pitch = 0.8;
+                utterance.lang = 'es-ES';
+                utterance.rate = 1.3;  // Rápido y energético
+                utterance.pitch = 0.8; // Masculino
+                utterance.volume = 1.0; // Alto
                 speechSynth.speak(utterance);
             }
 
-            function toggleChat() {
-                const popup = document.getElementById('chat-popup');
-                const backdrop = document.getElementById('chat-backdrop');
-                const button = document.getElementById('chat-toggle-button');
-                
-                const isHidden = popup.classList.contains('hidden');
-                popup.classList.toggle('hidden');
-                backdrop.classList.toggle('hidden');
-                button.classList.toggle('hidden', isHidden);
+            // === RECONOCIMIENTO DE VOZ ===
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.lang = 'es-ES';
+                recognition.continuous = true;
+                recognition.interimResults = true;
+                recognition.onstart = () => {
+                    isListening = true;
+                    showListeningState();
+                    console.log('🎙️ Iniciando reconocimiento...');
+                };
+                recognition.onresult = (event) => {
+                    let finalTranscript = '';
+                    let interimTranscript = '';
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        const transcript = event.results[i][0].transcript;
+                        if (event.results[i].isFinal) {
+                            finalTranscript += transcript;
+                        } else {
+                            interimTranscript += transcript;
+                        }
+                    }
+                    // Mostrar texto en tiempo real
+                    if (chatbotInput) {
+                        chatbotInput.value = finalTranscript + interimTranscript;
+                        // Si hay texto final, procesar
+                        if (finalTranscript.trim()) {
+                            console.log('✅ Reconocimiento final:', finalTranscript);
+                            setTimeout(() => {
+                                stopListening();
+                                handleMessage();
+                            }, 500);
+                        }
+                    }
+                };
+                recognition.onend = () => {
+                    isListening = false;
+                    hideListeningState();
+                };
+                recognition.onerror = (event) => {
+                    console.error('❌ Error reconocimiento:', event.error);
+                    isListening = false;
+                    hideListeningState();
+                };
+                console.log('🎙️ Reconocimiento de voz inicializado');
+            } else {
+                console.warn('⚠️ Reconocimiento de voz no disponible');
             }
-
-            function addMessage(sender, text, buttons = []) {
-                const chatMessages = document.getElementById('chat-messages');
-                const messageDiv = document.createElement('div');
-                
-                let content = '';
-                if (sender === 'user') {
-                    messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
-                    content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
-                } else {
-                    messageDiv.className = 'flex items-start space-x-2 mb-1';
-                    const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
-                    let formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
-                    formattedText = formattedText.replace(urlRegex, (url) => {
-                        const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
-                        let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
-                        let buttonText = "🔗 Abrir";
-                        if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "📄 Descargar";
-                        else if (cleanedUrl.includes('bcn.cl')) buttonText = "⚖️ Ver ley";
-                        else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "🏢 Ver OS10";
-                        return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
-                    });
-
-                    const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-gray-600 border border-green-500/50 dark:border-green-700 text-green-800 dark:text-green-300 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
-                    
-                    content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-w-sm text-gray-800 dark:text-gray-200 leading-tight">${formattedText}${buttonsHtml}</div>`;
-                    if (isAutoReadEnabled) setTimeout(() => speakText(text), 300);
+            function startListening() {
+                if (!recognition || isListening) return;
+                try {
+                    if (chatbotInput) chatbotInput.value = '';
+                    recognition.start();
+                } catch (error) {
+                    console.error('Error al iniciar reconocimiento:', error);
                 }
-                messageDiv.innerHTML = content;
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-            
-            window.handleUserButtonClick = (text) => {
-                 document.getElementById('user-input').value = text;
-                 handleMessage();
+            function stopListening() {
+                if (!recognition || !isListening) return;
+                try {
+                    recognition.stop();
+                } catch (error) {
+                    console.error('Error al detener reconocimiento:', error);
+                }
+            }
+            function showListeningState() {
+                // Actualizar micrófono verde
+                if (voiceBtn) {
+                    voiceBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg>';
+                    voiceBtn.style.background = '#ef4444';
+                    voiceBtn.style.animation = 'pulse 1s infinite';
+                    voiceBtn.title = 'Escuchando... (Suelta para enviar)';
+                    voiceBtn.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.3)';
+                }
+                // Actualizar input
+                if (chatbotInput) {
+                    chatbotInput.placeholder = '🎙️ Escuchando... escribiendo automáticamente';
+                    chatbotInput.style.borderColor = '#ef4444';
+                    chatbotInput.style.boxShadow = '0 0 0 2px rgba(239, 68, 68, 0.2)';
+                }
+                console.log('🎤 Estado de escucha activado - Micrófono rojo');
+            }
+            function hideListeningState() {
+                // Restaurar micrófono verde
+                if (voiceBtn) {
+                    voiceBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg>';
+                    voiceBtn.style.background = '#22c55e';
+                    voiceBtn.style.animation = 'none';
+                    voiceBtn.title = 'Mantén presionado para hablar';
+                    voiceBtn.style.boxShadow = '';
+                }
+                // Restaurar input
+                if (chatbotInput) {
+                    chatbotInput.placeholder = 'Escribe tu pregunta...';
+                    chatbotInput.style.borderColor = '';
+                    chatbotInput.style.boxShadow = '';
+                }
+                console.log('🎤 Estado de escucha desactivado - Micrófono verde');
             }
 
-            // FUNCIÓN MEJORADA PARA BUSCAR COINCIDENCIAS EXACTAS
-            function findExactMatch(userText, allRules) {
+            // === MANEJO DE MENSAJES ===
+            function addMessage(sender, text, buttons = []) {
+                console.log(`💬 Agregando mensaje de ${sender}`);
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', `${sender}-message`);
+                const p = document.createElement('p');
+                let messageText = text;
+                if (sender === 'bot') {
+                    // Procesar botón de contacto
+                    if (text.includes('[CONTACT_BUTTON]')) {
+                        messageText = text.replace('[CONTACT_BUTTON]', '');
+                        const contactButton = document.createElement('button');
+                        contactButton.textContent = 'Ir al Formulario';
+                        contactButton.style.cssText = `
+                            background-color: #3182ce;
+                            color: white;
+                            border: none;
+                            padding: 10px 15px;
+                            border-radius: 20px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            margin-top: 10px;
+                            transition: all 0.3s ease;
+                            display: block;
+                        `;
+                        contactButton.addEventListener('click', () => {
+                            const contactSection = document.getElementById('contacto');
+                            if (contactSection) {
+                                contactSection.scrollIntoView({ behavior: 'smooth' });
+                            }
+                            chatPopup.classList.add('hidden');
+                        });
+                        messageElement.appendChild(contactButton);
+                    }
+                    // Agregar botones de respuesta rápida
+                    if (buttons && buttons.length > 0) {
+                        const buttonsContainer = document.createElement('div');
+                        buttonsContainer.style.cssText = 'margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;';
+                        buttons.forEach(buttonText => {
+                            const btn = document.createElement('button');
+                            btn.textContent = buttonText;
+                            btn.style.cssText = `
+                                background: rgba(49, 130, 206, 0.1);
+                                border: 1px solid #3182ce;
+                                color: #3182ce;
+                                padding: 5px 10px;
+                                border-radius: 15px;
+                                font-size: 12px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            `;
+                            btn.addEventListener('click', () => {
+                                chatbotInput.value = buttonText;
+                                handleMessage();
+                            });
+                            btn.addEventListener('mouseenter', () => {
+                                btn.style.backgroundColor = '#3182ce';
+                                btn.style.color = 'white';
+                            });
+                            btn.addEventListener('mouseleave', () => {
+                                btn.style.backgroundColor = 'rgba(49, 130, 206, 0.1)';
+                                btn.style.color = '#3182ce';
+                            });
+                            buttonsContainer.appendChild(btn);
+                        });
+                        messageElement.appendChild(buttonsContainer);
+                    }
+                    p.innerHTML = messageText;
+                    p.style.textAlign = 'justify';
+                    // Reproducir voz automáticamente
+                    setTimeout(() => speakText(messageText), 300);
+                } else {
+                    p.textContent = text;
+                }
+                messageElement.appendChild(p);
+                chatbotMessages.appendChild(messageElement);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            // === BÚSQUEDA EN BASE DE CONOCIMIENTO ===
+            function findExactMatch(userText, rules) {
                 const normalizedUserText = userText.toLowerCase().trim();
-                
-                // 1. Buscar coincidencia exacta primero
-                for (const rule of allRules) {
+                // 1. Buscar coincidencia exacta
+                for (const rule of rules) {
                     if (rule && rule.keywords) {
                         for (const keyword of rule.keywords) {
-                            const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
-                            
-                            // Coincidencia exacta
+                            const normalizedKeyword = keyword.toLowerCase().trim();
                             if (normalizedUserText === normalizedKeyword) {
-                                console.log(`🎯 Coincidencia EXACTA encontrada: "${normalizedUserText}" === "${normalizedKeyword}"`);
-                                return rule.response;
+                                console.log(`🎯 Coincidencia EXACTA: "${normalizedUserText}"`);
+                                return rule;
                             }
                         }
                     }
                 }
-                
-                // 2. Si no hay coincidencia exacta, buscar por inclusión (solo para frases más largas)
+                // 2. Buscar por inclusión (para frases largas)
                 if (normalizedUserText.length > 5) {
-                    for (const rule of allRules) {
+                    for (const rule of rules) {
                         if (rule && rule.keywords) {
                             for (const keyword of rule.keywords) {
-                                const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
-                                
-                                // Solo buscar inclusión si la palabra clave tiene más de 3 caracteres
+                                const normalizedKeyword = keyword.toLowerCase().trim();
                                 if (normalizedKeyword.length > 3 && normalizedUserText.includes(normalizedKeyword)) {
-                                    console.log(`🔍 Coincidencia por INCLUSIÓN: "${normalizedUserText}" incluye "${normalizedKeyword}"`);
-                                    return rule.response;
+                                    console.log(`🔍 Coincidencia por INCLUSIÓN: "${normalizedKeyword}"`);
+                                    return rule;
                                 }
                             }
                         }
                     }
                 }
-                
                 return null;
             }
 
-            async function handleMessage() {
-                const input = document.getElementById('user-input');
-                const text = input.value.trim();
-                
-                if (!text) return;
-                
-                addMessage('user', text);
-                input.value = '';
-                
-                // Usar la nueva función de búsqueda mejorada
-                const response = findExactMatch(text, allRules);
-                
-                // Si se encuentra una respuesta en las reglas, mostrarla
-                if (response) {
-                    setTimeout(() => addMessage('bot', response), 500);
-                    return; // Termina la ejecución aquí
-                }
-
-                // Si NO se encuentra respuesta, consultar a la IA
-                addTypingIndicator();
-                try {
-                    // Combinar el prompt del sistema con la pregunta del usuario
-                    const fullPrompt = `${systemPrompt}\n\n**Consulta del Usuario:**\n${text}\n\n**Base de Conocimiento para referencia (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Respuesta:**`;
-
-                    // Construir el cuerpo de la solicitud para la API de Gemini
-                    const geminiPayload = {
-                        contents: [{ parts: [{ text: fullPrompt }] }],
-                        safetySettings: [
-                            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                        ],
-                    };
-
-                    const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(geminiPayload),
-                    });
-
-                    removeTypingIndicator();
-
-                    if (!apiResponse.ok) {
-                        const errorData = await apiResponse.json();
-                        console.error("Error desde el proxy:", errorData);
-                        throw new Error(`Error del servidor: ${apiResponse.status}`);
-                    }
-
-                    const data = await apiResponse.json();
-                    
-                    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
-                    addMessage('bot', aiResponse);
-
-                } catch (error) {
-                    console.error("Error al contactar al asistente de IA:", error);
-                    removeTypingIndicator();
-                    addMessage('bot', "Hubo un problema de conexión con el asistente inteligente. Por favor, intenta de nuevo más tarde.");
-                }
-            }
-            
+            // === INDICADOR DE ESCRITURA ===
             function addTypingIndicator() {
-                const chatMessages = document.getElementById('chat-messages');
                 const typingDiv = document.createElement('div');
                 typingDiv.id = 'typing-indicator';
-                typingDiv.className = 'flex items-start space-x-2 mb-3';
-                typingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain"></div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
-                chatMessages.appendChild(typingDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+                typingDiv.className = 'message bot-message';
+                typingDiv.innerHTML = `
+                    <div class="typing-dots" style="display: flex; gap: 5px; padding: 10px;">
+                        <div style="width: 8px; height: 8px; background: #3182ce; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
+                        <div style="width: 8px; height: 8px; background: #3182ce; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
+                        <div style="width: 8px; height: 8px; background: #3182ce; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
+                    </div>
+                `;
+                chatbotMessages.appendChild(typingDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             }
-
             function removeTypingIndicator() {
                 const indicator = document.getElementById('typing-indicator');
                 if (indicator) indicator.remove();
             }
 
-            function startVoiceInput() {
-                if (!recognition) return;
-                const voiceBtn = document.getElementById('voice-btn');
-                if (isListening) {
-                    recognition.stop();
+            // === MANEJO PRINCIPAL DE MENSAJES ===
+            async function handleMessage() {
+                const text = chatbotInput.value.trim();
+                if (!text) return;
+                console.log('📝 Procesando mensaje:', text);
+                addMessage('user', text);
+                chatbotInput.value = '';
+                // Buscar en base de conocimiento
+                const matchedRule = findExactMatch(text, recybersegRules);
+                if (matchedRule) {
+                    setTimeout(() => {
+                        addMessage('bot', matchedRule.response, matchedRule.buttons || []);
+                    }, 500);
                     return;
                 }
-                isListening = true;
-                voiceBtn.classList.add('animate-pulse');
-                recognition.start();
-                recognition.onresult = (event) => {
-                    document.getElementById('user-input').value = event.results[0][0].transcript;
-                    handleMessage();
-                };
-                recognition.onerror = (event) => console.error("Error en reconocimiento de voz:", event.error);
-                recognition.onend = () => {
-                    isListening = false;
-                    voiceBtn.classList.remove('animate-pulse');
-                };
+                // Si no hay coincidencia, usar IA
+                addTypingIndicator();
+                try {
+                    const fullPrompt = `${systemPrompt}
+**Consulta del Usuario:**
+${text}
+**Respuesta:**`;
+                    const apiKey = "AIzaSyAq7n6WM4WuPKR0CZzIUgAUdI53fm4CpoA";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: fullPrompt }] }]
+                        })
+                    });
+                    removeTypingIndicator();
+                    if (!response.ok) {
+                        throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    }
+                    const result = await response.json();
+                    const aiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text || 
+                                      "Lo siento, no pude procesar tu consulta. ¿Puedes intentar de otra manera?";
+                    addMessage('bot', aiResponse);
+                } catch (error) {
+                    console.error('❌ Error en IA:', error);
+                    removeTypingIndicator();
+                    addMessage('bot', `Hubo un problema de conexión. Error: ${error.message}`);
+                }
             }
 
-            function readLastMessage() {
-                const messages = document.querySelectorAll('#chat-messages .dark\\:text-gray-200');
-                if (messages.length > 0) speakText(messages[messages.length - 1].innerText);
+            // === CREAR CONTROLES DE VOZ MEJORADOS ===
+            function createVoiceControls() {
+                const header = document.querySelector('.chatbot-header');
+                const chatForm = document.querySelector('.chatbot-form');
+                if (!header || document.getElementById('voice-controls')) return;
+                // === CONTROLES EN EL HEADER ===
+                const controlsContainer = document.createElement('div');
+                controlsContainer.id = 'voice-controls';
+                controlsContainer.style.cssText = 'display: flex; gap: 5px; align-items: center;';
+                // Botón toggle auto-lectura
+                const autoReadBtn = document.createElement('button');
+                autoReadBtn.id = 'auto-read-btn';
+                autoReadBtn.innerHTML = isAutoReadEnabled ? '🔊' : '🔇';
+                autoReadBtn.title = isAutoReadEnabled ? 'Desactivar lectura automática' : 'Activar lectura automática';
+                // Estilos para botón del header
+                autoReadBtn.style.cssText = `
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 18px;
+                    cursor: pointer;
+                    padding: 8px;
+                    border-radius: 50%;
+                    transition: all 0.3s ease;
+                    min-width: 36px;
+                    min-height: 36px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                `;
+                autoReadBtn.addEventListener('mouseenter', () => {
+                    autoReadBtn.style.backgroundColor = 'rgba(255,255,255,0.2)';
+                    autoReadBtn.style.transform = 'scale(1.1)';
+                });
+                autoReadBtn.addEventListener('mouseleave', () => {
+                    autoReadBtn.style.backgroundColor = 'transparent';
+                    autoReadBtn.style.transform = 'scale(1)';
+                });
+                controlsContainer.appendChild(autoReadBtn);
+                header.appendChild(controlsContainer);
+                // === MICRÓFONO AL LADO IZQUIERDO DEL INPUT ===
+                if (chatForm && !document.getElementById('chat-mic-btn')) {
+                    // Encontrar el input
+                    const inputElement = chatForm.querySelector('#chatbot-input');
+                    if (inputElement) {
+                        // Crear botón de micrófono
+                        const micBtn = document.createElement('button');
+                        micBtn.id = 'chat-mic-btn';
+                        micBtn.type = 'button'; // Importante: no submit
+                        micBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                        micBtn.title = 'Mantén presionado para hablar';
+                        micBtn.style.cssText = `
+                            background: #22c55e;
+                            border: none;
+                            color: white;
+                            font-size: 16px;
+                            cursor: pointer;
+                            padding: 12px;
+                            border-radius: 50%;
+                            transition: all 0.3s ease;
+                            margin-right: 8px;
+                            min-width: 44px;
+                            min-height: 44px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-shrink: 0;
+                            touch-action: manipulation;
+                            -webkit-tap-highlight-color: transparent;
+                            order: -1;
+                        `;
+                        // Insertar el micrófono al inicio del formulario (lado izquierdo)
+                        chatForm.insertBefore(micBtn, inputElement);
+                        // Ajustar el estilo del formulario para que el micrófono esté a la izquierda
+                        chatForm.style.display = 'flex';
+                        chatForm.style.alignItems = 'center';
+                        chatForm.style.gap = '8px';
+                        // === EVENTOS DEL MICRÓFONO VERDE ===
+                        // Eventos de mouse
+                        micBtn.addEventListener('mousedown', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            startListening();
+                            micBtn.style.transform = 'scale(0.95)';
+                        });
+                        micBtn.addEventListener('mouseup', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            stopListening();
+                            micBtn.style.transform = 'scale(1)';
+                        });
+                        micBtn.addEventListener('mouseleave', (e) => {
+                            if (isListening) {
+                                stopListening();
+                                micBtn.style.transform = 'scale(1)';
+                            }
+                        });
+                        // Eventos táctiles para móvil
+                        micBtn.addEventListener('touchstart', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            startListening();
+                            micBtn.style.transform = 'scale(0.95)';
+                        });
+                        micBtn.addEventListener('touchend', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            stopListening();
+                            micBtn.style.transform = 'scale(1)';
+                        });
+                        // Efecto hover
+                        micBtn.addEventListener('mouseenter', () => {
+                            if (!isListening) {
+                                micBtn.style.backgroundColor = '#16a34a';
+                                micBtn.style.transform = 'scale(1.05)';
+                            }
+                        });
+                        micBtn.addEventListener('mouseleave', () => {
+                            if (!isListening) {
+                                micBtn.style.backgroundColor = '#22c55e';
+                                micBtn.style.transform = 'scale(1)';
+                            }
+                        });
+                        console.log('🎤 Micrófono verde agregado al lado izquierdo del input');
+                    }
+                }
+                // === EVENTOS PARA AUTO-LECTURA ===
+                autoReadBtn.addEventListener('click', () => {
+                    isAutoReadEnabled = !isAutoReadEnabled;
+                    localStorage.setItem('chatbot-voice-enabled', isAutoReadEnabled);
+                    autoReadBtn.innerHTML = isAutoReadEnabled ? '🔊' : '🔇';
+                    autoReadBtn.title = isAutoReadEnabled ? 'Desactivar lectura automática' : 'Activar lectura automática';
+                    if (!isAutoReadEnabled) speechSynth.cancel();
+                    autoReadBtn.style.backgroundColor = isAutoReadEnabled ? 
+                        'rgba(0,255,0,0.3)' : 'rgba(255,0,0,0.3)';
+                    setTimeout(() => autoReadBtn.style.backgroundColor = 'transparent', 1000);
+                    console.log(`🔊 Auto-lectura ${isAutoReadEnabled ? 'activada' : 'desactivada'}`);
+                });
+                console.log('🎤 Sistema de controles de voz creado');
             }
-            
-            // --- Asignación de Eventos ---
-            document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
-            document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
-            document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
-            document.getElementById('send-button').addEventListener('click', handleMessage);
-            document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
-            
-            const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
-            const speakerOnIcon = document.getElementById('speaker-on-icon');
-            const speakerOffIcon = document.getElementById('speaker-off-icon');
 
+            // === EVENT LISTENERS PRINCIPALES ===
+            chatToggleButton.addEventListener('click', () => {
+                chatPopup.classList.toggle('hidden');
+                chatBackdrop.classList.toggle('hidden');
+                console.log('🔄 Toggle chatbot');
+            });
+            chatCloseBtn.addEventListener('click', () => {
+                chatPopup.classList.add('hidden');
+                chatBackdrop.classList.add('hidden');
+                console.log('❌ Cerrando chatbot');
+            });
+            chatBackdrop.addEventListener('click', () => {
+                chatPopup.classList.add('hidden');
+                chatBackdrop.classList.add('hidden');
+            });
+            chatForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleMessage();
+            });
+            voiceBtn.addEventListener('click', () => {
+                if (isListening) {
+                    stopListening();
+                } else {
+                    startListening();
+                }
+            });
+            speakBtn.addEventListener('click', () => {
+                const messages = chatbotMessages.querySelectorAll('.bot-message p');
+                if (messages.length > 0) {
+                    const lastMessage = messages[messages.length - 1];
+                    speakText(lastMessage.innerHTML || lastMessage.textContent);
+                }
+            });
             toggleSpeakBtn.addEventListener('click', () => {
                 isAutoReadEnabled = !isAutoReadEnabled;
+                localStorage.setItem('chatbot-voice-enabled', isAutoReadEnabled);
                 speakerOnIcon.classList.toggle('hidden', !isAutoReadEnabled);
                 speakerOffIcon.classList.toggle('hidden', isAutoReadEnabled);
                 toggleSpeakBtn.classList.toggle('bg-yellow-500', isAutoReadEnabled);
@@ -617,22 +921,106 @@
                 toggleSpeakBtn.classList.toggle('hover:bg-gray-600', !isAutoReadEnabled);
                 if (!isAutoReadEnabled) speechSynth.cancel();
             });
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleMessage();
+                }
+            });
 
-            if (recognition) document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
-            document.getElementById('speak-btn').addEventListener('click', readLastMessage);
-            document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
-
-            // --- Verificación de carga de reglas y mensaje de bienvenida ---
-            if(allRules.length === 0) {
-                console.error("¡Advertencia! No se pudieron cargar las reglas desde 'rules/chatbot-rules.js'. El bot funcionará en modo 'solo IA'.");
+            // === MANEJO DEL TECLADO VIRTUAL ===
+            let initialHeight = window.innerHeight;
+            function handleKeyboard() {
+                const currentHeight = window.innerHeight;
+                const heightDiff = initialHeight - currentHeight;
+                if (heightDiff > 150) {
+                    chatPopup.classList.add('keyboard-active');
+                } else {
+                    chatPopup.classList.remove('keyboard-active');
+                }
+            }
+            window.addEventListener('resize', handleKeyboard);
+            if (chatbotInput) {
+                chatbotInput.addEventListener('focus', () => setTimeout(handleKeyboard, 300));
+                chatbotInput.addEventListener('blur', () => {
+                    setTimeout(() => chatPopup.classList.remove('keyboard-active'), 300);
+                });
             }
 
-            // El bot siempre dará la bienvenida.
+            // === INICIALIZACIÓN ===
             setTimeout(() => {
-                const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                createVoiceControls();
+                // Mensaje de bienvenida con botones
+                const welcomeButtons = ['Servicios', 'Auditorías', 'Monitoreo 24/7', 'IoT', 'Contacto'];
+                addMessage('bot', 
+                    '¡Hola! Soy <strong>Cyber Asistente</strong> de RECYBERSEG. ¡Estoy aquí para ayudarte con toda la información sobre nuestros servicios de ciberseguridad de vanguardia! ¿En qué puedo asistirte hoy?', 
+                    welcomeButtons);
+                console.log('✅ Chatbot RECYBERSEG completamente inicializado con lógica avanzada');
             }, 1000);
+
+            // === ATAJOS DE TECLADO ===
+            document.addEventListener('keydown', (e) => {
+                // Alt + V para activar reconocimiento de voz
+                if (e.altKey && e.key === 'v') {
+                    e.preventDefault();
+                    if (isListening) {
+                        stopListening();
+                    } else {
+                        startListening();
+                    }
+                }
+                // Alt + C para abrir/cerrar chatbot
+                if (e.altKey && e.key === 'c') {
+                    e.preventDefault();
+                    chatPopup.classList.toggle('hidden');
+                    chatBackdrop.classList.toggle('hidden');
+                }
+                // Alt + S para toggle auto-lectura
+                if (e.altKey && e.key === 's') {
+                    e.preventDefault();
+                    toggleSpeakBtn.click();
+                }
+            });
+
+            // === VERIFICACIÓN DE COMPATIBILIDAD ===
+            function checkCompatibility() {
+                const features = {
+                    speechSynthesis: 'speechSynthesis' in window,
+                    speechRecognition: !!(window.SpeechRecognition || window.webkitSpeechRecognition),
+                    fetch: 'fetch' in window,
+                    localStorage: 'localStorage' in window,
+                    classList: 'classList' in document.createElement('div')
+                };
+                console.log('🔍 Verificación de compatibilidad:', features);
+                const unsupported = Object.entries(features)
+                    .filter(([feature, supported]) => !supported)
+                    .map(([feature]) => feature);
+                if (unsupported.length > 0) {
+                    console.warn('⚠️ Funciones no soportadas:', unsupported);
+                    // Mostrar mensaje si falta algo crítico
+                    if (unsupported.includes('speechSynthesis') && unsupported.includes('speechRecognition')) {
+                        setTimeout(() => {
+                            addMessage('bot', 
+                                '⚠️ <strong>Aviso:</strong> Tu navegador no soporta funciones de voz. El chatbot funcionará solo con texto. Te recomiendo usar Chrome, Edge o Safari para la experiencia completa.');
+                        }, 2000);
+                    }
+                }
+                return features;
+            }
+            checkCompatibility();
+            console.log('🎉 Chatbot RECYBERSEG listo - Versión Avanzada con Lógica Superior');
+
+            // === FUNCIÓN DE LIMPIEZA AL CERRAR ===
+            window.addEventListener('beforeunload', () => {
+                if (speechSynth) {
+                    speechSynth.cancel();
+                }
+                if (recognition && isListening) {
+                    recognition.stop();
+                }
+            });
         });
     </script>
 </body>
 </html>
+```
