@@ -711,4 +711,28 @@ body {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
 }
-
+@media (prefers-color-scheme: dark) {
+    #chat-toggle-button {
+        background-color: white !important;
+        border-radius: 1.5rem !important;
+    }
+    
+    #chat-toggle-button img {
+        border-radius: 1.25rem !important;
+        background-color: white !important;
+        padding: 0.25rem !important;
+    }
+    
+    .w-8.h-8.bg-white.border-2.border-yellow-400,
+    .w-10.h-10.bg-white.border-2.border-green-400 {
+        background-color: white !important;
+        border-radius: 1rem !important;
+    }
+    
+    .w-8.h-8.bg-white.border-2.border-yellow-400 img,
+    .w-10.h-10.bg-white.border-2.border-green-400 img {
+        border-radius: 0.75rem !important;
+        background-color: white !important;
+        padding: 0.125rem !important;
+    }
+}
