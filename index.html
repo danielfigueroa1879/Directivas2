@@ -63,15 +63,92 @@
         .response-button:hover { transform: translateX(4px); }
 
         /* Estilos Chatbot */
-        #chat-widget-container { 
-            position: fixed; 
-            bottom: 6rem;
-            right: 1.5rem;
-            z-index: 1000; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end;
-        }
+        /* Estilos Chatbot */
+#chat-widget-container { 
+    position: fixed; 
+    bottom: 6rem; /* Se mueve verticalmente con scroll */
+    right: 1.5rem; /* FIJO horizontalmente - NO se mueve */
+    z-index: 1000; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end;
+}
+
+#chat-popup { 
+    width: 450px; 
+    height: 600px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+}
+
+#chat-toggle-button { 
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
+/* Ajustes para pantallas grandes (PC) - MANTIENE POSICIÓN HORIZONTAL FIJA */
+@media (min-width: 1024px) {
+    #chat-widget-container {
+        right: 2rem; /* Posición horizontal FIJA para PC */
+        bottom: 6rem; /* Puede moverse verticalmente */
+    }
+    
+    #chat-toggle-button {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #chat-widget-container {
+        right: 1.5rem; /* Posición horizontal FIJA */
+        bottom: 6rem; /* Móvil verticalmente */
+    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+    #chat-widget-container {
+        right: 1rem; /* Posición horizontal FIJA en móvil */
+        bottom: 6rem; /* Se mueve verticalmente */
+    }
+    
+    #chat-popup {
+        width: calc(100vw - 3rem);
+    }
+    
+    #chat-toggle-button {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    #chat-widget-container {
+        right: 0.5rem; /* Posición horizontal FIJA */
+        bottom: 6rem; /* Móvil verticalmente */
+    }
+    
+    #chat-toggle-button {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Para pantallas muy grandes (monitores grandes) */
+@media (min-width: 1440px) {
+    #chat-widget-container {
+        right: 3rem; /* Más separación en pantallas grandes */
+        bottom: 6rem; /* Móvil verticalmente */
+    }
+    
+    #chat-toggle-button {
+        width: 100px;
+        height: 100px;
+    }
+}
         #chat-popup { 
             width: 450px; 
             height: 600px; 
