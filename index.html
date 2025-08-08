@@ -106,11 +106,12 @@
             40% { transform: scale(1.0); }
         }
 
-        /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
-            #chat-widget-container {
-                right: 25rem; 
-            }
+         #chat-widget-container {
+        /* Para PC, usar el max-width del contenedor (750px) */
+        right: calc((100vw - 750px) / 2); /* Centrado relativo al contenedor */
+        transform: translateX(calc(100% - 4rem)); /* Separación del contenedor */
+        bottom: 6rem;
             #chat-toggle-button {
                 width: 90px;
                 height: 90px;
