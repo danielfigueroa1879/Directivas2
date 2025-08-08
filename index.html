@@ -287,19 +287,6 @@
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
 
     <!-- Scripts -->
-<script>
-function ajustarPadding() {
-    const banner = document.getElementById('banner');
-    const contenido = document.getElementById('contenido');
-    const altura = banner.offsetHeight; // mide la altura real
-    contenido.style.paddingTop = altura + 'px';
-}
-
-// Ajusta al cargar y cuando se redimensiona la ventana
-window.addEventListener('load', ajustarPadding);
-window.addEventListener('resize', ajustarPadding);
-</script>
-
     <script type="module">
             // SCRIPT FIREBASE (Contador de visitas)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
