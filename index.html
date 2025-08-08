@@ -74,7 +74,7 @@
     display: flex; 
     flex-direction: column; 
     align-items: flex-end;
-    transform: translateX(100% - 4rem); /* Posiciona justo al lado derecho del contenedor */
+    transform: translateX(100% - 5rem); /* Posiciona justo al lado derecho del contenedor */
 }
 
 #chat-popup { 
@@ -94,7 +94,7 @@
     #chat-widget-container {
         /* Para PC, usar el max-width del contenedor (750px) */
         right: calc((100vw - 750px) / 2); /* Centrado relativo al contenedor */
-        transform: translateX(calc(100% - 4rem)); /* Separación del contenedor */
+        transform: translateX(calc(100% - 5rem)); /* Separación del contenedor */
         bottom: 6rem;
     }
     
@@ -108,7 +108,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
     #chat-widget-container {
         right: calc((100vw - min(750px, 90vw)) / 2);
-        transform: translateX(calc(100% - 4rem));
+        transform: translateX(calc(100% - 5rem));
         bottom: 6rem;
     }
 }
@@ -150,7 +150,7 @@
 @media (min-width: 1440px) {
     #chat-widget-container {
         right: calc((100vw - 750px) / 2);
-        transform: translateX(calc(100% - 4rem)); /* Más separación en pantallas grandes */
+        transform: translateX(calc(100% - 5rem)); /* Más separación en pantallas grandes */
         bottom: 6rem;
     }
     
