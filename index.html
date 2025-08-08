@@ -94,7 +94,7 @@
     #chat-widget-container {
         /* Para PC, usar el max-width del contenedor (750px) */
         right: calc((100vw - 750px) / 2); /* Centrado relativo al contenedor */
-        transform: translateX(calc(100% + 1rem)); /* Separación del contenedor */
+        transform: translateX(calc(100% - 2rem)); /* Separación del contenedor */
         bottom: 6rem;
     }
     
@@ -108,7 +108,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
     #chat-widget-container {
         right: calc((100vw - min(750px, 90vw)) / 2);
-        transform: translateX(calc(100% + 0.5rem));
+        transform: translateX(calc(100% - 0.2rem));
         bottom: 6rem;
     }
 }
