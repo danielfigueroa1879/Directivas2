@@ -28,7 +28,7 @@
     
     <!-- Estilos personalizados -->
     <style>
-        body {
+        body { 
             font-family: 'Poppins', sans-serif; 
             background-image: url('assets/images/101.jpg');
             background-size: cover;
@@ -38,7 +38,7 @@
         .card-container { 
             max-width: 750px; 
             width: 90%; 
-            margin: 2rem auto; 
+            margin: 4rem auto; 
         }
         .logo-os10-container { 
             position: absolute;
@@ -63,103 +63,69 @@
         .response-button:hover { transform: translateX(4px); }
 
         /* Estilos Chatbot */
+        #chat-widget-container { 
+            position: fixed; 
+            bottom: 6rem;
+            right: 1.5rem;
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end;
+        }
+        #chat-popup { 
+            width: 450px; 
+            height: 600px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+        }
+        #chat-toggle-button { 
+            width: 80px;
+            height: 80px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        }
+        .chat-messages-container { 
+            scroll-behavior: smooth; 
+        }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            margin: 0 2px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
 
-        /* Estilos Chatbot - ALINEADO CON EL CONTENEDOR */
-#chat-widget-container { 
-    position: fixed; 
-    bottom: 6rem; /* Se mueve verticalmente con scroll */
-    /* Calculado para alinearse con el borde derecho del contenedor */
-    right: calc((100vw - min(750px, 90vw)) / 2); /* Alineado con contenedor */
-    z-index: 1000; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-end;
-    transform: translateX(100% - 6rem); /* Posiciona justo al lado derecho del contenedor */
-}
-
-#chat-popup { 
-    width: 450px; 
-    height: 600px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-}
-
-#chat-toggle-button { 
-    width: 80px;
-    height: 80px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
-}
-
-/* Ajustes para pantallas grandes (PC) - ALINEADO CON CONTENEDOR */
-@media (min-width: 1024px) {
-    #chat-widget-container {
-        /* Para PC, usar el max-width del contenedor (750px) */
-        right: calc((100vw - 750px) / 2); /* Centrado relativo al contenedor */
-        transform: translateX(calc(100% - 6rem)); /* Separación del contenedor */
-        bottom: 6rem;
-    }
-    
-    #chat-toggle-button {
-        width: 90px;
-        height: 90px;
-    }
-}
-
-/* Ajustes para pantallas medianas (tablets) */
-@media (min-width: 768px) and (max-width: 1023px) {
-    #chat-widget-container {
-        right: calc((100vw - min(750px, 90vw)) / 2);
-        transform: translateX(calc(100% - 6rem));
-        bottom: 6rem;
-    }
-}
-
-/* Ajustes para pantallas pequeñas (móviles) */
-@media (max-width: 767px) {
-    #chat-widget-container {
-        /* En móvil, mantener en el borde de la pantalla */
-        right: 0.5rem; 
-        transform: none; /* Sin transform en móvil */
-        bottom: 6rem;
-    }
-    
-    #chat-popup {
-        width: calc(100vw - 3rem);
-    }
-    
-    #chat-toggle-button {
-        width: 70px;
-        height: 70px;
-    }
-}
-
-/* Para pantallas muy pequeñas */
-@media (max-width: 480px) {
-    #chat-widget-container {
-        right: 0.5rem;
-        transform: none;
-        bottom: 6rem;
-    }
-    
-    #chat-toggle-button {
-        width: 60px;
-        height: 60px;
-    }
-}
-
-/* Para pantallas muy grandes (monitores grandes) */
-@media (min-width: 1440px) {
-    #chat-widget-container {
-        right: calc((100vw - 750px) / 2);
-        transform: translateX(calc(100% - 6rem)); /* Más separación en pantallas grandes */
-        bottom: 6rem;
-    }
-    
-    #chat-toggle-button {
-        width: 100px;
-        height: 100px;
-    }
-}
+        /* Ajuste para pantallas más grandes (PC) */
+        @media (min-width: 1024px) {
+            #chat-widget-container {
+                right: 33rem; 
+            }
+            #chat-toggle-button {
+                width: 90px;
+                height: 90px;
+            }
+        }
         
+        /* Ajuste para pantallas pequeñas (Celular) */
+        @media (max-width: 767px) {
+            .card-container {
+                width: 98%;
+            }
+            #chat-popup {
+                width: calc(100vw - 3rem);
+            }
+        }
     </style>
 </head>
 <body>
@@ -672,3 +638,4 @@
     </script>
 </body>
 </html>
+
