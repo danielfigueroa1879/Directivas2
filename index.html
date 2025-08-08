@@ -147,7 +147,7 @@
         </svg>
         <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
     </div>
-<div class="pt-10">
+<div>
 
     <!-- Contenido de la página -->
     <div class="card-container bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
@@ -287,6 +287,19 @@
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
 
     <!-- Scripts -->
+<script>
+function ajustarPadding() {
+    const banner = document.getElementById('banner');
+    const contenido = document.getElementById('contenido');
+    const altura = banner.offsetHeight; // mide la altura real
+    contenido.style.paddingTop = altura + 'px';
+}
+
+// Ajusta al cargar y cuando se redimensiona la ventana
+window.addEventListener('load', ajustarPadding);
+window.addEventListener('resize', ajustarPadding);
+</script>
+
     <script type="module">
             // SCRIPT FIREBASE (Contador de visitas)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
