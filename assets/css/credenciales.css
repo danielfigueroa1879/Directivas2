@@ -135,22 +135,10 @@ h3, h4 {
     min-width: 240px;
 }
 
-.bg-yellow-500 { 
-    background-color: #eab308;
-    box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4); 
-}
-.bg-yellow-500:hover { 
-    background-color: #ca8a04;
-    box-shadow: 0 6px 15px rgba(251, 191, 36, 0.5); 
-}
-.bg-blue-500 { 
-    background-color: #3b82f6;
-    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4); 
-}
-.bg-blue-500:hover { 
-    background-color: #2563eb;
-    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5); 
-}
+.bg-yellow-500 { box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4); }
+.bg-yellow-500:hover { box-shadow: 0 6px 15px rgba(251, 191, 36, 0.5); }
+.bg-blue-500 { box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4); }
+.bg-blue-500:hover { box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6); }
 
 .indep-btn.bounce-animation {
     animation: bounce 2s ease infinite !important;
@@ -219,7 +207,6 @@ h3, h4 {
     position: sticky;
     top: 0;
     z-index: 10;
-    color: #1f2937;
 }
 .table-select {
     appearance: none;
@@ -235,12 +222,6 @@ h3, h4 {
     border: 1px solid #ccc;
     width: 100%;
     min-width: 200px;
-    background-color: white;
-    color: #1f2937;
-}
-.table-select option { 
-    background-color: white; 
-    color: #1f2937; 
 }
 
 /* --- IMÁGENES Y QR --- */
