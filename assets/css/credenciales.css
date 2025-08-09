@@ -307,7 +307,7 @@ h3, h4 {
 /* Para pantallas de CELULAR ESTÁNDAR (entre 375px y 767px) */
 @media (min-width: 375px) and (max-width: 767px) {
     .card-container {
-        width: 96% !important; /* Ahora 90% para dejar 5% de margen a cada lado */
+        width: 80% !important; /* Ahora 90% para dejar 5% de margen a cada lado */
         margin: 0.3rem auto !important;
         padding: 1rem !important;
     }
