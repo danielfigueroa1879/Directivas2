@@ -1,13 +1,5 @@
 <div class="card-container bg-white rounded-xl shadow-md relative">
-    <!-- El contador de visitas se quedará en index.html o se manejará globalmente. Si el id 'visitor-counter-container' es exclusivo de credenciales, lo mantendremos aquí. -->
-    <div id="visitor-counter-container-credenciales" class="absolute top-5 right-6">
-        <p class="flex items-center" style="font-size: 12px;">
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            <span>Visitas: <span id="visit-counter-credenciales" class="font-bold">--</span></span>
-        </p>
-    </div>
-
-    <!-- El logo OS10 también puede duplicarse aquí si es parte específica del diseño de esta sección, o se puede cargar desde assets si index.html ya lo tiene -->
+    <!-- El logo OS10 se puede mantener aquí si es específico del diseño de esta sección, o si ya está en index.html, podrías quitarlo. Por ahora lo dejamos. -->
     <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
        <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
     </a>
@@ -139,23 +131,18 @@
    </footer>
 </div>
 
-<!-- Scripts específicos de credenciales.html (ej. el contador si es único de esta página, pero sin inicializar Firebase aquí) -->
-<script defer>
-    // Este script correrá *después* de que el contenido se cargue dinámicamente en index.html
-    // Por lo tanto, el botón de volver debe ser vinculado aquí para que funcione correctamente
-    const backButtonFromCredenciales = document.getElementById('back-button-from-credenciales');
-    if (backButtonFromCredenciales) {
-        backButtonFromCredenciales.addEventListener('click', () => {
-            // Envía un evento personalizado a la ventana principal para indicar que se debe volver
-            window.dispatchEvent(new CustomEvent('navigateToHome'));
-        });
-    }
-
-    // Si el contador de visitas debe actualizarse específicamente para esta vista
-    // Y no se maneja globalmente en index.html, la lógica del contador de visitas de credenciales
-    // debería estar aquí o ser una función llamada desde attachDynamicEventListeners en index.html.
-    // Para simplificar y evitar duplicación, asumo que el contador principal en index.html es suficiente
-    // o que su actualización se manejará desde attachDynamicEventListeners.
-    // Si necesitas que el contador de 'credenciales' sea independiente o reactivo, déjame saber.
+<!-- Script para el botón "Volver" - este debe estar aquí porque el botón es parte del fragmento -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const backButtonFromCredenciales = document.getElementById('back-button-from-credenciales');
+        if (backButtonFromCredenciales) {
+            backButtonFromCredenciales.addEventListener('click', () => {
+                // Dispara un evento personalizado que index.html escuchará
+                window.dispatchEvent(new CustomEvent('navigateToHome'));
+            });
+        }
+    });
+    // Nota: El contador de visitas de Firebase se gestiona globalmente desde index.html
+    // Si necesitas funcionalidades JS específicas para credenciales (aparte del botón "Volver"),
+    // podrían ir aquí, pero asegúrate de que no dupliquen inicializaciones de Firebase o Tailwind.
 </script>
-
