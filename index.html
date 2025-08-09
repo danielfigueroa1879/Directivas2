@@ -40,7 +40,7 @@
         }
         .card-container { 
             /* Por defecto, ocupa un ancho generoso para pantallas muy pequeñas (480px y menos) */
-            width: 99%; /* ANCHO PARA MÓVILES MUY PEQUEÑOS (<= 480px) */
+            width: 99% !important; /* ANCHO PARA MÓVILES MUY PEQUEÑOS (<= 480px) - ¡FORZADO! */
             max-width: 750px; /* ANCHO MÁXIMO PARA PANTALLAS GRANDES */
             margin: 0.5rem auto; 
             padding: 1.5rem; /* Ajuste el padding para que no se pegue al borde */
@@ -48,13 +48,13 @@
         /* Ajuste para pantallas pequeñas (entre 481px y 767px) */
         @media (min-width: 481px) and (max-width: 767px) {
             .card-container {
-                width: 99%; /* ANCHO PARA MÓVILES TAMAÑO ESTÁNDAR */
+                width: 97% !important; /* ANCHO PARA MÓVILES TAMAÑO ESTÁNDAR - ¡FORZADO! */
             }
         }
         /* Ajuste para pantallas MÁS GRANDES que móviles (tablets y desktop) */
         @media (min-width: 768px) {
             .card-container {
-                width: 90%; /* Ajuste para tablets y desktop */
+                width: 90% !important; /* Ajuste para tablets y desktop - ¡FORZADO! */
             }
         }
 
@@ -687,3 +687,4 @@ window.addEventListener('resize', ajustarPadding);
     </script>
 </body>
 </html>
+
