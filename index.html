@@ -358,9 +358,24 @@ window.addEventListener('resize', ajustarPadding);
         document.addEventListener('DOMContentLoaded', function() {
 
             // Lógica para activar el MODOO OSCURO Y DESACTIVAR
-        // REEMPLAZAR TODO ESE BLOQUE POR:
-document.documentElement.classList.remove('dark');
-localStorage.setItem('theme', 'light');
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // FORZAR MODO CLARO AGRESIVAMENTE
+    function forceLight() {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.className = document.documentElement.className.replace(/\bdark\b/g, '');
+        localStorage.removeItem('theme');
+        localStorage.setItem('theme', 'light');
+    }
+    
+    // Ejecutar inmediatamente
+    forceLight();
+    
+    // Ejecutar cada segundo por si algo lo cambia
+    setInterval(forceLight, 1000);
+    
+    // Resto de tu código...
             
             
 
