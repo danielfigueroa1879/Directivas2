@@ -273,7 +273,7 @@ h3, h4 {
 /* Para pantallas MUY PEQUEÑAS (<= 374px, como 320px) */
 @media (max-width: 374px) {
     .card-container {
-        width: 99% !important; /* OCUPAR CASI TODO EL ANCHO */
+        width: 97% !important; /* OCUPAR CASI TODO EL ANCHO */
         padding: 0.8rem !important; /* Reduce el padding para más espacio al contenido */
         margin: 0.1rem auto !important; /* Reduce margen vertical */
     }
