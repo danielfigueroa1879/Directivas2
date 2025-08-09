@@ -100,8 +100,6 @@
             display: inline-block;
             animation: bounce 1.4s infinite ease-in-out both;
         }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
         @keyframes bounce {
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1.0); }
@@ -312,7 +310,7 @@
         /* Nuevo botón de flecha en la esquina superior derecha de la sección de credenciales */
         #credenciales-arrow-back-btn {
             position: absolute;
-            top: 0.5rem; /* Ajustado para estar más arriba */
+            top: 0.25rem; /* Ajustado para estar más arriba */
             right: 1rem; /* Mantiene la posición a la derecha */
             z-index: 20;
             color: #4B5563; /* Color de Tailwind gray-700 */
@@ -549,7 +547,7 @@
         <section id="credenciales-section" class="credenciales-section">
             <!-- Nuevo botón de flecha en la esquina superior derecha -->
             <button id="credenciales-arrow-back-btn" class="hidden" title="Volver a Inicio" onclick="showMain()">
-                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
                 </svg>
             </button>
@@ -1073,7 +1071,7 @@
                                 const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
                                 
                                 // Solo buscar inclusión si la palabra clave tiene más de 3 caracteres
-                                if (normalizedKeyword.length > 3 && normalizedUserText.includes(normalizedKeyword)) {
+                                if (normalizedUserText.includes(normalizedKeyword)) {
                                     console.log(`🔍 Coincidencia por INCLUSIÓN: "${normalizedUserText}" incluye "${normalizedKeyword}"`);
                                     return rule.response;
                                 }
