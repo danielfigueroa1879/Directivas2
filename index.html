@@ -262,7 +262,7 @@
         .credenciales-table-select {
             appearance: none;
             -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg'%3e");
             background-repeat: no-repeat;
             background-position: right 0.5rem center;
             background-size: 1em;
@@ -312,8 +312,8 @@
         /* Nuevo botón de flecha en la esquina superior derecha de la sección de credenciales */
         #credenciales-arrow-back-btn {
             position: absolute;
-            top: 1rem; /* Ajusta según sea necesario para el padding */
-            right: 1rem; /* Ajusta según sea necesario para el padding */
+            top: 0.5rem; /* Ajustado para estar más arriba */
+            right: 1rem; /* Mantiene la posición a la derecha */
             z-index: 20;
             color: #4B5563; /* Color de Tailwind gray-700 */
             transition: all 0.2s ease;
@@ -390,6 +390,13 @@
         .banner-text-small {
             font-size: 0.75rem; /* Tailwind text-xs */
         }
+        /* Ajuste para pantallas grandes (PC) */
+        @media (min-width: 1024px) {
+            .banner-text-small {
+                font-size: 0.875rem; /* Tailwind text-sm */
+            }
+        }
+
         .banner-content-wrapper {
             position: relative; /* Asegura que los elementos absolutos dentro se posicionen correctamente */
         }
@@ -542,7 +549,7 @@
         <section id="credenciales-section" class="credenciales-section">
             <!-- Nuevo botón de flecha en la esquina superior derecha -->
             <button id="credenciales-arrow-back-btn" class="hidden" title="Volver a Inicio" onclick="showMain()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
                 </svg>
             </button>
