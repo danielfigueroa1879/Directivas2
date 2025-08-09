@@ -288,20 +288,21 @@
 
     <!-- Scripts -->
 
-    <script>
+<script>
 function ajustarPadding() {
   const banner = document.getElementById('banner');
   const contenido = document.getElementById('contenido');
-  if (!banner || !contenido) return;
+  if (!banner || !contenido) return; // evita errores si no existen
 
   const altura = Math.ceil(banner.getBoundingClientRect().height);
-  const espacioExtra = 8; // px de separación
-  contenido.style.paddingTop = (altura + espacioExtra) + 'px';
+  contenido.style.paddingTop = altura + 'px';
 }
 
+// Ajusta al cargar y cuando se redimensiona la ventana
 window.addEventListener('load', ajustarPadding);
 window.addEventListener('resize', ajustarPadding);
 </script>
+
 
  
     <script type="module">
