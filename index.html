@@ -232,6 +232,11 @@ window.addEventListener('resize', ajustarPadding);
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
+        // NOTA IMPORTANTE: La función runCounter se define aquí, en el ámbito del módulo
+        // y se llama desde las funciones de carga de contenido dinámico.
+        // Por eso NO está envuelta en el DOMContentLoaded, porque queremos que sea accesible
+        // antes de que el DOM esté completamente cargado para adjuntar sus listeners
+        // a elementos que podrían estar en el contenido dinámico.
         const firebaseConfig = {
           apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
           authDomain: "cuenta-946e2.firebaseapp.com",
@@ -243,15 +248,19 @@ window.addEventListener('resize', ajustarPadding);
         };
         
         async function runCounter() {
-            const counterSpan = document.getElementById('visit-counter');
-            // Busca el span del contador en el área de contenido dinámico también
+            const counterSpan = document.getElementById('visit-counter'); // Contador en el banner principal
+            // Intenta encontrar el contador si existe dentro del contenido dinámico de credenciales
             const dynamicCounterSpan = document.getElementById('visitor-counter-container-credenciales')?.querySelector('#visit-counter-credenciales');
 
             try {
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
                 const auth = getAuth(app);
-                await signInAnonymously(auth);
+                // Intenta iniciar sesión anónimamente solo si aún no hay un usuario autenticado
+                if (!auth.currentUser) {
+                    await signInAnonymously(auth);
+                }
+                
                 const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
                 const newCount = await runTransaction(db, async (transaction) => {
                     const counterDoc = await transaction.get(counterRef);
@@ -265,14 +274,13 @@ window.addEventListener('resize', ajustarPadding);
                     return count;
                 });
                 if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
-                if (dynamicCounterSpan) dynamicCounterSpan.textContent = newCount.toLocaleString('es-CL'); // Actualiza el contador dinámico
+                if (dynamicCounterSpan) dynamicCounterSpan.textContent = newCount.toLocaleString('es-CL'); // Actualiza el contador dinámico si está presente
             } catch (error) {
                 console.error("ERROR: Falló el proceso del contador.", error);
                 if (counterSpan) counterSpan.textContent = "Error";
                 if (dynamicCounterSpan) dynamicCounterSpan.textContent = "Error";
             }
         }
-        runCounter(); // Ejecutar al cargar la página principal
 
 
     </script>
@@ -280,8 +288,12 @@ window.addEventListener('resize', ajustarPadding);
     <!-- Cargar las reglas desde el archivo externo -->
     <script src="./rules/chatbot-rules.js"></script>
     
-    <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
-    <script>
+    <!-- SCRIPT PRINCIPAL DEL CHATBOT y Lógica de Carga Dinámica -->
+    <script type="module">
+        // Re-importar Firebase aquí si se usa en el resto del script,
+        // o asegurar que las variables de Firebase de arriba sean accesibles si se necesitan.
+        // Para simplificar, asumimos que `runCounter` ya inicializa y usa Firebase.
+        
         document.addEventListener('DOMContentLoaded', function() {
 
             // FORZAR MODO CLARO SIEMPRE - ELIMINADO MODO OSCURO COMPLETAMENTE
@@ -416,7 +428,7 @@ window.addEventListener('resize', ajustarPadding);
                 const normalizedUserText = userText.toLowerCase().trim();
                 
                 // 1. Buscar coincidencia exacta primero
-                for (const rule /* of allRules */ of allRules) { // Iterate over allRules
+                for (const rule of allRules) {
                     if (rule && rule.keywords) {
                         for (const keyword of rule.keywords) {
                             const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
@@ -432,7 +444,7 @@ window.addEventListener('resize', ajustarPadding);
                 
                 // 2. Si no hay coincidencia exacta, buscar por inclusión (solo para frases más largas)
                 if (normalizedUserText.length > 5) {
-                    for (const rule /* of allRules */ of allRules) { // Iterate over allRules
+                    for (const rule of allRules) {
                         if (rule && rule.keywords) {
                             for (const keyword of rule.keywords) {
                                 const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
@@ -608,7 +620,7 @@ window.addEventListener('resize', ajustarPadding);
                     
                     // Re-adjuntar eventos después de cargar el nuevo contenido
                     attachDynamicEventListeners();
-                    // Actualizar el contador de visitas después de cargar el contenido
+                    // Actualizar el contador de visitas (ya que runCounter es global/accesible)
                     runCounter(); 
 
                     // Desplazarse al inicio de la página para la nueva vista
