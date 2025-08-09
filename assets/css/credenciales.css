@@ -31,10 +31,12 @@ h3, h4 {
     animation: slideUp 1s ease-out 0.5s forwards;
     position: relative;
     
-    /* Reglas de ancho y padding que serán sobrescritas por los media queries */
+    /* ¡CLAVE! padding y border se incluyen dentro del width declarado */
+    box-sizing: border-box;
+    
+    /* Reglas por defecto para pantallas más grandes (serán sobrescritas por media queries) */
     max-width: 950px; /* Max-width para pantallas muy grandes */
-    margin: 0.5rem auto; /* Margen vertical y centrado horizontal */
-    padding: 1.5rem; /* Padding por defecto, ajustado para evitar que el contenido se pegue mucho */
+    padding: 25px; /* Padding por defecto */
 }
 @keyframes slideUp {
     from { transform: translateY(20%); opacity: 0; }
@@ -273,39 +275,60 @@ h3, h4 {
 /* Para pantallas MUY PEQUEÑAS (<= 374px, como 320px) */
 @media (max-width: 374px) {
     .card-container {
-        width: 97% !important; /* OCUPAR CASI TODO EL ANCHO */
-        padding: 0.8rem !important; /* Reduce el padding para más espacio al contenido */
-        margin: 0.1rem auto !important; /* Reduce margen vertical */
+        width: 95% !important; /* Ahora 95% para dejar 2.5% de margen a cada lado */
+        margin: 0.1rem auto !important; /* Se mantiene un margen vertical muy pequeño */
+        padding: 0.6rem !important; /* Ajuste el padding para un balance visual */
     }
-    .main-title { font-size: 1.8rem; } /* Ajusta tamaño de texto en pantallas pequeñas */
-    .main-subtitle { font-size: 1.5rem; transform: translateX(8px); }
-    .logo-os10 { width: 50px; top: 10px; left: 10px; }
-    .download-btn { width: 100%; min-width: unset; } /* Botones ocupan todo el ancho */
-    .photo-example { width: 90%; }
-    .valores-example { width: 150px; }
-    .qr-cred-image { width: 50px; }
+    /* Asegurar que los elementos dentro también se ajusten bien */
+    p, li, td { font-size: 0.9rem; } /* Ligeramente más pequeño */
+    .main-title { font-size: 1.5rem; } /* Ajusta tamaño de texto en pantallas pequeñas */
+    .main-subtitle { font-size: 1.2rem; transform: translateX(4px); }
+    .logo-os10 { width: 40px; top: 6px; left: 6px; } /* Ajuste del logo para pantallas muy pequeñas */
+    .download-btn { width: 100%; min-width: unset; padding: 0.3rem 0.6rem; font-size: 0.85rem; } /* Botones ocupan todo el ancho, padding más pequeño */
+    .photo-example { width: 100%; margin: 0 auto; } /* Ocupar todo el ancho disponible para la imagen */
+    .valores-example { width: 100px; } /* Imagen más pequeña */
+    .qr-cred-image { width: 35px; } /* QR más pequeño */
+    .section-title { font-size: 1.1rem; }
+    .requirement-subtitle { font-size: 0.95rem; }
+    .requirement-subtitle.special-subtitle { font-size: 1.05rem; }
+    .responsive-table th, .responsive-table td { padding: 6px; font-size: 0.75rem; } /* Tablas más compactas */
+
+    /* Ajuste para el back-btn en móviles muy pequeños */
+    .back-btn {
+        bottom: 8px;
+        right: 8px;
+        width: 35px;
+        height: 35px;
+        padding: 6px;
+    }
+    .back-btn svg { width: 14px; height: 14px; }
 }
 
 /* Para pantallas de CELULAR ESTÁNDAR (entre 375px y 767px) */
 @media (min-width: 375px) and (max-width: 767px) {
     .card-container {
-        width: 97% !important; /* Ancho estándar para la mayoría de móviles */
-        padding: 1.2rem !important;
+        width: 90% !important; /* Ahora 90% para dejar 5% de margen a cada lado */
         margin: 0.3rem auto !important;
+        padding: 1rem !important;
     }
+    p, li, td { font-size: 1rem; }
     .main-title { font-size: 2rem; }
     .main-subtitle { font-size: 1.7rem; }
     .logo-os10 { width: 60px; top: 15px; left: 15px; }
-    .download-btn { width: 220px; min-width: 220px; }
+    .download-btn { width: 220px; min-width: 220px; padding: 8px 24px; font-size: 1rem; }
     .photo-example { width: 70%; }
     .valores-example { width: 180px; }
     .qr-cred-image { width: 60px; }
+    .section-title { font-size: 1.3rem; }
+    .requirement-subtitle { font-size: 1.1rem; }
+    .requirement-subtitle.special-subtitle { font-size: 1.2rem; }
+    .responsive-table th, .responsive-table td { padding: 10px; font-size: 0.9rem; }
 
     /* Ajustes específicos de tablas para móviles */
     .table-container {
-        margin-left: -1.5rem; /* Extender la tabla a los bordes del card-container */
-        margin-right: -1.5rem;
-        width: calc(100% + 3rem); /* Compensar el padding del card-container */
+        margin-left: -1rem; /* Extender la tabla a los bordes del card-container (si el padding es 1rem) */
+        margin-right: -1rem;
+        width: calc(100% + 2rem); /* Compensar el padding del card-container */
     }
     .table-container::after {
         content: '← Desplaza para ver más →';
@@ -315,6 +338,18 @@ h3, h4 {
         color: #6b7280;
         margin-top: 8px;
     }
+
+    /* Ajuste para el back-btn en móviles */
+    .back-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        padding: 10px 14px;
+    }
+    .back-btn .btn-text { display: none; }
+    .back-btn svg { margin-right: 0; }
+    .back-btn:active { transform: scale(0.95); }
 }
 
 /* Para pantallas de TABLET y ESCRITORIO (>= 768px) */
@@ -324,13 +359,28 @@ h3, h4 {
         padding: 25px !important; /* Mantiene tu padding original para escritorio */
         margin: 0.5rem auto !important;
     }
+    p, li, td { font-size: 1.05rem; }
     .main-title { font-size: 2.2rem; }
     .main-subtitle { font-size: 1.9rem; }
     .logo-os10 { width: 70px; top: 20px; left: 20px; }
-    .download-btn { width: 240px; min-width: 240px; } /* Restaurar ancho original para escritorio */
+    .download-btn { width: 240px; min-width: 240px; padding: 8px 24px; font-size: 1rem; }
     .photo-example { width: 40%; }
     .valores-example { width: 220px; }
     .qr-cred-image { width: 80px; }
+    .section-title { font-size: 1.5rem; }
+    .requirement-subtitle { font-size: 1.3rem; }
+    .requirement-subtitle.special-subtitle { font-size: 1.4rem; }
+    .responsive-table th, .responsive-table td { padding: 12px; font-size: 0.95rem; }
+
+    /* Restaurar el back-btn para escritorio (muestra el texto) */
+    .back-btn {
+        padding: 10px 14px;
+        border-radius: 7px;
+        width: auto;
+        height: auto;
+    }
+    .back-btn .btn-text { display: inline; }
+    .back-btn svg { margin-right: 5px; }
 }
 
 
