@@ -365,16 +365,21 @@
         .banner-text-small {
             font-size: 0.75rem; /* Tailwind text-xs */
         }
+        .banner-center-text {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="pt-10">
     <!-- Banner informativo fijo -->
-    <div id="banner" class="fixed top-0 left-0 right-0 z-[1100] bg-white/50 backdrop-blur-sm border-b border-gray-200/50 h-10 flex items-center justify-center text-sm text-gray-700 shadow-sm">
-        <span class="font-medium banner-text-small">O.S.10 Coquimbo&nbsp;&nbsp;</span>
-        <span class="banner-text-small"> | </span>
-        
-        <!-- Menú Credenciales -->
-        <div class="relative ml-2">
+    <div id="banner" class="fixed top-0 left-0 right-0 z-[1100] bg-white/50 backdrop-blur-sm border-b border-gray-200/50 h-10 flex items-center justify-between text-sm text-gray-700 shadow-sm px-4">
+        <!-- Left Section: Credenciales Menu -->
+        <div class="flex items-center">
             <button id="credenciales-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
                 Credenciales
                 <svg class="w-3 h-3 ml-1 transition-transform" id="credenciales-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -393,13 +398,28 @@
             </div>
         </div>
         
-        <span class="ml-2 banner-text-small"> | </span>
-        <div class="flex items-center text-xs ml-2">
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-            </svg>
-            <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+        <!-- Center Section: O.S.10 Coquimbo (clickable) -->
+        <a id="os10-home-btn" class="font-medium banner-text-small cursor-pointer hover:text-blue-600 transition-colors banner-center-text">
+            O.S.10 Coquimbo
+        </a>
+
+        <!-- Right Section: Back Button and Visit Counter -->
+        <div class="flex items-center space-x-2">
+            <!-- New Back Button (conditional display) -->
+            <button id="banner-back-btn" class="hidden text-gray-700 hover:text-blue-600 focus:outline-none transition-colors" title="Volver a Inicio">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Flecha sin la base -->
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
+                </svg>
+            </button>
+            <span class="banner-text-small"> | </span>
+            <div class="flex items-center text-xs ml-2">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+            </div>
         </div>
     </div>
 
@@ -678,6 +698,10 @@
         function showCredenciales() {
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
+            // Show the back button in the banner
+            document.getElementById('banner-back-btn').classList.remove('hidden');
+            // Hide OS10 Coquimbo text for better centering of back button
+            document.getElementById('os10-home-btn').classList.add('hidden');
             
             // Scroll to top
             window.scrollTo(0, 0);
@@ -686,6 +710,10 @@
         function showMain() {
             document.getElementById('credenciales-section').classList.remove('active');
             document.getElementById('main-section').style.display = 'block';
+            // Hide the back button in the banner
+            document.getElementById('banner-back-btn').classList.add('hidden');
+            // Show OS10 Coquimbo text again
+            document.getElementById('os10-home-btn').classList.remove('hidden');
             
             // Scroll to top
             window.scrollTo(0, 0);
@@ -796,6 +824,17 @@
                     
                     console.log(`Intentando descargar: ${fileName} desde ${pdfUrl}`);
                 });
+            }
+
+            // Event listener for OS10 Home Button
+            document.getElementById('os10-home-btn').addEventListener('click', showMain);
+
+            // Event listener for the new banner back button
+            document.getElementById('banner-back-btn').addEventListener('click', showMain);
+
+            // Initial state: hide back button if not in credenciales section
+            if (!document.getElementById('credenciales-section').classList.contains('active')) {
+                document.getElementById('banner-back-btn').classList.add('hidden');
             }
         });
     </script>
