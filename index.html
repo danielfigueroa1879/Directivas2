@@ -377,7 +377,7 @@
             </button>
             
             <!-- Dropdown Menu -->
-            <div id="credenciales-dropdown" class="absolute top-full left-0 mt-1 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-md shadow-lg min-w-[180px] hidden z-50">
+            <div id="credenciales-dropdown" class="absolute top-full left-0 mt-1 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-md shadow-lg min-w-[220px] hidden z-50">
                 <button onclick="handleCredencialEmpresa()" class="w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 transition-colors border-b border-gray-100">
                     Credencial Empresa
                 </button>
@@ -501,7 +501,7 @@
             
             <header class="credenciales-title-container">
                 <h1 class="credenciales-main-title">CREDENCIAL</h1>
-                <h2 class="credenciales-main-subtitle">EMPRESA E INDEPENDIENTE</h2><BR>
+                <h2 class="credenciales-main-subtitle">EMPRESA E<br>INDEPENDIENTE</h2>
             </header>
                 
                 <main class="content-container">
@@ -687,33 +687,18 @@
 
         // Funciones para el menú de credenciales en el banner
         function handleCredencialEmpresa() {
+            // Activar el evento del botón "Tramitar credenciales"
             showCredenciales();
-            // Simular click en área de empresa (scroll a esa sección)
-            setTimeout(() => {
-                const excelSection = document.querySelector('.requirement-block:nth-of-type(3)');
-                if (excelSection) {
-                    excelSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 300);
             closeCredencialesMenu();
         }
 
         function handleCredencialIndependiente() {
-            showCredenciales();
-            // Simular click en botón independiente
-            setTimeout(() => {
-                const independienteBtn = document.querySelector('.indep-btn');
-                if (independienteBtn) {
-                    independienteBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // Agregar efecto visual temporal
-                    independienteBtn.style.transform = 'scale(1.1)';
-                    independienteBtn.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.5)';
-                    setTimeout(() => {
-                        independienteBtn.style.transform = '';
-                        independienteBtn.style.boxShadow = '';
-                    }, 1000);
-                }
-            }, 300);
+            // Activar el mismo evento que el botón azul "Independiente"
+            // Simular click en el enlace del botón independiente
+            const independienteLink = document.querySelector('.indep-btn');
+            if (independienteLink && independienteLink.href) {
+                window.open(independienteLink.href, '_blank');
+            }
             closeCredencialesMenu();
         }
 
