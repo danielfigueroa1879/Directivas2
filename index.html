@@ -438,7 +438,7 @@ window.addEventListener('resize', ajustarPadding);
                                 const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
                                 
                                 // Solo buscar inclusión si la palabra clave tiene más de 3 caracteres
-                                if (normalizedKeyword.length > 3 && normalizedUserText.includes(normalizedKeyword)) {
+                                if (normalizedUserText.includes(normalizedKeyword)) {
                                     console.log(`🔍 Coincidencia por INCLUSIÓN: "${normalizedUserText}" incluye "${normalizedKeyword}"`);
                                     return rule.response;
                                 }
