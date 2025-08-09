@@ -26,6 +26,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <!-- IMPORTANTE: Ahora index.html carga también los estilos de credenciales.css -->
+    <link rel="stylesheet" href="assets/css/credenciales.css">
+
     <!-- Estilos personalizados -->
     <style>
         body { 
@@ -236,7 +239,7 @@ window.addEventListener('resize', ajustarPadding);
         window.runCounter = async function() { // Asignamos a window
             const counterSpan = document.getElementById('visit-counter'); // Contador en el banner principal
             // Intenta encontrar el contador si existe dentro del contenido dinámico de credenciales
-            const dynamicCounterSpan = document.getElementById('visitor-counter-container-credenciales')?.querySelector('#visit-counter-credenciales');
+            const dynamicCounterSpan = document.getElementById('visit-counter-credenciales'); // ID corregido para credenciales fragment
 
             try {
                 const app = initializeApp(firebaseConfig);
@@ -279,7 +282,8 @@ window.addEventListener('resize', ajustarPadding);
         };
         
         // Llamar a runCounter al cargar la página principal (y ya está globalmente accesible)
-        window.runCounter(); 
+        // Ya no es necesario llamarla aquí, se llamará en el DOMContentLoaded o en attachDynamicEventListeners
+        // window.runCounter(); 
 
 
     </script>
@@ -617,7 +621,8 @@ window.addEventListener('resize', ajustarPadding);
                     
                     // Re-adjuntar eventos después de cargar el nuevo contenido
                     attachDynamicEventListeners();
-                    // Actualizar el contador de visitas (ya que window.runCounter es global/accesible)
+                    // Ejecutar el contador después de que el nuevo contenido esté en el DOM
+                    // La función window.runCounter se encarga de buscar ambos contadores (principal y dinámico)
                     window.runCounter(); 
 
                     // Desplazarse al inicio de la página para la nueva vista
