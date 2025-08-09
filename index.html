@@ -155,10 +155,9 @@
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="h-full" loading="lazy">
         </a>
         
-        <!-- Contenido que cambiará dinámicamente -->
+        <!-- Área donde se cargará el contenido dinámico (inicio o credenciales) -->
         <div id="dynamic-content-area">
-            <!-- El contenido de index.html se cargará aquí por defecto -->
-            <!-- Cuando se haga clic en "Tramitar Credenciales", el contenido de credenciales.html se cargará aquí -->
+            <!-- El contenido se inyectará aquí con JavaScript -->
         </div>
 
    </div>
@@ -245,6 +244,9 @@ window.addEventListener('resize', ajustarPadding);
         
         async function runCounter() {
             const counterSpan = document.getElementById('visit-counter');
+            // Busca el span del contador en el área de contenido dinámico también
+            const dynamicCounterSpan = document.getElementById('visitor-counter-container-credenciales')?.querySelector('#visit-counter-credenciales');
+
             try {
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
@@ -263,13 +265,16 @@ window.addEventListener('resize', ajustarPadding);
                     return count;
                 });
                 if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+                if (dynamicCounterSpan) dynamicCounterSpan.textContent = newCount.toLocaleString('es-CL'); // Actualiza el contador dinámico
             } catch (error) {
                 console.error("ERROR: Falló el proceso del contador.", error);
                 if (counterSpan) counterSpan.textContent = "Error";
+                if (dynamicCounterSpan) dynamicCounterSpan.textContent = "Error";
             }
         }
-        runCounter();
-        
+        runCounter(); // Ejecutar al cargar la página principal
+
+
     </script>
     
     <!-- Cargar las reglas desde el archivo externo -->
@@ -411,7 +416,7 @@ window.addEventListener('resize', ajustarPadding);
                 const normalizedUserText = userText.toLowerCase().trim();
                 
                 // 1. Buscar coincidencia exacta primero
-                for (const rule of allRules) {
+                for (const rule /* of allRules */ of allRules) { // Iterate over allRules
                     if (rule && rule.keywords) {
                         for (const keyword of rule.keywords) {
                             const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
@@ -427,7 +432,7 @@ window.addEventListener('resize', ajustarPadding);
                 
                 // 2. Si no hay coincidencia exacta, buscar por inclusión (solo para frases más largas)
                 if (normalizedUserText.length > 5) {
-                    for (const rule of allRules) {
+                    for (const rule /* of allRules */ of allRules) { // Iterate over allRules
                         if (rule && rule.keywords) {
                             for (const keyword of rule.keywords) {
                                 const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
@@ -591,67 +596,63 @@ window.addEventListener('resize', ajustarPadding);
 
             // --- Lógica de Carga Dinámica de Contenido ---
             const dynamicContentArea = document.getElementById('dynamic-content-area');
-            const tramitarCredencialesBtn = document.getElementById('tramitarCredencialesBtn'); 
+            let currentPage = 'home'; // Estado para saber qué página estamos mostrando
 
-            // Función para cargar el contenido de index.html
-            async function loadHomePageContent() {
+            // Función para cargar contenido HTML en el área dinámica
+            async function loadContent(url) {
                 try {
-                    const response = await fetch('index_home_content.html'); // Archivo auxiliar para el contenido principal
+                    const response = await fetch(url);
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const html = await response.text();
                     dynamicContentArea.innerHTML = html;
-                    attachDynamicEventListeners(); // Re-adjuntar listeners después de cargar el contenido
-                } catch (error) {
-                    console.error("Error al cargar el contenido de la página principal:", error);
-                    dynamicContentArea.innerHTML = "<p class='text-red-500'>Error al cargar el contenido principal.</p>";
-                }
-            }
+                    
+                    // Re-adjuntar eventos después de cargar el nuevo contenido
+                    attachDynamicEventListeners();
+                    // Actualizar el contador de visitas después de cargar el contenido
+                    runCounter(); 
 
-            // Función para cargar el contenido de credenciales.html
-            async function loadCredencialesPageContent() {
-                try {
-                    const response = await fetch('credenciales.html');
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    const html = await response.text();
-                    
-                    // Crea un elemento temporal para parsear el HTML y extraer el contenido del body
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const bodyContent = doc.body.innerHTML; // Obtiene solo el contenido dentro del <body>
-                    
-                    dynamicContentArea.innerHTML = bodyContent;
-                    attachDynamicEventListeners(); // Re-adjuntar listeners después de cargar el contenido
+                    // Desplazarse al inicio de la página para la nueva vista
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
                 } catch (error) {
-                    console.error("Error al cargar el contenido de credenciales:", error);
-                    dynamicContentArea.innerHTML = "<p class='text-red-500'>Error al cargar el contenido de credenciales.</p>";
+                    console.error(`Error al cargar el contenido de ${url}:`, error);
+                    dynamicContentArea.innerHTML = `<p class='text-red-500'>Error al cargar el contenido de ${url}. Por favor, intenta de nuevo.</p>`;
                 }
             }
 
             // Función para adjuntar/re-adjuntar event listeners a elementos cargados dinámicamente
             function attachDynamicEventListeners() {
-                // Volver a vincular el botón "Tramitar Credenciales" si existe en el contenido cargado
-                const currentTramitarBtn = dynamicContentArea.querySelector('#tramitarCredencialesBtn');
-                if (currentTramitarBtn) {
-                    currentTramitarBtn.addEventListener('click', loadCredencialesPageContent);
+                // Adjuntar el evento al botón 'Tramitar Credenciales' si está en la vista actual
+                const tramitarCredencialesBtn = dynamicContentArea.querySelector('#tramitarCredencialesBtn');
+                if (tramitarCredencialesBtn) {
+                    tramitarCredencialesBtn.addEventListener('click', () => {
+                        loadContent('credenciales.html');
+                        currentPage = 'credenciales';
+                    });
                 }
 
-                // Volver a vincular el botón "Volver" si existe en el contenido cargado (de credenciales.html)
-                const backButtonCredenciales = dynamicContentArea.querySelector('#back-button-credenciales');
-                if (backButtonCredenciales) {
-                    backButtonCredenciales.addEventListener('click', loadHomePageContent);
+                // Adjuntar el evento al botón 'Volver' en la página de credenciales si está en la vista actual
+                const backButtonFromCredenciales = dynamicContentArea.querySelector('#back-button-from-credenciales');
+                if (backButtonFromCredenciales) {
+                    backButtonFromCredenciales.addEventListener('click', () => {
+                        loadContent('index_home_content.html');
+                        currentPage = 'home';
+                    });
                 }
-
-                // Volver a vincular el contador de visitas (si es necesario y se recarga con el contenido)
-                runCounter(); 
             }
 
             // Cargar el contenido de la página principal al inicio
-            loadHomePageContent();
+            loadContent('index_home_content.html');
 
-            // Vincular el botón "Tramitar Credenciales" inicial de index.html
-            if (tramitarCredencialesBtn) {
-                tramitarCredencialesBtn.addEventListener('click', loadCredencialesPageContent);
-            }
+            // Escuchar eventos de navegación (por si hay alguna necesidad externa de cambiar de página)
+            window.addEventListener('navigateToHome', () => {
+                loadContent('index_home_content.html');
+                currentPage = 'home';
+            });
+            window.addEventListener('navigateToCredenciales', () => {
+                loadContent('credenciales.html');
+                currentPage = 'credenciales';
+            });
         });
     </script>
 </body>
