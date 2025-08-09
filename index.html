@@ -39,10 +39,18 @@
             background-attachment: fixed;
         }
         .card-container { 
-            max-width: 750px; 
-            width: 90%; 
+            /* Por defecto, ocupa un ancho generoso para móviles y luego se restringe */
+            width: 97%; /* CAMBIADO: Ancho predeterminado para móviles y pantallas pequeñas */
+            max-width: 750px; /* Ancho máximo para pantallas grandes */
             margin: 0.5rem auto; 
         }
+        /* Ajuste para pantallas MÁS GRANDES que móviles (tablets y desktop) */
+        @media (min-width: 768px) {
+            .card-container {
+                width: 90%; /* Ajuste para tablets y desktop */
+            }
+        }
+
         .logo-os10-container { 
             position: absolute;
             top: 1.5rem;
@@ -128,9 +136,7 @@
         
         /* Ajuste para pantallas pequeñas (Celular) */
         @media (max-width: 767px) {
-            .card-container {
-                width: 99%; /* CAMBIADO: Ahora 97% en móviles */
-            }
+            /* Ya no es necesario especificar width: 97% aquí, porque es el default para .card-container */
             #chat-popup {
                 width: calc(100vw - 3rem);
             }
