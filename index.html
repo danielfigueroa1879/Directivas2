@@ -153,7 +153,7 @@
 
     <!-- Contenedor principal de la página -->
     <div class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
-        <!-- Logo dentro del contenedor -->
+        <!-- Logo dentro del contenedor (este logo es el que se mantiene) -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR" class="logo-os10-container">
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="h-full" loading="lazy">
         </a>
@@ -245,23 +245,33 @@ window.addEventListener('resize', ajustarPadding);
           measurementId: "G-RX9KZSC0F4"
         };
 
-        // Inicializar Firebase UNA SOLA VEZ, fuera de la función runCounter
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+        // Inicializar Firebase UNA SOLA VEZ
+        let appInstance;
+        let dbInstance;
+        let authInstance;
+
+        async function initializeFirebase() {
+            if (!appInstance) {
+                appInstance = initializeApp(firebaseConfig);
+                dbInstance = getFirestore(appInstance);
+                authInstance = getAuth(appInstance);
+                console.log("Firebase inicializado.");
+            }
+        }
         
         // Hacer runCounter accesible globalmente
-        window.runCounter = async function() { // Asignamos a window
+        window.runCounter = async function() {
+            await initializeFirebase(); // Asegura que Firebase esté inicializado
             const counterSpan = document.getElementById('visit-counter'); // Contador en el banner principal
 
             try {
                 // Intenta iniciar sesión anónimamente solo si aún no hay un usuario autenticado
-                if (!auth.currentUser) {
-                    await signInAnonymously(auth);
+                if (!authInstance.currentUser) {
+                    await signInAnonymously(authInstance);
                 }
                 
-                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                const newCount = await runTransaction(db, async (transaction) => {
+                const counterRef = doc(dbInstance, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(dbInstance, async (transaction) => {
                     const counterDoc = await transaction.get(counterRef);
                     let count = 1;
                     if (counterDoc.exists()) {
@@ -273,17 +283,11 @@ window.addEventListener('resize', ajustarPadding);
                     return count;
                 });
                 if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
-                // Ya no intentamos actualizar un contador dentro del fragmento de credenciales
             } catch (error) {
                 console.error("ERROR: Falló el proceso del contador.", error);
                 if (counterSpan) counterSpan.textContent = "Error";
             }
         };
-
-        // Llamar a runCounter al cargar la página principal (y ya está globalmente accesible)
-        // Se llamará de nuevo en attachDynamicEventListeners si el contenido dinámico lo requiere,
-        // pero la inicialización de Firebase ya estará hecha.
-        // window.runCounter(); // Se mueve la llamada a DOMContentLoaded para asegurar que el DOM esté listo
 
 
     </script>
@@ -293,9 +297,9 @@ window.addEventListener('resize', ajustarPadding);
     
     <!-- SCRIPT PRINCIPAL DEL CHATBOT y Lógica de Carga Dinámica -->
     <script type="module">
-        // Ahora podemos acceder a window.runCounter() porque lo hicimos global en el script anterior
-
         document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar el contador al cargar la página principal
+            window.runCounter(); 
 
             // FORZAR MODO CLARO SIEMPRE - ELIMINADO MODO OSCURO COMPLETAMENTE
             document.documentElement.classList.remove('dark');
@@ -621,9 +625,9 @@ window.addEventListener('resize', ajustarPadding);
                     
                     // Re-adjuntar eventos después de cargar el nuevo contenido
                     attachDynamicEventListeners();
-                    // Ejecutar el contador después de que el nuevo contenido esté en el DOM
-                    // La función window.runCounter se encarga de buscar ambos contadores (principal y dinámico)
-                    window.runCounter(); 
+                    // El contador de visitas principal ya se actualiza una vez al inicio.
+                    // No es necesario llamar a window.runCounter() aquí a menos que el contador
+                    // deba cambiar con cada vista de contenido, lo cual no es el caso para el banner principal.
 
                     // Desplazarse al inicio de la página para la nueva vista
                     window.scrollTo({ top: 0, behavior: 'smooth' });
