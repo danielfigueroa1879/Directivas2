@@ -10,317 +10,25 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <!-- Dependencias y Estilos -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- OPTIMIZADO: Carga de fuentes optimizada -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Estilos personalizados -->
-    <style>
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background-image: url('assets/images/101.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            padding: 1rem;
-        }
-        
-        .card-container { 
-            max-width: 900px; 
-            width: 100%; 
-            margin: 0 auto; 
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .logo-os10 { 
-            position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
-            height: 60px;
-            z-index: 10;
-        }
-        
-        .back-btn {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            z-index: 10;
-        }
-        
-        .back-btn svg {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-        
-        #visitor-counter-container {
-            position: absolute;
-            top: 5rem;
-            right: 1.5rem;
-            font-size: 0.75rem;
-            color: #6b7280;
-        }
-        
-        .title-container {
-            text-align: center;
-            margin-top: 5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .main-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #1f2937;
-            margin-bottom: 0.5rem;
-        }
-        
-        .main-subtitle {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #6b7280;
-        }
-        
-        .content-container {
-            margin-top: 2rem;
-        }
-        
-        .main-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1f2937;
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 1rem;
-        }
-        
-        .requirement-block {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f9fafb;
-            border-radius: 0.5rem;
-            border-left: 4px solid #3b82f6;
-        }
-        
-        .requirement-subtitle {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-        
-        .special-subtitle {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
-        }
-        
-        .download-btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem 0;
-            border-radius: 0.375rem;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .excel-btn, .indep-btn {
-            display: block;
-            margin: 1rem auto;
-            max-width: 200px;
-        }
-        
-        .dpi-btn {
-            max-width: 180px;
-            margin: 0 auto;
-        }
-        
-        .photo-example {
-            width: 150px;
-            height: auto;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            display: block;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            margin: 1rem 0;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-        
-        .responsive-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
-        
-        .responsive-table th,
-        .responsive-table td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-            font-size: 0.875rem;
-        }
-        
-        .responsive-table th {
-            background: #f3f4f6;
-            font-weight: 600;
-            color: #374151;
-        }
-        
-        .table-select {
-            width: 100%;
-            padding: 0.25rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
-        }
-        
-        .valores-example {
-            width: 200px;
-            height: auto;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .valores-example:hover {
-            transform: scale(1.05);
-        }
-        
-        .qr-cred-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 0.5rem;
-        }
-        
-        .download-link {
-            text-decoration: none;
-        }
-        
-        .footer-text {
-            text-align: center;
-            font-size: 0.875rem;
-            color: #6b7280;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
-            line-height: 1.5;
-        }
-        
-        .footer-text span {
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .card-container {
-                padding: 1rem;
-            }
-            
-            .logo-os10 {
-                height: 40px;
-                top: 1rem;
-                left: 1rem;
-            }
-            
-            .back-btn {
-                top: 1rem;
-                right: 1rem;
-                padding: 0.375rem 0.75rem;
-                font-size: 0.875rem;
-            }
-            
-            #visitor-counter-container {
-                top: 3.5rem;
-                right: 1rem;
-            }
-            
-            .title-container {
-                margin-top: 4rem;
-            }
-            
-            .main-title {
-                font-size: 1.5rem;
-            }
-            
-            .main-subtitle {
-                font-size: 1rem;
-            }
-            
-            .main-section {
-                padding: 1rem;
-            }
-            
-            .requirement-block {
-                padding: 1rem;
-            }
-            
-            .responsive-table {
-                font-size: 0.75rem;
-            }
-            
-            .responsive-table th,
-            .responsive-table td {
-                padding: 0.5rem 0.25rem;
-            }
-            
-            .valores-example {
-                width: 150px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .back-btn .btn-text {
-                display: none;
-            }
-            
-            .table-container {
-                font-size: 0.625rem;
-            }
-            
-            .responsive-table th,
-            .responsive-table td {
-                padding: 0.25rem;
-                font-size: 0.625rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/credenciales.css">
 </head>
 <body class="text-gray-800">
 
-    <div class="card-container bg-white/95 backdrop-blur-sm rounded-xl shadow-lg relative">
-        <div id="visitor-counter-container">
-            <p class="flex items-center">
+    <div class="card-container bg-white rounded-xl shadow-md relative">
+        <div id="visitor-counter-container" class="absolute top-5 right-6">
+            <p class="flex items-center" style="font-size: 12px;">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
             </p>
         </div>
 
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
+           <!-- OPTIMIZADO: Carga diferida de imagen -->
            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
         </a>
         
@@ -344,31 +52,33 @@
                     <!-- Documentos requeridos -->
                     <div class="requirement-block">
                         <h4 class="requirement-subtitle">Documentos requeridos:</h4>
-                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <ul class="list-disc pl-5">
                             <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
+                            <a href="https://d6.short.gy/bv" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600">
+                            Descargar
+                        </a>
                             <li>Fotocopia de cédula de identidad (ambas caras).</li>
                             <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
                             <li>Certificado de Antecedentes para Fines Especiales.</li>
                         </ul>
-                        <a href="https://d6.short.gy/bv" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600">
-                            Descargar Solicitud
-                        </a>
+                        
                     </div>
                     
                     <!-- Fotografía digital -->
                     <div class="requirement-block">
                         <h4 class="requirement-subtitle">Fotografía digital:</h4>
-                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <ul class="list-disc pl-5">
                             <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
                             <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
                             <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
-                            <li>Fotografía almacenada en un Pendrive.</li>
+                            <li>Fotografia almacenada en un Pendrive.</li>
                         </ul>
                         <div class="mt-4">
+                            <!-- OPTIMIZADO: Carga diferida de imagen -->
                             <img src="assets/images/foto.jpg" alt="Ejemplo de Fotografía correcta" class="photo-example" loading="lazy">
                         </div>
                         <div class="flex flex-col space-y-3 mt-4">
-                            <p class="text-sm italic text-center text-gray-600">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
+                            <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
                             <a href="https://dal5.short.gy/0" target="_blank" class="download-btn dpi-btn bg-yellow-500 hover:bg-yellow-600">
                                 1 Convert. 300 DPI
                             </a>
@@ -381,12 +91,13 @@
                     <!-- Formato Excel -->
                     <div class="requirement-block">
                         <h4 class="requirement-subtitle">Formato Excel:</h4>
-                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <ul class="list-disc pl-5">
                             <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
                             <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
                         </ul>
                         <div class="table-container">
                             <table class="responsive-table">
+                                <!-- Contenido de la tabla -->
                                 <thead>
                                     <tr>
                                         <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
@@ -414,7 +125,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href="https://dal5.short.gy/Cr3d" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar Excel</a>
+                        <a href="https://dal5.short.gy/Cr3d" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
                         
                         <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
                         <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
@@ -423,7 +134,7 @@
                     <!-- Pago Vale Vista -->
                     <div class="requirement-block">
                         <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
-                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <ul class="list-disc pl-5">
                             <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
                             <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
                             <li>R.U.T.: 61.944.800-6</li>
@@ -431,9 +142,11 @@
                         </ul>
                         <div class="flex items-end justify-between mt-4">
                             <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
+                                <!-- OPTIMIZADO: Carga diferida de imagen -->
                                 <img src="assets/images/valores.png" alt="Valores de Pago" class="valores-example" loading="lazy">
                             </a>
                             <a href="https://dal5.short.gy/C√" target="_blank">
+                               <!-- OPTIMIZADO: Carga diferida de imagen -->
                                <img src="assets/images/qrcred.png" alt="Código QR para más información" class="qr-cred-image" loading="lazy">
                             </a>
                         </div>
@@ -449,13 +162,17 @@
        </footer>
     </div>
 
+    <!-- Scripts para forzar modo claro -->
     <script>
         // FORZAR MODO CLARO SIEMPRE
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
     </script>
+
+    <!-- OPTIMIZADO: Scripts diferidos para no bloquear la carga -->
+    <script src="assets/js/credenciales.js" defer></script>
     
-    <script type="module">
+    <script type="module" defer>
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
