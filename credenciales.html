@@ -32,12 +32,13 @@
            <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
         </a>
         
-        <a href="index.html" class="back-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold">
+        <!-- Botón "Volver" que ahora envía un mensaje a la ventana padre -->
+        <button id="back-to-index-btn" class="back-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
             </svg>
             <span class="btn-text">Volver</span>
-        </a>
+        </button>
         
         <header class="title-container">
             <h1 class="main-title">CREDENCIAL</h1>
@@ -217,6 +218,14 @@
             }
         }
         runCounter();
+
+        // Lógica para enviar mensaje a la ventana padre al hacer clic en "Volver"
+        document.getElementById('back-to-index-btn').addEventListener('click', () => {
+            if (window.parent) {
+                window.parent.postMessage('goBackToIndex', '*'); // Envía un mensaje a la ventana padre
+            }
+        });
+
    </script>
 </body>
 </html>
