@@ -35,7 +35,7 @@ h3, h4 {
     box-sizing: border-box;
     
     /* Reglas por defecto para pantallas más grandes (serán sobrescritas por media queries) */
-    max-width: 850px; /* Max-width para pantallas muy grandes */
+    max-width: 800px; /* Max-width para pantallas muy grandes */
     padding: 25px; /* Padding por defecto */
 }
 @keyframes slideUp {
