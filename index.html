@@ -232,22 +232,8 @@ window.addEventListener('resize', ajustarPadding);
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        // NOTA IMPORTANTE: La función runCounter se define aquí, en el ámbito del módulo
-        // y se llama desde las funciones de carga de contenido dinámico.
-        // Por eso NO está envuelta en el DOMContentLoaded, porque queremos que sea accesible
-        // antes de que el DOM esté completamente cargado para adjuntar sus listeners
-        // a elementos que podrían estar en el contenido dinámico.
-        const firebaseConfig = {
-          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
-          authDomain: "cuenta-946e2.firebaseapp.com",
-          projectId: "cuenta-946e2",
-          storageBucket: "cuenta-946e2.firebasestorage.app",
-          messagingSenderId: "816979648502",
-          appId: "1:816979648502:web:809beffeea8ba7968031d7",
-          measurementId: "G-RX9KZSC0F4"
-        };
-        
-        async function runCounter() {
+        // Hacer runCounter accesible globalmente
+        window.runCounter = async function() { // Asignamos a window
             const counterSpan = document.getElementById('visit-counter'); // Contador en el banner principal
             // Intenta encontrar el contador si existe dentro del contenido dinámico de credenciales
             const dynamicCounterSpan = document.getElementById('visitor-counter-container-credenciales')?.querySelector('#visit-counter-credenciales');
@@ -280,7 +266,20 @@ window.addEventListener('resize', ajustarPadding);
                 if (counterSpan) counterSpan.textContent = "Error";
                 if (dynamicCounterSpan) dynamicCounterSpan.textContent = "Error";
             }
-        }
+        };
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+          authDomain: "cuenta-946e2.firebaseapp.com",
+          projectId: "cuenta-946e2",
+          storageBucket: "cuenta-946e2.firebasestorage.app",
+          messagingSenderId: "816979648502",
+          appId: "1:816979648502:web:809beffeea8ba7968031d7",
+          measurementId: "G-RX9KZSC0F4"
+        };
+        
+        // Llamar a runCounter al cargar la página principal (y ya está globalmente accesible)
+        window.runCounter(); 
 
 
     </script>
@@ -290,10 +289,8 @@ window.addEventListener('resize', ajustarPadding);
     
     <!-- SCRIPT PRINCIPAL DEL CHATBOT y Lógica de Carga Dinámica -->
     <script type="module">
-        // Re-importar Firebase aquí si se usa en el resto del script,
-        // o asegurar que las variables de Firebase de arriba sean accesibles si se necesitan.
-        // Para simplificar, asumimos que `runCounter` ya inicializa y usa Firebase.
-        
+        // Ahora podemos acceder a window.runCounter() porque lo hicimos global en el script anterior
+
         document.addEventListener('DOMContentLoaded', function() {
 
             // FORZAR MODO CLARO SIEMPRE - ELIMINADO MODO OSCURO COMPLETAMENTE
@@ -620,8 +617,8 @@ window.addEventListener('resize', ajustarPadding);
                     
                     // Re-adjuntar eventos después de cargar el nuevo contenido
                     attachDynamicEventListeners();
-                    // Actualizar el contador de visitas (ya que runCounter es global/accesible)
-                    runCounter(); 
+                    // Actualizar el contador de visitas (ya que window.runCounter es global/accesible)
+                    window.runCounter(); 
 
                     // Desplazarse al inicio de la página para la nueva vista
                     window.scrollTo({ top: 0, behavior: 'smooth' });
