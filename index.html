@@ -161,7 +161,8 @@
             transform: translateX(-2px);
         }
         .credenciales-main-subtitle {
-            font-size: 1.9rem;
+            /* Se ha reducido el tamaño de la fuente para que se vea más pequeño */
+            font-size: 1.6rem; /* Ajustado para que quepa en una sola línea */
             transform: translateX(10px);
         }
 
@@ -322,7 +323,8 @@
                 font-size: 1.4rem;
             }
             .credenciales-main-subtitle {
-                font-size: 1.2rem;
+                /* Se ha reducido el tamaño de la fuente para que se vea más pequeño */
+                font-size: 1.0rem; /* Ajustado para que quepa en una sola línea en móviles */
             }
             .credenciales-section-title {
                 font-size: 1.1rem;
@@ -359,17 +361,21 @@
                 margin-right: 0;
             }
         }
+        /* Ajuste de tamaño de fuente para el banner */
+        .banner-text-small {
+            font-size: 0.75rem; /* Tailwind text-xs */
+        }
     </style>
 </head>
 <body class="pt-10">
     <!-- Banner informativo fijo -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1100] bg-white/50 backdrop-blur-sm border-b border-gray-200/50 h-10 flex items-center justify-center text-sm text-gray-700 shadow-sm">
-        <span class="font-medium">O.S.10 Coquimbo&nbsp;&nbsp;</span>
-        <span> | </span>
+        <span class="font-medium banner-text-small">O.S.10 Coquimbo&nbsp;&nbsp;</span>
+        <span class="banner-text-small"> | </span>
         
         <!-- Menú Credenciales -->
         <div class="relative ml-2">
-            <button id="credenciales-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center">
+            <button id="credenciales-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
                 Credenciales
                 <svg class="w-3 h-3 ml-1 transition-transform" id="credenciales-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -387,7 +393,7 @@
             </div>
         </div>
         
-        <span class="ml-2"> | </span>
+        <span class="ml-2 banner-text-small"> | </span>
         <div class="flex items-center text-xs ml-2">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -501,7 +507,7 @@
             
             <header class="credenciales-title-container">
                 <h1 class="credenciales-main-title">CREDENCIAL</h1>
-                <h2 class="credenciales-main-subtitle">EMPRESA E<br>INDEPENDIENTE</h2><br>
+                <h2 class="credenciales-main-subtitle">EMPRESA E INDEPENDIENTE</h2><br>
             </header>
                 
                 <main class="content-container">
@@ -884,7 +890,7 @@
             }
 
             function speakText(text) {
-                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
                 const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
                 const cleanText = text
                     .replace(urlRegex, '')
@@ -906,7 +912,7 @@
                     selectedVoice = availableVoices.find(voice => 
                         voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
                         availableVoices.find(voice => 
-                            (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.lang.startsWith('es')) ||
+                            (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
                         availableVoices.find(voice => 
                             voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
                         availableVoices.find(voice => voice.lang.startsWith('es'));
@@ -945,7 +951,7 @@
                     content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
                 } else {
                     messageDiv.className = 'flex items-start space-x-2 mb-1';
-                    const urlRegex = /(\b(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+                    const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
                     let formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
                     formattedText = formattedText.replace(urlRegex, (url) => {
                         const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
@@ -1077,7 +1083,7 @@
                 const typingDiv = document.createElement('div');
                 typingDiv.id = 'typing-indicator';
                 typingDiv.className = 'flex items-start space-x-2 mb-3';
-                typingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Icono del Chatbot" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
+                typingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
                 chatMessages.appendChild(typingDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
