@@ -129,7 +129,7 @@
         /* Ajuste para pantallas pequeñas (Celular) */
         @media (max-width: 767px) {
             .card-container {
-                width: 98%;
+                width: 97%; /* CAMBIADO: Ahora 97% en móviles */
             }
             #chat-popup {
                 width: calc(100vw - 3rem);
@@ -235,16 +235,26 @@ window.addEventListener('resize', ajustarPadding);
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
+        const firebaseConfig = {
+          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+          authDomain: "cuenta-946e2.firebaseapp.com",
+          projectId: "cuenta-946e2",
+          storageBucket: "cuenta-946e2.firebasestorage.app",
+          messagingSenderId: "816979648502",
+          appId: "1:816979648502:web:809beffeea8ba7968031d7",
+          measurementId: "G-RX9KZSC0F4"
+        };
+
+        // Inicializar Firebase UNA SOLA VEZ, fuera de la función runCounter
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        
         // Hacer runCounter accesible globalmente
         window.runCounter = async function() { // Asignamos a window
             const counterSpan = document.getElementById('visit-counter'); // Contador en el banner principal
-            // Intenta encontrar el contador si existe dentro del contenido dinámico de credenciales
-            const dynamicCounterSpan = document.getElementById('visit-counter-credenciales'); // ID corregido para credenciales fragment
 
             try {
-                const app = initializeApp(firebaseConfig);
-                const db = getFirestore(app);
-                const auth = getAuth(app);
                 // Intenta iniciar sesión anónimamente solo si aún no hay un usuario autenticado
                 if (!auth.currentUser) {
                     await signInAnonymously(auth);
@@ -263,27 +273,17 @@ window.addEventListener('resize', ajustarPadding);
                     return count;
                 });
                 if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
-                if (dynamicCounterSpan) dynamicCounterSpan.textContent = newCount.toLocaleString('es-CL'); // Actualiza el contador dinámico si está presente
+                // Ya no intentamos actualizar un contador dentro del fragmento de credenciales
             } catch (error) {
                 console.error("ERROR: Falló el proceso del contador.", error);
                 if (counterSpan) counterSpan.textContent = "Error";
-                if (dynamicCounterSpan) dynamicCounterSpan.textContent = "Error";
             }
         };
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
-          authDomain: "cuenta-946e2.firebaseapp.com",
-          projectId: "cuenta-946e2",
-          storageBucket: "cuenta-946e2.firebasestorage.app",
-          messagingSenderId: "816979648502",
-          appId: "1:816979648502:web:809beffeea8ba7968031d7",
-          measurementId: "G-RX9KZSC0F4"
-        };
-        
         // Llamar a runCounter al cargar la página principal (y ya está globalmente accesible)
-        // Ya no es necesario llamarla aquí, se llamará en el DOMContentLoaded o en attachDynamicEventListeners
-        // window.runCounter(); 
+        // Se llamará de nuevo en attachDynamicEventListeners si el contenido dinámico lo requiere,
+        // pero la inicialización de Firebase ya estará hecha.
+        // window.runCounter(); // Se mueve la llamada a DOMContentLoaded para asegurar que el DOM esté listo
 
 
     </script>
