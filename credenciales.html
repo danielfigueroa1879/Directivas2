@@ -1,231 +1,199 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tramitar Credencial Empresa e Independiente</title>
-
-    <!-- Metadatos y Favicon -->
-    <meta name="description" content="Requisitos y formatos para tramitar la credencial de seguridad privada para empresas e independientes en OS10.">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
-    <!-- Dependencias y Estilos -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- OPTIMIZADO: Carga de fuentes optimizada -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/credenciales.css">
-</head>
-<body class="text-gray-800">
-
-    <div class="card-container bg-white rounded-xl shadow-md relative">
-        <div id="visitor-counter-container" class="absolute top-5 right-6">
-            <p class="flex items-center" style="font-size: 12px;">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
-            </p>
-        </div>
-
-        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
-           <!-- OPTIMIZADO: Carga diferida de imagen -->
-           <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
-        </a>
-        
-        <!-- Botón "Volver" que ahora envía un mensaje a la ventana padre -->
-        <button id="back-to-index-btn" class="back-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-            </svg>
-            <span class="btn-text">Volver</span>
-        </button>
-        
-        <header class="title-container">
-            <h1 class="main-title">CREDENCIAL</h1>
-            <h2 class="main-subtitle">EMPRESA E INDEPENDIENTE</h2>
-        </header>
-        
-        <main class="content-container">
-            <section class="main-section">
-                <h3 class="section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
-                
-                <div class="space-y-8">
-                    <!-- Documentos requeridos -->
-                    <div class="requirement-block">
-                        <h4 class="requirement-subtitle">Documentos requeridos:</h4>
-                        <ul class="list-disc pl-5">
-                            <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
-                            <a href="https://d6.short.gy/bv" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600">
-                            Descargar
-                        </a>
-                            <li>Fotocopia de cédula de identidad (ambas caras).</li>
-                            <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
-                            <li>Certificado de Antecedentes para Fines Especiales.</li>
-                        </ul>
-                        
-                    </div>
-                    
-                    <!-- Fotografía digital -->
-                    <div class="requirement-block">
-                        <h4 class="requirement-subtitle">Fotografía digital:</h4>
-                        <ul class="list-disc pl-5">
-                            <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
-                            <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
-                            <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
-                            <li>Fotografia almacenada en un Pendrive.</li>
-                        </ul>
-                        <div class="mt-4">
-                            <!-- OPTIMIZADO: Carga diferida de imagen -->
-                            <img src="assets/images/foto.jpg" alt="Ejemplo de Fotografía correcta" class="photo-example" loading="lazy">
-                        </div>
-                        <div class="flex flex-col space-y-3 mt-4">
-                            <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
-                            <a href="https://dal5.short.gy/0" target="_blank" class="download-btn dpi-btn bg-yellow-500 hover:bg-yellow-600">
-                                1 Convert. 300 DPI
-                            </a>
-                            <a href="https://dal5.short.gy/j" target="_blank" class="download-btn dpi-btn bg-yellow-500 hover:bg-yellow-600">
-                                2 Convert. 300 DPI
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Formato Excel -->
-                    <div class="requirement-block">
-                        <h4 class="requirement-subtitle">Formato Excel:</h4>
-                        <ul class="list-disc pl-5">
-                            <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
-                            <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
-                        </ul>
-                        <div class="table-container">
-                            <table class="responsive-table">
-                                <!-- Contenido de la tabla -->
-                                <thead>
-                                    <tr>
-                                        <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
-                                        <td><select class="table-select">
-                                            <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
-                                        </select></td>
-                                        <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
-                                        <td><select class="table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
-                                        <td></td><td>camilaleyton@gmail.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
-                                        <td><select class="table-select">
-                                            <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
-                                        </select></td>
-                                        <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
-                                        <td><select class="table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
-                                        <td></td><td>danielvega@gmail.com</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <a href="https://dal5.short.gy/Cr3d" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
-                        
-                        <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
-                        <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
-                    </div>
-
-                    <!-- Pago Vale Vista -->
-                    <div class="requirement-block">
-                        <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
-                        <ul class="list-disc pl-5">
-                            <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
-                            <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
-                            <li>R.U.T.: 61.944.800-6</li>
-                            <li>Teléfono OS.10.: +562512651024</li>
-                        </ul>
-                        <div class="flex items-end justify-between mt-4">
-                            <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
-                                <!-- OPTIMIZADO: Carga diferida de imagen -->
-                                <img src="assets/images/valores.png" alt="Valores de Pago" class="valores-example" loading="lazy">
-                            </a>
-                            <a href="https://dal5.short.gy/C√" target="_blank">
-                               <!-- OPTIMIZADO: Carga diferida de imagen -->
-                               <img src="assets/images/qrcred.png" alt="Código QR para más información" class="qr-cred-image" loading="lazy">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>  
-       
-       <footer class="footer-text">
-          <span>Haga clic en los botones para descargar.</span>
-          <span>©2025 - Daniel Figueroa Ch.</span>
-          <span>Ingeniero en Informática.</span>
-       </footer>
+<div class="card-container bg-white rounded-xl shadow-md relative">
+    <div id="visitor-counter-container" class="absolute top-5 right-6">
+        <p class="flex items-center" style="font-size: 12px;">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+        </p>
     </div>
 
-    <!-- Scripts para forzar modo claro -->
-    <script>
-        // FORZAR MODO CLARO SIEMPRE
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-    </script>
-
-    <!-- OPTIMIZADO: Scripts diferidos para no bloquear la carga -->
-    <script src="assets/js/credenciales.js" defer></script>
+    <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR">
+       <!-- OPTIMIZADO: Carga diferida de imagen -->
+       <img src="assets/images/logo-os10.png" alt="Logo OS10" class="logo-os10" loading="lazy">
+    </a>
     
-    <script type="module" defer>
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    <!-- Botón "Volver" que ahora envía un mensaje a la ventana padre -->
+    <button id="back-to-index-btn" class="back-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+        <span class="btn-text">Volver</span>
+    </button>
+    
+    <header class="title-container">
+        <h1 class="main-title">CREDENCIAL</h1>
+        <h2 class="main-subtitle">EMPRESA E INDEPENDIENTE</h2>
+    </header>
+    
+    <main class="content-container">
+        <section class="main-section">
+            <h3 class="section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
+            
+            <div class="space-y-8">
+                <!-- Documentos requeridos -->
+                <div class="requirement-block">
+                    <h4 class="requirement-subtitle">Documentos requeridos:</h4>
+                    <ul class="list-disc pl-5">
+                        <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
+                        <a href="https://d6.short.gy/bv" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600">
+                        Descargar
+                    </a>
+                        <li>Fotocopia de cédula de identidad (ambas caras).</li>
+                        <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
+                        <li>Certificado de Antecedentes para Fines Especiales.</li>
+                    </ul>
+                    
+                </div>
+                
+                <!-- Fotografía digital -->
+                <div class="requirement-block">
+                    <h4 class="requirement-subtitle">Fotografía digital:</h4>
+                    <ul class="list-disc pl-5">
+                        <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
+                        <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
+                        <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
+                        <li>Fotografia almacenada en un Pendrive.</li>
+                    </ul>
+                    <div class="mt-4">
+                        <!-- OPTIMIZADO: Carga diferida de imagen -->
+                        <img src="assets/images/foto.jpg" alt="Ejemplo de Fotografía correcta" class="photo-example" loading="lazy">
+                    </div>
+                    <div class="flex flex-col space-y-3 mt-4">
+                        <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
+                        <a href="https://dal5.short.gy/0" target="_blank" class="download-btn dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                            1 Convert. 300 DPI
+                        </a>
+                        <a href="https://dal5.short.gy/j" target="_blank" class="download-btn dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                            2 Convert. 300 DPI
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Formato Excel -->
+                <div class="requirement-block">
+                    <h4 class="requirement-subtitle">Formato Excel:</h4>
+                    <ul class="list-disc pl-5">
+                        <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
+                        <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
+                    </ul>
+                    <div class="table-container">
+                        <table class="responsive-table">
+                            <!-- Contenido de la tabla -->
+                            <thead>
+                                <tr>
+                                    <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
+                                    <td><select class="table-select">
+                                        <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                    </select></td>
+                                    <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
+                                    <td><select class="table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                    <td></td><td>camilaleyton@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
+                                    <td><select class="table-select">
+                                        <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                    </select></td>
+                                    <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
+                                    <td><select class="table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                    <td></td><td>danielvega@gmail.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="https://dal5.short.gy/Cr3d" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
+                    
+                    <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
+                    <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
+                </div>
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
-          authDomain: "cuenta-946e2.firebaseapp.com",
-          projectId: "cuenta-946e2",
-          storageBucket: "cuenta-946e2.firebasestorage.app",
-          messagingSenderId: "816979648502",
-          appId: "1:816979648502:web:809beffeea8ba7968031d7",
-          measurementId: "G-RX9KZSC0F4"
-        };
-        
-        async function runCounter() {
-            const counterSpan = document.getElementById('visit-counter');
-            try {
-                const app = initializeApp(firebaseConfig);
-                const db = getFirestore(app);
-                const auth = getAuth(app);
-                await signInAnonymously(auth);
-                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                const newCount = await runTransaction(db, async (transaction) => {
-                    const counterDoc = await transaction.get(counterRef);
-                    let count = 1;
-                    if (counterDoc.exists()) {
-                        count = counterDoc.data().count + 1;
-                        transaction.update(counterRef, { count: count });
-                    } else {
-                        transaction.set(counterRef, { count: count });
-                    }
-                    return count;
-                });
-                if (counterSpan) {
-                    counterSpan.textContent = newCount.toLocaleString('es-CL');
+                <!-- Pago Vale Vista -->
+                <div class="requirement-block">
+                    <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
+                    <ul class="list-disc pl-5">
+                        <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
+                        <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
+                        <li>R.U.T.: 61.944.800-6</li>
+                        <li>Teléfono OS.10.: +562512651024</li>
+                    </ul>
+                    <div class="flex items-end justify-between mt-4">
+                        <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
+                            <!-- OPTIMIZADO: Carga diferida de imagen -->
+                            <img src="assets/images/valores.png" alt="Valores de Pago" class="valores-example" loading="lazy">
+                        </a>
+                        <a href="https://dal5.short.gy/C√" target="_blank">
+                           <!-- OPTIMIZADO: Carga diferida de imagen -->
+                           <img src="assets/images/qrcred.png" alt="Código QR para más información" class="qr-cred-image" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>  
+   
+   <footer class="footer-text">
+      <span>Haga clic en los botones para descargar.</span>
+      <span>©2025 - Daniel Figueroa Ch.</span>
+      <span>Ingeniero en Informática.</span>
+   </footer>
+</div>
+
+<!-- Scripts necesarios para el contador y la comunicación con la ventana padre -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+      authDomain: "cuenta-946e2.firebaseapp.com",
+      projectId: "cuenta-946e2",
+      storageBucket: "cuenta-946e2.firebasestorage.app",
+      messagingSenderId: "816979648502",
+      appId: "1:816979648502:web:809beffeea8ba7968031d7",
+      measurementId: "G-RX9KZSC0F4"
+    };
+    
+    async function runCounter() {
+        const counterSpan = document.getElementById('visit-counter');
+        try {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            const auth = getAuth(app);
+            await signInAnonymously(auth);
+            const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+            const newCount = await runTransaction(db, async (transaction) => {
+                const counterDoc = await transaction.get(counterRef);
+                let count = 1;
+                if (counterDoc.exists()) {
+                    count = counterDoc.data().count + 1;
+                    transaction.update(counterRef, { count: count });
+                } else {
+                    transaction.set(counterRef, { count: count });
                 }
-            } catch (error) {
-                console.error("ERROR: Falló el proceso del contador.", error);
-                if (counterSpan) {
-                    counterSpan.textContent = "Error";
-                }
+                return count;
+            });
+            if (counterSpan) {
+                counterSpan.textContent = newCount.toLocaleString('es-CL');
+            }
+        } catch (error) {
+            console.error("ERROR: Falló el proceso del contador.", error);
+            if (counterSpan) {
+                counterSpan.textContent = "Error";
             }
         }
-        runCounter();
+    }
+    runCounter();
 
-        // Lógica para enviar mensaje a la ventana padre al hacer clic en "Volver"
-        document.getElementById('back-to-index-btn').addEventListener('click', () => {
-            if (window.parent) {
-                window.parent.postMessage('goBackToIndex', '*'); // Envía un mensaje a la ventana padre
-            }
-        });
+    // Lógica para enviar mensaje a la ventana padre al hacer clic en "Volver"
+    document.getElementById('back-to-index-btn').addEventListener('click', () => {
+        if (window.parent) {
+            window.parent.postMessage('goBackToIndex', '*'); // Envía un mensaje a la ventana padre
+        }
+    });
 
-   </script>
-</body>
-</html>
+</script>
