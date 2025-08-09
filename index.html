@@ -310,7 +310,7 @@
         /* Nuevo botón de flecha en la esquina superior derecha de la sección de credenciales */
         #credenciales-arrow-back-btn {
             position: absolute;
-            top: 0.5rem; /* Ajustado para estar más arriba */
+            top: 0.25rem; /* Ajustado para estar más arriba */
             right: 1rem; /* Mantiene la posición a la derecha */
             z-index: 20;
             color: #4B5563; /* Color de Tailwind gray-700 */
@@ -379,9 +379,11 @@
             }
              /* Ajustes para el nuevo botón de flecha en móviles */
             #credenciales-arrow-back-btn {
-                top: 0.5rem;
-                right: 0.5rem;
-                padding: 0.3rem;
+                width: 2rem; /* w-8 */
+                height: 2rem; /* h-8 */
+                top: 0rem; /* Más arriba */
+                right: 0rem; /* Más a la derecha */
+                padding: 0.2rem; /* Menos padding */
             }
         }
         /* Ajuste de tamaño de fuente para el banner */
@@ -1046,7 +1048,7 @@
 
             // FUNCIÓN MEJORADA PARA BUSCAR COINCIDENCIAS EXACTAS
             function findExactMatch(userText, allRules) {
-                const normalizedUserText = user.toLowerCase().trim();
+                const normalizedUserText = userText.toLowerCase().trim();
                 
                 // 1. Buscar coincidencia exacta primero
                 for (const rule of allRules) {
@@ -1225,4 +1227,3 @@
     </script>
 </body>
 </html>
-
