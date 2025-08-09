@@ -275,7 +275,7 @@ h3, h4 {
 /* Para pantallas MUY PEQUEÑAS (<= 374px, como 320px) */
 @media (max-width: 374px) {
     .card-container {
-        width: 98% !important; /* Ahora 95% para dejar 2.5% de margen a cada lado */
+        width: 97% !important; /* Ahora 95% para dejar 2.5% de margen a cada lado */
         margin: 0.1rem auto !important; /* Se mantiene un margen vertical muy pequeño */
         padding: 0.6rem !important; /* Ajuste el padding para un balance visual */
     }
@@ -355,7 +355,7 @@ h3, h4 {
 /* Para pantallas de TABLET y ESCRITORIO (>= 768px) */
 @media (min-width: 768px) {
     .card-container {
-        width: 90% !important; /* Ancho para tablets y escritorio */
+        width: 96% !important; /* Ancho para tablets y escritorio */
         padding: 25px !important; /* Mantiene tu padding original para escritorio */
         margin: 0.5rem auto !important;
     }
