@@ -288,18 +288,21 @@
 
     <!-- Scripts -->
 
-        <script>
-        function ajustarPadding() {
-            const banner = document.getElementById('banner');
-            const contenido = document.getElementById('contenido');
-            const altura = banner.offsetHeight; // mide la altura real
-        contenido.style.paddingTop = altura + 'px';
-        }
+    <script>
+function ajustarPadding() {
+  const banner = document.getElementById('banner');
+  const contenido = document.getElementById('contenido');
+  if (!banner || !contenido) return;
 
-        // Ajusta al cargar y cuando se redimensiona la ventana
-        window.addEventListener('load', ajustarPadding);
-        window.addEventListener('resize', ajustarPadding);
-        </script>
+  const altura = Math.ceil(banner.getBoundingClientRect().height);
+  const espacioExtra = 8; // px de separación
+  contenido.style.paddingTop = (altura + espacioExtra) + 'px';
+}
+
+window.addEventListener('load', ajustarPadding);
+window.addEventListener('resize', ajustarPadding);
+</script>
+
  
     <script type="module">
             // SCRIPT FIREBASE (Contador de visitas)
