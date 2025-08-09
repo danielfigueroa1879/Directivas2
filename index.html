@@ -26,38 +26,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- IMPORTANTE: Ahora index.html carga también los estilos de credenciales.css -->
+    <!-- IMPORTANTE: credenciales.css debe cargar DESPUÉS de tailwindcss y contener las reglas del .card-container -->
     <link rel="stylesheet" href="assets/css/credenciales.css">
 
-    <!-- Estilos personalizados -->
+    <!-- Estilos personalizados (solo los que NO son del card-container ni sus media queries) -->
     <style>
+        /* El body padding y margin son 0, la función ajustarPadding se encarga del top-padding */
         body { 
             font-family: 'Poppins', sans-serif; 
             background-image: url('assets/images/101.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-        }
-        .card-container { 
-            /* Ancho por defecto para pantallas <= 374px (como 320px) */
-            width: 101% !important; /* ANCHO PARA MÓVILES MUY PEQUEÑOS (< 375px) - ¡FORZADO! */
-            max-width: 750px; /* ANCHO MÁXIMO PARA PANTALLAS GRANDES */
-            margin: 0.3rem auto; 
-            padding: 4.0rem; 
+            margin: 0; /* Asegura que no haya margen externo */
+            padding: 0; /* Asegura que no haya padding global que mueva el .card-container */
         }
 
-        /* Ajuste para pantallas pequeñas (entre 375px y 767px) */
-        @media (min-width: 375px) and (max-width: 767px) {
-            .card-container {
-                width: 99% !important; /* ANCHO PARA MÓVILES ESTÁNDAR - ¡FORZADO! */
-            }
-        }
-        /* Ajuste para pantallas MÁS GRANDES que móviles (tablets y desktop) */
-        @media (min-width: 768px) {
-            .card-container {
-                width: 99% !important; /* Ajuste para tablets y desktop - ¡FORZADO! */
-            }
-        }
+        /* REMOVIDO: Reglas de .card-container, ahora en credenciales.css */
 
         .logo-os10-container { 
             position: absolute;
@@ -123,7 +108,9 @@
         @keyframes bounce {
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1.0); }
+            60% { transform: scale(0.7); } /* Ajuste sutil para el efecto de rebote */
         }
+
 
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
@@ -150,7 +137,7 @@
         }
     </style>
 </head>
-<body class="pt-10"> <!-- AQUÍ SE AÑADE EL PADDING-TOP -->
+<body class="pt-10"> <!-- El padding-top se gestiona por JS para dejar espacio al banner fijo -->
     <!-- Banner informativo fijo -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1100] bg-white/50 backdrop-blur-sm border-b border-gray-200/50 h-10 flex items-center justify-center text-sm text-gray-700 shadow-sm">
         <!-- BOTÓN CREDENCIALES A LA IZQUIERDA -->
