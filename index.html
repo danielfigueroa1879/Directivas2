@@ -358,13 +358,7 @@ window.addEventListener('resize', ajustarPadding);
         document.addEventListener('DOMContentLoaded', function() {
 
             // Lógica para activar el MODOO OSCURO Y DESACTIVAR
-           if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            //document.documentElement.classList.add('dark')
-            //} else {
-             //   document.documentElement.classList.remove('dark')
-            //}
-            
-            // Forzar modo claro para todos los usuarios
+        // REEMPLAZAR TODO ESE BLOQUE POR:
 document.documentElement.classList.remove('dark');
 localStorage.setItem('theme', 'light');
             
