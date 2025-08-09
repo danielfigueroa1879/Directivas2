@@ -5,7 +5,7 @@
     
     <!-- Meta Tags Principales y de PWA -->
     <title>Directivas de Funcionamiento OS10</title>
-    <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10.">
+    <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10 mientras se tramita la acreditación o credencial.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
@@ -137,7 +137,6 @@
         .credenciales-section {
             display: none;
             position: relative; /* Importante para el posicionamiento del botón de regreso */
-            /* padding-top: 2rem; <-- ELIMINADO PARA PERMITIR SUBIR LA FLECHA */
         }
         .credenciales-section.active {
             display: block;
@@ -307,12 +306,12 @@
             width: 20px;
         }
 
-        /* Nuevo botón de flecha en la esquina superior derecha de la sección de credenciales */
+        /* Nuevo botón de flecha en la esquina superior derecha del card-container */
         #credenciales-arrow-back-btn {
             position: absolute;
-            top: 0.25rem; /* Ajustado para estar más arriba */
-            right: 1rem; /* Mantiene la posición a la derecha */
-            z-index: 20;
+            top: 1.5rem; /* Alineado con el top del logo */
+            right: 1.5rem; /* Posicionado en la esquina derecha */
+            z-index: 20; /* Asegura que esté por encima de otros elementos del contenido */
             color: #4B5563; /* Color de Tailwind gray-700 */
             transition: all 0.2s ease;
             cursor: pointer;
@@ -381,8 +380,8 @@
             #credenciales-arrow-back-btn {
                 width: 2rem; /* w-8 */
                 height: 2rem; /* h-8 */
-                top: 0rem; /* Más arriba */
-                right: 0rem; /* Más a la derecha */
+                top: 1.5rem; /* Alineado con el logo, manteniendo la proporción */
+                right: 0.5rem; /* Más a la derecha */
                 padding: 0.2rem; /* Menos padding */
             }
         }
@@ -458,6 +457,13 @@
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR" class="logo-os10-container">
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="h-full" loading="lazy">
         </a>
+
+        <!-- Nuevo botón de flecha en la esquina superior derecha del card-container -->
+        <button id="credenciales-arrow-back-btn" class="hidden" title="Volver a Inicio" onclick="showMain()">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
+            </svg>
+        </button>
         
         <!-- SECCIÓN PRINCIPAL (HOME) -->
         <section id="main-section" class="main-content">
@@ -547,13 +553,6 @@
 
         <!-- SECCIÓN CREDENCIALES -->
         <section id="credenciales-section" class="credenciales-section">
-            <!-- Nuevo botón de flecha en la esquina superior derecha -->
-            <button id="credenciales-arrow-back-btn" class="hidden" title="Volver a Inicio" onclick="showMain()">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
-                </svg>
-            </button>
-
             <!-- El botón de volver original (si aún lo necesitas en la parte inferior derecha) -->
             <button onclick="showMain()" class="credenciales-back-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -736,7 +735,7 @@
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
             
-            // Show the new arrow back button within the credenciales section
+            // Show the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
             
             // Scroll to top
@@ -747,7 +746,7 @@
             document.getElementById('credenciales-section').classList.remove('active');
             document.getElementById('main-section').style.display = 'block';
             
-            // Hide the new arrow back button within the credenciales section
+            // Hide the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
             
             // Scroll to top
