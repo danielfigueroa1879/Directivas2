@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+.credenciales-section<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -167,7 +167,7 @@
 
         .credenciales-section-title {
             color: #F54C38;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 1.5rem;
         }
@@ -187,6 +187,11 @@
             text-align: center;
             transition: all 0.3s ease;
             text-decoration: none;
+        }
+        
+        .credenciales-dpi-btn {
+            width: 240px;
+            min-width: 240px;
         }
         .credenciales-download-btn:hover {
             transform: translateY(-3px);
@@ -314,10 +319,13 @@
         /* Responsive para credenciales */
         @media (max-width: 640px) {
             .credenciales-main-title {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
             .credenciales-main-subtitle {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
+            }
+            .credenciales-section-title {
+                font-size: 1.1rem;
             }
             .credenciales-photo-example {
                 width: 80%;
@@ -328,7 +336,7 @@
             .credenciales-qr-image {
                 width: 60px;
             }
-            .credenciales-download-btn {
+            .credenciales-download-btn, .credenciales-dpi-btn {
                 width: 190px;
                 min-width: 190px;
                 padding: 8px 16px;
@@ -508,10 +516,10 @@
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
                                     <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
-                                    <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
                                         1 Convert. 300 DPI
                                     </a>
-                                    <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
                                         2 Convert. 300 DPI
                                     </a>
                                 </div>
