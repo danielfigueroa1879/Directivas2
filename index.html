@@ -66,16 +66,19 @@
         /* Estilos Chatbot */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 6rem;
-            right: 1.5rem;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000; 
             display: flex; 
             flex-direction: column; 
-            align-items: flex-end;
+            align-items: center;
+            width: 96%;
+            max-width: 750px;
         }
         #chat-popup { 
-            width: 450px; 
-            height: 600px; 
+            width: 100%; 
+            height: 400px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
         }
         #chat-toggle-button { 
@@ -108,7 +111,8 @@
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
             #chat-widget-container {
-                right: 29rem; 
+                width: 96%;
+                max-width: 750px;
             }
             #chat-toggle-button {
                 width: 90px;
@@ -117,9 +121,9 @@
         }
        /* Ajustes para pantallas medianas (tablets) */
        @media (min-width: 768px) and (max-width: 1023px) {
-      #chat-widget-container {
-                 right: 29rem; 
-        
+            #chat-widget-container {
+                width: 96%;
+                max-width: 750px;
             }
         }
         
@@ -128,8 +132,12 @@
             .card-container {
                 width: 98%;
             }
+            #chat-widget-container {
+                width: 96%;
+                bottom: 0.5rem;
+            }
             #chat-popup {
-                width: calc(100vw - 3rem);
+                height: 350px;
             }
         }
 
@@ -988,7 +996,7 @@
                 if (device.isIOS) {
                     // iOS tiende a reproducir muy rápido, necesita velocidad más baja
                     return {
-                        rate: 1.0,      // Velocidad reducida para iOS
+                        rate: 0.7,      // Velocidad reducida para iOS
                         pitch: 0.7,     // Tono ligeramente más grave
                         volume: 1.0,    // Volumen completo
                         lang: 'es-CL'
@@ -996,10 +1004,10 @@
                 } else if (device.isAndroid) {
                     // Android suele reproducir a velocidad normal o lenta
                     return {
-                        rate: 1.2,      // Velocidad ligeramente aumentada
-                        pitch: 0.6,     // Tono casi normal
+                        rate: 1.1,      // Velocidad ligeramente aumentada
+                        pitch: 0.7,     // Tono casi normal
                         volume: 1.0,    // Volumen máximo
-                        lang: 'es-ES'
+                        lang: 'es-CL'
                     };
                 } else {
                     // Desktop/otros dispositivos
