@@ -944,14 +944,14 @@
                      console.log("Voces cargadas.");
                 }
             }
+            </script>
 
-
-            
-
-
-
-
-
+          
+            // Variables globales
+             let isAutoReadEnabled = true;
+             let speechSynth = null;
+             let availableVoices = [];
+             let recognition = null;
 
             // === FUNCIÓN DE SÍNTESIS DE VOZ CROSS-PLATFORM MEJORADA ===
             function detectDevice() {
@@ -1058,6 +1058,7 @@
                 
                 speechSynth.speak(utterance);
             }
+
 
 
 
