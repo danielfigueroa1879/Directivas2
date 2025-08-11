@@ -259,7 +259,7 @@
         .credenciales-table-select {
             appearance: none;
             -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg'%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 0.5rem center;
             background-size: 1em;
@@ -956,33 +956,111 @@
                 document.getElementById('voice-btn').style.display = 'none';
             }
 
-            function hablarAdaptado(texto) {
-    const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase()) || 
-                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    const isAndroid = /android/.test(navigator.userAgent.toLowerCase());
-    
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = 'es-CL';
-    
-    if (isIOS) {
-        // iPhone necesita velocidad más baja
-        utterance.rate = 1.0;
-        utterance.pitch = 0.7;
-        utterance.volume = 1.0;
-    } else if (isAndroid) {
-        // Android con tu configuración original
-        utterance.rate = 1.3;
-        utterance.pitch = 0.6;
-        utterance.volume = 1.0;
-    } else {
-        // Desktop/otros
-        utterance.rate = 0.9;
-        utterance.pitch = 0.7;
-        utterance.volume = 1.0;
-    }
-    
-    speechSynth.speak(utterance);
-}
+            // === FUNCIÓN DE SÍNTESIS DE VOZ CROSS-PLATFORM MEJORADA ===
+            function detectDevice() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                const platform = navigator.platform.toLowerCase();
+                
+                // Detección de iOS (incluye iPad con iOS 13+)
+                const isIOS = /iphone|ipad|ipod/.test(userAgent) || 
+                             (platform === 'macintel' && navigator.maxTouchPoints > 1);
+                
+                // Detección de Android
+                const isAndroid = /android/.test(userAgent);
+                
+                // Detección de Safari
+                const isSafari = /safari/.test(userAgent) && !/chrome|chromium|edg/.test(userAgent);
+                
+                // Detección de Chrome Mobile
+                const isChromeMobile = /chrome/.test(userAgent) && /mobile/.test(userAgent);
+                
+                return {
+                    isIOS,
+                    isAndroid,
+                    isSafari,
+                    isChromeMobile,
+                    isMobile: isIOS || isAndroid,
+                    isDesktop: !isIOS && !isAndroid
+                };
+            }
+
+            function getPlatformSpeechConfig(device) {
+                if (device.isIOS) {
+                    // iOS tiende a reproducir muy rápido, necesita velocidad más baja
+                    return {
+                        rate: 0.7,      // Velocidad reducida para iOS
+                        pitch: 0.7,     // Tono ligeramente más grave
+                        volume: 1.0,    // Volumen completo
+                        lang: 'es-CL'
+                    };
+                } else if (device.isAndroid) {
+                    // Android suele reproducir a velocidad normal o lenta
+                    return {
+                        rate: 1.1,      // Velocidad ligeramente aumentada
+                        pitch: 0.7,     // Tono casi normal
+                        volume: 1.0,    // Volumen máximo
+                        lang: 'es-CL'
+                    };
+                } else {
+                    // Desktop/otros dispositivos
+                    return {
+                        rate: 0.9,      // Velocidad estándar
+                        pitch: 0.7,     // Tono normal
+                        volume: 1.0,    // Volumen completo
+                        lang: 'es-CL'
+                    };
+                }
+            }
+
+            function speakText(text) {
+                const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
+                const cleanText = text
+                    .replace(urlRegex, '')
+                    .replace(emojiRegex, '')
+                    .replace(/<br>/g, '. ')
+                    .replace(/<strong>/g, '')
+                    .replace(/<\/strong>/g, '')
+                    .replace(/\n/g, '. ')
+                    .replace(/\*/g, '');
+                
+                if (!cleanText.trim() || !speechSynth) return;
+
+                speechSynth.cancel();
+                
+                // Detectar dispositivo y obtener configuración
+                const device = detectDevice();
+                const platformConfig = getPlatformSpeechConfig(device);
+                
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+
+                // Seleccionar la mejor voz masculina
+                let selectedVoice = null;
+                if (availableVoices.length > 0) {
+                    selectedVoice = availableVoices.find(voice => 
+                        voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                        availableVoices.find(voice => 
+                            (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
+                        availableVoices.find(voice => 
+                            voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
+                        availableVoices.find(voice => voice.lang.startsWith('es'));
+                }
+
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                    console.log('🗣️ Usando voz:', selectedVoice.name);
+                }
+
+                // Aplicar configuración cross-platform
+                utterance.lang = platformConfig.lang;
+                utterance.rate = platformConfig.rate;
+                utterance.volume = platformConfig.volume;
+                
+                console.log(`📱 Dispositivo: ${device.isIOS ? 'iOS' : device.isAndroid ? 'Android' : 'Desktop'}`);
+                console.log(`⚙️ Config: rate=${platformConfig.rate}, pitch=${platformConfig.pitch}, volume=${platformConfig.volume}`);
+                
+                speechSynth.speak(utterance);
+            }
 
             function toggleChat() {
                 const popup = document.getElementById('chat-popup');
