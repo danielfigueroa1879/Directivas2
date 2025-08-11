@@ -945,20 +945,13 @@
                 }
             }
 
-            loadVoices();
-            if (speechSynth.onvoiceschanged !== undefined) {
-                speechSynth.onvoiceschanged = loadVoices;
-            }
 
-            if (SpeechRecognition) {
-                recognition = new SpeechRecognition();
-                recognition.lang = 'es-CL';
-                recognition.continuous = false;
-                recognition.interimResults = false;
-            } else {
-                console.warn("El reconocimiento de voz no es compatible con este navegador.");
-                document.getElementById('voice-btn').style.display = 'none';
-            }
+            
+
+
+
+
+
 
             // === FUNCIÓN DE SÍNTESIS DE VOZ CROSS-PLATFORM MEJORADA ===
             function detectDevice() {
@@ -1065,6 +1058,20 @@
                 
                 speechSynth.speak(utterance);
             }
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
 
             function toggleChat() {
                 const popup = document.getElementById('chat-popup');
