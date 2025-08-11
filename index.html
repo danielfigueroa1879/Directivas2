@@ -992,7 +992,7 @@
                 if (device.isIOS) {
                     // iOS tiende a reproducir muy rápido, necesita velocidad más baja
                     return {
-                        rate: 1.0,      // Velocidad reducida para iOS
+                        rate: 0.9,      // Velocidad reducida para iOS
                         pitch: 0.7,     // Tono ligeramente más grave
                         volume: 1.0,    // Volumen completo
                         lang: 'es-CL'
@@ -1004,7 +1004,7 @@
                         pitch: 0.5,     // Tono casi normal
                         volume: 1.0,    // Volumen máximo
                         lang: 'es-ES'
-                        speechSynth.speak(utterance);
+                        speechSynth.speak(utterance)
                     };
                 } else {
                     // Desktop/otros dispositivos
