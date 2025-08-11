@@ -956,46 +956,33 @@
                 document.getElementById('voice-btn').style.display = 'none';
             }
 
-            function speakText(text) {
-                const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
-                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
-                const cleanText = text
-                    .replace(urlRegex, '')
-                    .replace(emojiRegex, '')
-                    .replace(/<br>/g, '. ')
-                    .replace(/<strong>/g, '')
-                    .replace(/<\/strong>/g, '')
-                    .replace(/\n/g, '. ')
-                    .replace(/\*/g, '');
-                
-                if (!cleanText.trim() || !speechSynth) return;
-
-                speechSynth.cancel();
-                const utterance = new SpeechSynthesisUtterance(cleanText);
-
-                // Seleccionar la mejor voz masculina
-                let selectedVoice = null;
-                if (availableVoices.length > 0) {
-                    selectedVoice = availableVoices.find(voice => 
-                        voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
-                        availableVoices.find(voice => 
-                            (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
-                        availableVoices.find(voice => 
-                            voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
-                        availableVoices.find(voice => voice.lang.startsWith('es'));
-                }
-
-                if (selectedVoice) {
-                    utterance.voice = selectedVoice;
-                    console.log('🗣️ Usando voz:', selectedVoice.name);
-                }
-
-                utterance.lang = 'es-CL';
-                utterance.rate = 1.1;  // Rápido y energético
-                utterance.pitch = 0.7; // Masculino
-                utterance.volume = 1.0; // Alto
-                speechSynth.speak(utterance);
-            }
+            function hablarAdaptado(texto) {
+    const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase()) || 
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isAndroid = /android/.test(navigator.userAgent.toLowerCase());
+    
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = 'es-CL';
+    
+    if (isIOS) {
+        // iPhone necesita velocidad más baja
+        utterance.rate = 0.7;
+        utterance.pitch = 0.7;
+        utterance.volume = 1.0;
+    } else if (isAndroid) {
+        // Android con tu configuración original
+        utterance.rate = 1.1;
+        utterance.pitch = 0.7;
+        utterance.volume = 1.0;
+    } else {
+        // Desktop/otros
+        utterance.rate = 0.9;
+        utterance.pitch = 0.7;
+        utterance.volume = 1.0;
+    }
+    
+    speechSynth.speak(utterance);
+}
 
             function toggleChat() {
                 const popup = document.getElementById('chat-popup');
