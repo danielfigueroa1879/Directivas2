@@ -966,13 +966,13 @@
     
     if (isIOS) {
         // iPhone necesita velocidad más baja
-        utterance.rate = 0.7;
+        utterance.rate = 1.0;
         utterance.pitch = 0.7;
         utterance.volume = 1.0;
     } else if (isAndroid) {
         // Android con tu configuración original
-        utterance.rate = 1.1;
-        utterance.pitch = 0.7;
+        utterance.rate = 1.3;
+        utterance.pitch = 0.6;
         utterance.volume = 1.0;
     } else {
         // Desktop/otros
