@@ -988,7 +988,7 @@
                 if (device.isIOS) {
                     // iOS tiende a reproducir muy rápido, necesita velocidad más baja
                     return {
-                        rate: 0.7,      // Velocidad reducida para iOS
+                        rate: 1.0,      // Velocidad reducida para iOS
                         pitch: 0.7,     // Tono ligeramente más grave
                         volume: 1.0,    // Volumen completo
                         lang: 'es-CL'
@@ -996,10 +996,10 @@
                 } else if (device.isAndroid) {
                     // Android suele reproducir a velocidad normal o lenta
                     return {
-                        rate: 1.1,      // Velocidad ligeramente aumentada
+                        rate: 1.2,      // Velocidad ligeramente aumentada
                         pitch: 0.7,     // Tono casi normal
                         volume: 1.0,    // Volumen máximo
-                        lang: 'es-CL'
+                        lang: 'es-ES'
                     };
                 } else {
                     // Desktop/otros dispositivos
