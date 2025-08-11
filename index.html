@@ -961,29 +961,32 @@
             }
 
             // === FUNCIÓN DE SÍNTESIS DE VOZ CROSS-PLATFORM MEJORADA ===
-             const device = {
-            isIOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
-            isAndroid: /Android/.test(navigator.userAgent),
-            isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-        };
-
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeSpeechSynthesis();
-            initializeSpeechRecognition();
-            updateVisitCounter();
-            setupEventListeners();
-            
-            console.log('🚀 Sistema iniciado');
-            console.log('📱 Dispositivo detectado:', {
-                iOS: device.isIOS,
-                Android: device.isAndroid,
-                Mobile: device.isMobile
-            });
-        });
-
-
-            
+             function detectDevice() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                const platform = navigator.platform.toLowerCase();
+                
+                // Detección de iOS (incluye iPad con iOS 13+)
+                const isIOS = /iphone|ipad|ipod/.test(userAgent) || 
+                             (platform === 'macintel' && navigator.maxTouchPoints > 1);
+                
+                // Detección de Android
+                const isAndroid = /android/.test(userAgent);
+                
+                // Detección de Safari
+                const isSafari = /safari/.test(userAgent) && !/chrome|chromium|edg/.test(userAgent);
+                
+                // Detección de Chrome Mobile
+                const isChromeMobile = /chrome/.test(userAgent) && /mobile/.test(userAgent);
+                
+                return {
+                    isIOS,
+                    isAndroid,
+                    isSafari,
+                    isChromeMobile,
+                    isMobile: isIOS || isAndroid,
+                    isDesktop: !isIOS && !isAndroid
+                };
+            }
 
             function getPlatformSpeechConfig(device) {
                 if (device.isIOS) {
