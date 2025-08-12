@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    
+
     <!-- Meta Tags Principales y de PWA -->
     <title>Directivas de Funcionamiento OS10</title>
     <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10 mientras se tramita la acreditación o credencial.">
@@ -19,72 +19,76 @@
     <!-- Favicons y Iconos Estándar -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
-    
+
     <!-- Dependencias y Estilos -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap](https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap)" rel="stylesheet">
+
     <!-- Estilos personalizados -->
     <style>
-        body { 
-            font-family: 'Poppins', sans-serif; 
+        body {
+            font-family: 'Poppins', sans-serif;
             background-image: url('assets/images/101.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
-        .card-container { 
-            max-width: 750px; 
-            width: 90%; 
-            margin: 0.5rem auto; 
+        .card-container {
+            max-width: 750px;
+            width: 90%;
+            margin: 0.5rem auto;
             position: relative; /* Asegurar que sea relativo para los elementos internos absolutos */
         }
-        .logo-os10-container { 
+        .logo-os10-container {
             position: absolute;
             top: 1.5rem;
             left: 1.5rem;
             height: 60px;
             z-index: 10;
         }
-        .section-card { 
-            border-left-width: 4px; 
-            padding: 1rem; 
-            border-radius: 0.5rem; 
+        .section-card {
+            border-left-width: 4px;
+            padding: 1rem;
+            border-radius: 0.5rem;
         }
-        
+
         .voice-button { transition: all 0.3s ease; }
         .voice-button:hover { transform: scale(1.05); }
         .voice-button:active { transform: scale(0.95); }
         .voice-button.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-        
+
         .response-button { transition: all 0.2s ease; }
         .response-button:hover { transform: translateX(4px); }
 
         /* Estilos Chatbot */
-        #chat-widget-container { 
-            position: fixed; 
-            bottom: 6rem;
-            right: 1.5rem;
-            z-index: 1000; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end;
+        #chat-widget-container {
+            position: fixed; /* Se mantiene fixed para que el chatbot flote */
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Alinea el popup y el botón a la derecha del contenedor */
+            left: 60%;       /* 60% del ancho del viewport */
+            top: 25%;        /* 25% de la altura del viewport */
+            right: auto;     /* Elimina la propiedad right anterior */
+            bottom: auto;    /* Elimina la propiedad bottom anterior */
+            /* Centra el elemento visualmente en el punto especificado por left/top */
+            transform: translate(-50%, -50%);
         }
-        #chat-popup { 
-            width: 450px; 
-            height: 600px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+        #chat-popup {
+            width: 450px;
+            height: 600px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-        #chat-toggle-button { 
+        #chat-toggle-button {
             width: 80px;
             height: 80px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        .chat-messages-container { 
-            scroll-behavior: smooth; 
+        .chat-messages-container {
+            scroll-behavior: smooth;
         }
         .typing-indicator {
             display: flex;
@@ -108,32 +112,46 @@
         /* Ajuste para pantallas más grandes (PC) */
         @media (min-width: 1024px) {
             #chat-widget-container {
-                right: 29rem; 
+                /* Hereda las propiedades globales fixed, left, top, transform */
+                right: auto; /* Asegura que no haya conflicto */
+                bottom: auto; /* Asegura que no haya conflicto */
             }
             #chat-toggle-button {
-                width: 90px;
+                width: 90px; /* Aumenta el tamaño del botón en pantallas grandes */
                 height: 90px;
             }
         }
        /* Ajustes para pantallas medianas (tablets) */
        @media (min-width: 768px) and (max-width: 1023px) {
             #chat-widget-container {
-                right: 29rem; 
+                /* Hereda las propiedades globales fixed, left, top, transform */
+                right: auto; /* Asegura que no haya conflicto */
+                bottom: auto; /* Asegura que no haya conflicto */
             }
         }
-        
+
         /* Ajuste para pantallas pequeñas (Celular) */
         @media (max-width: 767px) {
-            .card-container {
-                width: 98%;
+            #chat-widget-container {
+                position: fixed; /* Mantiene fixed para móviles */
+                bottom: 6rem;    /* Vuelve a la posición original inferior para usabilidad móvil */
+                right: 1.5rem;   /* Vuelve a la posición original derecha para usabilidad móvil */
+                left: auto;      /* Sobrescribe la propiedad left global */
+                top: auto;       /* Sobrescribe la propiedad top global */
+                transform: none; /* Elimina la transformación para móviles */
             }
             #chat-popup {
-                position: fixed;
+                position: fixed; /* Se mantiene fixed para el popup en móviles */
                 bottom: 1rem;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 96%;
                 height: 500px;
+            }
+            /* Tamaño original del botón en móviles */
+            #chat-toggle-button {
+                width: 80px;
+                height: 80px;
             }
         }
 
@@ -165,7 +183,7 @@
             transform: translateX(-2px);
         }
         .credenciales-main-subtitle {
-            font-size: 1.6rem; 
+            font-size: 1.6rem;
             transform: translateX(10px);
         }
 
@@ -192,7 +210,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        
+
         .credenciales-dpi-btn {
             width: 240px;
             min-width: 240px;
@@ -263,7 +281,7 @@
         .credenciales-table-select {
             appearance: none;
             -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 0.5rem center;
             background-size: 1em;
@@ -344,7 +362,7 @@
                 font-size: 1.4rem;
             }
             .credenciales-main-subtitle {
-                font-size: 1.0rem; 
+                font-size: 1.0rem;
             }
             .credenciales-section-title {
                 font-size: 1.1rem;
@@ -427,7 +445,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                
+
                 <!-- Dropdown Menu -->
                 <div id="credenciales-dropdown" class="absolute top-full left-0 mt-1 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-md shadow-lg min-w-[220px] hidden z-50">
                     <button onclick="handleCredencialEmpresa()" class="w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 transition-colors border-b border-gray-100">
@@ -438,7 +456,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Center Section: O.S.10 Coquimbo (clickable) -->
             <a id="os10-home-btn" class="font-medium banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center">
                 O.S.10 Coquimbo
@@ -458,7 +476,7 @@
     <!-- Contenido principal -->
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
         <!-- Logo dentro del contenedor -->
-        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visitar página de ZOSEPCAR" class="logo-os10-container">
+        <a href="[https://www.zosepcar.cl/OS10.php](https://www.zosepcar.cl/OS10.php)" target="_blank" aria-label="Visitar página de ZOSEPCAR" class="logo-os10-container">
             <img src="assets/images/logo-os10.png" alt="Logo OS10" class="h-full" loading="lazy">
         </a>
 
@@ -468,14 +486,14 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
             </svg>
         </button>
-        
+
         <!-- SECCIÓN PRINCIPAL (HOME) -->
         <section id="main-section" class="main-content">
             <header class="text-center pt-8">
                 <h1 class="text-2xl font-bold text-gray-800">DIRECTIVA DE FUNCIONAMIENTO</h1>
                 <h2 class="text-lg font-semibold text-gray-600">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
             </header>
-            
+
             <main class="space-y-4">
                 <section class="section-card border-blue-500 bg-blue-100/80">
                     <h3 class="font-bold text-blue-800">1️⃣ Presentar Directiva DD.FF.</h3>
@@ -483,59 +501,59 @@
                         <li>Vigencia 03 años en instalación.</li>
                         <li>Presentar con 15 días hábiles de anticipación.</li>
                         <li>
-                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 hover:underline">Dec. 93/1985</a>,
-                            <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 hover:underline">Dec. 261</a>,
-                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 hover:underline">Dec. 32/2024</a>.
+                            <a href="[https://www.bcn.cl/leychile/navegar?idNorma=9081](https://www.bcn.cl/leychile/navegar?idNorma=9081)" target="_blank" class="text-blue-600 hover:underline">Dec. 93/1985</a>,
+                            <a href="[https://www.zosepcar.cl/content/OS10/Decreto-261.pdf](https://www.zosepcar.cl/content/OS10/Decreto-261.pdf)" target="_blank" class="text-blue-600 hover:underline">Dec. 261</a>,
+                            <a href="[https://www.bcn.cl/leychile/navegar?idNorma=1200633](https://www.bcn.cl/leychile/navegar?idNorma=1200633)" target="_blank" class="text-blue-600 hover:underline">Dec. 32/2024</a>.
                        </li>
                    </ul>
                 </section>
-                
+
                 <section class="section-card border-green-500 bg-green-100/80">
                     <h3 class="font-bold text-green-800">2️⃣ Documentación</h3>
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p>02 Solicitudes Simple.</p>
-                            <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
+                            <a href="[https://dal5.short.gy/Solic](https://dal5.short.gy/Solic)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
                         </li>
                         <li>
                             <p>01 copia DD.FF. completa.</p>
-                            <a href="https://dal5.short.gy/D" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                            <a href="[https://dal5.short.gy/D](https://dal5.short.gy/D)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
                         </li>
                         <li>
                             <p>Requisitos según tipo.</p>
-                            <a href="https://dal5.short.gy/Re24" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
+                            <a href="[https://dal5.short.gy/Re24](https://dal5.short.gy/Re24)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
                         </li>
                         <li>
                             <p>Uniforme Decreto 32/2024.</p>
-                            <a href="https://dal5.short.gy/0u" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a>
+                            <a href="[https://dal5.short.gy/0u](https://dal5.short.gy/0u)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a>
                         </li>
                         <li>
                             <p>Análisis de Vulnerabilidades.</p>
-                            <a href="https://dal5.short.gy/6ydn" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a>
+                            <a href="[https://dal5.short.gy/6ydn](https://dal5.short.gy/6ydn)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a>
                         </li>
                         <li>
                             <p>Solicitud Uniforme Distinto.</p>
-                            <a href="https://d6.short.gy/G8" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                            <a href="[https://d6.short.gy/G8](https://d6.short.gy/G8)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
                         </li>
                     </ul>
                 </section>
-                
+
                 <section class="section-card border-red-500 bg-red-100/80">
                     <h3 class="font-bold text-red-800">3️⃣ Todo escaneado en Digital.</h3>
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p>Escanear en 01 archivo PDF.</p>
-                            <a href="https://dal5.short.gy/I" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a>
+                            <a href="[https://dal5.short.gy/I](https://dal5.short.gy/I)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a>
                         </li>
                     </ul>
                 </section>
-                
+
                 <section class="section-card border-yellow-500 bg-yellow-100/80">
                     <h3 class="font-bold text-yellow-800">4️⃣ Tramitar Credenciales</h3>
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p>Resol. 1480 (10.04.2025).</p>
-                            <a href="https://d6.short.gy/dsds" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Descargar Documentos">Descargar</a>
+                            <a href="[https://d6.short.gy/dsds](https://d6.short.gy/dsds)" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Descargar Documentos">Descargar</a>
                         </li>
                         <li>
                             <p>Tramitar credenciales.</p>
@@ -544,7 +562,7 @@
                     </ul>
                 </section>
             </main>
-            
+
             <footer class="relative mt-6 border-t border-gray-200 pt-4">
                 <div class="text-center text-sm text-gray-600 leading-tight pr-16">
                     <span>Haga clic para descargar.</span><br>
@@ -559,37 +577,37 @@
         <section id="credenciales-section" class="credenciales-section">
             <!-- El botón de volver original (si aún lo necesitas en la parte inferior derecha) -->
             <button onclick="showMain()" class="credenciales-back-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                 </svg>
                 <span class="btn-text">Volver</span>
             </button>
-            
+
             <header class="credenciales-title-container">
                 <h1 class="credenciales-main-title">CREDENCIAL</h1>
                 <h2 class="credenciales-main-subtitle">EMPRESA E INDEPENDIENTE</h2><br>
             </header>
-                
+
                 <main class="content-container">
                     <section class="main-section">
                         <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
-                        
+
                         <div class="space-y-8">
                             <!-- Documentos requeridos -->
                             <div class="requirement-block">
                                 <h4 class="requirement-subtitle">Documentos requeridos:</h4>
                                 <ul class="list-disc pl-5">
                                     <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
-                                    <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="[https://d6.short.gy/bv](https://d6.short.gy/bv)" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
                                     Descargar
                                 </a>
                                     <li>Fotocopia de cédula de identidad (ambas caras).</li>
                                     <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
                                     <li>Certificado de Antecedentes para Fines Especiales.</li>
                                 </ul>
-                                
+
                             </div>
-                            
+
                             <!-- Fotografía digital -->
                             <div class="requirement-block">
                                 <h4 class="requirement-subtitle">Fotografía digital:</h4>
@@ -604,15 +622,15 @@
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
                                     <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
-                                    <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="[https://dal5.short.gy/0](https://dal5.short.gy/0)" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
                                         1 Convert. 300 DPI
                                     </a>
-                                    <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="[https://dal5.short.gy/j](https://dal5.short.gy/j)" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
                                         2 Convert. 300 DPI
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <!-- Formato Excel -->
                             <div class="requirement-block">
                                 <h4 class="requirement-subtitle">Formato Excel:</h4>
@@ -649,10 +667,10 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
-                                
+                                <a href="[https://dal5.short.gy/Cr3d](https://dal5.short.gy/Cr3d)" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
+
                                 <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
-                                <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
+                                <a href="[https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS](https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS)" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
                             </div>
 
                             <!-- Pago Vale Vista -->
@@ -665,18 +683,18 @@
                                     <li>Teléfono OS.10.: +562512651024</li>
                                 </ul>
                                 <div class="flex items-end justify-between mt-4">
-                                    <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
+                                    <a href="[https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ](https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ)" download="valores.pdf" class="download-link" id="valoresImageLink">
                                         <img src="assets/images/valores.png" alt="Valores de Pago" class="credenciales-valores-example" loading="lazy">
                                     </a>
-                                    <a href="https://dal5.short.gy/C√" target="_blank">
+                                    <a href="[https://dal5.short.gy/C](https://dal5.short.gy/C)√" target="_blank">
                                        <img src="assets/images/qrcred.png" alt="Código QR para más información" class="credenciales-qr-image" loading="lazy">
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </section>
-                </main>  
-               
+                </main>
+
                <footer class="footer-text text-center mt-6 text-sm text-gray-600">
                   <span>Haga clic en los botones para descargar.</span><br>
                   <span>©2025 - Daniel Figueroa Ch.</span><br>
@@ -712,17 +730,17 @@
                 <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
                     <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Activar/Desactivar Auto-Lectura">
                         <!-- Speaker On Icon -->
-                        <svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg id="speaker-on-icon" class="w-5 h-5" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                         <!-- Speaker Off Icon (hidden by default) -->
-                        <svg id="speaker-off-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg id="speaker-off-icon" class="w-5 h-5 hidden" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
                     <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg></button>
                     <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
-                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></button>
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></button>
                 </div>
             </footer>
         </div>
@@ -738,10 +756,10 @@
         function showCredenciales() {
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
-            
+
             // Show the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
-            
+
             // Scroll to top
             window.scrollTo(0, 0);
         }
@@ -749,10 +767,10 @@
         function showMain() {
             document.getElementById('credenciales-section').classList.remove('active');
             document.getElementById('main-section').style.display = 'block';
-            
+
             // Hide the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
-            
+
             // Scroll to top
             window.scrollTo(0, 0);
         }
@@ -776,7 +794,7 @@
             const dropdown = document.getElementById('credenciales-dropdown');
             const arrow = document.getElementById('credenciales-arrow');
             const isHidden = dropdown.classList.contains('hidden');
-            
+
             if (isHidden) {
                 dropdown.classList.remove('hidden');
                 arrow.style.transform = 'rotate(180deg)';
@@ -817,7 +835,7 @@
             document.addEventListener('click', (e) => {
                 const dropdown = document.getElementById('credenciales-dropdown');
                 const menuBtn = document.getElementById('credenciales-menu-btn');
-                
+
                 if (dropdown && !dropdown.contains(e.target) && !menuBtn.contains(e.target)) {
                     closeCredencialesMenu();
                 }
@@ -845,8 +863,8 @@
             const valoresImageLink = document.getElementById('valoresImageLink');
             if (valoresImageLink) {
                 valoresImageLink.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    
+                    event.preventDefault();
+
                     const pdfUrl = valoresImageLink.href;
                     const fileName = valoresImageLink.download || 'documento.pdf';
 
@@ -856,14 +874,14 @@
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
-                    
+
                     console.log(`Intentando descargar: ${fileName} desde ${pdfUrl}`);
                 });
             }
 
             // Event listener for OS10 Home Button (in banner)
             document.getElementById('os10-home-btn').addEventListener('click', showMain);
-            
+
             // Initial state for the new arrow back button
             if (!document.getElementById('credenciales-section').classList.contains('active')) {
                 document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
@@ -873,9 +891,9 @@
 
     <script type="module">
         // SCRIPT FIREBASE (Contador de visitas)
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { initializeApp } from "[https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js](https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js)";
+        import { getFirestore, doc, runTransaction } from "[https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js](https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js)";
+        import { getAuth, signInAnonymously } from "[https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js](https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js)";
 
         const firebaseConfig = {
           apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
@@ -886,7 +904,7 @@
           appId: "1:816979648502:web:809beffeea8ba7968031d7",
           measurementId: "G-RX9KZSC0F4"
         };
-        
+
         async function runCounter() {
             const counterSpan = document.getElementById('visit-counter');
             try {
@@ -914,10 +932,10 @@
         }
         runCounter();
     </script>
-    
+
     <!-- Cargar las reglas desde el archivo externo -->
     <script src="./rules/chatbot-rules.js"></script>
-    
+
     <!-- SCRIPT PRINCIPAL DEL CHATBOT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -925,7 +943,7 @@
             // FORZAR MODO CLARO SIEMPRE - ELIMINADO MODO OSCURO COMPLETAMENTE
             document.documentElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
-            
+
             // --- Lógica del Chatbot ---
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const speechSynth = window.speechSynthesis;
@@ -933,10 +951,10 @@
             let isListening = false;
             let availableVoices = [];
             let isAutoReadEnabled = true;
-            
+
             // Cargar reglas desde el único archivo
             const allRules = Object.values(window.responses || {});
-            const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.'; 
+            const systemPrompt = window.systemPrompt || 'Eres un asistente de ayuda.';
 
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
@@ -964,20 +982,20 @@
              function detectDevice() {
                 const userAgent = navigator.userAgent.toLowerCase();
                 const platform = navigator.platform.toLowerCase();
-                
+
                 // Detección de iOS (incluye iPad con iOS 13+)
-                const isIOS = /iphone|ipad|ipod/.test(userAgent) || 
+                const isIOS = /iphone|ipad|ipod/.test(userAgent) ||
                              (platform === 'macintel' && navigator.maxTouchPoints > 1);
-                
+
                 // Detección de Android
                 const isAndroid = /android/.test(userAgent);
-                
+
                 // Detección de Safari
                 const isSafari = /safari/.test(userAgent) && !/chrome|chromium|edg/.test(userAgent);
-                
+
                 // Detección de Chrome Mobile
                 const isChromeMobile = /chrome/.test(userAgent) && /mobile/.test(userAgent);
-                
+
                 return {
                     isIOS,
                     isAndroid,
@@ -1027,25 +1045,25 @@
                     .replace(/<\/strong>/g, '')
                     .replace(/\n/g, '. ')
                     .replace(/\*/g, '');
-                
+
                 if (!cleanText.trim() || !speechSynth) return;
 
                 speechSynth.cancel();
-                
+
                 // Detectar dispositivo y obtener configuración
                 const device = detectDevice();
                 const platformConfig = getPlatformSpeechConfig(device);
-                
+
                 const utterance = new SpeechSynthesisUtterance(cleanText);
 
                 // Seleccionar la mejor voz masculina
                 let selectedVoice = null;
                 if (availableVoices.length > 0) {
-                    selectedVoice = availableVoices.find(voice => 
+                    selectedVoice = availableVoices.find(voice =>
                         voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
-                        availableVoices.find(voice => 
+                        availableVoices.find(voice =>
                             (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
-                        availableVoices.find(voice => 
+                        availableVoices.find(voice =>
                             voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
                         availableVoices.find(voice => voice.lang.startsWith('es'));
                 }
@@ -1059,10 +1077,10 @@
                 utterance.lang = platformConfig.lang;
                 utterance.rate = platformConfig.rate;
                 utterance.volume = platformConfig.volume;
-                
+
                 console.log(`📱 Dispositivo: ${device.isIOS ? 'iOS' : device.isAndroid ? 'Android' : 'Desktop'}`);
                 console.log(`⚙️ Config: rate=${platformConfig.rate}, pitch=${platformConfig.pitch}, volume=${platformConfig.volume}`);
-                
+
                 speechSynth.speak(utterance);
             }
 
@@ -1070,7 +1088,7 @@
                 const popup = document.getElementById('chat-popup');
                 const backdrop = document.getElementById('chat-backdrop');
                 const button = document.getElementById('chat-toggle-button');
-                
+
                 const isHidden = popup.classList.contains('hidden');
                 popup.classList.toggle('hidden');
                 backdrop.classList.toggle('hidden');
@@ -1080,7 +1098,7 @@
             function addMessage(sender, text, buttons = []) {
                 const chatMessages = document.getElementById('chat-messages');
                 const messageDiv = document.createElement('div');
-                
+
                 let content = '';
                 if (sender === 'user') {
                     messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
@@ -1100,7 +1118,7 @@
                     });
 
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
-                    
+
                     content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
                     if (isAutoReadEnabled) setTimeout(() => speakText(text), 300);
                 }
@@ -1108,7 +1126,7 @@
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-            
+
             window.handleUserButtonClick = (text) => {
                  document.getElementById('user-input').value = text;
                  handleMessage();
@@ -1117,13 +1135,13 @@
             // FUNCIÓN MEJORADA PARA BUSCAR COINCIDENCIAS EXACTAS
             function findExactMatch(userText, allRules) {
                 const normalizedUserText = userText.toLowerCase().trim();
-                
+
                 // 1. Buscar coincidencia exacta primero
                 for (const rule of allRules) {
                     if (rule && rule.keywords) {
                         for (const keyword of rule.keywords) {
                             const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
-                            
+
                             // Coincidencia exacta
                             if (normalizedUserText === normalizedKeyword) {
                                 console.log(`🎯 Coincidencia EXACTA encontrada: "${normalizedUserText}" === "${normalizedKeyword}"`);
@@ -1132,14 +1150,14 @@
                         }
                     }
                 }
-                
+
                 // 2. Si no hay coincidencia exacta, buscar por inclusión (solo para frases más largas)
                 if (normalizedUserText.length > 5) {
                     for (const rule of allRules) {
                         if (rule && rule.keywords) {
                             for (const keyword of rule.keywords) {
                                 const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
-                                
+
                                 // Solo buscar inclusión si la palabra clave tiene más de 3 caracteres
                                 if (normalizedUserText.includes(normalizedKeyword)) {
                                     console.log(`🔍 Coincidencia por INCLUSIÓN: "${normalizedUserText}" incluye "${normalizedKeyword}"`);
@@ -1149,22 +1167,22 @@
                         }
                     }
                 }
-                
+
                 return null;
             }
 
             async function handleMessage() {
                 const input = document.getElementById('user-input');
                 const text = input.value.trim();
-                
+
                 if (!text) return;
-                
+
                 addMessage('user', text);
                 input.value = '';
-                
+
                 // Usar la nueva función de búsqueda mejorada
                 const response = findExactMatch(text, allRules);
-                
+
                 // Si se encuentra una respuesta en las reglas, mostrarla
                 if (response) {
                     setTimeout(() => addMessage('bot', response), 500);
@@ -1203,7 +1221,7 @@
                     }
 
                     const data = await apiResponse.json();
-                    
+
                     const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
                     addMessage('bot', aiResponse);
 
@@ -1213,7 +1231,7 @@
                     addMessage('bot', "Hubo un problema de conexión con el asistente inteligente. Por favor, intenta de nuevo más tarde.");
                 }
             }
-            
+
             function addTypingIndicator() {
                 const chatMessages = document.getElementById('chat-messages');
                 const typingDiv = document.createElement('div');
@@ -1254,14 +1272,14 @@
                 const messages = document.querySelectorAll('#chat-messages .text-gray-800');
                 if (messages.length > 0) speakText(messages[messages.length - 1].innerText);
             }
-            
+
             // --- Asignación de Eventos ---
             document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
             document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
             document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
             document.getElementById('send-button').addEventListener('click', handleMessage);
             document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
-            
+
             const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
             const speakerOnIcon = document.getElementById('speaker-on-icon');
             const speakerOffIcon = document.getElementById('speaker-off-icon');
