@@ -66,7 +66,7 @@
         /* Chatbot Styles - Adjusted */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 6.5rem; /* Base vertical offset from the bottom of the viewport - MODIFIED */
+            bottom: 6.5rem; /* Base vertical offset from the bottom of the viewport */
             right: 1.5rem; /* Base horizontal offset from the right of the viewport */
             z-index: 1000; 
             display: flex; 
@@ -113,7 +113,7 @@
                 /* (100vw - 750px) / 2 gives the left/right margin on the viewport. */
                 /* Adding 1.5rem to this positions it outside the card by that amount. */
                 right: calc((100vw - 750px) / 2 + 1.5rem); 
-                bottom: 6.5rem; /* Keep consistent vertical floating - MODIFIED */
+                bottom: 6.5rem; /* Keep consistent vertical floating */
             }
             #chat-toggle-button {
                 width: 90px;
@@ -125,7 +125,7 @@
             #chat-widget-container {
                 /* For tablets, card-container width is 90% */
                 right: calc((100vw - 90vw) / 2 + 1.5rem); 
-                bottom: 6.5rem; /* Keep consistent vertical floating - MODIFIED */
+                bottom: 6.5rem; /* Keep consistent vertical floating */
             }
             #chat-popup {
                 /* Adjust popup width for tablets */
@@ -139,32 +139,24 @@
                 width: 98%; /* Ensure card-container is also responsive */
             }
             #chat-widget-container {
-                right: 1.5rem; /* Smaller margin for small screens */
-                bottom: 6.5rem; /* Smaller margin for small screens - MODIFIED */
-            }
-            #chat-popup {
-                position: fixed;
-                bottom: 1rem;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 96%;
-                height: 500px;
+                right: 0.5rem; /* Smaller margin for small screens */
+                bottom: 6.5rem; /* Smaller margin for small screens */
             }
             #chat-toggle-button {
-                width: 70px; /* Slightly smaller for mobile */
-                height: 70px;
+                width: 80px; /* MODIFIED: Increased size for mobile */
+                height: 80px; /* MODIFIED: Increased size for mobile */
             }
         }
 
         /* Additional adjustment for very small mobile screens if needed */
         @media (max-width: 480px) {
             #chat-widget-container {
-                right: 1.5rem;
-                bottom: 6.5rem; /* MODIFIED */
+                right: 0.3rem;
+                bottom: 6.5rem;
             }
             #chat-toggle-button {
-                width: 60px;
-                height: 60px;
+                width: 70px; /* MODIFIED: Increased size for very small mobile */
+                height: 70px; /* MODIFIED: Increased size for very small mobile */
             }
         }
 
