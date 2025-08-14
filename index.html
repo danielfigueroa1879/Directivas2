@@ -16,9 +16,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
 
-    <!-- Favicons y Iconos Estándar (Usando placehold.co como ejemplo) -->
-    <link rel="icon" href="https://placehold.co/32x32/cccccc/333333?text=ICO" type="image/x-icon">
-    <link rel="apple-touch-icon" href="https://placehold.co/192x192/cccccc/333333?text=APP">
+    <!-- Favicons y Iconos Estándar -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
     
     <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,8 +30,8 @@
     <style>
         body { 
             font-family: 'Poppins', sans-serif; 
-            /* Reemplazado por placehold.co para evitar 404s */
-            background-image: url('https://placehold.co/1200x800/222222/eeeeee?text=BACKGROUND');
+            /* Fondo de pantalla original */
+            background-image: url('assets/images/101.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -525,9 +525,9 @@
 
     <!-- Main Content -->
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
-        <!-- Logo inside the container (Usando placehold.co para evitar 404s) -->
+        <!-- Logo inside the container -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
-            <img src="https://placehold.co/100x60/cccccc/333333?text=LOGO" alt="OS10 Logo" class="h-full" loading="lazy">
+            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy">
         </a>
 
         <!-- New arrow back button in the top right corner of card-container -->
@@ -619,8 +619,8 @@
                     <span>©2025 - Daniel Figueroa Ch.</span><br>
                     <span>Ingeniero en Informática.</span>
                 </div>
-                <!-- Reemplazado por placehold.co para evitar 404s -->
-                <img src="https://placehold.co/60x60/cccccc/333333?text=QR" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy">
+                <!-- QR Code original -->
+                <img src="assets/images/qr.png" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy">
             </footer>
         </section>
 
@@ -669,8 +669,8 @@
                                     <li>Fotografia almacenada en un Pendrive.</li>
                                 </ul>
                                 <div class="mt-4">
-                                    <!-- Reemplazado por placehold.co para evitar 404s -->
-                                    <img src="https://placehold.co/331x413/cccccc/333333?text=FOTO" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
+                                    <!-- Foto de ejemplo original -->
+                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
                                     <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
@@ -736,12 +736,12 @@
                                 </ul>
                                 <div class="flex items-end justify-between mt-4">
                                     <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
-                                        <!-- Reemplazado por placehold.co para evitar 404s -->
-                                        <img src="https://placehold.co/220x150/cccccc/333333?text=VALORES" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
+                                        <!-- Imagen de valores original -->
+                                        <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
                                     </a>
                                     <a href="https://dal5.short.gy/C∞" target="_blank">
-                                       <!-- Reemplazado por placehold.co para evitar 404s -->
-                                       <img src="https://placehold.co/80x80/cccccc/333333?text=QR" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
+                                       <!-- QR Code original -->
+                                       <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
                                     </a>
                                 </div>
                             </div>
@@ -765,8 +765,8 @@
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
-                        <!-- Reemplazado por placehold.co para evitar 404s -->
-                        <img src="https://placehold.co/40x40/cccccc/333333?text=BOT" alt="Bot Icon" class="h-full w-full object-contain">
+                        <!-- Icono de bot original -->
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                     </div>
                     <div>
                         <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
@@ -779,7 +779,7 @@
                         <option value="Diego">🇪🇸 Diego</option>
                         <option value="Antoni">😊 Antoni</option>
                         <option value="Josh">👔 Josh</option>
-                        <option value="Adam">🎭 Adam</option>
+                        <option value="Adam" selected>🎭 Adam</option> <!-- Adam seleccionado por defecto -->
                         <option value="Alejandro">🌎 Alejandro</option>
                     </select>
                     
@@ -830,8 +830,8 @@
             </footer>
         </div>
         <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
-            <!-- Reemplazado por placehold.co para evitar 404s -->
-            <img src="https://placehold.co/80x80/cccccc/333333?text=BOT" alt="Chatbot Icon" class="h-full w-full object-contain">
+            <!-- Icono de chatbot original -->
+            <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
         </button>
     </div>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
@@ -1049,7 +1049,7 @@
             };
             
             // Variables de voz globales
-            let selectedVoiceId = ELEVENLABS_VOICES.Adam; // Voz predeterminada
+            let selectedVoiceId = ELEVENLABS_VOICES.Adam; // Voz predeterminada: Adam
             let selectedVoiceName = 'Adam';
             let elevenLabsApiKey = 'sk_f8780dada274f3c0e68d14e3795a527b8e380b4c51979cd0'; // Nueva clave API de ElevenLabs
             let isAutoReadEnabled = true;
@@ -1141,7 +1141,7 @@
                         model_id: 'eleven_multilingual_v2',
                         voice_settings: {
                             stability: 0.75,
-                            similarity_boost: 0.9,
+                            similarity_boost: 0.8,
                             style: 0.6,
                             use_speaker_boost: true
                         }
@@ -1259,7 +1259,7 @@
 
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
                     
-                    content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="https://placehold.co/40x40/cccccc/333333?text=BOT" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
+                    content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
                     if (isAutoReadEnabled) setTimeout(() => speakText(text), 300);
                 }
                 messageDiv.innerHTML = content;
@@ -1377,7 +1377,7 @@
                 const typingDiv = document.createElement('div');
                 typingDiv.id = 'typing-indicator';
                 typingDiv.className = 'flex items-start space-x-2 mb-3';
-                typingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="https://placehold.co/40x40/cccccc/333333?text=BOT" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
+                typingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
                 chatMessages.appendChild(typingDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
@@ -1454,10 +1454,10 @@
             // El bot siempre dará la bienvenida con información de voz moderna.
             setTimeout(() => {
                 const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '🎯 ¡Hola! Soy tu asistente virtual de OS10 Coquimbo con voces masculinas PREMIUM ya configuradas. Prueba diferentes voces en el selector de arriba. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                addMessage('bot', '🎯 ¡Hola! Soy **Adam**, tu asistente virtual de OS10 Coquimbo con voces masculinas PREMIUM ya configuradas. Prueba diferentes voces en el selector de arriba. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
 </body>
 </html>
-                                                        
+                                                
