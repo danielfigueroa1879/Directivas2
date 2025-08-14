@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +39,7 @@
             max-width: 750px; 
             width: 90%; 
             margin: 0.5rem auto; 
-            position: relative; /* Ensure it's relative for absolute internal elements */
+            position: relative;
         }
         .logo-os10-container { 
             position: absolute;
@@ -63,11 +63,27 @@
         .response-button { transition: all 0.2s ease; }
         .response-button:hover { transform: translateX(4px); }
 
+        /* Voice selector styles for modern voices */
+        .voice-selector {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 4px 8px;
+            color: white;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .voice-selector option {
+            background: #1f2937;
+            color: white;
+        }
+
         /* Chatbot Styles - Adjusted */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 6.5rem; /* Base vertical offset from the bottom of the viewport - MODIFIED */
-            right: 1.5rem; /* Base horizontal offset from the right of the viewport */
+            bottom: 6.5rem;
+            right: 1.5rem;
             z-index: 1000; 
             display: flex; 
             flex-direction: column; 
@@ -108,12 +124,8 @@
         /* Adjustments for larger screens (PC) */
         @media (min-width: 1024px) {
             #chat-widget-container {
-                /* Calculate right position relative to the centered card-container */
-                /* card-container max-width is 750px, margin is auto. */
-                /* (100vw - 750px) / 2 gives the left/right margin on the viewport. */
-                /* Adding 1.5rem to this positions it outside the card by that amount. */
                 right: calc((100vw - 750px) / 2 + 1.5rem); 
-                bottom: 7.9rem; /* Keep consistent vertical floating - MODIFIED */
+                bottom: 7.9rem;
             }
             #chat-toggle-button {
                 width: 90px;
@@ -123,12 +135,10 @@
        /* Adjustments for medium screens (tablets) */
        @media (min-width: 768px) and (max-width: 1023px) {
             #chat-widget-container {
-                /* For tablets, card-container width is 90% */
                 right: calc((102vw - 85vw) / 2 + 1.5rem); 
-                bottom: 7.9rem; /* Keep consistent vertical floating - MODIFIED */
+                bottom: 7.9rem;
             }
             #chat-popup {
-                /* Adjust popup width for tablets */
                 width: 400px; 
             }
         }
@@ -136,11 +146,11 @@
         /* Adjustments for small screens (Mobile) */
         @media (max-width: 767px) {
             .card-container {
-                width: 98%; /* Ensure card-container is also responsive */
+                width: 98%;
             }
             #chat-widget-container {
-                right: 1.8rem; /* Smaller margin for small screens */
-                bottom: 7.9rem; /* Smaller margin for small screens - MODIFIED */
+                right: 1.8rem;
+                bottom: 7.9rem;
             }
             #chat-popup {
                 position: fixed;
@@ -151,16 +161,16 @@
                 height: 500px;
             }
             #chat-toggle-button {
-                width: 70px; /* Slightly smaller for mobile */
+                width: 70px;
                 height: 70px;
             }
         }
 
-        /* Additional adjustment for very small mobile screens if needed */
+        /* Additional adjustment for very small mobile screens */
         @media (max-width: 480px) {
             #chat-widget-container {
                 right: 1.7rem;
-                bottom: 7.9rem; /* MODIFIED */
+                bottom: 7.9rem;
             }
             #chat-toggle-button {
                 width: 67px;
@@ -171,7 +181,7 @@
         /* ===== ESTILOS PARA CREDENCIALES ===== */
         .credenciales-section {
             display: none;
-            position: relative; /* Important for positioning the back button */
+            position: relative;
         }
         .credenciales-section.active {
             display: block;
@@ -179,7 +189,7 @@
 
         .credenciales-title-container {
             text-align: center;
-            margin-top: 2rem; /* Added margin-top for content spacing */
+            margin-top: 2rem;
             line-height: 1;
         }
         .credenciales-main-title, .credenciales-main-subtitle {
@@ -344,20 +354,19 @@
         /* New arrow button in the top right corner of card-container */
         #credenciales-arrow-back-btn {
             position: absolute;
-            top: 1rem; /* Aligned with the logo top */
-            right: 0.5rem; /* Positioned in the right corner */
-            z-index: 20; /* Ensure it's above other content elements */
-            color: #4B5563; /* Tailwind gray-700 color */
+            top: 1rem;
+            right: 0.5rem;
+            z-index: 20;
+            color: #4B5563;
             transition: all 0.2s ease;
             cursor: pointer;
-            padding: 0.5rem; /* Small padding for easier clicking */
-            border-radius: 9999px; /* For circular shape if SVG is square */
+            padding: 0.5rem;
+            border-radius: 9999px;
         }
         #credenciales-arrow-back-btn:hover {
-            color: #2563EB; /* Tailwind blue-600 color */
-            background-color: rgba(0, 0, 0, 0.05); /* Slight background on hover */
+            color: #2563EB;
+            background-color: rgba(0, 0, 0, 0.05);
         }
-
 
         /* Specific animations */
         .indep-btn.bounce-animation {
@@ -411,37 +420,36 @@
             .credenciales-back-btn svg {
                 margin-right: 0;
             }
-             /* Adjustments for the new arrow button on smaller mobiles */
             #credenciales-arrow-back-btn {
-                width: 2rem; /* w-8 */
-                height: 2rem; /* h-8 */
-                top: 0.5rem; /* Higher */
-                right: 1.5rem; /* More to the left */
-                padding: 0.2rem; /* Less padding */
+                width: 2rem;
+                height: 2rem;
+                top: 0.5rem;
+                right: 1.5rem;
+                padding: 0.2rem;
             }
         }
         /* Font size adjustment for banner */
         .banner-text-small {
-            font-size: 0.75rem; /* Tailwind text-xs */
+            font-size: 0.75rem;
         }
         /* Adjustment for large screens (PC) */
         @media (min-width: 1024px) {
             .banner-text-small {
-                font-size: 0.875rem; /* Tailwind text-sm */
+                font-size: 0.875rem;
             }
         }
 
         .banner-content-wrapper {
-            position: relative; /* Ensures absolute elements inside are positioned correctly */
+            position: relative;
         }
         .os10-coquimbo-center {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            height: 100%; /* So the click area is the full banner height */
-            display: flex; /* To vertically center the text */
-            align-items: center; /* To vertically center the text */
-            padding: 0 1rem; /* Padding to prevent text from touching edges */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
         }
     </style>
 </head>
@@ -588,7 +596,7 @@
 
         <!-- CREDENTIALS SECTION -->
         <section id="credenciales-section" class="credenciales-section">
-            <!-- The original back button (if still needed at the bottom right) -->
+            <!-- The original back button -->
             <button onclick="showMain()" class="credenciales-back-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -601,123 +609,124 @@
                 <h2 class="credenciales-main-subtitle">EMPRESA E INDEPENDIENTE</h2><br>
             </header>
                 
-                <main class="content-container">
-                    <section class="main-section">
-                        <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
+            <main class="content-container">
+                <section class="main-section">
+                    <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
+                    
+                    <div class="space-y-8">
+                        <!-- Required documents -->
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">Documentos requeridos:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
+                              
+                                <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
+                                Descargar
+                            </a>
+                                <li>Fotocopia de cédula de identidad (ambas caras).</li>
+                                <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
+                                <li>Certificado de Antecedentes para Fines Especiales.</li>
+                            </ul>
+                            
+                        </div>
                         
-                        <div class="space-y-8">
-                            <!-- Required documents -->
-                            <div class="requirement-block">
-                                <h4 class="requirement-subtitle">Documentos requeridos:</h4>
-                                <ul class="list-disc pl-5">
-                                    <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
-                                    <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
-                                    Descargar
+                        <!-- Digital photograph -->
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">Fotografía digital:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
+                                <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
+                                <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
+                                <li>Fotografia almacenada en un Pendrive.</li>
+                            </ul>
+                            <div class="mt-4">
+                                <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
+                            </div>
+                            <div class="flex flex-col space-y-3 mt-4">
+                                <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
+                                <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                    1 Convert. 300 DPI
                                 </a>
-                                    <li>Fotocopia de cédula de identidad (ambas caras).</li>
-                                    <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
-                                    <li>Certificado de Antecedentes para Fines Especiales.</li>
-                                </ul>
-                                
-                            </div>
-                            
-                            <!-- Digital photograph -->
-                            <div class="requirement-block">
-                                <h4 class="requirement-subtitle">Fotografía digital:</h4>
-                                <ul class="list-disc pl-5">
-                                    <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
-                                    <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
-                                    <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
-                                    <li>Fotografia almacenada en un Pendrive.</li>
-                                </ul>
-                                <div class="mt-4">
-                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
-                                </div>
-                                <div class="flex flex-col space-y-3 mt-4">
-                                    <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
-                                    <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
-                                        1 Convert. 300 DPI
-                                    </a>
-                                    <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
-                                        2 Convert. 300 DPI
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- Excel Format -->
-                            <div class="requirement-block">
-                                <h4 class="requirement-subtitle">Formato Excel:</h4>
-                                <ul class="list-disc pl-5">
-                                    <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
-                                    <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
-                                </ul>
-                                <div class="credenciales-table-container">
-                                    <table class="credenciales-responsive-table">
-                                        <thead>
-                                            <tr>
-                                                <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
-                                                <td><select class="credenciales-table-select">
-                                                    <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
-                                                </select></td>
-                                                <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
-                                                <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
-                                                <td></td><td>camilaleyton@gmail.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
-                                                <td><select class="credenciales-table-select">
-                                                    <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
-                                                </select></td>
-                                                <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
-                                                <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
-                                                <td></td><td>danielvega@gmail.com</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
-                                
-                                <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
-                                <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
-                            </div>
-
-                            <!-- Payment Slip -->
-                            <div class="requirement-block">
-                                <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
-                                <ul class="list-disc pl-5">
-                                    <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
-                                    <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
-                                    <li>R.U.T.: 61.944.800-6</li>
-                                    <li>Teléfono OS.10.: +562512651024</li>
-                                </ul>
-                                <div class="flex items-end justify-between mt-4">
-                                    <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
-                                        <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
-                                    </a>
-                                    <a href="https://dal5.short.gy/C√" target="_blank">
-                                       <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
-                                    </a>
-                                </div>
+                                <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                    2 Convert. 300 DPI
+                                </a>
                             </div>
                         </div>
-                    </section>
-                </main>  
-               
-               <footer class="footer-text text-center mt-6 text-sm text-gray-600">
-                  <span>Haga clic en los botones para descargar.</span><br>
-                  <span>©2025 - Daniel Figueroa Ch.</span><br>
-                  <span>Ingeniero en Informática.</span>
-               </footer>
-            </div>
+                        
+                        <!-- Excel Format -->
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">Formato Excel:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
+                                <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
+                            </ul>
+                            <div class="credenciales-table-container">
+                                <table class="credenciales-responsive-table">
+                                    <thead>
+                                        <tr>
+                                            <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
+                                            <td><select class="credenciales-table-select">
+                                                <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                            </select></td>
+                                            <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
+                                            <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                            <td></td><td>camilaleyton@gmail.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
+                                            <td><select class="credenciales-table-select">
+                                                <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                            </select></td>
+                                            <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
+                                            <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                            <td></td><td>danielvega@gmail.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
+                            
+                            <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
+                            <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
+                        </div>
+
+                        <!-- Payment Slip -->
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
+                                <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
+                                <li>R.U.T.: 61.944.800-6</li>
+                                <li>Teléfono OS.10.: +562512651024</li>
+                            </ul>
+                            <div class="flex items-end justify-between mt-4">
+                                <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
+                                    <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
+                                </a>
+                                <a href="https://dal5.short.gy/C∞" target="_blank">
+                                   <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>  
+           
+           <footer class="footer-text text-center mt-6 text-sm text-gray-600">
+              <span>Haga clic en los botones para descargar.</span><br>
+              <span>©2025 - Daniel Figueroa Ch.</span><br>
+              <span>Ingeniero en Informática.</span>
+           </footer>
+        </div>
         </section>
     </div>
 
-    <!-- ===== FLOATING CHATBOT WITH VOICE ===== -->
+    <!-- ===== FLOATING CHATBOT WITH MODERN VOICES ===== -->
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <!-- Header -->
@@ -728,12 +737,31 @@
                     </div>
                     <div>
                         <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
-                        <p class="text-xs text-gray-500">Con funciones de voz</p>
+                        <p class="text-xs text-gray-500">Con voces modernas</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Read last message"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
-                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    <!-- Voice Selector -->
+                    <select id="voiceSelector" class="voice-selector text-xs">
+                        <option value="Adam">🎭 Adam</option>
+                        <option value="Diego">🇪🇸 Diego</option>
+                        <option value="Josh">👔 Josh</option>
+                        <option value="Alejandro">🌎 Alejandro</option>
+                        <option value="Antoni">😊 Antoni</option>
+                    </select>
+                    
+                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                        </svg>
+                    </button>
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
                 </div>
             </header>
             <!-- Chat messages container -->
@@ -741,7 +769,7 @@
             <footer class="p-3 border-t border-green-500/30">
                 <div class="mb-2 text-xs text-center text-gray-500"><span>Alt+V para micrófono</span></div>
                 <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
-                    <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Enable/Disable Auto-Read">
+                    <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Activar/Desactivar Auto-lectura">
                         <!-- Speaker On Icon -->
                         <svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
@@ -751,13 +779,24 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Speak"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg></button>
-                    <input type="text" id="user-input" placeholder="Type or use microphone..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
-                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></button>
+                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" x2="12" y1="19" y2="23"/>
+                            <line x1="8" x2="16" y1="23" y2="23"/>
+                        </svg>
+                    </button>
+                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
                 </div>
             </footer>
         </div>
-        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Open Virtual Assistant with Voice">
+        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
             <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
         </button>
     </div>
@@ -769,22 +808,14 @@
         function showCredenciales() {
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
-            
-            // Show the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
         function showMain() {
             document.getElementById('credenciales-section').classList.remove('active');
             document.getElementById('main-section').style.display = 'block';
-            
-            // Hide the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
@@ -949,11 +980,11 @@
     <!-- Load rules from external file -->
     <script src="./rules/chatbot-rules.js"></script>
     
-    <!-- ===== MAIN CHATBOT SCRIPT WITH MODERN VOICES ===== -->
+    <!-- ===== MAIN CHATBOT SCRIPT WITH MODERN VOICES INTEGRATED ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // FORCE LIGHT MODE ALWAYS - DARK MODE COMPLETELY REMOVED
+            // FORCE LIGHT MODE ALWAYS
             document.documentElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
             
@@ -1035,7 +1066,7 @@
 
             // ElevenLabs TTS (ULTRA-REALISTIC)
             async function speakWithElevenLabs(text) {
-                // API key is already configured - no need to prompt user
+                // API key is already configured
                 if (!elevenLabsApiKey) {
                     console.warn('ElevenLabs API key not configured');
                     throw new Error('No API key configured');
@@ -1094,8 +1125,6 @@
                 
                 // Find the best Spanish male voice
                 const preferredVoices = [
-                    // Specifically masculine voices
-                    voices.find(v => v.name.toLowerCase().includes('diego') && v.lang.startsWith('es')),
                     voices.find(v => v.name.toLowerCase().includes('jorge') && v.lang.startsWith('es')),
                     voices.find(v => v.name.toLowerCase().includes('carlos') && v.lang.startsWith('es')),
                     voices.find(v => v.name.toLowerCase().includes('antonio') && v.lang.startsWith('es')),
@@ -1368,6 +1397,5 @@
             }, 1000);
         });
     </script>
-  
 </body>
-</html>
+                                
