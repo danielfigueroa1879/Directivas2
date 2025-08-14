@@ -619,7 +619,6 @@
                     <span>©2025 - Daniel Figueroa Ch.</span><br>
                     <span>Ingeniero en Informática.</span>
                 </div>
-                <!-- QR Code original -->
                 <img src="assets/images/qr.png" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy">
             </footer>
         </section>
@@ -669,7 +668,6 @@
                                     <li>Fotografia almacenada en un Pendrive.</li>
                                 </ul>
                                 <div class="mt-4">
-                                    <!-- Foto de ejemplo original -->
                                     <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
@@ -736,11 +734,9 @@
                                 </ul>
                                 <div class="flex items-end justify-between mt-4">
                                     <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
-                                        <!-- Imagen de valores original -->
                                         <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
                                     </a>
-                                    <a href="https://dal5.short.gy/C∞" target="_blank">
-                                       <!-- QR Code original -->
+                                    <a href="https://dal5.short.gy/C%E2%88%9A" target="_blank">
                                        <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
                                     </a>
                                 </div>
@@ -758,14 +754,13 @@
         </section>
     </div>
 
-    <!-- ===== FLOATING CHATBOT WITH MODERN VOICES ===== -->
+    <!-- ===== FLOATING CHATBOT CON VOCES MODERNAS ===== -->
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <!-- Header -->
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
-                        <!-- Icono de bot original -->
                         <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
                     </div>
                     <div>
@@ -830,7 +825,6 @@
             </footer>
         </div>
         <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
-            <!-- Icono de chatbot original -->
             <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
         </button>
     </div>
@@ -1026,8 +1020,8 @@
         runCounter();
     </script>
     
-    <!-- Se eliminó el script externo chatbot-rules.js ya que estaba causando un 404 -->
-    <!-- El objeto de reglas ahora se integra directamente en el script principal. -->
+    <!-- Load rules from external file -->
+    <script src="./rules/chatbot-rules.js"></script>
     
     <!-- ===== SCRIPT PRINCIPAL DEL CHATBOT CON VOCES MODERNAS INTEGRADO ===== -->
     <script>
@@ -1061,16 +1055,9 @@
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const speechSynth = window.speechSynthesis;
             
-            // Cargar reglas directamente en este script, ya que chatbot-rules.js no se encontró
-            // Esto asegura que el bot pueda seguir funcionando, incluso si es inicialmente en modo 'solo IA'.
-            // Puedes poblar este objeto con tus reglas específicas del chatbot si es necesario.
+            // Cargar reglas desde el objeto global `window.responses` que se espera que `chatbot-rules.js` defina.
+            // Si el archivo externo no carga o no define `window.responses`, `allRules` será un array vacío.
             const allRules = Object.values(window.responses || {});
-            // Ejemplo de cómo podrías añadir una regla si tuvieras contenido para chatbot-rules.js
-            // window.responses = { 
-            //     "saludo": { keywords: ["hola", "saludos"], response: "¡Hola! ¿En qué puedo ayudarte hoy?" },
-            //     "horario": { keywords: ["horario", "horas de atencion"], response: "Nuestro horario es de 9 AM a 6 PM de lunes a viernes." }
-            // };
-            // const allRules = Object.values(window.responses);
 
             const systemPrompt = window.systemPrompt || 'You are a help assistant.'; 
 
@@ -1126,6 +1113,7 @@
             async function speakWithElevenLabs(text) {
                 if (!elevenLabsApiKey) {
                     console.warn('ElevenLabs API key not configured');
+                    addMessage('bot', '⚠️ La API key de ElevenLabs no está configurada. Usando voz del navegador...');
                     throw new Error('No API key configured');
                 }
 
@@ -1460,4 +1448,3 @@
     </script>
 </body>
 </html>
-                                                
