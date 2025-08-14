@@ -1,4 +1,4 @@
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +39,7 @@
             max-width: 750px; 
             width: 90%; 
             margin: 0.5rem auto; 
-            position: relative;
+            position: relative; /* Ensure it's relative for absolute internal elements */
         }
         .logo-os10-container { 
             position: absolute;
@@ -63,27 +63,11 @@
         .response-button { transition: all 0.2s ease; }
         .response-button:hover { transform: translateX(4px); }
 
-        /* Voice selector styles for modern voices */
-        .voice-selector {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            padding: 4px 8px;
-            color: white;
-            font-size: 12px;
-            margin-left: 8px;
-        }
-
-        .voice-selector option {
-            background: #1f2937;
-            color: white;
-        }
-
         /* Chatbot Styles - Adjusted */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 6.5rem;
-            right: 1.5rem;
+            bottom: 6.5rem; /* Base vertical offset from the bottom of the viewport - MODIFIED */
+            right: 1.5rem; /* Base horizontal offset from the right of the viewport */
             z-index: 1000; 
             display: flex; 
             flex-direction: column; 
@@ -124,8 +108,12 @@
         /* Adjustments for larger screens (PC) */
         @media (min-width: 1024px) {
             #chat-widget-container {
+                /* Calculate right position relative to the centered card-container */
+                /* card-container max-width is 750px, margin is auto. */
+                /* (100vw - 750px) / 2 gives the left/right margin on the viewport. */
+                /* Adding 1.5rem to this positions it outside the card by that amount. */
                 right: calc((100vw - 750px) / 2 + 1.5rem); 
-                bottom: 7.9rem;
+                bottom: 7.9rem; /* Keep consistent vertical floating - MODIFIED */
             }
             #chat-toggle-button {
                 width: 90px;
@@ -135,10 +123,12 @@
        /* Adjustments for medium screens (tablets) */
        @media (min-width: 768px) and (max-width: 1023px) {
             #chat-widget-container {
+                /* For tablets, card-container width is 90% */
                 right: calc((102vw - 85vw) / 2 + 1.5rem); 
-                bottom: 7.9rem;
+                bottom: 7.9rem; /* Keep consistent vertical floating - MODIFIED */
             }
             #chat-popup {
+                /* Adjust popup width for tablets */
                 width: 400px; 
             }
         }
@@ -146,11 +136,11 @@
         /* Adjustments for small screens (Mobile) */
         @media (max-width: 767px) {
             .card-container {
-                width: 98%;
+                width: 98%; /* Ensure card-container is also responsive */
             }
             #chat-widget-container {
-                right: 1.8rem;
-                bottom: 7.9rem;
+                right: 1.8rem; /* Smaller margin for small screens */
+                bottom: 7.9rem; /* Smaller margin for small screens - MODIFIED */
             }
             #chat-popup {
                 position: fixed;
@@ -161,16 +151,16 @@
                 height: 500px;
             }
             #chat-toggle-button {
-                width: 70px;
+                width: 70px; /* Slightly smaller for mobile */
                 height: 70px;
             }
         }
 
-        /* Additional adjustment for very small mobile screens */
+        /* Additional adjustment for very small mobile screens if needed */
         @media (max-width: 480px) {
             #chat-widget-container {
                 right: 1.7rem;
-                bottom: 7.9rem;
+                bottom: 7.9rem; /* MODIFIED */
             }
             #chat-toggle-button {
                 width: 67px;
@@ -181,7 +171,7 @@
         /* ===== ESTILOS PARA CREDENCIALES ===== */
         .credenciales-section {
             display: none;
-            position: relative;
+            position: relative; /* Important for positioning the back button */
         }
         .credenciales-section.active {
             display: block;
@@ -189,7 +179,7 @@
 
         .credenciales-title-container {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 2rem; /* Added margin-top for content spacing */
             line-height: 1;
         }
         .credenciales-main-title, .credenciales-main-subtitle {
@@ -354,19 +344,20 @@
         /* New arrow button in the top right corner of card-container */
         #credenciales-arrow-back-btn {
             position: absolute;
-            top: 1rem;
-            right: 0.5rem;
-            z-index: 20;
-            color: #4B5563;
+            top: 1rem; /* Aligned with the logo top */
+            right: 0.5rem; /* Positioned in the right corner */
+            z-index: 20; /* Ensure it's above other content elements */
+            color: #4B5563; /* Tailwind gray-700 color */
             transition: all 0.2s ease;
             cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 9999px;
+            padding: 0.5rem; /* Small padding for easier clicking */
+            border-radius: 9999px; /* For circular shape if SVG is square */
         }
         #credenciales-arrow-back-btn:hover {
-            color: #2563EB;
-            background-color: rgba(0, 0, 0, 0.05);
+            color: #2563EB; /* Tailwind blue-600 color */
+            background-color: rgba(0, 0, 0, 0.05); /* Slight background on hover */
         }
+
 
         /* Specific animations */
         .indep-btn.bounce-animation {
@@ -420,36 +411,37 @@
             .credenciales-back-btn svg {
                 margin-right: 0;
             }
+             /* Adjustments for the new arrow button on smaller mobiles */
             #credenciales-arrow-back-btn {
-                width: 2rem;
-                height: 2rem;
-                top: 0.5rem;
-                right: 1.5rem;
-                padding: 0.2rem;
+                width: 2rem; /* w-8 */
+                height: 2rem; /* h-8 */
+                top: 0.5rem; /* Higher */
+                right: 1.5rem; /* More to the left */
+                padding: 0.2rem; /* Less padding */
             }
         }
         /* Font size adjustment for banner */
         .banner-text-small {
-            font-size: 0.75rem;
+            font-size: 0.75rem; /* Tailwind text-xs */
         }
         /* Adjustment for large screens (PC) */
         @media (min-width: 1024px) {
             .banner-text-small {
-                font-size: 0.875rem;
+                font-size: 0.875rem; /* Tailwind text-sm */
             }
         }
 
         .banner-content-wrapper {
-            position: relative;
+            position: relative; /* Ensures absolute elements inside are positioned correctly */
         }
         .os10-coquimbo-center {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
+            height: 100%; /* So the click area is the full banner height */
+            display: flex; /* To vertically center the text */
+            align-items: center; /* To vertically center the text */
+            padding: 0 1rem; /* Padding to prevent text from touching edges */
         }
     </style>
 </head>
@@ -596,7 +588,7 @@
 
         <!-- CREDENTIALS SECTION -->
         <section id="credenciales-section" class="credenciales-section">
-            <!-- The original back button -->
+            <!-- The original back button (if still needed at the bottom right) -->
             <button onclick="showMain()" class="credenciales-back-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -609,124 +601,123 @@
                 <h2 class="credenciales-main-subtitle">EMPRESA E INDEPENDIENTE</h2><br>
             </header>
                 
-            <main class="content-container">
-                <section class="main-section">
-                    <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
-                    
-                    <div class="space-y-8">
-                        <!-- Required documents -->
-                        <div class="requirement-block">
-                            <h4 class="requirement-subtitle">Documentos requeridos:</h4>
-                            <ul class="list-disc pl-5">
-                                <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
-                              
-                                <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
-                                Descargar
-                            </a>
-                                <li>Fotocopia de cédula de identidad (ambas caras).</li>
-                                <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
-                                <li>Certificado de Antecedentes para Fines Especiales.</li>
-                            </ul>
-                            
-                        </div>
+                <main class="content-container">
+                    <section class="main-section">
+                        <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
                         
-                        <!-- Digital photograph -->
-                        <div class="requirement-block">
-                            <h4 class="requirement-subtitle">Fotografía digital:</h4>
-                            <ul class="list-disc pl-5">
-                                <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
-                                <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
-                                <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
-                                <li>Fotografia almacenada en un Pendrive.</li>
-                            </ul>
-                            <div class="mt-4">
-                                <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
-                            </div>
-                            <div class="flex flex-col space-y-3 mt-4">
-                                <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
-                                <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
-                                    1 Convert. 300 DPI
+                        <div class="space-y-8">
+                            <!-- Required documents -->
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">Documentos requeridos:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
+                                    <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
+                                    Descargar
                                 </a>
-                                <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
-                                    2 Convert. 300 DPI
-                                </a>
+                                    <li>Fotocopia de cédula de identidad (ambas caras).</li>
+                                    <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
+                                    <li>Certificado de Antecedentes para Fines Especiales.</li>
+                                </ul>
+                                
                             </div>
-                        </div>
-                        
-                        <!-- Excel Format -->
-                        <div class="requirement-block">
-                            <h4 class="requirement-subtitle">Formato Excel:</h4>
-                            <ul class="list-disc pl-5">
-                                <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
-                                <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
-                            </ul>
-                            <div class="credenciales-table-container">
-                                <table class="credenciales-responsive-table">
-                                    <thead>
-                                        <tr>
-                                            <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
-                                            <td><select class="credenciales-table-select">
-                                                <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
-                                            </select></td>
-                                            <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
-                                            <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
-                                            <td></td><td>camilaleyton@gmail.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
-                                            <td><select class="credenciales-table-select">
-                                                <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
-                                            </select></td>
-                                            <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
-                                            <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
-                                            <td></td><td>danielvega@gmail.com</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
                             
-                            <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
-                            <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
-                        </div>
+                            <!-- Digital photograph -->
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">Fotografía digital:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
+                                    <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
+                                    <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
+                                    <li>Fotografia almacenada en un Pendrive.</li>
+                                </ul>
+                                <div class="mt-4">
+                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
+                                </div>
+                                <div class="flex flex-col space-y-3 mt-4">
+                                    <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
+                                    <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                        1 Convert. 300 DPI
+                                    </a>
+                                    <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                        2 Convert. 300 DPI
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Excel Format -->
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">Formato Excel:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
+                                    <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
+                                </ul>
+                                <div class="credenciales-table-container">
+                                    <table class="credenciales-responsive-table">
+                                        <thead>
+                                            <tr>
+                                                <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
+                                                <td><select class="credenciales-table-select">
+                                                    <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                                </select></td>
+                                                <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
+                                                <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                                <td></td><td>camilaleyton@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
+                                                <td><select class="credenciales-table-select">
+                                                    <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                                </select></td>
+                                                <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
+                                                <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                                <td></td><td>danielvega@gmail.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
+                                
+                                <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
+                                <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
+                            </div>
 
-                        <!-- Payment Slip -->
-                        <div class="requirement-block">
-                            <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
-                            <ul class="list-disc pl-5">
-                                <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
-                                <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
-                                <li>R.U.T.: 61.944.800-6</li>
-                                <li>Teléfono OS.10.: +562512651024</li>
-                            </ul>
-                            <div class="flex items-end justify-between mt-4">
-                                <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
-                                    <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
-                                </a>
-                                <a href="https://dal5.short.gy/C∞" target="_blank">
-                                   <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
-                                </a>
+                            <!-- Payment Slip -->
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
+                                    <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
+                                    <li>R.U.T.: 61.944.800-6</li>
+                                    <li>Teléfono OS.10.: +562512651024</li>
+                                </ul>
+                                <div class="flex items-end justify-between mt-4">
+                                    <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
+                                        <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
+                                    </a>
+                                    <a href="https://dal5.short.gy/C√" target="_blank">
+                                       <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            </main>  
-           
-           <footer class="footer-text text-center mt-6 text-sm text-gray-600">
-              <span>Haga clic en los botones para descargar.</span><br>
-              <span>©2025 - Daniel Figueroa Ch.</span><br>
-              <span>Ingeniero en Informática.</span>
-           </footer>
-        </div>
+                    </section>
+                </main>  
+               
+               <footer class="footer-text text-center mt-6 text-sm text-gray-600">
+                  <span>Haga clic en los botones para descargar.</span><br>
+                  <span>©2025 - Daniel Figueroa Ch.</span><br>
+                  <span>Ingeniero en Informática.</span>
+               </footer>
+            </div>
         </section>
     </div>
 
-    <!-- ===== FLOATING CHATBOT WITH MODERN VOICES ===== -->
+    <!-- ===== FLOATING CHATBOT WITH VOICE ===== -->
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <!-- Header -->
@@ -737,31 +728,12 @@
                     </div>
                     <div>
                         <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
-                        <p class="text-xs text-gray-500">Con voces modernas</p>
+                        <p class="text-xs text-gray-500">Con funciones de voz</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <!-- Voice Selector -->
-                    <select id="voiceSelector" class="voice-selector text-xs">
-                        <option value="Adam">🎭 Adam</option>
-                        <option value="Diego">🇪🇸 Diego</option>
-                        <option value="Josh">👔 Josh</option>
-                        <option value="Alejandro">🌎 Alejandro</option>
-                        <option value="Antoni">😊 Antoni</option>
-                    </select>
-                    
-                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-                        </svg>
-                    </button>
-                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
+                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Read last message"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                 </div>
             </header>
             <!-- Chat messages container -->
@@ -769,7 +741,7 @@
             <footer class="p-3 border-t border-green-500/30">
                 <div class="mb-2 text-xs text-center text-gray-500"><span>Alt+V para micrófono</span></div>
                 <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
-                    <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Activar/Desactivar Auto-lectura">
+                    <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Enable/Disable Auto-Read">
                         <!-- Speaker On Icon -->
                         <svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
@@ -779,24 +751,13 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Hablar">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                            <line x1="12" x2="12" y1="19" y2="23"/>
-                            <line x1="8" x2="16" y1="23" y2="23"/>
-                        </svg>
-                    </button>
-                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
-                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
+                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="🎤 Speak"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></svg></button>
+                    <input type="text" id="user-input" placeholder="Type or use microphone..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></button>
                 </div>
             </footer>
         </div>
-        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
+        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Open Virtual Assistant with Voice">
             <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
         </button>
     </div>
@@ -808,14 +769,22 @@
         function showCredenciales() {
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
+            
+            // Show the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
+            
+            // Scroll to top
             window.scrollTo(0, 0);
         }
 
         function showMain() {
             document.getElementById('credenciales-section').classList.remove('active');
             document.getElementById('main-section').style.display = 'block';
+            
+            // Hide the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
+            
+            // Scroll to top
             window.scrollTo(0, 0);
         }
 
@@ -980,37 +949,21 @@
     <!-- Load rules from external file -->
     <script src="./rules/chatbot-rules.js"></script>
     
-    <!-- ===== MAIN CHATBOT SCRIPT WITH MODERN VOICES INTEGRATED ===== -->
+    <!-- MAIN CHATBOT SCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // FORCE LIGHT MODE ALWAYS
+            // FORCE LIGHT MODE ALWAYS - DARK MODE COMPLETELY REMOVED
             document.documentElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
-            
-            // ===== MODERN VOICE CONFIGURATION =====
-            
-            // ElevenLabs Voice IDs (PREMIUM QUALITY)
-            const ELEVENLABS_VOICES = {
-                'Adam': 'pNInz6obpgDQGcFmaJgB',     // Voz profunda narrativa
-                'Diego': 'g5CIjZEefAph4nQFvHAz',    // Voz española masculina profesional
-                'Josh': 'TxGEqnHWrfWFTfGW9XjX',     // Voz madura y confiable
-                'Alejandro': 'nPczCjzI2devNBz1zQrb', // Voz latina masculina
-                'Antoni': 'ErXwobaYiN019PkySvjV'    // Voz joven y energética
-            };
-            
-            // Global voice variables
-            let selectedVoiceId = ELEVENLABS_VOICES.Adam; // Default voice (Adam primero)
-            let selectedVoiceName = 'Adam';
-            let elevenLabsApiKey = 'sk_0e1d55301cbe5be56c5c0c542fd629590b22e553e9a96e5a'; // Your ElevenLabs API key
-            let isAutoReadEnabled = true;
-            let isListening = false;
-            let recognition;
-            let availableVoices = [];
             
             // --- Chatbot Logic ---
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const speechSynth = window.speechSynthesis;
+            let recognition;
+            let isListening = false;
+            let availableVoices = [];
+            let isAutoReadEnabled = true;
             
             // Load rules from the single file
             const allRules = Object.values(window.responses || {});
@@ -1019,7 +972,7 @@
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
                 if (availableVoices.length > 0) {
-                     console.log("Browser voices loaded:", availableVoices.length);
+                     console.log("Voices loaded.");
                 }
             }
 
@@ -1038,131 +991,110 @@
                 document.getElementById('voice-btn').style.display = 'none';
             }
 
-            // ===== MODERN VOICE SYNTHESIS FUNCTIONS =====
-            
-            // Main TTS function with multiple providers
-            async function speakText(text) {
-                if (!text || !text.trim()) return;
+            // === IMPROVED CROSS-PLATFORM SPEECH SYNTHESIS FUNCTION ===
+             function detectDevice() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                const platform = navigator.platform.toLowerCase();
+                
+                // iOS detection (includes iPad with iOS 13+)
+                const isIOS = /iphone|ipad|ipod/.test(userAgent) || 
+                             (platform === 'macintel' && navigator.maxTouchPoints > 1);
+                
+                // Android detection
+                const isAndroid = /android/.test(userAgent);
+                
+                // Safari detection
+                const isSafari = /safari/.test(userAgent) && !/chrome|chromium|edg/.test(userAgent);
+                
+                // Chrome Mobile detection
+                const isChromeMobile = /chrome/.test(userAgent) && /mobile/.test(userAgent);
+                
+                return {
+                    isIOS,
+                    isAndroid,
+                    isSafari,
+                    isChromeMobile,
+                    isMobile: isIOS || isAndroid,
+                    isDesktop: !isIOS && !isAndroid
+                };
+            }
 
-                // Clean text for TTS
+            function getPlatformSpeechConfig(device) {
+                if (device.isIOS) {
+                    // iOS tends to play too fast, needs slower rate
+                    return {
+                        rate: 1.0,      // Reduced speed for iOS
+                        pitch: 0.5,     // Slightly deeper pitch
+                        volume: 1.0,    // Full volume
+                        lang: 'es-ES'
+                    };
+                } else if (device.isAndroid) {
+                    // Android usually plays at normal or slow speed
+                    return {
+                        rate: 1.3,      // Slightly increased speed
+                        pitch: 0.2,     // Deeper pitch for male voice
+                        volume: 1.0,    // Max volume
+                        lang: 'es-CL'
+                    };
+                } else {
+                    // Desktop/other devices
+                    return {
+                        rate: 0.9,      // Standard speed
+                        pitch: 0.4,     // Normal pitch
+                        volume: 1.0,    // Full volume
+                        lang: 'es-CL'
+                    };
+                }
+            }
+
+            function speakText(text) {
+                const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
                 const cleanText = text
-                    .replace(/<[^>]*>/g, '') // Remove HTML tags
-                    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove markdown bold
-                    .replace(/\*(.*?)\*/g, '$1') // Remove markdown italic
-                    .replace(/<br>/g, '. ') // Replace <br> with pauses
-                    .replace(/\n/g, '. ') // Replace newlines with periods
-                    .replace(/\s+/g, ' ') // Normalize whitespace
-                    .trim();
-
-                try {
-                    // Try ElevenLabs first (PREMIUM)
-                    await speakWithElevenLabs(cleanText);
-                } catch (error) {
-                    console.warn('ElevenLabs failed, using enhanced browser voice:', error);
-                    // Fallback to enhanced browser voice
-                    speakWithEnhancedBrowser(cleanText);
-                }
-            }
-
-            // ElevenLabs TTS (ULTRA-REALISTIC)
-            async function speakWithElevenLabs(text) {
-                // API key is already configured
-                if (!elevenLabsApiKey) {
-                    console.warn('ElevenLabs API key not configured');
-                    throw new Error('No API key configured');
-                }
-
-                const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${selectedVoiceId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'audio/mpeg',
-                        'Content-Type': 'application/json',
-                        'xi-api-key': elevenLabsApiKey
-                    },
-                    body: JSON.stringify({
-                        text: text,
-                        model_id: 'eleven_multilingual_v2',
-                        voice_settings: {
-                            stability: 0.75,
-                            similarity_boost: 0.8,
-                            style: 0.6,
-                            use_speaker_boost: true
-                        }
-                    })
-                });
-
-                if (!response.ok) {
-                    if (response.status === 401) {
-                        console.error('ElevenLabs API key invalid or expired');
-                        addMessage('bot', '⚠️ La API key de ElevenLabs es inválida. Usando voz del navegador...');
-                        throw new Error('API key inválida');
-                    }
-                    console.error(`ElevenLabs API error: ${response.status}`);
-                    throw new Error(`ElevenLabs API error: ${response.status}`);
-                }
-
-                const audioBlob = await response.blob();
-                const audioUrl = URL.createObjectURL(audioBlob);
-                const audio = new Audio(audioUrl);
+                    .replace(urlRegex, '')
+                    .replace(emojiRegex, '')
+                    .replace(/<br>/g, '. ')
+                    .replace(/<strong>/g, '')
+                    .replace(/<\/strong>/g, '')
+                    .replace(/\n/g, '. ')
+                    .replace(/\*/g, '');
                 
-                // Play audio
-                audio.play();
-                
-                // Clean up URL when finished
-                audio.onended = () => URL.revokeObjectURL(audioUrl);
-                audio.onerror = () => URL.revokeObjectURL(audioUrl);
-            }
+                if (!cleanText.trim() || !speechSynth) return;
 
-            // Enhanced browser TTS with better voice selection
-            function speakWithEnhancedBrowser(text) {
-                // Cancel any previous speech
                 speechSynth.cancel();
                 
-                const utterance = new SpeechSynthesisUtterance(text);
+                // Detect device and get configuration
+                const device = detectDevice();
+                const platformConfig = getPlatformSpeechConfig(device);
                 
-                // Get available voices
-                const voices = speechSynth.getVoices();
-                
-                // Find the best Spanish male voice
-                const preferredVoices = [
-                    voices.find(v => v.name.toLowerCase().includes('jorge') && v.lang.startsWith('es')),
-                    voices.find(v => v.name.toLowerCase().includes('carlos') && v.lang.startsWith('es')),
-                    voices.find(v => v.name.toLowerCase().includes('antonio') && v.lang.startsWith('es')),
-                    voices.find(v => v.name.toLowerCase().includes('manuel') && v.lang.startsWith('es')),
-                    // Voices by country
-                    voices.find(v => v.lang === 'es-CL'), // Chile
-                    voices.find(v => v.lang === 'es-ES'), // Spain
-                    voices.find(v => v.lang === 'es-MX'), // Mexico
-                    voices.find(v => v.lang === 'es-AR'), // Argentina
-                    // Any Spanish voice
-                    voices.find(v => v.lang.startsWith('es'))
-                ].filter(Boolean);
+                const utterance = new SpeechSynthesisUtterance(cleanText);
 
-                if (preferredVoices.length > 0) {
-                    utterance.voice = preferredVoices[0];
-                    console.log('🗣️ Using voice:', preferredVoices[0].name);
+                // Select the best male voice
+                let selectedVoice = null;
+                if (availableVoices.length > 0) {
+                    selectedVoice = availableVoices.find(voice => 
+                        voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                        availableVoices.find(voice => 
+                            (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
+                        availableVoices.find(voice => 
+                            voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
+                        availableVoices.find(voice => voice.lang.startsWith('es'));
                 }
 
-                // Optimized settings for masculine voice
-                utterance.lang = 'es-ES';
-                utterance.rate = 0.85; // Slightly slower speed
-                utterance.pitch = 0.6; // Lower pitch (masculine)
-                utterance.volume = 1.0; // Maximum volume
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                    console.log('🗣️ Using voice:', selectedVoice.name);
+                }
 
+                // Apply cross-platform configuration
+                utterance.lang = platformConfig.lang;
+                utterance.rate = platformConfig.rate;
+                utterance.volume = platformConfig.volume;
+                
+                console.log(`📱 Device: ${device.isIOS ? 'iOS' : device.isAndroid ? 'Android' : 'Desktop'}`);
+                console.log(`⚙️ Config: rate=${platformConfig.rate}, pitch=${platformConfig.pitch}, volume=${platformConfig.volume}`);
+                
                 speechSynth.speak(utterance);
-            }
-
-            // Function to change voice
-            function changeVoice(voiceName) {
-                if (ELEVENLABS_VOICES[voiceName]) {
-                    selectedVoiceId = ELEVENLABS_VOICES[voiceName];
-                    selectedVoiceName = voiceName;
-                    console.log(`🎯 Voice changed to: ${voiceName}`);
-                    
-                    // Test the new voice
-                    const testText = `Hola, soy ${voiceName}, tu nuevo asistente de voz de OS10.`;
-                    speakText(testText);
-                }
             }
 
             function toggleChat() {
@@ -1261,7 +1193,7 @@
                 addMessage('user', text);
                 input.value = '';
                 
-                // Use the improved search function
+                // Use the new improved search function
                 const response = findExactMatch(text, allRules);
                 
                 // If a response is found in the rules, display it
@@ -1303,13 +1235,13 @@
 
                     const data = await apiResponse.json();
                     
-                    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
+                    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "Could not get a response from the smart assistant.";
                     addMessage('bot', aiResponse);
 
                 } catch (error) {
                     console.error("Error contacting AI assistant:", error);
                     removeTypingIndicator();
-                    addMessage('bot', "Hubo un problema de conexión con el asistente inteligente. Por favor intenta de nuevo más tarde.");
+                    addMessage('bot', "There was a connection problem with the smart assistant. Please try again later.");
                 }
             }
             
@@ -1361,11 +1293,6 @@
             document.getElementById('send-button').addEventListener('click', handleMessage);
             document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
             
-            // Voice selector change event
-            document.getElementById('voiceSelector').addEventListener('change', (e) => {
-                changeVoice(e.target.value);
-            });
-            
             const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
             const speakerOnIcon = document.getElementById('speaker-on-icon');
             const speakerOffIcon = document.getElementById('speaker-off-icon');
@@ -1390,12 +1317,13 @@
                 console.error("Warning! Rules could not be loaded from 'rules/chatbot-rules.js'. The bot will operate in 'AI-only' mode.");
             }
 
-            // The bot will always welcome with modern voice info.
+            // The bot will always welcome.
             setTimeout(() => {
                 const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '🎭 ¡Hola! Soy Adam, tu asistente virtual de OS10 Coquimbo con voces masculinas PREMIUM ya configuradas. Prueba diferentes voces en el selector de arriba. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
 </body>
+</html>
                                                               
