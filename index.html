@@ -1088,6 +1088,13 @@
                             style: 0.6,
                             use_speaker_boost: true
                         }
+                        // ⭐ NUEVO: Parámetro para acelerar la velocidad
+            pronunciation_dictionary_locators: [],
+            seed: null,
+            previous_text: null,
+            next_text: null,
+            previous_request_ids: [],
+            next_request_ids: []                        
                     })
                 });
 
@@ -1104,6 +1111,9 @@
                 const audioBlob = await response.blob();
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
+
+                // ⭐ ACELERAR AUDIO LIGERAMENTE (1.15x = 15% más rápido)
+                audio.playbackRate = 1.15; // Puedes ajustar entre 1.1 (10% más rápido) y 1.25 (25% más rápido)             
                 
                 // Play audio
                 audio.play();
