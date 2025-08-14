@@ -1084,7 +1084,7 @@
                         model_id: 'eleven_multilingual_v2',
                         voice_settings: {
                             stability: 0.75,
-                            similarity_boost: 0.9,
+                            similarity_boost: 1.0,
                             style: 0.6,
                             use_speaker_boost: true
                         }
@@ -1393,7 +1393,7 @@
             // The bot will always welcome with modern voice info.
             setTimeout(() => {
                 const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '🎭 ¡¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy? Prueba diferentes voces en el selector de arriba. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                addMessage('bot', '🎭 ¡¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. Prueba diferentes voces en el selector de arriba. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
