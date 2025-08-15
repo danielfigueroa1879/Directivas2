@@ -774,8 +774,8 @@
                         <option value="Diego">🇪🇸 Diego</option>
                         <option value="Antoni">😊 Antoni</option>
                         <option value="Josh">👔 Josh</option>
-                        <option value="Adam">🎭 Adam</option> <!-- Adam seleccionado por defecto -->
-                        <option value="Alejandro"selected>🌎 Alejandro</option>
+                        <option value="Adam" selected>🎭 Adam</option> <!-- Adam seleccionado por defecto -->
+                        <option value="Alejandro">🌎 Alejandro</option>
                     </select>
                     
                     <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="🔊 Leer último mensaje">
@@ -1043,8 +1043,8 @@
             };
             
             // Variables de voz globales
-            let selectedVoiceId = ELEVENLABS_VOICES.Alejandro; // Voz predeterminada: Alejandro
-            let selectedVoiceName = 'Alejandro';
+            let selectedVoiceId = ELEVENLABS_VOICES.Adam; // Voz predeterminada: Adam
+            let selectedVoiceName = 'Adam';
             let elevenLabsApiKey = 'sk_f8780dada274f3c0e68d14e3795a527b8e380b4c51979cd0'; // Nueva clave API de ElevenLabs
             let isAutoReadEnabled = true;
             let isListening = false;
@@ -1089,15 +1089,17 @@
             async function speakText(text) {
                 if (!text || !text.trim()) return;
 
-                // Limpiar texto para TTS
+                // El texto ya viene pre-limpiado desde addMessage (speechReadyText)
+                // Aquí solo se eliminan emojis y se normalizan espacios finales por seguridad.
                 const cleanText = text
-                    .replace(/<[^>]*>/g, '') // Eliminar etiquetas HTML
-                    .replace(/\*\*(.*?)\*\*/g, '$1') // Eliminar negritas markdown
-                    .replace(/\*(.*?)\*/g, '$1') // Eliminar cursivas markdown
-                    .replace(/<br>/g, '. ') // Reemplazar <br> con pausas
-                    .replace(/\n/g, '. ') // Reemplazar saltos de línea con puntos
+                    .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '') // Eliminar emojis
                     .replace(/\s+/g, ' ') // Normalizar espacios en blanco
                     .trim();
+
+                if (!cleanText) {
+                    console.log("Texto limpiado está vacío, no se reproducirá audio.");
+                    return;
+                }
 
                 try {
                     // Intentar ElevenLabs primero (PREMIUM)
@@ -1129,7 +1131,7 @@
                         model_id: 'eleven_multilingual_v2',
                         voice_settings: {
                             stability: 0.75,
-                            similarity_boost: 0.9,
+                            similarity_boost: 0.8,
                             style: 0.6,
                             use_speaker_boost: true
                         }
@@ -1168,30 +1170,32 @@
                 // Obtener voces disponibles
                 const voices = speechSynth.getVoices();
                 
-                // Encontrar la mejor voz masculina en español
+                // Encontrar la mejor voz masculina en español, priorizando Latinoamérica
                 const preferredVoices = [
-                    // Voces específicamente masculinas
+                    // Voces específicamente masculinas de Latinoamérica (si existen y son reconocidas)
+                    voices.find(v => v.lang === 'es-CL' && v.name.toLowerCase().includes('male')), // Chile
+                    voices.find(v => v.lang === 'es-MX' && v.name.toLowerCase().includes('male')), // México
+                    voices.find(v => v.lang === 'es-AR' && v.name.toLowerCase().includes('male')), // Argentina
                     voices.find(v => v.name.toLowerCase().includes('diego') && v.lang.startsWith('es')),
                     voices.find(v => v.name.toLowerCase().includes('jorge') && v.lang.startsWith('es')),
                     voices.find(v => v.name.toLowerCase().includes('carlos') && v.lang.startsWith('es')),
                     voices.find(v => v.name.toLowerCase().includes('antonio') && v.lang.startsWith('es')),
                     voices.find(v => v.name.toLowerCase().includes('manuel') && v.lang.startsWith('es')),
-                    // Voces por país
-                    voices.find(v => v.lang === 'es-CL'), // Chile
-                    voices.find(v => v.lang === 'es-ES'), // España
-                    voices.find(v => v.lang === 'es-MX'), // México
-                    voices.find(v => v.lang === 'es-AR'), // Argentina
-                    // Cualquier voz en español
-                    voices.find(v => v.lang.startsWith('es'))
+                    // Cualquier voz en español que no sea claramente femenina
+                    voices.find(v => v.lang.startsWith('es') && !v.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i))
                 ].filter(Boolean);
 
                 if (preferredVoices.length > 0) {
                     utterance.voice = preferredVoices[0];
-                    console.log('🗣️ Using voice:', preferredVoices[0].name);
+                    utterance.lang = preferredVoices[0].lang; // Usar el idioma de la voz seleccionada
+                    console.log('🗣️ Usando voz:', preferredVoices[0].name, 'Idioma:', preferredVoices[0].lang);
+                } else {
+                    // Fallback si no se encuentra una voz preferida
+                    utterance.lang = 'es-ES'; // Por defecto a español general
+                    console.warn('🗣️ No se encontró voz preferida, usando es-ES por defecto.');
                 }
 
                 // Configuración optimizada para voz masculina
-                utterance.lang = 'es-ES';
                 utterance.rate = 0.85; // Velocidad ligeramente más lenta
                 utterance.pitch = 0.6; // Tono más bajo (masculino)
                 utterance.volume = 1.0; // Volumen máximo
@@ -1228,14 +1232,46 @@
                 const messageDiv = document.createElement('div');
                 
                 let content = '';
+                let speechReadyText = text; // Empezar con el texto original para el procesamiento de voz
+
                 if (sender === 'user') {
                     messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
                     content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
                 } else {
                     messageDiv.className = 'flex items-start space-x-2 mb-1';
-                    const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+                    
+                    // --- PREPARACIÓN DEL TEXTO PARA LA SÍNTESIS DE VOZ ---
+                    // 1. Eliminar la parte de enumeración (e.g., "1️⃣ ", "2️⃣ ", "1. ", "2) ", "3- ")
+                    // Esto asume que la enumeración está al principio de una línea o después de un espacio.
+                    // El flag 'g' para global y 'm' para multilinea
+                    speechReadyText = speechReadyText.replace(/^(\d+)([\uFE0F\u20E3]|\.|\)|\-)?\s*/gm, ''); // Elimina al inicio de línea
+                    speechReadyText = speechReadyText.replace(/(\s)(\d+)([\uFE0F\u20E3]|\.|\)|\-)\s+/g, '$1'); // Elimina en medio de texto
+
+                    // 2. Eliminar URLs (plain text URLs)
+                    const urlRegexForSpeech = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+                    speechReadyText = speechReadyText.replace(urlRegexForSpeech, '');
+
+                    // 3. Eliminar HTML generado para botones (e.g., "<button onclick=...>...</button>")
+                    // Esto es crucial porque addMessage convierte URLs en botones para la visualización.
+                    const buttonHtmlRegex = /<button onclick="window\.open\('.*?', '_blank'\)" class="response-button[^>]*>.*?<\/button>/g;
+                    speechReadyText = speechReadyText.replace(buttonHtmlRegex, '');
+
+                    // 4. Eliminar negritas markdown (**) y cursivas markdown (*) para la voz
+                    speechReadyText = speechReadyText.replace(/\*\*(.*?)\*\*/g, '$1');
+                    speechReadyText = speechReadyText.replace(/\*(.*?)\*/g, '$1');
+
+                    // 5. Reemplazar saltos de línea con pausas para mejor fluidez
+                    speechReadyText = speechReadyText.replace(/\n/g, '. ');
+                    speechReadyText = speechReadyText.replace(/<br>/g, '. '); // Por si hay <br> en el texto original
+
+                    // 6. Normalizar espacios en blanco y trim
+                    speechReadyText = speechReadyText.replace(/\s+/g, ' ').trim();
+                    
+                    // --- PREPARACIÓN DEL TEXTO PARA LA VISUALIZACIÓN EN CHAT ---
+                    // Mantener el formato original con negritas y URLs convertidas a botones
                     let formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    formattedText = formattedText.replace(urlRegex, (url) => {
+                    const urlRegexForDisplay = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+                    formattedText = formattedText.replace(urlRegexForDisplay, (url) => {
                         const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
                         let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
                         let buttonText = "🔗 Abrir";
@@ -1248,7 +1284,9 @@
                     const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
                     
                     content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
-                    if (isAutoReadEnabled) setTimeout(() => speakText(text), 300);
+                    
+                    // Usar speechReadyText para TTS
+                    if (isAutoReadEnabled) setTimeout(() => speakText(speechReadyText), 300);
                 }
                 messageDiv.innerHTML = content;
                 chatMessages.appendChild(messageDiv);
@@ -1442,7 +1480,7 @@
             // El bot siempre dará la bienvenida con información de voz moderna.
             setTimeout(() => {
                 const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '🎯 ¡Hola! Soy **Alejandro**, tu asistente virtual de OS10 Coquimbo. Prueba diferentes voces en el selector de arriba. ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                addMessage('bot', '🎯 ¡Hola! Soy **Adam**, tu asistente virtual de OS10 Coquimbo con voces masculinas PREMIUM ya configuradas. Prueba diferentes voces en el selector de arriba. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
