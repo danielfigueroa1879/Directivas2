@@ -41,7 +41,7 @@ const responses = {
     'rule_38': { keywords: ["80"], response: '*Resol. 80*. https://www.zosepcar.cl/content/OS10/resolucion_80.pdf' },
     'rule_39': { keywords: ["*21659*", "*nueva ley de seguridad*"], response: 'Entra en vigencia el 28-NOV-2025 *LEY 21659*. https://dal5.short.gy/LeySeg' },
     'rule_65': { keywords: ["*fono*", "*telefono*","*numero*","*ubicados*","*dirección*","*atención*","*horario*","*horarios*","*ubicación*","*direccion oficina*","*cual es la dirección del os10*","*horario atención publico*", "*donde estan*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*"], response: '🤖 👉🏼 *OS10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas.\nCienfuegos 180, La Serena.\nFonos: 512651024-512651022-\nCredenciales:512651023\nhttps://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
-    'rule_66': { keywords: ["Otro Menú"], response: '*ESCRIBA LO QUE ESTA CON NEGRILLAS*\nconsultar patente: *ppu*\nConsultar nombre o rut: *rut*\nConsultar guardia *registro*\nmenú OS10: *OS10*\nComisaria cuadrantes: *comisaria*\nCiberseguridad: *ciberseguridad*\nDGAC Seg. Priv. *Dgac*\nModifica 261: *Decreto 32*\nResol.3632: *no hay sistema*\nDirectiva: *directiva*\n*Bots*: Seguridad privada, Ciberseguridad, tránsito, Ley Karyn' },
+    'rule_66': { keywords: ["Otro Menú"], response: '*ESCRIBA LO QUE ESTA CON NEGRILLAS*\nConsultar guardia *registro*\nmenú OS10: *OS10*\nComisaria cuadrantes: *comisaria*\nCiberseguridad: *ciberseguridad*\nDGAC Seg. Priv. *Dgac*\nModifica 261: *Decreto 32*\nResol.3632: *no hay sistema*\nDirectiva: *directiva*\n*Bots*: Seguridad privada, Ciberseguridad, tránsito, Ley Karyn' },
     'rule_68': { keywords: ["imc"], response: '*CALCULAR IMC*\nhttps://nutricionistavirtual.cl/calculadora/' },
     'rule_69': { keywords: ["curso os10","vigencia curso","tiene curso","si tiene curso"], response: '🤖 *GUARDIA / EMPRESA* 👮🏻‍♂️ 👇🏽 VIGENCIA GG.SS./ VV.PP. /EMP. \nhttps://zosepcar.cl/OS10.php#buscador\n\n🏭 *RAZON SOC. / RUT EMP.*👇🏽\nboletaofactura.com\ngenealog.cl\nmercantil.com\n \n⚖️ *JUZGADO DE TURNO LA SERENA*\nhttps://bit.ly/3GIrWE1' },
     'rule_70': { keywords: ["4651"], response: '*RESOLUCIÓN 4651 INASISTENCIA*\n\nhttps://zosepcar.cl/content/OS10/resol_4651.pdf' },
@@ -669,7 +669,7 @@ keywords: ["bolsas contenedores", "material resistente", "insignia corporativa",
 response: '🤖👝 **BOLSAS/CONTENEDORES** (Art. 3° inc. 1° DL 3607):\n**MATERIAL:** Resistente roce/probable intrusión\n**IDENTIFICACIÓN:** Insignia corporativa/número\n**PRECINTOS:** Cierre identificados empresa\n**USO:** Dinero efectivo/documentos mercantiles\n**NORMATIVA:** DS 1814/2014 Art. 11°\n**INFRACCIÓN:** Bolsas no resistentes/sin identificación'
 },
 'rule_520': {
-keywords: ["sistemas entintado", "billetes", "registro", "carabineros chile"],
+keywords: ["sistemas entintado", "billetes", "carabineros chile"],
 response: '🤖🎨 **SISTEMAS ENTINTADO** (Art. 3° inc. 1° DL 3607):\n**DISPOSITIVOS:** Disuasivos seguridad entintado billetes\n**REGISTRO:** Inscripción Carabineros Chile\n**OBLIGACIÓN:** Solicitar inscripción previa\n**MANTENIMIENTO:** Registro específico\n**NORMATIVA:** DS 1814/2014 Art. 12°\n**INFRACCIÓN:** Operar sin inscripción registro'
 },
 'rule_521': {
