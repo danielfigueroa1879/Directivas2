@@ -1084,7 +1084,7 @@
                 const voiceSelectionRules = {
                     ios: { preferred: ['Jorge', 'Diego', 'Carlos', 'Miguel'], languages: ['es-ES', 'es-MX', 'es-AR'], excludeFemale: ['Mónica', 'Marisol', 'Paulina', 'Isabel'] },
                     android: { preferred: ['es-es-x-eea-network', 'es-es-x-eea-local', 'Diego', 'Carlos'], languages: ['es-ES', 'es-MX', 'es-US'], excludeFemale: ['es-es-x-eed-network', 'es-es-x-eed-local'] },
-                    windows: { preferred: ['Microsoft Diego', 'Microsoft Jorge', 'Microsoft Pablo'], languages: ['es-ES', 'es-MX'], excludeFemale: ['Microsoft Helena', 'Microsoft Sabina'] },
+                    windows: { preferred: ['Microsoft Diego', 'Microsoft Jorge', 'Microsoft Pablo'], languages: ['es-ES', 'es-MX','es-AR'], excludeFemale: ['Microsoft Helena', 'Microsoft Sabina'] },
                     macos: { preferred: ['Diego', 'Jorge', 'Juan'], languages: ['es-ES', 'es-MX'], excludeFemale: ['Mónica', 'Paulina'] },
                     desktop: { preferred: ['Diego', 'Jorge', 'Carlos', 'Google español'], languages: ['es-ES', 'es-MX', 'es-AR'], excludeFemale: ['Helena', 'Sabina', 'Mónica'] }
                 };
@@ -1130,7 +1130,7 @@
                     case 'android':
                         utterance.lang = 'es-ES'; utterance.rate = 0.75; utterance.pitch = 0.45; utterance.volume = 1.0; break;
                     case 'windows':
-                        utterance.lang = 'es-ES'; utterance.rate = 0.85; utterance.pitch = 0.65; utterance.volume = 1.0; break;
+                        utterance.lang = 'es-ES'; utterance.rate = 1.0; utterance.pitch = 0.65; utterance.volume = 1.0; break;
                     case 'macos':
                         utterance.lang = 'es-ES'; utterance.rate = 0.8; utterance.pitch = 0.6; utterance.volume = 1.0; break;
                     default:
