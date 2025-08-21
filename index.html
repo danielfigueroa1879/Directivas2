@@ -1166,29 +1166,25 @@
             }
 
             // =================================================================================
-            // FUNCIÓN DE LIMPIEZA DE TEXTO ACTUALIZADA
+            // FUNCIÓN DE LIMPIEZA DE TEXTO PARA TTS
             // =================================================================================
             async function speakText(text) {
                 if (!text || !text.trim()) return;
 
-                // Limpiar texto para TTS con regex más robustas
                 const cleanText = text
-                    // 1. Remover URLs, emails, números de teléfono y emojis
-                    .replace(/(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+/g, ' ') // URLs
-                    .replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/g, ' ') // Emails
-                    .replace(/(?:\+?\d{1,3}[-.\s]?)?\(?\d{2,}\)?[-.\s]?\d{3,}[-.\s]?\d{4,}/g, ' ') // Teléfonos
-                    .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF]|1️⃣|2️⃣|3️⃣|4️⃣|5️⃣|6️⃣|7️⃣|8️⃣|9️⃣|0️⃣|#️⃣|\*️⃣|©️|®️|™️|🎙️|🔊|🎤|😊|👔|🎭|🌎|🇪🇸)/g, ' ') // Emojis
-                    
-                    // 2. Formatear texto para un mejor flujo de voz
-                    .replace(/<[^>]*>/g, '') // Etiquetas HTML
-                    .replace(/\*\*(.*?)\*\*/g, '$1') // Markdown negrita
-                    .replace(/\*(.*?)\*/g, '$1') // Markdown cursiva
-                    .replace(/<br>/g, '. ') // Saltos de línea HTML
-                    .replace(/\n/g, '. ') // Nuevas líneas
-                    .replace(/\s+/g, ' ') // Normalizar espacios en blanco
+                    .replace(/(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+/g, ' ') 
+                    .replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/g, ' ') 
+                    .replace(/(?:\+?\d{1,3}[-.\s]?)?\(?\d{2,}\)?[-.\s]?\d{3,}[-.\s]?\d{4,}/g, ' ') 
+                    .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF]|1️⃣|2️⃣|3️⃣|4️⃣|5️⃣|6️⃣|7️⃣|8️⃣|9️⃣|0️⃣|#️⃣|\*️⃣|©️|®️|™️|🎙️|🔊|🎤|😊|👔|🎭|🌎|🇪🇸)/g, ' ') 
+                    .replace(/<[^>]*>/g, '') 
+                    .replace(/\*\*(.*?)\*\*/g, '$1') 
+                    .replace(/\*(.*?)\*/g, '$1') 
+                    .replace(/<br>/g, '. ') 
+                    .replace(/\n/g, '. ') 
+                    .replace(/\s+/g, ' ') 
                     .trim();
 
-                if (!cleanText) return; // Si no queda nada que leer, salir
+                if (!cleanText) return;
 
                 try {
                     if (elevenLabsApiKey) {
@@ -1206,7 +1202,6 @@
                 speakWithEnhancedBrowser(cleanText);
             }
 
-            // Función para cargar voces
             function loadVoices() {
                 return new Promise((resolve) => {
                     let attempts = 0; const maxAttempts = 10;
@@ -1229,7 +1224,6 @@
                 });
             }
 
-            // Función para cambiar la voz de ElevenLabs
             function changeVoice(voiceName) {
                 if (ELEVENLABS_VOICES[voiceName]) {
                     selectedVoiceId = ELEVENLABS_VOICES[voiceName];
@@ -1239,7 +1233,6 @@
                 }
             }
 
-            // Función de inicialización del sistema de voces
             async function initializeVoiceSystem() {
                 await loadVoices();
                 if (speechSynth.onvoiceschanged !== undefined) {
@@ -1257,7 +1250,6 @@
                 document.getElementById('voice-btn').style.display = 'none';
             }
 
-            // FUNCIÓN MEJORADA PARA ENCONTRAR COINCIDENCIAS
             function findExactMatch(userText, allRules) {
                 const normalizedUserText = userText.toLowerCase().trim();
                 for (const rule of allRules) {
@@ -1300,7 +1292,8 @@
                     content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
                 } else {
                     messageDiv.className = 'flex items-start space-x-2 mb-1';
-                    let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '$1').replace(/\n/g, '<br>');
+                    // CORRECCIÓN: Tratar ambos * y ** como negrilla
+                    let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
                     const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
                     formattedText = formattedText.replace(urlRegex, (url) => {
                         const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
@@ -1327,17 +1320,39 @@
                  handleMessage();
             }
 
+            // =================================================================================
+            // FUNCIÓN DE MANEJO DE MENSAJES ACTUALIZADA
+            // =================================================================================
             async function handleMessage() {
                 const input = document.getElementById('user-input');
                 const text = input.value.trim();
                 if (!text) return;
+                
                 addMessage('user', text);
                 input.value = '';
+                
                 const response = findExactMatch(text, allRules);
+                
+                // Función para verificar y formatear la respuesta
+                const formatAndSendResponse = (responseText) => {
+                    const hasPhone = /(?:\+?\d{1,3}[-.\s]?)?\(?\d{2,}\)?[-.\s]?\d{3,}[-.\s]?\d{4,}/.test(responseText);
+                    const hasEmail = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/.test(responseText);
+
+                    if (hasPhone || hasEmail) {
+                        const prefix = "Aquí le proporciono información para que usted tome contacto directo con la oficina de seguridad privada OS10 Coquimbo.\n\n";
+                        const suffix = "\n\nCon esta información podrá tomar contacto.";
+                        const finalResponse = prefix + responseText + suffix;
+                        addMessage('bot', finalResponse);
+                    } else {
+                        addMessage('bot', responseText);
+                    }
+                };
+
                 if (response) {
-                    setTimeout(() => addMessage('bot', response), 500);
+                    setTimeout(() => formatAndSendResponse(response), 500);
                     return;
                 }
+
                 addTypingIndicator();
                 try {
                     const fullPrompt = `${systemPrompt}\n\n**User Query:**\n${text}\n\n**Knowledge Base for reference (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Response:**`;
@@ -1359,7 +1374,7 @@
                     if (!apiResponse.ok) throw new Error(`Server error: ${apiResponse.status}`);
                     const data = await apiResponse.json();
                     const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No pude obtener una respuesta del asistente inteligente.";
-                    addMessage('bot', aiResponse);
+                    formatAndSendResponse(aiResponse);
                 } catch (error) {
                     console.error("Error contacting AI assistant:", error);
                     removeTypingIndicator();
