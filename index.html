@@ -1535,37 +1535,56 @@
                 button.classList.toggle('hidden', isHidden);
             }
 
-            function addMessage(sender, text, buttons = []) {
-                const chatMessages = document.getElementById('chat-messages');
-                const messageDiv = document.createElement('div');
-                
-                let content = '';
-                if (sender === 'user') {
-                    messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
-                    content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
-                } else {
-                    messageDiv.className = 'flex items-start space-x-2 mb-1';
-                    const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
-                    let formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    formattedText = formattedText.replace(urlRegex, (url) => {
-                        const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
-                        let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
-                        let buttonText = "Abrir";
-                        if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "Descargar";
-                        else if (cleanedUrl.includes('bcn.cl')) buttonText = "Ver ley";
-                        else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "Ver OS10";
-                        return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
-                    });
+function addMessage(sender, text, buttons = []) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    
+    let content = '';
+    if (sender === 'user') {
+        messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
+        content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
+    } else {
+        messageDiv.className = 'flex items-start space-x-2 mb-1';
+        
+        // CORRECCIÓN: Procesar asteriscos ANTES de procesar URLs
+        // SOLO NEGRITAS - SIN CURSIVAS
+        let formattedText = text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // **texto** → <strong>texto</strong>
+            .replace(/\*(.*?)\*/g, '$1')                      // *texto* → texto (SIN cursivas)
+            .replace(/\n/g, '<br>');                          // saltos de línea → <br>
+        
+        // Procesar URLs después del markdown
+        const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
+        formattedText = formattedText.replace(urlRegex, (url) => {
+            const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
+            let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
+            let buttonText = "Abrir";
+            if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "Descargar";
+            else if (cleanedUrl.includes('bcn.cl')) buttonText = "Ver ley";
+            else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "Ver OS10";
+            return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
+        });
 
-                    const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
-                    
-                    content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
-                    if (isAutoReadEnabled) setTimeout(() => speakText(formattedText), 300);
-                }
-                messageDiv.innerHTML = content;
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+        const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
+        
+        content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
+        
+        // CORRECCIÓN: Limpiar texto para TTS también
+        if (isAutoReadEnabled) {
+            const cleanTextForTTS = text
+                .replace(/\*\*(.*?)\*\*/g, '$1')  // Remover ** dejando contenido
+                .replace(/\*(.*?)\*/g, '$1')      // Remover * dejando contenido  
+                .replace(/<[^>]*>/g, '')          // Remover HTML
+                .replace(/\n/g, '. ')             // Reemplazar saltos de línea
+                .trim();
+            
+            setTimeout(() => speakText(cleanTextForTTS), 300);
+        }
+    }
+    messageDiv.innerHTML = content;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
             
             window.handleUserButtonClick = (text) => {
                  document.getElementById('user-input').value = text;
