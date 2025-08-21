@@ -1339,7 +1339,7 @@
                     const hasEmail = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/.test(responseText);
 
                     if (hasPhone || hasEmail) {
-                        const prefix = "Aquí le proporciono información para que usted tome contacto directo con la oficina de seguridad privada OS10 Coquimbo.\n\n";
+                        const prefix = "Aquí le proporciono información\n\n";
                         const suffix = "\n\nCon esta información podrá tomar contacto.";
                         const finalResponse = prefix + responseText + suffix;
                         addMessage('bot', finalResponse);
