@@ -1221,7 +1221,7 @@
                     case 'ios':
                         // iPhone/iPad: más lento debido a procesamiento acelerado
                         utterance.lang = 'es-ES';
-                        utterance.rate = 0.65;   // Muy lento para contrarrestar aceleración iOS
+                        utterance.rate = 0.8;   // Muy lento para contrarrestar aceleración iOS
                         utterance.pitch = 0.6;   // Tono bajo (masculino)
                         utterance.volume = 1.0;
                         console.log('Configuración iOS aplicada: rate=0.65, pitch=0.6');
@@ -1230,7 +1230,7 @@
                     case 'android':
                         // Android: adaptar voz femenina a sonar más masculina
                         utterance.lang = 'es-ES';
-                        utterance.rate = 0.75;   // Velocidad moderada-lenta
+                        utterance.rate = 1.0;   // Velocidad moderada-lenta
                         utterance.pitch = 0.45;  // Pitch muy bajo para simular voz masculina
                         utterance.volume = 1.0;
                         console.log('Configuración Android aplicada: rate=0.75, pitch=0.45 (adaptación masculina)');
@@ -1248,7 +1248,7 @@
                     case 'macos':
                         // macOS: ajuste para voces del sistema
                         utterance.lang = 'es-ES';
-                        utterance.rate = 0.8;    // Ligeramente más lento
+                        utterance.rate = 0.9;    // Ligeramente más lento
                         utterance.pitch = 0.6;   // Tono masculino
                         utterance.volume = 1.0;
                         console.log('Configuración macOS aplicada: rate=0.8, pitch=0.6');
