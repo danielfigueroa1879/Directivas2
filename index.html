@@ -1573,7 +1573,7 @@ function addMessage(sender, text, buttons = []) {
         // CORRECCIÓN: Procesar asteriscos ANTES de procesar URLs
         // SOLO NEGRITAS - SIN CURSIVAS
         let formattedText = text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // **texto** → <strong>texto</strong>
+            .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: bold;">$1</strong>') // **texto** → <strong>texto</strong> con estilo explícito
             .replace(/\*(.*?)\*/g, '$1')                      // *texto* → texto (SIN cursivas)
             .replace(/\n/g, '<br>');                          // saltos de línea → <br>
         
