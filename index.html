@@ -1559,6 +1559,7 @@ function cleanTextForTTS(text) {
         .trim();
 }
 
+// Función addMessage corregida para mostrar negritas correctamente
 function addMessage(sender, text, buttons = []) {
     const chatMessages = document.getElementById('chat-messages');
     const messageDiv = document.createElement('div');
@@ -1570,14 +1571,13 @@ function addMessage(sender, text, buttons = []) {
     } else {
         messageDiv.className = 'flex items-start space-x-2 mb-1';
         
-        // CORRECCIÓN: Procesar asteriscos ANTES de procesar URLs
-        // SOLO NEGRITAS - SIN CURSIVAS
+        // PASO 1: Procesar texto para HTML - MANTENER NEGRITAS
         let formattedText = text
             .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: bold;">$1</strong>') 
             .replace(/\*(.*?)\*/g, '$1')                      // *texto* → texto (SIN cursivas)
             .replace(/\n/g, '<br>');                          // saltos de línea → <br>
         
-        // Procesar URLs después del markdown
+        // PASO 2: Procesar URLs después del markdown
         const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
         formattedText = formattedText.replace(urlRegex, (url) => {
             // Ignorar direcciones de correo
@@ -1592,21 +1592,23 @@ function addMessage(sender, text, buttons = []) {
             return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
         });
 
+        // PASO 3: Crear botones HTML
         const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
         
+        // PASO 4: Crear contenido HTML final
         content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
         
-        // Usar la función mejorada para limpiar texto para TTS
+        // PASO 5: Procesar TTS por separado usando texto ORIGINAL (sin procesar)
         if (isAutoReadEnabled) {
-            const cleanedTextForTTS = cleanTextForTTS(text);
+            const cleanedTextForTTS = cleanTextForTTS(text);  // Usar texto original
             setTimeout(() => speakText(cleanedTextForTTS), 300);
         }
     }
+    
     messageDiv.innerHTML = content;
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-            
+}           
             window.handleUserButtonClick = (text) => {
                  document.getElementById('user-input').value = text;
                  handleMessage();
