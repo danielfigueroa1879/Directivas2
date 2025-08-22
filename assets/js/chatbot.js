@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'android':
                 // Android: adaptar voz femenina a sonar más masculina
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.0;   // Velocidad moderada-lenta
+                utterance.rate = 1.2;   // Velocidad moderada-lenta
                 utterance.pitch = 0.45;  // Pitch muy bajo para simular voz masculina
                 utterance.volume = 1.0;
                 console.log('Configuración Android aplicada: rate=0.75, pitch=0.45 (adaptación masculina)');
