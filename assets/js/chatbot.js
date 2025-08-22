@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'ios':
                 // iPhone/iPad: más lento debido a procesamiento acelerado
                 utterance.lang = 'es-ES';
-                utterance.rate = 0.8;   // Muy lento para contrarrestar aceleración iOS
+                utterance.rate = 09;   // Muy lento para contrarrestar aceleración iOS
                 utterance.pitch = 0.6;   // Tono bajo (masculino)
                 utterance.volume = 1.0;
                 console.log('Configuración iOS aplicada: rate=0.65, pitch=0.6');
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Android: adaptar voz femenina a sonar más masculina
                 utterance.lang = 'es-ES';
                 utterance.rate = 1.2;   // Velocidad moderada-lenta
-                utterance.pitch = 0.45;  // Pitch muy bajo para simular voz masculina
+                utterance.pitch = 0.6;  // Pitch muy bajo para simular voz masculina
                 utterance.volume = 1.0;
                 console.log('Configuración Android aplicada: rate=0.75, pitch=0.45 (adaptación masculina)');
                 break;
@@ -210,8 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'windows':
                 // Windows PC: configuración estándar masculina
                 utterance.lang = 'es-ES';
-                utterance.rate = 0.85;   // Velocidad natural
-                utterance.pitch = 0.65;  // Tono masculino estándar
+                utterance.rate = 0.9;   // Velocidad natural
+                utterance.pitch = 0.7;  // Tono masculino estándar
                 utterance.volume = 1.0;
                 console.log('Configuración Windows aplicada: rate=0.85, pitch=0.65');
                 break;
@@ -219,8 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'macos':
                 // macOS: ajuste para voces del sistema
                 utterance.lang = 'es-ES';
-                utterance.rate = 0.9;    // Ligeramente más lento
-                utterance.pitch = 0.6;   // Tono masculino
+                utterance.rate = 1.1;    // Ligeramente más lento
+                utterance.pitch = 0.7;   // Tono masculino
                 utterance.volume = 1.0;
                 console.log('Configuración macOS aplicada: rate=0.8, pitch=0.6');
                 break;
@@ -229,8 +229,8 @@ document.addEventListener('DOMContentLoaded', function() {
             default:
                 // Otros escritorios: configuración por defecto
                 utterance.lang = 'es-ES';
-                utterance.rate = 0.85;
-                utterance.pitch = 0.65;
+                utterance.rate = 0.9;
+                utterance.pitch = 0.8;
                 utterance.volume = 1.0;
                 console.log('Configuración Desktop aplicada: rate=0.85, pitch=0.65');
                 break;
