@@ -219,8 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'macos':
                 // macOS: ajuste para voces del sistema
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.3;    // Ligeramente más lento
-                utterance.pitch = 0.7;   // Tono masculino
+                utterance.rate = 1.2;    // Ligeramente más lento
+                utterance.pitch = 0.8;   // Tono masculino
                 utterance.volume = 1.0;
                 console.log('Configuración macOS aplicada: rate=0.8, pitch=0.6');
                 break;
