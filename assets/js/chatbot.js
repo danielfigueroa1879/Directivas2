@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'android':
                 // Android: adaptar voz femenina a sonar más masculina
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.2;   // Velocidad moderada-lenta
+                utterance.rate = 1.3;   // Velocidad moderada-lenta
                 utterance.pitch = 0.6;  // Pitch muy bajo para simular voz masculina
                 utterance.volume = 1.0;
                 console.log('Configuración Android aplicada: rate=0.75, pitch=0.45 (adaptación masculina)');
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'macos':
                 // macOS: ajuste para voces del sistema
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.1;    // Ligeramente más lento
+                utterance.rate = 1.3;    // Ligeramente más lento
                 utterance.pitch = 0.7;   // Tono masculino
                 utterance.volume = 1.0;
                 console.log('Configuración macOS aplicada: rate=0.8, pitch=0.6');
