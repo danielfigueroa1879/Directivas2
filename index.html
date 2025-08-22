@@ -1600,10 +1600,15 @@ function addMessage(sender, text, buttons = []) {
         
         // PASO 5: Procesar TTS por separado usando texto ORIGINAL (sin procesar)
         if (isAutoReadEnabled) {
-            const cleanedTextForTTS = cleanTextForTTS(text);  // Usar texto original
-            setTimeout(() => speakText(cleanedTextForTTS), 300);
-        }
-    }
+    // Limpiar SOLO para TTS, no afectar el HTML
+    const textForTTS = text
+        .replace(/\*\*(.*?)\*\*/g, '$1')
+        .replace(/\*(.*?)\*/g, '$1')
+        .replace(/<[^>]*>/g, '')
+        .replace(/\n/g, '. ')
+        .trim();
+    setTimeout(() => speakText(textForTTS), 300);
+}
     
     messageDiv.innerHTML = content;
     chatMessages.appendChild(messageDiv);
