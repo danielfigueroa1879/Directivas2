@@ -1535,6 +1535,30 @@
                 button.classList.toggle('hidden', isHidden);
             }
 
+// Función para limpiar texto antes de enviarlo a síntesis de voz
+function cleanTextForTTS(text) {
+    return text
+        .replace(/\*\*(.*?)\*\*/g, '$1')          // Quitar markdown de negrita pero mantener contenido
+        .replace(/\*(.*?)\*/g, '$1')              // Quitar markdown de cursiva pero mantener contenido
+        .replace(/<[^>]*>/g, '')                  // Quitar etiquetas HTML
+        .replace(/\n/g, '. ')                     // Reemplazar saltos de línea con pausas
+        
+        // Quitar URLs sin leerlas
+        .replace(/(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?/g, '')
+        
+        // Quitar direcciones de correo sin leerlas
+        .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
+        
+        // Quitar números de teléfono sin leerlos
+        .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
+        
+        // Quitar emojis comunes sin eliminar texto importante
+        .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
+        
+        .replace(/\s+/g, ' ')                     // Normalizar espacios
+        .trim();
+}
+
 function addMessage(sender, text, buttons = []) {
     const chatMessages = document.getElementById('chat-messages');
     const messageDiv = document.createElement('div');
@@ -1572,25 +1596,10 @@ function addMessage(sender, text, buttons = []) {
         
         content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
         
-        // CORRECCIÓN: Limpiar texto para TTS mejorado
+        // Usar la función mejorada para limpiar texto para TTS
         if (isAutoReadEnabled) {
-            const cleanTextForTTS = text
-                .replace(/\*\*(.*?)\*\*/g, '$1')          // Remover markdown negrita
-                .replace(/\*(.*?)\*/g, '$1')              // Remover markdown cursiva
-                .replace(/<[^>]*>/g, '')                  // Remover HTML
-                .replace(/\n/g, '. ')                     // Reemplazar saltos de línea
-                // Remover URLs
-                .replace(/(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?/g, '')
-                // Remover correos electrónicos
-                .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
-                // Remover números de teléfono
-                .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
-                // Remover emojis
-                .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
-                .replace(/\s+/g, ' ')                     // Normalizar espacios
-                .trim();
-            
-            setTimeout(() => speakText(cleanTextForTTS), 300);
+            const cleanedTextForTTS = cleanTextForTTS(text);
+            setTimeout(() => speakText(cleanedTextForTTS), 300);
         }
     }
     messageDiv.innerHTML = content;
