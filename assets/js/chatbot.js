@@ -67,12 +67,91 @@ document.addEventListener('DOMContentLoaded', function() {
         return 'desktop';
     }
 
-    // Función mejorada para seleccionar la mejor voz masculina por dispositivo
+    // Función específica para iOS que evita el chicharreo
+    function speakWithIOSOptimization(text) {
+        if (!text || !text.trim()) return;
+        
+        // Cancelar cualquier síntesis anterior
+        speechSynth.cancel();
+        
+        // Dividir texto largo en fragmentos más pequeños para iOS
+        const maxLength = 100;
+        const textChunks = [];
+        let currentChunk = '';
+        
+        const words = text.split(' ');
+        for (const word of words) {
+            if ((currentChunk + ' ' + word).length > maxLength) {
+                if (currentChunk) textChunks.push(currentChunk.trim());
+                currentChunk = word;
+            } else {
+                currentChunk += (currentChunk ? ' ' : '') + word;
+            }
+        }
+        if (currentChunk) textChunks.push(currentChunk.trim());
+        
+        // Función recursiva para reproducir fragmentos con pausas
+        function speakChunk(index) {
+            if (index >= textChunks.length) return;
+            
+            const utterance = new SpeechSynthesisUtterance(textChunks[index]);
+            
+            // Buscar la mejor voz en español para iOS
+            const voices = speechSynth.getVoices();
+            const spanishVoice = voices.find(v => 
+                v.lang.startsWith('es') && 
+                (v.name.includes('Jorge') || v.name.includes('Diego') || v.name.includes('Spanish'))
+            ) || voices.find(v => v.lang.startsWith('es'));
+            
+            if (spanishVoice) {
+                utterance.voice = spanishVoice;
+            }
+            
+            // Configuración optimizada para iOS
+            utterance.lang = 'es-ES';
+            utterance.rate = 0.5;    // Velocidad muy controlada
+            utterance.pitch = 0.9;   // Pitch natural
+            utterance.volume = 0.7;  // Volumen controlado
+            
+            utterance.onend = () => {
+                // Pausa corta entre fragmentos y continuar
+                setTimeout(() => speakChunk(index + 1), 200);
+            };
+            
+            utterance.onerror = (event) => {
+                console.error('Error en fragmento iOS:', event.error);
+                // Continuar con el siguiente fragmento aunque haya error
+                setTimeout(() => speakChunk(index + 1), 500);
+            };
+            
+            speechSynth.speak(utterance);
+        }
+        
+        // Iniciar la reproducción del primer fragmento
+        speakChunk(0);
+    }
+
+    // Función mejorada para encontrar coincidencias exactas
     function getBestMaleVoice() {
         const voices = speechSynth.getVoices();
         const deviceType = getDeviceType();
         
         console.log(`Dispositivo detectado: ${deviceType}, Voces disponibles: ${voices.length}`);
+        
+        // Para iOS, priorizar voces específicas que funcionan mejor
+        if (deviceType === 'ios') {
+            const iosPreferred = ['Jorge', 'Diego', 'Spanish (Spain)', 'Spanish'];
+            for (const preferredName of iosPreferred) {
+                const voice = voices.find(v => {
+                    const name = v.name.toLowerCase();
+                    return name.includes(preferredName.toLowerCase());
+                });
+                if (voice) {
+                    console.log(`Voz iOS optimizada encontrada: ${voice.name}`);
+                    return voice;
+                }
+            }
+        }
         
         // Definir prioridades de voces por dispositivo y género
         const voiceSelectionRules = {
@@ -174,10 +253,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function speakWithEnhancedBrowser(text) {
         if (!text || !text.trim()) return;
         
+        const deviceType = getDeviceType();
+        
+        // Para iOS, usar la función optimizada específica
+        if (deviceType === 'ios') {
+            speakWithIOSOptimization(text);
+            return;
+        }
+        
         // Cancelar cualquier síntesis anterior
         speechSynth.cancel();
         
-        const deviceType = getDeviceType();
         const utterance = new SpeechSynthesisUtterance(text);
         
         // Seleccionar la mejor voz masculina
@@ -187,17 +273,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`Usando voz: ${selectedVoice.name} en ${deviceType}`);
         }
 
-        // Configuración específica por tipo de dispositivo
+        // Configuración específica por tipo de dispositivo (excluyendo iOS)
         switch (deviceType) {
-            case 'ios':
-                // iPhone/iPad: más lento debido a procesamiento acelerado
-                utterance.lang = 'es-ES';
-                utterance.rate = 09;   // Muy lento para contrarrestar aceleración iOS
-                utterance.pitch = 0.6;   // Tono bajo (masculino)
-                utterance.volume = 1.0;
-                console.log('Configuración iOS aplicada: rate=0.65, pitch=0.6');
-                break;
-                
             case 'android':
                 // Android: adaptar voz femenina a sonar más masculina
                 utterance.lang = 'es-ES';
@@ -435,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mensaje de configuración completa
         setTimeout(() => {
             const deviceMessages = {
-                ios: 'Sistema configurado para iPhone/iPad con velocidad optimizada',
+                ios: 'Sistema configurado para iPhone/iPad con optimización anti-chicharreo',
                 android: 'Sistema configurado para Android con adaptación de voz masculina',
                 windows: 'Sistema configurado para Windows con voces Microsoft',
                 macos: 'Sistema configurado para macOS con voces del sistema',
