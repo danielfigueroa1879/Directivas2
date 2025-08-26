@@ -626,70 +626,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isAutoReadEnabled) {
                 // Limpiar SOLO para síntesis de voz (no afecta el HTML ya creado)
                 const textForTTS = text
-                    .replace(/\*\*(.*?)\*\*/g, '$1')          // Quitar asteriscos para TTS
-    .replace(/\*(.*?)\*/g, '$1')              
-    .replace(/<[^>]*>/g, '')                  // Quitar HTML
-    .replace(/\n/g, '. ')                     
-    
-    // ELIMINAR "gy" ESPECÍFICAMENTE
-    .replace(/\bgy\b/g, '')                   // Eliminar "gy" como palabra completa
-    .replace(/\.gy[^\s]*/g, '')               // Eliminar .gy y todo lo que sigue
-    .replace(/short\.gy[^\s]*/g, '')          // Eliminar short.gy completo
-    .replace(/dal5\.short\.gy[^\s]*/g, '')    // Eliminar dal5.short.gy completo
-    .replace(/os10\.short\.gy[^\s]*/g, '')    // Eliminar os10.short.gy completo
-    
-    // LIMPIAR TODAS LAS URLs COMPLETAS
-    .replace(/https?:\/\/[^\s\n]+/g, '')      // URLs completas
-    .replace(/www\.[^\s\n]+/g, '')            // URLs con www
-    .replace(/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}[^\s\n]*/g, '') // Cualquier dominio
-    
-    // ELIMINAR FRAGMENTOS ESPECÍFICOS QUE PUEDEN QUEDAR
-    .replace(/\/[a-zA-Z0-9._-]+/g, '')        // Fragmentos como /val, /Form
-    .replace(/\b(val|Form|emp|BjzkHI|Pl4n|C\.emp)\b/g, '') // Códigos específicos
-    .replace(/\b[a-zA-Z0-9]{3,10}\b/g, '')    // Códigos de 3-10 caracteres
-    
-    // LIMPIAR PALABRAS SUELTAS QUE PUEDEN SER FRAGMENTOS
-    .replace(/\b(short|dal5|os10|bit|ly|com|org|net)\b/g, '') // Palabras de URLs
-    
-    .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
-    .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
-    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
-    
-    // LIMPIAR ESPACIOS Y PUNTOS EXTRA
-    .replace(/\s+/g, ' ')                     // Espacios múltiples
-    .replace(/\.\s*\./g, '.')                 // Puntos dobles
-    .replace(/\s*\.\s*/g, '. ')               // Espacios alrededor de puntos
-    .trim();
-
-// ALTERNATIVA MÁS AGRESIVA SI LA ANTERIOR NO FUNCIONA:
-
-const textForTTSAggressive = text
+                    const textForTTS = text
     .replace(/\*\*(.*?)\*\*/g, '$1')          
     .replace(/\*(.*?)\*/g, '$1')              
     .replace(/<[^>]*>/g, '')                  
     .replace(/\n/g, '. ')                     
     
-    // ELIMINAR TODO LO QUE CONTENGA "gy"
-    .replace(/[^\s]*gy[^\s]*/g, '')           // Cualquier palabra que contenga "gy"
-    .replace(/[^\s]*\.gy[^\s]*/g, '')         // Cualquier cosa que termine en .gy
-    .replace(/[^\s]*short[^\s]*/g, '')        // Cualquier cosa que contenga "short"
-    .replace(/[^\s]*dal5[^\s]*/g, '')         // Cualquier cosa que contenga "dal5"
-    .replace(/[^\s]*os10[^\s]*/g, '')         // Cualquier cosa que contenga "os10"
-    
-    // ELIMINAR URLs COMPLETAS
-    .replace(/https?:\/\/[^\s]+/g, '')        
-    .replace(/www\.[^\s]+/g, '')              
-    .replace(/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}[^\s]*/g, '') 
-    
-    // ELIMINAR CÓDIGOS Y FRAGMENTOS
-    .replace(/\/[a-zA-Z0-9._-]+/g, '')        
-    .replace(/\b[A-Za-z0-9]{3,15}\b/g, '')    // Códigos de 3-15 caracteres
-    
-    .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
-    .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
-    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
+    // SOLO eliminar las URLs específicas de tu regla
+    .replace(/https:\/\/dal5\.short\.gy\/val\s*/g, '. ')
+    .replace(/https:\/\/dal5\.short\.gy\/C\.emp\s*/g, '. ')
+    .replace(/https:\/\/dal5\.short\.gy\/Form\s*/g, '. ')
+    .replace(/https:\/\/dal5\.short\.gy\/BjzkHI\s*/g, '. ')
+    .replace(/https:\/\/os10\.short\.gy\/Pl4n\s*/g, '. ')
     
     .replace(/\s+/g, ' ')
+    .replace(/\.\s*\./g, '.')
                     .trim();
                     
                 setTimeout(() => speakText(textForTTS), 300);
