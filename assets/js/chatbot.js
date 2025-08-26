@@ -638,8 +638,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     .replace(/www\.[^\s\n]+/g, '')            // Quitar URLs con www
                     .replace(/[a-zA-Z0-9.-]+\.short\.gy[^\s\n]*/g, '') // Quitar .short.gy completo
                     .replace(/[a-zA-Z0-9.-]+\.gy[^\s\n]*/g, '') // Quitar .gy completo
-                    .replace(/dal5\.short\.gy[^\s\n]*/g, '')  // Quitar dal5.short.gy específico
-                    .replace(/os10\.short\.gy[^\s\n]*/g, '')  // Quitar os10.short.gy específico
+                    .replace(/dal5\.short\.gy[^\s\n]*/gy, '')  // Quitar dal5.short.gy específico
+                    .replace(/os10\.short\.gy[^\s\n]*/gy, '')  // Quitar os10.short.gy específico
                     .replace(/bit\.ly[^\s\n]*/g, '')          // Quitar bit.ly específico
                     .replace(/\/[a-zA-Z0-9._-]+\b/g, '')      // Quitar fragmentos como /val, /Form, /C.emp
                     .replace(/\b[a-zA-Z0-9._-]+\.(com|org|net|edu|gov|cl|gy|ly)[^\s\n]*/g, '') // Quitar dominios completos
