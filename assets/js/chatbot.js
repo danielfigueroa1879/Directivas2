@@ -613,6 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "Descargar";
                 else if (cleanedUrl.includes('bcn.cl')) buttonText = "Ver ley";
                 else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "Ver OS10";
+                else if (cleanedUrl.includes('maps.app.goo.gl') || cleanedUrl.includes('maps.google.com') || cleanedUrl.includes('goo.gl')) {buttonText = "Ubicación";  // ← NUEVA CONDICIÓN PARA GOOGLE MAPS
                 return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
             });
 
