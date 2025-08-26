@@ -626,15 +626,35 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isAutoReadEnabled) {
                 // Limpiar SOLO para síntesis de voz (no afecta el HTML ya creado)
                 const textForTTS = text
-                    .replace(/\*\*(.*?)\*\*/g, '$1')          // Quitar asteriscos para TTS
-                    .replace(/\*(.*?)\*/g, '$1')              
-                    .replace(/<[^>]*>/g, '')                  // Quitar HTML
-                    .replace(/\n/g, '. ')                     
-                    .replace(/(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?/g, '')
+                    .replace(/\*\*(.*?)\*\*/g, '$1')              // Quitar negritas markdown
+                    .replace(/\*(.*?)\*/g, '$1')                  // Quitar cursivas markdown  
+                    .replace(/<[^>]*>/g, '')                      // Quitar HTML
+                    .replace(/\n/g, '. ')                         // Saltos de línea a pausas
+    
+                // LIMPIEZA ESPECÍFICA DE URLs - MEJORADA
+                    .replace(/https?:\/\/[^\s\n]+/g, '')          // URLs HTTP/HTTPS completas
+                    .replace(/www\.[^\s\n]+/g, '')                // URLs con www
+                    .replace(/[a-zA-Z0-9.-]+\.short\.gy\/[^\s\n]*/g, '') // URLs .short.gy específicas
+                    .replace(/dal5\.short\.gy\/[^\s\n]*/g, '')    // dal5.short.gy
+                    .replace(/os10\.short\.gy\/[^\s\n]*/g, '')    // os10.short.gy
+                    .replace(/bit\.ly\/[^\s\n]*/g, '')            // bit.ly
+                    .replace(/drive\.google\.com[^\s\n]*/g, '')   // Google Drive
+    
+                // Limpiar fragmentos de URLs que puedan quedar
+                    .replace(/\b[a-zA-Z0-9.-]+\.(com|org|net|edu|gov|cl|gy|ly)\/[^\s\n]*/g, '') // Dominios con rutas
+                    .replace(/\b[a-zA-Z0-9.-]+\.(short\.gy|bit\.ly)/g, '') // Dominios específicos
+                    .replace(/\b[A-Za-z0-9_-]{6,}/g, '')          // Códigos de URLs (como BjzkHI, C.emp, etc.)
+    
+                // Limpiar emails y teléfonos
                     .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
                     .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
+    
+                // Limpiar emojis (excepto 🤖)
                     .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
-                    .replace(/\s+/g, ' ')
+    
+                // Normalizar espacios
+                    .replace(/\s+/g, ' ')                         // Espacios múltiples a uno
+                    .replace(/\.\s*\./g, '.')                     // Puntos dobles
                     .trim();
                     
                 setTimeout(() => speakText(textForTTS), 300);
