@@ -397,15 +397,23 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!text || !text.trim()) return;
 
         // Limpiar texto para TTS
-        const cleanText = text
-            .replace(/<[^>]*>/g, '') // Eliminar etiquetas HTML
-            .replace(/\*\*(.*?)\*\*/g, '$1') // Eliminar negritas markdown
-            .replace(/\*(.*?)\*/g, '$1') // Eliminar cursivas markdown
-            .replace(/<br>/g, '. ') // Reemplazar <br> con pausas
-            .replace(/\n/g, '. ') // Reemplazar saltos de línea con puntos
-            .replace(/\s+/g, ' ') // Normalizar espacios en blanco
-            .trim();
-
+        const textForTTS = text
+    .replace(/\*\*(.*?)\*\*/g, '$1')          
+    .replace(/\*(.*?)\*/g, '$1')              
+    .replace(/<[^>]*>/g, '')                  
+    .replace(/\n/g, '. ')                     
+    
+    // SOLO eliminar las URLs específicas de tu regla
+    .replace(/https:\/\/dal5\.short\.gy\/val\s*/g, '. ')
+    .replace(/https:\/\/dal5\.short\.gy\/C\.emp\s*/g, '. ')
+    .replace(/https:\/\/dal5\.short\.gy\/Form\s*/g, '. ')
+    .replace(/https:\/\/dal5\.short\.gy\/BjzkHI\s*/g, '. ')
+    .replace(/https:\/\/os10\.short\.gy\/Pl4n\s*/g, '. ')
+    
+    .replace(/\s+/g, ' ')
+    .replace(/\.\s*\./g, '.')
+    .trim();
+        
         try {
             // Intentar ElevenLabs solo si la API key está disponible
             if (elevenLabsApiKey) {
