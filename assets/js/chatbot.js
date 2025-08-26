@@ -305,8 +305,8 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'desktop':
             default:
                 // Otros escritorios: configuración por defecto
-                utterance.lang = 'es-ES';
-                utterance.rate = 0.9;
+                utterance.lang = 'es-CL';
+                utterance.rate = 1.2;
                 utterance.pitch = 0.8;
                 utterance.volume = 1.0;
                 console.log('Configuración Desktop aplicada: rate=0.85, pitch=0.65');
