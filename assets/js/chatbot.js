@@ -609,7 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
                 let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
-                let buttonText = "Abrir1";
+                let buttonText = "Ubicación";
                 if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "Descargar";
                 else if (cleanedUrl.includes('bcn.cl')) buttonText = "Ver ley";
                 else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "Ver OS10";
