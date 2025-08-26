@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'windows':
                 // Windows PC: configuración estándar masculina
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.0;   // Velocidad natural
+                utterance.rate = 1.2;   // Velocidad natural
                 utterance.pitch = 0.7;  // Tono masculino estándar
                 utterance.volume = 1.0;
                 console.log('Configuración Windows aplicada: rate=0.85, pitch=0.65');
