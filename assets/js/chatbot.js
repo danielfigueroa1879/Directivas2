@@ -397,22 +397,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!text || !text.trim()) return;
 
         // Limpiar texto para TTS
-        const textForTTS = text
-    .replace(/\*\*(.*?)\*\*/g, '$1')          
-    .replace(/\*(.*?)\*/g, '$1')              
-    .replace(/<[^>]*>/g, '')                  
-    .replace(/\n/g, '. ')                     
-    
-    // SOLO eliminar las URLs específicas de tu regla
-    .replace(/https:\/\/dal5\.short\.gy\/val\s*/g, '. ')
-    .replace(/https:\/\/dal5\.short\.gy\/C\.emp\s*/g, '. ')
-    .replace(/https:\/\/dal5\.short\.gy\/Form\s*/g, '. ')
-    .replace(/https:\/\/dal5\.short\.gy\/BjzkHI\s*/g, '. ')
-    .replace(/https:\/\/os10\.short\.gy\/Pl4n\s*/g, '. ')
-    
-    .replace(/\s+/g, ' ')
-    .replace(/\.\s*\./g, '.')
-    .trim();
+       const cleanText = text
+            .replace(/<[^>]*>/gy, '') // Eliminar etiquetas HTML
+            .replace(/\*\*(.*?)\*\*/gy, '$1') // Eliminar negritas markdown
+            .replace(/\*(.*?)\*/gy, '$1') // Eliminar cursivas markdown
+            .replace(/<br>/gy, '. ') // Reemplazar <br> con pausas
+            .replace(/\n/gy, '. ') // Reemplazar saltos de línea con puntos
+            .replace(/\s+/gy, ' ') // Normalizar espacios en blanco
+            .trim();
         
         try {
             // Intentar ElevenLabs solo si la API key está disponible
