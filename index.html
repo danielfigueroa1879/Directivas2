@@ -564,31 +564,29 @@
             align-items: center; 
             padding: 0 1rem; 
         }
-
-        /* Panel lateral deslizante para credenciales */
-
+/* Panel lateral deslizante para credenciales - Versión menos transparente */
 /* Dropdown Menu - Panel lateral que se desliza desde la izquierda */
 #credenciales-dropdown {
-    /* Posicionamiento fijo para que aparezca como overlay */
-    position: fixed;
-    top: 40px; /* Justo debajo del banner */
-    left: -280px; /* Inicialmente oculto fuera de la pantalla */
+    /* Posicionamiento absoluto relativo al contenedor principal */
+    position: absolute;
+    top: 60px; /* Debajo del banner */
+    left: -280px; /* Inicialmente oculto fuera del contenedor */
     
     /* Dimensiones del panel */
     width: 260px;
     height: auto;
-    max-height: calc(100vh - 60px); /* No exceder la altura de la ventana */
+    max-height: calc(100vh - 120px);
     
-    /* Efecto semi-transparente igual al banner */
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* Efecto borroso blanco menos transparente */
+    background-color: rgba(255, 255, 255, 0.85); /* Más opaco (era 0.5) */
+    backdrop-filter: blur(20px); /* Más blur (era 8px) */
+    -webkit-backdrop-filter: blur(20px);
     
     /* Bordes y sombras */
-    border: 1px solid rgba(229, 231, 235, 0.5);
-    border-left: none; /* Sin borde izquierdo para que parezca que sale del edge */
-    border-radius: 0 12px 12px 0; /* Bordes redondeados solo a la derecha */
-    box-shadow: 2px 0 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.8); /* Borde más blanco */
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     
     /* Z-index alto para aparecer encima de todo */
     z-index: 1200;
@@ -605,9 +603,9 @@
     scrollbar-width: thin;
 }
 
-/* Estado visible del panel - se desliza hacia la derecha */
+/* Estado visible del panel - se desliza hacia la derecha desde el borde del contenedor */
 #credenciales-dropdown:not(.hidden) {
-    left: 0; /* Se desliza hasta quedar visible */
+    left: 0; /* Se desliza hasta el borde izquierdo del contenedor */
     opacity: 1;
 }
 
@@ -619,15 +617,16 @@
 /* Header del panel */
 #credenciales-dropdown-header {
     padding: 12px 20px;
-    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.4);
     margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo adicional para el header */
 }
 
 #credenciales-dropdown-header h3 {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
-    color: rgba(31, 41, 55, 0.9);
+    color: rgba(31, 41, 55, 0.95); /* Texto más definido */
 }
 
 /* Botones dentro del panel */
@@ -636,14 +635,12 @@
     text-align: left;
     padding: 14px 20px;
     font-size: 0.875rem;
-    color: rgba(31, 41, 55, 0.8);
-    background-color: transparent;
+    color: rgba(31, 41, 55, 0.9); /* Texto más visible */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo sutil para botones */
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(229, 231, 235, 0.2);
-    
-    /* Efecto de deslizamiento interno */
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
     transform: translateX(0);
 }
 
@@ -654,31 +651,33 @@
 
 /* Hover effect para los botones */
 #credenciales-dropdown button:hover {
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(59, 130, 246, 0.2); /* Hover más visible */
     color: rgba(37, 99, 235, 1);
-    transform: translateX(8px); /* Se desliza un poco hacia la derecha */
-    padding-left: 28px; /* Incrementa el padding para el efecto */
+    transform: translateX(8px);
+    padding-left: 28px;
+    backdrop-filter: blur(10px); /* Blur adicional en hover */
 }
 
 /* Active state */
 #credenciales-dropdown button:active {
     transform: translateX(4px);
-    background-color: rgba(59, 130, 246, 0.15);
+    background-color: rgba(59, 130, 246, 0.25);
 }
 
-/* Overlay de fondo cuando el panel está abierto */
+/* Overlay de fondo cuando el panel está abierto - solo visible en el área del contenedor */
 #credenciales-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(4px);
     z-index: 1150;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
+    border-radius: 12px; /* Mismo radio que el contenedor principal */
 }
 
 /* Overlay visible */
@@ -695,20 +694,22 @@
     width: 32px;
     height: 32px;
     border: none;
-    background: rgba(107, 114, 128, 0.1);
+    background: rgba(255, 255, 255, 0.4); /* Fondo más visible */
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    color: rgba(107, 114, 128, 0.7);
+    color: rgba(107, 114, 128, 0.8);
+    backdrop-filter: blur(10px);
 }
 
 #credenciales-close-btn:hover {
-    background: rgba(239, 68, 68, 0.1);
+    background: rgba(239, 68, 68, 0.2);
     color: rgba(239, 68, 68, 1);
     transform: scale(1.1);
+    backdrop-filter: blur(15px);
 }
 
 /* Animación de entrada para los botones */
@@ -736,12 +737,34 @@
     animation: slideInFromLeft 0.3s ease 0.3s both;
 }
 
-/* Responsive - Ajustes para móvil */
+/* Responsive - Ajustes para móvil y tablet */
+@media (max-width: 1024px) {
+    /* En pantallas medianas y pequeñas, volver al comportamiento fixed */
+    #credenciales-dropdown {
+        position: fixed;
+        top: 50px;
+        left: -260px;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(25px);
+        z-index: 1200;
+    }
+    
+    #credenciales-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
 @media (max-width: 640px) {
     #credenciales-dropdown {
         width: 240px;
         left: -260px;
-        top: 50px;
     }
     
     #credenciales-dropdown button {
@@ -755,9 +778,15 @@
     }
 }
 
+/* Asegurar que el contenedor principal tenga position relative para el posicionamiento absoluto */
+.card-container {
+    position: relative;
+    overflow: visible; /* Permitir que el panel sea visible fuera del contenedor */
+}
+
 /* Efecto adicional: Indicador visual en el banner cuando el panel está abierto */
 #credenciales-menu-btn.panel-active {
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(59, 130, 246, 0.15);
     color: rgba(37, 99, 235, 1);
     border-radius: 6px;
     padding: 4px 8px;
@@ -770,18 +799,37 @@
 }
 
 #credenciales-dropdown::-webkit-scrollbar-track {
-    background: rgba(243, 244, 246, 0.3);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
 }
 
 #credenciales-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(156, 163, 175, 0.5);
+    background: rgba(156, 163, 175, 0.6);
     border-radius: 2px;
 }
 
 #credenciales-dropdown::-webkit-scrollbar-thumb:hover {
-    background: rgba(107, 114, 128, 0.7);
+    background: rgba(107, 114, 128, 0.8);
 }
+
+/* Efecto glass mejorado para todo el panel */
+#credenciales-dropdown::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
     </style>
 </head>
 <body class="pt-10">
