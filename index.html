@@ -564,6 +564,224 @@
             align-items: center; 
             padding: 0 1rem; 
         }
+
+        /* Panel lateral deslizante para credenciales */
+
+/* Dropdown Menu - Panel lateral que se desliza desde la izquierda */
+#credenciales-dropdown {
+    /* Posicionamiento fijo para que aparezca como overlay */
+    position: fixed;
+    top: 40px; /* Justo debajo del banner */
+    left: -280px; /* Inicialmente oculto fuera de la pantalla */
+    
+    /* Dimensiones del panel */
+    width: 260px;
+    height: auto;
+    max-height: calc(100vh - 60px); /* No exceder la altura de la ventana */
+    
+    /* Efecto semi-transparente igual al banner */
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* Bordes y sombras */
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    border-left: none; /* Sin borde izquierdo para que parezca que sale del edge */
+    border-radius: 0 12px 12px 0; /* Bordes redondeados solo a la derecha */
+    box-shadow: 2px 0 25px rgba(0, 0, 0, 0.15);
+    
+    /* Z-index alto para aparecer encima de todo */
+    z-index: 1200;
+    
+    /* Transición suave para el deslizamiento */
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                opacity 0.4s ease;
+    
+    /* Inicialmente invisible */
+    opacity: 0;
+    
+    /* Scroll interno si es necesario */
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Estado visible del panel - se desliza hacia la derecha */
+#credenciales-dropdown:not(.hidden) {
+    left: 0; /* Se desliza hasta quedar visible */
+    opacity: 1;
+}
+
+/* Contenedor interno del panel */
+#credenciales-dropdown-content {
+    padding: 16px 0;
+}
+
+/* Header del panel */
+#credenciales-dropdown-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+    margin-bottom: 8px;
+}
+
+#credenciales-dropdown-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(31, 41, 55, 0.9);
+}
+
+/* Botones dentro del panel */
+#credenciales-dropdown button {
+    width: 100%;
+    text-align: left;
+    padding: 14px 20px;
+    font-size: 0.875rem;
+    color: rgba(31, 41, 55, 0.8);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.2);
+    
+    /* Efecto de deslizamiento interno */
+    transform: translateX(0);
+}
+
+/* Último botón sin border */
+#credenciales-dropdown button:last-child {
+    border-bottom: none;
+}
+
+/* Hover effect para los botones */
+#credenciales-dropdown button:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: rgba(37, 99, 235, 1);
+    transform: translateX(8px); /* Se desliza un poco hacia la derecha */
+    padding-left: 28px; /* Incrementa el padding para el efecto */
+}
+
+/* Active state */
+#credenciales-dropdown button:active {
+    transform: translateX(4px);
+    background-color: rgba(59, 130, 246, 0.15);
+}
+
+/* Overlay de fondo cuando el panel está abierto */
+#credenciales-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    z-index: 1150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Overlay visible */
+#credenciales-overlay:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Botón de cerrar en el panel */
+#credenciales-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(107, 114, 128, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: rgba(107, 114, 128, 0.7);
+}
+
+#credenciales-close-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: rgba(239, 68, 68, 1);
+    transform: scale(1.1);
+}
+
+/* Animación de entrada para los botones */
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Aplicar animación escalonada a los botones */
+#credenciales-dropdown:not(.hidden) button:nth-child(1) {
+    animation: slideInFromLeft 0.3s ease 0.1s both;
+}
+
+#credenciales-dropdown:not(.hidden) button:nth-child(2) {
+    animation: slideInFromLeft 0.3s ease 0.2s both;
+}
+
+#credenciales-dropdown:not(.hidden) button:nth-child(3) {
+    animation: slideInFromLeft 0.3s ease 0.3s both;
+}
+
+/* Responsive - Ajustes para móvil */
+@media (max-width: 640px) {
+    #credenciales-dropdown {
+        width: 240px;
+        left: -260px;
+        top: 50px;
+    }
+    
+    #credenciales-dropdown button {
+        padding: 12px 16px;
+        font-size: 0.8rem;
+    }
+    
+    #credenciales-dropdown button:hover {
+        transform: translateX(6px);
+        padding-left: 22px;
+    }
+}
+
+/* Efecto adicional: Indicador visual en el banner cuando el panel está abierto */
+#credenciales-menu-btn.panel-active {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: rgba(37, 99, 235, 1);
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin: -4px -8px;
+}
+
+/* Smooth scrollbar para el panel */
+#credenciales-dropdown::-webkit-scrollbar {
+    width: 4px;
+}
+
+#credenciales-dropdown::-webkit-scrollbar-track {
+    background: rgba(243, 244, 246, 0.3);
+    border-radius: 2px;
+}
+
+#credenciales-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 2px;
+}
+
+#credenciales-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 114, 128, 0.7);
+}
     </style>
 </head>
 <body class="pt-10">
