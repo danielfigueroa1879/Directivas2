@@ -429,35 +429,6 @@
             height: auto;
         }
 
-        .credenciales-back-btn {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 14px;
-            border-radius: 7px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            z-index: 20;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            background-color: #EAB308;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .credenciales-back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            background-color: #D97706;
-        }
-        .credenciales-back-btn svg {
-            margin-right: 5px;
-            height: 20px;
-            width: 20px;
-        }
-
         /* New arrow button in the top right corner of card-container */
         #credenciales-arrow-back-btn {
             position: absolute;
@@ -515,18 +486,7 @@
                 margin-right: -1.5rem;
                 width: calc(100% + 3rem);
             }
-            .credenciales-back-btn {
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-            }
-            .credenciales-back-btn .btn-text {
-                display: none;
-            }
-            .credenciales-back-btn svg {
-                margin-right: 0;
-            }
+
              /* Adjustments for the new arrow button on smaller mobiles */
             #credenciales-arrow-back-btn {
                 width: 2rem; 
@@ -959,12 +919,6 @@
         </section>
 
         <section id="credenciales-section" class="credenciales-section">
-            <button onclick="showMain()" class="credenciales-back-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                </svg>
-                <span class="btn-text">Volver</span>
-            </button>
             
             <header class="credenciales-title-container">
                 <h1 class="credenciales-main-title">CREDENCIAL</h1>
@@ -1153,7 +1107,7 @@
     </div>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
 
-    <button id="back-to-top" class="hidden fixed bottom-5 right-5 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors z-[1050]">
+    <button id="back-to-top" class="hidden fixed bottom-5 right-5 bg-transparent text-black p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-[1050]">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
     </button>
 
