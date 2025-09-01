@@ -535,7 +535,7 @@
         #tramites-dropdown {
             /* Posicionamiento absoluto relativo al contenedor principal */
             position: absolute;
-            top: 50px; /* Debajo del banner */
+            top: 35px; /* Ajustado desde 50px para eliminar el espacio con el banner */
             left: -280px; /* Inicialmente oculto fuera del contenedor */
             
             /* Dimensiones del panel */
@@ -814,21 +814,22 @@
             left: 0;
             right: 0;
             width: 100vw;
-            height: calc(100vh - 40px); /* Ocupa el resto de la pantalla */
+            height: 12.5vh; /* 1/8 de la altura de la página */
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
-            padding: 20px;
+            padding: 1rem 20px;
             z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            min-height: 140px; /* Altura mínima para que el contenido sea visible */
         }
 
         .hero-title {
             color: white;
-            font-size: 2.5rem;
+            font-size: 1.75rem; /* Ajustado */
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             letter-spacing: 1px;
@@ -837,20 +838,20 @@
         
         /* Estilo para el subtítulo, ahora dentro del banner */
         .welcome-subtitle {
-            font-size: 1.2rem;
+            font-size: 0.875rem; /* Ajustado */
             color: #d1d5db; /* Color gris claro para contraste */
-            margin-top: 1rem;
-            margin-bottom: 2rem;
+            margin-top: 0.5rem; /* Ajustado */
+            margin-bottom: 1rem; /* Ajustado */
             max-width: 500px;
         }
 
         /* Botón de inicio */
         .start-button {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 0.6rem 1.6rem; /* Ajustado */
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
-            font-size: 1.1rem;
+            font-size: 0.875rem; /* Ajustado */
             font-weight: 600;
             border-radius: 12px;
             text-decoration: none;
@@ -871,10 +872,10 @@
 
         @media (max-width: 640px) {
             .hero-title {
-                font-size: 1.5rem;
+                font-size: 1.25rem; /* Ajustado */
             }
             .welcome-subtitle {
-                font-size: 1rem;
+                font-size: 0.75rem;
             }
         }
     </style>
