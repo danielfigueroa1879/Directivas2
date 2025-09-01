@@ -38,7 +38,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            transition: background-image 2.5s ease-in-out; /* Transición más lenta */
+            transition: background-image 3.5s ease-in-out; /* Transición aún más lenta */
         }
         
         .card-container { 
@@ -785,7 +785,7 @@
             right: 0;
             width: 100vw;
             height: 25vh; /* Hecho más alto */
-            background: rgba(0, 0, 0, 0.6); 
+            background: rgba(0, 0, 0, 0.5); /* Más claro y transparente */
             backdrop-filter: blur(10px);
             padding: 1rem 20px;
             z-index: 5;
@@ -794,7 +794,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 200px; /* Altura mínima aumentada */
+            min-height: 240px; /* Altura mínima aumentada */
         }
 
         .hero-title {
@@ -1235,8 +1235,8 @@
             }
         }
 
-        // Start background rotation every 6 seconds for homepage
-        setInterval(rotateBackground, 6000); // Tiempo de espera más largo
+        // Start background rotation every 8 seconds for homepage
+        setInterval(rotateBackground, 8000); // Tiempo de espera más largo
 
         // Functions to switch between sections
         function showHomepage() {
