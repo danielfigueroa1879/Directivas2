@@ -1258,6 +1258,22 @@
             backToTopButton.addEventListener('click', function() {
                 window.scrollTo({top: 0, behavior: 'smooth'});
             });
+
+            // --- Open chatbot on hover ---
+            const chatToggleButton = document.getElementById('chat-toggle-button');
+            if (chatToggleButton) {
+                chatToggleButton.addEventListener('mouseenter', () => {
+                    const popup = document.getElementById('chat-popup');
+                    if (popup.classList.contains('hidden')) {
+                        const backdrop = document.getElementById('chat-backdrop');
+                        const button = document.getElementById('chat-toggle-button');
+                        
+                        popup.classList.remove('hidden');
+                        backdrop.classList.remove('hidden');
+                        button.classList.add('hidden');
+                    }
+                });
+            }
         });
     </script>
 
