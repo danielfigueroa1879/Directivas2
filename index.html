@@ -652,32 +652,6 @@
             pointer-events: auto;
         }
 
-        /* Botón de cerrar en el panel */
-        #tramites-close-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 32px;
-            height: 32px;
-            border: none;
-            background: rgba(255, 255, 255, 0.4); /* Fondo más visible */
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            color: rgba(107, 114, 128, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        #tramites-close-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            color: rgba(239, 68, 68, 1);
-            transform: scale(1.1);
-            backdrop-filter: blur(15px);
-        }
-
         /* Animación de entrada para los botones */
         @keyframes slideInFromLeft {
             from {
@@ -798,19 +772,15 @@
 
         /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
         .homepage-section {
-            display: block;
+            display: none; /* Hidden by default */
             position: relative;
             min-height: 100vh; /* Ocupa al menos toda la altura de la ventana */
         }
         
-        .homepage-section.hidden {
-            display: none;
-        }
-
         /* Contenedor superior transparente oscuro */
         .hero-banner {
             position: fixed;
-            top: 40px; /* Debajo de la barra de navegación superior */
+            top: 50px; /* Debajo de la barra de navegación superior, con un pequeño espacio */
             left: 0;
             right: 0;
             width: 100vw;
@@ -918,11 +888,6 @@
                             Leyes
                         </button>
                     </div>
-                    <button id="tramites-close-btn" onclick="closeTramitesMenu()">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
                 </div>
             </div>
             
@@ -942,8 +907,9 @@
 
     <!-- Overlay for tramites dropdown (usado en móvil) -->
     <div id="tramites-overlay" class="hidden"></div>
-
-    <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
+    
+    <!-- Contenedor principal para las páginas internas -->
+    <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
             <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy">
         </a>
@@ -954,18 +920,6 @@
             </svg>
         </button>
 
-        <!-- Nueva sección de página de inicio -->
-        <section id="homepage-section" class="homepage-section">
-            <!-- Banner superior transparente oscuro -->
-            <div class="hero-banner">
-                <h1 class="hero-title">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
-                <p class="welcome-subtitle">Sistema de trámites y servicios de seguridad privada</p>
-                <button onclick="showDirectiva()" class="start-button">
-                    Iniciar Trámites
-                </button>
-            </div>
-        </section>
-        
         <section id="main-section" class="main-content" style="display: none;">
             <header class="text-center pt-8">
                 <h1 class="text-2xl font-bold text-gray-800">DIRECTIVA DE FUNCIONAMIENTO</h1>
@@ -1170,6 +1124,18 @@
         </section>
     </div>
 
+    <!-- Nueva sección de página de inicio (movida fuera del contenedor principal) -->
+    <section id="homepage-section" class="homepage-section">
+        <!-- Banner superior transparente oscuro -->
+        <div class="hero-banner">
+            <h1 class="hero-title">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
+            <p class="welcome-subtitle">Sistema de trámites y servicios de seguridad privada</p>
+            <button onclick="showDirectiva()" class="start-button">
+                Iniciar Trámites
+            </button>
+        </div>
+    </section>
+
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
@@ -1271,59 +1237,42 @@
         // Functions to switch between sections
         function showHomepage() {
             document.getElementById('homepage-section').style.display = 'block';
-            document.getElementById('main-section').style.display = 'none';
-            document.getElementById('credenciales-section').classList.remove('active');
+            document.getElementById('contenido').style.display = 'none';
             
-            // Change body to homepage class and start background animation
             document.body.className = 'pt-10 homepage background-transition';
             document.body.style.backgroundImage = `url('${backgroundImages[0]}')`;
             currentImageIndex = 0;
             
-            // Hide the arrow back button
             document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
             
-            // Hide the main content card for the homepage
-            document.getElementById('contenido').classList.add('bg-transparent', 'shadow-none', 'backdrop-blur-none');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
         function showDirectiva() {
             document.getElementById('homepage-section').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
             document.getElementById('main-section').style.display = 'block';
             document.getElementById('credenciales-section').classList.remove('active');
             
-            // Change body to regular class and background
             document.body.className = 'pt-10';
             document.body.style.backgroundImage = "url('assets/images/101.jpg')";
             
-            // Show the arrow back button
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
-
-             // Show the main content card
-            document.getElementById('contenido').classList.remove('bg-transparent', 'shadow-none', 'backdrop-blur-none');
             
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
         function showCredenciales() {
             document.getElementById('homepage-section').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
             
-            // Change body to regular class and background
             document.body.className = 'pt-10';
             document.body.style.backgroundImage = "url('assets/images/101.jpg')";
             
-            // Show the arrow back button
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
 
-             // Show the main content card
-            document.getElementById('contenido').classList.remove('bg-transparent', 'shadow-none', 'backdrop-blur-none');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
@@ -1397,66 +1346,53 @@
             menuBtn.classList.remove('panel-active');
         }
 
-        function ajustarPadding() {
-            const banner = document.getElementById('banner');
-            const contenido = document.getElementById('contenido');
-            if (!banner || !contenido) return;
-
-            const altura = Math.ceil(banner.getBoundingClientRect().height);
-            // Solo ajustar padding si no estamos en la página de inicio
-            if (!document.body.classList.contains('homepage')) {
-                contenido.style.paddingTop = altura + 'px';
-            } else {
-                 contenido.style.paddingTop = '0';
-            }
-        }
-
         // Adjust on load and when window is resized
-        window.addEventListener('load', ajustarPadding);
-        window.addEventListener('resize', ajustarPadding);
+        window.addEventListener('load', () => {});
+        window.addEventListener('resize', () => {});
 
         // Event listeners for menu and other elements
         document.addEventListener('DOMContentLoaded', () => {
-             // --- Tramites Dropdown Menu Control (REVISED) ---
+            // --- Tramites Dropdown Menu Control (FIXED) ---
             const menuBtn = document.getElementById('tramites-menu-btn');
             const dropdown = document.getElementById('tramites-dropdown');
+            let hideTimeout;
 
             if (menuBtn && dropdown) {
-                const tramitesContainer = menuBtn.parentElement; // The div wrapping both button and dropdown
+                const tramitesContainer = menuBtn.parentElement;
 
-                // Click event primarily for mobile/touch devices
+                const showMenu = () => {
+                    clearTimeout(hideTimeout);
+                    const arrow = document.getElementById('tramites-arrow');
+                    dropdown.classList.remove('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(180deg)';
+                    menuBtn.classList.add('panel-active');
+                };
+
+                const hideMenu = () => {
+                    hideTimeout = setTimeout(() => {
+                        const arrow = document.getElementById('tramites-arrow');
+                        dropdown.classList.add('hidden');
+                        if (arrow) arrow.style.transform = 'rotate(0deg)';
+                        menuBtn.classList.remove('panel-active');
+                    }, 250);
+                };
+                
+                // For mobile/touch devices, use click
                 menuBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    // Toggle menu with overlay (for touch behavior)
                     if (dropdown.classList.contains('hidden')) {
-                        showTramitesMenu(); // Original function with overlay
+                        showTramitesMenu(); // This handles overlay for mobile
                     } else {
                         closeTramitesMenu();
                     }
                 });
 
-                // Hover events for desktop (non-touch) devices
+                // For desktop (non-touch) devices, use hover with delay
                 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 if (!isTouchDevice) {
-                    const arrow = document.getElementById('tramites-arrow');
-
-                    tramitesContainer.addEventListener('mouseenter', () => {
-                        dropdown.classList.remove('hidden');
-                        arrow.style.transform = 'rotate(180deg)';
-                        menuBtn.classList.add('panel-active');
-                    });
-
-                    tramitesContainer.addEventListener('mouseleave', () => {
-                        dropdown.classList.add('hidden');
-                        arrow.style.transform = 'rotate(0deg)';
-                        menuBtn.classList.remove('panel-active');
-                    });
-                    
-                    // Prevent click on desktop from triggering the mobile (overlay) behavior
-                    menuBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                    });
+                    tramitesContainer.addEventListener('mouseenter', showMenu);
+                    tramitesContainer.addEventListener('mouseleave', hideMenu);
                 }
             }
 
@@ -1593,3 +1529,4 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
