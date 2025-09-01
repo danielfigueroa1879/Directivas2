@@ -364,14 +364,14 @@
             margin-left: 0;
             margin-right: auto;
             transition: transform 0.3s ease;
-            cursor: zoom-in;
+            /* cursor: zoom-in; */ /* Eliminado */
             border: 2px solid #FFD700;
             margin-bottom: 10px;
             border-radius: 8px;
             max-width: 100%;
         }
         .credenciales-photo-example:hover {
-            transform: scale(1.2);
+            /* transform: scale(1.2); */ /* Eliminado */
             z-index: 1000;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
@@ -380,14 +380,14 @@
             display: block;
             width: 220px;
             transition: transform 0.3s ease;
-            cursor: zoom-in;
+            /* cursor: zoom-in; */ /* Eliminado */
             border: 2px solid #FFD700;
             margin-bottom: 10px;
             border-radius: 8px;
             max-width: 100%;
         }
         .credenciales-valores-example:hover {
-            transform: scale(1.3);
+            /* transform: scale(1.3); */ /* Eliminado */
             z-index: 1000;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
@@ -784,8 +784,8 @@
             left: 0;
             right: 0;
             width: 100vw;
-            height: 12.5vh; /* 1/8 de la altura de la página */
-            background: rgba(0, 0, 0, 0.7);
+            height: 16vh; /* 1/8 de la altura de la página -> Aumentado a 16vh */
+            background: rgba(0, 0, 0, 0.6); /* Más transparente (era 0.7) */
             backdrop-filter: blur(10px);
             padding: 1rem 20px;
             z-index: 5;
@@ -794,7 +794,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 140px; /* Altura mínima para que el contenido sea visible */
+            min-height: 160px; /* Altura mínima para que el contenido sea visible (Aumentado) */
         }
 
         .hero-title {
@@ -1529,4 +1529,3 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
-
