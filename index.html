@@ -38,7 +38,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            transition: background-image 1.5s ease-in-out;
+            transition: background-image 2.5s ease-in-out; /* Transición más lenta */
         }
         
         .card-container { 
@@ -780,12 +780,12 @@
         /* Contenedor superior transparente oscuro */
         .hero-banner {
             position: fixed;
-            top: 50px; /* Debajo de la barra de navegación superior, con un pequeño espacio */
+            top: 70px; /* Bajado un poco más */
             left: 0;
             right: 0;
             width: 100vw;
-            height: 16vh; /* 1/8 de la altura de la página -> Aumentado a 16vh */
-            background: rgba(0, 0, 0, 0.6); /* Más transparente (era 0.7) */
+            height: 20vh; /* Hecho más alto */
+            background: rgba(0, 0, 0, 0.6); 
             backdrop-filter: blur(10px);
             padding: 1rem 20px;
             z-index: 5;
@@ -794,7 +794,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 160px; /* Altura mínima para que el contenido sea visible (Aumentado) */
+            min-height: 200px; /* Altura mínima aumentada */
         }
 
         .hero-title {
@@ -841,11 +841,15 @@
         }
 
         @media (max-width: 640px) {
+            .hero-banner {
+                padding: 1rem 15px; /* Ajuste de padding para móvil */
+            }
             .hero-title {
-                font-size: 1.25rem; /* Ajustado */
+                font-size: 1.25rem; 
             }
             .welcome-subtitle {
                 font-size: 0.75rem;
+                padding: 0 1rem; /* Padding para que el texto no toque los bordes */
             }
         }
     </style>
@@ -1231,8 +1235,8 @@
             }
         }
 
-        // Start background rotation every 4 seconds for homepage
-        setInterval(rotateBackground, 4000);
+        // Start background rotation every 6 seconds for homepage
+        setInterval(rotateBackground, 6000); // Tiempo de espera más largo
 
         // Functions to switch between sections
         function showHomepage() {
@@ -1529,3 +1533,4 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
