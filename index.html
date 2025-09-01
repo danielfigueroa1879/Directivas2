@@ -38,7 +38,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            transition: background-image 3.5s ease-in-out; /* Transición aún más lenta */
+            transition: background-image 4.5s ease-in-out; /* Transición aún más lenta */
         }
         
         .card-container { 
@@ -780,12 +780,12 @@
         /* Contenedor superior transparente oscuro */
         .hero-banner {
             position: fixed;
-            top: 70px; /* Bajado un poco más */
+            top: 70px; 
             left: 0;
             right: 0;
             width: 100vw;
-            height: 25vh; /* Hecho más alto */
-            background: rgba(0, 0, 0, 0.5); /* Más claro y transparente */
+            height: 30vh; /* Aún más alto */
+            background: rgba(0, 0, 0, 0.4); /* Aún más claro y transparente */
             backdrop-filter: blur(10px);
             padding: 1rem 20px;
             z-index: 5;
@@ -794,12 +794,12 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 240px; /* Altura mínima aumentada */
+            min-height: 280px; /* Altura mínima aumentada */
         }
 
         .hero-title {
             color: white;
-            font-size: 1.75rem; /* Ajustado */
+            font-size: 1.75rem; 
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             letter-spacing: 1px;
@@ -808,20 +808,20 @@
         
         /* Estilo para el subtítulo, ahora dentro del banner */
         .welcome-subtitle {
-            font-size: 0.875rem; /* Ajustado */
-            color: #d1d5db; /* Color gris claro para contraste */
-            margin-top: 0.5rem; /* Ajustado */
-            margin-bottom: 1rem; /* Ajustado */
+            font-size: 0.875rem; 
+            color: #d1d5db; 
+            margin-top: 0.5rem; 
+            margin-bottom: 1rem; 
             max-width: 500px;
         }
 
         /* Botón de inicio */
         .start-button {
             display: inline-block;
-            padding: 0.6rem 1.6rem; /* Ajustado */
+            padding: 0.6rem 1.6rem; 
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
-            font-size: 0.875rem; /* Ajustado */
+            font-size: 0.875rem; 
             font-weight: 600;
             border-radius: 12px;
             text-decoration: none;
@@ -842,14 +842,14 @@
 
         @media (max-width: 640px) {
             .hero-banner {
-                padding: 1rem 15px; /* Ajuste de padding para móvil */
+                padding: 1rem 15px; 
             }
             .hero-title {
                 font-size: 1.25rem; 
             }
             .welcome-subtitle {
                 font-size: 0.75rem;
-                padding: 0 1rem; /* Padding para que el texto no toque los bordes */
+                padding: 0 1rem; 
             }
         }
     </style>
@@ -1235,8 +1235,8 @@
             }
         }
 
-        // Start background rotation every 8 seconds for homepage
-        setInterval(rotateBackground, 8000); // Tiempo de espera más largo
+        // Start background rotation every 10 seconds for homepage
+        setInterval(rotateBackground, 10000); // Aún más tiempo de espera
 
         // Functions to switch between sections
         function showHomepage() {
