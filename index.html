@@ -638,7 +638,6 @@
             right: 0;
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(4px);
             z-index: 1150;
             opacity: 0;
             pointer-events: none;
@@ -786,8 +785,7 @@
             right: 0;
             width: 100vw;
             height: 30vh; 
-            background: rgba(0, 0, 0, 0.35); /* Aún más claro y transparente */
-            backdrop-filter: blur(2px);
+            background: rgba(0, 0, 0, 0.1); /* Aún más transparente y sin efecto borroso */
             padding: 1rem 20px;
             z-index: 5;
             display: flex;
@@ -1044,7 +1042,7 @@
                                     <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
                                     <li>Fotografia almacenada en un Pendrive.</li>
                                 </ul>
-                                <div class="mt-4">
+                                <div class="mt-4 flex justify-center">
                                     <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
@@ -1107,7 +1105,7 @@
                                     <li>R.U.T.: 61.944.800-6</li>
                                     <li>Teléfono OS.10.: +562512651024</li>
                                 </ul>
-                                <div class="flex items-end justify-between mt-4">
+                                <div class="flex flex-col sm:flex-row items-center sm:items-end justify-center sm:justify-between mt-4 gap-4">
                                     <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
                                         <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
                                     </a>
@@ -1225,15 +1223,7 @@
             'assets/images/foto (5).jpeg',
             'assets/images/foto (6).jpeg',
             'assets/images/foto (7).jpeg',
-            'assets/images/foto (9).jpeg',
-            'assets/images/foto (10).jpeg',
-            'assets/images/foto (11).jpeg',
-            'assets/images/foto (12).jpeg',
-            'assets/images/foto (13).jpeg',
-            'assets/images/foto (14).jpeg',
-            'assets/images/foto (15).jpeg',
-            'assets/images/foto (16).jpeg',           
-            'assets/images/foto (18).jpeg'
+            'assets/images/foto (8).jpeg'
         ];
         let currentImageIndex = 0;
 
