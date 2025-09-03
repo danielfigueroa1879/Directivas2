@@ -17,7 +17,7 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn/tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -30,18 +30,20 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            padding-top: 4rem; /* Added for fixed banner (64px) */
         }
         
         /* Página de inicio con fondo rotativo */
         body.homepage {
             background-color: #111827; /* Fondo oscuro para el body en la homepage */
+            background-image: none;
         }
 
         #homepage-section {
             background-image: url('assets/images/foto (1).jpeg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Mantiene la imagen fija, creando un efecto parallax dentro de la sección */
+            /* background-attachment: fixed; -- REMOVED */
             transition: background-image 5.5s ease-in-out;
         }
         
@@ -777,7 +779,7 @@
         /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
         .homepage-section {
             display: none; /* Hidden by default */
-            min-height: 100vh; /* Ocupa al menos toda la altura de la ventana */
+            min-height: calc(100vh - 4rem); /* Ocupa el espacio restante de la ventana */
         }
         .background-transition {
             animation: none;
@@ -790,9 +792,9 @@
         }
     </style>
 </head>
-<body class="pt-10 homepage background-transition">
-    <!-- Cambié h-10 por h-16 para aumentar la altura del banner -->
-    <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/50 backdrop-blur-sm border-b border-gray-200/50 h-16 flex items-center justify-center shadow-sm">
+<body class="homepage background-transition">
+    <!-- Banner superior -->
+    <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white border-b border-gray-200 h-16 flex items-center justify-center shadow-sm">
         <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
             <div class="flex items-center relative"> <!-- Contenedor para el menú y el botón -->
                 <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
@@ -1066,7 +1068,7 @@
     </div>
 
     <!-- ========= INICIO SECCION HOMEPAGE ========= -->
-    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 pt-16">
+    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4">
         <!-- Dark overlay for text readability -->
         <div class="absolute inset-0 bg-black/50 z-0"></div>
         <!-- Content -->
@@ -1300,8 +1302,7 @@
             document.getElementById('main-footer').style.display = 'block';
             document.getElementById('contenido').style.display = 'none';
             
-            document.body.className = 'pt-10 homepage background-transition';
-            document.body.style.backgroundImage = 'none'; // Limpiar fondo del body
+            document.body.className = 'homepage background-transition';
             
             // Aplicar imagen de fondo solo a la sección del héroe
             const homepageSection = document.getElementById('homepage-section');
@@ -1321,8 +1322,7 @@
             document.getElementById('main-section').style.display = 'block';
             document.getElementById('credenciales-section').classList.remove('active');
             
-            document.body.className = 'pt-10';
-            document.body.style.backgroundImage = "url('assets/images/101.jpg')";
+            document.body.className = '';
             
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
             
@@ -1337,8 +1337,7 @@
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
             
-            document.body.className = 'pt-10';
-            document.body.style.backgroundImage = "url('assets/images/101.jpg')";
+            document.body.className = '';
             
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
 
@@ -1598,5 +1597,4 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
-
 
