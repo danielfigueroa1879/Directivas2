@@ -891,7 +891,7 @@
                                     <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
                                         <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
                                     </a>
-                                    <a href="https://dal5.short.gy/CÂ¢ÂË†Â¡" target="_blank">
+                                    <a href="https://dal5.short.gy/Câˆš" target="_blank">
                                        <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
                                     </a>
                                 </div>
@@ -1056,7 +1056,7 @@
                             <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
                         </svg>
                     </button>
-                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800 transition-colors">
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -1227,27 +1227,6 @@
             menuBtn.classList.remove('panel-active');
         }
 
-        // FIXED Chat Functions
-        function openChat() {
-            const chatPopup = document.getElementById('chat-popup');
-            const chatBackdrop = document.getElementById('chat-backdrop');
-            const chatToggleButton = document.getElementById('chat-toggle-button');
-            
-            if (chatPopup) chatPopup.classList.remove('hidden');
-            if (chatBackdrop) chatBackdrop.classList.remove('hidden');
-            if (chatToggleButton) chatToggleButton.classList.add('hidden');
-        }
-
-        function closeChat() {
-            const chatPopup = document.getElementById('chat-popup');
-            const chatBackdrop = document.getElementById('chat-backdrop');
-            const chatToggleButton = document.getElementById('chat-toggle-button');
-            
-            if (chatPopup) chatPopup.classList.add('hidden');
-            if (chatBackdrop) chatBackdrop.classList.add('hidden');
-            if (chatToggleButton) chatToggleButton.classList.remove('hidden');
-        }
-
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('tramites-menu-btn');
@@ -1286,37 +1265,29 @@
             };
             backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
 
-            // Chat Event Listeners - Fixed
             const chatToggleButton = document.getElementById('chat-toggle-button');
+            const chatPopup = document.getElementById('chat-popup');
             const chatBackdrop = document.getElementById('chat-backdrop');
             const closeButtonInternal = document.getElementById('chat-close-btn-internal');
 
-            // Open chat on hover (original behavior)
             if (chatToggleButton) {
-                chatToggleButton.addEventListener('mouseenter', openChat);
-            }
-            
-            // Close chat event listeners
-            if (closeButtonInternal) {
-                closeButtonInternal.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    closeChat();
+                chatToggleButton.addEventListener('mouseenter', () => {
+                    if (chatPopup.classList.contains('hidden')) {
+                        chatPopup.classList.remove('hidden');
+                        chatBackdrop.classList.remove('hidden');
+                        chatToggleButton.classList.add('hidden');
+                    }
                 });
             }
-            if (chatBackdrop) {
-                chatBackdrop.addEventListener('click', closeChat);
+            
+            function closeChat() {
+                if (chatPopup) chatPopup.classList.add('hidden');
+                if (chatBackdrop) chatBackdrop.classList.add('hidden');
+                if (chatToggleButton) chatToggleButton.classList.remove('hidden');
             }
 
-            // Close chat with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    const chatPopup = document.getElementById('chat-popup');
-                    if (chatPopup && !chatPopup.classList.contains('hidden')) {
-                        closeChat();
-                    }
-                }
-            });
+            if (closeButtonInternal) closeButtonInternal.addEventListener('click', closeChat);
+            if (chatBackdrop) chatBackdrop.addEventListener('click', closeChat);
 
             setInterval(rotateBackground, 12000);
             showHomepage();
@@ -1373,3 +1344,4 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
