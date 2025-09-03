@@ -537,7 +537,7 @@
         }
 
         /* Dropdown Menu - Panel que aparece suavemente desde abajo */
-        #tramites-dropdown {
+        .dropdown-menu {
             position: absolute;
             top: 40px; 
             left: 0;
@@ -561,26 +561,26 @@
         }
 
         /* Estado visible del panel */
-        #tramites-dropdown:not(.hidden) {
+        .dropdown-menu:not(.hidden) {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
         }
 
         /* Contenedor interno del panel */
-        #tramites-dropdown-content {
+        .dropdown-menu-content {
             padding: 16px 0;
         }
 
         /* Header del panel */
-        #tramites-dropdown-header {
+        .dropdown-menu-header {
             padding: 12px 20px;
             border-bottom: 1px solid rgba(229, 231, 235, 0.4);
             margin-bottom: 8px;
             background-color: rgba(255, 255, 255, 0.3); /* Fondo adicional para el header */
         }
 
-        #tramites-dropdown-header h3 {
+        .dropdown-menu-header h3 {
             margin: 0;
             font-size: 1rem;
             font-weight: 600;
@@ -588,7 +588,7 @@
         }
 
         /* Botones dentro del panel */
-        #tramites-dropdown button {
+        .dropdown-menu button {
             width: 100%;
             text-align: left;
             padding: 14px 20px;
@@ -603,12 +603,12 @@
         }
 
         /* Último botón sin border */
-        #tramites-dropdown button:last-child {
+        .dropdown-menu button:last-child {
             border-bottom: none;
         }
 
         /* Hover effect para los botones */
-        #tramites-dropdown button:hover {
+        .dropdown-menu button:hover {
             background-color: rgba(59, 130, 246, 0.2); /* Hover más visible */
             color: rgba(37, 99, 235, 1);
             transform: translateX(8px);
@@ -617,13 +617,13 @@
         }
 
         /* Active state */
-        #tramites-dropdown button:active {
+        .dropdown-menu button:active {
             transform: translateX(4px);
             background-color: rgba(59, 130, 246, 0.25);
         }
 
         /* Overlay de fondo cuando el panel está abierto - solo visible en el área del contenedor */
-        #tramites-overlay {
+        #tramites-overlay, #editables-overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -638,7 +638,7 @@
         }
 
         /* Overlay visible */
-        #tramites-overlay:not(.hidden) {
+        #tramites-overlay:not(.hidden), #editables-overlay:not(.hidden) {
             opacity: 1;
             pointer-events: auto;
         }
@@ -654,26 +654,11 @@
                 opacity: 1;
             }
         }
-
-        /* Aplicar animación escalonada a los botones */
-        #tramites-dropdown:not(.hidden) button:nth-child(1) { animation: slideInFromBottom 0.3s ease 0.1s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(2) { animation: slideInFromBottom 0.3s ease 0.15s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(3) { animation: slideInFromBottom 0.3s ease 0.2s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(4) { animation: slideInFromBottom 0.3s ease 0.25s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(5) { animation: slideInFromBottom 0.3s ease 0.3s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(6) { animation: slideInFromBottom 0.3s ease 0.35s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(7) { animation: slideInFromBottom 0.3s ease 0.4s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(8) { animation: slideInFromBottom 0.3s ease 0.45s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(9) { animation: slideInFromBottom 0.3s ease 0.5s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(10) { animation: slideInFromBottom 0.3s ease 0.55s both; }
-        #tramites-dropdown:not(.hidden) button:nth-child(11) { animation: slideInFromBottom 0.3s ease 0.6s both; }
-
-
-
+       
         /* Responsive - Ajustes para móvil y tablet */
         @media (max-width: 1024px) {
             /* En pantallas medianas y pequeñas, volver al comportamiento fixed */
-            #tramites-dropdown {
+            .dropdown-menu {
                 position: fixed;
                 top: 50px;
                 left: initial; /* Reset left property */
@@ -682,7 +667,7 @@
                 z-index: 1201; /* Asegurar que esté sobre el banner */
             }
             
-            #tramites-overlay {
+            #tramites-overlay, #editables-overlay {
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -696,16 +681,16 @@
         }
 
         @media (max-width: 640px) {
-            #tramites-dropdown {
+            .dropdown-menu {
                 width: 240px;
             }
             
-            #tramites-dropdown button {
+            .dropdown-menu button {
                 padding: 12px 16px;
                 font-size: 0.8rem;
             }
             
-            #tramites-dropdown button:hover {
+            .dropdown-menu button:hover {
                 transform: translateX(6px);
                 padding-left: 22px;
             }
@@ -718,7 +703,7 @@
         }
 
         /* Efecto adicional: Indicador visual en el banner cuando el panel está abierto */
-        #tramites-menu-btn.panel-active {
+        .panel-active {
             background-color: rgba(59, 130, 246, 0.15);
             color: rgba(37, 99, 235, 1);
             border-radius: 6px;
@@ -727,26 +712,26 @@
         }
 
         /* Smooth scrollbar para el panel */
-        #tramites-dropdown::-webkit-scrollbar {
+        .dropdown-menu::-webkit-scrollbar {
             width: 4px;
         }
 
-        #tramites-dropdown::-webkit-scrollbar-track {
+        .dropdown-menu::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.3);
             border-radius: 2px;
         }
 
-        #tramites-dropdown::-webkit-scrollbar-thumb {
+        .dropdown-menu::-webkit-scrollbar-thumb {
             background: rgba(156, 163, 175, 0.6);
             border-radius: 2px;
         }
 
-        #tramites-dropdown::-webkit-scrollbar-thumb:hover {
+        .dropdown-menu::-webkit-scrollbar-thumb:hover {
             background: rgba(107, 114, 128, 0.8);
         }
 
         /* Efecto glass mejorado para todo el panel */
-        #tramites-dropdown::before {
+        .dropdown-menu::before {
             content: '';
             position: absolute;
             top: 0;
@@ -799,52 +784,48 @@
     <!-- Banner superior -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/70 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
         <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
-            <div class="flex items-center relative"> <!-- Contenedor para el menú y el botón -->
-                <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
-                    Tramites
-                    <svg class="w-3 h-3 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                
-                <div id="tramites-dropdown" class="hidden">
-                    <div id="tramites-dropdown-header">
-                        <h3>Menu de Tramites</h3>
+            <div class="flex items-center space-x-4"> <!-- Contenedor para botones de la izquierda -->
+                <!-- Menú Trámites -->
+                <div class="relative">
+                    <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
+                        Trámites
+                        <svg class="w-3 h-3 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="tramites-dropdown" class="dropdown-menu hidden">
+                        <div class="dropdown-menu-header">
+                            <h3>Menu de Trámites</h3>
+                        </div>
+                        <div class="dropdown-menu-content">
+                            <button onclick="handleDirectiva()">Directiva</button>
+                            <button onclick="handleCredenciales()">Credenciales</button>
+                            <button onclick="handleCredencialIndependiente()">Credencial de Independiente</button>
+                            <button onclick="handleValores()">Valores</button>
+                            <button onclick="handleValorPlan()">Valor Plan</button>
+                            <button onclick="handleCursoFormacion()">Curso de Formación</button>
+                            <button onclick="handleLeyes()">Leyes</button>
+                        </div>
                     </div>
-                    <div id="tramites-dropdown-content">
-                        <button onclick="handleDirectiva()">
-                            Directiva
-                        </button>
-                        <button onclick="handleCredenciales()">
-                            Credenciales
-                        </button>
-                        <button onclick="handleCredencialIndependiente()">
-                            Credencial de Independiente
-                        </button>
-                        <button onclick="handleValores()">
-                            Valores
-                        </button>
-                        <button onclick="handleValorPlan()">
-                            Valor Plan
-                        </button>
-                        <button onclick="handleCursoFormacion()">
-                            Curso de Formacion
-                        </button>
-                        <button onclick="handleLeyes()">
-                            Leyes
-                        </button>
-                        <button onclick="openLink('https://bit.ly/3QbfmlT')">
-                            Estudio de Seguridad
-                        </button>
-                        <button onclick="openLink('https://d6.short.gy/Pl4n')">
-                            Plan de Seguridad
-                        </button>
-                        <button onclick="openLink('https://dal5.short.gy/M3')">
-                            Medidas de Seguridad
-                        </button>
-                        <button onclick="openLink('https://dal5.short.gy/H23wIF')">
-                            Solicitud Simple
-                        </button>
+                </div>
+                <!-- Menú Doc. Editables -->
+                <div class="relative">
+                    <button id="editables-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
+                        Doc. Editables
+                        <svg class="w-3 h-3 ml-1 transition-transform" id="editables-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="editables-dropdown" class="dropdown-menu hidden">
+                         <div class="dropdown-menu-header">
+                            <h3>Documentos Editables</h3>
+                        </div>
+                        <div class="dropdown-menu-content">
+                            <button onclick="openLink('https://bit.ly/3QbfmlT')">Estudio de Seguridad</button>
+                            <button onclick="openLink('https://d6.short.gy/Pl4n')">Plan de Seguridad</button>
+                            <button onclick="openLink('https://dal5.short.gy/M3')">Medidas de Seguridad</button>
+                            <button onclick="openLink('https://dal5.short.gy/H23wIF')">Solicitud Simple</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -863,8 +844,9 @@
         </div>
     </div>
 
-    <!-- Overlay for tramites dropdown (usado en móvil) -->
+    <!-- Overlays -->
     <div id="tramites-overlay" class="hidden"></div>
+    <div id="editables-overlay" class="hidden"></div>
     
     <!-- Contenedor principal para las páginas internas -->
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
@@ -1367,6 +1349,7 @@
         function openLink(url) {
             window.open(url, '_blank');
             closeTramitesMenu();
+            closeEditablesMenu();
         }
 
         // Functions for the new tramites menu
@@ -1422,7 +1405,7 @@
             const menuBtn = document.getElementById('tramites-menu-btn');
             
             dropdown.classList.remove('hidden');
-            overlay.classList.remove('hidden');
+            if (overlay) overlay.classList.remove('hidden');
             arrow.style.transform = 'rotate(180deg)';
             menuBtn.classList.add('panel-active');
         }
@@ -1434,10 +1417,35 @@
             const menuBtn = document.getElementById('tramites-menu-btn');
             
             dropdown.classList.add('hidden');
-            overlay.classList.add('hidden');
+            if (overlay) overlay.classList.add('hidden');
             arrow.style.transform = 'rotate(0deg)';
             menuBtn.classList.remove('panel-active');
         }
+
+        function showEditablesMenu() {
+            const dropdown = document.getElementById('editables-dropdown');
+            const overlay = document.getElementById('editables-overlay');
+            const arrow = document.getElementById('editables-arrow');
+            const menuBtn = document.getElementById('editables-menu-btn');
+            
+            dropdown.classList.remove('hidden');
+            if (overlay) overlay.classList.remove('hidden');
+            arrow.style.transform = 'rotate(180deg)';
+            menuBtn.classList.add('panel-active');
+        }
+
+        function closeEditablesMenu() {
+            const dropdown = document.getElementById('editables-dropdown');
+            const overlay = document.getElementById('editables-overlay');
+            const arrow = document.getElementById('editables-arrow');
+            const menuBtn = document.getElementById('editables-menu-btn');
+            
+            dropdown.classList.add('hidden');
+            if (overlay) overlay.classList.add('hidden');
+            arrow.style.transform = 'rotate(0deg)';
+            menuBtn.classList.remove('panel-active');
+        }
+
 
         // Adjust on load and when window is resized
         window.addEventListener('load', () => {});
@@ -1445,55 +1453,39 @@
 
         // Event listeners for menu and other elements
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Tramites Dropdown Menu Control (FIXED) ---
-            const menuBtn = document.getElementById('tramites-menu-btn');
-            const dropdown = document.getElementById('tramites-dropdown');
-            let hideTimeout;
-
-            if (menuBtn && dropdown) {
-                const tramitesContainer = menuBtn.parentElement;
-
-                const showMenu = () => {
-                    clearTimeout(hideTimeout);
-                    const arrow = document.getElementById('tramites-arrow');
-                    dropdown.classList.remove('hidden');
-                    if (arrow) arrow.style.transform = 'rotate(180deg)';
-                    menuBtn.classList.add('panel-active');
-                };
-
-                const hideMenu = () => {
-                    hideTimeout = setTimeout(() => {
-                        const arrow = document.getElementById('tramites-arrow');
-                        dropdown.classList.add('hidden');
-                        if (arrow) arrow.style.transform = 'rotate(0deg)';
-                        menuBtn.classList.remove('panel-active');
-                    }, 250);
-                };
-                
-                // For mobile/touch devices, use click
-                menuBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
+            // --- Tramites Dropdown Menu Control ---
+            const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+            const tramitesDropdown = document.getElementById('tramites-dropdown');
+            if(tramitesMenuBtn) {
+                tramitesMenuBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    if (dropdown.classList.contains('hidden')) {
-                        showTramitesMenu(); // This handles overlay for mobile
-                    } else {
-                        closeTramitesMenu();
-                    }
+                    const isHidden = tramitesDropdown.classList.contains('hidden');
+                    closeEditablesMenu(); // Close other menu
+                    if (isHidden) showTramitesMenu();
+                    else closeTramitesMenu();
                 });
-
-                // For desktop (non-touch) devices, use hover with delay
-                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                if (!isTouchDevice) {
-                    tramitesContainer.addEventListener('mouseenter', showMenu);
-                    tramitesContainer.addEventListener('mouseleave', hideMenu);
-                }
             }
 
-            // Close menu when clicking on the overlay
-            const overlay = document.getElementById('tramites-overlay');
-            if(overlay) {
-                overlay.addEventListener('click', closeTramitesMenu);
+            // --- Editables Dropdown Menu Control ---
+            const editablesMenuBtn = document.getElementById('editables-menu-btn');
+            const editablesDropdown = document.getElementById('editables-dropdown');
+             if(editablesMenuBtn) {
+                editablesMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = editablesDropdown.classList.contains('hidden');
+                    closeTramitesMenu(); // Close other menu
+                    if (isHidden) showEditablesMenu();
+                    else closeEditablesMenu();
+                });
             }
+
+
+            // Close menus when clicking outside
+            window.addEventListener('click', () => {
+                closeTramitesMenu();
+                closeEditablesMenu();
+            });
+
 
             // Original independent button logic
             const independentButton = document.querySelector('.indep-btn');
@@ -1622,4 +1614,3 @@
     <script src="assets/js/chatbot.js" defer></script>
 </body>
 </html>
-
