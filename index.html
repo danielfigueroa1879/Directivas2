@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>Directivas de Funcionamiento OS10</title>
-    <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10 mientras se tramita la acreditación o credencial.">
+    <title>Plataforma OS10 Coquimbo</title>
+    <meta name="description" content="Plataforma de trámites y servicios de seguridad privada. Requisitos para Directivas de Funcionamiento, Credenciales y más. OS10 Coquimbo.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
@@ -20,7 +20,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         body { 
@@ -1141,6 +1141,113 @@
         </div>
     </section>
 
+    <!-- ========= INICIO DE NUEVAS SECCIONES ========= -->
+    <div id="homepage-content-wrapper">
+        <!-- Trámites Principales Section -->
+        <section id="tramites-principales" class="py-16 md:py-24 bg-gray-900/30 backdrop-blur-sm">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Trámites Principales</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-300">Acceso directo a la información que buscas</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Card 1: Directivas de Funcionamiento -->
+                    <div onclick="showDirectiva()" class="cursor-pointer group relative p-8 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-blue-500/20 text-blue-300 rounded-lg p-3">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold text-white">Directivas de Funcionamiento</h3>
+                        </div>
+                        <p class="mt-4 text-gray-300">Accede y gestiona los requerimientos para instalaciones, eventos y más.</p>
+                        <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </div>
+                    <!-- Card 2: Credenciales -->
+                    <div onclick="showCredenciales()" class="cursor-pointer group relative p-8 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-yellow-500/20 text-yellow-300 rounded-lg p-3">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h2a2 2 0 012 2v1m-6 0h6"></path></svg>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold text-white">Credenciales</h3>
+                        </div>
+                        <p class="mt-4 text-gray-300">Encuentra todos los formularios y requisitos para la acreditación de personal.</p>
+                        <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestra Labor Section -->
+        <section id="nuestra-labor" class="py-16 md:py-24 bg-gray-800/20">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Nuestra Labor</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-300">Comprometidos con la fiscalización y el control de la seguridad privada en la región.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
+                    <!-- Misión -->
+                    <div class="relative pl-12">
+                        <dt class="inline font-semibold text-white text-2xl">
+                          <svg class="absolute left-1 top-1 h-8 w-8 text-blue-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 3h6.93c-.06.34-.14.67-.23 1H13v-1zm0 3h5.87c-.43.84-1.06 1.56-1.87 2.13V16z"></path></svg>
+                          <span class="ml-4">Misión</span>
+                        </dt>
+                        <dd class="mt-4 leading-7 text-gray-300">El OS10 Coquimbo ejerce la fiscalización, control y supervisión de las personas naturales y jurídicas que desarrollan actividades de vigilancia y seguridad privada en el territorio de la Región de Coquimbo, en conformidad con las disposiciones legales vigentes que se encomienda a Carabineros de Chile. Nuestra responsabilidad abarca la autorización, capacitación, certificación y acreditación de los actores del sistema de seguridad privada, así como la aprobación de estudios de seguridad, planes de seguridad, medidas de seguridad y directivas de funcionamiento, con el objetivo fundamental de contribuir eficazmente a la seguridad pública mediante la prevención de hechos delictuales y la protección de personas y bienes.</dd>
+                      </div>
+                    <!-- Visión -->
+                    <div class="relative pl-12">
+                        <dt class="inline font-semibold text-white text-2xl">
+                            <svg class="absolute left-1 top-1 h-8 w-8 text-blue-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+                            <span class="ml-4">Visión</span>
+                        </dt>
+                        <dd class="mt-4 leading-7 text-gray-300">Consolidarnos como un organismo especializado de excelencia en la gestión, fiscalización y control de la seguridad privada a nivel nacional, ser reconocidos por nuestro profesionalismo, eficiencia y compromiso con la legalidad. Aspiramos a ser un referente técnico que, mediante una estructura organizacional sólida, procesos estandarizados y el uso de inteligencia artificial avanzada, brinde atención rápida y de calidad en materias de seguridad privada, promoviendo el desarrollo de un sistema íntegro y competente que contribuya significativamente al fortalecimiento de la seguridad pública en la Región de Coquimbo y sirva como modelo tecnológico e innovador para otras oficinas similares a nivel nacional.</dd>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- ========= FIN DE NUEVAS SECCIONES ========= -->
+
+
+    <!-- ========= INICIO DE NUEVO FOOTER ========= -->
+    <footer id="main-footer" class="bg-gray-900/80 backdrop-blur-sm text-gray-300">
+        <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Col 1: Logo and About -->
+                <div class="md:col-span-2 lg:col-span-1">
+                    <h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3>
+                    <p class="mt-2 text-sm">Prefectura de Coquimbo</p>
+                </div>
+                <!-- Col 2: Enlaces (vacío por ahora) -->
+                <div>
+                   <!-- Puedes agregar enlaces aquí si lo deseas en el futuro -->
+                </div>
+                <!-- Col 3: Contacto -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Contacto</h3>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li>
+                            <a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a>
+                        </li>
+                        <li>
+                            <a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Col 4: Dirección -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Dirección</h3>
+                    <p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, Coquimbo</p>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2025 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
+                <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Ch. - Ingeniero en Informática</p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========= FIN DE NUEVO FOOTER ========= -->
+
+
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
@@ -1251,6 +1358,8 @@
         // Functions to switch between sections
         function showHomepage() {
             document.getElementById('homepage-section').style.display = 'block';
+            document.getElementById('homepage-content-wrapper').style.display = 'block';
+            document.getElementById('main-footer').style.display = 'block';
             document.getElementById('contenido').style.display = 'none';
             
             document.body.className = 'pt-10 homepage background-transition';
@@ -1264,6 +1373,8 @@
 
         function showDirectiva() {
             document.getElementById('homepage-section').style.display = 'none';
+            document.getElementById('homepage-content-wrapper').style.display = 'none';
+            document.getElementById('main-footer').style.display = 'none';
             document.getElementById('contenido').style.display = 'block';
             document.getElementById('main-section').style.display = 'block';
             document.getElementById('credenciales-section').classList.remove('active');
@@ -1278,6 +1389,8 @@
 
         function showCredenciales() {
             document.getElementById('homepage-section').style.display = 'none';
+            document.getElementById('homepage-content-wrapper').style.display = 'none';
+            document.getElementById('main-footer').style.display = 'none';
             document.getElementById('contenido').style.display = 'block';
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
