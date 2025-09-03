@@ -1101,7 +1101,7 @@
         </footer>
     </div>
     <div id="chat-widget-container">
-        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
+        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1" title="Abrir Asistente Virtual con Voces Modernas">
             <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
         </button>
     </div>
@@ -1274,29 +1274,35 @@
             };
             backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
 
+            // --- REWRITTEN CHAT TOGGLE LOGIC ---
             const chatToggleButton = document.getElementById('chat-toggle-button');
+            const chatWidgetContainer = document.getElementById('chat-widget-container');
             const chatPopup = document.getElementById('chat-popup');
             const chatBackdrop = document.getElementById('chat-backdrop');
             const closeButtonInternal = document.getElementById('chat-close-btn-internal');
 
-            if (chatToggleButton) {
-                chatToggleButton.addEventListener('click', () => {
-                    if (chatPopup.classList.contains('hidden')) {
-                        chatPopup.classList.remove('hidden');
-                        chatBackdrop.classList.remove('hidden');
-                        chatToggleButton.classList.add('hidden');
-                    }
-                });
-            }
-            
-            function closeChat() {
-                if (chatPopup) chatPopup.classList.add('hidden');
-                if (chatBackdrop) chatBackdrop.classList.add('hidden');
-                if (chatToggleButton) chatToggleButton.classList.remove('hidden');
+            function openChat() {
+                chatPopup.classList.remove('hidden');
+                chatBackdrop.classList.remove('hidden');
+                chatWidgetContainer.classList.add('hidden');
             }
 
-            if (closeButtonInternal) closeButtonInternal.addEventListener('click', closeChat);
-            if (chatBackdrop) chatBackdrop.addEventListener('click', closeChat);
+            function closeChat() {
+                chatPopup.classList.add('hidden');
+                chatBackdrop.classList.add('hidden');
+                chatWidgetContainer.classList.remove('hidden');
+            }
+
+            if (chatToggleButton) {
+                chatToggleButton.addEventListener('click', openChat);
+            }
+            if (closeButtonInternal) {
+                closeButtonInternal.addEventListener('click', closeChat);
+            }
+            if (chatBackdrop) {
+                chatBackdrop.addEventListener('click', closeChat);
+            }
+            // --- END OF REWRITTEN LOGIC ---
 
             setInterval(rotateBackground, 12000);
             showHomepage();
@@ -1348,9 +1354,12 @@
         runCounter();
     </script>
     
+    <!-- 
+    NOTE: If the chat still doesn't work, the error might be in the external files below.
+    These files are not accessible to me, so I cannot debug them.
+    Check the browser's developer console (F12) for any red error messages related to them.
+    -->
     <script src="./rules/chatbot-rules.js"></script>
-    
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
-
