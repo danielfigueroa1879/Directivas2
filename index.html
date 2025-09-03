@@ -563,22 +563,24 @@
         .hero-banner {
             position: relative;
             width: 100%;
-            padding: 0; /* padding reseteado */
-            min-height: 80vh; /* Altura aumentada */
+            padding: 0; /* Eliminado padding para que el contenido controle la altura */
+            min-height: 70vh; /* Altura mínima aumentada */
             background-size: cover;
             background-position: center;
             display: flex;
-            align-items: center; /* Centrado vertical */
-            justify-content: center; /* Centrado horizontal */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             transition: background-image 1.5s ease-in-out;
         }
         
         .hero-content-wrapper {
-            background-color: rgba(0, 0, 0, 0.6); /* La cinta oscura ahora está aquí */
-            padding: 2.5rem 2rem;
-            width: 100%; /* Ocupa todo el ancho */
+            background-color: rgba(0, 0, 0, 0.55); /* MODIFICADO: Un poco más transparente */
+            padding: 2.5rem 2rem; /* Aumentado padding para más espacio */
+            border-radius: 0; /* Sin bordes redondeados para efecto cinta */
             z-index: 2;
+            width: 100%; /* Ocupa todo el ancho */
         }
 
         .hero-title {
@@ -617,8 +619,12 @@
             box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
 
-        .homepage-content { background-color: #ffffff; }
+        .homepage-content { background-color: #f9fafb; }
         
+        #tramites-principales-section {
+            background-color: #ffffff; /* Cambiado a blanco */
+        }
+
         .feature-card, .mission-vision-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -946,7 +952,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h4a2 2 0 012 2v1m-4 0h4" />
                                 </svg>
                             </div>
-                            <h3 class="mt-6 text-xl font-bold text-gray-900">Acreditación de Credenciales</h3>
+                            <h3 class="mt-6 text-xl font-bold text-gray-900">Credenciales</h3>
                             <p class="mt-2 text-base text-gray-600">Encuentra todos los formularios y requisitos para la acreditación de personal.</p>
                         </div>
                     </div>
@@ -1259,18 +1265,20 @@
             };
             backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
 
-            // --- Chatbot Logic ---
             const chatToggleButton = document.getElementById('chat-toggle-button');
             const chatPopup = document.getElementById('chat-popup');
             const chatBackdrop = document.getElementById('chat-backdrop');
             const closeButtonInternal = document.getElementById('chat-close-btn-internal');
 
-            function openChat() {
-                if (chatPopup.classList.contains('hidden')) {
-                    chatPopup.classList.remove('hidden');
-                    chatBackdrop.classList.remove('hidden');
-                    chatToggleButton.classList.add('hidden');
-                }
+            // MODIFICADO: Se eliminó el evento 'mouseenter' y se reemplazó por 'click' para abrir el chat.
+            if (chatToggleButton) {
+                chatToggleButton.addEventListener('click', () => {
+                    if (chatPopup.classList.contains('hidden')) {
+                        chatPopup.classList.remove('hidden');
+                        chatBackdrop.classList.remove('hidden');
+                        chatToggleButton.classList.add('hidden');
+                    }
+                });
             }
             
             function closeChat() {
@@ -1278,8 +1286,7 @@
                 if (chatBackdrop) chatBackdrop.classList.add('hidden');
                 if (chatToggleButton) chatToggleButton.classList.remove('hidden');
             }
-            
-            if (chatToggleButton) chatToggleButton.addEventListener('click', openChat);
+
             if (closeButtonInternal) closeButtonInternal.addEventListener('click', closeChat);
             if (chatBackdrop) chatBackdrop.addEventListener('click', closeChat);
 
@@ -1338,4 +1345,3 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
-
