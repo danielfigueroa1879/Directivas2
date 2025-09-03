@@ -70,7 +70,7 @@
             position: fixed; 
             bottom: 6.5rem; 
             right: 1.5rem; 
-            z-index: 1000; 
+            z-index: 1300; /* Aumentado para estar por encima de todo */
             display: flex; 
             flex-direction: column; 
             align-items: flex-end;
@@ -1096,7 +1096,7 @@
             <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
         </button>
     </div>
-    <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
+    <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-[1290]"></div>
 
     <button id="back-to-top" class="hidden fixed bottom-5 right-5 bg-transparent text-black p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-[1050]">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
@@ -1345,3 +1345,4 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
