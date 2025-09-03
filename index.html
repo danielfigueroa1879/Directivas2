@@ -563,7 +563,7 @@
         .hero-banner {
             position: relative;
             width: 100%;
-            padding: 200px 1rem 140px 1rem; /* Aumentada la altura vertical */
+            padding: 220px 1rem 160px 1rem; /* Aumentada la altura vertical aún más */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -573,20 +573,14 @@
             text-align: center;
             transition: background-image 1.5s ease-in-out;
         }
-        .hero-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Cinta oscura */
-            z-index: 1;
-        }
-        .hero-banner > * {
-            position: relative;
+        
+        .hero-content-wrapper {
+            background-color: rgba(0, 0, 0, 0.5); /* La cinta oscura ahora está aquí */
+            padding: 2rem;
+            border-radius: 0.75rem;
             z-index: 2;
         }
+
         .hero-title {
             color: white;
             font-size: 3rem; 
@@ -919,11 +913,13 @@
     <section id="homepage-section" class="homepage-section active">
         <!-- Banner superior con imagen de fondo -->
         <div class="hero-banner">
-            <h1 class="hero-title">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
-            <p class="welcome-subtitle">El sistema definitivo para la gestión de trámites y servicios de seguridad privada en la región.</p>
-            <button onclick="showDirectiva()" class="start-button">
-                Iniciar Trámites
-            </button>
+            <div class="hero-content-wrapper">
+                <h1 class="hero-title">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
+                <p class="welcome-subtitle">El sistema definitivo para la gestión de trámites y servicios de seguridad privada en la región.</p>
+                <button onclick="showDirectiva()" class="start-button">
+                    Iniciar Trámites
+                </button>
+            </div>
         </div>
         
         <!-- INICIO DE NUEVAS SECCIONES PROFESIONALES -->
@@ -1348,4 +1344,3 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
-
