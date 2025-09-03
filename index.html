@@ -34,11 +34,15 @@
         
         /* Página de inicio con fondo rotativo */
         body.homepage {
+            background-color: #111827; /* Fondo oscuro para el body en la homepage */
+        }
+
+        #homepage-section {
             background-image: url('assets/images/foto (1).jpeg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            transition: background-image 5.5s ease-in-out; /* Transición aún más lenta */
+            background-attachment: fixed; /* Mantiene la imagen fija, creando un efecto parallax dentro de la sección */
+            transition: background-image 5.5s ease-in-out;
         }
         
         .card-container { 
@@ -1279,9 +1283,10 @@
         let currentImageIndex = 0;
 
         function rotateBackground() {
-            if (document.body.classList.contains('homepage')) {
+            const homepageSection = document.getElementById('homepage-section');
+            if (homepageSection && document.body.classList.contains('homepage')) {
                 currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-                document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+                homepageSection.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
             }
         }
 
@@ -1296,7 +1301,11 @@
             document.getElementById('contenido').style.display = 'none';
             
             document.body.className = 'pt-10 homepage background-transition';
-            document.body.style.backgroundImage = `url('${backgroundImages[0]}')`;
+            document.body.style.backgroundImage = 'none'; // Limpiar fondo del body
+            
+            // Aplicar imagen de fondo solo a la sección del héroe
+            const homepageSection = document.getElementById('homepage-section');
+            homepageSection.style.backgroundImage = `url('${backgroundImages[0]}')`;
             currentImageIndex = 0;
             
             document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
@@ -1589,4 +1598,5 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
 
