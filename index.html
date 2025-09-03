@@ -655,6 +655,20 @@
             }
         }
        
+        .dropdown-menu-content > button {
+             animation: slideInFromBottom 0.3s ease both;
+        }
+        
+        /* Staggered animation */
+        .dropdown-menu-content > button:nth-child(1) { animation-delay: 0.05s; }
+        .dropdown-menu-content > button:nth-child(2) { animation-delay: 0.1s; }
+        .dropdown-menu-content > button:nth-child(3) { animation-delay: 0.15s; }
+        .dropdown-menu-content > button:nth-child(4) { animation-delay: 0.2s; }
+        .dropdown-menu-content > button:nth-child(5) { animation-delay: 0.25s; }
+        .dropdown-menu-content > button:nth-child(6) { animation-delay: 0.3s; }
+        .dropdown-menu-content > button:nth-child(7) { animation-delay: 0.35s; }
+
+
         /* Responsive - Ajustes para móvil y tablet */
         @media (max-width: 1024px) {
             /* En pantallas medianas y pequeñas, volver al comportamiento fixed */
@@ -804,7 +818,7 @@
                             <button onclick="handleValores()">Valores</button>
                             <button onclick="handleValorPlan()">Valor Plan</button>
                             <button onclick="handleCursoFormacion()">Curso de Formación</button>
-                            <button onclick="handleLeyes()">Leyes</button>
+                            <button onclick="openLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
                         </div>
                     </div>
                 </div>
@@ -830,7 +844,11 @@
                 </div>
             </div>
             
-             <div class="flex items-center text-xs space-x-2">
+            <a id="os10-home-btn" class="font-medium banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center absolute left-1/2 -translate-x-1/2">
+                
+            </a>
+
+            <div class="flex items-center text-xs space-x-2">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -1063,7 +1081,7 @@
     <!-- ========= INICIO SECCION HOMEPAGE ========= -->
     <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4">
         <!-- Dark overlay for text readability -->
-        <div class="absolute inset-0 bg-black/50 z-0"></div>
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
         <!-- Content -->
         <div class="relative z-10 -mt-24 md:-mt-16">
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
@@ -1387,57 +1405,43 @@
             window.open('https://www.zosepcar.cl/OS10.php', '_blank');
             closeTramitesMenu();
         }
-
-        function handleLeyes() {
-            // Link to laws page - you can customize this URL
-            window.open('https://www.bcn.cl/leychile/navegar?idNorma=9081', '_blank');
-            closeTramitesMenu();
-        }
-
+        
         function showTramitesMenu() {
             const dropdown = document.getElementById('tramites-dropdown');
-            const overlay = document.getElementById('tramites-overlay');
             const arrow = document.getElementById('tramites-arrow');
             const menuBtn = document.getElementById('tramites-menu-btn');
             
             dropdown.classList.remove('hidden');
-            if (overlay) overlay.classList.remove('hidden');
             arrow.style.transform = 'rotate(180deg)';
             menuBtn.classList.add('panel-active');
         }
 
         function closeTramitesMenu() {
             const dropdown = document.getElementById('tramites-dropdown');
-            const overlay = document.getElementById('tramites-overlay');
             const arrow = document.getElementById('tramites-arrow');
             const menuBtn = document.getElementById('tramites-menu-btn');
             
             dropdown.classList.add('hidden');
-            if (overlay) overlay.classList.add('hidden');
             arrow.style.transform = 'rotate(0deg)';
             menuBtn.classList.remove('panel-active');
         }
 
         function showEditablesMenu() {
             const dropdown = document.getElementById('editables-dropdown');
-            const overlay = document.getElementById('editables-overlay');
             const arrow = document.getElementById('editables-arrow');
             const menuBtn = document.getElementById('editables-menu-btn');
             
             dropdown.classList.remove('hidden');
-            if (overlay) overlay.classList.remove('hidden');
             arrow.style.transform = 'rotate(180deg)';
             menuBtn.classList.add('panel-active');
         }
 
         function closeEditablesMenu() {
             const dropdown = document.getElementById('editables-dropdown');
-            const overlay = document.getElementById('editables-overlay');
             const arrow = document.getElementById('editables-arrow');
             const menuBtn = document.getElementById('editables-menu-btn');
             
             dropdown.classList.add('hidden');
-            if (overlay) overlay.classList.add('hidden');
             arrow.style.transform = 'rotate(0deg)';
             menuBtn.classList.remove('panel-active');
         }
@@ -1449,32 +1453,61 @@
 
         // Event listeners for menu and other elements
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Tramites Dropdown Menu Control ---
             const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
             const tramitesDropdown = document.getElementById('tramites-dropdown');
-            if(tramitesMenuBtn) {
-                tramitesMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const isHidden = tramitesDropdown.classList.contains('hidden');
-                    closeEditablesMenu(); // Close other menu
-                    if (isHidden) showTramitesMenu();
-                    else closeTramitesMenu();
-                });
-            }
+            const tramitesContainer = tramitesMenuBtn.parentElement;
+            let tramitesTimeout;
 
-            // --- Editables Dropdown Menu Control ---
             const editablesMenuBtn = document.getElementById('editables-menu-btn');
             const editablesDropdown = document.getElementById('editables-dropdown');
-             if(editablesMenuBtn) {
-                editablesMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const isHidden = editablesDropdown.classList.contains('hidden');
-                    closeTramitesMenu(); // Close other menu
-                    if (isHidden) showEditablesMenu();
-                    else closeEditablesMenu();
-                });
-            }
+            const editablesContainer = editablesMenuBtn.parentElement;
+            let editablesTimeout;
 
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            if (isTouchDevice) {
+                // Click logic for touch devices
+                if (tramitesMenuBtn) {
+                    tramitesMenuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const isHidden = tramitesDropdown.classList.contains('hidden');
+                        closeEditablesMenu();
+                        if (isHidden) showTramitesMenu();
+                        else closeTramitesMenu();
+                    });
+                }
+                if (editablesMenuBtn) {
+                    editablesMenuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const isHidden = editablesDropdown.classList.contains('hidden');
+                        closeTramitesMenu();
+                        if (isHidden) showEditablesMenu();
+                        else closeEditablesMenu();
+                    });
+                }
+            } else {
+                // Hover logic for non-touch devices
+                if (tramitesContainer) {
+                    tramitesContainer.addEventListener('mouseenter', () => {
+                        clearTimeout(tramitesTimeout);
+                        closeEditablesMenu();
+                        showTramitesMenu();
+                    });
+                    tramitesContainer.addEventListener('mouseleave', () => {
+                        tramitesTimeout = setTimeout(closeTramitesMenu, 200);
+                    });
+                }
+                if (editablesContainer) {
+                    editablesContainer.addEventListener('mouseenter', () => {
+                        clearTimeout(editablesTimeout);
+                        closeTramitesMenu();
+                        showEditablesMenu();
+                    });
+                    editablesContainer.addEventListener('mouseleave', () => {
+                        editablesTimeout = setTimeout(closeEditablesMenu, 200);
+                    });
+                }
+            }
 
             // Close menus when clicking outside
             window.addEventListener('click', () => {
