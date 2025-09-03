@@ -852,7 +852,7 @@
     <!-- Contenedor principal para las páginas internas -->
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
-            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy">
+            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy" width="60" height="60">
         </a>
 
         <button id="credenciales-arrow-back-btn" class="hidden" title="Back to Home" onclick="showHomepage()">
@@ -942,7 +942,7 @@
                     <span>©2025 - Daniel Figueroa Ch.</span><br>
                     <span>Ingeniero en Informática.</span>
                 </div>
-                <img src="assets/images/qr.png" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy">
+                <img src="assets/images/qr.png" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy" width="56" height="56">
             </footer>
         </section>
 
@@ -981,7 +981,7 @@
                                     <li>Fotografia almacenada en un Pendrive.</li>
                                 </ul>
                                 <div class="mt-4 flex justify-center">
-                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
+                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413">
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
                                     <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
@@ -1045,10 +1045,10 @@
                                 </ul>
                                 <div class="flex flex-col sm:flex-row items-center sm:items-end justify-center sm:justify-between mt-4 gap-4">
                                     <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
-                                        <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
+                                        <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy" width="220" height="100">
                                     </a>
                                     <a href="https://dal5.short.gy/Câˆš" target="_blank">
-                                       <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
+                                       <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy" width="80" height="80">
                                     </a>
                                 </div>
                             </div>
@@ -1196,7 +1196,7 @@
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
-                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain" width="40" height="40" loading="lazy">
                     </div>
                     <div>
                         <h1 class="text-base font-bold">Asistente OS10</h1>
@@ -1256,7 +1256,7 @@
             </footer>
         </div>
         <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
-            <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
+            <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain" width="80" height="80" loading="lazy">
         </button>
     </div>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
@@ -1595,8 +1595,8 @@
         runCounter();
     </script>
     
-    <script src="./rules/chatbot-rules.js"></script>
+    <script src="./rules/chatbot-rules.js" defer></script>
     
-    <script src="assets/js/chatbot.js"></script>
+    <script src="assets/js/chatbot.js" defer></script>
 </body>
 </html>
