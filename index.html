@@ -34,7 +34,7 @@
         
         /* Página de inicio con fondo rotativo */
         body.homepage {
-            background-color: #111827; /* Fallback background */
+            background-color: #f9fafb; /* Fallback background */
         }
         
         .card-container { 
@@ -563,7 +563,8 @@
         .hero-banner {
             position: relative;
             width: 100%;
-            padding: 220px 1rem 160px 1rem; /* Aumentada la altura vertical aún más */
+            padding: 0; /* Eliminado padding para que el contenido controle la altura */
+            min-height: 70vh; /* Altura mínima aumentada */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -575,10 +576,11 @@
         }
         
         .hero-content-wrapper {
-            background-color: rgba(0, 0, 0, 0.5); /* La cinta oscura ahora está aquí */
-            padding: 2rem;
-            border-radius: 0.75rem;
+            background-color: rgba(0, 0, 0, 0.6); /* La cinta oscura ahora está aquí */
+            padding: 2.5rem 2rem; /* Aumentado padding para más espacio */
+            border-radius: 0; /* Sin bordes redondeados para efecto cinta */
             z-index: 2;
+            width: 100%; /* Ocupa todo el ancho */
         }
 
         .hero-title {
@@ -595,6 +597,8 @@
             margin-top: 0.5rem; 
             margin-bottom: 1.5rem;
             max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .start-button {
             display: inline-block;
@@ -615,14 +619,10 @@
             box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
 
+        .homepage-content { background-color: #f9fafb; }
+        
         #tramites-principales-section {
-            background-color: #111827; /* color negro/gris oscuro */
-        }
-        #tramites-principales-section .text-blue-600 {
-            color: #60a5fa; /* Un azul más claro para el subtítulo */
-        }
-         #tramites-principales-section .text-gray-900 {
-            color: white;
+            background-color: #ffffff; /* Cambiado a blanco */
         }
 
         .feature-card, .mission-vision-card {
@@ -925,18 +925,18 @@
         <!-- INICIO DE NUEVAS SECCIONES PROFESIONALES -->
         <div class="homepage-content">
             <!-- Sección de Trámites Principales -->
-            <section id="tramites-principales-section" class="py-12 md:py-20 bg-gray-900">
+            <section id="tramites-principales-section" class="py-12 md:py-20 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
-                        <h2 class="text-base text-blue-400 font-semibold tracking-wide uppercase">Trámites Principales</h2>
-                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Trámites Principales</h2>
+                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                             Acceso directo a la información que buscas
                         </p>
                     </div>
 
                     <div class="mt-12 max-w-4xl mx-auto grid gap-10 md:grid-cols-2 md:gap-x-8">
                         <!-- Card 1: Directivas -->
-                        <div onclick="showDirectiva()" class="feature-card bg-white rounded-xl shadow-lg p-8 text-center cursor-pointer">
+                        <div onclick="showDirectiva()" class="feature-card bg-gray-50 rounded-xl shadow-lg p-8 text-center cursor-pointer">
                             <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
                                 <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -946,7 +946,7 @@
                             <p class="mt-2 text-base text-gray-600">Accede y gestiona los requerimientos para instalaciones, eventos y más.</p>
                         </div>
                         <!-- Card 2: Credenciales -->
-                        <div onclick="showCredenciales()" class="feature-card bg-white rounded-xl shadow-lg p-8 text-center cursor-pointer">
+                        <div onclick="showCredenciales()" class="feature-card bg-gray-50 rounded-xl shadow-lg p-8 text-center cursor-pointer">
                             <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
                                 <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h4a2 2 0 012 2v1m-4 0h4" />
@@ -1344,3 +1344,4 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
