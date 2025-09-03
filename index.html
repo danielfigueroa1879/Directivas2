@@ -35,7 +35,7 @@
         
         /* Página de inicio con fondo rotativo */
         body.homepage {
-            background-color: #111827; /* Fondo oscuro para el body en la homepage */
+            background-color: white; /* Fondo blanco para el body en la homepage */
             background-image: none;
         }
 
@@ -809,9 +809,6 @@
     </style>
 </head>
 <body class="homepage background-transition">
-    <!-- Fondo blanco solo para el banner en la homepage -->
-    <div id="banner-background" class="hidden fixed top-0 left-0 right-0 h-16 bg-white z-[1199]"></div>
-
     <!-- Banner superior -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/70 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
         <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
@@ -1324,11 +1321,9 @@
             document.getElementById('homepage-content-wrapper').style.display = 'block';
             document.getElementById('main-footer').style.display = 'block';
             document.getElementById('contenido').style.display = 'none';
-            document.getElementById('banner-background').style.display = 'block';
             
             document.body.className = 'homepage background-transition';
             
-            // Aplicar imagen de fondo solo a la sección del héroe
             const homepageSection = document.getElementById('homepage-section');
             homepageSection.style.backgroundImage = `url('${backgroundImages[0]}')`;
             currentImageIndex = 0;
@@ -1345,7 +1340,6 @@
             document.getElementById('contenido').style.display = 'block';
             document.getElementById('main-section').style.display = 'block';
             document.getElementById('credenciales-section').classList.remove('active');
-            document.getElementById('banner-background').style.display = 'none';
             
             document.body.className = '';
             
@@ -1361,7 +1355,6 @@
             document.getElementById('contenido').style.display = 'block';
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
-            document.getElementById('banner-background').style.display = 'none';
             
             document.body.className = '';
             
