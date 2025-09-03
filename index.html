@@ -663,6 +663,11 @@
         #tramites-dropdown:not(.hidden) button:nth-child(5) { animation: slideInFromBottom 0.3s ease 0.3s both; }
         #tramites-dropdown:not(.hidden) button:nth-child(6) { animation: slideInFromBottom 0.3s ease 0.35s both; }
         #tramites-dropdown:not(.hidden) button:nth-child(7) { animation: slideInFromBottom 0.3s ease 0.4s both; }
+        #tramites-dropdown:not(.hidden) button:nth-child(8) { animation: slideInFromBottom 0.3s ease 0.45s both; }
+        #tramites-dropdown:not(.hidden) button:nth-child(9) { animation: slideInFromBottom 0.3s ease 0.5s both; }
+        #tramites-dropdown:not(.hidden) button:nth-child(10) { animation: slideInFromBottom 0.3s ease 0.55s both; }
+        #tramites-dropdown:not(.hidden) button:nth-child(11) { animation: slideInFromBottom 0.3s ease 0.6s both; }
+
 
 
         /* Responsive - Ajustes para móvil y tablet */
@@ -827,6 +832,18 @@
                         </button>
                         <button onclick="handleLeyes()">
                             Leyes
+                        </button>
+                        <button onclick="openLink('https://bit.ly/3QbfmlT')">
+                            Estudio de Seguridad
+                        </button>
+                        <button onclick="openLink('https://d6.short.gy/Pl4n')">
+                            Plan de Seguridad
+                        </button>
+                        <button onclick="openLink('https://dal5.short.gy/M3')">
+                            Medidas de Seguridad
+                        </button>
+                        <button onclick="openLink('https://dal5.short.gy/H23wIF')">
+                            Solicitud Simple
                         </button>
                     </div>
                 </div>
@@ -1347,6 +1364,11 @@
             window.scrollTo(0, 0);
         }
 
+        function openLink(url) {
+            window.open(url, '_blank');
+            closeTramitesMenu();
+        }
+
         // Functions for the new tramites menu
         function handleDirectiva() {
             showDirectiva();
@@ -1600,3 +1622,4 @@
     <script src="assets/js/chatbot.js" defer></script>
 </body>
 </html>
+
