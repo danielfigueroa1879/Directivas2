@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1287,19 +1286,27 @@
             };
             backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
 
-            // FIXED Chat Event Listeners
+            // Chat Event Listeners - Fixed
             const chatToggleButton = document.getElementById('chat-toggle-button');
             const chatBackdrop = document.getElementById('chat-backdrop');
             const closeButtonInternal = document.getElementById('chat-close-btn-internal');
 
-            // Change from mouseenter to click for opening
+            // Open chat on hover (original behavior)
             if (chatToggleButton) {
-                chatToggleButton.addEventListener('click', openChat);
+                chatToggleButton.addEventListener('mouseenter', openChat);
             }
             
             // Close chat event listeners
-            if (closeButtonInternal) closeButtonInternal.addEventListener('click', closeChat);
-            if (chatBackdrop) chatBackdrop.addEventListener('click', closeChat);
+            if (closeButtonInternal) {
+                closeButtonInternal.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeChat();
+                });
+            }
+            if (chatBackdrop) {
+                chatBackdrop.addEventListener('click', closeChat);
+            }
 
             // Close chat with Escape key
             document.addEventListener('keydown', (e) => {
