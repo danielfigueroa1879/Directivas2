@@ -765,7 +765,9 @@
         /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
         .homepage-section {
             display: none; /* Hidden by default */
-            min-height: calc(100vh - 4rem); /* Ocupa el espacio restante de la ventana */
+            height: 75vh; /* Altura ajustada para ser menos alta */
+            max-height: 700px; /* Límite para pantallas muy altas */
+            min-height: 450px; /* Límite para pantallas muy cortas */
         }
         .background-transition {
             animation: none;
