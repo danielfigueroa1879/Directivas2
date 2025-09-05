@@ -1,5 +1,5 @@
-body { 
-    font-family: 'Poppins', sans-serif; 
+body {
+    font-family: 'Poppins', sans-serif;
     /* Fondo de pantalla original para páginas internas */
     background-image: url('../images/101.jpg');
     background-size: cover;
@@ -18,27 +18,26 @@ body.homepage {
     background-image: url('../images/foto (1).jpeg');
     background-size: cover;
     background-position: center;
-    /* background-attachment: fixed; -- REMOVED */
     transition: background-image 5.5s ease-in-out;
 }
 
-.card-container { 
-    max-width: 750px; 
-    width: 90%; 
-    margin: 0.5rem auto; 
-    position: relative; 
+.card-container {
+    max-width: 750px;
+    width: 90%;
+    margin: 0.5rem auto;
+    position: relative;
 }
-.logo-os10-container { 
+.logo-os10-container {
     position: absolute;
     top: 1.5rem;
     left: 1.5rem;
     height: 60px;
     z-index: 10;
 }
-.section-card { 
-    border-left-width: 4px; 
-    padding: 1rem; 
-    border-radius: 0.5rem; 
+.section-card {
+    border-left-width: 4px;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
 
 .voice-button { transition: all 0.3s ease; }
@@ -51,21 +50,21 @@ body.homepage {
 .response-button:hover { transform: translateX(4px); }
 
 /* Chatbot Styles - Adjusted */
-#chat-widget-container { 
-    position: fixed; 
-    bottom: 6.5rem; 
-    right: 1.5rem; 
-    z-index: 1000; 
-    display: flex; 
-    flex-direction: column; 
+#chat-widget-container {
+    position: fixed;
+    bottom: 6.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
     align-items: flex-end;
 }
-#chat-popup { 
-    width: 450px; 
-    height: 600px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+#chat-popup {
+    width: 450px;
+    height: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
-#chat-toggle-button { 
+#chat-toggle-button {
     width: 80px;
     height: 80px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
@@ -76,11 +75,11 @@ body.homepage {
 
 /* Animación de flotación principal */
 @keyframes floatAnimation {
-    0%, 100% { 
+    0%, 100% {
         transform: translateY(0px);
         box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
-    50% { 
+    50% {
         transform: translateY(-15px);
         box-shadow: 0 12px 20px rgba(0,0,0,0.25);
     }
@@ -108,18 +107,18 @@ body.homepage {
 }
 
 @keyframes pulseGlow {
-    0%, 100% { 
+    0%, 100% {
         opacity: 0.3;
         transform: scale(1);
     }
-    50% { 
+    50% {
         opacity: 0.6;
         transform: scale(1.1);
     }
 }
 
-.chat-messages-container { 
-    scroll-behavior: smooth; 
+.chat-messages-container {
+    scroll-behavior: smooth;
 }
 .typing-indicator {
     display: flex;
@@ -186,21 +185,21 @@ body.homepage {
 /* Adjustments for larger screens (PC) */
 @media (min-width: 1024px) {
     #chat-widget-container {
-        right: calc((100vw - 750px) / 2 + 1.5rem); 
-        bottom: 7.9rem; 
+        right: calc((100vw - 750px) / 2 + 1.5rem);
+        bottom: 7.9rem;
     }
     #chat-toggle-button {
         width: 90px;
         height: 90px;
         animation: floatAnimation 1.9s ease-in-out infinite;
     }
-    
+
     @keyframes floatAnimation {
-        0%, 100% { 
+        0%, 100% {
             transform: translateY(0px);
             box-shadow: 0 8px 18px rgba(0,0,0,0.2);
         }
-        50% { 
+        50% {
             transform: translateY(-18px);
             box-shadow: 0 15px 25px rgba(0,0,0,0.25);
         }
@@ -209,22 +208,22 @@ body.homepage {
 /* Adjustments for medium screens (tablets) */
 @media (min-width: 768px) and (max-width: 1023px) {
     #chat-widget-container {
-        right: calc((102vw - 85vw) / 2 + 1.5rem); 
-        bottom: 7.9rem; 
+        right: calc((102vw - 85vw) / 2 + 1.5rem);
+        bottom: 7.9rem;
     }
     #chat-popup {
-        width: 400px; 
+        width: 400px;
     }
 }
 
 /* Adjustments for small screens (Mobile) */
 @media (max-width: 767px) {
     .card-container {
-        width: 98%; 
+        width: 98%;
     }
     #chat-widget-container {
-        right: 1.8rem; 
-        bottom: 7.9rem; 
+        right: 1.8rem;
+        bottom: 7.9rem;
     }
     #chat-popup {
         position: fixed;
@@ -235,17 +234,17 @@ body.homepage {
         height: 500px;
     }
     #chat-toggle-button {
-        width: 70px; 
+        width: 70px;
         height: 70px;
         animation: floatAnimation 1.8s ease-in-out infinite;
     }
-    
+
     @keyframes floatAnimation {
-        0%, 100% { 
+        0%, 100% {
             transform: translateY(0px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        50% { 
+        50% {
             transform: translateY(-12px);
             box-shadow: 0 8px 18px rgba(0,0,0,0.25);
         }
@@ -256,20 +255,20 @@ body.homepage {
 @media (max-width: 480px) {
     #chat-widget-container {
         right: 1.7rem;
-        bottom: 7.9rem; 
+        bottom: 7.9rem;
     }
     #chat-toggle-button {
         width: 67px;
         height: 67px;
         animation: floatAnimation 1.6s ease-in-out infinite;
     }
-    
+
     @keyframes floatAnimation {
-        0%, 100% { 
+        0%, 100% {
             transform: translateY(0px);
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
-        50% { 
+        50% {
             transform: translateY(-10px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.25);
         }
@@ -279,7 +278,7 @@ body.homepage {
 /* ===== ESTILOS PARA CREDENCIALES ===== */
 .credenciales-section {
     display: none;
-    position: relative; 
+    position: relative;
 }
 .credenciales-section.active {
     display: block;
@@ -287,7 +286,7 @@ body.homepage {
 
 .credenciales-title-container {
     text-align: center;
-    margin-top: 2rem; 
+    margin-top: 2rem;
     line-height: 1;
 }
 .credenciales-main-title, .credenciales-main-subtitle {
@@ -304,7 +303,7 @@ body.homepage {
     transform: translateX(-2px);
 }
 .credenciales-main-subtitle {
-    font-size: 1.6rem; 
+    font-size: 1.6rem;
     transform: translateX(10px);
 }
 
@@ -416,53 +415,38 @@ body.homepage {
     height: auto;
 }
 
-/* New arrow button in the top right corner of card-container */
 #credenciales-arrow-back-btn {
     position: absolute;
-    top: 1rem; 
-    right: 0.5rem; 
-    z-index: 20; 
-    color: #4B5563; 
+    top: 1rem;
+    right: 0.5rem;
+    z-index: 20;
+    color: #4B5563;
     transition: all 0.2s ease;
     cursor: pointer;
-    padding: 0.5rem; 
-    border-radius: 9999px; 
+    padding: 0.5rem;
+    border-radius: 9999px;
 }
 #credenciales-arrow-back-btn:hover {
-    color: #2563EB; 
-    background-color: rgba(0, 0, 0, 0.05); 
+    color: #2563EB;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Specific animations */
 .indep-btn.bounce-animation {
-    animation: bounce 2s ease infinite !important;
+    animation: bounce-anim 2s ease infinite !important;
 }
-@keyframes bounce-animation {
+@keyframes bounce-anim {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
     40% { transform: translateY(-12px); }
     60% { transform: translateY(-6px); }
 }
 
-/* Responsive for credentials */
 @media (max-width: 640px) {
-    .credenciales-main-title {
-        font-size: 1.4rem;
-    }
-    .credenciales-main-subtitle {
-        font-size: 1.0rem; 
-    }
-    .credenciales-section-title {
-        font-size: 1.1rem;
-    }
-    .credenciales-photo-example {
-        width: 80%;
-    }
-    .credenciales-valores-example {
-        width: 180px;
-    }
-    .credenciales-qr-image {
-        width: 60px;
-    }
+    .credenciales-main-title { font-size: 1.4rem; }
+    .credenciales-main-subtitle { font-size: 1.0rem; }
+    .credenciales-section-title { font-size: 1.1rem; }
+    .credenciales-photo-example { width: 80%; }
+    .credenciales-valores-example { width: 180px; }
+    .credenciales-qr-image { width: 60px; }
     .credenciales-download-btn, .credenciales-dpi-btn {
         width: 190px;
         min-width: 190px;
@@ -473,44 +457,34 @@ body.homepage {
         margin-right: -1.5rem;
         width: calc(100% + 3rem);
     }
-
-     /* Adjustments for the new arrow button on smaller mobiles */
     #credenciales-arrow-back-btn {
-        width: 2rem; 
-        height: 2rem; 
-        top: 0.5rem; 
-        right: 1.5rem; 
-        padding: 0.2rem; 
-    }
-}
-/* Font size adjustment for banner */
-.banner-text-small {
-    font-size: 0.75rem; 
-}
-/* Adjustment for large screens (PC) */
-@media (min-width: 1024px) {
-    .banner-text-small {
-        font-size: 0.875rem; 
+        width: 2rem;
+        height: 2rem;
+        top: 0.5rem;
+        right: 1.5rem;
+        padding: 0.2rem;
     }
 }
 
-.banner-content-wrapper {
-    position: relative; 
+.banner-text-small { font-size: 0.75rem; }
+@media (min-width: 1024px) {
+    .banner-text-small { font-size: 0.875rem; }
 }
+
+.banner-content-wrapper { position: relative; }
 .os10-coquimbo-center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    height: 100%; 
-    display: flex; 
-    align-items: center; 
-    padding: 0 1rem; 
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
 }
 
-/* Dropdown Menu - Panel que aparece suavemente desde abajo */
 .dropdown-menu {
     position: absolute;
-    top: 40px; 
+    top: 40px;
     left: 0;
     width: 260px;
     height: auto;
@@ -531,41 +505,35 @@ body.homepage {
     scrollbar-width: thin;
 }
 
-/* Estado visible del panel */
 .dropdown-menu:not(.hidden) {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-/* Contenedor interno del panel */
-.dropdown-menu-content {
-    padding: 16px 0;
-}
+.dropdown-menu-content { padding: 16px 0; }
 
-/* Header del panel */
 .dropdown-menu-header {
     padding: 12px 20px;
     border-bottom: 1px solid rgba(229, 231, 235, 0.4);
     margin-bottom: 8px;
-    background-color: rgba(255, 255, 255, 0.3); /* Fondo adicional para el header */
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .dropdown-menu-header h3 {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
-    color: rgba(31, 41, 55, 0.95); /* Texto más definido */
+    color: rgba(31, 41, 55, 0.95);
 }
 
-/* Botones dentro del panel */
 .dropdown-menu button {
     width: 100%;
     text-align: left;
     padding: 14px 20px;
     font-size: 0.875rem;
-    color: rgba(31, 41, 55, 0.9); /* Texto más visible */
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo sutil para botones */
+    color: rgba(31, 41, 55, 0.9);
+    background-color: rgba(255, 255, 255, 0.2);
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -573,27 +541,21 @@ body.homepage {
     transform: translateX(0);
 }
 
-/* Último botón sin border */
-.dropdown-menu button:last-child {
-    border-bottom: none;
-}
+.dropdown-menu button:last-child { border-bottom: none; }
 
-/* Hover effect para los botones */
 .dropdown-menu button:hover {
-    background-color: rgba(59, 130, 246, 0.2); /* Hover más visible */
+    background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
     transform: translateX(8px);
     padding-left: 28px;
-    backdrop-filter: blur(10px); /* Blur adicional en hover */
+    backdrop-filter: blur(10px);
 }
 
-/* Active state */
 .dropdown-menu button:active {
     transform: translateX(4px);
     background-color: rgba(59, 130, 246, 0.25);
 }
 
-/* Overlay de fondo quando el panel está abierto - solo visible en el área del contenedor */
 #tramites-overlay, #editables-overlay {
     position: absolute;
     top: 0;
@@ -605,32 +567,23 @@ body.homepage {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
-    border-radius: 12px; /* Mismo radio que el contenedor principal */
+    border-radius: 12px;
 }
 
-/* Overlay visible */
 #tramites-overlay:not(.hidden), #editables-overlay:not(.hidden) {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* Animación de entrada para los botones */
 @keyframes slideInFromBottom {
-    from {
-        transform: translateY(15px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
-   
+
 .dropdown-menu-content > button {
      animation: slideInFromBottom 0.3s ease both;
 }
 
-/* Staggered animation */
 .dropdown-menu-content > button:nth-child(1) { animation-delay: 0.05s; }
 .dropdown-menu-content > button:nth-child(2) { animation-delay: 0.1s; }
 .dropdown-menu-content > button:nth-child(3) { animation-delay: 0.15s; }
@@ -639,19 +592,16 @@ body.homepage {
 .dropdown-menu-content > button:nth-child(6) { animation-delay: 0.3s; }
 .dropdown-menu-content > button:nth-child(7) { animation-delay: 0.35s; }
 
-
-/* Responsive - Ajustes para móvil y tablet */
 @media (max-width: 1024px) {
-    /* En pantallas medianas y pequeñas, volver al comportamiento fixed */
     .dropdown-menu {
         position: fixed;
         top: 50px;
-        left: initial; /* Reset left property */
+        left: initial;
         background-color: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(25px);
-        z-index: 1201; /* Asegurar que esté sobre el banner */
+        z-index: 1201;
     }
-    
+
     #tramites-overlay, #editables-overlay {
         position: fixed;
         top: 0;
@@ -661,33 +611,27 @@ body.homepage {
         width: 100vw;
         height: 100vh;
         border-radius: 0;
-        z-index: 1150; /* Detrás del banner */
+        z-index: 1150;
     }
 }
 
 @media (max-width: 640px) {
-    .dropdown-menu {
-        width: 240px;
-    }
-    
+    .dropdown-menu { width: 240px; }
     .dropdown-menu button {
         padding: 12px 16px;
         font-size: 0.8rem;
     }
-    
     .dropdown-menu button:hover {
         transform: translateX(6px);
         padding-left: 22px;
     }
 }
 
-/* Asegurar que el contenedor principal tenga position relative para el posicionamiento absoluto */
 .card-container {
     position: relative;
-    overflow: visible; /* Permitir que el panel sea visible fuera del contenedor */
+    overflow: visible;
 }
 
-/* Efecto adicional: Indicador visual en el banner cuando el panel está abierto */
 .panel-active {
     background-color: rgba(59, 130, 246, 0.15);
     color: rgba(37, 99, 235, 1);
@@ -696,26 +640,17 @@ body.homepage {
     margin: -4px -8px;
 }
 
-/* Smooth scrollbar para el panel */
-.dropdown-menu::-webkit-scrollbar {
-    width: 4px;
-}
-
+.dropdown-menu::-webkit-scrollbar { width: 4px; }
 .dropdown-menu::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
 }
-
 .dropdown-menu::-webkit-scrollbar-thumb {
     background: rgba(156, 163, 175, 0.6);
     border-radius: 2px;
 }
+.dropdown-menu::-webkit-scrollbar-thumb:hover { background: rgba(107, 114, 128, 0.8); }
 
-.dropdown-menu::-webkit-scrollbar-thumb:hover {
-    background: rgba(107, 114, 128, 0.8);
-}
-
-/* Efecto glass mejorado para todo el panel */
 .dropdown-menu::before {
     content: '';
     position: absolute;
@@ -724,8 +659,8 @@ body.homepage {
     right: 0;
     bottom: 0;
     background: linear-gradient(
-        135deg, 
-        rgba(255, 255, 255, 0.1) 0%, 
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
         rgba(255, 255, 255, 0.05) 50%,
         rgba(255, 255, 255, 0.1) 100%
     );
@@ -736,7 +671,7 @@ body.homepage {
 /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
 .homepage-section {
     display: none; /* Hidden by default */
-    height: 70vh; /* Altura ajustada para ser menos alta */
+    height: 70vh; /* Altura por defecto para PC */
     max-height: 700px; /* Límite para pantallas muy altas */
     min-height: 450px; /* Límite para pantallas muy cortas */
 }
@@ -746,7 +681,6 @@ body.homepage {
 .text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
 .text-shadow-lg { text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
 
-/* Estilos para tarjeta de Misión/Visión */
 .elegant-card {
     background-color: white;
     padding: 2rem;
@@ -758,11 +692,15 @@ body.homepage {
 
 .elegant-card:hover {
     border-color: transparent;
-    box-shadow: 0 0 25px 5px rgba(9, 59, 27, 0.6); /* Green fire glow */
+    box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6); /* Green fire glow */
 }
 
+@media (max-width: 767px) { /* Usamos 767px como punto de quiebre para móviles */
+   .homepage-section {
+        height: 65vh; /* Altura específica para celular */
+   }
+}
 
 @media (max-width: 640px) {
    /* No specific hero changes needed here anymore, handled by tailwind */
 }
-
