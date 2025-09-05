@@ -62,7 +62,9 @@ body.homepage {
 #chat-popup {
     width: 450px;
     height: 600px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    /* --- ESTILOS MODIFICADOS PARA EL EFECTO DE FUEGO VERDE --- */
+    border: 2px solid #00ff00; /* Borde delgado y verde brillante */
+    animation: green-fire-glow 1.5s infinite alternate; /* Animación de brillo */
 }
 #chat-toggle-button {
     width: 80px;
@@ -704,3 +706,15 @@ body.homepage {
 @media (max-width: 640px) {
    /* No specific hero changes needed here anymore, handled by tailwind */
 }
+
+/* --- KEYFRAMES PARA LA ANIMACIÓN DE FUEGO VERDE --- */
+@keyframes green-fire-glow {
+  from {
+    box-shadow: 0 0 5px #00ff00, 0 0 8px #00ff00, 0 0 12px #146314, 0 10px 25px rgba(0,0,0,0.2);
+  }
+  to {
+    box-shadow: 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 25px #146314, 0 10px 25px rgba(0,0,0,0.2);
+  }
+}
+
+
