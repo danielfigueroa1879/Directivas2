@@ -113,12 +113,12 @@ function handleValores() {
 }
 
 function handleValorPlan() {
-    window.open('os10.short.gy/Pl4n', '_blank');
+    window.open('https://os10.short.gy/Pl4n', '_blank');
     closeTramitesMenu();
 }
 
 function handleCursoFormacion() {
-    window.open('dal5.short.gy/Form', '_blank');
+    window.open('https://dal5.short.gy/Form', '_blank');
     closeTramitesMenu();
 }
 
