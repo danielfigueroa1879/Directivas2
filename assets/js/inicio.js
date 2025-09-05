@@ -113,12 +113,12 @@ function handleValores() {
 }
 
 function handleValorPlan() {
-    window.open('https://d6.short.gy/dsds', '_blank');
+    window.open('os10.short.gy/Pl4n', '_blank');
     closeTramitesMenu();
 }
 
 function handleCursoFormacion() {
-    window.open('https://www.zosepcar.cl/OS10.php', '_blank');
+    window.open('dal5.short.gy/Form', '_blank');
     closeTramitesMenu();
 }
 
