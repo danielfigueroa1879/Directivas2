@@ -71,7 +71,7 @@ body.homepage {
     animation: floatAnimation 2s ease-in-out infinite;
     transition: all 0.3s ease;
     position: relative;
-    border: 2px solid #0b7c0b; /* Borde sutil verde añadido aquí */
+    border: 1px solid #0c640c; /* Borde sutil verde añadido aquí */
 }
 
 /* Animación de flotación principal */
