@@ -90,7 +90,10 @@ function handleDirectiva() {
     showDirectiva();
     closeTramitesMenu();
 }
-
+function handleCerofilas() {
+    showCerofilas();
+    closeTramitesMenu();
+}
 function handleCredenciales() {
     showCredenciales();
     closeTramitesMenu();
