@@ -469,10 +469,12 @@ body.homepage {
 
 .banner-text-small { font-size: 0.75rem; }
 @media (min-width: 1024px) {
-    .banner-text-small { font-size: 0.875rem; }
+    .banner-text-small { font-size: 1rem; }
 }
 
-.banner-content-wrapper { position: relative; }
+.visit-counter-number {
+    font-size: 0.9em;
+}
 .os10-coquimbo-center {
     position: absolute;
     left: 50%;
