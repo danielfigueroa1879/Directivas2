@@ -32,8 +32,37 @@
     
     <!-- External stylesheet for better caching -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .pwa-install-banner {
+            position: fixed;
+            top: 64px; /* Adjust for banner height */
+            left: 0;
+            right: 0;
+            background-color: #f1f5f9; /* Tailwind gray-100 */
+            border-bottom: 2px solid #3b82f6; /* Tailwind blue-500 */
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1100;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.5s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        .pwa-install-banner.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="homepage background-transition">
+    <!-- PWA Install Banner -->
+    <div id="pwa-install-banner" class="pwa-install-banner hidden md:hidden">
+        <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
+        <button id="install-button" class="bg-blue-600 text-white font-bold py-1 px-4 rounded-full text-xs">Instalar</button>
+    </div>
+
     <!-- Banner superior -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/70 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
         <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
@@ -519,6 +548,7 @@
     
     <!-- Deferred scripts for non-blocking load -->
     <script src="assets/js/inicio.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 
     <script type="module">
         // FIREBASE SCRIPT (Visit Counter)
@@ -569,3 +599,4 @@
     <script src="assets/js/chatbot.js" defer></script>
 </body>
 </html>
+
