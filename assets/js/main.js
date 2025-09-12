@@ -9,31 +9,42 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- LÓGICA PARA EL BANNER DE INSTALACIÓN DE LA PWA ---
     let deferredPrompt;
+    const pwaBanner = document.getElementById('pwa-install-banner');
+    const installButton = document.getElementById('install-button');
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 
-    // Solo mostrar el banner en dispositivos móviles y si no está instalada
-    if (isMobile() && window.matchMedia('(display-mode: browser)').matches) {
+    // Solo mostrar el banner en dispositivos móviles y si la app no está instalada
+    if (isMobile && !isStandalone) {
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
+            pwaBanner.classList.remove('hidden');
+            setTimeout(() => {
+                pwaBanner.classList.add('show');
+            }, 100); // Add a small delay for CSS transition
 
-            const installBanner = document.createElement('div');
-            installBanner.className = 'install-banner-custom'; 
-            installBanner.innerHTML = `
-                <span>Instala esta app para un acceso fácil.</span>
-                <button id="install-button-custom" style="background-color: white; color: #0a73c3; font-weight: bold; padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; margin-left: 15px;">Instalar</button>
-            `;
-            document.body.appendChild(installBanner);
+            // Hide the banner after 10 seconds
+            setTimeout(() => {
+                pwaBanner.classList.remove('show');
+                pwaBanner.classList.add('hidden');
+            }, 10000);
+        });
 
-            installBanner.querySelector('#install-button-custom').addEventListener('click', () => {
-                installBanner.remove();
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then(() => {
-                        deferredPrompt = null;
-                    });
-                }
-            });
+        installButton.addEventListener('click', () => {
+            pwaBanner.classList.remove('show');
+            pwaBanner.classList.add('hidden');
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
         });
     }
 
