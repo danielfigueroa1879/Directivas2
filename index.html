@@ -89,48 +89,18 @@
     </style>
 </head>
 <body class="homepage background-transition">
-    <!-- PWA Install Banner -->
-    <div id="pwa-install-banner" class="pwa-install-banner md:hidden">
-        <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
-        <div class="flex items-center space-x-2">
-            <button id="install-button" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full text-sm">Instalar</button>
-            <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
+<!-- PWA Install Banner -->
+<div id="pwa-install-banner" class="pwa-install-banner md:hidden">
+    <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
+    <div class="flex items-center space-x-2">
+        <button id="install-button" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full text-sm">Instalar</button>
+        <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
     </div>
-
-    <!-- PWA Installation Modal -->
-    <div id="pwa-install-modal" class="pwa-modal-overlay">
-        <div class="pwa-modal-content">
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Instrucciones para Instalar</h3>
-            <p class="text-sm text-gray-600 mb-4">
-                Si el botón de instalación no funciona, puedes agregar la aplicación a tu pantalla de inicio manualmente.
-            </p>
-            <div class="space-y-4">
-                <div>
-                    <h4 class="font-semibold text-gray-700">En iPhone/iPad (Safari):</h4>
-                    <ol class="list-decimal list-inside text-sm text-gray-600">
-                        <li>Toca el ícono de **Compartir**  en la barra inferior del navegador.</li>
-                        <li>Selecciona **Añadir a pantalla de inicio**.</li>
-                    </ol>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-gray-700">En Android (Chrome):</h4>
-                    <ol class="list-decimal list-inside text-sm text-gray-600">
-                        <li>Toca el menú de **tres puntos**  en la esquina superior derecha.</li>
-                        <li>Selecciona **Instalar aplicación** o **Añadir a pantalla de inicio**.</li>
-                    </ol>
-                </div>
-            </div>
-            <button id="close-install-modal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-800">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-        </div>
-    </div>
-
+</div>
     <!-- Banner superior -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/70 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
         <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
