@@ -175,3 +175,127 @@ console.log('🔧 PWA Environment:', {
     navigatorStandalone: navigator.standalone,
     serviceWorker: 'serviceWorker' in navigator
 });
+
+/**
+ * CÓDIGO DE DIAGNÓSTICO PWA
+ * Agregar temporalmente al final de main.js para identificar problemas
+ */
+
+// Función de diagnóstico completo
+function diagnosticoPWA() {
+    console.log('🔍 ===== DIAGNÓSTICO PWA =====');
+    
+    // 1. Verificar protocolo
+    const esHTTPS = location.protocol === 'https:' || location.hostname === 'localhost';
+    console.log(`🔒 HTTPS/Localhost: ${esHTTPS ? '✅' : '❌'} (${location.protocol}//${location.hostname})`);
+    
+    // 2. Verificar Service Worker
+    const tieneServiceWorker = 'serviceWorker' in navigator;
+    console.log(`🔧 Service Worker Support: ${tieneServiceWorker ? '✅' : '❌'}`);
+    
+    if (tieneServiceWorker) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+            console.log(`📋 Service Workers Registrados: ${registrations.length}`);
+            registrations.forEach((reg, index) => {
+                console.log(`   ${index + 1}. Estado: ${reg.active ? '✅ Activo' : '⚠️ Inactivo'}`);
+            });
+        });
+    }
+    
+    // 3. Verificar Manifest
+    const manifestLink = document.querySelector('link[rel="manifest"]');
+    console.log(`📄 Manifest Link: ${manifestLink ? '✅' : '❌'}`);
+    if (manifestLink) {
+        console.log(`   Href: ${manifestLink.href}`);
+        
+        // Intentar cargar manifest
+        fetch(manifestLink.href)
+            .then(response => response.json())
+            .then(manifest => {
+                console.log('📄 Manifest Content:', manifest);
+                
+                // Verificar campos requeridos
+                const camposRequeridos = ['name', 'short_name', 'start_url', 'display', 'icons'];
+                camposRequeridos.forEach(campo => {
+                    const tieneCampo = manifest[campo] !== undefined;
+                    console.log(`   ${campo}: ${tieneCampo ? '✅' : '❌'}`);
+                });
+                
+                // Verificar iconos
+                if (manifest.icons && manifest.icons.length > 0) {
+                    console.log(`   Iconos: ${manifest.icons.length} encontrados`);
+                    manifest.icons.forEach((icon, index) => {
+                        console.log(`     ${index + 1}. ${icon.sizes} - ${icon.src}`);
+                    });
+                } else {
+                    console.log('   Iconos: ❌ No encontrados');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Error cargando manifest:', error);
+            });
+    }
+    
+    // 4. Verificar dispositivo
+    const userAgent = navigator.userAgent;
+    const esMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    const esStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+    
+    console.log(`📱 Dispositivo Móvil: ${esMobile ? '✅' : '❌'}`);
+    console.log(`🖥️ Modo Standalone: ${esStandalone ? '✅' : '❌'}`);
+    console.log(`🌐 User Agent: ${userAgent}`);
+    
+    // 5. Verificar navegador específico
+    const esChrome = /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
+    const esEdge = /Edg/.test(userAgent);
+    const esSafari = /Safari/.test(userAgent) && /Apple Computer/.test(navigator.vendor);
+    const esFirefox = /Firefox/.test(userAgent);
+    
+    console.log(`🔍 Navegador Detectado:`);
+    console.log(`   Chrome: ${esChrome ? '✅' : '❌'}`);
+    console.log(`   Edge: ${esEdge ? '✅' : '❌'}`);
+    console.log(`   Safari: ${esSafari ? '✅' : '❌'}`);
+    console.log(`   Firefox: ${esFirefox ? '✅' : '❌'}`);
+    
+    // 6. Verificar evento beforeinstallprompt
+    console.log(`🎯 Deferred Prompt: ${deferredPrompt ? '✅ Disponible' : '❌ No disponible'}`);
+    
+    // 7. Verificar si ya está instalado
+    if (esStandalone) {
+        console.log('📱 LA APP YA ESTÁ INSTALADA - Por eso no aparece el banner');
+    }
+    
+    // 8. Criterios de instalabilidad
+    console.log('📋 CRITERIOS DE INSTALABILIDAD:');
+    console.log(`   1. HTTPS/Localhost: ${esHTTPS ? '✅' : '❌'}`);
+    console.log(`   2. Service Worker: ${tieneServiceWorker ? '✅' : '❌'}`);
+    console.log(`   3. Manifest válido: ${manifestLink ? '✅' : '❌'}`);
+    console.log(`   4. No instalado: ${!esStandalone ? '✅' : '❌'}`);
+    console.log(`   5. Navegador compatible: ${(esChrome || esEdge) ? '✅' : '❌'}`);
+    
+    // 9. Recomendaciones
+    console.log('💡 RECOMENDACIONES:');
+    if (!esHTTPS) {
+        console.log('   - Usar HTTPS o localhost para testing');
+    }
+    if (!esMobile) {
+        console.log('   - Probar en dispositivo móvil real o simular en DevTools');
+    }
+    if (esStandalone) {
+        console.log('   - La app ya está instalada, por eso no aparece el banner');
+    }
+    if (!esChrome && !esEdge) {
+        console.log('   - Probar en Chrome o Edge para mejor soporte PWA');
+    }
+    
+    console.log('🔍 ===== FIN DIAGNÓSTICO =====');
+}
+
+// Ejecutar diagnóstico después de 2 segundos
+setTimeout(diagnosticoPWA, 2000);
+
+// También ejecutar cuando se detecte beforeinstallprompt
+window.addEventListener('beforeinstallprompt', () => {
+    console.log('🎯 beforeinstallprompt detectado - ejecutando diagnóstico');
+    setTimeout(diagnosticoPWA, 500);
+});
