@@ -176,126 +176,162 @@ console.log('🔧 PWA Environment:', {
     serviceWorker: 'serviceWorker' in navigator
 });
 
-/**
- * CÓDIGO DE DIAGNÓSTICO PWA
- * Agregar temporalmente al final de main.js para identificar problemas
- */
-
-// Función de diagnóstico completo
-function diagnosticoPWA() {
-    console.log('🔍 ===== DIAGNÓSTICO PWA =====');
-    
-    // 1. Verificar protocolo
-    const esHTTPS = location.protocol === 'https:' || location.hostname === 'localhost';
-    console.log(`🔒 HTTPS/Localhost: ${esHTTPS ? '✅' : '❌'} (${location.protocol}//${location.hostname})`);
-    
-    // 2. Verificar Service Worker
-    const tieneServiceWorker = 'serviceWorker' in navigator;
-    console.log(`🔧 Service Worker Support: ${tieneServiceWorker ? '✅' : '❌'}`);
-    
-    if (tieneServiceWorker) {
-        navigator.serviceWorker.getRegistrations().then(registrations => {
-            console.log(`📋 Service Workers Registrados: ${registrations.length}`);
-            registrations.forEach((reg, index) => {
-                console.log(`   ${index + 1}. Estado: ${reg.active ? '✅ Activo' : '⚠️ Inactivo'}`);
-            });
-        });
-    }
-    
-    // 3. Verificar Manifest
-    const manifestLink = document.querySelector('link[rel="manifest"]');
-    console.log(`📄 Manifest Link: ${manifestLink ? '✅' : '❌'}`);
-    if (manifestLink) {
-        console.log(`   Href: ${manifestLink.href}`);
-        
-        // Intentar cargar manifest
-        fetch(manifestLink.href)
-            .then(response => response.json())
-            .then(manifest => {
-                console.log('📄 Manifest Content:', manifest);
-                
-                // Verificar campos requeridos
-                const camposRequeridos = ['name', 'short_name', 'start_url', 'display', 'icons'];
-                camposRequeridos.forEach(campo => {
-                    const tieneCampo = manifest[campo] !== undefined;
-                    console.log(`   ${campo}: ${tieneCampo ? '✅' : '❌'}`);
-                });
-                
-                // Verificar iconos
-                if (manifest.icons && manifest.icons.length > 0) {
-                    console.log(`   Iconos: ${manifest.icons.length} encontrados`);
-                    manifest.icons.forEach((icon, index) => {
-                        console.log(`     ${index + 1}. ${icon.sizes} - ${icon.src}`);
-                    });
-                } else {
-                    console.log('   Iconos: ❌ No encontrados');
-                }
-            })
-            .catch(error => {
-                console.error('❌ Error cargando manifest:', error);
-            });
-    }
-    
-    // 4. Verificar dispositivo
+// Función para detectar capacidades PWA específicas
+function detectarCapacidadesPWA() {
     const userAgent = navigator.userAgent;
-    const esMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-    const esStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
     
-    console.log(`📱 Dispositivo Móvil: ${esMobile ? '✅' : '❌'}`);
-    console.log(`🖥️ Modo Standalone: ${esStandalone ? '✅' : '❌'}`);
-    console.log(`🌐 User Agent: ${userAgent}`);
+    // Detectar sistema operativo y navegador
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+    const isAndroid = /Android/.test(userAgent);
+    const isSafari = /Safari/.test(userAgent) && /Apple Computer/.test(navigator.vendor);
+    const isChrome = /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
+    const isEdge = /Edg/.test(userAgent);
+    const isFirefox = /Firefox/.test(userAgent);
+    const isSamsungBrowser = /SamsungBrowser/.test(userAgent);
     
-    // 5. Verificar navegador específico
-    const esChrome = /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
-    const esEdge = /Edg/.test(userAgent);
-    const esSafari = /Safari/.test(userAgent) && /Apple Computer/.test(navigator.vendor);
-    const esFirefox = /Firefox/.test(userAgent);
+    console.log('🔍 COMPATIBILIDAD PWA POR DISPOSITIVO:');
     
-    console.log(`🔍 Navegador Detectado:`);
-    console.log(`   Chrome: ${esChrome ? '✅' : '❌'}`);
-    console.log(`   Edge: ${esEdge ? '✅' : '❌'}`);
-    console.log(`   Safari: ${esSafari ? '✅' : '❌'}`);
-    console.log(`   Firefox: ${esFirefox ? '✅' : '❌'}`);
-    
-    // 6. Verificar evento beforeinstallprompt
-    console.log(`🎯 Deferred Prompt: ${deferredPrompt ? '✅ Disponible' : '❌ No disponible'}`);
-    
-    // 7. Verificar si ya está instalado
-    if (esStandalone) {
-        console.log('📱 LA APP YA ESTÁ INSTALADA - Por eso no aparece el banner');
+    if (isIOS) {
+        console.log('📱 iOS DETECTADO:');
+        if (isSafari) {
+            console.log('   Safari iOS: ⚠️ LIMITADO');
+            console.log('   - Instalación: Manual (Add to Home Screen)');
+            console.log('   - beforeinstallprompt: ❌ No soportado');
+            console.log('   - Service Worker: ✅ Soportado');
+            console.log('   - Manifest: ✅ Soportado');
+            return { canAutoInstall: false, method: 'manual', platform: 'iOS Safari' };
+        } else {
+            console.log('   Otro navegador iOS: ❌ Muy limitado');
+            return { canAutoInstall: false, method: 'none', platform: 'iOS Other' };
+        }
     }
     
-    // 8. Criterios de instalabilidad
-    console.log('📋 CRITERIOS DE INSTALABILIDAD:');
-    console.log(`   1. HTTPS/Localhost: ${esHTTPS ? '✅' : '❌'}`);
-    console.log(`   2. Service Worker: ${tieneServiceWorker ? '✅' : '❌'}`);
-    console.log(`   3. Manifest válido: ${manifestLink ? '✅' : '❌'}`);
-    console.log(`   4. No instalado: ${!esStandalone ? '✅' : '❌'}`);
-    console.log(`   5. Navegador compatible: ${(esChrome || esEdge) ? '✅' : '❌'}`);
+    if (isAndroid) {
+        console.log('🤖 ANDROID DETECTADO:');
+        if (isChrome) {
+            console.log('   Chrome Android: ✅ PERFECTO');
+            console.log('   - Instalación: Automática');
+            console.log('   - beforeinstallprompt: ✅ Soportado');
+            return { canAutoInstall: true, method: 'auto', platform: 'Android Chrome' };
+        } else if (isEdge) {
+            console.log('   Edge Android: ✅ BUENO');
+            console.log('   - Instalación: Automática');
+            return { canAutoInstall: true, method: 'auto', platform: 'Android Edge' };
+        } else if (isSamsungBrowser) {
+            console.log('   Samsung Browser: ⚠️ LIMITADO');
+            console.log('   - Instalación: Parcial');
+            return { canAutoInstall: false, method: 'manual', platform: 'Samsung Browser' };
+        } else if (isFirefox) {
+            console.log('   Firefox Android: ⚠️ LIMITADO');
+            console.log('   - Instalación: Limitada');
+            return { canAutoInstall: false, method: 'limited', platform: 'Firefox Android' };
+        } else {
+            console.log('   Otro navegador Android: ❌ Variable');
+            return { canAutoInstall: false, method: 'unknown', platform: 'Android Other' };
+        }
+    }
     
-    // 9. Recomendaciones
-    console.log('💡 RECOMENDACIONES:');
-    if (!esHTTPS) {
-        console.log('   - Usar HTTPS o localhost para testing');
+    // Desktop
+    console.log('💻 ESCRITORIO DETECTADO:');
+    if (isChrome) {
+        console.log('   Chrome Desktop: ⚠️ Limitado (solo algunas PWA)');
+        return { canAutoInstall: false, method: 'limited', platform: 'Chrome Desktop' };
+    } else if (isEdge) {
+        console.log('   Edge Desktop: ⚠️ Limitado');
+        return { canAutoInstall: false, method: 'limited', platform: 'Edge Desktop' };
+    } else {
+        console.log('   Otro navegador Desktop: ❌ No soportado');
+        return { canAutoInstall: false, method: 'none', platform: 'Desktop Other' };
     }
-    if (!esMobile) {
-        console.log('   - Probar en dispositivo móvil real o simular en DevTools');
-    }
-    if (esStandalone) {
-        console.log('   - La app ya está instalada, por eso no aparece el banner');
-    }
-    if (!esChrome && !esEdge) {
-        console.log('   - Probar en Chrome o Edge para mejor soporte PWA');
-    }
-    
-    console.log('🔍 ===== FIN DIAGNÓSTICO =====');
 }
 
-// Ejecutar diagnóstico después de 2 segundos
-setTimeout(diagnosticoPWA, 2000);
+// Función para mostrar instrucciones específicas según el dispositivo
+function mostrarInstruccionesEspecificas(capacidades) {
+    const banner = document.getElementById('pwa-install-banner');
+    if (!banner) return;
+    
+    // Si no puede instalar automáticamente, mostrar instrucciones específicas
+    if (!capacidades.canAutoInstall && capacidades.method !== 'none') {
+        
+        // Crear un banner especial para iOS
+        if (capacidades.platform === 'iOS Safari') {
+            const iosBanner = document.createElement('div');
+            iosBanner.id = 'ios-install-banner';
+            iosBanner.className = 'pwa-install-banner md:block'; // Mostrar también en desktop para testing
+            iosBanner.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-800 text-sm font-medium">
+                        Para instalar: Toca 
+                        <svg class="inline w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        y luego "Añadir a pantalla de inicio"
+                    </span>
+                </div>
+                <button id="close-ios-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            `;
+            
+            // Insertar el banner iOS
+            banner.parentNode.insertBefore(iosBanner, banner);
+            iosBanner.classList.add('show');
+            
+            // Event listener para cerrar
+            document.getElementById('close-ios-banner')?.addEventListener('click', () => {
+                iosBanner.classList.remove('show');
+            });
+            
+            // Auto-hide después de 15 segundos
+            setTimeout(() => {
+                if (iosBanner.classList.contains('show')) {
+                    iosBanner.classList.remove('show');
+                }
+            }, 15000);
+        }
+    }
+}
 
-// También ejecutar cuando se detecte beforeinstallprompt
-window.addEventListener('beforeinstallprompt', () => {
-    console.log('🎯 beforeinstallprompt detectado - ejecutando diagnóstico');
-    setTimeout(diagnosticoPWA, 500);
+// Función mejorada para manejar instalación según el dispositivo
+function handleInstallacionUniversal() {
+    const capacidades = detectarCapacidadesPWA();
+    
+    // Si puede instalar automáticamente, usar el método normal
+    if (capacidades.canAutoInstall && deferredPrompt) {
+        return installPWA(); // Función original
+    }
+    
+    // Si es iOS Safari, mostrar instrucciones específicas
+    if (capacidades.platform === 'iOS Safari') {
+        mostrarInstruccionesEspecificas(capacidades);
+        return;
+    }
+    
+    // Para otros casos, solo ocultar banner
+    console.log(`⚠️ Instalación no disponible en ${capacidades.platform}`);
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) {
+        banner.classList.remove('show');
+    }
+}
+
+// Ejecutar detección al cargar
+document.addEventListener('DOMContentLoaded', () => {
+    const capacidades = detectarCapacidadesPWA();
+    
+    // Reemplazar el event listener del botón install
+    const installButton = document.getElementById('install-button');
+    if (installButton) {
+        // Remover listener anterior
+        installButton.removeEventListener('click', installPWA);
+        // Agregar nuevo listener universal
+        installButton.addEventListener('click', handleInstallacionUniversal);
+    }
 });
+
+// Ejecutar detección también al cambiar a móvil
+setTimeout(() => {
+    detectarCapacidadesPWA();
+}, 3000);
