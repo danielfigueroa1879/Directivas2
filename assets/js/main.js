@@ -11,27 +11,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let deferredPrompt;
     const pwaBanner = document.getElementById('pwa-install-banner');
     const installButton = document.getElementById('install-button');
+    const closeButton = document.getElementById('close-install-banner'); // Nuevo botón de cerrar
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 
     // Solo mostrar el banner en dispositivos móviles y si la app no está instalada
     if (isMobile && !isStandalone) {
+        // En lugar de esperar el evento, lo mostramos directamente
+        pwaBanner.classList.remove('hidden');
+        setTimeout(() => {
+            pwaBanner.classList.add('show');
+        }, 100);
+
+        // Ocultar el banner después de 10 segundos
+        const hideTimeout = setTimeout(() => {
+            pwaBanner.classList.remove('show');
+            pwaBanner.classList.add('hidden');
+        }, 10000);
+
+        // Guardar el evento de instalación si se dispara
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            pwaBanner.classList.remove('hidden');
-            setTimeout(() => {
-                pwaBanner.classList.add('show');
-            }, 100); // Add a small delay for CSS transition
-
-            // Hide the banner after 10 seconds
-            setTimeout(() => {
-                pwaBanner.classList.remove('show');
-                pwaBanner.classList.add('hidden');
-            }, 10000);
         });
 
         installButton.addEventListener('click', () => {
+            clearTimeout(hideTimeout);
             pwaBanner.classList.remove('show');
             pwaBanner.classList.add('hidden');
             if (deferredPrompt) {
@@ -45,6 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     deferredPrompt = null;
                 });
             }
+        });
+        
+        // Listener para el nuevo botón de cerrar
+        closeButton.addEventListener('click', () => {
+            clearTimeout(hideTimeout);
+            pwaBanner.classList.remove('show');
+            pwaBanner.classList.add('hidden');
         });
     }
 
