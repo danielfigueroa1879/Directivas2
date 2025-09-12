@@ -86,6 +86,11 @@ function openLink(url) {
 }
 
 // Functions for the new tramites menu
+function handleCerofilas() {
+    window.open('https://dal5.short.gy/CFil', '_blank');
+    closeTramitesMenu();
+}
+
 function handleDirectiva() {
     showDirectiva();
     closeTramitesMenu();
