@@ -33,7 +33,7 @@
     <!-- External stylesheet for better caching -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        .pwa-install-banner {
+    .pwa-install-banner {
             position: fixed;
             top: 64px; /* Adjust for banner height */
             left: 0;
@@ -54,38 +54,8 @@
             transform: translateY(0);
             opacity: 1;
         }
-        .pwa-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .pwa-modal-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-        .pwa-modal-content {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            max-width: 90%;
-            width: 400px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        .pwa-modal-overlay.show .pwa-modal-content {
-            transform: scale(1);
-        }
+        
+        
     </style>
 </head>
 <body class="homepage background-transition">
