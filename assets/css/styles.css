@@ -124,7 +124,7 @@ body.homepage {
     transition: opacity 0.5s ease-in-out;
     position: absolute;
     top: -45px; /* Ajuste la posición vertical */
-    right: 90px; /* Ajuste la posición horizontal para que esté a la izquierda del bot */
+    right: 70px; /* Ajuste para que el mensaje se mueva más a la derecha */
     left: auto;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -304,7 +304,7 @@ body.homepage {
     @keyframes floatAnimation {
         0%, 100% {
             transform: translateY(0px);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
         }
         50% {
             transform: translateY(-10px);
