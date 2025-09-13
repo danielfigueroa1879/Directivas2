@@ -158,6 +158,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Código para mostrar el tooltip del chatbot al cargar la página
+    const chatToggleButton = document.getElementById('chat-toggle-button');
+    const chatbotTooltip = document.getElementById('chatbot-tooltip');
+
+    if (chatToggleButton && chatbotTooltip) {
+        // Mostrar el tooltip por 15 segundos
+        chatbotTooltip.classList.remove('hidden');
+        chatbotTooltip.classList.add('show');
+        
+        setTimeout(() => {
+            chatbotTooltip.classList.remove('show');
+            setTimeout(() => {
+                chatbotTooltip.classList.add('hidden');
+            }, 500); // Duración de la transición de opacidad
+        }, 15000); // 15 segundos
+    }
+
     console.log('✅ All components initialized successfully');
 });
 
