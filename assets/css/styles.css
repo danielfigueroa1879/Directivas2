@@ -231,6 +231,9 @@ body.homepage {
         height: 90px;
         animation: floatAnimation 1.9s ease-in-out infinite;
     }
+    #chatbot-tooltip {
+        right: 85px; /* Ajuste para PC */
+    }
 
     @keyframes floatAnimation {
         0%, 100% {
