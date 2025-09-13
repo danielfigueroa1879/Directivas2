@@ -17,7 +17,7 @@ body.homepage {
 #homepage-section {
     background-image: url('../images/foto (1).jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: center 25%; /* Ajustado para mostrar más la parte de arriba */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -338,7 +338,7 @@ body.homepage {
     line-height: 1;
 }
 .credenciales-main-title, .credenciales-main-subtitle {
-    color: #EAB308;
+    color: #EAB308; /* yellow-500 */
     font-weight: bold;
     display: block;
     text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4);
@@ -356,8 +356,8 @@ body.homepage {
 }
 
 .credenciales-section-title {
-    color: #F54C38;
-    font-size: 1.3rem;
+    color: #F54C38; /* Rojo anaranjado */
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
 }
@@ -445,7 +445,7 @@ body.homepage {
 .credenciales-table-select {
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg'%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 0.5rem center;
     background-size: 1em;
@@ -754,3 +754,4 @@ body.homepage {
 @media (max-width: 640px) {
    /* No specific hero changes needed here anymore, handled by tailwind */
 }
+
