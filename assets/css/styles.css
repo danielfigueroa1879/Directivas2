@@ -17,7 +17,7 @@ body.homepage {
 #homepage-section {
     background-image: url('../images/foto (1).jpeg');
     background-size: cover;
-    background-position: center 30%; /* Ajustado para mostrar un poco más abajo */
+    background-position: center 35%; /* Ajustado para mostrar un poco más abajo */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -767,3 +767,4 @@ body.homepage {
         background-color: rgba(255, 183, 0, 0.7); /* Amarillo semitransparente para móvil */
    }
 }
+
