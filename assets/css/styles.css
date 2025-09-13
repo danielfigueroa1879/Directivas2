@@ -118,6 +118,17 @@ body.homepage {
     }
 }
 
+/* Tooltip para el chatbot */
+#chatbot-tooltip {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#chatbot-tooltip.show {
+    opacity: 1;
+}
+
+
 .chat-messages-container {
     scroll-behavior: smooth;
 }
