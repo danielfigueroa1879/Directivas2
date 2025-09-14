@@ -17,7 +17,7 @@ body.homepage {
 #homepage-section {
     background-image: url('../images/foto (1).jpeg');
     background-size: cover;
-    background-position: center 40%; /* Adjusted to be slightly lower */
+    background-position: center 60%; /* Adjusted to be slightly lower */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -749,6 +749,14 @@ body.homepage {
     min-width: 250px;
     padding: 0.75rem 2rem;
 }
+
+/* Modificación para bajar los botones y el texto en la versión de PC */
+@media (min-width: 768px) {
+    #homepage-section .relative.z-10 {
+        padding-top: 20vh; /* Aumenta el valor para bajar más el contenido */
+    }
+}
+
 
 @media (max-width: 767px) { /* Usamos 767px como punto de quiebre para móviles */
    .homepage-section {
