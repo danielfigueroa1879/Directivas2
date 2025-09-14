@@ -298,6 +298,14 @@ body.homepage {
         right: 1.7rem;
         bottom: 7.9rem;
     }
+    #chat-popup {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 96%;
+        height: 500px;
+    }
     #chat-toggle-button {
         width: 67px;
         height: 67px;
@@ -758,7 +766,7 @@ body.homepage {
 
 @media (max-width: 640px) {
    .homepage-btn {
-        width: 80%; /* Reduce el ancho de los botones en móviles */
+        width: 60%; /* Adjusted to be less wide on mobile */
         padding: 0.5rem 1.5rem;
         background-color: rgba(59, 130, 246, 0.7); /* Azul semitransparente para móvil */
         color: white; /* Letras blancas para móvil */
