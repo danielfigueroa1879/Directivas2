@@ -17,7 +17,7 @@ body.homepage {
 #homepage-section {
     background-image: url('../images/foto (1).jpeg');
     background-size: cover;
-    background-position: center 50%; /* Ajustado para mostrar un poco más abajo */
+    background-position: center 40%; /* Adjusted to be slightly lower */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -144,7 +144,7 @@ body.homepage {
     content: '';
     position: absolute;
     bottom: -10px;
-    right: 15px; /* Ajusta la punta para que apunte al bot */
+    right: 15px; /* Ajuste para que la punta apunte al bot */
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -757,14 +757,6 @@ body.homepage {
     min-width: 250px;
     padding: 0.75rem 2rem;
 }
-
-/* Modificación para bajar los botones y el texto en la versión de PC */
-@media (min-width: 768px) {
-    #homepage-section .relative.z-10 {
-        padding-top: 15vh; /* Aumenta el valor para bajar más el contenido */
-    }
-}
-
 
 @media (max-width: 767px) { /* Usamos 767px como punto de quiebre para móviles */
    .homepage-section {
