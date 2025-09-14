@@ -17,7 +17,7 @@ body.homepage {
 #homepage-section {
     background-image: url('../images/foto (1).jpeg');
     background-size: cover;
-    background-position: center 40%; /* Adjusted to be slightly lower */
+    background-position: center 50%; /* Adjusted to be slightly lower */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -297,14 +297,6 @@ body.homepage {
     #chat-widget-container {
         right: 1.7rem;
         bottom: 7.9rem;
-    }
-    #chat-popup {
-        position: fixed;
-        bottom: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 96%;
-        height: 500px;
     }
     #chat-toggle-button {
         width: 67px;
