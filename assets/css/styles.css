@@ -17,7 +17,7 @@ body.homepage {
 #homepage-section {
     background-image: url('../images/foto (1).jpeg');
     background-size: cover;
-    background-position: center 60%; /* Adjusted to be slightly lower */
+    background-position: center 50%; /* Ajustado para mostrar un poco más abajo */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -297,6 +297,14 @@ body.homepage {
     #chat-widget-container {
         right: 1.7rem;
         bottom: 7.9rem;
+    }
+    #chat-popup {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 96%;
+        height: 500px;
     }
     #chat-toggle-button {
         width: 67px;
@@ -753,7 +761,7 @@ body.homepage {
 /* Modificación para bajar los botones y el texto en la versión de PC */
 @media (min-width: 768px) {
     #homepage-section .relative.z-10 {
-        padding-top: 20vh; /* Aumenta el valor para bajar más el contenido */
+        padding-top: 15vh; /* Aumenta el valor para bajar más el contenido */
     }
 }
 
