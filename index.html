@@ -58,24 +58,24 @@
         
     .notification-banner {
         position: fixed;
-        top: 0; /* Modificado para aparecer encima del banner principal */
-        left: 50%;
-        transform: translate(-50%, -100%); /* Start off-screen */
-        width: 90%; /* Responsive width */
-        max-width: 600px;
-        background-color: #51a351; /* Color modificado según la solicitud del usuario */
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(-100%);
+        width: 100%;
+        background-color: #51a351;
         color: white;
         padding: 1rem 1.5rem;
-        border-radius: 0 0 12px 12px;
+        border-radius: 0;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1300; /* Z-index aumentado para que esté por encima del banner principal (1200) */
+        z-index: 1300;
         text-align: center;
         opacity: 0;
         transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-in-out;
     }
 
     .notification-banner.show {
-        transform: translate(-50%, 0); /* Slide in */
+        transform: translateY(0);
         opacity: 1;
     }
 
