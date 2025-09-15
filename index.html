@@ -56,10 +56,42 @@
             opacity: 1;
         }
         
-        
+    .notification-banner {
+        position: fixed;
+        top: 64px; /* Adjusted to be just below the main banner */
+        left: 50%;
+        transform: translate(-50%, -100%); /* Start off-screen */
+        width: 90%; /* Responsive width */
+        max-width: 600px;
+        background-color: #0d9488; /* Teal-600 */
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        text-align: center;
+        opacity: 0;
+        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-in-out;
+    }
+
+    .notification-banner.show {
+        transform: translate(-50%, 0); /* Slide in */
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .notification-banner {
+            width: 100%;
+            border-radius: 0 0 0 0;
+        }
+    }
     </style>
 </head>
 <body class="homepage background-transition">
+<!-- Notificación de recepción de documentos -->
+<div id="notification-banner" class="notification-banner text-sm sm:text-base font-semibold">
+    Se comunica que se recepcionará documentación a contar del 22.09.2025
+</div>
 <!-- PWA Install Banner -->
 <div id="pwa-install-banner" class="pwa-install-banner md:hidden">
     <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
@@ -618,6 +650,23 @@
             }
         }
         runCounter();
+    </script>
+
+    <!-- Script de la notificación -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('notification-banner');
+            
+            // Show the banner after 1 second
+            setTimeout(() => {
+                banner.classList.add('show');
+            }, 1000);
+
+            // Hide the banner after 9 seconds (total of 1+8 = 9s visible)
+            setTimeout(() => {
+                banner.classList.remove('show');
+            }, 9000); 
+        });
     </script>
     
     <script src="./rules/chatbot-rules.js" defer></script>
