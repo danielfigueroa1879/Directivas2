@@ -7,6 +7,7 @@ let backgroundImages = [
     'assets/images/foto (5).jpeg',
     'assets/images/foto (6).jpeg',
     'assets/images/foto (7).jpeg',
+    'assets/images/foto (8).jpeg',
     'assets/images/foto (9).jpeg',
     'assets/images/foto (10).jpeg',
     'assets/images/foto (11).jpeg',
@@ -14,8 +15,13 @@ let backgroundImages = [
     'assets/images/foto (13).jpeg',
     'assets/images/foto (14).jpeg',
     'assets/images/foto (15).jpeg',
-    'assets/images/foto (16).jpeg',           
-    'assets/images/foto (18).jpeg'
+    'assets/images/foto (16).jpeg',
+    'assets/images/foto (17).jpeg', 
+    'assets/images/foto (18).jpeg',   
+    'assets/images/foto (19).jpeg',   
+    'assets/images/foto (20).jpeg',   
+    'assets/images/foto (21).jpeg',   
+    'assets/images/foto (22).jpeg'
 ];
 
 let currentImageIndex = 0;
