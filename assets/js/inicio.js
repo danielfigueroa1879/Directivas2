@@ -202,8 +202,8 @@ function showSubmenu(triggerButton) {
     document.body.appendChild(activeSubmenu);
 
     // Calcular posición
-    // POSICIONAMIENTO AJUSTADO PARA CUMPLIR REQUISITOS 1 Y 2
-    let leftPosition = dropdownRect.right + 25; // Márgen 25px en PC (se mueve a la derecha)
+    // POSICIONAMIENTO AJUSTADO PARA PC (Mover a la izquierda)
+    let leftPosition = dropdownRect.right + 5; // Mantenido en 5px para PC (más a la izquierda)
     let topPosition = triggerRect.top - 5; 
     
     // Determinar la posición Y del menú desplegable principal para alinear el submenu
@@ -225,9 +225,9 @@ function showSubmenu(triggerButton) {
         topPosition = windowHeight - submenuHeight - 20;
     }
 
-    // Para móviles, centrar y mover LIGERAMENTE a la derecha (PUNTO 1b)
+    // Para móviles, centrar y mover LIGERAMENTE a la derecha (CELULAR MÁS A LA DERECHA)
     if (window.innerWidth <= 1024) {
-        const mobileMargin = 25; // AUMENTADO a 25px para que se desplace más a la derecha en móvil
+        const mobileMargin = 40; // AUMENTADO a 40px para desplazar más a la derecha en móvil
         leftPosition = (windowWidth - submenuWidth) / 2 + mobileMargin; // Desplazar a la derecha
         // Ajustar la posición vertical para que no quede demasiado arriba en móviles
         topPosition = Math.max(80, topPosition); 
@@ -241,8 +241,8 @@ function showSubmenu(triggerButton) {
         zIndex: '1350',
         opacity: '1',
         visibility: 'visible',
-        pointerEvents: 'auto',
-        transform: 'translateX(0) scale(1)',
+        transform: 'translateX(0) scale(1)', 
+        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)', // Transición suave para entrada (PUNTO 3)
         width: `${submenuWidth}px`,
         backgroundColor: 'rgba(255, 255, 255, 0.97)',
         border: '1px solid rgba(229, 231, 235, 1)',
@@ -272,15 +272,25 @@ function showSubmenu(triggerButton) {
 // Función para ocultar submenu
 function hideSubmenu() {
     if (activeSubmenu) {
-        try {
-            if (document.body.contains(activeSubmenu)) {
-                document.body.removeChild(activeSubmenu);
+        // Añadir una transición rápida para el cierre (PUNTO 3)
+        Object.assign(activeSubmenu.style, {
+            opacity: '0',
+            transform: 'translateX(-10px) scale(0.95)',
+            pointerEvents: 'none',
+        });
+        
+        // Retraso para eliminar del DOM después de la transición
+        setTimeout(() => {
+            try {
+                if (document.body.contains(activeSubmenu)) {
+                    document.body.removeChild(activeSubmenu);
+                }
+            } catch (e) {
+                // Ignorar errores al remover del DOM si ya fue removido
             }
-        } catch (e) {
-            // Ignorar errores al remover del DOM si ya fue removido
-        }
-        activeSubmenu = null;
-        currentTriggerButton = null;
+            activeSubmenu = null;
+            currentTriggerButton = null;
+        }, 300); 
     }
     clearTimeout(hideSubmenuTimeout);
 }
@@ -310,7 +320,7 @@ function setupSubmenuTriggers() {
         trigger.parentNode.replaceChild(newTrigger, trigger);
         
         if (!isTouchDevice) {
-            // Desktop: hover
+            // Desktop: hover (PUNTO 3: Interacción más fluida)
             
             // Listener para el botón principal del submenú (ej. "Doc. editable")
             newTrigger.addEventListener('mouseenter', (e) => {
