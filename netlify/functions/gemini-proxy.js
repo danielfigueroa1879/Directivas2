@@ -22,7 +22,8 @@ exports.handler = async function(event, context) {
     };
   }
 
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+  // Usamos un modelo más reciente que soporta herramientas (aunque no las uses, es buena práctica)
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
   const MAX_RETRIES = 3;
   let retries = 0;
@@ -41,14 +42,15 @@ exports.handler = async function(event, context) {
       
       if (!geminiResponse.ok) {
         console.error("Error recibido de la API de Gemini:", responseData);
-        // Retry only on specific error codes, e.g., 429 (Too Many Requests) or 500 (Internal Server Error)
+        // Reintentar solo en códigos de error específicos: 429 (Too Many Requests) o 500+ (Internal Server Error)
         if (geminiResponse.status === 429 || geminiResponse.status >= 500) {
           retries++;
-          const delay = Math.pow(2, retries) * 1000; // Exponential backoff
+          const delay = Math.pow(2, retries) * 1000; // Retroceso exponencial
           console.log(`Reintentando en ${delay / 1000} segundos... (Intento ${retries}/${MAX_RETRIES})`);
           await new Promise(resolve => setTimeout(resolve, delay));
-          continue; // Try again
+          continue; // Intentar de nuevo
         } else {
+          // Si es un error no recuperable (e.g., 400 Bad Request, 401 Unauthorized), salir.
           return {
             statusCode: geminiResponse.status,
             body: JSON.stringify(responseData),
@@ -56,6 +58,7 @@ exports.handler = async function(event, context) {
         }
       }
 
+      // Respuesta exitosa
       return {
         statusCode: 200,
         body: JSON.stringify(responseData),
@@ -64,15 +67,15 @@ exports.handler = async function(event, context) {
     } catch (error) {
       console.error("ERROR INESPERADO EN EL BLOQUE TRY/CATCH:", error);
       retries++;
-      const delay = Math.pow(2, retries) * 1000; // Exponential backoff
+      const delay = Math.pow(2, retries) * 1000; // Retroceso exponencial
       console.log(`Reintentando en ${delay / 1000} segundos... (Intento ${retries}/${MAX_RETRIES})`);
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
 
+  // Fallo después de todos los reintentos
   return {
-    statusCode: 500,
-    body: JSON.stringify({ error: "Ocurrió un error interno en el servidor después de varios reintentos.", details: "El modelo está sobrecargado. Por favor, inténtelo de nuevo más tarde." }),
+    statusCode: 503, // Usamos 503 Service Unavailable
+    body: JSON.stringify({ error: "Ocurrió un error interno en el servidor después de varios reintentos.", details: "El servicio de IA está temporalmente no disponible o sobrecargado. Por favor, inténtelo de nuevo más tarde." }),
   };
 };
-
