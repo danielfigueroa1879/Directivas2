@@ -650,7 +650,7 @@ body.homepage {
 /* BOTONES DENTRO DEL SUBMENU - SIN MOVIMIENTO */
 .dropdown-menu .submenu button {
     width: 100%;
-    text-align: center;
+    text-align: left;
     padding: 8px 15px;
     font-size: 0.7rem;
     color: rgba(31, 41, 55, 0.9);
