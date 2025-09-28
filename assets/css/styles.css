@@ -113,7 +113,6 @@ body.homepage {
         transform: scale(1);
     }
     50% {
-        opacity: 0.6;
         transform: scale(1.1);
     }
 }
@@ -660,8 +659,8 @@ body.homepage {
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: center; /* CENTRADO SOLICITADO */
-    padding: 10px 20px; /* Reducción de padding para ahorrar espacio vertical */
-    font-size: 0.75rem; /* REDUCCIÓN DEL TAMAÑO DE FUENTE SOLICITADA */
+    padding: 8px 15px; /* Reducción de padding para ahorrar espacio vertical */
+    font-size: 0.7rem; /* REDUCCIÓN DEL TAMAÑO DE FUENTE A 0.7rem */
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
     border: none;
@@ -680,8 +679,8 @@ body.homepage {
     background-color: rgba(34, 197, 94, 0.15);
     color: rgba(21, 128, 61, 1);
     transform: translateX(0px); /* ELIMINADO MOVIMIENTO EN HOVER para evitar parpadeo */
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* FLECHA EN BOTÓN QUE TIENE SUBMENU (vuelve a su lógica de movimiento original) */
@@ -745,7 +744,8 @@ body.homepage {
     }
     .dropdown-menu .submenu button:hover {
         transform: translateX(0px); /* Sin desplazamiento en submenú móvil */
-        padding-left: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
