@@ -411,10 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         otherItem.querySelector('.submenu').classList.remove('show');
                     }
                 });
-                // Calcular posición y mostrar
-                const rect = submenuButton.getBoundingClientRect();
-                submenu.style.left = `${rect.right + 5}px`; // 5px de separación
-                submenu.style.top = `${rect.top}px`;
+                // La posición ahora es manejada por CSS, solo mostramos el elemento
                 submenu.classList.add('show');
             };
 
