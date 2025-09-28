@@ -411,7 +411,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         otherItem.querySelector('.submenu').classList.remove('show');
                     }
                 });
-                // La posición ahora es manejada por CSS, solo mostramos el elemento
+                
+                // Calcular posición del submenu dinámicamente
+                const rect = submenuButton.getBoundingClientRect();
+                submenu.style.left = `${rect.right + 5}px`; // 5px de separación a la derecha
+                submenu.style.top = `${rect.top}px`; // Alinear con la parte superior del botón
+                
+                // Mostrar el submenu
                 submenu.classList.add('show');
             };
 
@@ -468,5 +474,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
-
-
