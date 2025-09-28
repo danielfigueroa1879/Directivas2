@@ -777,3 +777,50 @@ body.homepage {
         color: white; /* Letras blancas para móvil */
    }
 }
+
+/* ===== ESTILOS PARA SUBMENU (FLYOUT) ===== */
+.dropdown-menu .has-submenu {
+    position: relative;
+}
+
+.dropdown-menu .submenu {
+    position: absolute;
+    top: -8px; /* Align with the top of the parent button */
+    left: 100%; /* Position it to the right of the parent */
+    width: 260px; /* Same width as the main dropdown */
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 0 12px 12px 12px;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    z-index: 1300; /* Higher than the main dropdown */
+    display: none; /* Hidden by default */
+    padding: 8px 0; /* Add some padding */
+}
+
+.dropdown-menu .has-submenu:hover > .submenu {
+    display: block; /* Show on hover */
+}
+
+/* Style for the submenu parent button */
+.dropdown-menu .has-submenu > button::after {
+    content: '▸'; /* Right-pointing arrow */
+    position: absolute;
+    right: 15px;
+    font-size: 1.1em;
+    transition: transform 0.2s;
+}
+
+.dropdown-menu .has-submenu:hover > button::after {
+    transform: rotate(0deg); /* Keep arrow orientation */
+}
+
+/* Adjust submenu for smaller screens if needed */
+@media (max-width: 1024px) {
+    .dropdown-menu .submenu {
+        left: -100%; /* Position it to the left on smaller screens */
+        border-radius: 12px 0 12px 12px;
+        top: 0;
+    }
+}
