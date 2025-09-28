@@ -547,25 +547,29 @@ body.homepage {
     width: 260px;
     height: auto;
     max-height: calc(100vh - 120px);
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    /* MODIFIED: Opaque background, no blur */
+    background-color: rgb(255, 255, 255);
+    /* REMOVED: backdrop-filter */
+    /* REMOVED: -webkit-backdrop-filter */
+    border: 1px solid #e5e7eb; /* Solid border */
     border-top: none;
     border-radius: 0 0 12px 12px;
-    box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 5px 30px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
     z-index: 1201;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    /* MODIFIED: Transition only opacity */
+    transition: opacity 0.2s ease-out;
     opacity: 0;
-    transform: translateY(10px);
+    /* REMOVED: transform */
     pointer-events: none;
     overflow-y: auto;
+    /* ADDED: Make sure overflow is not trapping the child */
+    overflow-x: visible; 
     scrollbar-width: thin;
 }
 
 .dropdown-menu:not(.hidden) {
     opacity: 1;
-    transform: translateY(0);
+    /* REMOVED: transform */
     pointer-events: auto;
 }
 
