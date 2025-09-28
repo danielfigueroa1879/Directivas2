@@ -155,75 +155,144 @@ function closeTramitesMenu() {
     }
 }
 
-// --- NEW TELEPORTING SUBMENU LOGIC ---
+// === SISTEMA DE SUBMENU FLYOUT CORREGIDO ===
+
+// Variables para control de submenus
 let activeSubmenu = null;
 let hideSubmenuTimeout = null;
+let currentTriggerButton = null;
 
-function showSubmenu(triggerBtn) {
-    const submenuTemplate = triggerBtn.parentElement.querySelector('.submenu');
-    if (!submenuTemplate) return;
-
+function showSubmenu(triggerButton) {
+    console.log('🎯 Intentando mostrar submenu para:', triggerButton.textContent);
+    
+    // Limpiar timeout si existe
     clearTimeout(hideSubmenuTimeout);
-
-    const triggerId = triggerBtn.id || (triggerBtn.id = `trigger-${Math.random().toString(36).substr(2, 9)}`);
-    if (activeSubmenu && activeSubmenu.dataset.triggerId === triggerId) {
+    
+    // Encontrar el submenu asociado al botón
+    const submenuTemplate = triggerButton.parentElement.querySelector('.submenu');
+    if (!submenuTemplate) {
+        console.log('❌ No submenu found for button:', triggerButton.textContent);
         return;
     }
 
+    // Si ya hay un submenu activo del mismo botón, no hacer nada
+    if (activeSubmenu && currentTriggerButton === triggerButton) {
+        console.log('⚠️ Submenu ya activo para este botón');
+        return;
+    }
+
+    // Ocultar submenu anterior si existe
     hideSubmenu();
 
-    const rect = triggerBtn.getBoundingClientRect();
+    // Obtener posición del botón trigger y del menú principal
+    const triggerRect = triggerButton.getBoundingClientRect();
+    const dropdownMenu = document.getElementById('tramites-dropdown');
+    const dropdownRect = dropdownMenu.getBoundingClientRect();
+
+    console.log('📐 Posiciones calculadas:', {
+        trigger: triggerRect,
+        dropdown: dropdownRect
+    });
+
+    // Crear nuevo submenu clonando el template
     activeSubmenu = submenuTemplate.cloneNode(true);
-    activeSubmenu.dataset.triggerId = triggerId;
-
-    // Add the teleported class to make it visible and position it.
-    // DO NOT remove the original '.submenu' class, which provides the appearance.
-    activeSubmenu.classList.add('submenu--teleported');
-
+    activeSubmenu.classList.add('show');
+    
+    // CLAVE: Agregar al body para que aparezca FUERA del contenedor principal
     document.body.appendChild(activeSubmenu);
 
-    // Position the teleported submenu
-    activeSubmenu.style.top = `${rect.top - 5}px`;
-    activeSubmenu.style.left = `${rect.left + rect.width + 5}px`;
+    // Calcular posición para que aparezca al lado derecho del menú principal
+    let leftPosition = dropdownRect.right + 10; // 10px de separación
+    let topPosition = triggerRect.top - 5; // Alineado con el botón trigger
 
-    // Add listeners to the new submenu to keep it open
-    activeSubmenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
+    // Verificar si se sale de la pantalla horizontalmente
+    const submenuWidth = 280;
+    const windowWidth = window.innerWidth;
+    
+    if (leftPosition + submenuWidth > windowWidth) {
+        // Si se sale por la derecha, mostrar por la izquierda
+        leftPosition = dropdownRect.left - submenuWidth - 10;
+        console.log('📱 Reposicionando submenu a la izquierda');
+    }
+
+    // Verificar si se sale de la pantalla verticalmente
+    const submenuHeight = activeSubmenu.scrollHeight;
+    const windowHeight = window.innerHeight;
+    
+    if (topPosition + submenuHeight > windowHeight) {
+        topPosition = windowHeight - submenuHeight - 20;
+        console.log('📱 Ajustando posición vertical');
+    }
+
+    // Para móviles, centrar horizontalmente
+    if (window.innerWidth <= 1024) {
+        leftPosition = (windowWidth - submenuWidth) / 2;
+        topPosition = Math.max(80, topPosition); // No muy arriba
+    }
+
+    // Aplicar posición calculada
+    activeSubmenu.style.left = `${leftPosition}px`;
+    activeSubmenu.style.top = `${topPosition}px`;
+
+    console.log('✅ Submenu posicionado en:', { left: leftPosition, top: topPosition });
+
+    // Guardar referencia del botón actual
+    currentTriggerButton = triggerButton;
+
+    // Agregar event listeners al nuevo submenu
+    activeSubmenu.addEventListener('mouseenter', () => {
+        clearTimeout(hideSubmenuTimeout);
+    });
+
     activeSubmenu.addEventListener('mouseleave', () => {
         hideSubmenuTimeout = setTimeout(hideSubmenu, 300);
     });
+
+    console.log('🎉 Submenu mostrado exitosamente para:', triggerButton.textContent);
 }
 
 function hideSubmenu() {
     if (activeSubmenu) {
-        document.body.removeChild(activeSubmenu);
+        console.log('🗑️ Ocultando submenu');
+        try {
+            document.body.removeChild(activeSubmenu);
+        } catch (e) {
+            console.warn('⚠️ Error al remover submenu:', e);
+        }
         activeSubmenu = null;
+        currentTriggerButton = null;
     }
     clearTimeout(hideSubmenuTimeout);
 }
 
 // --- REWRITTEN DOMCONTENTLOADED ---
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Inicializando sistema de menús...');
+    
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const tramitesDropdown = document.getElementById('tramites-dropdown');
-    const tramitesContainer = tramitesMenuBtn.parentElement;
+    const tramitesContainer = tramitesMenuBtn?.parentElement;
     let tramitesTimeout;
 
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    console.log('📱 Dispositivo táctil detectado:', isTouchDevice);
 
     // --- Main Menu Logic ---
-    if (!isTouchDevice) {
+    if (!isTouchDevice && tramitesContainer) {
         const mainDropdownElements = [tramitesContainer, tramitesDropdown];
         mainDropdownElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                clearTimeout(tramitesTimeout);
-                hideSubmenu();
-                showTramitesMenu();
-            });
-            el.addEventListener('mouseleave', () => {
-                tramitesTimeout = setTimeout(closeTramitesMenu, 300);
-            });
+            if (el) {
+                el.addEventListener('mouseenter', () => {
+                    clearTimeout(tramitesTimeout);
+                    hideSubmenu();
+                    showTramitesMenu();
+                });
+                el.addEventListener('mouseleave', () => {
+                    tramitesTimeout = setTimeout(closeTramitesMenu, 300);
+                });
+            }
         });
-    } else {
+    } else if (tramitesMenuBtn) {
         // Click logic for touch devices
         tramitesMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -233,41 +302,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Submenu Trigger Logic ---
-    const submenuTriggers = document.querySelectorAll('.has-submenu > button');
-    submenuTriggers.forEach(trigger => {
-        // On touch, a click on the parent should just open the submenu
-        if (isTouchDevice) {
-            trigger.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent closing the main menu
-                showSubmenu(e.currentTarget);
-            });
-        } else {
-            // On desktop, use hover
-            trigger.addEventListener('mouseenter', (e) => {
-                clearTimeout(tramitesTimeout); // Keep main menu open
-                showSubmenu(e.currentTarget);
-            });
-            trigger.addEventListener('mouseleave', () => {
-                hideSubmenuTimeout = setTimeout(hideSubmenu, 300);
-            });
-        }
-    });
+    // --- Función para configurar triggers de submenu ---
+    function setupSubmenuTriggers() {
+        const submenuTriggers = document.querySelectorAll('.has-submenu > button');
+        console.log('🎯 Configurando', submenuTriggers.length, 'triggers de submenu');
+        
+        submenuTriggers.forEach((trigger, index) => {
+            // Limpiar event listeners anteriores
+            trigger.replaceWith(trigger.cloneNode(true));
+            const newTrigger = document.querySelectorAll('.has-submenu > button')[index];
+            
+            if (!isTouchDevice) {
+                // Desktop: usar hover
+                newTrigger.addEventListener('mouseenter', (e) => {
+                    clearTimeout(tramitesTimeout); // Keep main menu open
+                    showSubmenu(e.currentTarget);
+                });
+                newTrigger.addEventListener('mouseleave', () => {
+                    hideSubmenuTimeout = setTimeout(hideSubmenu, 300);
+                });
+            } else {
+                // Móvil: usar click
+                newTrigger.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent closing the main menu
+                    e.preventDefault();
+                    showSubmenu(e.currentTarget);
+                });
+            }
+        });
+    }
+
+    // Configurar triggers inicialmente
+    setTimeout(setupSubmenuTriggers, 100);
+
+    // Re-configurar cuando el menú se abra (para elementos dinámicos)
+    if (tramitesDropdown) {
+        const observer = new MutationObserver(() => {
+            setTimeout(setupSubmenuTriggers, 50);
+        });
+        observer.observe(tramitesDropdown, { childList: true, subtree: true });
+    }
 
     // --- Global Click Listener ---
     window.addEventListener('click', (e) => {
         // Close main menu if click is outside
-        if (!tramitesContainer.contains(e.target) && !tramitesDropdown.contains(e.target)) {
+        if (tramitesContainer && !tramitesContainer.contains(e.target) && 
+            tramitesDropdown && !tramitesDropdown.contains(e.target)) {
             closeTramitesMenu();
         }
         // Close submenu if click is outside
         if (activeSubmenu && !activeSubmenu.contains(e.target)) {
-            const trigger = document.getElementById(activeSubmenu.dataset.triggerId);
-            if (trigger && !trigger.parentElement.contains(e.target)) {
+            const triggerContainer = currentTriggerButton?.parentElement;
+            if (!triggerContainer || !triggerContainer.contains(e.target)) {
                 hideSubmenu();
             }
         }
     });
+
+    // Cerrar submenus al hacer scroll o redimensionar
+    window.addEventListener('scroll', hideSubmenu);
+    window.addEventListener('resize', hideSubmenu);
 
     // --- All other original listeners from the old file ---
     const independentButton = document.querySelector('.indep-btn');
@@ -303,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    document.getElementById('os10-home-btn').addEventListener('click', showHomepage);
+    document.getElementById('os10-home-btn')?.addEventListener('click', showHomepage);
 
     const backToTopButton = document.getElementById('back-to-top');
     if (backToTopButton) {
@@ -323,15 +417,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chatToggleButton) {
         chatToggleButton.addEventListener('mouseenter', () => {
             const popup = document.getElementById('chat-popup');
-            if (popup.classList.contains('hidden')) {
+            if (popup && popup.classList.contains('hidden')) {
                 const backdrop = document.getElementById('chat-backdrop');
                 const button = document.getElementById('chat-toggle-button');
                 popup.classList.remove('hidden');
-                backdrop.classList.remove('hidden');
+                backdrop?.classList.remove('hidden');
                 button.classList.add('hidden');
             }
         });
     }
 
+    // Exponer funciones globalmente
+    window.showSubmenu = showSubmenu;
+    window.hideSubmenu = hideSubmenu;
+    window.showTramitesMenu = showTramitesMenu;
+    window.closeTramitesMenu = closeTramitesMenu;
+
+    console.log('✅ Sistema de menús inicializado correctamente');
     showHomepage();
 });
