@@ -147,9 +147,36 @@ function closeTramitesMenu() {
     dropdown.classList.add('hidden');
     arrow.style.transform = 'rotate(0deg)';
     menuBtn.classList.remove('panel-active');
+    
+    // Cerrar también cualquier submenú abierto
+    closeAllSubmenus();
 }
 
+// ===== NUEVAS FUNCIONES PARA MANEJAR SUBMENÚS =====
+function closeAllSubmenus() {
+    const submenuItems = document.querySelectorAll('.has-submenu');
+    submenuItems.forEach(submenuItem => {
+        const submenu = submenuItem.querySelector('.submenu');
+        if (submenu) {
+            submenu.style.display = 'none';
+            submenuItem.classList.remove('submenu-active');
+        }
+    });
+}
 
+function showSubmenu(submenuElement) {
+    // Cerrar otros submenús primero
+    closeAllSubmenus();
+    
+    // Mostrar el submenú seleccionado
+    submenuElement.style.display = 'block';
+    submenuElement.parentElement.classList.add('submenu-active');
+}
+
+function hideSubmenu(submenuElement) {
+    submenuElement.style.display = 'none';
+    submenuElement.parentElement.classList.remove('submenu-active');
+}
 
 // Event listeners for menu and other elements
 document.addEventListener('DOMContentLoaded', () => {
@@ -185,6 +212,84 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // ===== NUEVOS EVENT LISTENERS PARA SUBMENÚS =====
+    
+    // Manejar submenús Doc. Editable y Componentes
+    const submenuItems = document.querySelectorAll('.has-submenu');
+    
+    submenuItems.forEach(submenuItem => {
+        const submenu = submenuItem.querySelector('.submenu');
+        const parentButton = submenuItem.querySelector('button');
+        
+        if (!submenu || !parentButton) return; // Verificar que existen los elementos
+        
+        if (isTouchDevice) {
+            // Para dispositivos táctiles - click
+            parentButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Cerrar otros submenús
+                submenuItems.forEach(otherItem => {
+                    if (otherItem !== submenuItem) {
+                        const otherSubmenu = otherItem.querySelector('.submenu');
+                        if (otherSubmenu) {
+                            otherSubmenu.style.display = 'none';
+                            otherItem.classList.remove('submenu-active');
+                        }
+                    }
+                });
+                
+                // Toggle el submenú actual
+                if (submenu.style.display === 'block') {
+                    submenu.style.display = 'none';
+                    submenuItem.classList.remove('submenu-active');
+                } else {
+                    submenu.style.display = 'block';
+                    submenuItem.classList.add('submenu-active');
+                }
+            });
+        } else {
+            // Para escritorio - hover
+            let submenuTimeout;
+            
+            submenuItem.addEventListener('mouseenter', () => {
+                clearTimeout(submenuTimeout);
+                // Cerrar otros submenús
+                submenuItems.forEach(otherItem => {
+                    if (otherItem !== submenuItem) {
+                        const otherSubmenu = otherItem.querySelector('.submenu');
+                        if (otherSubmenu) {
+                            otherSubmenu.style.display = 'none';
+                            otherItem.classList.remove('submenu-active');
+                        }
+                    }
+                });
+                
+                submenu.style.display = 'block';
+                submenuItem.classList.add('submenu-active');
+            });
+            
+            submenuItem.addEventListener('mouseleave', () => {
+                submenuTimeout = setTimeout(() => {
+                    submenu.style.display = 'none';
+                    submenuItem.classList.remove('submenu-active');
+                }, 300); // Pequeño delay para permitir hover en el submenu
+            });
+            
+            // Mantener submenu abierto cuando el mouse está sobre él
+            submenu.addEventListener('mouseenter', () => {
+                clearTimeout(submenuTimeout);
+            });
+            
+            submenu.addEventListener('mouseleave', () => {
+                submenuTimeout = setTimeout(() => {
+                    submenu.style.display = 'none';
+                    submenuItem.classList.remove('submenu-active');
+                }, 100);
+            });
+        }
+    });
 
     // Close menu when clicking outside, but not inside the dropdown
     window.addEventListener('click', (e) => {
@@ -274,4 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
+    // Initialize homepage view
+    showHomepage();
+});
