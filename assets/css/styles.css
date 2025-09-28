@@ -587,10 +587,10 @@ body.homepage {
     color: rgba(31, 41, 55, 0.95);
 }
 
-/* Modificación para centrar texto y mantener padding */
+/* REVERTIDO: Botones del MENÚ PRINCIPAL vuelven a la alineación izquierda original */
 .dropdown-menu button {
     width: 100%;
-    text-align: center; /* ALINEACIÓN CENTRADA APLICADA AQUÍ */
+    text-align: left; /* REVERTIDO A IZQUIERDA */
     padding: 14px 20px;
     font-size: 0.875rem;
     color: rgba(31, 41, 55, 0.9);
@@ -604,18 +604,18 @@ body.homepage {
 
 .dropdown-menu button:last-child { border-bottom: none; }
 
-/* El efecto hover se simplifica para centrado */
+/* El efecto hover para botones principales (vuelve a moverse un poco) */
 .dropdown-menu button:hover {
     background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
-    transform: translateX(0px); /* ELIMINADO DESPLAZAMIENTO HORIZONTAL */
-    padding-left: 20px;
+    transform: translateX(4px); /* Vuelve al desplazamiento a la derecha */
+    padding-left: 24px; /* Ajuste por el desplazamiento */
     padding-right: 20px;
     backdrop-filter: blur(10px);
 }
 
 .dropdown-menu button:active {
-    transform: translateX(0px);
+    transform: translateX(4px);
     background-color: rgba(59, 130, 246, 0.25);
 }
 
@@ -652,14 +652,14 @@ body.homepage {
 .dropdown-menu .submenu.show {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
     transform: translateX(0) scale(1);
+    pointer-events: auto;
 }
 
-/* BOTONES DENTRO DEL SUBMENU */
+/* CENTRADO Y ESTILO DE BOTONES DENTRO DEL SUBMENU */
 .dropdown-menu .submenu button {
     width: 100%;
-    text-align: center; /* ALINEACIÓN CENTRADA APLICADA AQUÍ */
+    text-align: center; /* CENTRADO APLICADO AQUÍ (PUNTO 1) */
     padding: 12px 20px;
     font-size: 0.875rem;
     color: rgba(31, 41, 55, 0.9);
@@ -679,12 +679,12 @@ body.homepage {
 .dropdown-menu .submenu button:hover {
     background-color: rgba(34, 197, 94, 0.15);
     color: rgba(21, 128, 61, 1);
-    transform: translateX(0px); /* ELIMINADO DESPLAZAMIENTO HORIZONTAL */
+    transform: translateX(0px); /* ELIMINADO MOVIMIENTO EN HOVER para evitar parpadeo */
     padding-left: 20px;
     padding-right: 20px;
 }
 
-/* FLECHA EN BOTÓN QUE TIENE SUBMENU */
+/* FLECHA EN BOTÓN QUE TIENE SUBMENU (vuelve a su lógica de movimiento original) */
 .dropdown-menu .has-submenu > button::after {
     content: '▸';
     position: absolute;
@@ -694,53 +694,10 @@ body.homepage {
 }
 
 .dropdown-menu .has-submenu > button:hover::after {
-    transform: translateX(0px); /* ELIMINADO DESPLAZAMIENTO DE LA FLECHA EN HOVER */
+    transform: translateX(3px); /* Vuelve al desplazamiento de la flecha */
 }
 
-#tramites-overlay, #editables-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.15);
-    z-index: 1150;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-    border-radius: 12px;
-}
-
-#tramites-overlay:not(.hidden), #editables-overlay:not(.hidden) {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-@keyframes slideInFromBottom {
-    from { transform: translateY(15px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.dropdown-menu-content > button,
-.dropdown-menu-content > .has-submenu {
-     animation: slideInFromBottom 0.3s ease both;
-}
-
-.dropdown-menu-content > button:nth-child(1),
-.dropdown-menu-content > .has-submenu:nth-child(1) { animation-delay: 0.05s; }
-.dropdown-menu-content > button:nth-child(2),
-.dropdown-menu-content > .has-submenu:nth-child(2) { animation-delay: 0.1s; }
-.dropdown-menu-content > button:nth-child(3),
-.dropdown-menu-content > .has-submenu:nth-child(3) { animation-delay: 0.15s; }
-.dropdown-menu-content > button:nth-child(4),
-.dropdown-menu-content > .has-submenu:nth-child(4) { animation-delay: 0.2s; }
-.dropdown-menu-content > button:nth-child(5),
-.dropdown-menu-content > .has-submenu:nth-child(5) { animation-delay: 0.25s; }
-.dropdown-menu-content > button:nth-child(6),
-.dropdown-menu-content > .has-submenu:nth-child(6) { animation-delay: 0.3s; }
-.dropdown-menu-content > button:nth-child(7),
-.dropdown-menu-content > .has-submenu:nth-child(7) { animation-delay: 0.35s; }
-
+/* Responsive - Ajustes para móvil y tablet */
 @media (max-width: 1024px) {
     .dropdown-menu {
         position: fixed;
@@ -754,11 +711,12 @@ body.homepage {
     .dropdown-menu .submenu {
         width: 260px;
         left: 50% !important;
+        /* El desplazamiento a la derecha se maneja en JS */
         transform: translateX(-50%) translateY(-10px) scale(0.95);
     }
     
     .dropdown-menu .submenu.show {
-        transform: translateX(-50%) translateY(0) scale(1);
+        transform: translateY(0) scale(1);
     }
 
     #tramites-overlay, #editables-overlay {
@@ -782,11 +740,11 @@ body.homepage {
         font-size: 0.8rem;
     }
     .dropdown-menu button:hover {
-        transform: translateX(0px);
-        padding-left: 16px;
+        transform: translateX(6px); /* Pequeño desplazamiento en móvil */
+        padding-left: 22px;
     }
     .dropdown-menu .submenu button:hover {
-        transform: translateX(0px);
+        transform: translateX(0px); /* Sin desplazamiento en submenú móvil */
         padding-left: 20px;
     }
 }
