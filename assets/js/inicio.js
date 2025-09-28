@@ -165,28 +165,26 @@ function showSubmenu(triggerBtn) {
 
     clearTimeout(hideSubmenuTimeout);
 
-    // Use a unique ID on the trigger to check if submenu is already open for it
-    const triggerId = triggerBtn.id || (triggerBtn.id = `trigger-${Math.random()}`);
+    const triggerId = triggerBtn.id || (triggerBtn.id = `trigger-${Math.random().toString(36).substr(2, 9)}`);
     if (activeSubmenu && activeSubmenu.dataset.triggerId === triggerId) {
         return;
     }
 
-    hideSubmenu(); // Hide any other open submenu
+    hideSubmenu();
 
     const rect = triggerBtn.getBoundingClientRect();
     activeSubmenu = submenuTemplate.cloneNode(true);
     activeSubmenu.dataset.triggerId = triggerId;
 
-    // This class will make it visible and apply base styles
-    activeSubmenu.classList.add('submenu-teleported'); 
-    // We remove the original submenu class to avoid conflicting styles
-    activeSubmenu.classList.remove('submenu'); 
+    // Add the teleported class to make it visible and position it.
+    // DO NOT remove the original '.submenu' class, which provides the appearance.
+    activeSubmenu.classList.add('submenu--teleported');
 
     document.body.appendChild(activeSubmenu);
 
     // Position the teleported submenu
     activeSubmenu.style.top = `${rect.top - 5}px`;
-    activeSubmenu.style.left = `${rect.right + 5}px`;
+    activeSubmenu.style.left = `${rect.left + rect.width + 5}px`;
 
     // Add listeners to the new submenu to keep it open
     activeSubmenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
