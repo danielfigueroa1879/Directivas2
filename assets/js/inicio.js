@@ -227,8 +227,8 @@ function showSubmenu(triggerButton) {
 
     // Para móviles, centrar y mover LIGERAMENTE a la derecha (PUNTO 1b)
     if (window.innerWidth <= 1024) {
-        const mobileMargin = 10; // Margen para desplazar a la derecha en móvil (10px)
-        leftPosition = (windowWidth - submenuWidth) / 2 + mobileMargin; // Desplazar un poco a la derecha
+        const mobileMargin = 25; // AUMENTADO a 25px para que se desplace más a la derecha en móvil
+        leftPosition = (windowWidth - submenuWidth) / 2 + mobileMargin; // Desplazar a la derecha
         // Ajustar la posición vertical para que no quede demasiado arriba en móviles
         topPosition = Math.max(80, topPosition); 
     }
