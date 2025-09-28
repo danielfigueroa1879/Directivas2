@@ -274,6 +274,188 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    /* ===== ESTILOS MEJORADOS PARA SUBMENU (FLYOUT) ===== */
+.dropdown-menu .has-submenu {
+    position: relative;
+}
+
+.dropdown-menu .submenu {
+    position: absolute;
+    top: -8px; /* Align with the top of the parent button */
+    left: 100%; /* Position it to the right of the parent */
+    width: 280px; /* Slightly wider for better content */
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 0 12px 12px 12px;
+    box-shadow: 15px 0 35px rgba(0, 0, 0, 0.15);
+    z-index: 1300; /* Higher than the main dropdown */
+    display: none; /* Hidden by default */
+    padding: 12px 0; /* Add some padding */
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Show submenu on hover or active state */
+.dropdown-menu .has-submenu:hover > .submenu,
+.dropdown-menu .has-submenu.submenu-active > .submenu {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Style for the submenu parent button */
+.dropdown-menu .has-submenu > button {
+    position: relative;
+}
+
+.dropdown-menu .has-submenu > button::after {
+    content: '▸'; /* Right-pointing arrow */
+    position: absolute;
+    right: 15px;
+    font-size: 1.1em;
+    transition: transform 0.2s ease;
+    color: rgba(59, 130, 246, 0.7);
+}
+
+.dropdown-menu .has-submenu:hover > button::after,
+.dropdown-menu .has-submenu.submenu-active > button::after {
+    transform: rotate(0deg);
+    color: rgba(37, 99, 235, 1);
+}
+
+/* Submenu buttons styling */
+.dropdown-menu .submenu button {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    color: rgba(31, 41, 55, 0.9);
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.2);
+    transform: translateX(0);
+}
+
+.dropdown-menu .submenu button:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu .submenu button:hover {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: rgba(22, 163, 74, 1);
+    transform: translateX(6px);
+    padding-left: 26px;
+    backdrop-filter: blur(15px);
+}
+
+.dropdown-menu .submenu button:active {
+    transform: translateX(3px);
+    background-color: rgba(34, 197, 94, 0.25);
+}
+
+/* Active state for parent button when submenu is open */
+.dropdown-menu .has-submenu.submenu-active > button {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: rgba(37, 99, 235, 1);
+}
+
+/* Animation for submenu items */
+.dropdown-menu .submenu button {
+    animation: slideInFromLeft 0.3s ease both;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-15px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Staggered animation for submenu items */
+.dropdown-menu .submenu button:nth-child(1) { animation-delay: 0.05s; }
+.dropdown-menu .submenu button:nth-child(2) { animation-delay: 0.1s; }
+.dropdown-menu .submenu button:nth-child(3) { animation-delay: 0.15s; }
+.dropdown-menu .submenu button:nth-child(4) { animation-delay: 0.2s; }
+.dropdown-menu .submenu button:nth-child(5) { animation-delay: 0.25s; }
+.dropdown-menu .submenu button:nth-child(6) { animation-delay: 0.3s; }
+.dropdown-menu .submenu button:nth-child(7) { animation-delay: 0.35s; }
+.dropdown-menu .submenu button:nth-child(8) { animation-delay: 0.4s; }
+.dropdown-menu .submenu button:nth-child(9) { animation-delay: 0.45s; }
+.dropdown-menu .submenu button:nth-child(10) { animation-delay: 0.5s; }
+.dropdown-menu .submenu button:nth-child(11) { animation-delay: 0.55s; }
+.dropdown-menu .submenu button:nth-child(12) { animation-delay: 0.6s; }
+
+/* Adjust submenu for smaller screens */
+@media (max-width: 1024px) {
+    .dropdown-menu .submenu {
+        left: 100%;
+        border-radius: 0 12px 12px 0;
+        top: 0;
+        width: 260px;
+    }
+}
+
+@media (max-width: 640px) {
+    .dropdown-menu .submenu {
+        width: 240px;
+    }
+    
+    .dropdown-menu .submenu button {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .dropdown-menu .submenu button:hover {
+        transform: translateX(4px);
+        padding-left: 20px;
+    }
+}
+
+/* Improve visibility with better glass effect */
+.dropdown-menu .submenu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.2) 0%, 
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Scrollbar for submenu if needed */
+.dropdown-menu .submenu::-webkit-scrollbar {
+    width: 3px;
+}
+
+.dropdown-menu .submenu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.dropdown-menu .submenu::-webkit-scrollbar-thumb {
+    background: rgba(34, 197, 94, 0.6);
+    border-radius: 2px;
+}
+
+.dropdown-menu .submenu::-webkit-scrollbar-thumb:hover {
+    background: rgba(22, 163, 74, 0.8);
+}
 
     // Initialize homepage view
     showHomepage();
