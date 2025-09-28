@@ -85,7 +85,6 @@ function showCredenciales() {
 function openLink(url) {
     window.open(url, '_blank');
     closeTramitesMenu();
-    closeEditablesMenu();
 }
 
 // Functions for the new tramites menu
@@ -150,25 +149,7 @@ function closeTramitesMenu() {
     menuBtn.classList.remove('panel-active');
 }
 
-function showEditablesMenu() {
-    const dropdown = document.getElementById('editables-dropdown');
-    const arrow = document.getElementById('editables-arrow');
-    const menuBtn = document.getElementById('editables-menu-btn');
-    
-    dropdown.classList.remove('hidden');
-    arrow.style.transform = 'rotate(180deg)';
-    menuBtn.classList.add('panel-active');
-}
 
-function closeEditablesMenu() {
-    const dropdown = document.getElementById('editables-dropdown');
-    const arrow = document.getElementById('editables-arrow');
-    const menuBtn = document.getElementById('editables-menu-btn');
-    
-    dropdown.classList.add('hidden');
-    arrow.style.transform = 'rotate(0deg)';
-    menuBtn.classList.remove('panel-active');
-}
 
 // Event listeners for menu and other elements
 document.addEventListener('DOMContentLoaded', () => {
@@ -176,11 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tramitesDropdown = document.getElementById('tramites-dropdown');
     const tramitesContainer = tramitesMenuBtn.parentElement;
     let tramitesTimeout;
-
-    const editablesMenuBtn = document.getElementById('editables-menu-btn');
-    const editablesDropdown = document.getElementById('editables-dropdown');
-    const editablesContainer = editablesMenuBtn.parentElement;
-    let editablesTimeout;
 
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
@@ -190,18 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tramitesMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isHidden = tramitesDropdown.classList.contains('hidden');
-                closeEditablesMenu(); // Close other menu
-                if (isHidden) showTramitesMenu();
-                else closeTramitesMenu();
-            });
-        }
-        if (editablesMenuBtn) {
-            editablesMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isHidden = editablesDropdown.classList.contains('hidden');
-                closeTramitesMenu(); // Close other menu
-                if (isHidden) showEditablesMenu();
-                else closeEditablesMenu();
+                if (isHidden) {
+                    showTramitesMenu();
+                } else {
+                    closeTramitesMenu();
+                }
             });
         }
     } else {
@@ -209,31 +178,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tramitesContainer) {
             tramitesContainer.addEventListener('mouseenter', () => {
                 clearTimeout(tramitesTimeout);
-                closeEditablesMenu();
                 showTramitesMenu();
             });
             tramitesContainer.addEventListener('mouseleave', () => {
                 tramitesTimeout = setTimeout(closeTramitesMenu, 200);
             });
         }
-        if (editablesContainer) {
-            editablesContainer.addEventListener('mouseenter', () => {
-                clearTimeout(editablesTimeout);
-                closeTramitesMenu();
-                showEditablesMenu();
-            });
-            editablesContainer.addEventListener('mouseleave', () => {
-                editablesTimeout = setTimeout(closeEditablesMenu, 200);
-            });
-        }
     }
 
-    // Close menus when clicking outside
-    window.addEventListener('click', () => {
-        closeTramitesMenu();
-        closeEditablesMenu();
+    // Close menu when clicking outside, but not inside the dropdown
+    window.addEventListener('click', (e) => {
+        if (!tramitesContainer.contains(e.target)) {
+            closeTramitesMenu();
+        }
     });
 
+    // Keep the menu open when the mouse enters the dropdown itself
+    if (tramitesDropdown) {
+        tramitesDropdown.addEventListener('mouseenter', () => {
+            clearTimeout(tramitesTimeout);
+        });
+        tramitesDropdown.addEventListener('mouseleave', () => {
+            tramitesTimeout = setTimeout(closeTramitesMenu, 200);
+        });
+    }
 
     // Original independent button logic
     const independentButton = document.querySelector('.indep-btn');
