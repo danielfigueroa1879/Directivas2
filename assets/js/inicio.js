@@ -28,6 +28,11 @@ let activeSubmenu = null;
 let hideSubmenuTimeout = null;
 let currentTriggerButton = null;
 
+// Tiempos de retardo para evitar flicker
+const HIDE_TIMEOUT_MS = 300;
+const SHOW_TIMEOUT_MS = 100;
+let mainMenuTimeout = null;
+
 
 function rotateBackground() {
     const homepageSection = document.getElementById('homepage-section');
@@ -168,7 +173,7 @@ function openLink(url) {
 // Función para mostrar submenu
 function showSubmenu(triggerButton) {
     
-    // Limpiar timeout si existe
+    // Limpiar timeout de ocultamiento si existe
     clearTimeout(hideSubmenuTimeout);
     
     // Encontrar el submenu asociado al botón
@@ -215,9 +220,9 @@ function showSubmenu(triggerButton) {
     }
 
     // Ajustar si se sale de pantalla verticalmente
-    const submenuHeight = 300; // Estimado
+    const submenuHeight = 450; // Aumentamos la estimación de altura
     if (topPosition + submenuHeight > windowHeight) {
-        topPosition = windowHeight - submenuHeight - 20;
+        topPosition = Math.max(triggerRect.top - submenuHeight + triggerRect.height, 50); // Mueve hacia arriba, mínimo 50px del top
     }
 
     // Para móviles, centrar
@@ -237,11 +242,12 @@ function showSubmenu(triggerButton) {
         pointerEvents: 'auto',
         transform: 'translateX(0) scale(1)',
         width: `${submenuWidth}px`,
-        backgroundColor: 'rgba(255, 255, 255, 0.97)',
-        border: '1px solid rgba(229, 231, 235, 1)',
-        borderRadius: '12px',
-        boxShadow: '15px 5px 40px rgba(0, 0, 0, 0.2)',
-        padding: '12px 0'
+        // Estos estilos se aplican desde CSS ahora:
+        // backgroundColor: 'rgba(255, 255, 255, 0.97)',
+        // border: '1px solid rgba(229, 231, 235, 1)',
+        // borderRadius: '12px',
+        // boxShadow: '15px 5px 40px rgba(0, 0, 0, 0.2)',
+        // padding: '12px 0'
     };
     
     Object.assign(activeSubmenu.style, stylesToApply);
@@ -249,15 +255,23 @@ function showSubmenu(triggerButton) {
     // Guardar referencia
     currentTriggerButton = triggerButton;
 
-    // Event listeners para el submenu
+    // AÑADIR ESCUCHAS AL SUBMENÚ CLONADO PARA QUE NO SE CIERRE AL ENTRAR EN ÉL
     activeSubmenu.addEventListener('mouseenter', () => {
         clearTimeout(hideSubmenuTimeout);
+        // También limpiar el timeout del menú principal para evitar el flicker
+        clearTimeout(mainMenuTimeout);
     });
 
     activeSubmenu.addEventListener('mouseleave', () => {
         hideSubmenuTimeout = setTimeout(() => {
             hideSubmenu();
-        }, 300);
+        }, HIDE_TIMEOUT_MS);
+        
+        // Vuelve a iniciar el timer del menú principal
+        const tramitesContainer = document.getElementById('tramites-menu-btn')?.parentElement;
+        if (tramitesContainer) {
+            mainMenuTimeout = setTimeout(closeTramitesMenu, HIDE_TIMEOUT_MS);
+        }
     });
 }
 
@@ -290,7 +304,6 @@ function setupSubmenuTriggers() {
     
     submenuTriggers.forEach((trigger, index) => {
         
-        // Verificar que el trigger tiene un submenu
         const hasSubmenu = trigger.parentElement.querySelector('.submenu');
         
         if (!hasSubmenu) {
@@ -306,13 +319,14 @@ function setupSubmenuTriggers() {
             
             newTrigger.addEventListener('mouseenter', (e) => {
                 clearTimeout(hideSubmenuTimeout);
-                showSubmenu(e.currentTarget);
+                // Usamos un pequeño retardo para mostrar y evitar el flicker
+                setTimeout(() => showSubmenu(e.currentTarget), SHOW_TIMEOUT_MS);
             });
             
             newTrigger.addEventListener('mouseleave', () => {
                 hideSubmenuTimeout = setTimeout(() => {
                     hideSubmenu();
-                }, 300);
+                }, HIDE_TIMEOUT_MS);
             });
         } else {
             // Móvil: click
@@ -331,7 +345,10 @@ function setupGlobalListeners() {
     
     // Click fuera
     document.addEventListener('click', (e) => {
-        if (activeSubmenu && !activeSubmenu.contains(e.target)) {
+        // Asegurar que no se cierre si el click es en el botón del menú principal
+        const isMainMenuButton = document.getElementById('tramites-menu-btn')?.contains(e.target);
+        
+        if (activeSubmenu && !activeSubmenu.contains(e.target) && !isMainMenuButton) {
             const triggerContainer = currentTriggerButton?.parentElement;
             if (!triggerContainer || !triggerContainer.contains(e.target)) {
                 hideSubmenu();
@@ -386,22 +403,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const tramitesDropdown = document.getElementById('tramites-dropdown');
     const tramitesContainer = tramitesMenuBtn?.parentElement;
-    let tramitesTimeout;
+    // let tramitesTimeout; // Usaremos la variable global mainMenuTimeout
 
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // --- Main Menu Logic ---
+    // --- Main Menu Logic (Hover más estable) ---
     if (!isTouchDevice && tramitesContainer) {
         const mainDropdownElements = [tramitesContainer, tramitesDropdown];
         mainDropdownElements.forEach(el => {
             if (el) {
                 el.addEventListener('mouseenter', () => {
-                    clearTimeout(tramitesTimeout);
+                    clearTimeout(mainMenuTimeout);
                     hideSubmenu();
-                    showTramitesMenu();
+                    // Usar retardo para mostrar y evitar el flicker
+                    mainMenuTimeout = setTimeout(showTramitesMenu, SHOW_TIMEOUT_MS);
                 });
                 el.addEventListener('mouseleave', () => {
-                    tramitesTimeout = setTimeout(closeTramitesMenu, 300);
+                    clearTimeout(mainMenuTimeout);
+                    mainMenuTimeout = setTimeout(closeTramitesMenu, HIDE_TIMEOUT_MS);
                 });
             }
         });
@@ -482,3 +501,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showHomepage();
 });
+
+// Exponer funciones globalmente para ser accesibles desde el HTML
+window.showDirectiva = showDirectiva;
+window.showCredenciales = showCredenciales;
+window.handleCerofilas = handleCerofilas;
+window.handleDirectiva = handleDirectiva;
+window.handleCredenciales = handleCredenciales;
+window.handleCredencialIndependiente = handleCredencialIndependiente;
+window.handleValores = handleValores;
+window.handleValorPlan = handleValorPlan;
+window.handleCursoFormacion = handleCursoFormacion;
+window.openLink = openLink;
