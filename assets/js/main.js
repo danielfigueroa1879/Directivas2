@@ -421,10 +421,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     submenu.style.top = `${rect.top}px`;
                     submenu.style.transform = ''; // Clear any transform
                 } else {
-                    // Mobile: Centered horizontally, below the button
-                    submenu.style.left = '50%';
-                    submenu.style.top = `${rect.bottom + 10}px`; // 10px below the button
-                    submenu.style.transform = 'translateX(-50%)';
+                    // Mobile: Align with parent dropdown, not screen center
+                    const dropdownRect = tramitesDropdown.getBoundingClientRect();
+                    submenu.style.left = `${dropdownRect.left + 20}px`; // 20px from parent menu left
+                    submenu.style.top = `${rect.bottom + 10}px`;
+                    submenu.style.transform = ''; // Remove centering transform
                 }
                 
                 submenu.classList.add('show');
@@ -436,33 +437,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 200); // Un retraso razonable para permitir el movimiento del cursor
             };
 
-            // Mostrar al entrar en el botón o en el propio submenú
+            // PC hover listeners
             item.addEventListener('mouseenter', showSubmenu);
             submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
-
-            // Ocultar al salir del área combinada del botón y el submenú
             item.addEventListener('mouseleave', hideSubmenu);
             submenu.addEventListener('mouseleave', hideSubmenu);
 
-            // Manejo de clics para dispositivos táctiles o como fallback
-            submenuButton.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default button action
-                event.stopPropagation(); // Prevent bubbling
-                
-                const isVisible = submenu.classList.contains('show');
-                
-                // Always close all other submenus
-                document.querySelectorAll('.submenu.show').forEach(s => {
-                    if (s !== submenu) {
-                        s.classList.remove('show');
-                    }
-                });
+            // Mobile click listener on the whole item
+            item.addEventListener('click', (event) => {
+                if (window.innerWidth <= 1024) { // Only for mobile
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                // Toggle the current one
-                if (!isVisible) {
-                    showSubmenu();
-                } else {
-                    submenu.classList.remove('show');
+                    const isVisible = submenu.classList.contains('show');
+
+                    // Close all other submenus
+                    document.querySelectorAll('.submenu.show').forEach(s => {
+                        if (s !== submenu) {
+                            s.classList.remove('show');
+                        }
+                    });
+
+                    // Toggle the current one
+                    if (!isVisible) {
+                        showSubmenu();
+                    } else {
+                        submenu.classList.remove('show');
+                    }
                 }
             });
         }
@@ -473,8 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tramitesDropdownOpen && !tramitesDropdown.contains(event.target) && !tramitesMenuBtn.contains(event.target)) {
             toggleTramitesDropdown();
         }
-        // No es necesario cerrar los submenús aquí, el mouseleave lo gestiona.
-        // Solo se cierra el dropdown principal.
     });
 
     // Función para manejar la navegación de enlaces
@@ -489,5 +488,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
-
-
