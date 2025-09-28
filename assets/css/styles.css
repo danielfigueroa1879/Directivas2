@@ -819,8 +819,8 @@ body.homepage {
 /* Adjust submenu for smaller screens if needed */
 @media (max-width: 1024px) {
     .dropdown-menu .submenu {
-        left: -100%; /* Position it to the left on smaller screens */
-        border-radius: 12px 0 12px 12px;
+        left: 100%; /* Position it to the right on smaller screens */
+        border-radius: 0 12px 12px 0; /* Adjust border radius for right side */
         top: 0;
     }
 }
