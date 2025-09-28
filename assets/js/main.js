@@ -418,10 +418,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const rect = submenuButton.getBoundingClientRect();
                     submenu.style.left = `${rect.right + 5}px`;
                     submenu.style.top = `${rect.top}px`;
+                    submenu.style.transform = ''; // Clear any transform
                 } else {
-                    // Mobile: remove inline styles and let CSS handle it
-                    submenu.style.left = '';
-                    submenu.style.top = '';
+                    // Mobile: Centered horizontally, below the button
+                    const rect = submenuButton.getBoundingClientRect();
+                    submenu.style.left = '50%';
+                    submenu.style.top = `${rect.bottom + 10}px`; // 10px below the button
+                    submenu.style.transform = 'translateX(-50%)';
                 }
                 
                 // Mostrar el submenu
@@ -444,17 +447,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Manejo de clics para dispositivos táctiles o como fallback
             submenuButton.addEventListener('click', (event) => {
-                event.stopPropagation();
-                if (tramitesDropdownOpen) {
-                    const isVisible = submenu.classList.contains('show');
-                    // Cerrar todos los demás primero
-                    hasSubmenus.forEach(otherItem => {
-                        otherItem.querySelector('.submenu').classList.remove('show');
-                    });
-                    // Si no estaba visible, mostrarlo
-                    if (!isVisible) {
-                        showSubmenu();
-                    }
+                event.stopPropagation(); // Prevent click from bubbling up
+    
+                // Simple toggle logic
+                const isVisible = submenu.classList.contains('show');
+                
+                // Always close all submenus first
+                document.querySelectorAll('.submenu.show').forEach(s => s.classList.remove('show'));
+
+                if (!isVisible) {
+                    showSubmenu();
                 }
             });
         }
@@ -481,5 +483,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
-
-
