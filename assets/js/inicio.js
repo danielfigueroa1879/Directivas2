@@ -23,6 +23,13 @@ let backgroundImages = [
 
 let currentImageIndex = 0;
 
+// Variables para submenu - DIAGNÓSTICO
+let activeSubmenu = null;
+let hideSubmenuTimeout = null;
+let currentTriggerButton = null;
+
+console.log('🚀 === INICIO.JS CARGADO CON DIAGNÓSTICO ===');
+
 function rotateBackground() {
     const homepageSection = document.getElementById('homepage-section');
     if (homepageSection && document.body.classList.contains('homepage')) {
@@ -82,14 +89,36 @@ function showCredenciales() {
     window.scrollTo(0, 0);
 }
 
-// This function is now smarter
-function openLink(url) {
-    window.open(url, '_blank');
-    closeTramitesMenu();
-    hideSubmenu(); // Hide teleported submenu as well
+function showTramitesMenu() {
+    const dropdown = document.getElementById('tramites-dropdown');
+    const arrow = document.getElementById('tramites-arrow');
+    const menuBtn = document.getElementById('tramites-menu-btn');
+    
+    if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        arrow.style.transform = 'rotate(180deg)';
+        menuBtn.classList.add('panel-active');
+        console.log('✅ Menú trámites mostrado');
+    }
 }
 
-// Functions for the new tramites menu
+function closeTramitesMenu() {
+    const dropdown = document.getElementById('tramites-dropdown');
+    const arrow = document.getElementById('tramites-arrow');
+    const menuBtn = document.getElementById('tramites-menu-btn');
+    
+    if (dropdown && !dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+        arrow.style.transform = 'rotate(0deg)';
+        menuBtn.classList.remove('panel-active');
+        console.log('✅ Menú trámites cerrado');
+    }
+    
+    // También ocultar submenu al cerrar menú principal
+    hideSubmenu();
+}
+
+// Functions for the tramites menu
 function handleCerofilas() {
     window.open('https://dal5.short.gy/CFil', '_blank');
     closeTramitesMenu();
@@ -131,49 +160,104 @@ function handleCursoFormacion() {
     closeTramitesMenu();
 }
 
-function showTramitesMenu() {
-    const dropdown = document.getElementById('tramites-dropdown');
-    const arrow = document.getElementById('tramites-arrow');
-    const menuBtn = document.getElementById('tramites-menu-btn');
-    
-    if (dropdown.classList.contains('hidden')) {
-        dropdown.classList.remove('hidden');
-        arrow.style.transform = 'rotate(180deg)';
-        menuBtn.classList.add('panel-active');
-    }
+function openLink(url) {
+    window.open(url, '_blank');
+    closeTramitesMenu();
+    hideSubmenu();
 }
 
-function closeTramitesMenu() {
-    const dropdown = document.getElementById('tramites-dropdown');
-    const arrow = document.getElementById('tramites-arrow');
-    const menuBtn = document.getElementById('tramites-menu-btn');
+// === SISTEMA DE SUBMENU CON DIAGNÓSTICO COMPLETO ===
+
+// Función de diagnóstico mejorada
+function diagnosticarSubmenu() {
+    console.log('🔍 === DIAGNÓSTICO COMPLETO DEL SUBMENU ===');
     
-    if (dropdown && !dropdown.classList.contains('hidden')) {
-        dropdown.classList.add('hidden');
-        arrow.style.transform = 'rotate(0deg)';
-        menuBtn.classList.remove('panel-active');
+    const tramitesDropdown = document.getElementById('tramites-dropdown');
+    console.log('1. Menú trámites encontrado:', !!tramitesDropdown);
+    
+    if (tramitesDropdown) {
+        console.log('   - Display:', window.getComputedStyle(tramitesDropdown).display);
+        console.log('   - Visibility:', window.getComputedStyle(tramitesDropdown).visibility);
+        console.log('   - Clases:', tramitesDropdown.className);
     }
+    
+    const hasSubmenuElements = document.querySelectorAll('.has-submenu');
+    console.log('2. Elementos .has-submenu encontrados:', hasSubmenuElements.length);
+    
+    const submenuElements = document.querySelectorAll('.submenu');
+    console.log('3. Elementos .submenu encontrados:', submenuElements.length);
+    
+    const allButtons = document.querySelectorAll('.dropdown-menu button');
+    console.log('4. Total de botones en dropdown:', allButtons.length);
+    
+    hasSubmenuElements.forEach((element, index) => {
+        const button = element.querySelector('button');
+        const submenu = element.querySelector('.submenu');
+        
+        console.log(`   📂 Item ${index + 1}:`, {
+            texto: button?.textContent.trim(),
+            hasSubmenu: !!submenu,
+            submenuButtons: submenu?.querySelectorAll('button').length || 0,
+            clases: element.className
+        });
+        
+        if (submenu) {
+            const submenuButtons = submenu.querySelectorAll('button');
+            submenuButtons.forEach((btn, btnIndex) => {
+                console.log(`      🔸 Botón ${btnIndex + 1}:`, btn.textContent.trim());
+            });
+        }
+    });
+    
+    // Verificar CSS
+    const submenuCSS = document.querySelector('.dropdown-menu .submenu');
+    if (submenuCSS) {
+        const styles = window.getComputedStyle(submenuCSS);
+        console.log('5. Estilos CSS del submenu:', {
+            position: styles.position,
+            display: styles.display,
+            opacity: styles.opacity,
+            visibility: styles.visibility,
+            zIndex: styles.zIndex
+        });
+    }
+    
+    console.log('🔍 === FIN DIAGNÓSTICO ===');
+    return {
+        tramitesDropdown: !!tramitesDropdown,
+        hasSubmenuCount: hasSubmenuElements.length,
+        submenuCount: submenuElements.length,
+        totalButtons: allButtons.length
+    };
 }
 
-// === SISTEMA DE SUBMENU FLYOUT CORREGIDO ===
-
-// Variables para control de submenus
-let activeSubmenu = null;
-let hideSubmenuTimeout = null;
-let currentTriggerButton = null;
-
+// Función mejorada para mostrar submenu con debugging extenso
 function showSubmenu(triggerButton) {
-    console.log('🎯 Intentando mostrar submenu para:', triggerButton.textContent);
+    console.log('🎯 === INICIANDO showSubmenu ===');
+    console.log('📍 Trigger button:', triggerButton.textContent.trim());
+    console.log('📍 Trigger classes:', triggerButton.className);
+    console.log('📍 Parent classes:', triggerButton.parentElement.className);
     
     // Limpiar timeout si existe
     clearTimeout(hideSubmenuTimeout);
     
     // Encontrar el submenu asociado al botón
     const submenuTemplate = triggerButton.parentElement.querySelector('.submenu');
+    console.log('📍 Template encontrado:', !!submenuTemplate);
+    
     if (!submenuTemplate) {
-        console.log('❌ No submenu found for button:', triggerButton.textContent);
+        console.error('❌ No se encontró submenu template para:', triggerButton.textContent);
+        
+        // Diagnóstico adicional
+        console.log('🔍 Estructura del parent:', triggerButton.parentElement.innerHTML);
         return;
     }
+    
+    const templateButtons = submenuTemplate.querySelectorAll('button');
+    console.log('📍 Número de botones en template:', templateButtons.length);
+    templateButtons.forEach((btn, index) => {
+        console.log(`   📍 Botón ${index + 1}:`, btn.textContent.trim());
+    });
 
     // Si ya hay un submenu activo del mismo botón, no hacer nada
     if (activeSubmenu && currentTriggerButton === triggerButton) {
@@ -182,92 +266,335 @@ function showSubmenu(triggerButton) {
     }
 
     // Ocultar submenu anterior si existe
+    console.log('📍 Ocultando submenu anterior...');
     hideSubmenu();
 
-    // Obtener posición del botón trigger y del menú principal
+    // Obtener posiciones con debugging
     const triggerRect = triggerButton.getBoundingClientRect();
     const dropdownMenu = document.getElementById('tramites-dropdown');
     const dropdownRect = dropdownMenu.getBoundingClientRect();
 
-    console.log('📐 Posiciones calculadas:', {
-        trigger: triggerRect,
-        dropdown: dropdownRect
+    console.log('📍 Posiciones detalladas:', {
+        trigger: { 
+            top: Math.round(triggerRect.top), 
+            left: Math.round(triggerRect.left), 
+            right: Math.round(triggerRect.right),
+            bottom: Math.round(triggerRect.bottom),
+            width: Math.round(triggerRect.width),
+            height: Math.round(triggerRect.height)
+        },
+        dropdown: { 
+            top: Math.round(dropdownRect.top), 
+            left: Math.round(dropdownRect.left), 
+            right: Math.round(dropdownRect.right),
+            bottom: Math.round(dropdownRect.bottom),
+            width: Math.round(dropdownRect.width),
+            height: Math.round(dropdownRect.height)
+        },
+        window: {
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
     });
 
     // Crear nuevo submenu clonando el template
+    console.log('📍 Clonando template...');
     activeSubmenu = submenuTemplate.cloneNode(true);
+    
+    console.log('📍 Clonación completada. Clases antes de modificar:', activeSubmenu.className);
+    
+    // Limpiar clases y agregar la clase show
+    activeSubmenu.classList.remove('hidden');
     activeSubmenu.classList.add('show');
     
-    // CLAVE: Agregar al body para que aparezca FUERA del contenedor principal
+    console.log('📍 Clases después de modificar:', activeSubmenu.className);
+    console.log('📍 Agregando al body...');
+    
+    // Agregar al body
     document.body.appendChild(activeSubmenu);
+    console.log('📍 Agregado al body correctamente');
 
-    // Calcular posición para que aparezca al lado derecho del menú principal
-    let leftPosition = dropdownRect.right + 10; // 10px de separación
-    let topPosition = triggerRect.top - 5; // Alineado con el botón trigger
+    // Calcular posición con más detalle
+    let leftPosition = dropdownRect.right + 15; // Más separación
+    let topPosition = triggerRect.top - 5;
 
-    // Verificar si se sale de la pantalla horizontalmente
     const submenuWidth = 280;
     const windowWidth = window.innerWidth;
-    
-    if (leftPosition + submenuWidth > windowWidth) {
-        // Si se sale por la derecha, mostrar por la izquierda
-        leftPosition = dropdownRect.left - submenuWidth - 10;
-        console.log('📱 Reposicionando submenu a la izquierda');
-    }
-
-    // Verificar si se sale de la pantalla verticalmente
-    const submenuHeight = activeSubmenu.scrollHeight;
     const windowHeight = window.innerHeight;
     
+    console.log('📍 Cálculo inicial de posición:', { leftPosition, topPosition });
+    
+    // Ajustar si se sale de pantalla horizontalmente
+    if (leftPosition + submenuWidth > windowWidth) {
+        leftPosition = dropdownRect.left - submenuWidth - 15;
+        console.log('📱 Reposicionando a la izquierda. Nueva posición:', leftPosition);
+    }
+
+    // Ajustar si se sale de pantalla verticalmente
+    const submenuHeight = 300; // Estimado
     if (topPosition + submenuHeight > windowHeight) {
         topPosition = windowHeight - submenuHeight - 20;
-        console.log('📱 Ajustando posición vertical');
+        console.log('📱 Ajustando posición vertical. Nueva posición:', topPosition);
     }
 
-    // Para móviles, centrar horizontalmente
+    // Para móviles, centrar
     if (window.innerWidth <= 1024) {
         leftPosition = (windowWidth - submenuWidth) / 2;
-        topPosition = Math.max(80, topPosition); // No muy arriba
+        topPosition = Math.max(100, topPosition);
+        console.log('📱 Modo móvil activado. Posición centrada:', { leftPosition, topPosition });
     }
 
-    // Aplicar posición calculada
-    activeSubmenu.style.left = `${leftPosition}px`;
-    activeSubmenu.style.top = `${topPosition}px`;
+    console.log('📍 Posición final calculada:', { left: leftPosition, top: topPosition });
 
-    console.log('✅ Submenu posicionado en:', { left: leftPosition, top: topPosition });
+    // Aplicar estilos directamente con debugging
+    console.log('📍 Aplicando estilos...');
+    
+    const stylesToApply = {
+        position: 'fixed',
+        left: `${leftPosition}px`,
+        top: `${topPosition}px`,
+        zIndex: '1350',
+        opacity: '1',
+        visibility: 'visible',
+        pointerEvents: 'auto',
+        transform: 'translateX(0) scale(1)',
+        width: `${submenuWidth}px`,
+        backgroundColor: 'rgba(255, 255, 255, 0.97)',
+        border: '1px solid rgba(229, 231, 235, 1)',
+        borderRadius: '12px',
+        boxShadow: '15px 5px 40px rgba(0, 0, 0, 0.2)',
+        padding: '12px 0'
+    };
+    
+    Object.assign(activeSubmenu.style, stylesToApply);
+    
+    console.log('📍 Estilos aplicados:', stylesToApply);
 
-    // Guardar referencia del botón actual
+    // Guardar referencia
     currentTriggerButton = triggerButton;
 
-    // Agregar event listeners al nuevo submenu
+    // Event listeners para el submenu con debugging
     activeSubmenu.addEventListener('mouseenter', () => {
+        console.log('🖱️ Mouse enter en submenu');
         clearTimeout(hideSubmenuTimeout);
     });
 
     activeSubmenu.addEventListener('mouseleave', () => {
-        hideSubmenuTimeout = setTimeout(hideSubmenu, 300);
+        console.log('🖱️ Mouse leave en submenu');
+        hideSubmenuTimeout = setTimeout(() => {
+            console.log('⏰ Timeout: ocultando submenu después de mouseleave');
+            hideSubmenu();
+        }, 300);
     });
 
-    console.log('🎉 Submenu mostrado exitosamente para:', triggerButton.textContent);
+    console.log('✅ === SUBMENU MOSTRADO EXITOSAMENTE ===');
+    
+    // Verificación final detallada
+    setTimeout(() => {
+        if (activeSubmenu) {
+            const submenuInDom = document.body.contains(activeSubmenu);
+            const computedStyles = window.getComputedStyle(activeSubmenu);
+            const rect = activeSubmenu.getBoundingClientRect();
+            
+            console.log('🔍 === VERIFICACIÓN FINAL ===');
+            console.log('📍 En DOM:', submenuInDom);
+            console.log('📍 Posición real:', {
+                top: Math.round(rect.top),
+                left: Math.round(rect.left),
+                width: Math.round(rect.width),
+                height: Math.round(rect.height)
+            });
+            console.log('📍 Estilos computados:', {
+                position: computedStyles.position,
+                opacity: computedStyles.opacity,
+                visibility: computedStyles.visibility,
+                display: computedStyles.display,
+                zIndex: computedStyles.zIndex,
+                transform: computedStyles.transform
+            });
+            console.log('📍 ¿Visible en pantalla?', rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth);
+            console.log('🔍 === FIN VERIFICACIÓN ===');
+        } else {
+            console.error('❌ activeSubmenu es null en verificación final');
+        }
+    }, 100);
 }
 
+// Función mejorada para ocultar submenu con debugging
 function hideSubmenu() {
+    console.log('🗑️ === OCULTANDO SUBMENU ===');
+    
     if (activeSubmenu) {
-        console.log('🗑️ Ocultando submenu');
+        console.log('📍 Submenu existe, procediendo a remover...');
         try {
-            document.body.removeChild(activeSubmenu);
+            if (document.body.contains(activeSubmenu)) {
+                document.body.removeChild(activeSubmenu);
+                console.log('✅ Submenu removido del DOM');
+            } else {
+                console.warn('⚠️ Submenu no estaba en el DOM');
+            }
         } catch (e) {
-            console.warn('⚠️ Error al remover submenu:', e);
+            console.error('❌ Error al remover submenu:', e);
         }
         activeSubmenu = null;
         currentTriggerButton = null;
+        console.log('📍 Referencias limpiadas');
+    } else {
+        console.log('📍 No hay submenu para ocultar');
     }
     clearTimeout(hideSubmenuTimeout);
+    console.log('🗑️ === FIN OCULTAR SUBMENU ===');
 }
 
-// --- REWRITTEN DOMCONTENTLOADED ---
+// Función para configurar triggers con debugging extenso
+function setupSubmenuTriggers() {
+    console.log('🔧 === CONFIGURANDO TRIGGERS DE SUBMENU ===');
+    
+    const submenuTriggers = document.querySelectorAll('.has-submenu > button');
+    console.log('📍 Triggers encontrados:', submenuTriggers.length);
+    
+    if (submenuTriggers.length === 0) {
+        console.warn('⚠️ No se encontraron triggers de submenu');
+        console.log('🔍 Elementos .has-submenu disponibles:', document.querySelectorAll('.has-submenu').length);
+        return;
+    }
+    
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    console.log('📍 Dispositivo táctil:', isTouchDevice);
+    
+    submenuTriggers.forEach((trigger, index) => {
+        const buttonText = trigger.textContent.trim();
+        console.log(`🔧 Configurando trigger ${index + 1}: "${buttonText}"`);
+        
+        // Verificar que el trigger tiene un submenu
+        const hasSubmenu = trigger.parentElement.querySelector('.submenu');
+        console.log(`   📍 Tiene submenu:`, !!hasSubmenu);
+        
+        if (!hasSubmenu) {
+            console.warn(`   ⚠️ Trigger "${buttonText}" no tiene submenu`);
+            return;
+        }
+        
+        // Limpiar listeners anteriores clonando el elemento
+        const newTrigger = trigger.cloneNode(true);
+        trigger.parentNode.replaceChild(newTrigger, trigger);
+        
+        if (!isTouchDevice) {
+            // Desktop: hover
+            console.log(`   🖱️ Configurando hover para "${buttonText}"`);
+            
+            newTrigger.addEventListener('mouseenter', (e) => {
+                console.log(`🖱️ === MOUSE ENTER en "${e.currentTarget.textContent.trim()}" ===`);
+                clearTimeout(hideSubmenuTimeout);
+                showSubmenu(e.currentTarget);
+            });
+            
+            newTrigger.addEventListener('mouseleave', () => {
+                console.log(`🖱️ === MOUSE LEAVE en "${buttonText}" ===`);
+                hideSubmenuTimeout = setTimeout(() => {
+                    console.log(`⏰ Timeout desde trigger "${buttonText}": ocultando submenu`);
+                    hideSubmenu();
+                }, 300);
+            });
+        } else {
+            // Móvil: click
+            console.log(`   👆 Configurando click para "${buttonText}"`);
+            
+            newTrigger.addEventListener('click', (e) => {
+                console.log(`👆 === CLICK en "${e.currentTarget.textContent.trim()}" ===`);
+                e.stopPropagation();
+                e.preventDefault();
+                showSubmenu(e.currentTarget);
+            });
+        }
+        
+        console.log(`✅ Trigger "${buttonText}" configurado`);
+    });
+    
+    console.log('🔧 === TRIGGERS CONFIGURADOS ===');
+}
+
+// Función de limpieza global con debugging
+function setupGlobalListeners() {
+    console.log('🌐 === CONFIGURANDO LISTENERS GLOBALES ===');
+    
+    // Click fuera
+    document.addEventListener('click', (e) => {
+        if (activeSubmenu && !activeSubmenu.contains(e.target)) {
+            const triggerContainer = currentTriggerButton?.parentElement;
+            if (!triggerContainer || !triggerContainer.contains(e.target)) {
+                console.log('👆 Click fuera del submenu detectado, ocultando...');
+                hideSubmenu();
+            }
+        }
+    });
+
+    // Scroll
+    window.addEventListener('scroll', () => {
+        if (activeSubmenu) {
+            console.log('📜 Scroll detectado, ocultando submenu');
+            hideSubmenu();
+        }
+    });
+    
+    // Resize
+    window.addEventListener('resize', () => {
+        if (activeSubmenu) {
+            console.log('📏 Resize detectado, ocultando submenu');
+            hideSubmenu();
+        }
+    });
+    
+    console.log('🌐 === LISTENERS GLOBALES CONFIGURADOS ===');
+}
+
+// Función de inicialización completa
+function initializeSubmenuSystem() {
+    console.log('🚀 === INICIALIZANDO SISTEMA DE SUBMENU COMPLETO ===');
+    
+    // Diagnóstico inicial
+    setTimeout(() => {
+        console.log('📊 Ejecutando diagnóstico inicial...');
+        const diagnostico = diagnosticarSubmenu();
+        
+        if (diagnostico.hasSubmenuCount === 0) {
+            console.error('❌ No se encontraron elementos con submenu. Verifica el HTML.');
+        }
+    }, 500);
+    
+    // Configurar triggers
+    setTimeout(() => {
+        console.log('⚙️ Configurando triggers...');
+        setupSubmenuTriggers();
+    }, 600);
+    
+    // Configurar listeners globales
+    setTimeout(() => {
+        console.log('🌐 Configurando listeners globales...');
+        setupGlobalListeners();
+    }, 700);
+    
+    // Observador para cambios en el DOM
+    const observer = new MutationObserver((mutations) => {
+        console.log('🔄 Cambios en DOM detectados:', mutations.length, 'mutaciones');
+        setTimeout(() => {
+            console.log('🔄 Reconfigurando triggers después de cambios en DOM...');
+            setupSubmenuTriggers();
+        }, 100);
+    });
+    
+    const tramitesDropdown = document.getElementById('tramites-dropdown');
+    if (tramitesDropdown) {
+        observer.observe(tramitesDropdown, { childList: true, subtree: true });
+        console.log('👁️ Observador de DOM configurado');
+    }
+    
+    console.log('🚀 === SISTEMA DE SUBMENU INICIALIZADO ===');
+}
+
+// DOMContentLoaded principal
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Inicializando sistema de menús...');
+    console.log('📄 === DOM CONTENT LOADED ===');
     
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const tramitesDropdown = document.getElementById('tramites-dropdown');
@@ -279,6 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Main Menu Logic ---
     if (!isTouchDevice && tramitesContainer) {
+        console.log('🖱️ Configurando lógica hover para menú principal');
         const mainDropdownElements = [tramitesContainer, tramitesDropdown];
         mainDropdownElements.forEach(el => {
             if (el) {
@@ -293,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } else if (tramitesMenuBtn) {
-        // Click logic for touch devices
+        console.log('👆 Configurando lógica click para menú principal');
         tramitesMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             const isHidden = tramitesDropdown.classList.contains('hidden');
@@ -302,68 +630,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Función para configurar triggers de submenu ---
-    function setupSubmenuTriggers() {
-        const submenuTriggers = document.querySelectorAll('.has-submenu > button');
-        console.log('🎯 Configurando', submenuTriggers.length, 'triggers de submenu');
-        
-        submenuTriggers.forEach((trigger, index) => {
-            // Limpiar event listeners anteriores
-            trigger.replaceWith(trigger.cloneNode(true));
-            const newTrigger = document.querySelectorAll('.has-submenu > button')[index];
-            
-            if (!isTouchDevice) {
-                // Desktop: usar hover
-                newTrigger.addEventListener('mouseenter', (e) => {
-                    clearTimeout(tramitesTimeout); // Keep main menu open
-                    showSubmenu(e.currentTarget);
-                });
-                newTrigger.addEventListener('mouseleave', () => {
-                    hideSubmenuTimeout = setTimeout(hideSubmenu, 300);
-                });
-            } else {
-                // Móvil: usar click
-                newTrigger.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent closing the main menu
-                    e.preventDefault();
-                    showSubmenu(e.currentTarget);
-                });
-            }
-        });
-    }
+    // Inicializar sistema de submenu
+    initializeSubmenuSystem();
 
-    // Configurar triggers inicialmente
-    setTimeout(setupSubmenuTriggers, 100);
-
-    // Re-configurar cuando el menú se abra (para elementos dinámicos)
-    if (tramitesDropdown) {
-        const observer = new MutationObserver(() => {
-            setTimeout(setupSubmenuTriggers, 50);
-        });
-        observer.observe(tramitesDropdown, { childList: true, subtree: true });
-    }
-
-    // --- Global Click Listener ---
-    window.addEventListener('click', (e) => {
-        // Close main menu if click is outside
-        if (tramitesContainer && !tramitesContainer.contains(e.target) && 
-            tramitesDropdown && !tramitesDropdown.contains(e.target)) {
-            closeTramitesMenu();
-        }
-        // Close submenu if click is outside
-        if (activeSubmenu && !activeSubmenu.contains(e.target)) {
-            const triggerContainer = currentTriggerButton?.parentElement;
-            if (!triggerContainer || !triggerContainer.contains(e.target)) {
-                hideSubmenu();
-            }
-        }
-    });
-
-    // Cerrar submenus al hacer scroll o redimensionar
-    window.addEventListener('scroll', hideSubmenu);
-    window.addEventListener('resize', hideSubmenu);
-
-    // --- All other original listeners from the old file ---
+    // --- Resto de listeners originales ---
     const independentButton = document.querySelector('.indep-btn');
     if (independentButton) {
         setInterval(() => {
@@ -427,12 +697,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Exponer funciones globalmente
-    window.showSubmenu = showSubmenu;
-    window.hideSubmenu = hideSubmenu;
-    window.showTramitesMenu = showTramitesMenu;
-    window.closeTramitesMenu = closeTramitesMenu;
-
-    console.log('✅ Sistema de menús inicializado correctamente');
+    console.log('✅ Todos los listeners configurados');
     showHomepage();
 });
+
+// Exponer funciones globalmente para debugging manual
+window.showSubmenu = showSubmenu;
+window.hideSubmenu = hideSubmenu;
+window.diagnosticarSubmenu = diagnosticarSubmenu;
+window.setupSubmenuTriggers = setupSubmenuTriggers;
+window.showTramitesMenu = showTramitesMenu;
+window.closeTramitesMenu = closeTramitesMenu;
+
+console.log('🎯 === INICIO.JS COMPLETAMENTE CARGADO ===');
