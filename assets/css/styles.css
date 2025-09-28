@@ -587,12 +587,12 @@ body.homepage {
     color: rgba(31, 41, 55, 0.95);
 }
 
-/* REVERTIDO: Botones del MENÚ PRINCIPAL vuelven a la alineación izquierda original */
+/* Botones del MENÚ PRINCIPAL */
 .dropdown-menu button {
     width: 100%;
-    text-align: left; /* REVERTIDO A IZQUIERDA */
+    text-align: left; 
     padding: 14px 20px;
-    font-size: 0.875rem;
+    font-size: 0.875rem; /* Tamaño de fuente normal para menú principal */
     color: rgba(31, 41, 55, 0.9);
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
@@ -604,12 +604,12 @@ body.homepage {
 
 .dropdown-menu button:last-child { border-bottom: none; }
 
-/* El efecto hover para botones principales (vuelve a moverse un poco) */
+/* El efecto hover para botones principales */
 .dropdown-menu button:hover {
     background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
-    transform: translateX(4px); /* Vuelve al desplazamiento a la derecha */
-    padding-left: 24px; /* Ajuste por el desplazamiento */
+    transform: translateX(4px); 
+    padding-left: 24px; 
     padding-right: 20px;
     backdrop-filter: blur(10px);
 }
@@ -659,9 +659,9 @@ body.homepage {
 /* CENTRADO Y ESTILO DE BOTONES DENTRO DEL SUBMENU */
 .dropdown-menu .submenu button {
     width: 100%;
-    text-align: center; /* CENTRADO APLICADO AQUÍ (PUNTO 1) */
+    text-align: center; /* CENTRADO SOLICITADO */
     padding: 12px 20px;
-    font-size: 0.875rem;
+    font-size: 0.8rem; /* TEXTO UN POCO MÁS PEQUEÑO (0.8rem) */
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
     border: none;
@@ -740,7 +740,7 @@ body.homepage {
         font-size: 0.8rem;
     }
     .dropdown-menu button:hover {
-        transform: translateX(6px); /* Pequeño desplazamiento en móvil */
+        transform: translateX(6px); 
         padding-left: 22px;
     }
     .dropdown-menu .submenu button:hover {
