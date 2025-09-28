@@ -82,9 +82,11 @@ function showCredenciales() {
     window.scrollTo(0, 0);
 }
 
+// This function is now smarter
 function openLink(url) {
     window.open(url, '_blank');
     closeTramitesMenu();
+    hideSubmenu(); // Hide teleported submenu as well
 }
 
 // Functions for the new tramites menu
@@ -134,9 +136,11 @@ function showTramitesMenu() {
     const arrow = document.getElementById('tramites-arrow');
     const menuBtn = document.getElementById('tramites-menu-btn');
     
-    dropdown.classList.remove('hidden');
-    arrow.style.transform = 'rotate(180deg)';
-    menuBtn.classList.add('panel-active');
+    if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        arrow.style.transform = 'rotate(180deg)';
+        menuBtn.classList.add('panel-active');
+    }
 }
 
 function closeTramitesMenu() {
@@ -144,14 +148,62 @@ function closeTramitesMenu() {
     const arrow = document.getElementById('tramites-arrow');
     const menuBtn = document.getElementById('tramites-menu-btn');
     
-    dropdown.classList.add('hidden');
-    arrow.style.transform = 'rotate(0deg)';
-    menuBtn.classList.remove('panel-active');
+    if (dropdown && !dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+        arrow.style.transform = 'rotate(0deg)';
+        menuBtn.classList.remove('panel-active');
+    }
 }
 
+// --- NEW TELEPORTING SUBMENU LOGIC ---
+let activeSubmenu = null;
+let hideSubmenuTimeout = null;
 
+function showSubmenu(triggerBtn) {
+    const submenuTemplate = triggerBtn.parentElement.querySelector('.submenu');
+    if (!submenuTemplate) return;
 
-// Event listeners for menu and other elements
+    clearTimeout(hideSubmenuTimeout);
+
+    // Use a unique ID on the trigger to check if submenu is already open for it
+    const triggerId = triggerBtn.id || (triggerBtn.id = `trigger-${Math.random()}`);
+    if (activeSubmenu && activeSubmenu.dataset.triggerId === triggerId) {
+        return;
+    }
+
+    hideSubmenu(); // Hide any other open submenu
+
+    const rect = triggerBtn.getBoundingClientRect();
+    activeSubmenu = submenuTemplate.cloneNode(true);
+    activeSubmenu.dataset.triggerId = triggerId;
+
+    // This class will make it visible and apply base styles
+    activeSubmenu.classList.add('submenu-teleported'); 
+    // We remove the original submenu class to avoid conflicting styles
+    activeSubmenu.classList.remove('submenu'); 
+
+    document.body.appendChild(activeSubmenu);
+
+    // Position the teleported submenu
+    activeSubmenu.style.top = `${rect.top - 5}px`;
+    activeSubmenu.style.left = `${rect.right + 5}px`;
+
+    // Add listeners to the new submenu to keep it open
+    activeSubmenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
+    activeSubmenu.addEventListener('mouseleave', () => {
+        hideSubmenuTimeout = setTimeout(hideSubmenu, 300);
+    });
+}
+
+function hideSubmenu() {
+    if (activeSubmenu) {
+        document.body.removeChild(activeSubmenu);
+        activeSubmenu = null;
+    }
+    clearTimeout(hideSubmenuTimeout);
+}
+
+// --- REWRITTEN DOMCONTENTLOADED ---
 document.addEventListener('DOMContentLoaded', () => {
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const tramitesDropdown = document.getElementById('tramites-dropdown');
@@ -160,50 +212,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    if (isTouchDevice) {
-        // Click logic for touch devices
-        if (tramitesMenuBtn) {
-            tramitesMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isHidden = tramitesDropdown.classList.contains('hidden');
-                if (isHidden) {
-                    showTramitesMenu();
-                } else {
-                    closeTramitesMenu();
-                }
-            });
-        }
-    } else {
-        // Hover logic for non-touch devices
-        if (tramitesContainer) {
-            tramitesContainer.addEventListener('mouseenter', () => {
+    // --- Main Menu Logic ---
+    if (!isTouchDevice) {
+        const mainDropdownElements = [tramitesContainer, tramitesDropdown];
+        mainDropdownElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
                 clearTimeout(tramitesTimeout);
+                hideSubmenu();
                 showTramitesMenu();
             });
-            tramitesContainer.addEventListener('mouseleave', () => {
-                tramitesTimeout = setTimeout(closeTramitesMenu, 400);
+            el.addEventListener('mouseleave', () => {
+                tramitesTimeout = setTimeout(closeTramitesMenu, 300);
             });
-        }
+        });
+    } else {
+        // Click logic for touch devices
+        tramitesMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = tramitesDropdown.classList.contains('hidden');
+            if (isHidden) showTramitesMenu();
+            else closeTramitesMenu();
+        });
     }
 
-    // Close menu when clicking outside, but not inside the dropdown
-    window.addEventListener('click', (e) => {
-        if (!tramitesContainer.contains(e.target) && !tramitesDropdown.contains(e.target)) {
-            closeTramitesMenu();
+    // --- Submenu Trigger Logic ---
+    const submenuTriggers = document.querySelectorAll('.has-submenu > button');
+    submenuTriggers.forEach(trigger => {
+        // On touch, a click on the parent should just open the submenu
+        if (isTouchDevice) {
+            trigger.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent closing the main menu
+                showSubmenu(e.currentTarget);
+            });
+        } else {
+            // On desktop, use hover
+            trigger.addEventListener('mouseenter', (e) => {
+                clearTimeout(tramitesTimeout); // Keep main menu open
+                showSubmenu(e.currentTarget);
+            });
+            trigger.addEventListener('mouseleave', () => {
+                hideSubmenuTimeout = setTimeout(hideSubmenu, 300);
+            });
         }
     });
 
-    // Keep the menu open when the mouse enters the dropdown itself
-    if (tramitesDropdown) {
-        tramitesDropdown.addEventListener('mouseenter', () => {
-            clearTimeout(tramitesTimeout);
-        });
-        tramitesDropdown.addEventListener('mouseleave', () => {
-            tramitesTimeout = setTimeout(closeTramitesMenu, 400);
-        });
-    }
+    // --- Global Click Listener ---
+    window.addEventListener('click', (e) => {
+        // Close main menu if click is outside
+        if (!tramitesContainer.contains(e.target) && !tramitesDropdown.contains(e.target)) {
+            closeTramitesMenu();
+        }
+        // Close submenu if click is outside
+        if (activeSubmenu && !activeSubmenu.contains(e.target)) {
+            const trigger = document.getElementById(activeSubmenu.dataset.triggerId);
+            if (trigger && !trigger.parentElement.contains(e.target)) {
+                hideSubmenu();
+            }
+        }
+    });
 
-    // Original independent button logic
+    // --- All other original listeners from the old file ---
     const independentButton = document.querySelector('.indep-btn');
     if (independentButton) {
         setInterval(() => {
@@ -221,45 +289,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
-    // Automatic PDF download when clicking "valores.png" image
     const valoresImageLink = document.getElementById('valoresImageLink');
     if (valoresImageLink) {
         valoresImageLink.addEventListener('click', (event) => {
-            event.preventDefault(); 
-            
+            event.preventDefault();
             const pdfUrl = valoresImageLink.href;
             const fileName = valoresImageLink.download || 'documento.pdf';
-
             const a = document.createElement('a');
             a.href = pdfUrl;
             a.download = fileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            
             console.log(`Attempting to download: ${fileName} from ${pdfUrl}`);
         });
     }
 
-    // Event listener for OS10 Home Button (in banner)
     document.getElementById('os10-home-btn').addEventListener('click', showHomepage);
-    
-    // --- Back to Top Button ---
+
     const backToTopButton = document.getElementById('back-to-top');
+    if (backToTopButton) {
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        };
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    }
 
-    window.onscroll = function() {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            backToTopButton.classList.remove('hidden');
-        } else {
-            backToTopButton.classList.add('hidden');
-        }
-    };
-
-    backToTopButton.addEventListener('click', function() {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-
-    // --- Open chatbot on hover ---
     const chatToggleButton = document.getElementById('chat-toggle-button');
     if (chatToggleButton) {
         chatToggleButton.addEventListener('mouseenter', () => {
@@ -267,7 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (popup.classList.contains('hidden')) {
                 const backdrop = document.getElementById('chat-backdrop');
                 const button = document.getElementById('chat-toggle-button');
-                
                 popup.classList.remove('hidden');
                 backdrop.classList.remove('hidden');
                 button.classList.add('hidden');
@@ -275,6 +335,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize homepage view
     showHomepage();
 });
