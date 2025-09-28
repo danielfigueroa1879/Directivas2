@@ -599,7 +599,7 @@ body.homepage {
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease; /* Transiciones más rápidas */
+    transition: background-color 0.2s ease, color 0.2s ease; /* SOLO transiciones de color */
     border-bottom: 1px solid rgba(229, 231, 235, 0.3);
     /* REMOVIDO: transform: translateX(0); */
 }
@@ -645,8 +645,8 @@ body.homepage {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateX(-5px) scale(0.98);
-    transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease; /* Transiciones más rápidas y suaves */
+    transform: translateX(-10px) scale(0.95);
+    transition: all 0.2s ease; /* TRANSICIÓN MÁS RÁPIDA */
 }
 
 /* SUBMENU VISIBLE */
