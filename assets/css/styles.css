@@ -552,8 +552,8 @@ body.homepage {
     height: auto;
     max-height: calc(100vh - 120px);
     background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(20px);
+    /* backdrop-filter: blur(40px); // This breaks position:fixed in children */
+    /* -webkit-backdrop-filter: blur(20px); // This breaks position:fixed in children */
     border: 1px solid rgba(255, 255, 255, 0.9);
     border-top: none;
     border-radius: 0 0 12px 12px;
