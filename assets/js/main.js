@@ -412,22 +412,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                // Apply different positioning based on screen size
+                const rect = submenuButton.getBoundingClientRect();
+
+                // Position submenu
                 if (window.innerWidth > 1024) {
-                    // Desktop: position next to the button
-                    const rect = submenuButton.getBoundingClientRect();
+                    // Desktop: Fly-out to the right
                     submenu.style.left = `${rect.right + 5}px`;
                     submenu.style.top = `${rect.top}px`;
                     submenu.style.transform = ''; // Clear any transform
                 } else {
                     // Mobile: Centered horizontally, below the button
-                    const rect = submenuButton.getBoundingClientRect();
                     submenu.style.left = '50%';
                     submenu.style.top = `${rect.bottom + 10}px`; // 10px below the button
                     submenu.style.transform = 'translateX(-50%)';
                 }
                 
-                // Mostrar el submenu
                 submenu.classList.add('show');
             };
 
@@ -447,16 +446,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Manejo de clics para dispositivos táctiles o como fallback
             submenuButton.addEventListener('click', (event) => {
-                event.stopPropagation(); // Prevent click from bubbling up
-    
-                // Simple toggle logic
+                event.preventDefault(); // Prevent default button action
+                event.stopPropagation(); // Prevent bubbling
+                
                 const isVisible = submenu.classList.contains('show');
                 
-                // Always close all submenus first
-                document.querySelectorAll('.submenu.show').forEach(s => s.classList.remove('show'));
+                // Always close all other submenus
+                document.querySelectorAll('.submenu.show').forEach(s => {
+                    if (s !== submenu) {
+                        s.classList.remove('show');
+                    }
+                });
 
+                // Toggle the current one
                 if (!isVisible) {
                     showSubmenu();
+                } else {
+                    submenu.classList.remove('show');
                 }
             });
         }
@@ -483,3 +489,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
+
+
