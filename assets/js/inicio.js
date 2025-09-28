@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu when clicking outside, but not inside the dropdown
     window.addEventListener('click', (e) => {
-        if (!tramitesContainer.contains(e.target)) {
+        if (!tramitesContainer.contains(e.target) && !tramitesDropdown.contains(e.target)) {
             closeTramitesMenu();
         }
     });
