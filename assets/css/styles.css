@@ -586,7 +586,7 @@ body.homepage {
     color: rgba(31, 41, 55, 0.95);
 }
 
-/* Botones del MENÚ PRINCIPAL - SIN MOVIMIENTO QUE CAUSA PARPADEO */
+/* Botones del MENÚ PRINCIPAL: Se eliminan las transiciones de `transform` y `padding` */
 .dropdown-menu button {
     width: 100%;
     text-align: left; 
@@ -596,33 +596,33 @@ body.homepage {
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease; /* SOLO transiciones de color */
+    /* CORREGIDO: SOLO transiciones de color y fondo */
+    transition: background-color 0.2s ease, color 0.2s ease; 
     border-bottom: 1px solid rgba(229, 231, 235, 0.3);
-    /* REMOVIDO: transform: translateX(0); */
 }
 
 .dropdown-menu button:last-child { border-bottom: none; }
 
-/* El efecto hover SOLO cambia colores - NO posición */
+/* El efecto hover SOLO cambia colores - NO posición/padding */
 .dropdown-menu button:hover {
     background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
-    /* REMOVIDO: transform, padding-left, padding-right */
     backdrop-filter: blur(10px);
+    /* Se eliminaron: transform, padding-left, etc. */
 }
 
 .dropdown-menu button:active {
     background-color: rgba(59, 130, 246, 0.25);
-    /* REMOVIDO: transform */
 }
 
-/* ===== SUBMENU FLYOUT - MEJORADO PARA EVITAR PARPADEO ===== */
+/* ===== SUBMENU FLYOUT - USADO POR JS (ACTUALIZACIÓN ESTÉTICA) ===== */
 
 .dropdown-menu .has-submenu {
     position: relative;
 }
 
 /* SUBMENU que aparece completamente fuera con MEJOR CONTROL */
+/* NOTA: La posición final y la visibilidad son controladas por JS, esta CSS es para la animación */
 .dropdown-menu .submenu {
     position: fixed !important; 
     left: auto;
@@ -645,7 +645,7 @@ body.homepage {
     transition: all 0.2s ease; /* TRANSICIÓN MÁS RÁPIDA */
 }
 
-/* SUBMENU VISIBLE */
+/* SUBMENU VISIBLE: Solo se mantiene para transiciones de click, pero JS lo forzará */
 .dropdown-menu .submenu.show {
     opacity: 1;
     visibility: visible;
@@ -656,17 +656,16 @@ body.homepage {
 /* BOTONES DENTRO DEL SUBMENU - SIN MOVIMIENTO */
 .dropdown-menu .submenu button {
     width: 100%;
-    text-align: center;
+    text-align: left; /* CORREGIDO: Vuelve a left para coherencia */
     padding: 8px 15px;
     font-size: 0.7rem;
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease; /* SOLO colores, más rápido */
+    transition: background-color 0.15s ease, color 0.15s ease; 
     border-bottom: 1px solid rgba(229, 231, 235, 0.2);
     margin: 0;
-    /* REMOVIDO: transform: translateX(0); */
 }
 
 .dropdown-menu .submenu button:last-child {
@@ -676,22 +675,25 @@ body.homepage {
 .dropdown-menu .submenu button:hover {
     background-color: rgba(34, 197, 94, 0.15);
     color: rgba(21, 128, 61, 1);
-    /* REMOVIDO: transform, padding cambios */
 }
 
 /* FLECHA EN BOTÓN QUE TIENE SUBMENU - SIN ANIMACIÓN DE MOVIMIENTO */
+.dropdown-menu .has-submenu > button {
+    position: relative; /* Asegurar que el padre sea relativo para la flecha */
+}
+
 .dropdown-menu .has-submenu > button::after {
     content: '▸';
     position: absolute;
     right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 1.1em;
-    transition: color 0.2s ease; /* SOLO cambio de color */
-    /* REMOVIDO: transform transition */
+    transition: color 0.2s ease;
 }
 
 .dropdown-menu .has-submenu > button:hover::after {
-    color: rgba(37, 99, 235, 1); /* SOLO cambia color, no posición */
-    /* REMOVIDO: transform: translateX(3px); */
+    color: rgba(37, 99, 235, 1);
 }
 
 /* Responsive - Ajustes para móvil y tablet */
@@ -739,6 +741,9 @@ body.homepage {
     .dropdown-menu button:hover {
         background-color: rgba(59, 130, 246, 0.2);
         color: rgba(37, 99, 235, 1);
+    }
+    .dropdown-menu .submenu button {
+        text-align: center; /* Vuelve a centrar en móvil si es necesario */
     }
     .dropdown-menu .submenu button:hover {
         background-color: rgba(34, 197, 94, 0.15);
