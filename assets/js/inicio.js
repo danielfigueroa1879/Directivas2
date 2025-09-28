@@ -27,7 +27,8 @@ let currentImageIndex = 0;
 let activeSubmenu = null;
 let hideSubmenuTimeout = null;
 let currentTriggerButton = null;
-let mainMenuTimeout = null; // CRÍTICO: Timer para el menú principal
+let mainMenuTimeout = null; // Variable agregada para manejar el timer del menú principal
+
 
 function rotateBackground() {
     const homepageSection = document.getElementById('homepage-section');
@@ -113,7 +114,7 @@ function closeTramitesMenu() {
     
     // También ocultar submenu al cerrar menú principal
     hideSubmenu();
-    clearTimeout(mainMenuTimeout); // Asegurar que el timer principal se detenga
+    clearTimeout(mainMenuTimeout); // Asegurar que se cancele el timer del menú principal
 }
 
 // Functions for the tramites menu
@@ -164,39 +165,57 @@ function openLink(url) {
     hideSubmenu();
 }
 
-// === SISTEMA DE SUBMENU CRÍTICO CORREGIDO ===
+// === SISTEMA DE SUBMENU ===
 
-/**
- * Muestra el submenú flotante para un botón.
- * @param {HTMLElement} triggerButton - El botón que activó el submenú (ej. 'Doc. editable').
- */
+// Función para mostrar submenu
 function showSubmenu(triggerButton) {
     
-    // 1. Limpieza inicial y validaciones
+    // Limpiar timeout si existe
     clearTimeout(hideSubmenuTimeout);
     
+    // Encontrar el submenu asociado al botón
     const submenuTemplate = triggerButton.parentElement.querySelector('.submenu');
-    if (!submenuTemplate) return;
-    if (activeSubmenu && currentTriggerButton === triggerButton) return;
-
-    // 2. Ocultar el submenú anterior
-    if (activeSubmenu) {
-        hideSubmenu(0); 
+    
+    if (!submenuTemplate) {
+        return;
+    }
+    
+    // Si ya hay un submenu activo del mismo botón, no hacer nada
+    if (activeSubmenu && currentTriggerButton === triggerButton) {
+        return;
     }
 
-    // 3. Clonar, configurar y adjuntar al DOM
+    // Ocultar submenu anterior si existe
+    hideSubmenu();
+
+    // Obtener posiciones
+    const triggerRect = triggerButton.getBoundingClientRect();
+    const dropdownMenu = document.getElementById('tramites-dropdown');
+    // CRÍTICO: Asegurarse de que el elemento exista antes de llamar a getBoundingClientRect
+    if (!dropdownMenu) {
+        console.error("Error: El elemento 'tramites-dropdown' no se encontró.");
+        return;
+    }
+    const dropdownRect = dropdownMenu.getBoundingClientRect();
+
+    // Crear nuevo submenu clonando el template
     activeSubmenu = submenuTemplate.cloneNode(true);
+    
+    // Limpiar clases y agregar la clase show
     activeSubmenu.classList.remove('hidden');
     activeSubmenu.classList.add('show');
+    
+    // Agregar al body
     document.body.appendChild(activeSubmenu);
 
-    // CRÍTICO: Reasignar los onclick y añadir el listener de mouseenter/mouseleave
+    // CRÍTICO: Reasignar los onclick de los botones del submenu clonado inmediatamente
     const submenuButtons = activeSubmenu.querySelectorAll('button');
     submenuButtons.forEach(button => {
         const originalOnClick = button.getAttribute('onclick');
         if (originalOnClick) {
             button.onclick = (e) => {
                 e.stopPropagation();
+                // Extracción de la URL para openLink(url)
                 const match = originalOnClick.match(/openLink\('(.*?)'\)/);
                 if (match && match[1]) {
                     openLink(match[1]);
@@ -215,59 +234,40 @@ function showSubmenu(triggerButton) {
         button.removeAttribute('onclick'); 
     });
 
-    // 4. Configurar listeners de hover/cierre
-    // CRÍTICO ANTI-FLICKER: Si el mouse entra al submenú flotante, cancela el cierre de ambos menús.
-    activeSubmenu.addEventListener('mouseenter', () => {
-        clearTimeout(hideSubmenuTimeout);
-        // Cancelar el cierre del menú principal (tramites-dropdown) si el mouse entra al submenu
-        clearTimeout(mainMenuTimeout); 
-    });
 
-    activeSubmenu.addEventListener('mouseleave', () => {
-        // Al salir del submenú flotante, iniciar el proceso de cierre de ambos
-        hideSubmenuTimeout = setTimeout(() => {
-            hideSubmenu();
-            // Cerrar el menú principal también, usando su propia lógica de cierre
-            const tramitesDropdown = document.getElementById('tramites-dropdown');
-            if (tramitesDropdown && !tramitesDropdown.classList.contains('hidden')) {
-                 // Usar el timer principal del menú para cerrar después de que el submenú se oculte
-                 mainMenuTimeout = setTimeout(closeTramitesMenu, 100);
-            }
-        }, 200); 
-    });
-
-
-    // 5. Calcular y aplicar posición (Lógica sin cambios)
-    const triggerRect = triggerButton.getBoundingClientRect();
-    const dropdownMenu = document.getElementById('tramites-dropdown');
-    if (!dropdownMenu) return;
-    const dropdownRect = dropdownMenu.getBoundingClientRect();
+    // Calcular posición
+    // POSICIONAMIENTO AJUSTADO PARA PC (Mover a la izquierda)
+    let leftPosition = dropdownRect.right + 5; // Mantenido en 5px para PC (más a la izquierda)
+    let topPosition = triggerRect.top - 5; 
+    
+    // Determinar la posición Y del menú desplegable principal para alinear el submenu
+    const submenuTopAnchor = dropdownRect.top + (triggerRect.top - dropdownRect.top);
+    topPosition = submenuTopAnchor;
 
     const submenuWidth = 280;
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     
-    let leftPosition = dropdownRect.right + 5; 
-    let topPosition = triggerRect.top; 
-
-    // Ajuste horizontal (Escritorio)
-    if (windowWidth > 1024) {
-        if (leftPosition + submenuWidth > windowWidth) {
-            leftPosition = dropdownRect.left - submenuWidth - 15; 
-        }
-    } else {
-        const mobileMargin = 40; 
-        leftPosition = (windowWidth - submenuWidth) / 2 + mobileMargin; 
+    // Ajustar si se sale de pantalla horizontalmente (para navegadores de escritorio)
+    if (leftPosition + submenuWidth > windowWidth) {
+        leftPosition = dropdownRect.left - submenuWidth - 15;
     }
 
-    // Ajuste vertical
-    const submenuHeight = activeSubmenu.offsetHeight || 300; 
-    if (topPosition + submenuHeight > windowHeight - 20) {
+    // Ajustar si se sale de pantalla verticalmente
+    const submenuHeight = activeSubmenu.offsetHeight || 300; // Usar offsetHeight después de añadir al body
+    if (topPosition + submenuHeight > windowHeight) {
         topPosition = windowHeight - submenuHeight - 20;
     }
-    topPosition = Math.max(topPosition, 65); 
 
-    // Aplicar estilos
+    // Para móviles, centrar y mover LIGERAMENTE a la derecha (CELULAR MÁS A LA DERECHA)
+    if (window.innerWidth <= 1024) {
+        const mobileMargin = 40; // AUMENTADO a 40px para desplazar más a la derecha en móvil
+        leftPosition = (windowWidth - submenuWidth) / 2 + mobileMargin; // Desplazar a la derecha
+        // Ajustar la posición vertical para que no quede demasiado arriba en móviles
+        topPosition = Math.max(80, topPosition); 
+    }
+
+    // Aplicar estilos directamente
     const stylesToApply = {
         position: 'fixed',
         left: `${leftPosition}px`,
@@ -276,7 +276,7 @@ function showSubmenu(triggerButton) {
         opacity: '1',
         visibility: 'visible',
         transform: 'translateX(0) scale(1)', 
-        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)', 
+        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)', // Transición suave para entrada (PUNTO 3)
         width: `${submenuWidth}px`,
         backgroundColor: 'rgba(255, 255, 255, 0.97)',
         border: '1px solid rgba(229, 231, 235, 1)',
@@ -284,22 +284,45 @@ function showSubmenu(triggerButton) {
         padding: '12px 0'
     };
     
+    // Se usa setProperty para asegurar que el CSS se aplique correctamente
     for (const [key, value] of Object.entries(stylesToApply)) {
         activeSubmenu.style[key] = value;
     }
     activeSubmenu.style.setProperty('transition', 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
 
-    // 6. Guardar referencia
+    // Guardar referencia
     currentTriggerButton = triggerButton;
+
+    // Event listeners para el submenu (necesarios para evitar que se cierre)
+    activeSubmenu.addEventListener('mouseenter', () => {
+        clearTimeout(hideSubmenuTimeout);
+        // CRÍTICO: Cancelar el timer del menú principal si el mouse entra al submenú flotante
+        const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+        const tramitesDropdown = document.getElementById('tramites-dropdown');
+        if (tramitesMenuBtn && tramitesDropdown) {
+             clearTimeout(mainMenuTimeout);
+        }
+    });
+
+    activeSubmenu.addEventListener('mouseleave', () => {
+        // Establecer un tiempo de espera para ocultar el submenu
+        hideSubmenuTimeout = setTimeout(() => {
+            hideSubmenu();
+            // Si el submenú se oculta, cerrar el menú principal también
+            const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+            const tramitesDropdown = document.getElementById('tramites-dropdown');
+            if (tramitesMenuBtn && tramitesDropdown && !tramitesDropdown.classList.contains('hidden')) {
+                // Usar el timer principal para cerrar el menú principal con retraso
+                mainMenuTimeout = setTimeout(closeTramitesMenu, 100); 
+            }
+        }, 300);
+    });
 }
 
-/**
- * Oculta el submenú con una transición suave.
- * @param {number} delay - Retraso para remover el elemento del DOM.
- */
-function hideSubmenu(delay = 300) {
+// Función para ocultar submenu
+function hideSubmenu() {
     if (activeSubmenu) {
-        // Añadir transición de cierre
+        // Añadir una transición rápida para el cierre (PUNTO 3)
         Object.assign(activeSubmenu.style, {
             opacity: '0',
             transform: 'translateX(-10px) scale(0.95)',
@@ -309,60 +332,64 @@ function hideSubmenu(delay = 300) {
         // Retraso para eliminar del DOM después de la transición
         setTimeout(() => {
             try {
+                // Verificar si todavía está en el body para evitar errores
                 if (document.body.contains(activeSubmenu)) {
                     document.body.removeChild(activeSubmenu);
                 }
             } catch (e) {
+                // Ignorar errores al remover del DOM si ya fue removido
                 console.warn("Error al remover submenú del DOM:", e);
             }
             activeSubmenu = null;
             currentTriggerButton = null;
-        }, delay); 
+        }, 300); 
     }
     clearTimeout(hideSubmenuTimeout);
 }
 
-/**
- * Configura los eventos de hover para los elementos con submenú.
- */
+// Función para configurar triggers
 function setupSubmenuTriggers() {
     
-    const submenuTriggers = document.querySelectorAll('.has-submenu > button');
+    // CRÍTICO: Seleccionamos todos los contenedores para aplicar los listeners de hover
+    const submenuContainers = document.querySelectorAll('.has-submenu');
     
-    if (submenuTriggers.length === 0) return;
+    if (submenuContainers.length === 0) {
+        return;
+    }
     
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
-    // Iterar sobre los contenedores para aplicar listeners
-    document.querySelectorAll('.has-submenu').forEach((container) => {
+    submenuContainers.forEach((container) => {
+        
         const trigger = container.querySelector('button');
         const hasSubmenu = container.querySelector('.submenu');
         
         if (!trigger || !hasSubmenu) return;
         
-        // Clonar y reemplazar para un manejo limpio del DOM (necesario para el hover en el contenedor)
+        // Clonar y reemplazar para un manejo limpio de listeners (evita duplicados)
         const newTrigger = trigger.cloneNode(true);
         trigger.parentNode.replaceChild(newTrigger, trigger);
         
         if (!isTouchDevice) {
-            // Desktop: Hover/Debounce Logic
+            // Desktop: hover (Anti-flickering a nivel de JS)
             
-            // CRÍTICO: Usamos el contenedor padre para que el mouse pueda moverse un poco
+            // Listener de ENTRADA en el CONTENEDOR (incluye el botón)
             container.addEventListener('mouseenter', (e) => {
                 clearTimeout(hideSubmenuTimeout); // Cancelar timer de cierre del submenú
                 clearTimeout(mainMenuTimeout);    // Cancelar timer de cierre del menú principal
                 showSubmenu(newTrigger);
             });
 
+            // Listener de SALIDA en el CONTENEDOR
             container.addEventListener('mouseleave', () => {
-                // Si el mouse sale del área (contenedor del botón), iniciar el timer de cierre
+                // Al salir del área, iniciar el timer de cierre del submenú
                 hideSubmenuTimeout = setTimeout(() => {
                     hideSubmenu();
-                }, 300);
+                }, 300); 
             });
             
         } else {
-            // Móvil: Click
+            // Móvil: click
             newTrigger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -376,18 +403,15 @@ function setupSubmenuTriggers() {
     });
 }
 
-/**
- * Configura listeners globales para cerrar menús al hacer scroll, resize o click fuera.
- */
+// Función de limpieza global
 function setupGlobalListeners() {
     
-    // Click fuera
+    // Click fuera 
     document.addEventListener('click', (e) => {
         const tramitesDropdown = document.getElementById('tramites-dropdown');
         const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
         
         if (tramitesDropdown && !tramitesDropdown.classList.contains('hidden')) {
-            // Verificar si el click fue fuera del menú principal Y fuera del submenú flotante
             const isClickOutsideBoth = !tramitesDropdown.contains(e.target) && 
                                        e.target !== tramitesMenuBtn &&
                                        (!activeSubmenu || !activeSubmenu.contains(e.target));
@@ -397,7 +421,7 @@ function setupGlobalListeners() {
             }
         }
         
-        // Cerrar submenú flotante si el click cae fuera de él (si el menú principal está cerrado, ya se cierra)
+        // Cerrar submenú flotante si el click cae fuera de él
         if (activeSubmenu && !activeSubmenu.contains(e.target) && e.target !== currentTriggerButton) {
             hideSubmenu();
         }
@@ -415,12 +439,9 @@ function setupGlobalListeners() {
     });
 }
 
-/**
- * Inicializa los sistemas de menú y submenú.
- */
+// Función de inicialización completa
 function initializeSubmenuSystem() {
     
-    // Un pequeño retraso para asegurar que el DOM esté estable
     setTimeout(() => {
         setupSubmenuTriggers();
     }, 600);
@@ -447,14 +468,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const tramitesDropdown = document.getElementById('tramites-dropdown');
-    const tramitesContainer = tramitesMenuBtn?.parentElement;
     let tramitesTimeout;
 
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     // --- Main Menu Logic (Hover para PC) ---
     if (!isTouchDevice) {
-        // Hover logic for desktop menu (main dropdown)
         
         if (tramitesMenuBtn) {
             tramitesMenuBtn.addEventListener('mouseenter', () => {
@@ -462,7 +481,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 showTramitesMenu();
             });
             tramitesMenuBtn.addEventListener('mouseleave', () => {
-                // Iniciar timer para cerrar el menú principal si sale del botón
                 tramitesTimeout = setTimeout(closeTramitesMenu, 300);
             });
         }
@@ -472,7 +490,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearTimeout(tramitesTimeout); // Si entra al dropdown, cancela el cierre
             });
             tramitesDropdown.addEventListener('mouseleave', () => {
-                // Si sale del dropdown, inicia el cierre
                 tramitesTimeout = setTimeout(closeTramitesMenu, 300);
             });
         }
