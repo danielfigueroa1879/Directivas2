@@ -785,69 +785,45 @@ body.homepage {
 
 .dropdown-menu .submenu {
     position: absolute;
-    top: -8px; /* Align with the top of the parent button */
-    left: 100%; /* Position it to the right of the parent */
-    width: 260px; /* Same width as the main dropdown */
+    top: 0;
+    left: 100%;
+    width: 260px;
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 0 12px 12px 12px;
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
-    z-index: 1300; /* Higher than the main dropdown */
-    display: none; /* Hidden by default */
-    padding: 8px 0; /* Add some padding */
+    z-index: 1300;
+    padding: 8px 0;
+    
+    /* Changed for better animation and hover detection */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
 
 .dropdown-menu .has-submenu:hover > .submenu {
-    display: block; /* Show on hover */
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
 }
 
 /* Style for the submenu parent button */
 .dropdown-menu .has-submenu > button::after {
-    content: '▸'; /* Right-pointing arrow */
+    content: '▸';
     position: absolute;
     right: 15px;
     font-size: 1.1em;
     transition: transform 0.2s;
 }
 
-.dropdown-menu .has-submenu:hover > button::after {
-    transform: rotate(0deg); /* Keep arrow orientation */
-}
-
-/* Adjust submenu for smaller screens if needed */
+/* Media query remains the same, just positioning */
 @media (max-width: 1024px) {
     .dropdown-menu .submenu {
-        /* On mobile, don't fly out. Appear as a nested dropdown. */
-        position: static; /* Override absolute positioning */
-        display: none; /* Still hidden by default */
-        width: 100%;
-        box-shadow: none;
-        border: none;
-        border-top: 1px solid rgba(229, 231, 235, 0.5); /* Add a separator */
-        border-radius: 0; /* Reset border radius */
-    }
-
-    /* The hover effect still works as intended */
-    .dropdown-menu .has-submenu:hover > .submenu {
-        display: block;
-    }
-
-    /* Style for the submenu parent button on mobile */
-    .dropdown-menu .has-submenu > button::after {
-        content: '▾'; /* Down-pointing arrow */
-        right: 20px;
-    }
-
-    /* Indent the submenu items on mobile */
-    .dropdown-menu .submenu button {
-        padding-left: 40px !important; /* Use !important to ensure override */
-        background-color: rgba(0,0,0,0.03);
-        transform: translateX(0) !important; /* Reset hover transform */
-    }
-
-    .dropdown-menu .submenu button:hover {
-        background-color: rgba(59, 130, 246, 0.15); /* Keep a hover effect */
+        border-radius: 0 12px 12px 0;
     }
 }
