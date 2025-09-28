@@ -82,7 +82,7 @@ body.homepage {
     }
     50% {
         transform: translateY(-15px);
-        box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
     }
 }
 
@@ -226,6 +226,9 @@ body.homepage {
         right: calc((100vw - 750px) / 2 + 1.5rem);
         bottom: 7.9rem;
     }
+    #chat-popup {
+        width: 450px;
+    }
     #chat-toggle-button {
         width: 90px;
         height: 90px;
@@ -238,11 +241,11 @@ body.homepage {
     @keyframes floatAnimation {
         0%, 100% {
             transform: translateY(0px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
         }
         50% {
             transform: translateY(-18px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
         }
     }
 }
@@ -283,11 +286,11 @@ body.homepage {
     @keyframes floatAnimation {
         0%, 100% {
             transform: translateY(0px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         50% {
             transform: translateY(-12px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
         }
     }
 }
@@ -315,11 +318,11 @@ body.homepage {
     @keyframes floatAnimation {
         0%, 100% {
             transform: translateY(0px);
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
         }
         50% {
             transform: translateY(-10px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
         }
     }
     #chatbot-tooltip {
@@ -331,7 +334,7 @@ body.homepage {
     }
 }
 
-/* ===== ESTILOS PARA CREDENCIALES ===== */
+/* ===== ESTILOS PARA CREDENCIALES (Mantener consistencia) ===== */
 .credenciales-section {
     display: none;
     position: relative;
@@ -552,7 +555,7 @@ body.homepage {
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(229, 231, 235, 0.9);
     border-top: none;
     border-radius: 0 0 12px 12px;
     box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
@@ -603,6 +606,7 @@ body.homepage {
 
 .dropdown-menu button:last-child { border-bottom: none; }
 
+/* FIX: Eliminar el parpadeo en el hover del botón para los submenús */
 .dropdown-menu button:hover {
     background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
@@ -628,12 +632,13 @@ body.homepage {
     left: auto;
     top: auto;
     width: 280px;
-    background-color: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(229, 231, 235, 1);
+    /* FIX: Mejorar la legibilidad y la apariencia */
+    background-color: rgba(255, 255, 255, 1.0); /* Fondo blanco sólido para mejor legibilidad */
+    backdrop-filter: blur(0px); /* Desactivar filtro en el submenú clonado */
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid #d1d5db; /* Borde simple y claro */
     border-radius: 12px;
-    box-shadow: 15px 5px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más limpia */
     z-index: 1350; /* MÁS ALTO QUE EL MENÚ PRINCIPAL */
     padding: 12px 0;
     
@@ -658,13 +663,13 @@ body.homepage {
     width: 100%;
     text-align: left;
     padding: 12px 20px;
-    font-size: 0.875rem;
-    color: rgba(31, 41, 55, 0.9);
+    /* FIX: Color de texto oscuro para asegurar la legibilidad */
+    color: #1f2937; 
     background-color: transparent;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(229, 231, 235, 0.2);
+    border-bottom: 1px solid #e5e7eb;
     margin: 0;
     transform: translateX(0);
 }
@@ -675,7 +680,7 @@ body.homepage {
 
 .dropdown-menu .submenu button:hover {
     background-color: rgba(34, 197, 94, 0.15);
-    color: rgba(21, 128, 61, 1);
+    color: #15803d; /* Verde oscuro */
     transform: translateX(6px);
     padding-left: 26px;
 }
