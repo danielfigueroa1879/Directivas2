@@ -688,15 +688,15 @@ body.homepage {
 @media (max-width: 1024px) {
     .dropdown-menu {
         position: fixed;
-        top: 50px;
-        left: initial;
+        top: 60px; /* CAMBIADO: era 50px, ahora 60px (más abajo) */
+        left: 10px; /* CAMBIADO: era initial, ahora 10px (más a la izquierda) */
         background-color: rgba(255, 255, 255, 0.9);
         z-index: 1201;
     }
     
     /* CORREGIDO: Submenú siempre a la derecha en móvil */
     .dropdown-menu .submenu {
-        top: 80px;
+        top: 90px; /* CAMBIADO: era 80px, ahora 90px (ajuste proporcional) */
         width: 260px;
         right: 20px !important;
         left: auto !important;
@@ -721,11 +721,16 @@ body.homepage {
 }
 
 @media (max-width: 640px) {
-    .dropdown-menu { width: 240px; }
+    .dropdown-menu { 
+        width: 240px;
+        top: 65px; /* CAMBIADO: más abajo en pantallas muy pequeñas */
+        left: 5px; /* CAMBIADO: más a la izquierda en pantallas muy pequeñas */
+    }
     .dropdown-menu .submenu { 
         width: 220px;
         right: 15px !important;
         left: auto !important;
+        top: 95px; /* CAMBIADO: ajuste proporcional */
     }
     .dropdown-menu button {
         padding: 12px 16px;
