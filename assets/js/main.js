@@ -412,10 +412,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                // Calcular posición del submenu dinámicamente
-                const rect = submenuButton.getBoundingClientRect();
-                submenu.style.left = `${rect.right + 5}px`; // 5px de separación a la derecha
-                submenu.style.top = `${rect.top}px`; // Alinear con la parte superior del botón
+                // Apply different positioning based on screen size
+                if (window.innerWidth > 1024) {
+                    // Desktop: position next to the button
+                    const rect = submenuButton.getBoundingClientRect();
+                    submenu.style.left = `${rect.right + 5}px`;
+                    submenu.style.top = `${rect.top}px`;
+                } else {
+                    // Mobile: remove inline styles and let CSS handle it
+                    submenu.style.left = '';
+                    submenu.style.top = '';
+                }
                 
                 // Mostrar el submenu
                 submenu.classList.add('show');
@@ -474,3 +481,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
+
+
