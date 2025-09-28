@@ -606,7 +606,7 @@ body.homepage {
 
 .dropdown-menu button:last-child { border-bottom: none; }
 
-/* FIX: Eliminar el parpadeo en el hover del botón para los submenús */
+/* Mantener estilos de hover */
 .dropdown-menu button:hover {
     background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
@@ -632,14 +632,14 @@ body.homepage {
     left: auto;
     top: auto;
     width: 280px;
-    /* FIX: Mejorar la legibilidad y la apariencia */
-    background-color: rgba(255, 255, 255, 1.0); /* Fondo blanco sólido para mejor legibilidad */
-    backdrop-filter: blur(0px); /* Desactivar filtro en el submenú clonado */
-    -webkit-backdrop-filter: blur(0px);
-    border: 1px solid #d1d5db; /* Borde simple y claro */
+    /* FIX: Fondo blanco sólido y bordes limpios para mejor legibilidad */
+    background-color: rgba(255, 255, 255, 1.0); 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid #d1d5db; 
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más limpia */
-    z-index: 1350; /* MÁS ALTO QUE EL MENÚ PRINCIPAL */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+    z-index: 1350; 
     padding: 12px 0;
     
     /* INVISIBLE POR DEFECTO */
@@ -663,7 +663,7 @@ body.homepage {
     width: 100%;
     text-align: left;
     padding: 12px 20px;
-    /* FIX: Color de texto oscuro para asegurar la legibilidad */
+    /* FIX: Asegurar color de texto oscuro */
     color: #1f2937; 
     background-color: transparent;
     border: none;
