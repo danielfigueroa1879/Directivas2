@@ -785,34 +785,35 @@ body.homepage {
 
 .dropdown-menu .submenu {
     position: absolute;
-    top: 0;
-    left: 100%;
+    /* A value slightly less than 100% creates an overlap to prevent mouseleave issues */
+    left: 98%; 
+    /* Negative top value to position it slightly higher */
+    top: -5px; 
     width: 260px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 0 12px 12px 12px;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(229, 231, 235, 1); /* More solid border */
+    border-radius: 12px; /* Rounded corners on all sides */
+    box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.15);
     z-index: 1300;
     padding: 8px 0;
     
-    /* Changed for better animation and hover detection */
+    /* Visibility handled by opacity and visibility */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateX(10px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
+/* On hover, make the submenu visible */
 .dropdown-menu .has-submenu:hover > .submenu {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(0);
 }
 
-/* Style for the submenu parent button */
+/* Style for the submenu parent button's arrow */
 .dropdown-menu .has-submenu > button::after {
     content: '▸';
     position: absolute;
@@ -821,9 +822,4 @@ body.homepage {
     transition: transform 0.2s;
 }
 
-/* Media query remains the same, just positioning */
-@media (max-width: 1024px) {
-    .dropdown-menu .submenu {
-        border-radius: 0 12px 12px 0;
-    }
-}
+/* No special media query needed for this approach, it should adapt */
