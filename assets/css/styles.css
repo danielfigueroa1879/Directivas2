@@ -806,12 +806,7 @@ body.homepage {
     transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-/* On hover, make the submenu visible */
-.dropdown-menu .has-submenu:hover > .submenu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
+
 
 /* Style for the submenu parent button's arrow */
 .dropdown-menu .has-submenu > button::after {
