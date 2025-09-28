@@ -24,8 +24,7 @@ const urlsToCache = [
   './assets/images/poli.png', // AGREGADO: imagen del chatbot
   './assets/images/favicon.ico', // AGREGADO
   // Fonts
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap',
-  'https://cdn.tailwindcss.com' // AGREGADO: Tailwind CSS
+  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'
 ];
 
 // Evento 'install': Se dispara cuando el Service Worker se instala.
