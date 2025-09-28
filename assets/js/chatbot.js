@@ -693,7 +693,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 ],
             };
 
-            const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
+            // USAR LA URL CORRECTA DEL PROXY CONFIGURADO EN NETLIFY.TOML
+            const apiResponse = await fetch('/api/gemini', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(geminiPayload),
