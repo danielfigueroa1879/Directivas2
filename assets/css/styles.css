@@ -819,8 +819,35 @@ body.homepage {
 /* Adjust submenu for smaller screens if needed */
 @media (max-width: 1024px) {
     .dropdown-menu .submenu {
-        left: 100%; /* Position it to the right on smaller screens */
-        border-radius: 0 12px 12px 0; /* Adjust border radius for right side */
-        top: 0;
+        /* On mobile, don't fly out. Appear as a nested dropdown. */
+        position: static; /* Override absolute positioning */
+        display: none; /* Still hidden by default */
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid rgba(229, 231, 235, 0.5); /* Add a separator */
+        border-radius: 0; /* Reset border radius */
+    }
+
+    /* The hover effect still works as intended */
+    .dropdown-menu .has-submenu:hover > .submenu {
+        display: block;
+    }
+
+    /* Style for the submenu parent button on mobile */
+    .dropdown-menu .has-submenu > button::after {
+        content: '▾'; /* Down-pointing arrow */
+        right: 20px;
+    }
+
+    /* Indent the submenu items on mobile */
+    .dropdown-menu .submenu button {
+        padding-left: 40px !important; /* Use !important to ensure override */
+        background-color: rgba(0,0,0,0.03);
+        transform: translateX(0) !important; /* Reset hover transform */
+    }
+
+    .dropdown-menu .submenu button:hover {
+        background-color: rgba(59, 130, 246, 0.15); /* Keep a hover effect */
     }
 }
