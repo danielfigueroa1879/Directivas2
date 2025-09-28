@@ -203,11 +203,10 @@ function showSubmenu(triggerButton) {
 
     // Calcular posición
     // POSICIONAMIENTO AJUSTADO PARA CUMPLIR REQUISITOS 1 Y 2
-    let leftPosition = dropdownRect.right + 25; // Aumentado a 25px de margen
-    let topPosition = triggerRect.top - 5; // Alineado a la parte superior del botón
+    let leftPosition = dropdownRect.right + 25; // Márgen 25px en PC (se mueve a la derecha)
+    let topPosition = triggerRect.top - 5; 
     
     // Determinar la posición Y del menú desplegable principal para alinear el submenu
-    // Esto es crucial para que el hover no parpadee al moverse entre el botón y el submenu
     const submenuTopAnchor = dropdownRect.top + (triggerRect.top - dropdownRect.top);
     topPosition = submenuTopAnchor;
 
@@ -226,9 +225,10 @@ function showSubmenu(triggerButton) {
         topPosition = windowHeight - submenuHeight - 20;
     }
 
-    // Para móviles, centrar (el submenu utiliza position: fixed, por lo que es global)
+    // Para móviles, centrar y mover LIGERAMENTE a la derecha (PUNTO 1b)
     if (window.innerWidth <= 1024) {
-        leftPosition = (windowWidth - submenuWidth) / 2;
+        const mobileMargin = 10; // Margen para desplazar a la derecha en móvil (10px)
+        leftPosition = (windowWidth - submenuWidth) / 2 + mobileMargin; // Desplazar un poco a la derecha
         // Ajustar la posición vertical para que no quede demasiado arriba en móviles
         topPosition = Math.max(80, topPosition); 
     }
@@ -278,7 +278,6 @@ function hideSubmenu() {
             }
         } catch (e) {
             // Ignorar errores al remover del DOM si ya fue removido
-            console.error("Error al remover el submenú:", e);
         }
         activeSubmenu = null;
         currentTriggerButton = null;
