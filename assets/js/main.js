@@ -353,8 +353,7 @@ setTimeout(() => {
     detectarCapacidadesPWA();
 }, 3000);
 
-// ===== LÓGICA CORREGIDA PARA SUBMENÚS =====
-// Lógica para manejar los submenús de forma más controlada y evitar el parpadeo
+// ===== LÓGICA CORREGIDA PARA SUBMENÚS - HOVER EN PC, CLICK EN MÓVIL =====
 document.addEventListener('DOMContentLoaded', () => {
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const tramitesDropdown = document.getElementById('tramites-dropdown');
@@ -363,23 +362,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let tramitesDropdownOpen = false;
     let hideSubmenuTimeout;
+    let hideMainMenuTimeout;
 
     // Detectar si es un dispositivo táctil
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isDesktop = window.innerWidth > 1024;
 
-    // Función para abrir/cerrar el menú principal de Trámites
-    function toggleTramitesDropdown() {
-        tramitesDropdownOpen = !tramitesDropdownOpen;
-        if (tramitesDropdownOpen) {
+    // Función para abrir el menú principal de Trámites
+    function showTramitesDropdown() {
+        clearTimeout(hideMainMenuTimeout);
+        if (!tramitesDropdownOpen) {
+            tramitesDropdownOpen = true;
             tramitesDropdown.classList.remove('hidden');
             setTimeout(() => {
                 tramitesDropdown.classList.add('show');
                 tramitesArrow.classList.add('rotate-180');
             }, 10);
-        } else {
+        }
+    }
+
+    // Función para cerrar el menú principal de Trámites
+    function hideTramitesDropdown() {
+        hideMainMenuTimeout = setTimeout(() => {
+            if (tramitesDropdownOpen) {
+                tramitesDropdownOpen = false;
+                tramitesDropdown.classList.remove('show');
+                tramitesArrow.classList.remove('rotate-180');
+                // Ocultar submenús abiertos
+                hasSubmenus.forEach(item => {
+                    const submenu = item.querySelector('.submenu');
+                    if (submenu && submenu.classList.contains('show')) {
+                        submenu.classList.remove('show');
+                    }
+                });
+                setTimeout(() => {
+                    tramitesDropdown.classList.add('hidden');
+                }, 300);
+            }
+        }, 200);
+    }
+
+    // Función para toggle del menú principal (solo móvil)
+    function toggleTramitesDropdown() {
+        if (tramitesDropdownOpen) {
+            hideTramitesDropdown();
+            // Forzar cierre inmediato en móvil
+            clearTimeout(hideMainMenuTimeout);
+            tramitesDropdownOpen = false;
             tramitesDropdown.classList.remove('show');
             tramitesArrow.classList.remove('rotate-180');
-            // Ocultar submenús abiertos al cerrar el menú principal
             hasSubmenus.forEach(item => {
                 const submenu = item.querySelector('.submenu');
                 if (submenu && submenu.classList.contains('show')) {
@@ -389,18 +420,33 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 tramitesDropdown.classList.add('hidden');
             }, 300);
+        } else {
+            showTramitesDropdown();
         }
     }
 
-    // Event listener para el botón principal de Trámites
+    // CONFIGURACIÓN PRINCIPAL DEL MENÚ TRÁMITES
     if (tramitesMenuBtn) {
-        tramitesMenuBtn.addEventListener('click', (event) => {
-            event.stopPropagation();
-            toggleTramitesDropdown();
-        });
+        if (isDesktop && !isTouchDevice) {
+            // PC: HOVER automático
+            tramitesMenuBtn.addEventListener('mouseenter', showTramitesDropdown);
+            tramitesMenuBtn.addEventListener('mouseleave', hideTramitesDropdown);
+            
+            // Mantener abierto cuando el mouse está sobre el dropdown
+            tramitesDropdown.addEventListener('mouseenter', () => {
+                clearTimeout(hideMainMenuTimeout);
+            });
+            tramitesDropdown.addEventListener('mouseleave', hideTramitesDropdown);
+        } else {
+            // MÓVIL: CLICK
+            tramitesMenuBtn.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleTramitesDropdown();
+            });
+        }
     }
 
-    // Event listeners CORREGIDOS para los submenús
+    // Event listeners para los submenús
     hasSubmenus.forEach(item => {
         const submenuButton = item.querySelector('button');
         const submenu = item.querySelector('.submenu');
@@ -442,9 +488,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 200);
             };
 
-            // CORREGIDO: Manejo de eventos para móvil y desktop
-            if (isTouchDevice || window.innerWidth <= 1024) {
-                // MÓVIL: Solo evento click - UN SOLO CLICK
+            // CONFIGURACIÓN POR DISPOSITIVO
+            if (isDesktop && !isTouchDevice) {
+                // PC: HOVER
+                item.addEventListener('mouseenter', showSubmenu);
+                submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
+                item.addEventListener('mouseleave', hideSubmenu);
+                submenu.addEventListener('mouseleave', hideSubmenu);
+            } else {
+                // MÓVIL: CLICK
                 submenuButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
@@ -468,12 +520,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         submenu.classList.remove('show');
                     }
                 });
-            } else {
-                // DESKTOP: Eventos hover
-                item.addEventListener('mouseenter', showSubmenu);
-                submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
-                item.addEventListener('mouseleave', hideSubmenu);
-                submenu.addEventListener('mouseleave', hideSubmenu);
             }
         }
     });
@@ -490,7 +536,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(url, '_blank');
         // Cerrar el menú después de hacer clic en un enlace
         if (tramitesDropdownOpen) {
-            toggleTramitesDropdown();
+            clearTimeout(hideMainMenuTimeout);
+            tramitesDropdownOpen = false;
+            tramitesDropdown.classList.remove('show');
+            tramitesArrow.classList.remove('rotate-180');
+            setTimeout(() => {
+                tramitesDropdown.classList.add('hidden');
+            }, 300);
         }
     };
 
