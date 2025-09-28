@@ -161,6 +161,20 @@
                             <button onclick="handleCredenciales()">Credenciales</button>
                             <button onclick="handleCredencialIndependiente()">Credencial de Independiente</button>
                             <button onclick="handleCursoFormacion()">Curso de Formación</button>
+                            
+                            <!-- Nuevo Submenu Modelos de Solicitud -->
+                            <div class="has-submenu">
+                                <button>Modelos de solicitud</button>
+                                <div class="submenu">
+                                    <button onclick="openLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">1. Modelo declaración jurada Pers. Naturales</button>
+                                    <button onclick="openLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf')">2. Modelo de declaración jurada para empresas</button>
+                                    <button onclick="openLink('https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf')">3. Solicitud simple acreditación de empresas</button>
+                                    <button onclick="openLink('https://www.zosepcar.cl/content/OS10/MOD_solicitud_pers_natural_dependiente.pdf')">4. Modelo de solicitud de Persona Natural Dependiente</button>
+                                    <button onclick="openLink('https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf')">5. Modelo de solicitud de acreditación de Asesor</button>
+                                    <button onclick="openLink('https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf')">6. Modelo de acreditación Capacitador</button>
+                                </div>
+                            </div>
+                            
                             <button onclick="openLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
                             <button onclick="handleValores()">Valores</button>
                             <button onclick="handleValorPlan()">Valor Plan</button>
@@ -680,17 +694,21 @@
     <!-- Script de la notificación -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // El banner de notificación ahora está comentado en el HTML,
+            // pero mantenemos el script de inicialización por si se descomenta en el futuro.
             const banner = document.getElementById('notification-banner');
             
-            // Show the banner after 1 second
-            setTimeout(() => {
-                banner.classList.add('show');
-            }, 1000);
+            if (banner) {
+                // Show the banner after 1 second
+                setTimeout(() => {
+                    banner.classList.add('show');
+                }, 1000);
 
-            // Hide the banner after 9 seconds (total of 1+8 = 9s visible)
-            setTimeout(() => {
-                banner.classList.remove('show');
-            }, 9000); 
+                // Hide the banner after 9 seconds (total of 1+8 = 9s visible)
+                setTimeout(() => {
+                    banner.classList.remove('show');
+                }, 9000); 
+            }
         });
     </script>
     
