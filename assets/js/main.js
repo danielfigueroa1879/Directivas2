@@ -352,3 +352,124 @@ document.addEventListener('DOMContentLoaded', () => {
 setTimeout(() => {
     detectarCapacidadesPWA();
 }, 3000);
+
+
+// Lógica para manejar los submenús de forma más controlada y evitar el parpadeo
+document.addEventListener('DOMContentLoaded', () => {
+    const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+    const tramitesDropdown = document.getElementById('tramites-dropdown');
+    const tramitesArrow = document.getElementById('tramites-arrow');
+    const hasSubmenus = document.querySelectorAll('.has-submenu');
+
+    let tramitesDropdownOpen = false;
+    let hideSubmenuTimeout;
+
+    // Función para abrir/cerrar el menú principal de Trámites
+    function toggleTramitesDropdown() {
+        tramitesDropdownOpen = !tramitesDropdownOpen;
+        if (tramitesDropdownOpen) {
+            tramitesDropdown.classList.remove('hidden');
+            setTimeout(() => {
+                tramitesDropdown.classList.add('show');
+                tramitesArrow.classList.add('rotate-180');
+            }, 10);
+        } else {
+            tramitesDropdown.classList.remove('show');
+            tramitesArrow.classList.remove('rotate-180');
+            // Ocultar submenús abiertos al cerrar el menú principal
+            hasSubmenus.forEach(item => {
+                const submenu = item.querySelector('.submenu');
+                if (submenu && submenu.classList.contains('show')) {
+                    submenu.classList.remove('show');
+                }
+            });
+            setTimeout(() => {
+                tramitesDropdown.classList.add('hidden');
+            }, 300); // Coincidir con la duración de la transición CSS
+        }
+    }
+
+    // Event listener para el botón principal de Trámites
+    if (tramitesMenuBtn) {
+        tramitesMenuBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            toggleTramitesDropdown();
+        });
+    }
+
+    // Event listeners para los submenús para evitar parpadeo
+    hasSubmenus.forEach(item => {
+        const submenuButton = item.querySelector('button');
+        const submenu = item.querySelector('.submenu');
+
+        if (submenuButton && submenu) {
+            const showSubmenu = () => {
+                clearTimeout(hideSubmenuTimeout);
+                // Cerrar otros submenús para evitar superposición
+                hasSubmenus.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('.submenu').classList.remove('show');
+                    }
+                });
+                // Calcular posición y mostrar
+                const rect = submenuButton.getBoundingClientRect();
+                submenu.style.left = `${rect.right + 5}px`; // 5px de separación
+                submenu.style.top = `${rect.top}px`;
+                submenu.classList.add('show');
+            };
+
+            const hideSubmenu = () => {
+                hideSubmenuTimeout = setTimeout(() => {
+                    submenu.classList.remove('show');
+                }, 200); // Un retraso razonable para permitir el movimiento del cursor
+            };
+
+            // Mostrar al entrar en el botón o en el propio submenú
+            item.addEventListener('mouseenter', showSubmenu);
+            submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
+
+            // Ocultar al salir del área combinada del botón y el submenú
+            item.addEventListener('mouseleave', hideSubmenu);
+            submenu.addEventListener('mouseleave', hideSubmenu);
+
+            // Manejo de clics para dispositivos táctiles o como fallback
+            submenuButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                if (tramitesDropdownOpen) {
+                    const isVisible = submenu.classList.contains('show');
+                    // Cerrar todos los demás primero
+                    hasSubmenus.forEach(otherItem => {
+                        otherItem.querySelector('.submenu').classList.remove('show');
+                    });
+                    // Si no estaba visible, mostrarlo
+                    if (!isVisible) {
+                        showSubmenu();
+                    }
+                }
+            });
+        }
+    });
+
+    // Cerrar menús al hacer clic fuera
+    document.addEventListener('click', (event) => {
+        if (tramitesDropdownOpen && !tramitesDropdown.contains(event.target) && !tramitesMenuBtn.contains(event.target)) {
+            toggleTramitesDropdown();
+        }
+        // No es necesario cerrar los submenús aquí, el mouseleave lo gestiona.
+        // Solo se cierra el dropdown principal.
+    });
+
+    // Función para manejar la navegación de enlaces
+    window.openLink = function(url) {
+        window.open(url, '_blank');
+        // Opcional: cerrar el menú después de hacer clic en un enlace
+        if (tramitesDropdownOpen) {
+            toggleTramitesDropdown();
+        }
+    };
+
+    // Asegurarse de que el menú principal esté oculto al inicio
+    tramitesDropdown.classList.add('hidden');
+});
+
+
