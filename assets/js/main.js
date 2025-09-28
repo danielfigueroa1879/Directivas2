@@ -353,7 +353,7 @@ setTimeout(() => {
     detectarCapacidadesPWA();
 }, 3000);
 
-
+// ===== LÓGICA CORREGIDA PARA SUBMENÚS =====
 // Lógica para manejar los submenús de forma más controlada y evitar el parpadeo
 document.addEventListener('DOMContentLoaded', () => {
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
@@ -363,6 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let tramitesDropdownOpen = false;
     let hideSubmenuTimeout;
+
+    // Detectar si es un dispositivo táctil
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     // Función para abrir/cerrar el menú principal de Trámites
     function toggleTramitesDropdown() {
@@ -385,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             setTimeout(() => {
                 tramitesDropdown.classList.add('hidden');
-            }, 300); // Coincidir con la duración de la transición CSS
+            }, 300);
         }
     }
 
@@ -397,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listeners para los submenús para evitar parpadeo
+    // Event listeners CORREGIDOS para los submenús
     hasSubmenus.forEach(item => {
         const submenuButton = item.querySelector('button');
         const submenu = item.querySelector('.submenu');
@@ -408,7 +411,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Cerrar otros submenús para evitar superposición
                 hasSubmenus.forEach(otherItem => {
                     if (otherItem !== item) {
-                        otherItem.querySelector('.submenu').classList.remove('show');
+                        const otherSubmenu = otherItem.querySelector('.submenu');
+                        if (otherSubmenu) {
+                            otherSubmenu.classList.remove('show');
+                        }
                     }
                 });
                 
@@ -419,14 +425,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Desktop: Fly-out to the right
                     submenu.style.left = `${rect.right + 5}px`;
                     submenu.style.top = `${rect.top}px`;
-                    submenu.style.transform = ''; 
-                    submenu.style.right = ''; // Unset right
+                    submenu.style.right = '';
                 } else {
-                    // Mobile: Align to the right of the screen, below the button
-                    submenu.style.right = '20px'; // 20px from the right edge of viewport
-                    submenu.style.left = ''; // Unset left
+                    // Mobile: CORREGIDO - Fijar a la derecha
+                    submenu.style.right = '20px';
+                    submenu.style.left = '';
                     submenu.style.top = `${rect.bottom + 10}px`;
-                    submenu.style.transform = ''; // Unset transform
                 }
                 
                 submenu.classList.add('show');
@@ -435,38 +439,42 @@ document.addEventListener('DOMContentLoaded', () => {
             const hideSubmenu = () => {
                 hideSubmenuTimeout = setTimeout(() => {
                     submenu.classList.remove('show');
-                }, 200); // Un retraso razonable para permitir el movimiento del cursor
+                }, 200);
             };
 
-            // PC hover listeners
-            item.addEventListener('mouseenter', showSubmenu);
-            submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
-            item.addEventListener('mouseleave', hideSubmenu);
-            submenu.addEventListener('mouseleave', hideSubmenu);
-
-            // Mobile click listener on the whole item
-            item.addEventListener('click', (event) => {
-                if (window.innerWidth <= 1024) { // Only for mobile
+            // CORREGIDO: Manejo de eventos para móvil y desktop
+            if (isTouchDevice || window.innerWidth <= 1024) {
+                // MÓVIL: Solo evento click - UN SOLO CLICK
+                submenuButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
 
                     const isVisible = submenu.classList.contains('show');
 
-                    // Close all other submenus
-                    document.querySelectorAll('.submenu.show').forEach(s => {
-                        if (s !== submenu) {
-                            s.classList.remove('show');
+                    // Cerrar todos los otros submenús
+                    hasSubmenus.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            const otherSubmenu = otherItem.querySelector('.submenu');
+                            if (otherSubmenu) {
+                                otherSubmenu.classList.remove('show');
+                            }
                         }
                     });
 
-                    // Toggle the current one
+                    // Toggle el actual con UN SOLO CLICK
                     if (!isVisible) {
                         showSubmenu();
                     } else {
                         submenu.classList.remove('show');
                     }
-                }
-            });
+                });
+            } else {
+                // DESKTOP: Eventos hover
+                item.addEventListener('mouseenter', showSubmenu);
+                submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
+                item.addEventListener('mouseleave', hideSubmenu);
+                submenu.addEventListener('mouseleave', hideSubmenu);
+            }
         }
     });
 
@@ -480,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para manejar la navegación de enlaces
     window.openLink = function(url) {
         window.open(url, '_blank');
-        // Opcional: cerrar el menú después de hacer clic en un enlace
+        // Cerrar el menú después de hacer clic en un enlace
         if (tramitesDropdownOpen) {
             toggleTramitesDropdown();
         }
@@ -489,5 +497,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
-
-
