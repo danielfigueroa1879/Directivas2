@@ -660,8 +660,8 @@ body.homepage {
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: center; /* CENTRADO SOLICITADO */
-    padding: 12px 20px;
-    font-size: 0.8rem; /* TEXTO UN POCO MÁS PEQUEÑO (0.8rem) */
+    padding: 10px 20px; /* Reducción de padding para ahorrar espacio vertical */
+    font-size: 0.75rem; /* REDUCCIÓN DEL TAMAÑO DE FUENTE SOLICITADA */
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
     border: none;
