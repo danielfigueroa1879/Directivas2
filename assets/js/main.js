@@ -419,13 +419,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Desktop: Fly-out to the right
                     submenu.style.left = `${rect.right + 5}px`;
                     submenu.style.top = `${rect.top}px`;
-                    submenu.style.transform = ''; // Clear any transform
+                    submenu.style.transform = ''; 
+                    submenu.style.right = ''; // Unset right
                 } else {
-                    // Mobile: Align with parent dropdown, not screen center
-                    const dropdownRect = tramitesDropdown.getBoundingClientRect();
-                    submenu.style.left = `${dropdownRect.left + 20}px`; // 20px from parent menu left
+                    // Mobile: Align to the right of the screen, below the button
+                    submenu.style.right = '20px'; // 20px from the right edge of viewport
+                    submenu.style.left = ''; // Unset left
                     submenu.style.top = `${rect.bottom + 10}px`;
-                    submenu.style.transform = ''; // Remove centering transform
+                    submenu.style.transform = ''; // Unset transform
                 }
                 
                 submenu.classList.add('show');
@@ -488,3 +489,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
+
+
