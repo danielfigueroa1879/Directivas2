@@ -28,7 +28,7 @@ let activeSubmenu = null;
 let hideSubmenuTimeout = null;
 let currentTriggerButton = null;
 let mainMenuTimeout = null;
-let currentSubmenuContainer = null; // CRÍTICO: Referencia al contenedor de hover
+let currentSubmenuContainer = null; 
 
 
 function rotateBackground() {
@@ -183,8 +183,7 @@ function showSubmenu(triggerButton, container) {
 
     // 2. Ocultar y limpiar el submenú anterior antes de crear el nuevo
     if (activeSubmenu) {
-        // Asegurarse de que el submenú anterior no se cierre inmediatamente si está siendo abierto
-        hideSubmenu(0); 
+        hideSubmenu(0); // Forzar cierre inmediato del anterior
     }
 
     // 3. Clonar y configurar el nuevo submenú
@@ -222,7 +221,10 @@ function showSubmenu(triggerButton, container) {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     
+    // Calcular LEFT basado en el borde derecho del menú principal + 5px de separación
     let leftPosition = dropdownRect.right + 5; 
+    
+    // TOP basado en la posición vertical del botón trigger
     let topPosition = triggerRect.top; 
 
     // Ajuste horizontal (Escritorio)
@@ -270,10 +272,10 @@ function showSubmenu(triggerButton, container) {
     currentTriggerButton = triggerButton;
     currentSubmenuContainer = container; // Guardar el contenedor original
 
-    // Listeners del elemento clonado para evitar el parpadeo
+    // --- NUEVOS LISTENERS EN EL SUBMENÚ CLONADO PARA ELIMINAR FLICKERING ---
+    // Si el mouse entra al submenú, cancela el cierre del submenú y del menú principal.
     activeSubmenu.addEventListener('mouseenter', () => {
         clearTimeout(hideSubmenuTimeout);
-        // Si el mouse entra al submenu clonado, cancelar el cierre global del menú principal también
         clearTimeout(mainMenuTimeout); 
     });
 
@@ -343,7 +345,7 @@ function setupSubmenuTriggers() {
             
             let containerShowTimeout;
             
-            // Listener de ENTRADA en el contenedor (que incluye el botón y el submenú invisible)
+            // Listener de ENTRADA en el CONTENEDOR del botón (que ahora tiene el área de hover)
             container.addEventListener('mouseenter', () => {
                 clearTimeout(hideSubmenuTimeout); // CANCELA EL CIERRE DEL SUBMENU
                 clearTimeout(containerShowTimeout);
@@ -355,7 +357,7 @@ function setupSubmenuTriggers() {
                 }, 100); 
             });
 
-            // Listener de SALIDA en el contenedor (que incluye el botón y el submenú invisible)
+            // Listener de SALIDA en el CONTENEDOR del botón
             container.addEventListener('mouseleave', () => {
                 clearTimeout(containerShowTimeout); // CANCELA LA APERTURA SI ESTÁ PENDIENTE
                 // Al salir del área, establecer un timeout para ocultar el submenu
@@ -363,7 +365,10 @@ function setupSubmenuTriggers() {
                     hideSubmenu();
                 }, 200); 
             });
-
+            
+            // CRÍTICO: El submenú flotante (activeSubmenu) tiene sus propios listeners
+            // que cancelan este hideSubmenuTimeout cuando el mouse se mueve entre el menú principal y el flotante.
+            
         } else {
             // Móvil: Click
             newTrigger.addEventListener('click', (e) => {
