@@ -559,9 +559,8 @@ body.homepage {
     border-radius: 0 0 12px 12px;
     box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
     z-index: 1201;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
     opacity: 0;
-    transform: translateY(10px);
     pointer-events: none;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -569,7 +568,6 @@ body.homepage {
 
 .dropdown-menu:not(.hidden) {
     opacity: 1;
-    transform: translateY(0);
     pointer-events: auto;
 }
 
@@ -644,7 +642,7 @@ body.homepage {
     visibility: hidden;
     pointer-events: none;
     transform: translateX(-5px) scale(0.98);
-    transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 /* SUBMENU VISIBLE */
