@@ -587,9 +587,10 @@ body.homepage {
     color: rgba(31, 41, 55, 0.95);
 }
 
+/* Modificación para centrar texto y mantener padding */
 .dropdown-menu button {
     width: 100%;
-    text-align: left;
+    text-align: center; /* ALINEACIÓN CENTRADA APLICADA AQUÍ */
     padding: 14px 20px;
     font-size: 0.875rem;
     color: rgba(31, 41, 55, 0.9);
@@ -603,16 +604,18 @@ body.homepage {
 
 .dropdown-menu button:last-child { border-bottom: none; }
 
+/* El efecto hover se simplifica para centrado */
 .dropdown-menu button:hover {
     background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
-    transform: translateX(8px);
-    padding-left: 28px;
+    transform: translateX(0px); /* ELIMINADO DESPLAZAMIENTO HORIZONTAL */
+    padding-left: 20px;
+    padding-right: 20px;
     backdrop-filter: blur(10px);
 }
 
 .dropdown-menu button:active {
-    transform: translateX(4px);
+    transform: translateX(0px);
     background-color: rgba(59, 130, 246, 0.25);
 }
 
@@ -624,7 +627,7 @@ body.homepage {
 
 /* SUBMENU QUE APARECE COMPLETAMENTE FUERA */
 .dropdown-menu .submenu {
-    position: fixed !important; /* FUNDAMENTAL: FIXED PARA SALIR DEL CONTENEDOR */
+    position: fixed !important; 
     left: auto;
     top: auto;
     width: 280px;
@@ -634,7 +637,7 @@ body.homepage {
     border: 1px solid rgba(229, 231, 235, 1);
     border-radius: 12px;
     box-shadow: 15px 5px 40px rgba(0, 0, 0, 0.2);
-    z-index: 1350; /* MÁS ALTO QUE EL MENÚ PRINCIPAL */
+    z-index: 1350; 
     padding: 12px 0;
     
     /* INVISIBLE POR DEFECTO */
@@ -656,7 +659,7 @@ body.homepage {
 /* BOTONES DENTRO DEL SUBMENU */
 .dropdown-menu .submenu button {
     width: 100%;
-    text-align: left;
+    text-align: center; /* ALINEACIÓN CENTRADA APLICADA AQUÍ */
     padding: 12px 20px;
     font-size: 0.875rem;
     color: rgba(31, 41, 55, 0.9);
@@ -676,8 +679,9 @@ body.homepage {
 .dropdown-menu .submenu button:hover {
     background-color: rgba(34, 197, 94, 0.15);
     color: rgba(21, 128, 61, 1);
-    transform: translateX(6px);
-    padding-left: 26px;
+    transform: translateX(0px); /* ELIMINADO DESPLAZAMIENTO HORIZONTAL */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* FLECHA EN BOTÓN QUE TIENE SUBMENU */
@@ -690,7 +694,7 @@ body.homepage {
 }
 
 .dropdown-menu .has-submenu > button:hover::after {
-    transform: translateX(3px);
+    transform: translateX(0px); /* ELIMINADO DESPLAZAMIENTO DE LA FLECHA EN HOVER */
 }
 
 #tramites-overlay, #editables-overlay {
@@ -778,11 +782,11 @@ body.homepage {
         font-size: 0.8rem;
     }
     .dropdown-menu button:hover {
-        transform: translateX(6px);
-        padding-left: 22px;
+        transform: translateX(0px);
+        padding-left: 16px;
     }
     .dropdown-menu .submenu button:hover {
-        transform: translateX(4px);
+        transform: translateX(0px);
         padding-left: 20px;
     }
 }
@@ -879,4 +883,3 @@ body.homepage {
         color: white; /* Letras blancas para móvil */
    }
 }
-
