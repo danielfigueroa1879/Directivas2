@@ -628,9 +628,10 @@ body.homepage {
 
 /* SUBMENU que aparece completamente fuera con MEJOR CONTROL */
 .dropdown-menu .submenu {
-    position: fixed !important; 
-    left: auto;
-    top: auto;
+    position: absolute;
+    left: 100%;
+    top: -13px;
+    margin-left: 1px;
     width: 280px;
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(40px);
