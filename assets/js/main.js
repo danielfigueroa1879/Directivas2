@@ -474,3 +474,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurarse de que el menú principal esté oculto al inicio
     tramitesDropdown.classList.add('hidden');
 });
+
+
