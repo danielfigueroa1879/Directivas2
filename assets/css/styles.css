@@ -587,12 +587,12 @@ body.homepage {
     color: rgba(31, 41, 55, 0.95);
 }
 
-/* AUMENTANDO EL TAMAÑO DE LA LETRA DEL MENÚ PRINCIPAL */
+/* MENÚ PRINCIPAL (PC) - TAMAÑO Y ESPACIO AJUSTADO */
 .dropdown-menu button {
     width: 100%;
     text-align: left; 
-    padding: 14px 20px;
-    font-size: 1rem; /* AUMENTADO: De 0.875rem a 1rem */
+    padding: 10px 20px; /* Mantenido a 10px */
+    font-size: 0.95rem; /* REDUCIDO: De 1rem a 0.95rem */
     color: rgba(31, 41, 55, 0.9);
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
@@ -649,11 +649,11 @@ body.homepage {
     pointer-events: auto;
 }
 
-/* BOTONES DENTRO DEL SUBMENU - ESPACIO ENTRE LÍNEAS REDUCIDO */
+/* BOTONES DENTRO DEL SUBMENU - ESPACIO ENTRE LÍNEAS REDUCIDO (MANTENIDO) */
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: left;
-    padding: 8px 15px; /* REDUCIDO: De 10px a 8px para juntar las líneas */
+    padding: 8px 15px; /* Mantenido a 8px */
     font-size: 0.875rem; 
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
@@ -735,11 +735,12 @@ body.homepage {
         top: 95px; /* CAMBIADO: ajuste proporcional */
     }
     .dropdown-menu button {
-        padding: 12px 16px;
-        font-size: 0.9rem; /* Ajuste para móvil para el menú principal */
+        padding: 10px 16px; /* REDUCIDO: De 12px a 10px */
+        font-size: 0.85rem; /* Ajuste para móvil para el menú principal (REDUCIDO: de 0.9rem a 0.85rem) */
     }
     .dropdown-menu .submenu button {
-        font-size: 0.75rem; /* Ajuste para móvil para el submenú (REDUCIDO: de 0.8rem a 0.75rem) */
+        padding: 8px 15px; /* Mantenido a 8px */
+        font-size: 0.75rem; /* Ajuste para móvil para el submenú (MANTENIDO) */
     }
     .dropdown-menu button:hover {
         background-color: rgba(59, 130, 246, 0.2);
