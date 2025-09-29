@@ -591,8 +591,8 @@ body.homepage {
 .dropdown-menu button {
     width: 100%;
     text-align: left; 
-    padding: 10px 20px; /* Mantenido a 10px */
-    font-size: 0.95rem; /* REDUCIDO: De 1rem a 0.95rem */
+    padding: 10px 20px; /* Juntado */
+    font-size: 0.9rem; /* REDUCIDO para PC (de 0.95rem a 0.9rem) */
     color: rgba(31, 41, 55, 0.9);
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
@@ -653,7 +653,7 @@ body.homepage {
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: left;
-    padding: 8px 15px; /* Mantenido a 8px */
+    padding: 8px 15px; /* Juntado */
     font-size: 0.875rem; 
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
@@ -736,11 +736,11 @@ body.homepage {
     }
     .dropdown-menu button {
         padding: 10px 16px; /* REDUCIDO: De 12px a 10px */
-        font-size: 0.85rem; /* Ajuste para móvil para el menú principal (REDUCIDO: de 0.9rem a 0.85rem) */
+        font-size: 0.85rem; /* Ajuste para móvil para el menú principal */
     }
     .dropdown-menu .submenu button {
         padding: 8px 15px; /* Mantenido a 8px */
-        font-size: 0.75rem; /* Ajuste para móvil para el submenú (MANTENIDO) */
+        font-size: 0.75rem; /* Ajuste para móvil para el submenú */
     }
     .dropdown-menu button:hover {
         background-color: rgba(59, 130, 246, 0.2);
