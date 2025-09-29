@@ -739,7 +739,7 @@ body.homepage {
         font-size: 0.9rem; /* Ajuste para móvil para el menú principal */
     }
     .dropdown-menu .submenu button {
-        font-size: 0.8rem; /* Ajuste para móvil para el submenú */
+        font-size: 0.75rem; /* Ajuste para móvil para el submenú (REDUCIDO: de 0.8rem a 0.75rem) */
     }
     .dropdown-menu button:hover {
         background-color: rgba(59, 130, 246, 0.2);
