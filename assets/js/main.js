@@ -232,11 +232,9 @@ function detectarCapacidadesPWA() {
             return { canAutoInstall: true, method: 'auto', platform: 'Android Chrome' };
         } else if (isEdge) {
             console.log('   Edge Android: ✅ BUENO');
-            console.log('   - Instalación: Automática');
             return { canAutoInstall: true, method: 'auto', platform: 'Android Edge' };
         } else if (isSamsungBrowser) {
             console.log('   Samsung Browser: ⚠️ LIMITADO');
-            console.log('   - Instalación: Parcial');
             return { canAutoInstall: false, method: 'manual', platform: 'Samsung Browser' };
         } else if (isFirefox) {
             console.log('   Firefox Android: ⚠️ LIMITADO');
@@ -355,22 +353,219 @@ window.addEventListener('appinstalled', (e) => {
 });
 
 
-// ===== FUNCIONES DEL MENÚ DE TRÁMITES =====
-// Hacemos que todas las funciones de manejo sean globales (window.) para que index.html las encuentre.
+// ===== FUNCIONES DEL MENÚ DE TRÁMITES (CORREGIDAS Y RECUPERADAS) =====
 
-// Función para abrir enlaces en nueva pestaña
+// Variable de estado para el menú principal
+let tramitesDropdownOpen = false;
+let hideMainMenuTimeout;
+let hideSubmenuTimeout;
+
+// Función para abrir el menú principal de Trámites
+function showTramitesDropdown() {
+    const tramitesDropdown = document.getElementById('tramites-dropdown');
+    const tramitesArrow = document.getElementById('tramites-arrow');
+    const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+    
+    clearTimeout(hideMainMenuTimeout);
+    if (!tramitesDropdownOpen) {
+        tramitesDropdownOpen = true;
+        tramitesDropdown.classList.remove('hidden');
+        tramitesMenuBtn.classList.add('panel-active');
+        setTimeout(() => {
+            tramitesDropdown.classList.add('show');
+            tramitesArrow.classList.add('rotate-180');
+        }, 10);
+    }
+}
+
+// Función para cerrar el menú principal de Trámites
+function hideTramitesDropdown() {
+    const tramitesDropdown = document.getElementById('tramites-dropdown');
+    const tramitesArrow = document.getElementById('tramites-arrow');
+    const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+    const hasSubmenus = document.querySelectorAll('.has-submenu');
+
+    hideMainMenuTimeout = setTimeout(() => {
+        if (tramitesDropdownOpen) {
+            tramitesDropdownOpen = false;
+            tramitesDropdown.classList.remove('show');
+            tramitesArrow.classList.remove('rotate-180');
+            tramitesMenuBtn.classList.remove('panel-active');
+            
+            // Ocultar submenús abiertos
+            hasSubmenus.forEach(item => {
+                const submenu = item.querySelector('.submenu');
+                if (submenu && submenu.classList.contains('show')) {
+                    submenu.classList.remove('show');
+                }
+            });
+            setTimeout(() => {
+                tramitesDropdown.classList.add('hidden');
+            }, 300);
+        }
+    }, 200);
+}
+
+// Función para toggle del menú principal (solo móvil)
+function toggleTramitesDropdown() {
+    if (tramitesDropdownOpen) {
+        hideTramitesDropdown();
+        // Forzar cierre inmediato en móvil
+        clearTimeout(hideMainMenuTimeout);
+        tramitesDropdownOpen = false;
+        document.getElementById('tramites-dropdown').classList.remove('show');
+        document.getElementById('tramites-arrow').classList.remove('rotate-180');
+        document.getElementById('tramites-menu-btn').classList.remove('panel-active');
+        document.querySelectorAll('.has-submenu').forEach(item => {
+            const submenu = item.querySelector('.submenu');
+            if (submenu && submenu.classList.contains('show')) {
+                submenu.classList.remove('show');
+            }
+        });
+        setTimeout(() => {
+            document.getElementById('tramites-dropdown').classList.add('hidden');
+        }, 300);
+    } else {
+        showTramitesDropdown();
+    }
+}
+
+
+// CONFIGURACIÓN PRINCIPAL DEL MENÚ TRÁMITES
+document.addEventListener('DOMContentLoaded', () => {
+    const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+    const tramitesDropdown = document.getElementById('tramites-dropdown');
+    const tramitesContainer = tramitesMenuBtn.parentElement;
+    const hasSubmenus = document.querySelectorAll('.has-submenu');
+    
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isDesktop = window.innerWidth > 1024;
+    
+    // CONFIGURACIÓN PRINCIPAL DEL MENÚ TRÁMITES (HOVER en PC, CLICK en Móvil)
+    if (tramitesMenuBtn) {
+        if (isDesktop && !isTouchDevice) {
+            // PC: HOVER automático
+            tramitesContainer.addEventListener('mouseenter', showTramitesDropdown);
+            tramitesContainer.addEventListener('mouseleave', hideTramitesDropdown);
+            
+            // Mantener abierto cuando el mouse está sobre el dropdown
+            tramitesDropdown.addEventListener('mouseenter', () => {
+                clearTimeout(hideMainMenuTimeout);
+            });
+            tramitesDropdown.addEventListener('mouseleave', hideTramitesDropdown);
+        } else {
+            // MÓVIL: CLICK
+            tramitesMenuBtn.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleTramitesDropdown();
+            });
+        }
+    }
+
+    // Event listeners para los submenús
+    hasSubmenus.forEach(item => {
+        const submenuButton = item.querySelector('button');
+        const submenu = item.querySelector('.submenu');
+
+        if (submenuButton && submenu) {
+            const showSubmenu = (event) => {
+                clearTimeout(hideSubmenuTimeout);
+                // Cerrar otros submenús para evitar superposición
+                hasSubmenus.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        const otherSubmenu = otherItem.querySelector('.submenu');
+                        if (otherSubmenu) {
+                            otherSubmenu.classList.remove('show');
+                        }
+                    }
+                });
+                
+                const rect = submenuButton.getBoundingClientRect();
+                
+                // Position submenu
+                if (window.innerWidth > 1024) {
+                    // Desktop: Fly-out to the right
+                    submenu.style.left = `${rect.right + 5}px`;
+                    submenu.style.top = `${rect.top}px`;
+                    submenu.style.right = '';
+                } else {
+                    // Mobile: Fijar a la derecha
+                    submenu.style.right = '20px';
+                    submenu.style.left = '';
+                    submenu.style.top = `${rect.bottom + 10}px`;
+                }
+                
+                submenu.classList.add('show');
+            };
+
+            const hideSubmenu = () => {
+                hideSubmenuTimeout = setTimeout(() => {
+                    submenu.classList.remove('show');
+                }, 200);
+            };
+
+            // CONFIGURACIÓN POR DISPOSITIVO
+            if (isDesktop && !isTouchDevice) {
+                // PC: HOVER
+                item.addEventListener('mouseenter', showSubmenu);
+                submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
+                item.addEventListener('mouseleave', hideSubmenu);
+                submenu.addEventListener('mouseleave', hideSubmenu);
+            } else {
+                // MÓVIL: CLICK
+                submenuButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const isVisible = submenu.classList.contains('show');
+
+                    // Cerrar todos los otros submenús
+                    hasSubmenus.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            const otherSubmenu = otherItem.querySelector('.submenu');
+                            if (otherSubmenu) {
+                                otherSubmenu.classList.remove('show');
+                            }
+                        }
+                    });
+
+                    // Toggle el actual con UN SOLO CLICK
+                    if (!isVisible) {
+                        showSubmenu(event);
+                    } else {
+                        submenu.classList.remove('show');
+                    }
+                });
+            }
+        }
+    });
+
+    // Cerrar menús al hacer clic fuera
+    document.addEventListener('click', (event) => {
+        if (tramitesDropdownOpen && !tramitesDropdown.contains(event.target) && !tramitesMenuBtn.contains(event.target)) {
+            toggleTramitesDropdown();
+        }
+    });
+
+    // Asegurarse de que el menú principal esté oculto al inicio
+    if (tramitesDropdown) {
+         tramitesDropdown.classList.add('hidden');
+    }
+});
+
+
+// Handlers de navegación de secciones (Hacemos que sean globales)
 window.openNewLink = function(url) {
     window.open(url, '_blank');
-    // Cerrar el menú después de hacer clic en un enlace
+    // Cierre del menú al hacer clic en un enlace (recuperado de la lógica de menú)
     const tramitesDropdown = document.getElementById('tramites-dropdown');
     const tramitesArrow = document.getElementById('tramites-arrow');
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
 
-    if (!tramitesDropdown.classList.contains('hidden')) {
+    if (tramitesDropdown && !tramitesDropdown.classList.contains('hidden')) {
         tramitesDropdown.classList.remove('show');
         tramitesArrow.classList.remove('rotate-180');
         tramitesMenuBtn.classList.remove('panel-active');
-        // Ocultar submenús abiertos
         const hasSubmenus = document.querySelectorAll('.has-submenu');
         hasSubmenus.forEach(item => {
             const submenu = item.querySelector('.submenu');
@@ -384,7 +579,7 @@ window.openNewLink = function(url) {
     }
 };
 
-// Handlers de navegación de secciones
+
 window.handleCerofilas = function() { window.openNewLink('https://dal5.short.gy/CFil'); }
 window.handleDirectiva = function() { showDirectiva(); }
 window.handleCredenciales = function() { showCredenciales(); }
