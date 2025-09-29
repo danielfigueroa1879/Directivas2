@@ -240,7 +240,6 @@ function detectarCapacidadesPWA() {
             return { canAutoInstall: false, method: 'manual', platform: 'Samsung Browser' };
         } else if (isFirefox) {
             console.log('   Firefox Android: ⚠️ LIMITADO');
-            console.log('   - Instalación: Limitada');
             return { canAutoInstall: false, method: 'limited', platform: 'Firefox Android' };
         } else {
             console.log('   Otro navegador Android: ❌ Variable');
@@ -348,204 +347,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Ejecutar detección también al cambiar a móvil
-setTimeout(() => {
-    detectarCapacidadesPWA();
-}, 3000);
+// Event listener adicional para detectar cuando la app se instala
+window.addEventListener('appinstalled', (e) => {
+    console.log('🎉 PWA: App was installed successfully');
+    deferredPrompt = null;
+    bannerShown = false; // Reset para futuras instalaciones
+});
 
-// ===== LÓGICA CORREGIDA PARA SUBMENÚS - HOVER EN PC, CLICK EN MÓVIL =====
-document.addEventListener('DOMContentLoaded', () => {
-    const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+
+// ===== FUNCIONES DEL MENÚ DE TRÁMITES =====
+// Hacemos que todas las funciones de manejo sean globales (window.) para que index.html las encuentre.
+
+// Función para abrir enlaces en nueva pestaña
+window.openNewLink = function(url) {
+    window.open(url, '_blank');
+    // Cerrar el menú después de hacer clic en un enlace
     const tramitesDropdown = document.getElementById('tramites-dropdown');
     const tramitesArrow = document.getElementById('tramites-arrow');
-    const hasSubmenus = document.querySelectorAll('.has-submenu');
+    const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
 
-    let tramitesDropdownOpen = false;
-    let hideSubmenuTimeout;
-    let hideMainMenuTimeout;
-
-    // Detectar si es un dispositivo táctil
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const isDesktop = window.innerWidth > 1024;
-
-    // Función para abrir el menú principal de Trámites
-    function showTramitesDropdown() {
-        clearTimeout(hideMainMenuTimeout);
-        if (!tramitesDropdownOpen) {
-            tramitesDropdownOpen = true;
-            tramitesDropdown.classList.remove('hidden');
-            setTimeout(() => {
-                tramitesDropdown.classList.add('show');
-                tramitesArrow.classList.add('rotate-180');
-            }, 10);
-        }
-    }
-
-    // Función para cerrar el menú principal de Trámites
-    function hideTramitesDropdown() {
-        hideMainMenuTimeout = setTimeout(() => {
-            if (tramitesDropdownOpen) {
-                tramitesDropdownOpen = false;
-                tramitesDropdown.classList.remove('show');
-                tramitesArrow.classList.remove('rotate-180');
-                // Ocultar submenús abiertos
-                hasSubmenus.forEach(item => {
-                    const submenu = item.querySelector('.submenu');
-                    if (submenu && submenu.classList.contains('show')) {
-                        submenu.classList.remove('show');
-                    }
-                });
-                setTimeout(() => {
-                    tramitesDropdown.classList.add('hidden');
-                }, 300);
+    if (!tramitesDropdown.classList.contains('hidden')) {
+        tramitesDropdown.classList.remove('show');
+        tramitesArrow.classList.remove('rotate-180');
+        tramitesMenuBtn.classList.remove('panel-active');
+        // Ocultar submenús abiertos
+        const hasSubmenus = document.querySelectorAll('.has-submenu');
+        hasSubmenus.forEach(item => {
+            const submenu = item.querySelector('.submenu');
+            if (submenu && submenu.classList.contains('show')) {
+                submenu.classList.remove('show');
             }
-        }, 200);
+        });
+        setTimeout(() => {
+            tramitesDropdown.classList.add('hidden');
+        }, 300);
     }
+};
 
-    // Función para toggle del menú principal (solo móvil)
-    function toggleTramitesDropdown() {
-        if (tramitesDropdownOpen) {
-            hideTramitesDropdown();
-            // Forzar cierre inmediato en móvil
-            clearTimeout(hideMainMenuTimeout);
-            tramitesDropdownOpen = false;
-            tramitesDropdown.classList.remove('show');
-            tramitesArrow.classList.remove('rotate-180');
-            hasSubmenus.forEach(item => {
-                const submenu = item.querySelector('.submenu');
-                if (submenu && submenu.classList.contains('show')) {
-                    submenu.classList.remove('show');
-                }
-            });
-            setTimeout(() => {
-                tramitesDropdown.classList.add('hidden');
-            }, 300);
-        } else {
-            showTramitesDropdown();
-        }
-    }
-
-    // CONFIGURACIÓN PRINCIPAL DEL MENÚ TRÁMITES
-    if (tramitesMenuBtn) {
-        if (isDesktop && !isTouchDevice) {
-            // PC: HOVER automático
-            tramitesMenuBtn.addEventListener('mouseenter', showTramitesDropdown);
-            tramitesMenuBtn.addEventListener('mouseleave', hideTramitesDropdown);
-            
-            // Mantener abierto cuando el mouse está sobre el dropdown
-            tramitesDropdown.addEventListener('mouseenter', () => {
-                clearTimeout(hideMainMenuTimeout);
-            });
-            tramitesDropdown.addEventListener('mouseleave', hideTramitesDropdown);
-        } else {
-            // MÓVIL: CLICK
-            tramitesMenuBtn.addEventListener('click', (event) => {
-                event.stopPropagation();
-                toggleTramitesDropdown();
-            });
-        }
-    }
-
-    // Event listeners para los submenús
-    hasSubmenus.forEach(item => {
-        const submenuButton = item.querySelector('button');
-        const submenu = item.querySelector('.submenu');
-
-        if (submenuButton && submenu) {
-            const showSubmenu = () => {
-                clearTimeout(hideSubmenuTimeout);
-                // Cerrar otros submenús para evitar superposición
-                hasSubmenus.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        const otherSubmenu = otherItem.querySelector('.submenu');
-                        if (otherSubmenu) {
-                            otherSubmenu.classList.remove('show');
-                        }
-                    }
-                });
-                
-                const rect = submenuButton.getBoundingClientRect();
-
-                // Position submenu
-                if (window.innerWidth > 1024) {
-                    // Desktop: Fly-out to the right
-                    submenu.style.left = `${rect.right + 5}px`;
-                    submenu.style.top = `${rect.top}px`;
-                    submenu.style.right = '';
-                } else {
-                    // Mobile: CORREGIDO - Fijar a la derecha
-                    submenu.style.right = '20px';
-                    submenu.style.left = '';
-                    submenu.style.top = `${rect.bottom + 10}px`;
-                }
-                
-                submenu.classList.add('show');
-            };
-
-            const hideSubmenu = () => {
-                hideSubmenuTimeout = setTimeout(() => {
-                    submenu.classList.remove('show');
-                }, 200);
-            };
-
-            // CONFIGURACIÓN POR DISPOSITIVO
-            if (isDesktop && !isTouchDevice) {
-                // PC: HOVER
-                item.addEventListener('mouseenter', showSubmenu);
-                submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
-                item.addEventListener('mouseleave', hideSubmenu);
-                submenu.addEventListener('mouseleave', hideSubmenu);
-            } else {
-                // MÓVIL: CLICK
-                submenuButton.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    const isVisible = submenu.classList.contains('show');
-
-                    // Cerrar todos los otros submenús
-                    hasSubmenus.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            const otherSubmenu = otherItem.querySelector('.submenu');
-                            if (otherSubmenu) {
-                                otherSubmenu.classList.remove('show');
-                            }
-                        }
-                    });
-
-                    // Toggle el actual con UN SOLO CLICK
-                    if (!isVisible) {
-                        showSubmenu();
-                    } else {
-                        submenu.classList.remove('show');
-                    }
-                });
-            }
-        }
-    });
-
-    // Cerrar menús al hacer clic fuera
-    document.addEventListener('click', (event) => {
-        if (tramitesDropdownOpen && !tramitesDropdown.contains(event.target) && !tramitesMenuBtn.contains(event.target)) {
-            toggleTramitesDropdown();
-        }
-    });
-
-    // Función para manejar la navegación de enlaces
-    window.openLink = function(url) {
-        window.open(url, '_blank');
-        // Cerrar el menú después de hacer clic en un enlace
-        if (tramitesDropdownOpen) {
-            clearTimeout(hideMainMenuTimeout);
-            tramitesDropdownOpen = false;
-            tramitesDropdown.classList.remove('show');
-            tramitesArrow.classList.remove('rotate-180');
-            setTimeout(() => {
-                tramitesDropdown.classList.add('hidden');
-            }, 300);
-        }
-    };
-
-    // Asegurarse de que el menú principal esté oculto al inicio
-    tramitesDropdown.classList.add('hidden');
-});
+// Handlers de navegación de secciones
+window.handleCerofilas = function() { window.openNewLink('https://dal5.short.gy/CFil'); }
+window.handleDirectiva = function() { showDirectiva(); }
+window.handleCredenciales = function() { showCredenciales(); }
+window.handleCredencialIndependiente = function() {
+    const link = document.querySelector('.indep-btn');
+    if (link) window.openNewLink(link.href);
+}
+window.handleValores = function() {
+    const link = document.getElementById('valoresImageLink');
+    if (link) window.openNewLink(link.href);
+}
+window.handleValorPlan = function() { window.openNewLink('https://os10.short.gy/Pl4n'); }
+window.handleCursoFormacion = function() { window.openNewLink('https://dal5.short.gy/Form'); }
+window.handleMarcoLegal = function() { window.openNewLink('https://www.zosepcar.cl/OS10.php#leyes'); }
