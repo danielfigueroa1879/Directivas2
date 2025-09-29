@@ -649,12 +649,12 @@ body.homepage {
     pointer-events: auto;
 }
 
-/* BOTONES DENTRO DEL SUBMENU - AUMENTANDO TAMAÑO */
+/* BOTONES DENTRO DEL SUBMENU - ESPACIO ENTRE LÍNEAS REDUCIDO */
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: left;
-    padding: 10px 15px; /* AUMENTADO: De 8px a 10px */
-    font-size: 0.875rem; /* AUMENTADO: De 0.7rem a 0.875rem (14px) */
+    padding: 8px 15px; /* REDUCIDO: De 10px a 8px para juntar las líneas */
+    font-size: 0.875rem; 
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
     border: none;
