@@ -114,11 +114,11 @@
             <div class="flex items-center space-x-8"> <!-- Contenedor para botones de la izquierda -->
                 <!-- Menú Trámites -->
                 <div class="relative">
-                    <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center">
-                        <!-- 1. Trámites en negritas y tamaño más grande -->
-                        <span class="text-base md:text-lg font-bold">Trámites</span> 
-                        <!-- 2. Flecha en negritas y tamaño MÁS GRANDE (w-4 h-4) -->
-                        <svg class="w-4 h-4 ml-1 transition-transform font-bold" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- APLICACIÓN SEGURA DE ESTILOS: font-bold, tamaño base y tamaño para PC -->
+                    <button id="tramites-menu-btn" class="font-bold text-base md:text-lg hover:text-blue-600 transition-colors cursor-pointer flex items-center">
+                        Trámites
+                        <!-- Flecha: tamaño w-4 h-4, y la negrita se aplica al contenido del SVG, heredando del botón. -->
+                        <svg class="w-4 h-4 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
@@ -198,13 +198,14 @@
                 
             </a>
 
-            <div class="flex items-center text-xs space-x-2">
+            <div class="flex items-center text-xs space-x-2 banner-text-small-no-counter-large">
+                <!-- Se elimina la clase w-4 h-4 del ícono para que herede de la clase de visitas -->
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                 </svg>
-                <!-- Aplicamos la clase para que el texto "Visitas" y el contador sean un poco más grandes -->
-                <span class="banner-text-small-no-counter-large">Visitas: <span id="visit-counter" class="font-bold visit-counter-number-large">--</span></span>
+                <!-- Aplicamos la clase para que el texto "Visitas" y el contador sean un poco más grandes y el número en negritas -->
+                Visitas: <span id="visit-counter" class="font-bold visit-counter-number-large">--</span>
             </div>
         </div>
     </div>
@@ -515,7 +516,9 @@
         <section id="nuestra-labor" class="py-16 md:py-24 bg-white">
             <div class="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nuestra Labor</h2>
+                    <div class="flex items-center justify-center space-x-2">
+                        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nuestra Labor</h2>
+                    </div>
                     <p class="mt-4 text-lg leading-8 text-gray-600">Comprometidos con la fiscalización y el control de la seguridad privada en la región.</p>
                 </div>
                 <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -739,9 +742,6 @@
                     });
             });
         }
-    </script>
-</body>
-</html>
     </script>
 </body>
 </html>
