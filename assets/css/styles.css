@@ -591,8 +591,8 @@ body.homepage {
 .dropdown-menu button {
     width: 100%;
     text-align: left;
-    padding: 10px 20px; /* Juntado */
-    font-size: 0.9rem; /* REDUCIDO para PC (de 0.95rem a 0.9rem) */
+    padding: 10px 20px;
+    font-size: 0.9rem;
     color: rgba(31, 41, 55, 0.9);
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
@@ -623,7 +623,7 @@ body.homepage {
 /* SUBMENU que aparece completamente fuera con MEJOR CONTROL */
 .dropdown-menu .submenu {
     position: fixed;
-    width: 300px;
+    width: 320px; /* CAMBIADO: De 280px a 320px (40px más ancho) */
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(25px);
@@ -649,11 +649,19 @@ body.homepage {
     pointer-events: auto;
 }
 
+/* ILUMINACIÓN AZUL del botón padre cuando el submenú está abierto (SOLO PC) */
+@media (min-width: 1025px) {
+    .dropdown-menu .has-submenu.submenu-open > .submenu-parent-btn {
+        background-color: rgba(59, 130, 246, 0.2) !important;
+        color: rgba(37, 99, 235, 1) !important;
+    }
+}
+
 /* BOTONES DENTRO DEL SUBMENU - ESPACIO ENTRE LÍNEAS REDUCIDO (MANTENIDO) */
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: left;
-    padding: 8px 15px; /* Juntado */
+    padding: 8px 15px;
     font-size: 0.875rem;
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
@@ -668,9 +676,10 @@ body.homepage {
     border-bottom: none;
 }
 
+/* ILUMINACIÓN VERDE al hacer hover sobre items del submenú */
 .dropdown-menu .submenu button:hover {
-    background-color: rgba(34, 197, 94, 0.15);
-    color: rgba(21, 128, 61, 1);
+    background-color: rgba(34, 197, 94, 0.15) !important;
+    color: rgba(21, 128, 61, 1) !important;
 }
 
 /* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
@@ -702,7 +711,7 @@ body.homepage {
     /* CORREGIDO: Submenú siempre a la derecha en móvil */
     .dropdown-menu .submenu {
         top: 90px;
-        width: 260px;
+        width: 300px; /* CAMBIADO: De 260px a 300px en tablet */
         right: 20px !important;
         left: auto !important;
         transform: translateX(10px) translateY(-10px) scale(0.95);
@@ -732,7 +741,7 @@ body.homepage {
         left: 5px;
     }
     .dropdown-menu .submenu {
-        width: 220px;
+        width: 260px; /* CAMBIADO: De 220px a 260px en móvil */
         right: 15px !important;
         left: auto !important;
         top: 95px;
@@ -748,6 +757,29 @@ body.homepage {
     .dropdown-menu .submenu button:hover {
         background-color: rgba(34, 197, 94, 0.15);
         color: rgba(21, 128, 61, 1);
+    }
+}
+
+/* NUEVO: Ajustes para celulares MUY PEQUEÑOS (iPhone SE, Galaxy Fold, etc.) */
+@media (max-width: 380px) {
+    .dropdown-menu {
+        width: 220px;
+        top: 65px;
+        left: 3px;
+    }
+    .dropdown-menu .submenu {
+        width: 240px; /* Ancho para pantallas muy pequeñas */
+        right: 10px !important;
+        left: auto !important;
+        top: 95px;
+    }
+    .dropdown-menu button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    .dropdown-menu .submenu button {
+        padding: 7px 12px;
+        font-size: 0.8rem;
     }
 }
 
