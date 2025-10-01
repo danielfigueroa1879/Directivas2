@@ -358,7 +358,8 @@ window.addEventListener('appinstalled', (e) => {
 // Variable de estado para el menú principal
 let tramitesDropdownOpen = false;
 let hideMainMenuTimeout;
-let submenuTimeout; // Único temporizador para el cierre del submenú
+// AUMENTADO el tiempo de retardo para que el mouse alcance a entrar al submenú (250ms)
+let submenuTimeout; 
 
 // Función para abrir el menú principal de Trámites
 function showTramitesDropdown() {
@@ -512,11 +513,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Función para ocultar el submenú con un retardo (para PC/Hover)
             const hideSubmenuWithDelay = () => {
                 clearTimeout(submenuTimeout);
-                // Retardo corto de 50ms (suficiente para que el mouse cruce al submenú)
+                // AUMENTADO el retardo a 250ms
                 submenuTimeout = setTimeout(() => {
                     submenu.classList.remove('show');
                     item.classList.remove('submenu-open');
-                }, 50); 
+                }, 250); 
             };
             
             // Lógica por dispositivo
