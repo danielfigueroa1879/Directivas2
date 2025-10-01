@@ -353,12 +353,12 @@ window.addEventListener('appinstalled', (e) => {
 });
 
 
-// ===== FUNCIONES DEL MENÚ DE TRÁMITES (CORREGIDAS Y RECUPERADAS) =====
+// ===== FUNCIONES DEL MENÚ DE TRÁMITES (CORREGIDAS Y MEJORADAS) =====
 
 // Variable de estado para el menú principal
 let tramitesDropdownOpen = false;
 let hideMainMenuTimeout;
-let hideSubmenuTimeout;
+let submenuTimeout; // Único temporizador para el cierre del submenú
 
 // Función para abrir el menú principal de Trámites
 function showTramitesDropdown() {
@@ -370,11 +370,13 @@ function showTramitesDropdown() {
     if (!tramitesDropdownOpen) {
         tramitesDropdownOpen = true;
         tramitesDropdown.classList.remove('hidden');
-        tramitesMenuBtn.classList.add('panel-active');
-        setTimeout(() => {
+        // Usar requestAnimationFrame para forzar la actualización de estilos antes de la transición
+        requestAnimationFrame(() => {
             tramitesDropdown.classList.add('show');
-            tramitesArrow.classList.add('rotate-180');
-        }, 10);
+            tramitesMenuBtn.classList.add('panel-active');
+            // La flecha principal ahora rota 180° (apunta arriba)
+            tramitesArrow.style.transform = 'rotate(180deg)'; 
+        });
     }
 }
 
@@ -385,50 +387,51 @@ function hideTramitesDropdown() {
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const hasSubmenus = document.querySelectorAll('.has-submenu');
 
+    // Cerrar submenús inmediatamente antes de cerrar el menú principal
+    hasSubmenus.forEach(item => {
+        item.querySelector('.submenu')?.classList.remove('show');
+        item.classList.remove('submenu-open');
+    });
+
     hideMainMenuTimeout = setTimeout(() => {
         if (tramitesDropdownOpen) {
             tramitesDropdownOpen = false;
             tramitesDropdown.classList.remove('show');
-            tramitesArrow.classList.remove('rotate-180');
             tramitesMenuBtn.classList.remove('panel-active');
+            // La flecha principal vuelve a 0° (apunta abajo)
+            tramitesArrow.style.transform = 'rotate(0deg)'; 
             
-            // Ocultar submenús abiertos
-            hasSubmenus.forEach(item => {
-                const submenu = item.querySelector('.submenu');
-                if (submenu && submenu.classList.contains('show')) {
-                    submenu.classList.remove('show');
-                    // NUEVO: Remover clase de rotación
-                    item.classList.remove('submenu-open');
-                }
-            });
             setTimeout(() => {
                 tramitesDropdown.classList.add('hidden');
-            }, 300);
+            }, 300); // Espera la duración de la transición CSS
         }
-    }, 200);
+    }, 200); // Retardo de 200ms para asegurar que el mouse tiene tiempo de salir
 }
 
 // Función para toggle del menú principal (solo móvil)
-function toggleTramitesDropdown() {
+function toggleTramitesDropdown(event) {
+    // Evita el cierre inmediato si se está usando el hover en PC
+    if (window.innerWidth > 1024 && !('ontouchstart' in window)) return;
+    
     if (tramitesDropdownOpen) {
         hideTramitesDropdown();
-        // Forzar cierre inmediato en móvil
-        clearTimeout(hideMainMenuTimeout);
+        clearTimeout(hideMainMenuTimeout); // Forzar cierre inmediato en móvil/touch
         tramitesDropdownOpen = false;
+        
+        // Cierre CSS inmediato
         document.getElementById('tramites-dropdown').classList.remove('show');
-        document.getElementById('tramites-arrow').classList.remove('rotate-180');
         document.getElementById('tramites-menu-btn').classList.remove('panel-active');
+        document.getElementById('tramites-arrow').style.transform = 'rotate(0deg)';
+        
+        // Cerrar todos los submenús al cerrar el menú principal
         document.querySelectorAll('.has-submenu').forEach(item => {
-            const submenu = item.querySelector('.submenu');
-            if (submenu && submenu.classList.contains('show')) {
-                submenu.classList.remove('show');
-                 // NUEVO: Remover clase de rotación
-                item.classList.remove('submenu-open');
-            }
+            item.querySelector('.submenu')?.classList.remove('show');
+            item.classList.remove('submenu-open');
         });
+        
         setTimeout(() => {
             document.getElementById('tramites-dropdown').classList.add('hidden');
-        }, 300);
+        }, 50); // Mínimo delay para asegurar la clase 'hidden'
     } else {
         showTramitesDropdown();
     }
@@ -445,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     const isDesktop = window.innerWidth > 1024;
     
-    // CONFIGURACIÓN PRINCIPAL DEL MENÚ TRÁMITES (HOVER en PC, CLICK en Móvil)
+    // --- Lógica del Menú Principal (Trámites) ---
     if (tramitesMenuBtn) {
         if (isDesktop && !isTouchDevice) {
             // PC: HOVER automático
@@ -461,104 +464,110 @@ document.addEventListener('DOMContentLoaded', () => {
             // MÓVIL: CLICK
             tramitesMenuBtn.addEventListener('click', (event) => {
                 event.stopPropagation();
-                toggleTramitesDropdown();
+                toggleTramitesDropdown(event);
             });
         }
     }
 
-    // Event listeners para los submenús
+    // --- Lógica de los Submenús Flyout (Componentes, Doc. Editables, etc.) ---
     hasSubmenus.forEach(item => {
         const submenuButton = item.querySelector('button');
         const submenu = item.querySelector('.submenu');
 
         if (submenuButton && submenu) {
+            
+            // Función para mostrar el submenú con posicionamiento y clases
             const showSubmenu = (event) => {
-                clearTimeout(hideSubmenuTimeout);
-                // Cerrar otros submenús para evitar superposición
+                clearTimeout(submenuTimeout);
+                
+                // 1. Cerrar otros submenús (y remover la clase de iluminación)
                 hasSubmenus.forEach(otherItem => {
                     if (otherItem !== item) {
-                        const otherSubmenu = otherItem.querySelector('.submenu');
-                        if (otherSubmenu) {
-                            otherSubmenu.classList.remove('show');
-                        }
-                         // NUEVO: Remover clase de rotación de la flecha de otros items
+                        otherItem.querySelector('.submenu')?.classList.remove('show');
                         otherItem.classList.remove('submenu-open');
                     }
                 });
                 
-                // NUEVO: Añadir clase para la rotación de la flecha en el item actual
+                // 2. Añadir clase de iluminación al item principal
                 item.classList.add('submenu-open');
                 
+                // 3. Calcular y aplicar posicionamiento FIXED para PC
                 const rect = submenuButton.getBoundingClientRect();
                 
-                // Position submenu
-                if (window.innerWidth > 1024) {
-                    // Desktop: Fly-out to the right
-                    submenu.style.left = `${rect.right + 5}px`;
+                if (window.innerWidth > 1024 && !isTouchDevice) {
+                    // Desktop: Fly-out to the right (fixed position is cleaner for flyout)
+                    submenu.style.left = `${rect.right + 5}px`; // Justo al lado del menú principal
                     submenu.style.top = `${rect.top}px`;
-                    submenu.style.right = '';
+                    submenu.style.right = 'auto'; // Asegurar que no esté anclado a la derecha
                 } else {
-                    // Mobile: Fijar a la derecha
-                    submenu.style.right = '20px';
-                    submenu.style.left = '';
-                    // CAMBIO: Reducido el desplazamiento vertical a 5px
-                    submenu.style.top = `${rect.bottom + 5}px`; 
+                    // Mobile: Desplegable debajo (CSS ya maneja el layout absoluto/ancho completo)
+                    // En móvil, la visibilidad se maneja con el display: block/none del CSS
+                    // No se necesita reposicionar, solo se agrega la clase 'show' para que CSS lo haga visible
                 }
                 
+                // 4. Mostrar el submenú (activa las transiciones CSS)
                 submenu.classList.add('show');
             };
 
-            const hideSubmenu = () => {
-                hideSubmenuTimeout = setTimeout(() => {
+            // Función para ocultar el submenú con un retardo (para PC/Hover)
+            const hideSubmenuWithDelay = () => {
+                clearTimeout(submenuTimeout);
+                // Retardo corto de 50ms (suficiente para que el mouse cruce al submenú)
+                submenuTimeout = setTimeout(() => {
                     submenu.classList.remove('show');
-                    // NUEVO: Remover clase de rotación de la flecha
                     item.classList.remove('submenu-open');
-                }, 200);
+                }, 50); 
             };
-
-            // CONFIGURACIÓN POR DISPOSITIVO
+            
+            // Lógica por dispositivo
             if (isDesktop && !isTouchDevice) {
                 // PC: HOVER
                 item.addEventListener('mouseenter', showSubmenu);
-                submenu.addEventListener('mouseenter', () => clearTimeout(hideSubmenuTimeout));
-                item.addEventListener('mouseleave', hideSubmenu);
-                submenu.addEventListener('mouseleave', hideSubmenu);
+                item.addEventListener('mouseleave', hideSubmenuWithDelay);
+                
+                // Si el mouse entra al submenú flyout, cancela el cierre
+                submenu.addEventListener('mouseenter', () => clearTimeout(submenuTimeout));
+                // Si el mouse sale del submenú flyout, activa el cierre
+                submenu.addEventListener('mouseleave', hideSubmenuWithDelay); 
             } else {
-                // MÓVIL: CLICK
+                // MÓVIL: CLICK (Toggle)
                 submenuButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
 
                     const isVisible = submenu.classList.contains('show');
 
-                    // Cerrar todos los otros submenús (incluye reset de flecha)
+                    // 1. Cerrar todos los otros submenús (incluye reset de flecha y iluminación)
                     hasSubmenus.forEach(otherItem => {
                         if (otherItem !== item) {
-                            const otherSubmenu = otherItem.querySelector('.submenu');
-                            if (otherSubmenu) {
-                                otherSubmenu.classList.remove('show');
-                            }
+                            otherItem.querySelector('.submenu')?.classList.remove('show');
                             otherItem.classList.remove('submenu-open');
                         }
                     });
 
-                    // Toggle el actual con UN SOLO CLICK
+                    // 2. Toggle el actual con UN SOLO CLICK
                     if (!isVisible) {
                         showSubmenu(event);
                     } else {
                         submenu.classList.remove('show');
-                         // NUEVO: Remover clase de rotación en el toggle
                         item.classList.remove('submenu-open');
                     }
                 });
             }
+            
+            // Cierre del menú principal y submenús al hacer clic en un enlace de submenú
+            submenu.querySelectorAll('button').forEach(linkButton => {
+                linkButton.addEventListener('click', () => {
+                    hideTramitesDropdown();
+                });
+            });
         }
     });
 
-    // Cerrar menús al hacer clic fuera
+    // Cerrar menús al hacer clic fuera (en móvil)
     document.addEventListener('click', (event) => {
         if (tramitesDropdownOpen && !tramitesDropdown.contains(event.target) && !tramitesMenuBtn.contains(event.target)) {
-            toggleTramitesDropdown();
+            toggleTramitesDropdown(event);
         }
     });
 
@@ -578,20 +587,17 @@ window.openNewLink = function(url) {
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
     const hasSubmenus = document.querySelectorAll('.has-submenu');
 
-
     if (tramitesDropdown && !tramitesDropdown.classList.contains('hidden')) {
         tramitesDropdown.classList.remove('show');
-        tramitesArrow.classList.remove('rotate-180');
         tramitesMenuBtn.classList.remove('panel-active');
+        tramitesArrow.style.transform = 'rotate(0deg)';
 
         hasSubmenus.forEach(item => {
-            const submenu = item.querySelector('.submenu');
-            if (submenu && submenu.classList.contains('show')) {
-                submenu.classList.remove('show');
-            }
+            item.querySelector('.submenu')?.classList.remove('show');
             // Asegurar que se quita la clase de rotación al cerrar
             item.classList.remove('submenu-open');
         });
+        
         setTimeout(() => {
             tramitesDropdown.classList.add('hidden');
         }, 300);
