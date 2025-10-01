@@ -494,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Position submenu
                 if (window.innerWidth > 1024) {
                     // Desktop: Fly-out to the right
-                    submenu.style.left = `${rect.right + 2}px`;
+                    submenu.style.left = `${rect.right + 1}px`;
                     submenu.style.top = `${rect.top}px`;
                     submenu.style.right = '';
                 } else {
