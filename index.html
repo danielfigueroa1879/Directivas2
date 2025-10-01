@@ -88,6 +88,15 @@
     .mover-derecha {
         margin-left: 25px; /* Puedes ajustar el valor para el espaciado deseado */
     }
+    /* Estilo para la flecha del submenú */
+    .submenu-arrow {
+        width: 1rem; 
+        height: 1rem;
+        transition: transform 0.3s ease;
+    }
+    .has-submenu.submenu-open .submenu-arrow {
+        transform: rotate(180deg); /* Rota hacia abajo */
+    }
     </style>
 </head>
 <body class="homepage background-transition">
@@ -128,7 +137,12 @@
                             <button onclick="handleCerofilas()">Cerofilas</button>   
                             <!-- Submenu Componentes -->
                             <div class="has-submenu">
-                                <button>Componentes</button>
+                                <button class="flex justify-between items-center w-full">
+                                    Componentes
+                                    <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
                                 <div class="submenu">
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
@@ -146,7 +160,12 @@
                             </div>
                            <!-- Submenu Doc. editable -->
                             <div class="has-submenu">
-                                <button>Doc. editable</button>
+                                <button class="flex justify-between items-center w-full">
+                                    Doc. editable
+                                    <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
                                 <div class="submenu">
                                     <button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button>
                                     <button onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
@@ -158,7 +177,12 @@
 
                             <!-- Submenu Modelos de Solicitud -->
                             <div class="has-submenu">
-                                <button>Modelos de solicitud</button>
+                                <button class="flex justify-between items-center w-full">
+                                    Modelos de solicitud
+                                    <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
                                 <div class="submenu">
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">1. Mod. Decl. jurada Pers. Nat.</button>
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf')">2. Mod. Decl. jurada para emp.</button>
@@ -171,7 +195,12 @@
                             
                             <!-- Nuevo Submenu Manuales -->
                             <div class="has-submenu">
-                                <button>Manuales</button>
+                                <button class="flex justify-between items-center w-full">
+                                    Manuales
+                                    <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
                                 <div class="submenu">
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Manual de Funcionamiento</button>
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">2. Manual de Capacitación</button>
