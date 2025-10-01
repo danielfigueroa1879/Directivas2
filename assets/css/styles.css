@@ -673,14 +673,23 @@ body.homepage {
     color: rgba(21, 128, 61, 1);
 }
 
-/* FLECHA EN BOTÓN QUE TIENE SUBMENU - AHORA APUNTA A LA DERECHA EN ESTADO NORMAL */
-/* El SVG tiene un transform base de 0 grados (apunta abajo). Queremos que apunte a la derecha (90 grados) */
+/* FLECHA DEL MENÚ PRINCIPAL (Trámites) */
+#tramites-arrow {
+    transform: rotate(90deg); /* INICIAL: Apunta a la derecha */
+    transition: transform 0.3s ease;
+}
+#tramites-menu-btn.panel-active #tramites-arrow {
+    transform: rotate(180deg); /* ACTIVO: Apunta hacia abajo */
+}
+
+
+/* FLECHA EN BOTÓN QUE TIENE SUBMENU */
 .submenu-arrow {
     transform: rotate(90deg); /* Estado inicial: A la derecha */
     transition: transform 0.3s ease;
 }
 
-/* ROTACIÓN: Al abrir, vuelve a apuntar hacia abajo (180 grados desde el inicio de la flecha, o 90 grados desde el estado "normal" de 90 grados) */
+/* ROTACIÓN: Al abrir, apunta hacia abajo */
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
     transform: rotate(180deg); /* Estado final: Abajo */
 }
