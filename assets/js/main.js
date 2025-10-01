@@ -277,7 +277,7 @@ function mostrarInstruccionesEspecificas(capacidades) {
                     <span class="text-gray-800 text-sm font-medium">
                         Para instalar: Toca 
                         <svg class="inline w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
                         y luego "Añadir a pantalla de inicio"
                     </span>
@@ -397,6 +397,8 @@ function hideTramitesDropdown() {
                 const submenu = item.querySelector('.submenu');
                 if (submenu && submenu.classList.contains('show')) {
                     submenu.classList.remove('show');
+                    // NUEVO: Remover clase de rotación
+                    item.classList.remove('submenu-open');
                 }
             });
             setTimeout(() => {
@@ -420,6 +422,8 @@ function toggleTramitesDropdown() {
             const submenu = item.querySelector('.submenu');
             if (submenu && submenu.classList.contains('show')) {
                 submenu.classList.remove('show');
+                 // NUEVO: Remover clase de rotación
+                item.classList.remove('submenu-open');
             }
         });
         setTimeout(() => {
@@ -477,8 +481,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (otherSubmenu) {
                             otherSubmenu.classList.remove('show');
                         }
+                         // NUEVO: Remover clase de rotación de la flecha de otros items
+                        otherItem.classList.remove('submenu-open');
                     }
                 });
+                
+                // NUEVO: Añadir clase para la rotación de la flecha en el item actual
+                item.classList.add('submenu-open');
                 
                 const rect = submenuButton.getBoundingClientRect();
                 
@@ -492,7 +501,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Mobile: Fijar a la derecha
                     submenu.style.right = '20px';
                     submenu.style.left = '';
-                    submenu.style.top = `${rect.bottom + 10}px`;
+                    // CAMBIO: Reducido el desplazamiento vertical a 5px
+                    submenu.style.top = `${rect.bottom + 5}px`; 
                 }
                 
                 submenu.classList.add('show');
@@ -501,6 +511,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const hideSubmenu = () => {
                 hideSubmenuTimeout = setTimeout(() => {
                     submenu.classList.remove('show');
+                    // NUEVO: Remover clase de rotación de la flecha
+                    item.classList.remove('submenu-open');
                 }, 200);
             };
 
@@ -519,13 +531,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const isVisible = submenu.classList.contains('show');
 
-                    // Cerrar todos los otros submenús
+                    // Cerrar todos los otros submenús (incluye reset de flecha)
                     hasSubmenus.forEach(otherItem => {
                         if (otherItem !== item) {
                             const otherSubmenu = otherItem.querySelector('.submenu');
                             if (otherSubmenu) {
                                 otherSubmenu.classList.remove('show');
                             }
+                            otherItem.classList.remove('submenu-open');
                         }
                     });
 
@@ -534,6 +547,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         showSubmenu(event);
                     } else {
                         submenu.classList.remove('show');
+                         // NUEVO: Remover clase de rotación en el toggle
+                        item.classList.remove('submenu-open');
                     }
                 });
             }
@@ -561,17 +576,21 @@ window.openNewLink = function(url) {
     const tramitesDropdown = document.getElementById('tramites-dropdown');
     const tramitesArrow = document.getElementById('tramites-arrow');
     const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+    const hasSubmenus = document.querySelectorAll('.has-submenu');
+
 
     if (tramitesDropdown && !tramitesDropdown.classList.contains('hidden')) {
         tramitesDropdown.classList.remove('show');
         tramitesArrow.classList.remove('rotate-180');
         tramitesMenuBtn.classList.remove('panel-active');
-        const hasSubmenus = document.querySelectorAll('.has-submenu');
+
         hasSubmenus.forEach(item => {
             const submenu = item.querySelector('.submenu');
             if (submenu && submenu.classList.contains('show')) {
                 submenu.classList.remove('show');
             }
+            // Asegurar que se quita la clase de rotación al cerrar
+            item.classList.remove('submenu-open');
         });
         setTimeout(() => {
             tramitesDropdown.classList.add('hidden');
