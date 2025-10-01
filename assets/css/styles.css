@@ -673,42 +673,32 @@ body.homepage {
     color: rgba(21, 128, 61, 1);
 }
 
-/* FLECHA EN BOTÓN QUE TIENE SUBMENU - AÑADIR EFECTO DE ROTACIÓN */
-/* IMPORTANTE: EL SVG AHORA ESTÁ EN EL HTML, SOLO NECESITAMOS LA CLASE DE ROTACIÓN */
+/* FLECHA EN BOTÓN QUE TIENE SUBMENU - AHORA APUNTA A LA DERECHA EN ESTADO NORMAL */
+/* El SVG tiene un transform base de 0 grados (apunta abajo). Queremos que apunte a la derecha (90 grados) */
+.submenu-arrow {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+/* ROTACIÓN: Al abrir, vuelve a apuntar hacia abajo (180 grados desde el inicio de la flecha, o 90 grados desde el estado "normal") */
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(180deg); /* Rota 180 grados al abrir, como el menú principal */
+    transform: rotate(180deg);
 }
 
-/* ELIMINADA REGLA OBSOLETA DE ::AFTER (triángulo) */
-/*
-.dropdown-menu .has-submenu > button::after {
-    content: '▸';
-    position: absolute;
-    right: 15px;
-    font-size: 1.1em;
-    transition: transform 0.3s ease, color 0.2s ease;
-    transform: rotate(0deg);
-    transform-origin: center;
-}
-
-.dropdown-menu .has-submenu > button:hover::after {
-    color: rgba(37, 99, 235, 1);
-}
-*/
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
 @media (max-width: 1024px) {
     .dropdown-menu {
         position: fixed;
-        top: 60px; /* CAMBIADO: era 50px, ahora 60px (más abajo) */
-        left: 10px; /* CAMBIADO: era initial, ahora 10px (más a la izquierda) */
+        top: 60px; 
+        left: 10px;
         background-color: rgba(255, 255, 255, 0.9);
         z-index: 1201;
     }
     
     /* CORREGIDO: Submenú siempre a la derecha en móvil */
     .dropdown-menu .submenu {
-        top: 90px; /* MANTENIDO A 90px pero ajustado en JS a 5px de la posición del botón */
+        top: 90px; 
         width: 260px;
         right: 20px !important;
         left: auto !important;
@@ -735,22 +725,22 @@ body.homepage {
 @media (max-width: 640px) {
     .dropdown-menu { 
         width: 240px;
-        top: 65px; /* CAMBIADO: más abajo en pantallas muy pequeñas */
-        left: 5px; /* CAMBIADO: más a la izquierda en pantallas muy pequeñas */
+        top: 65px; 
+        left: 5px; 
     }
     .dropdown-menu .submenu { 
         width: 220px;
         right: 15px !important;
         left: auto !important;
-        top: 95px; /* MANTENIDO A 95px pero ajustado en JS a 5px de la posición del botón */
+        top: 95px; 
     }
     .dropdown-menu button {
-        padding: 10px 16px; /* REDUCIDO: De 12px a 10px */
-        font-size: 0.85rem; /* Ajuste para móvil para el menú principal */
+        padding: 10px 16px; 
+        font-size: 0.85rem; 
     }
     .dropdown-menu .submenu button {
-        padding: 8px 15px; /* Mantenido a 8px */
-        font-size: 0.75rem; /* Ajuste para móvil para el submenú */
+        padding: 8px 15px; 
+        font-size: 0.75rem; 
     }
     .dropdown-menu button:hover {
         background-color: rgba(59, 130, 246, 0.2);
