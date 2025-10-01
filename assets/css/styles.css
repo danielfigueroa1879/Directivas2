@@ -544,8 +544,9 @@ body.homepage {
     padding: 0 1rem;
 }
 
-/* ===== ESTILOS CORREGIDOS PARA SUBMENU FLYOUT SIN PARPADEO ===== */
+/* ===== ESTILOS CORREGIDOS PARA SUBMENU FLYOUT SIN PARPADEO (Comportamiento de PC) ===== */
 
+/* Contenedor del Dropdown Principal */
 .dropdown-menu {
     position: absolute;
     top: 40px;
@@ -559,7 +560,8 @@ body.homepage {
     border-radius: 0 0 12px 12px;
     box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
     z-index: 1201;
-    transition: opacity 0.3s ease-out;
+    /* Reducir transición para que al entrar se mantenga rápido */
+    transition: opacity 0.1s ease-out; 
     opacity: 0;
     pointer-events: none;
     overflow-y: auto;
@@ -587,14 +589,14 @@ body.homepage {
     color: rgba(31, 41, 55, 0.95);
 }
 
-/* MENÚ PRINCIPAL (PC) - TAMAÑO Y ESPACIO AJUSTADO */
+/* MENÚ PRINCIPAL ITEMS (AZUL AL HOVER/ACTIVE) */
 .dropdown-menu button {
     width: 100%;
     text-align: left;
-    padding: 10px 20px; /* Juntado */
-    font-size: 0.9rem; /* REDUCIDO para PC (de 0.95rem a 0.9rem) */
+    padding: 10px 20px;
+    font-size: 0.9rem;
     color: rgba(31, 41, 55, 0.9);
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: transparent; /* Fondo transparente por defecto */
     border: none;
     cursor: pointer;
     transition: background-color 0.15s ease, color 0.15s ease;
@@ -603,10 +605,12 @@ body.homepage {
 
 .dropdown-menu button:last-child { border-bottom: none; }
 
-/* El efecto hover SOLO cambia colores - NO posición */
-.dropdown-menu button:hover {
-    background-color: rgba(59, 130, 246, 0.2);
-    color: rgba(37, 99, 235, 1);
+/* 1. Iluminación Azul para Ítems del Menú Principal al hacer Hover/Clic */
+.dropdown-menu button:hover,
+.dropdown-menu button:focus,
+.dropdown-menu .has-submenu.submenu-open > button { /* Esto ilumina el botón padre del submenú abierto */
+    background-color: rgba(59, 130, 246, 0.2); /* Azul claro */
+    color: rgba(37, 99, 235, 1); /* Azul más oscuro */
     backdrop-filter: blur(10px);
 }
 
@@ -614,15 +618,15 @@ body.homepage {
     background-color: rgba(59, 130, 246, 0.25);
 }
 
-/* ===== SUBMENU FLYOUT - MEJORADO PARA EVITAR PARPADEO ===== */
+/* ===== SUBMENU FLYOUT - AJUSTES PARA LA LUZ VERDE Y POSICIONAMIENTO FIJO ===== */
 
 .dropdown-menu .has-submenu {
     position: relative;
 }
 
-/* SUBMENU que aparece completamente fuera con MEJOR CONTROL */
+/* SUBMENU FLYOUT (verde) */
 .dropdown-menu .submenu {
-    position: fixed;
+    position: fixed; /* Usamos fixed para un posicionamiento más estable en flyout */
     width: 280px;
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(40px);
@@ -631,29 +635,30 @@ body.homepage {
     border-radius: 12px;
     box-shadow: 15px 5px 40px rgba(0, 0, 0, 0.2);
     z-index: 1350;
-    padding: 12px 0;
 
-    /* INVISIBLE POR DEFECTO */
+    /* COMPORTAMIENTO PARA EVITAR EL CIERRE RÁPIDO */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateX(-5px) scale(0.98);
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    /* Transición más larga para la opacidad al OCULTAR, pero rápida al mostrar */
+    transition: opacity 0.3s ease-out 0.1s, visibility 0.3s ease-out 0.1s, transform 0.15s ease;
 }
 
 /* SUBMENU VISIBLE */
+/* Al mostrar, la transición es casi instantánea (0.1s) */
 .dropdown-menu .submenu.show {
     opacity: 1;
     visibility: visible;
     transform: translateX(0) scale(1);
     pointer-events: auto;
+    transition: opacity 0.1s ease-in, visibility 0.1s ease-in, transform 0.15s ease;
 }
 
-/* BOTONES DENTRO DEL SUBMENU - ESPACIO ENTRE LÍNEAS REDUCIDO (MANTENIDO) */
+/* ITEMS DENTRO DEL SUBMENU (VERDE AL HOVER) */
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: left;
-    padding: 8px 15px; /* Juntado */
+    padding: 8px 15px;
     font-size: 0.875rem;
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
@@ -664,29 +669,36 @@ body.homepage {
     margin: 0;
 }
 
-.dropdown-menu .submenu button:last-child {
-    border-bottom: none;
-}
-
-.dropdown-menu .submenu button:hover {
-    background-color: rgba(34, 197, 94, 0.15);
-    color: rgba(21, 128, 61, 1);
+/* 2. Iluminación Verde para Ítems del Submenú al hacer Hover/Clic */
+.dropdown-menu .submenu button:hover,
+.dropdown-menu .submenu button:focus,
+.dropdown-menu .submenu button:active {
+    background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
+    color: rgba(21, 128, 61, 1); /* Verde más oscuro */
 }
 
 /* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
 
-/* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
+/* La flecha por defecto apunta ABAJO (M19 9l-7 7-7-7). */
 
-/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
+/* ESTADO INICIAL CERRADO: Apunta a la DERECHA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
-    transform: rotate(-90deg);
+    transform: rotate(0deg); /* Mantenemos la flecha por defecto apuntando abajo */
     transition: transform 0.3s ease;
 }
 
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
-#tramites-menu-btn.panel-active #tramites-arrow,
-.dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(2deg);
+/* ESTADO ACTIVO ABIERTO: Flecha del menú principal apunta ARRIBA */
+#tramites-menu-btn.panel-active #tramites-arrow {
+    transform: rotate(180deg);
+}
+
+/* Flecha del submenú: apunta a la derecha cuando está cerrado, y abajo cuando está abierto */
+.dropdown-menu .has-submenu > button .submenu-arrow {
+    transform: rotate(-90deg); /* Apunta a la DERECHA cuando el submenú está cerrado */
+}
+
+.dropdown-menu .has-submenu.submenu-open > button .submenu-arrow {
+    transform: rotate(0deg); /* Apunta ABAJO cuando el submenú está abierto (en móvil) */
 }
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
@@ -699,18 +711,48 @@ body.homepage {
         z-index: 1201;
     }
 
-    /* CORREGIDO: Submenú siempre a la derecha en móvil */
+    /* CORREGIDO: Submenú en móvil, se muestra abajo del elemento padre */
     .dropdown-menu .submenu {
-        top: 90px;
-        width: 260px;
+        position: absolute; /* Cambiamos a absolute para que se quede dentro del flujo del menú padre */
+        width: calc(100% - 40px); /* Ocupa el ancho del menú padre - padding */
+        top: 100%; /* Se posiciona debajo del botón padre */
+        left: 20px !important;
         right: 20px !important;
-        left: auto !important;
-        transform: translateX(10px) translateY(-10px) scale(0.95);
+        transform: translateY(0) scale(1); /* No hace falta transformaciones complejas */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 5px;
+        border-top: none;
+        border-radius: 0 0 12px 12px;
+        /* Reseteamos transiciones para que el toggle sea instantáneo en móvil */
+        transition: none;
+    }
+    
+    /* En móvil, el submenú solo se hace visible al hacer clic (toggle) */
+    .dropdown-menu .submenu.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        display: block; /* Aseguramos que se muestre como bloque */
+    }
+    .dropdown-menu .submenu:not(.show) {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
     }
 
-    .dropdown-menu .submenu.show {
-        transform: translateX(0) translateY(0) scale(1);
+
+    /* En móvil la flecha del submenú se convierte en flecha de rotación vertical (de derecha a abajo) */
+    .dropdown-menu .has-submenu > button .submenu-arrow {
+        transform: rotate(0deg); /* Apunta ABAJO (M19 9l-7 7-7-7) */
+        width: 1.25rem;
+        height: 1.25rem;
     }
+    .dropdown-menu .has-submenu.submenu-open > button .submenu-arrow {
+        transform: rotate(180deg); /* Apunta ARRIBA (Cerrado virtualmente) */
+    }
+
 
     #tramites-overlay, #editables-overlay {
         position: fixed;
@@ -731,22 +773,23 @@ body.homepage {
         top: 65px;
         left: 5px;
     }
+    /* Ajuste en móvil pequeño */
     .dropdown-menu .submenu {
-        width: 220px;
+        width: calc(100% - 30px);
+        left: 15px !important;
         right: 15px !important;
-        left: auto !important;
-        top: 95px;
     }
+
     .dropdown-menu button {
         padding: 10px 16px;
         font-size: 0.85rem;
     }
-    .dropdown-menu .submenu button:hover {
-        background-color: rgba(59, 130, 246, 0.2);
-        color: rgba(37, 99, 235, 1);
-    }
-    .dropdown-menu .submenu button:hover {
-        background-color: rgba(34, 197, 94, 0.15);
+    
+    /* Aseguramos que los colores de hover sigan funcionando en móvil */
+    .dropdown-menu .submenu button:hover,
+    .dropdown-menu .submenu button:focus,
+    .dropdown-menu .submenu button:active {
+        background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
         color: rgba(21, 128, 61, 1);
     }
 }
