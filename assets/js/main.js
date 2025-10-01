@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Desktop: Fly-out to the right (fixed position is cleaner for flyout)
                     // AJUSTE SOLICITADO: Mover el submenú un poco más a la izquierda (de +5px a -10px)
                     // -10px significa que se solapa 10px con el menú principal.
-                    submenu.style.left = `${rect.right - 08}px`; 
+                    submenu.style.left = `${rect.right - 05}px`; 
                     submenu.style.top = `${rect.top}px`;
                     submenu.style.right = 'auto'; // Asegurar que no esté anclado a la derecha
                 } else {
