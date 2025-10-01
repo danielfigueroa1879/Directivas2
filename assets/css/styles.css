@@ -673,13 +673,20 @@ body.homepage {
     color: rgba(21, 128, 61, 1);
 }
 
-/* FLECHA EN BOTÓN QUE TIENE SUBMENU - SIN ANIMACIÓN DE MOVIMIENTO */
+/* FLECHA EN BOTÓN QUE TIENE SUBMENU - AÑADIR EFECTO DE ROTACIÓN */
 .dropdown-menu .has-submenu > button::after {
     content: '▸';
     position: absolute;
     right: 15px;
     font-size: 1.1em;
-    transition: color 0.2s ease;
+    transition: transform 0.3s ease, color 0.2s ease; /* CAMBIO: Añadir transición a transform */
+    transform: rotate(0deg); /* Estado inicial */
+    transform-origin: center; /* Asegurar la rotación centrada */
+}
+
+/* NUEVA REGLA: Rotación de flecha cuando el submenu está abierto */
+.dropdown-menu .has-submenu.submenu-open > button::after {
+    transform: rotate(90deg); /* Rotar 90 grados al abrir */
 }
 
 .dropdown-menu .has-submenu > button:hover::after {
@@ -698,7 +705,7 @@ body.homepage {
     
     /* CORREGIDO: Submenú siempre a la derecha en móvil */
     .dropdown-menu .submenu {
-        top: 90px; /* CAMBIADO: era 80px, ahora 90px (ajuste proporcional) */
+        top: 90px; /* MANTENIDO A 90px pero ajustado en JS a 5px de la posición del botón */
         width: 260px;
         right: 20px !important;
         left: auto !important;
@@ -732,7 +739,7 @@ body.homepage {
         width: 220px;
         right: 15px !important;
         left: auto !important;
-        top: 95px; /* CAMBIADO: ajuste proporcional */
+        top: 95px; /* MANTENIDO A 95px pero ajustado en JS a 5px de la posición del botón */
     }
     .dropdown-menu button {
         padding: 10px 16px; /* REDUCIDO: De 12px a 10px */
