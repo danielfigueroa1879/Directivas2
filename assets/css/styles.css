@@ -623,7 +623,7 @@ body.homepage {
 /* SUBMENU que aparece completamente fuera con MEJOR CONTROL */
 .dropdown-menu .submenu {
     position: fixed;
-    width: 280px;
+    width: 290px;
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(25px);
