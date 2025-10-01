@@ -673,16 +673,17 @@ body.homepage {
     color: rgba(21, 128, 61, 1);
 }
 
-/* FLECHA EN BOTÓN QUE TIENE SUBMENU - AHORA APUNTA A LA DERECHA EN ESTADO NORMAL */
-/* El SVG tiene un transform base de 0 grados (apunta abajo). Queremos que apunte a la derecha (90 grados) */
+/* FLECHA EN BOTÓN QUE TIENE SUBMENU:
+   1. Comienza apuntando a la DERECHA (rotación 90 grados).
+   2. Gira 180 grados para apuntar a la IZQUIERDA al abrirse (rotación 270 grados).
+*/
 .submenu-arrow {
-    transform: rotate(90deg);
+    transform: rotate(90deg); /* DERECHA (Estado inicial) */
     transition: transform 0.3s ease;
 }
 
-/* ROTACIÓN: Al abrir, vuelve a apuntar hacia abajo (180 grados desde el inicio de la flecha, o 90 grados desde el estado "normal") */
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(180deg);
+    transform: rotate(270deg); /* IZQUIERDA (Estado abierto) */
 }
 
 
