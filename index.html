@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- External stylesheet for better caching -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2">
+    <link rel="stylesheet" href="assets/css/styles.css?v=3"> <!-- Versión actualizada de CSS -->
     <style>
     .pwa-install-banner {
             position: fixed;
@@ -101,11 +101,6 @@
     </style>
 </head>
 <body class="homepage background-transition">
-<!-- Notificación de recepción de documentos -->
-<!-- COMENTADO TEMPORALMENTE: O.S.10 Coquimbo de lunes a jueves de 09:00 horas a 13:00 horas. -->
-<!-- <div id="notification-banner" class="notification-banner text-sm sm:text-base font-semibold">
-    O.S.10 Coquimbo de lunes a jueves de 09:00 horas a 13:00 horas.
-</div> -->
 <!-- PWA Install Banner -->
 <div id="pwa-install-banner" class="pwa-install-banner md:hidden">
     <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
@@ -124,6 +119,7 @@
             <div class="flex items-center space-x-8"> <!-- Contenedor para botones de la izquierda -->
                 <!-- Menú Trámites -->
                 <div class="relative">
+                    <!-- Botón Principal: Se ilumina en azul al hover/click (panel-active) -->
                     <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
                         <span class="sm:text-lg text-base"><strong>Trámites</strong></span>
                         <svg class="w-4 h-4 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,11 +132,11 @@
                         </div>
                         <div class="dropdown-menu-content">
                             <button onclick="handleCerofilas()">Cerofilas</button>   
-                            <!-- Submenu Componentes -->
+                            
+                            <!-- Submenu Componentes (Flyout - Iluminación Azul/Verde) -->
                             <div class="has-submenu">
                                 <button class="flex justify-between items-center w-full">
                                     Componentes
-                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
                                     <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -160,11 +156,11 @@
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
                                 </div>
                             </div>
-                           <!-- Submenu Doc. editable -->
+                           
+                            <!-- Submenu Doc. editable (Flyout - Iluminación Azul/Verde) -->
                             <div class="has-submenu">
                                 <button class="flex justify-between items-center w-full">
                                     Doc. editable
-                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
                                     <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -178,11 +174,10 @@
                                 </div>
                             </div>
 
-                            <!-- Submenu Modelos de Solicitud -->
+                            <!-- Submenu Modelos de Solicitud (Flyout - Iluminación Azul/Verde) -->
                             <div class="has-submenu">
                                 <button class="flex justify-between items-center w-full">
                                     Modelos de solicitud
-                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
                                     <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -197,11 +192,10 @@
                                 </div>
                             </div>
                             
-                            <!-- Nuevo Submenu Manuales -->
+                            <!-- Nuevo Submenu Manuales (Flyout - Iluminación Azul/Verde) -->
                             <div class="has-submenu">
                                 <button class="flex justify-between items-center w-full">
                                     Manuales
-                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
                                     <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -212,7 +206,8 @@
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">3. Manual de Organización</button>
                                 </div>
                             </div>
-                            <!-- Nuevo Marco Legal -->
+                            
+                            <!-- Botones sin submenú -->
                             <button onclick="handleMarcoLegal('https://www.zosepcar.cl/OS10.php#leyes')">Marco Legal</button>
                             <button onclick="handleDirectiva()">Directiva</button>
                             <button onclick="handleCredenciales()">Credenciales</button>
@@ -224,7 +219,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Eliminado el menú Doc. Editables por solicitud del usuario -->
             </div>
             
             <a id="os10-home-btn" class="font-medium banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center absolute left-1/2 -translate-x-1/2">
@@ -689,7 +683,7 @@
     
     <!-- Deferred scripts for non-blocking load -->
     <script src="assets/js/inicio.js?v=2" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/main.js?v=3" defer></script> <!-- Versión actualizada de JS -->
 
     <script type="module">
         // FIREBASE SCRIPT (Visit Counter)
