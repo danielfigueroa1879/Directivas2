@@ -228,7 +228,6 @@ function detectarCapacidadesPWA() {
         if (isChrome) {
             console.log('   Chrome Android: ✅ PERFECTO');
             console.log('   - Instalación: Automática');
-            console.log('   - beforeinstallprompt: ✅ Soportado');
             return { canAutoInstall: true, method: 'auto', platform: 'Android Chrome' };
         } else if (isEdge) {
             console.log('   Edge Android: ✅ BUENO');
@@ -497,7 +496,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (window.innerWidth > 1024 && !isTouchDevice) {
                     // Desktop: Fly-out to the right (fixed position is cleaner for flyout)
-                    submenu.style.left = `${rect.right + 5}px`; // Justo al lado del menú principal
+                    // AJUSTE SOLICITADO: Mover el submenú un poco más a la izquierda (de +5px a -10px)
+                    // -10px significa que se solapa 10px con el menú principal.
+                    submenu.style.left = `${rect.right - 10}px`; 
                     submenu.style.top = `${rect.top}px`;
                     submenu.style.right = 'auto'; // Asegurar que no esté anclado a la derecha
                 } else {
@@ -513,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Función para ocultar el submenú con un retardo (para PC/Hover)
             const hideSubmenuWithDelay = () => {
                 clearTimeout(submenuTimeout);
-                // AUMENTADO el retardo a 250ms
+                // Mantenemos el retardo de 250ms que se ajustó para la estabilidad
                 submenuTimeout = setTimeout(() => {
                     submenu.classList.remove('show');
                     item.classList.remove('submenu-open');
