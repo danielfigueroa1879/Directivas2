@@ -677,7 +677,7 @@ body.homepage {
 
 /* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
 
-/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación 90deg) */
+/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
     transform: rotate(90deg);
     transition: transform 0.3s ease;
