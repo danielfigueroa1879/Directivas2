@@ -673,30 +673,21 @@ body.homepage {
     color: rgba(21, 128, 61, 1);
 }
 
-/* FLECHA DEL MENÚ PRINCIPAL (Trámites) */
-/* ESTADO INICIAL CERRADO: Apunta a la DERECHA (Rotación -90deg) */
-#tramites-arrow {
-    transform: rotate(-90deg);
-    transition: transform 0.3s ease;
-}
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ABAJO (Rotación 0deg) */
-#tramites-menu-btn.panel-active #tramites-arrow {
-    transform: rotate(0deg);
-}
+/* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
 
+/* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
 
-/* FLECHA EN BOTÓN QUE TIENE SUBMENU (Corregida) */
 /* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación 90deg) */
-.submenu-arrow {
-    transform: rotate(90deg); 
+#tramites-arrow, .submenu-arrow {
+    transform: rotate(90deg);
     transition: transform 0.3s ease;
 }
 
-/* ROTACIÓN: Al abrir, apunta hacia ARRIBA (Rotación 270deg o -90deg) */
+/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
+#tramites-menu-btn.panel-active #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(270deg); 
+    transform: rotate(270deg);
 }
-
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
 @media (max-width: 1024px) {
