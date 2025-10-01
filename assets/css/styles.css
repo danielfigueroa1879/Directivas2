@@ -674,24 +674,27 @@ body.homepage {
 }
 
 /* FLECHA EN BOTÓN QUE TIENE SUBMENU - AÑADIR EFECTO DE ROTACIÓN */
+/* IMPORTANTE: EL SVG AHORA ESTÁ EN EL HTML, SOLO NECESITAMOS LA CLASE DE ROTACIÓN */
+.dropdown-menu .has-submenu.submenu-open .submenu-arrow {
+    transform: rotate(180deg); /* Rota 180 grados al abrir, como el menú principal */
+}
+
+/* ELIMINADA REGLA OBSOLETA DE ::AFTER (triángulo) */
+/*
 .dropdown-menu .has-submenu > button::after {
     content: '▸';
     position: absolute;
     right: 15px;
     font-size: 1.1em;
-    transition: transform 0.3s ease, color 0.2s ease; /* CAMBIO: Añadir transición a transform */
-    transform: rotate(0deg); /* Estado inicial */
-    transform-origin: center; /* Asegurar la rotación centrada */
-}
-
-/* NUEVA REGLA: Rotación de flecha cuando el submenu está abierto */
-.dropdown-menu .has-submenu.submenu-open > button::after {
-    transform: rotate(90deg); /* Rotar 90 grados al abrir */
+    transition: transform 0.3s ease, color 0.2s ease;
+    transform: rotate(0deg);
+    transform-origin: center;
 }
 
 .dropdown-menu .has-submenu > button:hover::after {
     color: rgba(37, 99, 235, 1);
 }
+*/
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
 @media (max-width: 1024px) {
