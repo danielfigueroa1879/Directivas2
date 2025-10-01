@@ -683,13 +683,13 @@ body.homepage {
 
 /* ESTADO INICIAL CERRADO: Apunta a la DERECHA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
-    transform: rotate(0deg); /* Mantenemos la flecha por defecto apuntando abajo */
+    transform: rotate(-90deg); /* Mantenemos la flecha por defecto apuntando abajo */
     transition: transform 0.3s ease;
 }
 
 /* ESTADO ACTIVO ABIERTO: Flecha del menú principal apunta ARRIBA */
 #tramites-menu-btn.panel-active #tramites-arrow {
-    transform: rotate(180deg);
+    transform: rotate(05deg);
 }
 
 /* Flecha del submenú: apunta a la derecha cuando está cerrado, y abajo cuando está abierto */
