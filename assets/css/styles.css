@@ -674,24 +674,27 @@ body.homepage {
 }
 
 /* FLECHA DEL MENÚ PRINCIPAL (Trámites) */
+/* ESTADO INICIAL CERRADO: Apunta a la DERECHA (Rotación -90deg) */
 #tramites-arrow {
-    transform: rotate(90deg); /* INICIAL: Apunta a la derecha */
+    transform: rotate(-90deg);
     transition: transform 0.3s ease;
 }
+/* ESTADO ACTIVO ABIERTO: Apunta hacia ABAJO (Rotación 0deg) */
 #tramites-menu-btn.panel-active #tramites-arrow {
-    transform: rotate(180deg); /* ACTIVO: Apunta hacia abajo */
+    transform: rotate(0deg);
 }
 
 
 /* FLECHA EN BOTÓN QUE TIENE SUBMENU (Corregida) */
+/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación 90deg) */
 .submenu-arrow {
-    transform: rotate(-90deg); /* Estado inicial: A la derecha (gira -90deg) */
+    transform: rotate(90deg); 
     transition: transform 0.3s ease;
 }
 
-/* ROTACIÓN: Al abrir, apunta hacia abajo (Corregida) */
+/* ROTACIÓN: Al abrir, apunta hacia ARRIBA (Rotación 270deg o -90deg) */
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(0deg); /* Estado final: Abajo (vuelve a 0deg) */
+    transform: rotate(270deg); 
 }
 
 
