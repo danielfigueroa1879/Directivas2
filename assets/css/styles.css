@@ -689,7 +689,7 @@ body.homepage {
 
 /* ESTADO ACTIVO ABIERTO: Flecha del menú principal apunta ARRIBA */
 #tramites-menu-btn.panel-active #tramites-arrow {
-    transform: rotate(05deg);
+    transform: rotate(0deg);
 }
 
 /* Flecha del submenú: apunta a la derecha cuando está cerrado, y abajo cuando está abierto */
