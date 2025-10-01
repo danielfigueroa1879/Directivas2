@@ -747,11 +747,7 @@ body.homepage {
         padding: 10px 16px;
         font-size: 0.85rem;
     }
-    .dropdown-menu .submenu button {
-        padding: 8px 15px;
-        font-size: 0.75rem;
-    }
-    .dropdown-menu button:hover {
+    .dropdown-menu .submenu button:hover {
         background-color: rgba(59, 130, 246, 0.2);
         color: rgba(37, 99, 235, 1);
     }
