@@ -686,7 +686,7 @@ body.homepage {
 /* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
 #tramites-menu-btn.panel-active #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(35deg);
+    transform: rotate(50deg);
 }
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
