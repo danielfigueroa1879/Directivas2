@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para cerrar todos los submenús
     const closeAllSubmenus = (except = null) => {
         document.querySelectorAll('.submenu.show').forEach(submenu => {
-            if (submenu !== except && !except?.contains(submenu)) {
+            if (submenu !== except && !submenu.contains(except)) {
                 submenu.classList.remove('show');
                 submenu.closest('.has-submenu')?.classList.remove('submenu-open');
             }
@@ -206,7 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeMainMenu = () => {
         tramitesDropdown.classList.add('hidden');
         tramitesMenuBtn.classList.remove('panel-active');
-        tramitesMenuBtn.querySelector('svg').style.transform = 'rotate(-90deg)';
+        const arrow = tramitesMenuBtn.querySelector('#tramites-arrow');
+        if(arrow) arrow.style.transform = 'rotate(-90deg)';
         closeAllSubmenus();
     };
 
@@ -217,7 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isHidden) {
             tramitesDropdown.classList.remove('hidden');
             tramitesMenuBtn.classList.add('panel-active');
-            tramitesMenuBtn.querySelector('svg').style.transform = 'rotate(0deg)';
+            const arrow = tramitesMenuBtn.querySelector('#tramites-arrow');
+            if(arrow) arrow.style.transform = 'rotate(0deg)';
         } else {
             closeMainMenu();
         }
@@ -230,6 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const parentElement = button.parentElement;
             const submenu = parentElement.querySelector('.submenu');
             
+            const isOpen = submenu.classList.contains('show');
+
             // Cerrar otros submenús en el mismo nivel
             const siblings = [...parentElement.parentElement.children].filter(child => child !== parentElement && child.classList.contains('has-submenu'));
             siblings.forEach(sibling => {
@@ -238,16 +242,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Toggle del submenú actual
-            parentElement.classList.toggle('submenu-open');
-            submenu.classList.toggle('show');
+            if(isOpen){
+                parentElement.classList.remove('submenu-open');
+                submenu.classList.remove('show');
+            } else {
+                parentElement.classList.add('submenu-open');
+                submenu.classList.add('show');
+            }
+
 
             // Posicionamiento del submenú
             const rect = button.getBoundingClientRect();
             if (window.innerWidth > 1024) { // Desktop
-                submenu.style.left = `${rect.right + 1}px`;
+                submenu.style.left = `${rect.right + 5}px`;
                 submenu.style.top = `${rect.top}px`;
             } else { // Mobile
-                submenu.style.left = `${rect.left}px`;
+                submenu.style.left = '5px';
                 submenu.style.top = `${rect.bottom + 5}px`;
             }
         });
@@ -272,7 +282,8 @@ window.openNewLink = function(url) {
     if (tramitesDropdown) {
         tramitesDropdown.classList.add('hidden');
         document.getElementById('tramites-menu-btn').classList.remove('panel-active');
-        document.getElementById('tramites-arrow').style.transform = 'rotate(-90deg)';
+        const arrow = document.getElementById('tramites-arrow');
+        if(arrow) arrow.style.transform = 'rotate(-90deg)';
         document.querySelectorAll('.submenu.show').forEach(submenu => {
             submenu.classList.remove('show');
             submenu.closest('.has-submenu')?.classList.remove('submenu-open');
