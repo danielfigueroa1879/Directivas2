@@ -623,8 +623,8 @@ body.homepage {
 
 /* SUBMENU que aparece completamente fuera con MEJOR CONTROL */
 .dropdown-menu .submenu {
-    position: fixed;
-    width: 320px; /* CAMBIADO: De 280px a 320px (40px más ancho) */
+    position: fixed; /* Changed to fixed for positioning relative to viewport */
+    width: 320px; 
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(25px);
@@ -634,6 +634,8 @@ body.homepage {
     z-index: 1350;
     padding: 12px 0;
     display: none; /* Hidden by default */
+    max-height: 70vh; /* Added for mobile scroll */
+    overflow-y: auto; /* Added for mobile scroll */
 }
 
 /* SUBMENU VISIBLE */
@@ -690,6 +692,7 @@ body.homepage {
     transform: rotate(0deg);
 }
 
+
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
 @media (max-width: 1024px) {
     .dropdown-menu {
@@ -702,12 +705,10 @@ body.homepage {
 
     /* CORREGIDO: Submenú siempre a la derecha en móvil */
     .dropdown-menu .submenu {
-        top: 90px;
         width: 300px; /* CAMBIADO: De 260px a 300px en tablet */
-        right: 20px !important;
-        left: auto !important;
-        transform: translateX(0) translateY(0) scale(1);
+        transform: none;
     }
+
 
     #tramites-overlay, #editables-overlay {
         position: fixed;
@@ -730,9 +731,6 @@ body.homepage {
     }
     .dropdown-menu .submenu {
         width: 260px; /* CAMBIADO: De 220px a 260px en móvil */
-        right: 15px !important;
-        left: auto !important;
-        top: 95px;
     }
     .dropdown-menu button {
         padding: 10px 16px;
@@ -757,9 +755,6 @@ body.homepage {
     }
     .dropdown-menu .submenu {
         width: 240px; /* Ancho para pantallas muy pequeñas */
-        right: 10px !important;
-        left: auto !important;
-        top: 95px;
     }
     .dropdown-menu button {
         padding: 8px 12px;
@@ -863,4 +858,59 @@ body.homepage {
         background-color: rgba(255, 183, 0, 0.7);
         color: white;
    }
+}
+
+.pwa-install-banner {
+    position: fixed;
+    top: 64px; /* Adjust for banner height */
+    left: 0;
+    right: 0;
+    background-color: #f1f5f9; /* Tailwind gray-100 */
+    border-bottom: 2px solid #3b82f6; /* Tailwind blue-500 */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1100;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all 0.5s ease-in-out;
+    transform: translateY(-100%);
+    opacity: 0;
+}
+.pwa-install-banner.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.notification-banner {
+    position: fixed;
+    top: 0; /* Modificado para aparecer encima del banner principal */
+    left: 50%;
+    transform: translate(-50%, -100%); /* Start off-screen */
+    width: 100%; /* Responsive width */
+    max-width: 750px;
+    background-color: #51a351; /* Color modificado según la solicitud del usuario */
+    color: white;
+    padding: 1.3rem 2.0rem;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1300; /* Z-index aumentado para que esté por encima del banner principal (1200) */
+    text-align: center;
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-in-out;
+}
+
+.notification-banner.show {
+    transform: translate(-50%, 0); /* Slide in */
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .notification-banner {
+        width: 100%;
+        border-radius: 0 0 0 0;
+    }
+}
+.mover-derecha {
+    margin-left: 25px; /* Puedes ajustar el valor para el espaciado deseado */
 }
