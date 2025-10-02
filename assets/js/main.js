@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 submenu.style.left = `${rect.right + 5}px`;
                 submenu.style.top = `${rect.top}px`;
             } else { // Mobile
-                submenu.style.left = '5px';
+                submenu.style.left = `${rect.left}px`;
                 submenu.style.top = `${rect.bottom + 5}px`;
             }
         });
