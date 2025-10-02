@@ -560,16 +560,17 @@ body.homepage {
     box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
     z-index: 1201;
     transition: opacity 0.3s ease-out;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 1; /* Always visible when not hidden */
+    pointer-events: auto; /* Always interactive when not hidden */
     overflow-y: auto;
     scrollbar-width: thin;
 }
 
-.dropdown-menu:not(.hidden) {
-    opacity: 1;
-    pointer-events: auto;
+.dropdown-menu.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
+
 
 .dropdown-menu-content { padding: 16px 0; }
 
@@ -632,21 +633,12 @@ body.homepage {
     box-shadow: 15px 5px 40px rgba(0, 0, 0, 0.2);
     z-index: 1350;
     padding: 12px 0;
-
-    /* INVISIBLE POR DEFECTO */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateX(-5px) scale(0.98);
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    display: none; /* Hidden by default */
 }
 
 /* SUBMENU VISIBLE */
 .dropdown-menu .submenu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0) scale(1);
-    pointer-events: auto;
+   display: block;
 }
 
 /* ILUMINACIÓN AZUL del botón padre cuando el submenú está abierto (SOLO PC) */
@@ -686,16 +678,16 @@ body.homepage {
 
 /* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
 
-/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
+/* ESTADO INICIAL CERRADO: Apunta a la DERECHA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
     transform: rotate(-90deg);
     transition: transform 0.3s ease;
 }
 
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
+/* ESTADO ACTIVO ABIERTO: Apunta hacia ABAJO (Rotación 0deg) */
 #tramites-menu-btn.panel-active #tramites-arrow,
-.dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(2deg);
+.dropdown-menu .has-submenu.submenu-open > button .submenu-arrow {
+    transform: rotate(0deg);
 }
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
@@ -714,10 +706,6 @@ body.homepage {
         width: 300px; /* CAMBIADO: De 260px a 300px en tablet */
         right: 20px !important;
         left: auto !important;
-        transform: translateX(10px) translateY(-10px) scale(0.95);
-    }
-
-    .dropdown-menu .submenu.show {
         transform: translateX(0) translateY(0) scale(1);
     }
 
