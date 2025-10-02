@@ -560,17 +560,16 @@ body.homepage {
     box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
     z-index: 1201;
     transition: opacity 0.3s ease-out;
-    opacity: 1; /* Always visible when not hidden */
-    pointer-events: auto; /* Always interactive when not hidden */
+    opacity: 0;
+    pointer-events: none;
     overflow-y: auto;
     scrollbar-width: thin;
 }
 
-.dropdown-menu.hidden {
-    opacity: 0;
-    pointer-events: none;
+.dropdown-menu:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
 }
-
 
 .dropdown-menu-content { padding: 16px 0; }
 
@@ -623,8 +622,8 @@ body.homepage {
 
 /* SUBMENU que aparece completamente fuera con MEJOR CONTROL */
 .dropdown-menu .submenu {
-    position: fixed; /* Changed to fixed for positioning relative to viewport */
-    width: 320px; 
+    position: fixed;
+    width: 320px; /* CAMBIADO: De 280px a 320px (40px más ancho) */
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(25px);
@@ -633,14 +632,21 @@ body.homepage {
     box-shadow: 15px 5px 40px rgba(0, 0, 0, 0.2);
     z-index: 1350;
     padding: 12px 0;
-    display: none; /* Hidden by default */
-    max-height: 70vh; /* Added for mobile scroll */
-    overflow-y: auto; /* Added for mobile scroll */
+
+    /* INVISIBLE POR DEFECTO */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(-5px) scale(0.98);
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 /* SUBMENU VISIBLE */
 .dropdown-menu .submenu.show {
-   display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
 }
 
 /* ILUMINACIÓN AZUL del botón padre cuando el submenú está abierto (SOLO PC) */
@@ -680,38 +686,40 @@ body.homepage {
 
 /* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
 
-/* ESTADO INICIAL CERRADO: Apunta a la DERECHA (Rotación -90deg) */
+/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
     transform: rotate(-90deg);
     transition: transform 0.3s ease;
 }
 
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ABAJO (Rotación 0deg) */
+/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
 #tramites-menu-btn.panel-active #tramites-arrow,
-.dropdown-menu .has-submenu.submenu-open > button .submenu-arrow {
-    transform: rotate(0deg);
+.dropdown-menu .has-submenu.submenu-open .submenu-arrow {
+    transform: rotate(2deg);
 }
-
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
 @media (max-width: 1024px) {
     .dropdown-menu {
         position: fixed;
         top: 60px;
-        left: 5px; /* Adjust this value to move the menu */
+        left: 10px;
         background-color: rgba(255, 255, 255, 0.9);
         z-index: 1201;
     }
 
     /* CORREGIDO: Submenú siempre a la derecha en móvil */
     .dropdown-menu .submenu {
-        top: auto; /* Let JavaScript handle this */
+        top: 90px;
         width: 300px; /* CAMBIADO: De 260px a 300px en tablet */
-        left: 5px !important; /* Align with parent menu */
-        right: auto !important;
-        transform: none;
+        right: 20px !important;
+        left: auto !important;
+        transform: translateX(10px) translateY(-10px) scale(0.95);
     }
 
+    .dropdown-menu .submenu.show {
+        transform: translateX(0) translateY(0) scale(1);
+    }
 
     #tramites-overlay, #editables-overlay {
         position: fixed;
@@ -733,11 +741,10 @@ body.homepage {
         left: 5px;
     }
     .dropdown-menu .submenu {
-        width: calc(100vw - 10px); /* Full width minus padding */
-        max-width: 260px; /* Maintain a max width */
-        right: auto !important;
-        left: 5px !important;
-        top: auto; /* Let JavaScript handle this */
+        width: 260px; /* CAMBIADO: De 220px a 260px en móvil */
+        right: 15px !important;
+        left: auto !important;
+        top: 95px;
     }
     .dropdown-menu button {
         padding: 10px 16px;
@@ -761,11 +768,10 @@ body.homepage {
         left: 3px;
     }
     .dropdown-menu .submenu {
-        width: calc(100vw - 6px); /* Full width minus padding */
-        max-width: 240px; /* Ancho para pantallas muy pequeñas */
-        right: auto !important;
-        left: 3px !important;
-        top: auto; /* Let JavaScript handle this */
+        width: 240px; /* Ancho para pantallas muy pequeñas */
+        right: 10px !important;
+        left: auto !important;
+        top: 95px;
     }
     .dropdown-menu button {
         padding: 8px 12px;
@@ -869,59 +875,4 @@ body.homepage {
         background-color: rgba(255, 183, 0, 0.7);
         color: white;
    }
-}
-
-.pwa-install-banner {
-    position: fixed;
-    top: 64px; /* Adjust for banner height */
-    left: 0;
-    right: 0;
-    background-color: #f1f5f9; /* Tailwind gray-100 */
-    border-bottom: 2px solid #3b82f6; /* Tailwind blue-500 */
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1100;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    transition: all 0.5s ease-in-out;
-    transform: translateY(-100%);
-    opacity: 0;
-}
-.pwa-install-banner.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.notification-banner {
-    position: fixed;
-    top: 0; /* Modificado para aparecer encima del banner principal */
-    left: 50%;
-    transform: translate(-50%, -100%); /* Start off-screen */
-    width: 100%; /* Responsive width */
-    max-width: 750px;
-    background-color: #51a351; /* Color modificado según la solicitud del usuario */
-    color: white;
-    padding: 1.3rem 2.0rem;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1300; /* Z-index aumentado para que esté por encima del banner principal (1200) */
-    text-align: center;
-    opacity: 0;
-    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-in-out;
-}
-
-.notification-banner.show {
-    transform: translate(-50%, 0); /* Slide in */
-    opacity: 1;
-}
-
-@media (max-width: 768px) {
-    .notification-banner {
-        width: 100%;
-        border-radius: 0 0 0 0;
-    }
-}
-.mover-derecha {
-    margin-left: 25px; /* Puedes ajustar el valor para el espaciado deseado */
 }
