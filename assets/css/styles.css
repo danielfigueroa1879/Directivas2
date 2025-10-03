@@ -703,7 +703,7 @@ body.homepage {
     .dropdown-menu {
         position: fixed;
         top: 60px;
-        left: 10px;
+        left: 5px;
         background-color: rgba(255, 255, 255, 0.9);
         z-index: 1201;
     }
@@ -738,7 +738,7 @@ body.homepage {
     .dropdown-menu {
         width: 240px;
         top: 65px;
-        left: 5px;
+        left: 3px;
     }
     .dropdown-menu .submenu {
         width: 260px; /* CAMBIADO: De 220px a 260px en móvil */
@@ -765,7 +765,7 @@ body.homepage {
     .dropdown-menu {
         width: 220px;
         top: 65px;
-        left: 3px;
+        left: 2px;
     }
     .dropdown-menu .submenu {
         width: 240px; /* Ancho para pantallas muy pequeñas */
