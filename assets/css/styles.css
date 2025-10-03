@@ -571,7 +571,7 @@ body.homepage {
     pointer-events: auto;
 }
 
-.dropdown-menu-content { padding: 8px 0; }
+.dropdown-menu-content { padding-top: 0; }
 
 .dropdown-menu-header {
     padding: 12px 20px;
