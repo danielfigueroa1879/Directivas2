@@ -90,18 +90,12 @@
     }
     /* Estilo para la flecha del submenú */
     .submenu-arrow {
-        width: 1rem; 
-        height: 1rem;
-        /* IMPORTANTE: la rotación inicial a 90deg se movió a assets/css/styles.css */
-        transition: transform 0.3s ease;
-    }
-    .has-submenu.submenu-open .submenu-arrow {
         transform: rotate(180deg); /* Rota hacia abajo */
     }
     .submenu-title {
         font-weight: bold;
-        padding: 8px 20px;
-        font-size: 0.9rem;
+        padding: 6px 20px; /* Reducido para ser más compacto */
+        font-size: 0.85rem;
         color: #1f2937; /* Tailwind gray-800 */
         background-color: rgba(243, 244, 246, 0.7); /* Tailwind gray-100 con transparencia */
         border-top: 1px solid rgba(229, 231, 235, 0.5);
@@ -147,8 +141,6 @@
                             <h3>Menu de Trámites</h3>
                         </div>
                         <div class="dropdown-menu-content">
-                            <button onclick="handleCerofilas()">Cerofilas</button>   
-
                             <!-- Submenu Leyes y Normativa Actualizado -->
                             <div class="has-submenu">
                                 <button class="flex justify-between items-center w-full">
@@ -159,26 +151,26 @@
                                 </button>
                                 <div class="submenu">
                                     <div class="submenu-title">Leyes</div>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Const. Pol.</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30329')">2. Ley 18.961, Org.Const.</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30670')">3. Ley 19.303.</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=7193')">4. D.L. 3.607 de 1981</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">5. Ley 21.659, Seg. Privada</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución Política</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30329')">2. Ley 18.961 Org. Const.</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30670')">3. Ley 19.303</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=7193')">4. D.L. 3.607 (1981)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">5. Ley 21.659 Seg. Privada</button>
                                     <button onclick="openNewLink('https://www.leychile.cl/leychile/navegar?i=1213672&f=2025-11-28')">6. Reglamento 209</button>
                                     <div class="submenu-title">Decretos</div>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">1. D.E. 261 (31.07.2020)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">2. D.E. 32 (11.01.2024)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17')">3. D. 298 (17.09.2019)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05')">4. D. 123 (05.04.2019)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12')">5. D. 1045 (12.09.2018)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1116274')">6. D. 867 (13.06.2017)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1069299')">7. D. 1814 (10.11.2014)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1055580')">8. D.S. 222 (30.10.2014)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1072929')">9. D.E. 1122 (19.10.1994)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=19870')">10. D.S. 41 (05.03.1996)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18592')">11. D.S. 1772 (26.01.1995)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18594')">12. D.S. 1773 (14.11.1994)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=9081')">13. D.S. 93 (21.10.1985)</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">1. D.E. 261 (2020)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">2. D.E. 32 (2024)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17')">3. D. 298 (2019)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05')">4. D. 123 (2019)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12')">5. D. 1045 (2018)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1116274')">6. D. 867 (2017)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1069299')">7. D. 1814 (2014)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1055580')">8. D.S. 222 (2014)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1072929')">9. D.E. 1122 (1994)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=19870')">10. D.S. 41 (1996)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18592')">11. D.S. 1772 (1995)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18594')">12. D.S. 1773 (1994)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=9081')">13. D.S. 93 (1985)</button>
                                 </div>
                             </div>
                             
