@@ -661,8 +661,8 @@ body.homepage {
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: left;
-    padding: 8px 15px;
-    font-size: 0.875rem;
+    padding: 6px 15px; /* Reducido para ser más compacto */
+    font-size: 0.85rem; /* Reducido para ser más compacto */
     color: rgba(31, 41, 55, 0.9);
     background-color: transparent;
     border: none;
