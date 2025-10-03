@@ -90,18 +90,12 @@
     }
     /* Estilo para la flecha del submenú */
     .submenu-arrow {
-        width: 1rem; 
-        height: 1rem;
-        /* IMPORTANTE: la rotación inicial a 90deg se movió a assets/css/styles.css */
-        transition: transform 0.3s ease;
-    }
-    .has-submenu.submenu-open .submenu-arrow {
         transform: rotate(180deg); /* Rota hacia abajo */
     }
     .submenu-title {
         font-weight: bold;
-        padding: 8px 20px;
-        font-size: 0.9rem;
+        padding: 6px 20px;
+        font-size: 0.85rem;
         color: #1f2937; /* Tailwind gray-800 */
         background-color: rgba(243, 244, 246, 0.7); /* Tailwind gray-100 con transparencia */
         border-top: 1px solid rgba(229, 231, 235, 0.5);
@@ -147,8 +141,6 @@
                             <h3>Menu de Trámites</h3>
                         </div>
                         <div class="dropdown-menu-content">
-                            <button onclick="handleCerofilas()">Cerofilas</button>   
-
                             <!-- Submenu Leyes y Normativa Actualizado -->
                             <div class="has-submenu">
                                 <button class="flex justify-between items-center w-full">
@@ -259,6 +251,7 @@
                                 </div>
                             </div>
                             <!-- Nuevo Marco Legal -->
+                            <button onclick="handleCerofilas()">Cerofilas</button>   
                             <button onclick="handleMarcoLegal('https://www.zosepcar.cl/OS10.php#leyes')">Marco Legal</button>
                             <button onclick="handleDirectiva()">Directiva</button>
                             <button onclick="handleCredenciales()">Credenciales</button>
