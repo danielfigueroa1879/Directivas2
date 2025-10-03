@@ -876,3 +876,29 @@ body.homepage {
         color: white;
    }
 }
+
+/* Ajuste para submenú de Leyes y Normativa más compacto */
+.submenu.leyes-compactas .submenu-title {
+    padding: 4px 20px; /* Menos padding vertical */
+    margin-top: 4px; /* Un poco de espacio entre secciones */
+}
+.submenu.leyes-compactas .submenu-title:first-child {
+    margin-top: 0;
+}
+.submenu.leyes-compactas button {
+    padding: 4px 15px; /* Menos padding vertical */
+    font-size: 0.8rem; /* Fuente un poco más pequeña */
+}
+
+/* NUEVO: Ajuste extra compacto para el submenú de Leyes en MÓVIL */
+@media (max-width: 640px) {
+    .submenu.leyes-compactas .submenu-title {
+        padding: 3px 15px;
+        font-size: 0.75rem;
+    }
+    .submenu.leyes-compactas button {
+        padding: 2px 15px;
+        font-size: 0.7rem;
+    }
+}
+
