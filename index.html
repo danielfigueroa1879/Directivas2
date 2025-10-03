@@ -90,6 +90,11 @@
     }
     /* Estilo para la flecha del submenú */
     .submenu-arrow {
+        width: 1rem;
+        height: 1rem;
+        transition: transform 0.3s ease;
+    }
+    .has-submenu.submenu-open .submenu-arrow {
         transform: rotate(180deg); /* Rota hacia abajo */
     }
     .submenu-title {
