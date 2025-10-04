@@ -612,4 +612,4 @@ window.handleValores = function() {
 }
 window.handleValorPlan = function() { window.openNewLink('https://os10.short.gy/Pl4n'); }
 window.handleCursoFormacion = function() { window.openNewLink('https://dal5.short.gy/Form'); }
-window.handleMarcoLegal = function() { window.openNewLink('https://www.zosepcar.cl/OS10.php#leyes'); }
+window.handleBuscarCurso = function() { window.openNewLink('https://www.zosepcar.cl/OS10.php#buscador'); }
