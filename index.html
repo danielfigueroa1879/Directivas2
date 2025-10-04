@@ -19,6 +19,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
 
+    <style>
+        /* Oculta el cuerpo por defecto para prevenir el FOUC */
+        body {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out;
+        }
+    </style>
+
+    
+
     <!-- Preloading critical assets -->
     <link rel="preload" href="assets/css/styles.css" as="style">
     <link rel="preload" href="assets/images/foto (1).webp" as="image">
