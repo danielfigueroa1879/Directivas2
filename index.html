@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Plataforma OS10 Coquimbo</title>
     <meta name="description" content="Plataforma de trámites y servicios de seguridad privada. Requisitos para Directivas de Funcionamiento, Credenciales y más. OS10 Coquimbo.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable">
     <meta name="theme-color" content="#ffffff"/>
     <link rel="manifest" href="manifest.json">
     <meta name="application-name" content="Directivas OS10">
@@ -19,17 +19,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
 
-    <style>
-        /* Oculta el cuerpo por defecto para prevenir el FOUC */
-        body {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease-in-out;
-        }
-    </style>
-
-    
-
     <!-- Preloading critical assets -->
     <link rel="preload" href="assets/css/styles.css" as="style">
     <link rel="preload" href="assets/images/foto (1).webp" as="image">
@@ -37,16 +26,13 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
     
-    <!-- Tailwind CSS cargado de forma diferida (defer) para no bloquear la renderización -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Carga asíncrona de Google Fonts para no bloquear la renderización -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"></noscript>
+    <!-- Optimized font loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Carga asíncrona de la hoja de estilos principal para no bloquear la renderización -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/css/styles.css?v=2"></noscript>
-
+    <!-- External stylesheet for better caching -->
+    <link rel="stylesheet" href="assets/css/styles.css?v=2">
     <style>
     .pwa-install-banner {
             position: fixed;
@@ -440,7 +426,7 @@
                                     <li>Fotografia almacenada en un Pendrive.</li>
                                 </ul>
                                 <div class="mt-4 flex justify-center">
-                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413">
+                                    <img src="assets/images/foto.webp" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413">
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
                                     <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
