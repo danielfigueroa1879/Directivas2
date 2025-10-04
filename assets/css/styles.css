@@ -17,7 +17,7 @@ body.homepage {
 }
 
 #homepage-section {
-    background-image: url('../images/foto (1).jpeg');
+    background-image: url('../images/foto (1).webp'); /* CORREGIDO: Usar .webp para consistencia con el carrusel */
     background-size: cover;
     background-position: center 40%; /* Adjusted to be slightly lower */
     transition: background-image 5.5s ease-in-out;
