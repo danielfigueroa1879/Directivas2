@@ -22,16 +22,28 @@ let backgroundImages = [
 ];
 
 let currentImageIndex = 0;
+let initialLoad = true; // Flag to prevent changing the initial preloaded image
 
 function rotateBackground() {
     const homepageSection = document.getElementById('homepage-section');
     if (homepageSection && document.body.classList.contains('homepage')) {
+        // On the very first run, do nothing. This allows the preloaded image to be displayed without delay.
+        if (initialLoad) {
+            initialLoad = false;
+            return;
+        }
+
         currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-        homepageSection.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+        // Preload the next image before setting it as background
+        const nextImage = new Image();
+        nextImage.src = backgroundImages[currentImageIndex];
+        nextImage.onload = () => {
+            homepageSection.style.backgroundImage = `url('${nextImage.src}')`;
+        };
     }
 }
 
-// Start background rotation every 12 seconds for homepage
+// Start background rotation every 12 seconds
 setInterval(rotateBackground, 12000);
 
 // Functions to switch between sections (called by main.js or HTML)
@@ -43,9 +55,11 @@ function showHomepage() {
     document.body.className = 'homepage background-transition';
     const homepageSection = document.getElementById('homepage-section');
     if (homepageSection) {
+        // Ensure the initial image is the preloaded one
         homepageSection.style.backgroundImage = `url('${backgroundImages[0]}')`;
     }
     currentImageIndex = 0;
+    initialLoad = true; // Reset flag when returning to home
     document.getElementById('credenciales-arrow-back-btn')?.classList.add('hidden');
     window.scrollTo(0, 0);
 }
