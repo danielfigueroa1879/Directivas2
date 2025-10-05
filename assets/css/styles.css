@@ -1,5 +1,10 @@
 /* --- ESTILOS BASE Y CHATBOT --- */
 
+/* Nota Importante: El estilo de la imagen de fondo principal (#homepage-section)
+   ha sido movido a un bloque <style> dentro de index.html para cargarlo
+   como CSS crítico, solucionando el problema de Retraso en la Renderización (LCP).
+   Se mantiene aquí solo como respaldo, pero debe ser eliminado para la optimización. */
+
 body {
     font-family: 'Poppins', sans-serif;
     /* Fondo de pantalla original para páginas internas */
@@ -17,9 +22,10 @@ body.homepage {
 }
 
 #homepage-section {
-    background-image: url('../images/foto (1).webp'); /* CORREGIDO: Usar .webp para consistencia con el carrusel */
-    background-size: cover;
-    background-position: center 40%; /* Adjusted to be slightly lower */
+    /* ESTOS ESTILOS FUERON MOVIDOS A <style> EN index.html COMO CSS CRÍTICO */
+    /* background-image: url('../images/foto (1).webp'); */
+    /* background-size: cover; */
+    /* background-position: center 40%; */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -190,7 +196,7 @@ body.homepage {
     top: -25px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(45deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+    background: linear-gradient(45deg, rgba(34, 197, 94, 0.9), rgba(59, 130, 246, 0.1));
     color: white;
     padding: 2px 8px;
     border-radius: 12px;
@@ -566,7 +572,7 @@ body.homepage {
     scrollbar-width: thin;
 }
 
-.dropdown-menu:not(.hidden) {
+.dropdown-menu.show {
     opacity: 1;
     pointer-events: auto;
 }
@@ -688,14 +694,14 @@ body.homepage {
 
 /* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
-    transform: rotate(-90deg);
+    transform: rotate(0deg); /* Se corrige para que apunte hacia abajo cuando está cerrado/normal */
     transition: transform 0.3s ease;
 }
 
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
-#tramites-menu-btn.panel-active #tramites-arrow,
+/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 180deg) */
+#tramites-dropdown.show #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(2deg);
+    transform: rotate(180deg);
 }
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
@@ -831,6 +837,11 @@ body.homepage {
     height: 70vh; /* Altura por defecto para PC */
     max-height: 700px; /* Límite para pantallas muy altas */
     min-height: 450px; /* Límite para pantallas muy cortas */
+    /* Se elimina la carga de imagen de fondo de aquí para evitar que el CSS externo bloquee el render */
+    /* background-image: url('../images/foto (1).webp'); */ 
+    /* background-size: cover; */
+    /* background-position: center 40%; */
+    /* transition: background-image 5.5s ease-in-out; */
 }
 .background-transition {
     animation: none;
