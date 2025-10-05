@@ -18,7 +18,9 @@ let backgroundImages = [
     'assets/images/foto (16).webp',
     'assets/images/foto (17).webp',
     'assets/images/foto (18).webp',
-    'assets/images/foto (19).webp'
+    'assets/images/foto (19).webp',
+    'assets/images/foto (20).webp',
+    'assets/images/foto (21).webp'
 ];
 
 let currentImageIndex = 0;
