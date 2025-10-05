@@ -21,36 +21,42 @@ let backgroundImages = [
     'assets/images/foto (19).webp',
     'assets/images/foto (20).webp',
     'assets/images/foto (21).webp',
-    'assets/images/foto (22).webp',
-    'assets/images/foto (23).webp',
-    'assets/images/foto (24).webp',
-    'assets/images/foto (25).webp'
+    'assets/images/foto (223).webp', /* Se reemplaza foto (22).webp por una existente */
+    'assets/images/foto (224).webp', /* Se reemplaza foto (23).webp por una existente */
+    'assets/images/foto (226).webp', /* Se reemplaza foto (24).webp por una existente */
+    'assets/images/foto (2333).webp' /* Se reemplaza foto (25).webp por una existente */
 ];
 
 let currentImageIndex = 0;
-let initialLoad = true; // Flag to prevent changing the initial preloaded image
+let rotationStarted = false; // Flag para controlar el inicio del carrusel
 
 function rotateBackground() {
     const homepageSection = document.getElementById('homepage-section');
-    if (homepageSection && document.body.classList.contains('homepage')) {
-        // On the very first run, do nothing. This allows the preloaded image to be displayed without delay.
-        if (initialLoad) {
-            initialLoad = false;
-            return;
-        }
-
+    if (homepageSection && document.body.classList.contains('homepage') && rotationStarted) {
         currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-        // Preload the next image before setting it as background
+        
+        // Preload y fade in de la siguiente imagen
+        const nextImageUrl = backgroundImages[currentImageIndex];
         const nextImage = new Image();
-        nextImage.src = backgroundImages[currentImageIndex];
+        nextImage.src = nextImageUrl;
+        
         nextImage.onload = () => {
-            homepageSection.style.backgroundImage = `url('${nextImage.src}')`;
+            // Aplicar la nueva imagen solo después de que haya cargado
+            homepageSection.style.backgroundImage = `url('${nextImageUrl}')`;
+            console.log(`🖼️ Fondo rotado a: ${nextImageUrl}`);
         };
     }
 }
 
 // Start background rotation every 12 seconds
-setInterval(rotateBackground, 12000);
+// Se llama por primera vez después de un retraso para no bloquear el LCP
+setTimeout(() => {
+    rotationStarted = true;
+    // La rotación inicializa el carrusel DESPUÉS de 12 segundos
+    setInterval(rotateBackground, 12000); 
+    console.log('🔄 Carrusel de imágenes programado para iniciar en 12 segundos.');
+}, 100); // Pequeño retraso para asegurar que el LCP pase primero.
+
 
 // Functions to switch between sections (called by main.js or HTML)
 function showHomepage() {
@@ -61,11 +67,11 @@ function showHomepage() {
     document.body.className = 'homepage background-transition';
     const homepageSection = document.getElementById('homepage-section');
     if (homepageSection) {
-        // Ensure the initial image is the preloaded one
+        // Asegura que la imagen inicial pre-cargada sea la primera
         homepageSection.style.backgroundImage = `url('${backgroundImages[0]}')`;
     }
     currentImageIndex = 0;
-    initialLoad = true; // Reset flag when returning to home
+    rotationStarted = true; // Permite que el carrusel siga funcionando
     document.getElementById('credenciales-arrow-back-btn')?.classList.add('hidden');
     window.scrollTo(0, 0);
 }
@@ -94,8 +100,7 @@ function showCredenciales() {
     window.scrollTo(0, 0);
 }
 
-// These handle... functions are called by onclick attributes in the HTML.
-// The menu closing is handled by the logic in main.js.
+// Handlers para los enlaces del menú
 function handleCerofilas() { window.open('https://dal5.short.gy/CFil', '_blank'); }
 function handleDirectiva() { showDirectiva(); }
 function handleCredenciales() { showCredenciales(); }
@@ -109,6 +114,7 @@ function handleValores() {
 }
 function handleValorPlan() { window.open('https://os10.short.gy/Pl4n', '_blank'); }
 function handleCursoFormacion() { window.open('https://dal5.short.gy/Form', '_blank'); }
+function handleBuscarCurso(url) { window.open(url, '_blank'); } // Función para abrir enlaces del menú
 
 document.addEventListener('DOMContentLoaded', () => {
     // Non-menu related listeners and initializers
