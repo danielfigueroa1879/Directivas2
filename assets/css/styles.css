@@ -685,12 +685,12 @@ body.homepage {
 
 /* --- ROTACIÓN DE FLECHAS --- */
 #tramites-arrow, .submenu-arrow {
-    transform: rotate(0deg);
+    transform: rotate(-90deg);
     transition: transform 0.3s ease;
 }
 #tramites-menu-btn.panel-active #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
 }
 
 /* Responsive */
