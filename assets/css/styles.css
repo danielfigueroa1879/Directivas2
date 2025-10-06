@@ -694,15 +694,16 @@ body.homepage {
 
 /* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
-    transform: rotate(0deg); /* Se corrige para que apunte hacia abajo cuando está cerrado/normal */
+    transform: rotate(-90deg);
     transition: transform 0.3s ease;
 }
 
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 180deg) */
-#tramites-dropdown.show #tramites-arrow,
+/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
+#tramites-menu-btn.panel-active #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(180deg);
+    transform: rotate(2deg);
 }
+
 
 /* Responsive - Ajustes para móvil y tablet CORREGIDOS */
 @media (max-width: 1024px) {
