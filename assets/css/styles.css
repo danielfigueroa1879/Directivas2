@@ -690,7 +690,7 @@ body.homepage {
 }
 #tramites-menu-btn.panel-active #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(720deg);
+    transform: rotate(360deg);
 }
 
 /* Responsive */
