@@ -310,7 +310,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 0.5rem; /* Compacto */
-    background-color: rgba(243, 244, 246, 0.8); /* Gris muy sutil */
+    background-color: rgba(229, 231, 235, 0.6); /* Gris más sutil */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -386,7 +386,7 @@ body.homepage {
 
 /* --- AJUSTE TAMAÑO TEXTO BANNER --- */
 .banner-text-small {
-    font-size: 1rem; /* Aumentado a petición del usuario, luego reducido */
+    font-size: 0.875rem; /* Reducido a petición del usuario */
 }
 
 /* El resto de los estilos se mantienen */
