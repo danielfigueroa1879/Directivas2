@@ -412,21 +412,6 @@ body.homepage {
     max-height: 700px;
     min-height: 450px;
 }
-.homepage-title-container {
-    position: relative;
-    z-index: 10;
-}
-@media (max-width: 767px) {
-    .homepage-title-container {
-        margin-top: -6rem; 
-    }
-}
-@media (min-width: 768px) {
-    .homepage-title-container {
-        margin-top: -8rem;
-    }
-}
-
 
 .background-transition { animation: none; }
 .text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
