@@ -28,35 +28,17 @@ let backgroundImages = [
 ];
 
 let currentImageIndex = 0;
-let rotationStarted = false; // Flag para controlar el inicio del carrusel
 
 function rotateBackground() {
     const homepageSection = document.getElementById('homepage-section');
-    if (homepageSection && document.body.classList.contains('homepage') && rotationStarted) {
+    if (homepageSection && document.body.classList.contains('homepage')) {
         currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-        
-        // Preload y fade in de la siguiente imagen
-        const nextImageUrl = backgroundImages[currentImageIndex];
-        const nextImage = new Image();
-        nextImage.src = nextImageUrl;
-        
-        nextImage.onload = () => {
-            // Aplicar la nueva imagen solo después de que haya cargado
-            homepageSection.style.backgroundImage = `url('${nextImageUrl}')`;
-            console.log(`🖼️ Fondo rotado a: ${nextImageUrl}`);
-        };
+        homepageSection.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
     }
 }
 
-// Start background rotation every 12 seconds
-// Se llama por primera vez después de un retraso para no bloquear el LCP
-setTimeout(() => {
-    rotationStarted = true;
-    // La rotación inicializa el carrusel DESPUÉS de 12 segundos
-    setInterval(rotateBackground, 12000); 
-    console.log('🔄 Carrusel de imágenes programado para iniciar en 12 segundos.');
-}, 100); // Pequeño retraso para asegurar que el LCP pase primero.
-
+// Start background rotation every 12 seconds for homepage
+setInterval(rotateBackground, 12000);
 
 // Functions to switch between sections (called by main.js or HTML)
 function showHomepage() {
@@ -67,11 +49,9 @@ function showHomepage() {
     document.body.className = 'homepage background-transition';
     const homepageSection = document.getElementById('homepage-section');
     if (homepageSection) {
-        // Asegura que la imagen inicial pre-cargada sea la primera
         homepageSection.style.backgroundImage = `url('${backgroundImages[0]}')`;
     }
     currentImageIndex = 0;
-    rotationStarted = true; // Permite que el carrusel siga funcionando
     document.getElementById('credenciales-arrow-back-btn')?.classList.add('hidden');
     window.scrollTo(0, 0);
 }
@@ -100,7 +80,8 @@ function showCredenciales() {
     window.scrollTo(0, 0);
 }
 
-// Handlers para los enlaces del menú
+// These handle... functions are called by onclick attributes in the HTML.
+// The menu closing is handled by the logic in main.js.
 function handleCerofilas() { window.open('https://dal5.short.gy/CFil', '_blank'); }
 function handleDirectiva() { showDirectiva(); }
 function handleCredenciales() { showCredenciales(); }
@@ -114,7 +95,6 @@ function handleValores() {
 }
 function handleValorPlan() { window.open('https://os10.short.gy/Pl4n', '_blank'); }
 function handleCursoFormacion() { window.open('https://dal5.short.gy/Form', '_blank'); }
-function handleBuscarCurso(url) { window.open(url, '_blank'); } // Función para abrir enlaces del menú
 
 document.addEventListener('DOMContentLoaded', () => {
     // Non-menu related listeners and initializers
