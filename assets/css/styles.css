@@ -309,14 +309,14 @@ body.homepage {
 
 /* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
-    transform: rotate(-45deg);
+    transform: rotate(0deg);
     transition: transform 0.3s ease;
 }
 
 /* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
 #tramites-menu-btn.panel-active #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(360deg);
+    transform: rotate(720deg);
 }
 
 .mobile-dropdown .submenu {
