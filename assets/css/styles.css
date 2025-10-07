@@ -310,7 +310,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 0.5rem; /* Compacto */
-    background-color: rgba(229, 231, 235, 0.6); /* Gris más sutil */
+    background-color: rgba(229, 231, 235, 0.8); /* Gris un poco más oscuro */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
