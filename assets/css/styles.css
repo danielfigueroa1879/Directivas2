@@ -303,26 +303,14 @@ body.homepage {
     color: #1d4ed8; /* Azul oscuro para el texto */
 }
 
-/* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
-
-/* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
-
-/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
-#tramites-arrow, .submenu-arrow {
-    transform: rotate(-360deg);
-    transition: transform 0.3s ease;
-}
-
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
-#tramites-menu-btn.panel-active #tramites-arrow,
-.dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(720deg);
+.mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
+    transform: rotate(90deg);
 }
 
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 0.5rem; /* Compacto */
-    background-color: rgba(229, 231, 235, 0.8); /* Gris un poco más oscuro */
+    background-color: rgba(229, 231, 235, 0.6); /* Gris más sutil */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
