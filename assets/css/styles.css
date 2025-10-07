@@ -309,7 +309,7 @@ body.homepage {
 
 /* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
 #tramites-arrow, .submenu-arrow {
-    transform: rotate(-400deg);
+    transform: rotate(-360deg);
     transition: transform 0.3s ease;
 }
 
