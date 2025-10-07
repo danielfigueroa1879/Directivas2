@@ -386,7 +386,7 @@ body.homepage {
 
 /* --- AJUSTE TAMAÑO TEXTO BANNER --- */
 .banner-text-small {
-    font-size: 1.25rem; /* Aumentado a petición del usuario */
+    font-size: 1.4rem; /* Aumentado a petición del usuario */
 }
 
 /* El resto de los estilos se mantienen */
