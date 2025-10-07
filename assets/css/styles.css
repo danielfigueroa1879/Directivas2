@@ -310,7 +310,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 0.5rem; /* Compacto */
-    background-color: rgba(229, 231, 235, 0.6); /* Gris más sutil */
+    background-color: rgba(243, 244, 246, 0.8); /* Gris muy sutil */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -423,7 +423,7 @@ body.homepage {
 }
 @media (min-width: 768px) {
     .homepage-title-container {
-        margin-top: -9rem; /* Sube el título aún más en PC y tablet */
+        margin-top: -8rem;
     }
 }
 
