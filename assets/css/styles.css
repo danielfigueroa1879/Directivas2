@@ -479,8 +479,8 @@ body.homepage {
 @media (min-width: 1024px) {
   #banner > div {
     justify-content: center !important; /* Centra los grupos */
-    gap: 30rem; /* Espacio ajustado entre los grupos */
-    max-width: 1152px; /* Ancho máximo reducido */
+    gap: 34rem; /* Espacio ajustado entre los grupos */
+    max-width: 1200px; /* Ancho máximo reducido */
   }
 
   /* Estilos para el menú desplegable en PC */
