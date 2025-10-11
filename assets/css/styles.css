@@ -321,7 +321,7 @@ body.homepage {
 
 .mobile-dropdown .submenu {
     display: none;
-    padding-left: 0.5rem; /* Compacto */
+    padding-left: 1rem; /* Aumentado de 0.5rem a 1rem */
     background-color: rgba(229, 231, 235, 0.6); /* Gris más sutil */
     max-height: 0;
     overflow: hidden;
@@ -332,13 +332,13 @@ body.homepage {
 .mobile-dropdown .submenu.submenu-compact button {
     padding-top: 0.3rem; /* Compacto */
     padding-bottom: 0.3rem; /* Compacto */
-    padding-left: 2rem;
+    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
     font-size: 0.78rem; /* REDUCIDO */
 }
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem; /* Compacto */
     padding-bottom: 0.2rem; /* Compacto */
-    padding-left: 2rem;
+    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
     font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
 }
