@@ -183,9 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- LÓGICA PARA EL NUEVO MEGAMENÚ DE ASESOR ---
+    // --- LÓGICA PARA EL MEGAMENÚ DE ASESOR CON BOTÓN DE CIERRE ---
     const asesorItem = document.querySelector('.asesor-item');
     const asesorMegamenu = document.getElementById('asesor-megamenu');
+    const asesorCloseBtn = document.getElementById('asesor-close-btn'); // NUEVO
     let asesorTimeout;
 
     const openAsesorMegamenu = () => {
@@ -222,6 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 openAsesorMegamenu();
             }
         });
+        
+        // NUEVO: Evento para el botón de cierre
+        if (asesorCloseBtn) {
+            asesorCloseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeAsesorMegamenu(true);
+            });
+        }
 
         // Lógica de hover solo para la flecha en escritorio
         if (window.innerWidth >= 1024 && asesorArrow) {
@@ -239,8 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeAsesorMegamenu(true);
             }
         });
+        
+        // Cerrar con la tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && asesorItem.classList.contains('megamenu-open')) {
+                closeAsesorMegamenu(true);
+            }
+        });
     }
-
 
     // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
