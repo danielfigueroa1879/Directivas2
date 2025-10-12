@@ -137,10 +137,10 @@ body.homepage {
     }
     #chat-popup {
         position: fixed;
-        bottom: 0.75rem; /* Un poco más abajo */
+        bottom: 0.75rem;
         left: 50%;
         transform: translateX(-50%);
-        width: 97%; /* Ancho ajustado al 97% */
+        width: 97%;
         height: 500px;
     }
 }
@@ -149,7 +149,7 @@ body.homepage {
 /* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
 
 #desktop-menu {
-    margin-left: 1rem; /* Reducido para estar más cerca del centro */
+    margin-left: 1rem;
 }
 
 .menu-item {
@@ -157,16 +157,16 @@ body.homepage {
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 0.4rem 0.25rem; /* Más compacto */
+    padding: 0.4rem 0.25rem;
     border-radius: 0.375rem;
     transition: color 0.2s, background-color 0.2s;
     white-space: nowrap;
-    font-size: 0.6rem; /* Letra más pequeña */
+    font-size: 0.6rem;
 }
 
 @media (min-width: 1400px) {
     .menu-item {
-        font-size: 0.65rem; /* Un poco más grande en pantallas muy anchas */
+        font-size: 0.65rem;
         padding: 0.4rem 0.4rem;
     }
      #desktop-menu {
@@ -207,8 +207,8 @@ body.homepage {
 }
 
 .desktop-dropdown .desktop-dropdown-title {
-    padding: 0.2rem 0.6rem; /* Más compacto */
-    font-size: 0.6rem; /* Más pequeño */
+    padding: 0.2rem 0.6rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
     color: #6b7280;
     font-weight: 600;
@@ -226,17 +226,17 @@ body.homepage {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.3rem 0.6rem; /* Más compacto */
+    padding: 0.3rem 0.6rem;
     border-radius: 4px;
     transition: background-color 0.2s;
-    font-size: 0.75rem; /* Más pequeño */
+    font-size: 0.75rem;
     color: #374151;
 }
 
 .desktop-dropdown button:hover,
 .desktop-dropdown a:hover {
-    background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
-    color: #15803d; /* Verde oscuro para el texto */
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #15803d;
 }
 
 /* --- Menú Móvil --- */
@@ -253,7 +253,7 @@ body.homepage {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
-    padding: 0.5rem 0; /* Compacto */
+    padding: 0.5rem 0;
 }
 
 .mobile-dropdown.show {
@@ -279,16 +279,15 @@ body.homepage {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0.6rem 1.5rem; /* Compacto */
+    padding: 0.6rem 1.5rem;
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
-    font-size: 0.82rem; /* REDUCIDO */
+    font-size: 0.82rem;
 }
 
-/* Efecto hover azul para los botones de submenú principales */
 .mobile-dropdown .submenu-parent-btn:hover {
-    background-color: rgba(59, 130, 246, 0.1); /* Azul claro */
-    color: #1d4ed8; /* Azul oscuro */
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
 }
 
 .mobile-dropdown .submenu-arrow {
@@ -297,10 +296,9 @@ body.homepage {
     height: 1.25rem;
 }
 
-/* Estado abierto del submenú principal cambia a azul */
 .mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
-    background-color: rgba(59, 130, 246, 0.1); /* Azul claro cuando está abierto */
-    color: #1d4ed8; /* Azul oscuro para el texto */
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
 }
 
 /* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
@@ -321,60 +319,133 @@ body.homepage {
 }
 
 /* --- Asesor Megamenu Styles --- */
-.asesor-megamenu {
-    position: fixed;
-    top: 4rem; /* Below the main banner */
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px); /* Center horizontally, start slightly up */
-    width: 90vw; /* Responsive width */
-    max-width: 640px; /* Double the width of the main menu */
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    z-index: 1190; /* Below main menu but above content */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    overflow-y: auto;
-    max-height: calc(100vh - 5rem);
+.asesor-item .submenu-arrow-asesor {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
 }
 
-.asesor-megamenu.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-}
-
-.asesor-megamenu-content {
-    padding: 1.5rem 2rem;
-    font-size: 1rem; /* Letra para PC adecuada */
-}
-
-.asesor-item.megamenu-open .submenu-arrow-asesor {
+.asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
+.asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
     transform: rotate(90deg);
 }
 
+.asesor-megamenu {
+    position: fixed;
+    bottom: 0; /* Cambiado de top a bottom */
+    left: 0;
+    right: 0;
+    z-index: 1250;
+    background-color: rgba(249, 250, 251, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.15); /* Sombra invertida hacia arriba */
+    border-top: 1px solid #e5e7eb; /* Cambiado border-bottom a border-top */
+    opacity: 0;
+    transform: translateY(100%); /* Cambiado de -20px a 100% para animación desde abajo */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    overflow-y: auto;
+    max-height: calc(100vh - 4rem); /* Desde bottom hasta 4rem del top */
+    pointer-events: none;
+    border-radius: 12px 12px 0 0; /* Bordes redondeados arriba, no abajo */
+}
+
+/* Nueva clase para mostrar el megamenu */
+.asesor-megamenu.show {
+    opacity: 1;
+    transform: translateY(0); /* Sube desde abajo */
+    pointer-events: auto;
+}
+
+/* PC: letra más pequeña y profesional */
+@media (min-width: 1024px) {
+    .asesor-megamenu {
+        width: 48rem;
+        left: 50%;
+        margin-left: -24rem;
+        right: auto;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .asesor-megamenu-content {
+        padding: 1.5rem 2rem;
+        font-size: 0.8rem; /* Reducido de 1rem a 0.8rem */
+    }
+    
+    .asesor-megamenu-content h3 { 
+        font-size: 1.1rem; /* Reducido de 1.5rem a 1.1rem */
+        font-weight: 600;
+    }
+    
+    .asesor-megamenu-content h4 { 
+        font-size: 0.95rem; /* Reducido de 1.25rem a 0.95rem */
+        font-weight: 600;
+    }
+    
+    .asesor-megamenu-content h5 { 
+        font-size: 0.85rem; /* Reducido de 1rem a 0.85rem */
+        font-weight: 600;
+    }
+    
+    .asesor-megamenu-content p,
+    .asesor-megamenu-content ol,
+    .asesor-megamenu-content li {
+        font-size: 0.8rem; /* Letra más pequeña para todo el contenido */
+        line-height: 1.5;
+    }
+    
+    /* Ajuste específico para el título de diploma */
+    .asesor-diploma-title {
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Tamaños de letra para Móvil - cubrir desde abajo hasta banner */
 @media (max-width: 767px) {
     .asesor-megamenu {
         width: 100vw;
         left: 0;
-        transform: translateY(-20px); /* No horizontal transform */
-        border-radius: 0;
-        max-height: calc(100vh - 4rem);
+        right: 0;
+        bottom: 0;
+        max-height: calc(100vh - 4rem); /* Desde bottom hasta debajo del banner (4rem) */
+        border-radius: 0; /* Sin bordes redondeados en móvil */
+        border-top: 2px solid #e5e7eb; /* Borde superior más visible */
     }
-    .asesor-megamenu.show {
-         transform: translateY(0);
-    }
+    
     .asesor-megamenu-content {
         padding: 1rem;
-        font-size: 0.9rem; /* Letra se adapta para pantallas pequeñas */
+        font-size: 0.85rem;
+    }
+    
+    .asesor-megamenu-content h3 { 
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .asesor-megamenu-content h4 { 
+        font-size: 1rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .asesor-megamenu-content h5 { 
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .asesor-megamenu-content ol { 
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+    
+    .asesor-megamenu-content p {
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
 }
-
 
 .mobile-dropdown .submenu {
     max-height: 0;
@@ -385,15 +456,15 @@ body.homepage {
 
 .mobile-dropdown .submenu.leyes-compactas button,
 .mobile-dropdown .submenu.submenu-compact button {
-    padding-top: 0.3rem; /* Compacto */
-    padding-bottom: 0.3rem; /* Compacto */
-    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
-    font-size: 0.78rem; /* REDUCIDO */
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 2.5rem;
+    font-size: 0.78rem;
 }
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
-    padding-top: 0.2rem; /* Compacto */
-    padding-bottom: 0.2rem; /* Compacto */
-    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 2.5rem;
     font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
 }
@@ -420,39 +491,37 @@ body.homepage {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.5rem 1.5rem; /* Compacto */
-    font-size: 0.82rem; /* REDUCIDO */
+    padding: 0.5rem 1.5rem;
+    font-size: 0.82rem;
     color: #374151;
-    transition: background-color 0.2s, color 0.2s; /* Añadida transición */
+    transition: background-color 0.2s, color 0.2s;
 }
 
-/* Efecto hover verde para los items DENTRO del submenú */
 .mobile-dropdown .submenu button:hover {
-    background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
-    color: #15803d; /* Verde oscuro para el texto */
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #15803d;
 }
 
-/* Efecto hover azul para los items principales que no son submenú */
 .mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
-    background-color: rgba(59, 130, 246, 0.1); /* Azul claro */
-    color: #1d4ed8; /* Azul oscuro */
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
 }
 
 
 .mobile-dropdown .dropdown-menu-header {
-    padding: 0.5rem 1.5rem; /* Compacto */
+    padding: 0.5rem 1.5rem;
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 0.5rem;
 }
 .mobile-dropdown .dropdown-menu-header h3 {
     font-weight: 600;
     color: #1f2937;
-    font-size: 0.9rem; /* Compacto */
+    font-size: 0.9rem;
 }
 
 /* --- AJUSTE TAMAÑO TEXTO BANNER --- */
 .banner-text-small {
-    font-size: 0.875rem; /* Reducido a petición del usuario */
+    font-size: 0.875rem;
 }
 
 /* El resto de los estilos se mantienen */
@@ -462,12 +531,12 @@ body.homepage {
 
 /* ===== AJUSTE SECCIÓN TRÁMITES PRINCIPALES ===== */
 #tramites-principales {
-    padding-top: 5rem; /* Se aumenta el padding superior para bajar la sección */
+    padding-top: 5rem;
 }
 
 @media (min-width: 768px) {
     #tramites-principales {
-        padding-top: 7rem; /* Ajuste para pantallas medianas y grandes */
+        padding-top: 7rem;
     }
 }
 
@@ -560,92 +629,3 @@ body.homepage {
       display: none !important;
   }
 }
-
-/* ===== NUEVOS ESTILOS PARA MEGAMENU ASESOR ===== */
-.asesor-item .submenu-arrow-asesor {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-}
-
-.asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
-.asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
-    transform: rotate(90deg);
-}
-
-.asesor-megamenu {
-    position: fixed;
-    top: 4rem; /* 64px, altura del banner */
-    left: 0;
-    right: 0;
-    z-index: 1250; /* Por encima del menú normal */
-    background-color: rgba(249, 250, 251, 0.98); /* Gris claro casi opaco */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    border-bottom: 1px solid #e5e7eb;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    overflow-y: auto;
-    max-height: calc(100vh - 4rem);
-    pointer-events: none; /* Controla la interacción */
-}
-
-/* Nueva clase para mostrar el megamenu */
-.asesor-megamenu.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-
-/* PC: se muestra con hover a través de CSS */
-@media (min-width: 1024px) {
-    .asesor-megamenu {
-        width: 48rem; /* 768px, el doble del menú principal aprox. */
-        left: 50%;
-        margin-left: -24rem; /* Mitad del ancho para centrar */
-        right: auto;
-        border-radius: 0 0 0.75rem 0.75rem;
-    }
-}
-
-.asesor-megamenu-content {
-    padding: 1.5rem 2rem;
-    font-size: 1rem; /* Tamaño de letra para PC */
-}
-
-.asesor-megamenu-content h3 { font-size: 1.5rem; }
-.asesor-megamenu-content h4 { font-size: 1.25rem; }
-.asesor-megamenu-content h5 { font-size: 1rem; }
-
-/* Tamaños de letra para Móvil */
-@media (max-width: 767px) {
-    .asesor-megamenu-content {
-        padding: 1rem;
-        font-size: 0.875rem; /* Letra más pequeña */
-    }
-    .asesor-megamenu-content h3 { font-size: 1.25rem; }
-    .asesor-megamenu-content h4 { font-size: 1.1rem; }
-    .asesor-megamenu-content h5 { font-size: 0.9rem; }
-    .asesor-megamenu-content ol { font-size: 0.8rem; }
-}
-
-
-/* Flecha asesor */
-    .asesor-item .submenu-arrow-asesor {
-        transform: rotate(0deg) !important;
-        transition: transform 0.3s ease;
-        display: inline-block;
-    }
-    .asesor-item.megamenu-open .submenu-arrow-asesor {
-        transform: rotate(90deg) !important;
-    }
-
-    /* Texto diploma más pequeño PC */
-    @media (min-width: 1024px) {
-        .asesor-diploma-title {
-            font-size: 0.85rem !important;
-            font-weight: 700 !important;
-        }
-    }
