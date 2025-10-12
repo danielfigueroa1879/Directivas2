@@ -127,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
-        const arrow = parent.querySelector('.submenu-arrow');
         if (!btn) return;
 
         // Lógica de CLIC para TODO el botón (abre o cierra el submenú)
@@ -137,19 +136,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.stopPropagation();
             }
             
-            // Cierra otros submenús abiertos
+            // Cierra otros submenús abiertos, excepto el de asesor
             document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                if (other !== parent) {
+                if (other !== parent && !other.classList.contains('asesor-item')) {
                     other.classList.remove('submenu-open');
                 }
             });
             
             // Alterna el estado del submenú actual
-            parent.classList.toggle('submenu-open');
+            if (!parent.classList.contains('asesor-item')) {
+                parent.classList.toggle('submenu-open');
+            }
         });
 
         // Lógica de HOVER solo para la FLECHA en ESCRITORIO
-        if (window.innerWidth >= 1024 && arrow) {
+        if (window.innerWidth >= 1024) {
+            const arrow = parent.querySelector('.submenu-arrow');
+            if (!arrow) return;
+
             let submenuTimeout;
 
             // Abre el submenú cuando el cursor entra en la flecha
@@ -187,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openAsesorMegamenu = () => {
         if (!asesorItem || !asesorMegamenu) return;
         clearTimeout(asesorTimeout);
-        // Close the main mobile menu if it's open, to avoid overlap
+        // Cerrar el menú principal en móvil para evitar solapamiento
         if (window.innerWidth < 1024) {
             closeMenu(true);
         }
@@ -206,10 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (asesorItem && asesorMegamenu) {
         const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
-        
-        // Logic for all devices on click
+        const asesorArrow = document.getElementById('asesor-arrow-trigger');
+
+        // Lógica de clic para todo el botón en cualquier dispositivo
         asesorTriggerBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Stop propagation to avoid closing main menu
+            e.stopPropagation();
             const isOpen = asesorItem.classList.contains('megamenu-open');
             if (isOpen) {
                 closeAsesorMegamenu(true);
@@ -218,17 +223,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Hover logic for desktop
-        if (window.innerWidth >= 1024) {
-            asesorItem.addEventListener('mouseenter', openAsesorMegamenu);
+        // Lógica de hover solo para la flecha en escritorio
+        if (window.innerWidth >= 1024 && asesorArrow) {
+            asesorArrow.addEventListener('mouseenter', openAsesorMegamenu);
+            
+            // Lógica para mantener abierto y cerrar el menú
             asesorItem.addEventListener('mouseleave', () => closeAsesorMegamenu());
-            asesorMegamenu.addEventListener('mouseenter', openAsesorMegamenu); // Keep it open when mouse is over the menu itself
+            asesorMegamenu.addEventListener('mouseenter', () => clearTimeout(asesorTimeout));
             asesorMegamenu.addEventListener('mouseleave', () => closeAsesorMegamenu());
         }
 
-        // Close on outside click
+        // Cerrar al hacer clic fuera
         document.addEventListener('click', (e) => {
-            // Close if the click is outside the item and the megamenu itself
             if (!asesorItem.contains(e.target) && !asesorMegamenu.contains(e.target)) {
                 closeAsesorMegamenu(true);
             }
