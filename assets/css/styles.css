@@ -313,6 +313,13 @@ body.homepage {
     transform: rotate(90deg);
 }
 
+/* FIX: Ensure Asesor button is a flex container to position arrow correctly */
+#asesor-trigger-btn {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
 
 .mobile-dropdown .submenu {
     max-height: 0;
