@@ -511,7 +511,6 @@ body.homepage {
 }
 
 .asesor-megamenu {
-    display: none;
     position: fixed;
     top: 4rem; /* 64px, altura del banner */
     left: 0;
@@ -527,27 +526,19 @@ body.homepage {
     transition: opacity 0.3s ease, transform 0.3s ease;
     overflow-y: auto;
     max-height: calc(100vh - 4rem);
+    pointer-events: none; /* Controla la interacción */
 }
 
-/* Móvil: se muestra con click a través de la clase JS */
-.asesor-item.megamenu-open .asesor-megamenu {
-    display: block;
+/* Nueva clase para mostrar el megamenu */
+.asesor-megamenu.show {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
 }
+
 
 /* PC: se muestra con hover a través de CSS */
 @media (min-width: 1024px) {
-    .asesor-item.megamenu-open .asesor-megamenu {
-        display: none; /* Oculta la versión de 'clic' en PC */
-    }
-
-    .asesor-item:hover .asesor-megamenu {
-        display: block; /* Muestra con hover */
-        opacity: 1;
-        transform: translateY(0);
-    }
-
     .asesor-megamenu {
         width: 48rem; /* 768px, el doble del menú principal aprox. */
         left: 50%;
