@@ -132,7 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Lógica de CLIC para TODO el botón (abre o cierra el submenú)
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Previene que el menú principal se cierre
+            // No detener la propagación si es el contenedor del megamenu
+            if (!e.currentTarget.closest('.asesor-item')) {
+                e.stopPropagation();
+            }
             
             // Cierra otros submenús abiertos
             document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
@@ -176,6 +179,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- LÓGICA PARA EL NUEVO MEGAMENÚ DE ASESOR ---
+    const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
+    if (asesorTriggerBtn) {
+        asesorTriggerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const parent = e.currentTarget.closest('.asesor-item');
+            if (parent) {
+                const isOpen = parent.classList.contains('megamenu-open');
+
+                // Primero, cerrar todos los otros submenús
+                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
+                    other.classList.remove('submenu-open');
+                });
+                
+                // Luego, alternar el megamenu
+                if(isOpen){
+                    parent.classList.remove('megamenu-open');
+                } else {
+                    parent.classList.add('megamenu-open');
+                }
+            }
+        });
+    }
 
     // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
@@ -206,6 +232,11 @@ function closeActiveMenu() {
         mobileDropdown.classList.remove('show');
         setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
         if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
+    }
+    // Cerrar también el megamenu de asesor
+    const asesorItem = document.querySelector('.asesor-item');
+    if (asesorItem) {
+        asesorItem.classList.remove('megamenu-open');
     }
 }
 
