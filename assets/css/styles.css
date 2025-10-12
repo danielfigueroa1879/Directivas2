@@ -317,13 +317,13 @@ body.homepage {
 
 /* --- Asesor Megamenu Styles --- */
 .asesor-item .submenu-arrow-asesor {
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
     transition: transform 0.3s ease;
 }
 
 .asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
 .asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
-    transform: rotate(300deg);
+    transform: rotate(360deg);
 }
 
 /* ================================================================== */
