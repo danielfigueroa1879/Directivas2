@@ -1,22 +1,20 @@
 /**
  * assets/js/main.js
- * Este archivo contiene la lógica para la interfaz de usuario,
- * animaciones y el banner para instalar la PWA.
+ * CORREGIDO: Lógica simplificada para la interfaz, animaciones y PWA.
+ * 1. Se ha hecho el menú más compacto (vía CSS).
+ * 2. Se ha corregido y simplificado la lógica del botón de cierre del megamenú "Asesor" para garantizar su funcionamiento.
  */
 
 // Variables globales para PWA
 let deferredPrompt = null;
 let bannerShown = false;
 
-// Registrar el evento beforeinstallprompt INMEDIATAMENTE
+// Registrar el evento beforeinstallprompt
 window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('🎯 PWA: beforeinstallprompt event captured');
     e.preventDefault();
     deferredPrompt = e;
-    
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-    
     if (isMobile && !isStandalone && !bannerShown) {
         showPWABanner();
     }
@@ -25,11 +23,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
 function showPWABanner() {
     const pwaBanner = document.getElementById('pwa-install-banner');
     if (!pwaBanner || bannerShown) return;
-    
-    console.log('📱 PWA: Showing install banner');
     bannerShown = true;
     pwaBanner.classList.add('show');
-    
     setTimeout(() => {
         if (pwaBanner.classList.contains('show')) {
             pwaBanner.classList.remove('show');
@@ -38,273 +33,174 @@ function showPWABanner() {
 }
 
 async function installPWA() {
-    console.log('🔽 PWA: Install button clicked');
     const pwaBanner = document.getElementById('pwa-install-banner');
     if (pwaBanner) pwaBanner.classList.remove('show');
-    
     if (deferredPrompt) {
         try {
             await deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
-            console.log(`🎯 PWA: User choice: ${outcome}`);
             if (outcome === 'accepted') {
-                console.log('✅ PWA: Installation accepted');
-            } else {
-                console.log('❌ PWA: Installation dismissed');
+                console.log('✅ PWA: Instalación aceptada');
             }
             deferredPrompt = null;
         } catch (error) {
-            console.error('💥 PWA: Error during installation:', error);
+            console.error('💥 PWA: Error durante la instalación:', error);
         }
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- MANEJO DEL MENÚ (MÓVIL Y ESCRITORIO) ---
+    // --- Elementos del DOM ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    let menuTimeout;
+    const asesorItem = document.querySelector('.asesor-item');
+    const asesorMegamenu = document.getElementById('asesor-megamenu');
+    const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
+    const asesorCloseBtn = document.getElementById('asesor-close-btn');
+    const installButton = document.getElementById('install-button');
+    const closeBannerButton = document.getElementById('close-install-banner');
 
-    const openMenu = () => {
-        clearTimeout(menuTimeout);
-        if (mobileDropdown.classList.contains('hidden')) {
-            mobileDropdown.classList.remove('hidden');
-            setTimeout(() => mobileDropdown.classList.add('show'), 10);
-            if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
-                mobileMenuOverlay.classList.remove('hidden');
-            }
-        }
-    };
-
-    const closeMenu = (immediate = false) => {
-        const delay = immediate ? 0 : 200;
-        menuTimeout = setTimeout(() => {
-            if (mobileDropdown.classList.contains('show')) {
-                mobileDropdown.classList.remove('show');
-                setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-                 if (window.innerWidth < 1024) {
-                    mobileMenuOverlay.classList.add('hidden');
-                }
-            }
-        }, delay);
-    };
-
+    // --- MANEJO DEL MENÚ PRINCIPAL (MÓVIL Y ESCRITORIO) ---
     const toggleMenu = () => {
-        if (mobileDropdown.classList.contains('hidden')) {
-            openMenu();
-        } else {
-            closeMenu(true);
-        }
+        const isHidden = mobileDropdown.classList.contains('hidden');
+        mobileDropdown.classList.toggle('hidden');
+        mobileMenuOverlay.classList.toggle('hidden', isHidden);
+        setTimeout(() => mobileDropdown.classList.toggle('show', isHidden), 10);
     };
 
-    if (mobileMenuBtn && mobileDropdown) {
-        // Detener la propagación de clics dentro del menú para evitar que se cierre
-        mobileDropdown.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        // Comportamiento de clic para todos los dispositivos
+    if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleMenu();
         });
-
-        // Comportamiento de hover solo para escritorio (PC)
-        if (window.innerWidth >= 1024) {
-            mobileMenuBtn.addEventListener('mouseenter', openMenu);
-            mobileMenuBtn.addEventListener('mouseleave', () => closeMenu());
-            mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
-            mobileDropdown.addEventListener('mouseleave', () => closeMenu());
-        }
     }
-
     if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
+        mobileMenuOverlay.addEventListener('click', toggleMenu);
     }
-    
-    // --- LÓGICA DE SUBMENÚS (MODIFICADA) ---
+
+    // --- LÓGICA DE SUBMENÚS ---
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
-        if (!btn) return;
-
-        // Lógica de CLIC para TODO el botón (abre o cierra el submenú)
-        btn.addEventListener('click', (e) => {
-            // No detener la propagación si es el contenedor del megamenu
-            if (!e.currentTarget.closest('.asesor-item')) {
+        if (btn && !parent.classList.contains('asesor-item')) { // Excluir el trigger de asesor de esta lógica
+            btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-            }
-            
-            // Cierra otros submenús abiertos, excepto el de asesor
-            document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                if (other !== parent && !other.classList.contains('asesor-item')) {
-                    other.classList.remove('submenu-open');
-                }
-            });
-            
-            // Alterna el estado del submenú actual
-            if (!parent.classList.contains('asesor-item')) {
-                parent.classList.toggle('submenu-open');
-            }
-        });
-
-        // Lógica de HOVER solo para la FLECHA en ESCRITORIO
-        if (window.innerWidth >= 1024) {
-            const arrow = parent.querySelector('.submenu-arrow');
-            if (!arrow) return;
-
-            let submenuTimeout;
-
-            // Abre el submenú cuando el cursor entra en la flecha
-            arrow.addEventListener('mouseenter', (e) => {
-                e.stopPropagation();
-                clearTimeout(submenuTimeout);
-                 // Cierra otros submenús abiertos
-                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                    if (other !== parent) {
-                        other.classList.remove('submenu-open');
-                    }
+                // Cerrar otros submenús
+                submenuContainers.forEach(other => {
+                    if (other !== parent) other.classList.remove('submenu-open');
                 });
-                parent.classList.add('submenu-open');
-            });
-            
-            // Programa el cierre cuando el cursor sale del elemento padre completo
-            parent.addEventListener('mouseleave', () => {
-                submenuTimeout = setTimeout(() => {
-                    parent.classList.remove('submenu-open');
-                }, 300);
-            });
-
-            // Cancela el cierre si el cursor entra de nuevo en el elemento padre (para poder navegar al submenú)
-            parent.addEventListener('mouseenter', () => {
-                 clearTimeout(submenuTimeout);
+                // Abrir/cerrar el actual
+                parent.classList.toggle('submenu-open');
             });
         }
     });
 
-    // --- LÓGICA PARA EL MEGAMENÚ DE ASESOR CON BOTÓN DE CIERRE ---
-    const asesorItem = document.querySelector('.asesor-item');
-    const asesorMegamenu = document.getElementById('asesor-megamenu');
-    const asesorCloseBtn = document.getElementById('asesor-close-btn'); // NUEVO
-    let asesorTimeout;
-
+    // --- LÓGICA CORREGIDA PARA EL MEGAMENÚ DE ASESOR ---
     const openAsesorMegamenu = () => {
-        if (!asesorItem || !asesorMegamenu) return;
-        clearTimeout(asesorTimeout);
-        // Cerrar el menú principal en móvil para evitar solapamiento
-        if (window.innerWidth < 1024) {
-            closeMenu(true);
-        }
-        asesorItem.classList.add('megamenu-open');
+        if (!asesorMegamenu) return;
         asesorMegamenu.classList.add('show');
+        // Cerrar menú principal en móvil para que no se solapen
+        if (window.innerWidth < 1024 && mobileDropdown.classList.contains('show')) {
+            toggleMenu();
+        }
     };
 
-    const closeAsesorMegamenu = (immediate = false) => {
-        if (!asesorItem || !asesorMegamenu) return;
-        const delay = immediate ? 0 : 300;
-        asesorTimeout = setTimeout(() => {
-            asesorItem.classList.remove('megamenu-open');
-            asesorMegamenu.classList.remove('show');
-        }, delay);
+    const closeAsesorMegamenu = () => {
+        if (!asesorMegamenu) return;
+        asesorMegamenu.classList.remove('show');
     };
 
-    if (asesorItem && asesorMegamenu) {
-        const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
-        const asesorArrow = document.getElementById('asesor-arrow-trigger');
-
-        // Lógica de clic para todo el botón en cualquier dispositivo
+    if (asesorTriggerBtn) {
         asesorTriggerBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = asesorItem.classList.contains('megamenu-open');
+            e.stopPropagation(); // Evitar que se cierre el menú principal
+            const isOpen = asesorMegamenu.classList.contains('show');
             if (isOpen) {
-                closeAsesorMegamenu(true);
+                closeAsesorMegamenu();
             } else {
                 openAsesorMegamenu();
             }
         });
-        
-        // NUEVO: Evento para el botón de cierre
-        if (asesorCloseBtn) {
-            asesorCloseBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                closeAsesorMegamenu(true);
-            });
-        }
+    }
 
-        // Lógica de hover solo para la flecha en escritorio
-        if (window.innerWidth >= 1024 && asesorArrow) {
-            asesorArrow.addEventListener('mouseenter', openAsesorMegamenu);
-            
-            // Lógica para mantener abierto y cerrar el menú
-            asesorItem.addEventListener('mouseleave', () => closeAsesorMegamenu());
-            asesorMegamenu.addEventListener('mouseenter', () => clearTimeout(asesorTimeout));
-            asesorMegamenu.addEventListener('mouseleave', () => closeAsesorMegamenu());
-        }
-
-        // Cerrar al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (!asesorItem.contains(e.target) && !asesorMegamenu.contains(e.target)) {
-                closeAsesorMegamenu(true);
-            }
-        });
-        
-        // Cerrar con la tecla Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && asesorItem.classList.contains('megamenu-open')) {
-                closeAsesorMegamenu(true);
-            }
+    // ***** LA CORRECCIÓN PRINCIPAL ESTÁ AQUÍ *****
+    // Se asegura que el botón de cierre tenga su propio evento de clic
+    // que llama directamente a la función de cierre, sin condiciones complejas.
+    if (asesorCloseBtn) {
+        asesorCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Detener el evento para no afectar otros menús
+            console.log("Botón de cerrar 'Asesor' clickeado.");
+            closeAsesorMegamenu();
         });
     }
 
-    // --- LÓGICA PWA ---
-    const installButton = document.getElementById('install-button');
-    if (installButton) installButton.addEventListener('click', installPWA);
+    // Cerrar menús al hacer clic fuera
+    document.addEventListener('click', () => {
+        if (mobileDropdown.classList.contains('show')) {
+            toggleMenu();
+        }
+        if (asesorMegamenu.classList.contains('show')) {
+            closeAsesorMegamenu();
+        }
+    });
 
-    const closeButton = document.getElementById('close-install-banner');
-    if (closeButton) {
-        closeButton.addEventListener('click', () => {
+    // Evitar que clics dentro de los menús los cierren
+    mobileDropdown.addEventListener('click', e => e.stopPropagation());
+    asesorMegamenu.addEventListener('click', e => e.stopPropagation());
+
+    // --- LÓGICA PWA ---
+    if (installButton) installButton.addEventListener('click', installPWA);
+    if (closeBannerButton) {
+        closeBannerButton.addEventListener('click', () => {
             const pwaBanner = document.getElementById('pwa-install-banner');
             if (pwaBanner) pwaBanner.classList.remove('show');
         });
     }
 
-    console.log('✅ All components initialized successfully');
+    console.log('✅ Componentes inicializados correctamente');
 });
 
-window.addEventListener('appinstalled', (e) => {
-    console.log('🎉 PWA: App was installed successfully');
+window.addEventListener('appinstalled', () => {
+    console.log('🎉 PWA: App instalada');
     deferredPrompt = null;
     bannerShown = false;
 });
 
-// Función global para cerrar el menú desde los enlaces
-function closeActiveMenu() {
+// --- FUNCIONES GLOBALES PARA ENLACES ---
+
+// Función para cerrar cualquier menú activo
+function closeActiveMenus() {
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const asesorMegamenu = document.getElementById('asesor-megamenu');
+
     if (mobileDropdown && mobileDropdown.classList.contains('show')) {
         mobileDropdown.classList.remove('show');
         setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
         if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
     }
-    // Cerrar también el megamenu de asesor
-    const asesorItem = document.querySelector('.asesor-item');
-    const asesorMegamenu = document.getElementById('asesor-megamenu');
-    if (asesorItem && asesorMegamenu) {
-        asesorItem.classList.remove('megamenu-open');
+    if (asesorMegamenu && asesorMegamenu.classList.contains('show')) {
         asesorMegamenu.classList.remove('show');
     }
 }
 
-// Handlers de navegación (globales)
 window.openNewLink = function(url) {
-    window.open(url, '_blank');
-    closeActiveMenu();
+    window.open(url, '_blank', 'noopener,noreferrer');
+    closeActiveMenus();
 };
+
+window.handleDirectiva = function() {
+    showDirectiva();
+    closeActiveMenus();
+}
+window.handleCredenciales = function() {
+    showCredenciales();
+    closeActiveMenus();
+}
+window.handleCredencialIndependiente = function() {
+    openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS');
+}
 window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
-window.handleDirectiva = function() { showDirectiva(); closeActiveMenu(); }
-window.handleCredenciales = function() { showCredenciales(); closeActiveMenu(); }
-window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
 window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
 window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); }
 window.handleBuscarCurso = function(url) { openNewLink(url); }
