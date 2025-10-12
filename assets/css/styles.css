@@ -311,7 +311,7 @@ body.homepage {
 /* FIX 3: Corrige la rotación de la flecha anidada de "Asesor"        */
 /* ================================================================== */
 .has-submenu.submenu-open > .submenu-parent-btn > .submenu-arrow {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
 }
 
 /* FIX: Ensure Asesor button is a flex container to position arrow correctly */
