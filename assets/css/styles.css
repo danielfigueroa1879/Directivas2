@@ -307,6 +307,15 @@ body.homepage {
     transition: transform 0.3s ease;
 }
 
+/* ================================================================== */
+/* FIX 3: Corrige la rotación de la flecha para que no afecte a sub-items */
+/* ================================================================== */
+/* Rota solo la flecha del menú padre (ej. Componentes) y no las anidadas */
+.has-submenu.submenu-open > .submenu-parent-btn > svg.submenu-arrow {
+    transform: rotate(90deg);
+}
+
+
 /* FIX: Ensure Asesor button is a flex container to position arrow correctly */
 #asesor-trigger-btn {
     display: flex !important;
@@ -314,16 +323,15 @@ body.homepage {
     align-items: center !important;
 }
 
-
 /* --- Asesor Megamenu Styles --- */
 .asesor-item .submenu-arrow-asesor {
-    transform: rotate(-45deg);
+    transform: rotate(0deg); /* Apunta a la derecha por defecto */
     transition: transform 0.3s ease;
 }
 
 .asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
 .asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
-    transform: rotate(300deg);
+    transform: rotate(90deg); /* Apunta hacia abajo cuando está abierto o en hover */
 }
 
 /* ================================================================== */
