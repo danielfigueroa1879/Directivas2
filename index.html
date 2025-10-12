@@ -549,5 +549,24 @@
             });
         }
     </script>
+      <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const suspensionNotice = document.getElementById('suspension-notice');
+    if (suspensionNotice) {
+        setTimeout(() => {
+            suspensionNotice.classList.add('show');
+        }, 500);
+        
+        setTimeout(() => {
+            suspensionNotice.classList.remove('show');
+            suspensionNotice.classList.add('hide');
+            setTimeout(() => {
+                suspensionNotice.style.display = 'none';
+            }, 500);
+        }, 7500);
+    }
+});
+</script>
+
 </body>
 </html>
