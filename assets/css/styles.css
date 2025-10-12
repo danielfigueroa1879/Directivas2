@@ -307,6 +307,14 @@ body.homepage {
     transition: transform 0.3s ease;
 }
 
+/* ================================================================== */
+/* FIX 3: Corrige la rotación de la flecha para que no afecte a sub-items */
+/* ================================================================== */
+/* Rota solo la flecha del menú padre (ej. Componentes) y no las anidadas */
+.has-submenu.submenu-open > .submenu-parent-btn > svg.submenu-arrow {
+    transform: rotate(90deg);
+}
+
 
 /* FIX: Ensure Asesor button is a flex container to position arrow correctly */
 #asesor-trigger-btn {
