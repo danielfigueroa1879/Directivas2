@@ -180,28 +180,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LÓGICA PARA EL NUEVO MEGAMENÚ DE ASESOR ---
-    const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
-    if (asesorTriggerBtn) {
-        asesorTriggerBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const parent = e.currentTarget.closest('.asesor-item');
-            if (parent) {
-                const isOpen = parent.classList.contains('megamenu-open');
+    const asesorItem = document.querySelector('.asesor-item');
+    const asesorMegamenu = document.getElementById('asesor-megamenu');
+    let asesorTimeout;
 
-                // Primero, cerrar todos los otros submenús
-                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                    other.classList.remove('submenu-open');
-                });
-                
-                // Luego, alternar el megamenu
-                if(isOpen){
-                    parent.classList.remove('megamenu-open');
-                } else {
-                    parent.classList.add('megamenu-open');
-                }
+    const openAsesorMegamenu = () => {
+        if (!asesorItem || !asesorMegamenu) return;
+        clearTimeout(asesorTimeout);
+        // Close the main mobile menu if it's open, to avoid overlap
+        if (window.innerWidth < 1024) {
+            closeMenu(true);
+        }
+        asesorItem.classList.add('megamenu-open');
+        asesorMegamenu.classList.add('show');
+    };
+
+    const closeAsesorMegamenu = (immediate = false) => {
+        if (!asesorItem || !asesorMegamenu) return;
+        const delay = immediate ? 0 : 300;
+        asesorTimeout = setTimeout(() => {
+            asesorItem.classList.remove('megamenu-open');
+            asesorMegamenu.classList.remove('show');
+        }, delay);
+    };
+
+    if (asesorItem && asesorMegamenu) {
+        const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
+        
+        // Logic for all devices on click
+        asesorTriggerBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Stop propagation to avoid closing main menu
+            const isOpen = asesorItem.classList.contains('megamenu-open');
+            if (isOpen) {
+                closeAsesorMegamenu(true);
+            } else {
+                openAsesorMegamenu();
+            }
+        });
+
+        // Hover logic for desktop
+        if (window.innerWidth >= 1024) {
+            asesorItem.addEventListener('mouseenter', openAsesorMegamenu);
+            asesorItem.addEventListener('mouseleave', () => closeAsesorMegamenu());
+            asesorMegamenu.addEventListener('mouseenter', openAsesorMegamenu); // Keep it open when mouse is over the menu itself
+            asesorMegamenu.addEventListener('mouseleave', () => closeAsesorMegamenu());
+        }
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            // Close if the click is outside the item and the megamenu itself
+            if (!asesorItem.contains(e.target) && !asesorMegamenu.contains(e.target)) {
+                closeAsesorMegamenu(true);
             }
         });
     }
+
 
     // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
@@ -235,8 +268,10 @@ function closeActiveMenu() {
     }
     // Cerrar también el megamenu de asesor
     const asesorItem = document.querySelector('.asesor-item');
-    if (asesorItem) {
+    const asesorMegamenu = document.getElementById('asesor-megamenu');
+    if (asesorItem && asesorMegamenu) {
         asesorItem.classList.remove('megamenu-open');
+        asesorMegamenu.classList.remove('show');
     }
 }
 
