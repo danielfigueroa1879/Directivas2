@@ -113,7 +113,6 @@ body.homepage {
 /* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
 @media (min-width: 1024px) {
     #chat-widget-container {
-        /* Se centra en la pantalla y se desplaza 60% a la izquierda */
         left: 50%;
         transform: translateX(-60%);
         bottom: 7.9rem;
@@ -144,7 +143,6 @@ body.homepage {
         height: 500px;
     }
 }
-
 
 /* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
 
@@ -219,7 +217,6 @@ body.homepage {
     margin-top: 0;
     border-top: none;
 }
-
 
 .desktop-dropdown button,
 .desktop-dropdown a {
@@ -314,7 +311,6 @@ body.homepage {
     align-items: center !important;
 }
 
-
 /* --- Asesor Megamenu Styles --- */
 .asesor-item .submenu-arrow-asesor {
     transform: rotate(-90deg);
@@ -331,29 +327,28 @@ body.homepage {
 /* ================================================================== */
 .asesor-megamenu {
     position: fixed;
-    top: 4rem; /* Anclado justo debajo del banner */
-    bottom: 0; /* Se extiende hasta el final de la pantalla */
+    top: 4rem;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 1250;
     background-color: rgba(249, 250, 251, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15); /* Sombra normal hacia abajo */
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
     border-top: 1px solid #e5e7eb;
     opacity: 0;
-    transform: translateY(100%); /* Animación desde abajo */
+    transform: translateY(100%);
     transition: opacity 0.3s ease, transform 0.3s ease;
     overflow-y: auto;
     pointer-events: none;
-    border-radius: 0; /* Sin bordes redondeados si ocupa toda la pantalla */
+    border-radius: 0;
 }
-
 
 /* Nueva clase para mostrar el megamenu */
 .asesor-megamenu.show {
     opacity: 1;
-    transform: translateY(0); /* Sube desde abajo */
+    transform: translateY(0);
     pointer-events: auto;
 }
 
@@ -364,39 +359,38 @@ body.homepage {
         left: 50%;
         margin-left: -24rem;
         right: auto;
-        bottom: auto; /* Para que no ocupe toda la altura en PC */
+        bottom: auto;
         border-radius: 0 0 12px 12px;
         box-shadow: 0 8px 32px rgba(0,0,0,0.15);
     }
 
     .asesor-megamenu-content {
         padding: 1.5rem 2rem;
-        font-size: 0.8rem; /* Reducido de 1rem a 0.8rem */
+        font-size: 0.8rem;
     }
 
     .asesor-megamenu-content h3 {
-        font-size: 1.1rem; /* Reducido de 1.5rem a 1.1rem */
+        font-size: 1.1rem;
         font-weight: 600;
     }
 
     .asesor-megamenu-content h4 {
-        font-size: 0.95rem; /* Reducido de 1.25rem a 0.95rem */
+        font-size: 0.95rem;
         font-weight: 600;
     }
 
     .asesor-megamenu-content h5 {
-        font-size: 0.85rem; /* Reducido de 1rem a 0.85rem */
+        font-size: 0.85rem;
         font-weight: 600;
     }
 
     .asesor-megamenu-content p,
     .asesor-megamenu-content ol,
     .asesor-megamenu-content li {
-        font-size: 0.8rem; /* Letra más pequeña para todo el contenido */
+        font-size: 0.8rem;
         line-height: 1.5;
     }
 
-    /* Ajuste específico para el título de diploma */
     .asesor-diploma-title {
         font-size: 0.8rem !important;
         font-weight: 700 !important;
@@ -406,13 +400,13 @@ body.homepage {
 }
 
 /* Tamaños de letra para Móvil - cubrir desde abajo hasta banner */
-@media (max-width: 1023px) { /* Ajustado para aplicar a tablet y móvil */
+@media (max-width: 1023px) {
     .asesor-megamenu {
         width: 100vw;
         left: 0;
         right: 0;
-        border-radius: 0; /* Sin bordes redondeados en móvil */
-        border-top: 2px solid #e5e7eb; /* Borde superior más visible */
+        border-radius: 0;
+        border-top: 2px solid #e5e7eb;
     }
 
     .asesor-megamenu-content {
@@ -448,6 +442,113 @@ body.homepage {
     }
 }
 
+/* ===== ALTURA UNIFORME PARA COMPONENTES ===== */
+.mobile-dropdown .submenu.submenu-compact button,
+.mobile-dropdown .submenu.submenu-compact .submenu-parent-btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Asegurar que el item de Asesor también tenga la misma altura */
+.mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
+    min-height: 44px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2.5rem;
+    font-size: 0.78rem;
+}
+
+/* ===== BOTÓN DE CIERRE PARA MEGAMENÚ ASESOR ===== */
+.asesor-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.asesor-close-btn:hover {
+    background-color: #f3f4f6;
+    transform: rotate(90deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.asesor-close-btn:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+.asesor-close-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #4b5563;
+}
+
+/* Ajuste para el contenido del megamenú cuando hay botón de cierre */
+.asesor-megamenu-content {
+    padding-top: 2.5rem;
+}
+
+/* Responsive: Ajustes para móvil */
+@media (max-width: 1023px) {
+    .asesor-close-btn {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .asesor-megamenu-content {
+        padding-top: 3rem;
+    }
+}
+
+/* Para PC: botón más grande y mejor posicionado */
+@media (min-width: 1024px) {
+    .asesor-close-btn {
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .asesor-close-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* ===== AJUSTE ADICIONAL PARA UNIFORMIDAD DE COMPONENTES ===== */
+.mobile-dropdown .submenu.submenu-compact button {
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+    transition: all 0.2s ease;
+}
+
+.mobile-dropdown .submenu.submenu-compact button:last-child {
+    border-bottom: none;
+}
+
+.mobile-dropdown .submenu.submenu-compact button:hover {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #15803d;
+    padding-left: 3rem;
+}
+
 .mobile-dropdown .submenu {
     max-height: 0;
     overflow: hidden;
@@ -462,17 +563,6 @@ body.homepage {
     padding-left: 2.5rem;
     font-size: 0.78rem;
 }
-
-/* ============================================================================ */
-/* FIX 2: Hace que el ítem "Asesor" sea compacto como los otros en el submenú */
-/* ============================================================================ */
-.mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    padding-left: 2.5rem;
-    font-size: 0.78rem;
-}
-
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem;
@@ -494,7 +584,6 @@ body.homepage {
     padding: 0.3rem 0.6rem;
     font-size: 0.75rem;
 }
-
 
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
     max-height: 2000px;
@@ -519,7 +608,6 @@ body.homepage {
     background-color: rgba(59, 130, 246, 0.1);
     color: #1d4ed8;
 }
-
 
 .mobile-dropdown .dropdown-menu-header {
     padding: 0.5rem 1.5rem;
