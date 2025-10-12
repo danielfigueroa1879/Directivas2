@@ -312,7 +312,7 @@ body.homepage {
 /* ================================================================== */
 /* Rota solo la flecha del menú padre (ej. Componentes) y no las anidadas */
 .has-submenu.submenu-open > .submenu-parent-btn > svg.submenu-arrow {
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
 }
 
 
