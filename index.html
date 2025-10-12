@@ -27,6 +27,39 @@
         .pwa-install-banner.show { transform: translateY(0); opacity: 1; }
         .submenu-arrow { transition: transform 0.3s ease; }
         .has-submenu.submenu-open .submenu-arrow { transform: rotate(90deg); }
+
+        /* Aviso suspensión */
+        #suspension-notice {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background-color: #51a351;
+        color: white;
+        text-align: center;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 14px;
+        z-index: 1300;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        opacity: 0;
+        transform: translateY(-100%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    #suspension-notice.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #suspension-notice.hide {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    @media (max-width: 768px) {
+        #suspension-notice {
+            font-size: 12px;
+            padding: 10px 15px;
+        }
+    }
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
