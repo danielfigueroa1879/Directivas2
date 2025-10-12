@@ -370,31 +370,31 @@ body.homepage {
          transform: translateY(0);
     }
     .asesor-megamenu-content {
-        padding: 1rem;
-        font-size: 0.9rem; /* Letra se adapta para pantallas pequeñas */
+        padding: 1.5rem 2rem;
+        font-size: 1rem; /* Letra para PC adecuada */
     }
-}
 
+    .asesor-megamenu-content .megamenu-subtitle {
+        font-weight: 700; /* bold */
+    }
 
-.mobile-dropdown .submenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    background-color: rgba(229, 231, 235, 0.3);
-}
+    .submenu-arrow-asesor {
+        transition: transform 0.3s ease;
+        transform: rotate(0deg); /* Points right when closed */
+    }
+    
+    .asesor-item.megamenu-open .submenu-arrow-asesor {
+        transform: rotate(90deg); /* Points down when open */
+    }
 
-.mobile-dropdown .submenu.leyes-compactas button,
-.mobile-dropdown .submenu.submenu-compact button {
-    padding-top: 0.3rem; /* Compacto */
-    padding-bottom: 0.3rem; /* Compacto */
-    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
-    font-size: 0.78rem; /* REDUCIDO */
-}
-.mobile-dropdown .submenu.leyes-compactas .submenu-title {
-    padding-top: 0.2rem; /* Compacto */
-    padding-bottom: 0.2rem; /* Compacto */
-    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
-    font-size: 0.7rem;
+    @media (min-width: 1024px) {
+        .asesor-megamenu-content .megamenu-subtitle {
+            font-size: 0.85rem; /* Smaller font size for PC */
+        }
+    }
+
+    @media (max-width: 767px) {
+        .asesor-megamenu {
     background-color: rgba(0,0,0,0.06);
 }
 
