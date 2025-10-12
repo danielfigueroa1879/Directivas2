@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- LÓGICA PARA EL NUEVO MEGAMENÚ DE ASESOR (CORREGIDA) ---
+    // --- LÓGICA PARA EL NUEVO MEGAMENÚ DE ASESOR ---
     const asesorItem = document.querySelector('.asesor-item');
     const asesorMegamenu = document.getElementById('asesor-megamenu');
     let asesorTimeout;
@@ -191,14 +191,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const openAsesorMegamenu = () => {
         if (!asesorItem || !asesorMegamenu) return;
         clearTimeout(asesorTimeout);
+        // Cerrar el menú principal en móvil para evitar solapamiento
         if (window.innerWidth < 1024) {
-            closeMenu(true); // Cierra el menú principal en móvil
+            closeMenu(true);
         }
         asesorItem.classList.add('megamenu-open');
-        asesorMegamenu.classList.remove('hidden');
-        setTimeout(() => { // Pequeño delay para que se aplique display:block antes de la transición
-            asesorMegamenu.classList.add('show');
-        }, 10);
+        asesorMegamenu.classList.add('show');
     };
 
     const closeAsesorMegamenu = (immediate = false) => {
@@ -207,22 +205,17 @@ document.addEventListener('DOMContentLoaded', () => {
         asesorTimeout = setTimeout(() => {
             asesorItem.classList.remove('megamenu-open');
             asesorMegamenu.classList.remove('show');
-            setTimeout(() => {
-                // Añadir 'hidden' de nuevo después de que termine la transición
-                if (!asesorMegamenu.classList.contains('show')) {
-                    asesorMegamenu.classList.add('hidden');
-                }
-            }, 300); // Debe coincidir con la duración de la transición en CSS
         }, delay);
     };
 
     if (asesorItem && asesorMegamenu) {
         const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
+        const asesorArrow = document.getElementById('asesor-arrow-trigger');
 
-        // Lógica de clic para todo el botón en CUALQUIER dispositivo
+        // Lógica de clic para todo el botón en cualquier dispositivo
         asesorTriggerBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isOpen = asesorMegamenu.classList.contains('show');
+            const isOpen = asesorItem.classList.contains('megamenu-open');
             if (isOpen) {
                 closeAsesorMegamenu(true);
             } else {
@@ -230,17 +223,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Lógica de hover para TODO EL ITEM en ESCRITORIO
-        if (window.innerWidth >= 1024) {
-            asesorItem.addEventListener('mouseenter', openAsesorMegamenu);
-            asesorItem.addEventListener('mouseleave', () => closeAsesorMegamenu());
+        // Lógica de hover solo para la flecha en escritorio
+        if (window.innerWidth >= 1024 && asesorArrow) {
+            asesorArrow.addEventListener('mouseenter', openAsesorMegamenu);
             
-            // Mantener abierto si el mouse entra al megamenú
+            // Lógica para mantener abierto y cerrar el menú
+            asesorItem.addEventListener('mouseleave', () => closeAsesorMegamenu());
             asesorMegamenu.addEventListener('mouseenter', () => clearTimeout(asesorTimeout));
             asesorMegamenu.addEventListener('mouseleave', () => closeAsesorMegamenu());
         }
 
-        // Cerrar si se hace clic fuera
+        // Cerrar al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (!asesorItem.contains(e.target) && !asesorMegamenu.contains(e.target)) {
                 closeAsesorMegamenu(true);
@@ -285,7 +278,6 @@ function closeActiveMenu() {
     if (asesorItem && asesorMegamenu) {
         asesorItem.classList.remove('megamenu-open');
         asesorMegamenu.classList.remove('show');
-        setTimeout(() => asesorMegamenu.classList.add('hidden'), 300);
     }
 }
 
