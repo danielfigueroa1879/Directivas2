@@ -630,3 +630,55 @@ body.homepage {
     .asesor-megamenu-content h5 { font-size: 0.9rem; }
     .asesor-megamenu-content ol { font-size: 0.8rem; }
 }
+
+
+/* Flecha asesor */
+    .asesor-item .submenu-arrow-asesor {
+        transform: rotate(0deg) !important;
+        transition: transform 0.3s ease;
+        display: inline-block;
+    }
+    .asesor-item.megamenu-open .submenu-arrow-asesor {
+        transform: rotate(90deg) !important;
+    }
+
+    /* Texto diploma más pequeño PC */
+    @media (min-width: 1024px) {
+        .asesor-diploma-title {
+            font-size: 0.85rem !important;
+            font-weight: 700 !important;
+        }
+    }
+
+    /* Aviso suspensión */
+    #suspension-notice {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background-color: #51a351;
+        color: white;
+        text-align: center;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 14px;
+        z-index: 1300;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        opacity: 0;
+        transform: translateY(-100%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    #suspension-notice.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #suspension-notice.hide {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    @media (max-width: 768px) {
+        #suspension-notice {
+            font-size: 12px;
+            padding: 10px 15px;
+        }
+    }
