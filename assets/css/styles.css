@@ -323,7 +323,7 @@ body.homepage {
 
 .asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
 .asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
-    transform: rotate(360deg);
+    transform: rotate(300deg);
 }
 
 /* ================================================================== */
