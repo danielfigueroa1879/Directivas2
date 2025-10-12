@@ -34,7 +34,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=24">
+    <link rel="stylesheet" href="assets/css/styles.css?v=25">
 </head>
 <body class="homepage background-transition">
     
@@ -107,7 +107,14 @@
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf')">6. Asesor de Seguridad</button>
+                    <!-- ITEM ASESOR MODIFICADO -->
+                    <div class="asesor-item">
+                        <button class="submenu-parent-btn w-full !px-10 !text-left" id="asesor-trigger-btn">
+                            <span class="flex-grow">6. Asesor de Seguridad</span>
+                            <svg class="submenu-arrow-asesor w-4 h-4 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                    <!-- FIN ITEM ASESOR MODIFICADO -->
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
@@ -170,6 +177,36 @@
          </div>
     </div>
     <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-[1199]"></div>
+    
+    <!-- MEGAMENU ASESOR -->
+    <div id="asesor-megamenu" class="asesor-megamenu">
+        <div class="asesor-megamenu-content max-w-4xl mx-auto rounded-lg text-gray-800">
+          <h3 class="font-bold mb-4 text-center">🤖 ASESOR</h3>
+          <p class="mb-4 text-center"><strong class="font-semibold">GUÍA:</strong> <a href="https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf" target="_blank" class="text-blue-600 hover:underline">Descargar Guía de Trámite</a></p>
+          <div class="border-t pt-4">
+              <h4 class="text-lg font-bold mb-2 text-center">TÍTULOS AFINES</h4>
+              <p class="mb-4 text-center"><a href="https://bit.ly/3r5HrBg" target="_blank" class="text-blue-600 hover:underline">Resolución 4070 (20.10.2021)</a></p>
+              <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-100 p-4 rounded-lg">
+                  <h5 class="font-semibold mb-2 text-gray-700">➢ SIN DIPLOMADO EN SEGURIDAD PRIVADA</h5>
+                  <ol class="list-decimal list-inside space-y-2">
+                    <li>INGENIERO DE EJECUCIÓN EN GESTIÓN DE SEGURIDAD PRIVADA.</li>
+                    <li>INGENIERO EN GESTIÓN DE SEGURIDAD Y VIGILANCIA PRIVADA.</li>
+                  </ol>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg">
+                  <h5 class="font-semibold mb-2 text-gray-700">➢ CON DIPLOMADO EN SEGURIDAD PRIVADA</h5>
+                  <ol class="list-decimal list-inside space-y-2" start="3">
+                    <li>INGENIERO EN SEGURIDAD Y PREVENCIÓN DE RIESGO.</li>
+                    <li>INGENIERO EN PREVENCIÓN DE RIESGOS.</li>
+                    <li>PARA LOS EX MIEMBROS DE LAS FUERZAS ARMADAS, CARABINEROS DE CHILE, POLICÍA DE INVESTIGACIONES Y GENDARMERÍA DE CHILE se exigirá EL TITULO DE OFICIAL EGRESADO de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile.</li>
+                  </ol>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    <!-- FIN MEGAMENU ASESOR -->
     
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
@@ -441,7 +478,7 @@
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     
     <script src="assets/js/inicio.js?v=4" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/main.js?v=2" defer></script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
