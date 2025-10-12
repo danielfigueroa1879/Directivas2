@@ -303,98 +303,27 @@ body.homepage {
     color: #1d4ed8; /* Azul oscuro para el texto */
 }
 
-/* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
-#tramites-arrow, .submenu-arrow {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
+.mobile-dropdown .submenu {
+    display: none;
+    padding-left: 1rem; /* Aumentado de 0.5rem a 1rem */
+    background-color: rgba(229, 231, 235, 0.6); /* Gris más sutil */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
 }
 
-.has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(90deg);
+.mobile-dropdown .submenu.leyes-compactas button,
+.mobile-dropdown .submenu.submenu-compact button {
+    padding-top: 0.3rem; /* Compacto */
+    padding-bottom: 0.3rem; /* Compacto */
+    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+    font-size: 0.78rem; /* REDUCIDO */
 }
-
-/* FIX: Ensure Asesor button is a flex container to position arrow correctly */
-#asesor-trigger-btn {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-}
-
-/* --- Asesor Megamenu Styles --- */
-.asesor-megamenu {
-    position: fixed;
-    top: 4rem; /* Below the main banner */
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px); /* Center horizontally, start slightly up */
-    width: 90vw; /* Responsive width */
-    max-width: 640px; /* Double the width of the main menu */
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    z-index: 1190; /* Below main menu but above content */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    overflow-y: auto;
-    max-height: calc(100vh - 5rem);
-}
-
-.asesor-megamenu.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-}
-
-.asesor-megamenu-content {
-    padding: 1.5rem 2rem;
-    font-size: 1rem; /* Letra para PC adecuada */
-}
-
-.asesor-item.megamenu-open .submenu-arrow-asesor {
-    transform: rotate(90deg);
-}
-
-@media (max-width: 767px) {
-    .asesor-megamenu {
-        width: 100vw;
-        left: 0;
-        transform: translateY(-20px); /* No horizontal transform */
-        border-radius: 0;
-        max-height: calc(100vh - 4rem);
-    }
-    .asesor-megamenu.show {
-         transform: translateY(0);
-    }
-    .asesor-megamenu-content {
-        padding: 1.5rem 2rem;
-        font-size: 1rem; /* Letra para PC adecuada */
-    }
-
-    .asesor-megamenu-content .megamenu-subtitle {
-        font-weight: 700; /* bold */
-    }
-
-    .submenu-arrow-asesor {
-        transition: transform 0.3s ease;
-        transform: rotate(0deg); /* Points right when closed */
-    }
-    
-    .asesor-item.megamenu-open .submenu-arrow-asesor {
-        transform: rotate(90deg); /* Points down when open */
-    }
-
-    @media (min-width: 1024px) {
-        .asesor-megamenu-content .megamenu-subtitle {
-            font-size: 0.85rem; /* Smaller font size for PC */
-        }
-    }
-
-    @media (max-width: 767px) {
-        .asesor-megamenu {
+.mobile-dropdown .submenu.leyes-compactas .submenu-title {
+    padding-top: 0.2rem; /* Compacto */
+    padding-bottom: 0.2rem; /* Compacto */
+    padding-left: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+    font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
 }
 
@@ -413,6 +342,7 @@ body.homepage {
 
 
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
+    display: block;
     max-height: 2000px; 
 }
 
@@ -532,101 +462,111 @@ body.homepage {
 /* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
   #banner > div {
-    justify-content: center !important;
-    gap: 34rem;
-    max-width: 1200px;
+    justify-content: center !important; /* Centra los grupos */
+    gap: 34rem; /* Espacio ajustado entre los grupos */
+    max-width: 1200px; /* Ancho máximo reducido */
   }
 
+  /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
-    left: calc(50% - 400px);
-    top: 4rem;
-    width: 380px;
+    position: fixed; /* Se mantiene fijo respecto a la ventana */
+    /* Calculamos la posición izquierda para que se alinee con el contenido centrado */
+    left: calc(50% - 400px); /* 50% del ancho de la ventana - la mitad del max-width del banner */
+    top: 4rem; /* Justo debajo del banner */
+    width: 380px; /* Ancho aumentado */
     height: auto;
     max-height: calc(100vh - 5rem);
-    transform: translateX(-20px) scale(0.98);
+    transform: translateX(-20px) scale(0.98); /* Inicia desde la izquierda y un poco más pequeño */
     opacity: 0;
-    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Animación más suave */
     pointer-events: none;
     transform-origin: top left;
   }
 
   .mobile-dropdown.show {
-      transform: translateX(0) scale(1);
+      transform: translateX(0) scale(1); /* Termina en su posición y tamaño normal */
       opacity: 1;
       pointer-events: auto;
   }
   
   #mobile-menu-overlay {
-      display: none !important;
+      display: none !important; /* No se necesita overlay en PC */
   }
 }
 
-/* ===== NUEVOS ESTILOS PARA MEGAMENU ASESOR ===== */
-.asesor-item .submenu-arrow-asesor {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
+/* FIX: Ensure Asesor button is a flex container to position arrow correctly */
+#asesor-trigger-btn {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 }
 
-.asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
-.asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
-    transform: rotate(90deg);
-}
-
+/* --- Asesor Megamenu Styles --- */
 .asesor-megamenu {
     position: fixed;
-    top: 4rem; /* 64px, altura del banner */
-    left: 0;
-    right: 0;
-    z-index: 1250; /* Por encima del menú normal */
-    background-color: rgba(249, 250, 251, 0.98); /* Gris claro casi opaco */
+    top: 4rem; /* Below the main banner */
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px); /* Center horizontally, start slightly up */
+    width: 90vw; /* Responsive width */
+    max-width: 640px; /* Double the width of the main menu */
+    background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    border-bottom: 1px solid #e5e7eb;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1190; /* Below main menu but above content */
     opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     overflow-y: auto;
-    max-height: calc(100vh - 4rem);
-    pointer-events: none; /* Controla la interacción */
+    max-height: calc(100vh - 5rem);
 }
 
-/* Nueva clase para mostrar el megamenu */
 .asesor-megamenu.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     pointer-events: auto;
-}
-
-
-/* PC: se muestra con hover a través de CSS */
-@media (min-width: 1024px) {
-    .asesor-megamenu {
-        width: 48rem; /* 768px, el doble del menú principal aprox. */
-        left: 50%;
-        margin-left: -24rem; /* Mitad del ancho para centrar */
-        right: auto;
-        border-radius: 0 0 0.75rem 0.75rem;
-    }
 }
 
 .asesor-megamenu-content {
     padding: 1.5rem 2rem;
-    font-size: 1rem; /* Tamaño de letra para PC */
+    font-size: 1rem; /* Letra para PC adecuada */
 }
 
-.asesor-megamenu-content h3 { font-size: 1.5rem; }
-.asesor-megamenu-content h4 { font-size: 1.25rem; }
-.asesor-megamenu-content h5 { font-size: 1rem; }
+.asesor-megamenu-content .megamenu-subtitle {
+    font-weight: 700; /* bold */
+}
 
-/* Tamaños de letra para Móvil */
+.submenu-arrow-asesor {
+    transition: transform 0.3s ease;
+    transform: rotate(0deg); /* Points right when closed */
+}
+
+.asesor-item.megamenu-open .submenu-arrow-asesor {
+    transform: rotate(90deg); /* Points down when open */
+}
+
+@media (min-width: 1024px) {
+    .asesor-megamenu-content .megamenu-subtitle {
+        font-size: 0.85rem; /* Smaller font size for PC */
+    }
+}
+
 @media (max-width: 767px) {
+    .asesor-megamenu {
+        width: 100vw;
+        left: 0;
+        transform: translateY(-20px) translateX(0); /* Corrected transform */
+        border-radius: 0;
+        max-height: calc(100vh - 4rem);
+    }
+    .asesor-megamenu.show {
+         transform: translateY(0) translateX(0);
+    }
     .asesor-megamenu-content {
         padding: 1rem;
-        font-size: 0.875rem; /* Letra más pequeña */
+        font-size: 0.9rem; /* Letra se adapta para pantallas pequeñas */
     }
-    .asesor-megamenu-content h3 { font-size: 1.25rem; }
-    .asesor-megamenu-content h4 { font-size: 1.1rem; }
-    .asesor-megamenu-content h5 { font-size: 0.9rem; }
-    .asesor-megamenu-content ol { font-size: 0.8rem; }
 }
