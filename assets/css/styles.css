@@ -314,9 +314,10 @@ body.homepage {
     align-items: center !important;
 }
 
+
 /* --- Asesor Megamenu Styles --- */
 .asesor-item .submenu-arrow-asesor {
-    transform: rotate(-90deg);
+    transform: rotate(-45deg);
     transition: transform 0.3s ease;
 }
 
