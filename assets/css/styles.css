@@ -1,3 +1,9 @@
+/**
+ * assets/js/main.js
+ * Este archivo contiene la lógica para la interfaz de usuario,
+ * animaciones y el banner para instalar la PWA.
+ */
+
 /* --- ESTILOS BASE Y CHATBOT --- */
 body {
     font-family: 'Poppins', sans-serif;
@@ -303,6 +309,7 @@ body.homepage {
     transform: rotate(0deg);
     transition: transform 0.3s ease;
 }
+
 /* --- Asesor Megamenu Styles --- */
 .asesor-item .submenu-arrow-asesor {
     transform: rotate(-90deg);
@@ -444,16 +451,37 @@ body.homepage {
     padding-bottom: 0.5rem;
 }
 
-/* Asegurar que el item de Asesor también tenga la misma altura */
+/* ===== AJUSTE PARA EL ITEM ASESOR SIN FLECHA Y CON FONDO GRIS ===== */
 .mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
     min-height: 28px;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important; /* Cambiado: sin espacio para flecha */
     padding-top: 0.2rem;
     padding-bottom: 0.5rem;
-    padding-left: 2.5rem;
+    padding-left: 2.5rem; /* Alineado con los demás items */
     font-size: 0.78rem;
+}
+
+/* Ocultar la flecha del item Asesor */
+.mobile-dropdown .submenu-compact .asesor-item .submenu-arrow-asesor {
+    display: none !important;
+}
+
+/* ===== FONDO GRIS CLARO PARA TODOS LOS SUBMENÚS ===== */
+.mobile-dropdown .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: #f3f4f6; /* Gris claro - Tailwind gray-100 */
+}
+
+.mobile-dropdown .submenu.submenu-compact {
+    background-color: #f3f4f6; /* Gris claro */
+}
+
+.mobile-dropdown .submenu.leyes-compactas {
+    background-color: #f3f4f6; /* Gris claro */
 }
 
 /* ===== BOTÓN DE CIERRE PARA MEGAMENÚ ASESOR ===== */
@@ -536,16 +564,9 @@ body.homepage {
 }
 
 .mobile-dropdown .submenu.submenu-compact button:hover {
-    background-color: rgba(34, 197, 94, 0.15);
+    background-color: rgba(34, 197, 94, 0.2); /* Verde un poco más intenso */
     color: #15803d;
     padding-left: 3rem;
-}
-
-.mobile-dropdown .submenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    background-color: rgba(229, 231, 235, 0.3);
 }
 
 .mobile-dropdown .submenu.leyes-compactas button,
@@ -723,3 +744,4 @@ body.homepage {
   #mobile-menu-overlay {
       display: none !important;
   }
+}
