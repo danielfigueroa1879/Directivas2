@@ -457,7 +457,7 @@ body.homepage {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important; /* Cambiado: sin espacio para flecha */
-    padding-top: 0.2rem;
+    padding-top: 0.3rem;
     padding-bottom: 0.5rem;
     padding-left: 2.5rem; /* Alineado con los demás items */
     font-size: 0.78rem;
