@@ -99,18 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (mobileMenuBtn && mobileDropdown) {
-        // Detener la propagación de clics dentro del menú para evitar que se cierre
-        mobileDropdown.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        // Comportamiento de clic para todos los dispositivos
+        mobileDropdown.addEventListener('click', (e) => e.stopPropagation());
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleMenu();
         });
-
-        // Comportamiento de hover solo para escritorio (PC)
         if (window.innerWidth >= 1024) {
             mobileMenuBtn.addEventListener('mouseenter', openMenu);
             mobileMenuBtn.addEventListener('mouseleave', () => closeMenu());
@@ -123,144 +116,118 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
     }
     
-    // --- LÓGICA DE SUBMENÚS (MODIFICADA) ---
+    // --- LÓGICA DE SUBMENÚS ---
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
         if (!btn) return;
-
-        // Lógica de CLIC para TODO el botón (abre o cierra el submenú)
         btn.addEventListener('click', (e) => {
-            // No detener la propagación si es el contenedor del megamenu
-            if (!e.currentTarget.closest('.asesor-item')) {
+            if (!e.currentTarget.closest('.asesor-item') && !e.currentTarget.closest('.jefe-item')) {
                 e.stopPropagation();
             }
-            
-            // Cierra otros submenús abiertos, excepto el de asesor
             document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                if (other !== parent && !other.classList.contains('asesor-item')) {
+                if (other !== parent && !other.classList.contains('asesor-item') && !other.classList.contains('jefe-item')) {
                     other.classList.remove('submenu-open');
                 }
             });
-            
-            // Alterna el estado del submenú actual
-            if (!parent.classList.contains('asesor-item')) {
+            if (!parent.classList.contains('asesor-item') && !parent.classList.contains('jefe-item')) {
                 parent.classList.toggle('submenu-open');
             }
         });
-
-        // Lógica de HOVER solo para la FLECHA en ESCRITORIO
-        if (window.innerWidth >= 1024) {
-            const arrow = parent.querySelector('.submenu-arrow');
-            if (!arrow) return;
-
-            let submenuTimeout;
-
-            // Abre el submenú cuando el cursor entra en la flecha
-            arrow.addEventListener('mouseenter', (e) => {
-                e.stopPropagation();
-                clearTimeout(submenuTimeout);
-                 // Cierra otros submenús abiertos
-                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                    if (other !== parent) {
-                        other.classList.remove('submenu-open');
-                    }
-                });
-                parent.classList.add('submenu-open');
-            });
-            
-            // Programa el cierre cuando el cursor sale del elemento padre completo
-            parent.addEventListener('mouseleave', () => {
-                submenuTimeout = setTimeout(() => {
-                    parent.classList.remove('submenu-open');
-                }, 300);
-            });
-
-            // Cancela el cierre si el cursor entra de nuevo en el elemento padre (para poder navegar al submenú)
-            parent.addEventListener('mouseenter', () => {
-                 clearTimeout(submenuTimeout);
-            });
-        }
     });
 
-    // --- LÓGICA PARA EL MEGAMENÚ DE ASESOR CON BOTÓN DE CIERRE ---
-    const asesorItem = document.querySelector('.asesor-item');
-    const asesorMegamenu = document.getElementById('asesor-megamenu');
-    const asesorCloseBtn = document.getElementById('asesor-close-btn'); // Botón de cierre
-    let asesorTimeout;
+    // --- LÓGICA PARA MEGAMENÚS ---
+    const setupMegamenu = (config) => {
+        const item = document.querySelector(config.itemSelector);
+        const megamenu = document.getElementById(config.megamenuId);
+        const closeBtn = document.getElementById(config.closeBtnId);
+        const triggerBtn = document.getElementById(config.triggerBtnId);
+        let timeout;
 
-    const openAsesorMegamenu = () => {
-        if (!asesorItem || !asesorMegamenu) return;
-        clearTimeout(asesorTimeout);
-        // Cerrar el menú principal en móvil para evitar solapamiento
-        if (window.innerWidth < 1024) {
-            closeMenu(true);
-        }
-        asesorItem.classList.add('megamenu-open');
-        asesorMegamenu.classList.add('show');
-    };
+        const openMegamenu = () => {
+            if (!item || !megamenu) return;
+            clearTimeout(timeout);
+            closeAllMegamenus(config.megamenuId);
+            if (window.innerWidth < 1024) closeMenu(true);
+            item.classList.add('megamenu-open');
+            megamenu.classList.add('show');
+        };
 
-    const closeAsesorMegamenu = (immediate = false) => {
-        if (!asesorItem || !asesorMegamenu) return;
-        const delay = immediate ? 0 : 300;
-        asesorTimeout = setTimeout(() => {
-            asesorItem.classList.remove('megamenu-open');
-            asesorMegamenu.classList.remove('show');
-        }, delay);
-    };
+        const closeMegamenu = (immediate = false) => {
+            if (!item || !megamenu) return;
+            const delay = immediate ? 0 : 300;
+            timeout = setTimeout(() => {
+                item.classList.remove('megamenu-open');
+                megamenu.classList.remove('show');
+            }, delay);
+        };
 
-    if (asesorItem && asesorMegamenu) {
-        const asesorTriggerBtn = document.getElementById('asesor-trigger-btn');
-        const asesorArrow = document.getElementById('asesor-arrow-trigger');
-
-        // Lógica de clic para todo el botón en cualquier dispositivo
-        asesorTriggerBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = asesorItem.classList.contains('megamenu-open');
-            if (isOpen) {
-                closeAsesorMegamenu(true);
-            } else {
-                openAsesorMegamenu();
-            }
-        });
-        
-        // Evento para el botón de cierre
-        if (asesorCloseBtn) {
-            asesorCloseBtn.addEventListener('click', (e) => {
+        if (item && megamenu && triggerBtn) {
+            triggerBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                closeAsesorMegamenu(true);
+                const isOpen = item.classList.contains('megamenu-open');
+                if (isOpen) {
+                    closeMegamenu(true);
+                } else {
+                    openMegamenu();
+                }
             });
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeMegamenu(true);
+                });
+            }
+            if (window.innerWidth >= 1024) {
+                item.addEventListener('mouseenter', openMegamenu);
+                item.addEventListener('mouseleave', () => closeMegamenu());
+                megamenu.addEventListener('mouseenter', () => clearTimeout(timeout));
+                megamenu.addEventListener('mouseleave', () => closeMegamenu());
+            }
         }
+    };
 
-        // Lógica de hover solo para la flecha en escritorio
-        if (window.innerWidth >= 1024 && asesorArrow) {
-            asesorArrow.addEventListener('mouseenter', openAsesorMegamenu);
-            
-            // Lógica para mantener abierto y cerrar el menú
-            asesorItem.addEventListener('mouseleave', () => closeAsesorMegamenu());
-            asesorMegamenu.addEventListener('mouseenter', () => clearTimeout(asesorTimeout));
-            asesorMegamenu.addEventListener('mouseleave', () => closeAsesorMegamenu());
-        }
-
-        // Cerrar al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (!asesorItem.contains(e.target) && !asesorMegamenu.contains(e.target)) {
-                closeAsesorMegamenu(true);
+    const closeAllMegamenus = (excludeId = null) => {
+        document.querySelectorAll('.asesor-megamenu').forEach(menu => {
+            if (menu.id !== excludeId) {
+                menu.classList.remove('show');
+                const itemClass = menu.id.replace('-megamenu', '-item');
+                document.querySelector(`.${itemClass}`)?.classList.remove('megamenu-open');
             }
         });
-        
-        // Cerrar con la tecla Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && asesorItem.classList.contains('megamenu-open')) {
-                closeAsesorMegamenu(true);
-            }
-        });
-    }
+    };
+
+    setupMegamenu({
+        itemSelector: '.asesor-item',
+        megamenuId: 'asesor-megamenu',
+        closeBtnId: 'asesor-close-btn',
+        triggerBtnId: 'asesor-trigger-btn'
+    });
+
+    setupMegamenu({
+        itemSelector: '.jefe-item',
+        megamenuId: 'jefe-megamenu',
+        closeBtnId: 'jefe-close-btn',
+        triggerBtnId: 'jefe-trigger-btn'
+    });
+    
+    // Cerrar todo con clic afuera
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.has-submenu') && !e.target.closest('.asesor-megamenu')) {
+            closeAllMegamenus();
+        }
+    });
+    
+    // Cerrar todo con Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeAllMegamenus();
+        }
+    });
 
     // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
     if (installButton) installButton.addEventListener('click', installPWA);
-
     const closeButton = document.getElementById('close-install-banner');
     if (closeButton) {
         closeButton.addEventListener('click', () => {
@@ -287,13 +254,9 @@ function closeActiveMenu() {
         setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
         if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
     }
-    // Cerrar también el megamenu de asesor
-    const asesorItem = document.querySelector('.asesor-item');
-    const asesorMegamenu = document.getElementById('asesor-megamenu');
-    if (asesorItem && asesorMegamenu) {
-        asesorItem.classList.remove('megamenu-open');
-        asesorMegamenu.classList.remove('show');
-    }
+    // Cerrar todos los megamenús también
+    document.querySelectorAll('.asesor-megamenu').forEach(menu => menu.classList.remove('show'));
+    document.querySelectorAll('.has-submenu').forEach(item => item.classList.remove('megamenu-open'));
 }
 
 // Handlers de navegación (globales)
