@@ -276,10 +276,10 @@ body.homepage {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0.4rem 1.5rem; /* Reducido para ser más compacto */
+    padding: 0.6rem 1.5rem;
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
-    font-size: 0.8rem; /* Reducido para ser más compacto */
+    font-size: 0.82rem;
 }
 
 .mobile-dropdown .submenu-parent-btn:hover {
@@ -442,25 +442,26 @@ body.homepage {
     }
 }
 
-/* ===== ALTURA UNIFORME PARA COMPONENTES (COMPACTO) ===== */
+/* ===== ALTURA UNIFORME PARA COMPONENTES ===== */
 .mobile-dropdown .submenu.submenu-compact button,
 .mobile-dropdown .submenu.submenu-compact .submenu-parent-btn {
-    min-height: auto;
+    min-height: 44px;
     display: flex;
     align-items: center;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
-.mobile-dropdown .submenu.submenu-compact .asesor-item > .submenu-parent-btn {
-    min-height: auto;
+/* Asegurar que el item de Asesor también tenga la misma altura */
+.mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
+    min-height: 44px;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     padding-left: 2.5rem;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
 }
 
 /* ===== BOTÓN DE CIERRE PARA MEGAMENÚ ASESOR ===== */
@@ -557,17 +558,17 @@ body.homepage {
 
 .mobile-dropdown .submenu.leyes-compactas button,
 .mobile-dropdown .submenu.submenu-compact button {
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
     padding-left: 2.5rem;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
 }
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
-    padding-top: 0.15rem;
-    padding-bottom: 0.15rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     padding-left: 2.5rem;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
 }
 
@@ -592,8 +593,8 @@ body.homepage {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.4rem 1.5rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.82rem;
     color: #374151;
     transition: background-color 0.2s, color 0.2s;
 }
@@ -698,10 +699,14 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
+/* Ajuste para menú en PC */
 @media (min-width: 1024px) {
-    .mobile-dropdown {
-        left: auto; /* Revertido para que se alinee con el botón */
-        transform: translateX(0) scale(0.98); /* Ajustado para que aparezca desde el botón */
-        transform-origin: top left;
-    }
+  .mobile-dropdown {
+    left: 0;
+    transform: translateX(-105%); /* Asegura que está oculto por defecto */
+    transform-origin: top left;
+  }
+  .mobile-dropdown.show {
+    transform: translateX(0); /* Lo hace visible deslizándose desde la izquierda */
+  }
 }
