@@ -1,18 +1,18 @@
 // sw.js - Service Worker
-const CACHE_NAME = 'directivas-os10-cache-v1.7'; // ¡Versión incrementada para forzar actualización!
+const CACHE_NAME = 'directivas-os10-cache-v1.8'; // Versión incrementada para forzar la actualización
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
   '/',
   './index.html',
   './manifest.json',
-  './assets/css/styles.css',
+  './assets/css/styles.css?v=25',
   './assets/css/credenciales.css',
-  './assets/js/main.js',
-  './assets/js/inicio.js',
+  './assets/js/main.js?v=2',
+  './assets/js/inicio.js?v=5',
   './assets/js/credenciales.js',
-  './assets/js/chatbot.js',
-  './rules/chatbot-rules.js',
+  './assets/js/chatbot.js?v=2',
+  './rules/chatbot-rules.js?v=2',
   // Iconos y logos
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',
