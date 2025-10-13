@@ -312,15 +312,37 @@ body.homepage {
 .asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
 .asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
     transform: rotate(360deg);
-      display: block;
-    width: 100%;
-    text-align: center;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.85rem;
-
 }
 
+/* ================================================================== */
+/* FIX 1: Posiciona el megamenú de Asesor correctamente debajo del banner */
+/* ================================================================== */
+.asesor-megamenu {
+    position: fixed;
+    top: 4rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1250;
+    background-color: rgba(249, 250, 251, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    border-top: 1px solid #e5e7eb;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    overflow-y: auto;
+    pointer-events: none;
+    border-radius: 0;
+}
 
+/* Nueva clase para mostrar el megamenu */
+.asesor-megamenu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
 
 /* PC: letra más pequeña y profesional */
 @media (min-width: 1024px) {
