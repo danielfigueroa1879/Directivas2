@@ -139,14 +139,19 @@
                 <div class="submenu submenu-compact">
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
+                    <!-- Jefe de Seguridad Item -->
+                    <div class="has-submenu jefe-item">
+                        <button id="jefe-trigger-btn" class="submenu-parent-btn">
+                            <span>3. Jefe de Seguridad</span>
+                            <svg class="submenu-arrow submenu-arrow-jefe" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
                     <div class="has-submenu asesor-item">
                         <button id="asesor-trigger-btn" class="submenu-parent-btn">
                             <span>6. Asesor</span>
-                                <svg class="submenu-arrow submenu-arrow-asesor" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
-                            </span>
+                            <svg class="submenu-arrow submenu-arrow-asesor" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
                         </button>
                     </div>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
@@ -214,12 +219,9 @@
     
     <!-- Megamenu Asesor -->
     <div id="asesor-megamenu" class="asesor-megamenu">
-            <!-- Botón de cierre -->
-    <button id="asesor-close-btn" class="asesor-close-btn" aria-label="Cerrar">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 6L6 18M6 6l12 12"/>
-        </svg>
-    </button>
+        <button id="asesor-close-btn" class="asesor-close-btn" aria-label="Cerrar">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <div class="asesor-megamenu-content">
             <h3 class="font-bold text-gray-800 mb-4">🤖 ASESOR</h3>
             <p class="mb-2"><strong>GUÍA:</strong> <a href="https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf" target="_blank" class="text-blue-600 hover:underline">https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf</a></p>
@@ -241,6 +243,26 @@
                 <li>INGENIERÍA EN ADMINISTRACIÓN MENCIÓN SEGURIDAD PRIVADA</li>
             </ol>
             <p class="mt-4"><strong>CREDENCIAL:</strong> <a href="https://bit.ly/3tGuM9a" target="_blank" class="text-blue-600 hover:underline">https://bit.ly/3tGuM9a</a></p>
+        </div>
+    </div>
+
+    <!-- Megamenu Jefe de Seguridad -->
+    <div id="jefe-megamenu" class="asesor-megamenu">
+        <button id="jefe-close-btn" class="asesor-close-btn" aria-label="Cerrar">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="asesor-megamenu-content">
+            <h3 class="font-bold text-gray-800 mb-4">🤖 JEFE DE SEGURIDAD</h3>
+            <p class="mb-4"><strong>GUÍA:</strong> <a href="https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf" target="_blank" class="text-blue-600 hover:underline">Descargar guía oficial</a></p>
+            
+            <h4 class="font-semibold text-gray-700 mt-6 mb-2">ACTAS Y DOCUMENTACIÓN:</h4>
+            <div class="space-y-2">
+                <p>➢ <strong>ACTAS JEFE SEGURIDAD EX FF.AA:</strong> <a href="https://drive.google.com/drive/folders/1aAkt55yTidnT90LI-Ss3gNWCGM8X7luW?usp=sharing" target="_blank" class="text-blue-600 hover:underline">Ver carpeta</a></p>
+                <p>➢ <strong>ACTAS JEFE DE SEGURIDAD CIVIL:</strong> <a href="https://drive.google.com/drive/folders/14UBGFXwo7NBA55_o0p2MNQxe1_3H16k4?usp=sharing" target="_blank" class="text-blue-600 hover:underline">Ver carpeta</a></p>
+            </div>
+
+            <h4 class="font-semibold text-gray-700 mt-6 mb-2">TRÁMITE DE CREDENCIAL:</h4>
+            <p>🧙🏼‍♂️ <strong>CREDENCIAL JEFE DE SEGURIDAD:</strong> <a href="https://os10.short.gy/Jef" target="_blank" class="text-blue-600 hover:underline">Iniciar trámite aquí</a></p>
         </div>
     </div>
 
