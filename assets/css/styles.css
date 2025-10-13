@@ -445,7 +445,7 @@ body.homepage {
 /* ===== ALTURA UNIFORME PARA COMPONENTES ===== */
 .mobile-dropdown .submenu.submenu-compact button,
 .mobile-dropdown .submenu.submenu-compact .submenu-parent-btn {
-    min-height: 22px;
+    min-height: 32px;
     display: flex;
     align-items: center;
     padding-top: 0.5rem;
@@ -454,7 +454,7 @@ body.homepage {
 
 /* Asegurar que el item de Asesor también tenga la misma altura */
 .mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
-    min-height: 22px;
+    min-height: 32px;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -610,7 +610,7 @@ body.homepage {
 }
 
 .mobile-dropdown .dropdown-menu-header {
-    min-height: 22px; /* Altura mínima uniforme */
+    min-height: 32px; /* Altura mínima uniforme */
     display: flex;
     padding: 0.5rem 1.5rem;
     border-bottom: 1px solid #e5e7eb;
