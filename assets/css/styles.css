@@ -448,7 +448,7 @@ body.homepage {
     min-height: 32px;
     display: flex;
     align-items: center;
-    padding-top: 0.5rem;
+    padding-top: 0.3rem;
     padding-bottom: 0.5rem;
 }
 
@@ -458,7 +458,7 @@ body.homepage {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding-top: 0.5rem;
+    padding-top: 0.3rem;
     padding-bottom: 0.5rem;
     padding-left: 2.5rem;
     font-size: 0.78rem;
@@ -612,7 +612,7 @@ body.homepage {
 .mobile-dropdown .dropdown-menu-header {
     min-height: 32px; /* Altura mínima uniforme */
     display: flex;
-    padding: 0.5rem 1.5rem;
+    padding: 0.3rem 1.5rem;
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 0.5rem;
 }
