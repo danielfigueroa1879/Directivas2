@@ -276,10 +276,10 @@ body.homepage {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0.6rem 1.5rem;
+    padding: 0.4rem 1.5rem; /* Reducido para ser más compacto */
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
-    font-size: 0.82rem;
+    font-size: 0.8rem; /* Reducido para ser más compacto */
 }
 
 .mobile-dropdown .submenu-parent-btn:hover {
@@ -442,26 +442,26 @@ body.homepage {
     }
 }
 
-/* ===== ALTURA UNIFORME PARA COMPONENTES ===== */
+/* ===== ALTURA UNIFORME PARA COMPONENTES (COMPACTO) ===== */
 .mobile-dropdown .submenu.submenu-compact button,
 .mobile-dropdown .submenu.submenu-compact .submenu-parent-btn {
-    min-height: 44px;
+    min-height: auto; /* Altura automática */
     display: flex;
     align-items: center;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.2rem; /* Reducido */
+    padding-bottom: 0.2rem; /* Reducido */
 }
 
 /* Asegurar que el item de Asesor también tenga la misma altura */
 .mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
-    min-height: 44px;
+    min-height: auto; /* Ajustado */
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.2rem; /* Reducido */
+    padding-bottom: 0.2rem; /* Reducido */
     padding-left: 2.5rem;
-    font-size: 0.78rem;
+    font-size: 0.75rem; /* Reducido */
 }
 
 /* ===== BOTÓN DE CIERRE PARA MEGAMENÚ ASESOR ===== */
@@ -558,17 +558,17 @@ body.homepage {
 
 .mobile-dropdown .submenu.leyes-compactas button,
 .mobile-dropdown .submenu.submenu-compact button {
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
+    padding-top: 0.2rem; /* Reducido */
+    padding-bottom: 0.2rem; /* Reducido */
     padding-left: 2.5rem;
-    font-size: 0.78rem;
+    font-size: 0.75rem; /* Reducido */
 }
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding-top: 0.15rem; /* Reducido */
+    padding-bottom: 0.15rem; /* Reducido */
     padding-left: 2.5rem;
-    font-size: 0.7rem;
+    font-size: 0.65rem; /* Reducido */
     background-color: rgba(0,0,0,0.06);
 }
 
@@ -593,8 +593,8 @@ body.homepage {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.82rem;
+    padding: 0.4rem 1.5rem; /* Reducido */
+    font-size: 0.8rem; /* Reducido */
     color: #374151;
     transition: background-color 0.2s, color 0.2s;
 }
@@ -702,9 +702,9 @@ body.homepage {
 /* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
   #banner > div {
-    justify-content: center !important;
-    gap: 34rem;
-    max-width: 1200px;
+    justify-content: space-between; /* Revertido a space-between */
+    gap: 0; /* Revertido */
+    max-width: 100%; /* Revertido */
   }
 
   .mobile-dropdown {
