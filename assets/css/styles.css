@@ -699,14 +699,34 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
-/* Ajuste para menú en PC */
+/* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
+  #banner > div {
+    justify-content: center !important;
+    gap: 34rem;
+    max-width: 1200px;
+  }
+
   .mobile-dropdown {
-    left: 0;
-    transform: translateX(-105%); /* Asegura que está oculto por defecto */
+    left: calc(50% - 400px);
+    top: 4rem;
+    width: 380px;
+    height: auto;
+    max-height: calc(100vh - 5rem);
+    transform: translateX(-20px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    pointer-events: none;
     transform-origin: top left;
   }
+
   .mobile-dropdown.show {
-    transform: translateX(0); /* Lo hace visible deslizándose desde la izquierda */
+      transform: translateX(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+  }
+
+  #mobile-menu-overlay {
+      display: none !important;
   }
 }
