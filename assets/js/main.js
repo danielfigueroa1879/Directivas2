@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA PARA EL MEGAMENÚ DE ASESOR CON BOTÓN DE CIERRE ---
     const asesorItem = document.querySelector('.asesor-item');
     const asesorMegamenu = document.getElementById('asesor-megamenu');
-    const asesorCloseBtn = document.getElementById('asesor-close-btn'); // NUEVO
+    const asesorCloseBtn = document.getElementById('asesor-close-btn'); // Botón de cierre
     let asesorTimeout;
 
     const openAsesorMegamenu = () => {
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // NUEVO: Evento para el botón de cierre
+        // Evento para el botón de cierre
         if (asesorCloseBtn) {
             asesorCloseBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
