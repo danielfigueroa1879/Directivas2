@@ -610,6 +610,8 @@ body.homepage {
 }
 
 .mobile-dropdown .dropdown-menu-header {
+    min-height: 44px; /* Altura mínima uniforme */
+    display: flex;
     padding: 0.5rem 1.5rem;
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 0.5rem;
