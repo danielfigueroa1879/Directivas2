@@ -700,7 +700,5 @@ body.homepage {
 
 /* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
-  #banner > div {
-    justify-content: space-evenly !important; /* Centrado con espacio uniforme */
-  }
+  /* Revertido para que no afecte el layout original */
 }
