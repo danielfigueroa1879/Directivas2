@@ -698,7 +698,10 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
-/* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
-  /* Revertido para que no afecte el layout original */
+    .mobile-dropdown {
+        left: auto; /* Revertido para que se alinee con el botón */
+        transform: translateX(0) scale(0.98); /* Ajustado para que aparezca desde el botón */
+        transform-origin: top left;
+    }
 }
