@@ -178,12 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     closeMegamenu(true);
                 });
             }
-            if (window.innerWidth >= 1024) {
-                item.addEventListener('mouseenter', openMegamenu);
-                item.addEventListener('mouseleave', () => closeMegamenu());
-                megamenu.addEventListener('mouseenter', () => clearTimeout(timeout));
-                megamenu.addEventListener('mouseleave', () => closeMegamenu());
-            }
+            // The hover logic for desktop has been removed.
         }
     };
 
