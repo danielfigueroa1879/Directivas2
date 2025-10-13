@@ -303,14 +303,6 @@ body.homepage {
     transform: rotate(0deg);
     transition: transform 0.3s ease;
 }
-
-/* FIX: Ensure Asesor button is a flex container to position arrow correctly */
-#asesor-trigger-btn {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-}
-
 /* --- Asesor Megamenu Styles --- */
 .asesor-item .submenu-arrow-asesor {
     transform: rotate(-90deg);
