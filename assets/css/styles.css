@@ -456,11 +456,10 @@ body.homepage {
     min-height: 28px;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important; /* Cambiado: sin espacio para flecha */
-    padding-top: 0.3rem;
-    padding-bottom: 0.5rem;
-    padding-left: 2.5rem; /* Alineado con los demás items */
+    justify-content: flex-start !important;
+    padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
     font-size: 0.78rem;
+    line-height: 1.2; /* Ayuda al centrado vertical */
 }
 
 /* Ocultar la flecha del item Asesor */
