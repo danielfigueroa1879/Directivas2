@@ -805,7 +805,51 @@ response: '🤖👮‍♂️ **VIGILANTES EN MEDIDAS** (Art. 16° Ley 19303):\n*
 keywords: ["facilidades carabineros", "información recintos", "medidas implementadas"],
 response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGACIÓN:** Otorgar facilidades Carabineros\n**INFORMACIÓN:** Recintos/locales medidas seguridad\n**OBLIGADOS:** Combustible/entidades Decreto Supremo\n**ACCESO:** Para obtener información\n**NORMATIVA:** Ley 19303/1994 Art. 9°\n**INFRACCIÓN:** No proporcionar información requerida'
 }
-
+// REGLAS OS11 - CONTROL DE ARMAS
+'rule_560': { 
+    keywords: ["*portal armas*","*consulta armas*","*registro armas*","*armas chile*"], 
+    response: '🧙🏼‍♂️🤖👉🏼 *PORTAL DE CONSULTAS DE ARMAS*\nhttps://www.portalarmaschile.gob.cl/' 
+},
+'rule_561': { 
+    keywords: ["*os11*","*os 11*","*control de armas*","*oficina armas*"], 
+    response: '🤖👉🏼 *O.S.11 INFORMACIÓN GENERAL*\nhttps://www.zosepcar.cl/OS11.php#faq' 
+},
+'rule_562': { 
+    keywords: ["*tramites os11*","*tramites armas*","*inscribir arma*","*permiso armas*"], 
+    response: '🤖👉🏼 *O.S.11 TRÁMITES*\nhttps://www.zosepcar.cl/OS11.php#tramites' 
+},
+'rule_563': { 
+    keywords: ["*os11 regiones*","*oficinas armas*","*donde tramitar armas*","*direcciones os11*"], 
+    response: '🤖👉🏼 *OS11 POR REGIONES - FONOS Y DIRECCIONES*\nhttps://www.zosepcar.cl/OS11.php#inforegion' 
+},
+'rule_564': { 
+    keywords: ["*os11 la serena*","*armas la serena*","*1a comisaria*","*af 15*"], 
+    response: '🤖📍 *OS11 LA SERENA (A.F. 15)*\n**Dirección:** Balmaceda N° 4828, Pard. 10 La Pampa\n**Fono:** 512651101\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** La Serena, La Higuera\n**Email:** af_laserena@dgmn.cl\nos11.laserena@carabineros.cl' 
+},
+'rule_565': { 
+    keywords: ["*os11 coquimbo*","*armas coquimbo*","*2a comisaria*","*af 16*","*andacollo*"], 
+    response: '🤖📍 *OS11 COQUIMBO (A.F. 16)*\n**Dirección:** Tegualda N° 515\n**Fono:** 512651125\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** Coquimbo, Andacollo\n**Email:** af_coquimbo@dgmn.cl\nos11.coquimbo@carabineros.cl' 
+},
+'rule_566': { 
+    keywords: ["*os11 vicuña*","*armas vicuña*","*5a comisaria*","*af 17*","*paihuano*"], 
+    response: '🤖📍 *OS11 VICUÑA (A.F. 17)*\n**Dirección:** Av. Las Delicias N° 599\n**Fono:** 512651170\n**Horario:** Lunes a Viernes 08:00 a 13:00 y 15:00 a 17:00 hrs\n**Comunas:** Vicuña, Paihuano\n**Email:** af_vicuna@dgmn.cl\nos11.vicuna@carabineros.cl' 
+},
+'rule_567': { 
+    keywords: ["*os11 ovalle*","*armas ovalle*","*3a comisaria*","*af 18*","*rio hurtado*","*punitaqui*","*monte patria*"], 
+    response: '🤖📍 *OS11 OVALLE (A.F. 18)*\n**Dirección:** Tangue N° 20\n**Fono:** 532453016\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** Ovalle, Río Hurtado, Punitaqui, Monte Patria\n**Email:** af_ovalle@dgmn.cl\nos11.ovalle@carabineros.cl' 
+},
+'rule_568': { 
+    keywords: ["*os11 combarbala*","*armas combarbala*","*af 19*","*combarbalá*"], 
+    response: '🤖📍 *OS11 COMBARBALÁ (A.F. 19)*\n**Dirección:** Plaza de Armas N° 100\n**Fono:** 532453072\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comuna:** Combarbalá\n**Email:** af_combarbala@dgmn.cl\nos11.combarbala@carabineros.cl' 
+},
+'rule_569': { 
+    keywords: ["*os11 illapel*","*armas illapel*","*4a comisaria*","*af 20*","*salamanca*","*los vilos*","*canela*"], 
+    response: '🤖📍 *OS11 ILLAPEL (A.F. 20)*\n**Dirección:** O\'Higgins N° 189\n**Fono:** 532453134\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** Illapel, Salamanca, Los Vilos, Canela\n**Email:** af_illapel@dgmn.cl\nos11.illapel@carabineros.cl' 
+},
+'rule_570': { 
+    keywords: ["*prefectura coquimbo armas*","*oficinas armas coquimbo*","*donde tramitar arma region coquimbo*"], 
+    response: '🤖🏛️ *PREFECTURA COQUIMBO - OFICINAS OS11*\n\n**A.F. 15 - LA SERENA:** 512651101\n**A.F. 16 - COQUIMBO:** 512651125\n**A.F. 17 - VICUÑA:** 512651170\n**A.F. 18 - OVALLE:** 532453016\n**A.F. 19 - COMBARBALÁ:** 532453072\n**A.F. 20 - ILLAPEL:** 532453134\n\n📋 Para más detalles escriba el nombre de la comuna' 
+},
 'rule_571': { 
     keywords: ["*credencial*","*tramitar credencial*","*solicitar credencial*","*credenciales*","*acreditacion*","*acreditar*","*credencial empresa*","*credencial independiente*"], 
     response: '🤖⚠️ **AVISO IMPORTANTE - SUSPENSIÓN DE CREDENCIALES**\n\n🚫 Desde esta fecha, **NO se aceptan nuevas solicitudes de credenciales** hasta nuevo aviso.\n\n📋 **Tipos de credenciales suspendidas:**\n- Credencial de Empresa\n- Credencial de Independiente\n- Todas las acreditaciones de personal\n\n📢 **Se informará oportunamente** cuando se reanude la recepción de solicitudes.\n\nPara otras consultas, estoy a su disposición.' 
