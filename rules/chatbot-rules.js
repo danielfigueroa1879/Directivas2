@@ -60,7 +60,7 @@ const responses = {
     'rule_91': { keywords: ["mantra"], response: '*Mantra*\n\nOm: Om es la sílaba semilla que sintoniza cualquier mantra que se recita en su vibración' },
     'rule_92': { keywords: ["usuario diploma"], response: '*PAGINA DIPLOMADO* https://centropyc.carabineros.cl/acipol/login/index.php Usuario: 982083a Contraseña: Flor9820&' },
     'rule_93': { keywords: ["auditorias empresa de capacitacion","auditorias empresas de capacitacion","auditoria empresa de capacitacion","auditoria empresas de capacitacion"], response: ',👮🏼*AUDITORIAS EMPRESA CAPACITACIÓN 2024*\n\nhttps://dal5.short.gy/AuCap' },
-    'rule_95': { keywords: ["*independiente*","*credencial independiente*","*credencial independientes*"], response: '🤖 *INDEPENDIENTE 2025* \n*Descargar Guía:* \nhttps://os10.short.gy/I25' },
+    'rule_95': { keywords: ["*independiente*","*credencial independiente*","*credencial independientes*"], response: '🤖⚠️ **CREDENCIAL INDEPENDIENTE - SUSPENDIDA**\n\n🚫 Las credenciales de independiente están **SUSPENDIDAS** hasta nuevo aviso.\n\n📋 Normalmente el trámite incluye:\n- Guía descargable\n- Requisitos específicos\n- Formularios\n\n⏸️ **Actualmente NO se reciben solicitudes**\n\n📞 Más información: 512651024 (L-J 09:00-13:00)' },
     'rule_96': { keywords: ["medidas"], response: '🤖🧙🏻‍♂️ *MEDIDAS DE SEGURIDAD*\n➢ *MED.EDITABLE:* https://dal5.short.gy/M3' },
     'rule_98': { keywords: ["Valores","cuanto cuesta","cual es el valor","valor plan","valores planes","valores plan","*valor*","*cuesta*"], response: '🤖🧙🏻‍♂️ *AQUI ESTAN LOS VALORES SEGUNDO SEMESTRE*\n **1 CREDENCIAL**\n https://dal5.short.gy/val **2 CREDENCIAL EMPRESA**\n https://dal5.short.gy/C.emp  **3 CURSO FORMACIÓN**\n https://dal5.short.gy/Form  **4 CURSO PERFECCIONAMIENTO**\n https://dal5.short.gy/BjzkHI **5 VALOR PLAN**\n https://os10.short.gy/Pl4n' },
     'rule_102': { keywords: ["no hay sistema"], response: '🤖 *NO HAY SISTEMA CENTRAL ACTUALMENTE*\nLa resolución 3632 del 30 de Noviembre de 2023 establece que actualmente no existe un sistema central de registro.' },
@@ -125,8 +125,7 @@ const responses = {
     'rule_223': { keywords: ["cédula","cédula de identidad"], response: '*CÉDULA DE IDENTIDAD 2025*\nhttps://dal5.short.gy/Ce' },
     'rule_238': { keywords: ["pensiones","calculo pensión","jubilación","retiro","pensión","retirarme","retirarse"], response: '🧙🏼‍♂️ *Calculo Pensiones*\ndal5.short.gy/Pens' },
     'rule_239': { keywords: ["directiva","directiva de funcionamiento","directivas","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🤖 *PAGINA PARA:*\n*1.- PRESENTAR DIRECTIVA.*\n*2.- CREDENCIAL EMPRESA.*\n*3.- CRED. INDEPENDIENTE.*' },
-    'rule_240': { keywords: ["*credencial empresa*","credencial empleador","cred empresa","*credenciales empresas*","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: '*TRAMITAR CREDENCIALES* 🤖👉🏼 https://os10coquimb.netlify.app/ aquí en el ultimo boton de abajo aparecen los pasos a seguir para tramitar una credencial' },
-    'rule_243': { keywords: ["realizaron examen","los que realizaron el examen","enviar el resultado examen","enviar resultado","enviar resultados"], response: '🤖 👮🏼‍♂️\n1.- Los que están con rojo sacaron bajo el 60% y están reprobados' },
+    'rule_240': { keywords: ["*credencial empresa*","credencial empleador","cred empresa","*credenciales empresas*","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: '🤖⚠️ **SUSPENSIÓN TEMPORAL DE CREDENCIALES**\n\n🚫 **IMPORTANTE:** Las credenciales están **SUSPENDIDAS** hasta nuevo aviso.\n\nNo se están recibiendo solicitudes de:\n- Credencial Empresa\n- Credencial Independiente\n\n📢 Se informará cuando se reactive el trámite.\n\n📞 Consultas: 512651024' },
     'rule_244': { keywords: ["usuario portal","portal usuario","portal de usuario","usuario"], response: '🧙🏼‍♂️\nhttps://dal5.short.gy/U53' },
     'rule_245': { keywords: ["presentación con ia","presentaciónes"], response: '🤖🧙🏼‍♂️ \n\n1.- https://gamma.app/' },
     'rule_246': { keywords: ["plano oficina"], response: '🤖 Plano Oficina \nhttps://os10.short.gy/Pl40' },
@@ -806,6 +805,19 @@ response: '🤖👮‍♂️ **VIGILANTES EN MEDIDAS** (Art. 16° Ley 19303):\n*
 keywords: ["facilidades carabineros", "información recintos", "medidas implementadas"],
 response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGACIÓN:** Otorgar facilidades Carabineros\n**INFORMACIÓN:** Recintos/locales medidas seguridad\n**OBLIGADOS:** Combustible/entidades Decreto Supremo\n**ACCESO:** Para obtener información\n**NORMATIVA:** Ley 19303/1994 Art. 9°\n**INFRACCIÓN:** No proporcionar información requerida'
 }
+
+'rule_571': { 
+    keywords: ["*credencial*","*tramitar credencial*","*solicitar credencial*","*credenciales*","*acreditacion*","*acreditar*","*credencial empresa*","*credencial independiente*"], 
+    response: '🤖⚠️ **AVISO IMPORTANTE - SUSPENSIÓN DE CREDENCIALES**\n\n🚫 Desde esta fecha, **NO se aceptan nuevas solicitudes de credenciales** hasta nuevo aviso.\n\n📋 **Tipos de credenciales suspendidas:**\n- Credencial de Empresa\n- Credencial de Independiente\n- Todas las acreditaciones de personal\n\n📢 **Se informará oportunamente** cuando se reanude la recepción de solicitudes.\n\nPara otras consultas, estoy a su disposición.' 
+},
+'rule_572': { 
+    keywords: ["*cuando vuelven credenciales*","*cuando se reactivan*","*hasta cuando suspendidas*","*cuanto tiempo suspension*"], 
+    response: '🤖📅 **SUSPENSIÓN DE CREDENCIALES**\n\n⏸️ Las credenciales están **suspendidas hasta nuevo aviso**.\n\n📢 No tenemos fecha estimada de reactivación. Se informará oportunamente a través de:\n- Página web OS10\n- Este chatbot\n- Contacto telefónico: 512651024\n\nLe recomendamos estar atento a los canales oficiales.' 
+},
+'rule_573': { 
+    keywords: ["*por que suspendidas*","*motivo suspension*","*razon suspension credenciales*"], 
+    response: '🤖📋 **MOTIVO SUSPENSIÓN DE CREDENCIALES**\n\nLa suspensión de credenciales responde a **disposiciones administrativas internas** de la oficina OS10.\n\n📢 Se informará oportunamente cuando se reanude el proceso.\n\nPara consultas específicas:\n📞 **Fono:** 512651024 (Lunes a Jueves 09:00-13:00)\n📍 **Dirección:** Cienfuegos 180, La Serena' 
+},
     
 };
 
