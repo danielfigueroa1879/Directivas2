@@ -3,6 +3,7 @@ let backgroundImages = [
     'assets/images/foto (1).webp',
     'assets/images/foto (2).webp',
     'assets/images/foto (3).webp',
+    'assets/images/foto (3a).webp',
     'assets/images/foto (4).webp',
     'assets/images/foto (5).webp',
     'assets/images/foto (6).webp',
@@ -24,7 +25,9 @@ let backgroundImages = [
     'assets/images/foto (22).webp', /* Se reemplaza foto (22).webp por una existente */
     'assets/images/foto (23).webp', /* Se reemplaza foto (23).webp por una existente */
     'assets/images/foto (24).webp', /* Se reemplaza foto (24).webp por una existente */
-    'assets/images/foto (25).webp' /* Se reemplaza foto (25).webp por una existente */
+    'assets/images/foto (26).webp',
+    'assets/images/foto (27).webp',
+    'assets/images/foto (28).webp'
 ];
 
 let currentImageIndex = 0;
