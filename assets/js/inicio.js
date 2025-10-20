@@ -21,10 +21,10 @@ let backgroundImages = [
     'assets/images/foto (19).webp',
     'assets/images/foto (20).webp',
     'assets/images/foto (21).webp',
-    'assets/images/foto (223).webp', /* Se reemplaza foto (22).webp por una existente */
+    'assets/images/foto (23).webp', /* Se reemplaza foto (22).webp por una existente */
     'assets/images/foto (224).webp', /* Se reemplaza foto (23).webp por una existente */
     'assets/images/foto (226).webp', /* Se reemplaza foto (24).webp por una existente */
-    'assets/images/foto (2333).webp' /* Se reemplaza foto (25).webp por una existente */
+    'assets/images/foto (25).webp' /* Se reemplaza foto (25).webp por una existente */
 ];
 
 let currentImageIndex = 0;
