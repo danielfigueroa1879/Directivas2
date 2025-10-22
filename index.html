@@ -47,6 +47,20 @@
     transition: opacity 0.5s ease, transform 0.5s ease;
     backdrop-filter: blur(10px);  /* Efecto de vidrio (opcional) */
 }
+#suspension-notice.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #suspension-notice.hide {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    @media (max-width: 768px) {
+        #suspension-notice {
+            font-size: 14px;
+            padding: 10px 15px;
+        }
+    }
     /* Estilos para Megamenu */
     @media (min-width: 1024px) {
         .asesor-megamenu {
