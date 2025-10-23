@@ -117,6 +117,32 @@
         background-color: rgba(0,0,0,0.1);
         border-radius: 3px;
     }
+    
+    /* --- Efectos de Glow y Float para Secciones --- */
+    .card-float-glow {
+        /* Transición suave para los efectos */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-float-glow:hover {
+        transform: translateY(-5px); /* Efecto flotar sutil */
+    }
+    .hover-glow-blue:hover {
+        /* Resplandor azul */
+        box-shadow: 0 0 20px 5px rgba(96, 165, 250, 0.6); 
+    }
+    .hover-glow-indigo:hover {
+        /* Resplandor índigo/morado */
+        box-shadow: 0 0 20px 5px rgba(129, 140, 248, 0.6); 
+    }
+    .hover-glow-green:hover {
+        /* Resplandor verde */
+        box-shadow: 0 0 20px 5px rgba(74, 222, 128, 0.6); 
+    }
+    .hover-glow-yellow:hover {
+        /* Resplandor amarillo */
+        box-shadow: 0 0 20px 5px rgba(250, 204, 21, 0.6); 
+    }
+    /* --- Fin de Efectos --- */
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -507,7 +533,7 @@
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             <!-- Columna Leyes -->
-            <div class="bg-blue-100 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all">
+            <div class="bg-blue-100 rounded-xl p-4 md:p-6 shadow-sm card-float-glow hover-glow-blue">
                 <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -549,7 +575,7 @@
             </div>
             
             <!-- Columna Decretos -->
-            <div class="bg-indigo-100 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all">
+            <div class="bg-indigo-100 rounded-xl p-4 md:p-6 shadow-sm card-float-glow hover-glow-indigo">
                 <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -794,7 +820,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     <!-- Documentos Editables -->
-                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-4 md:p-6">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue">
                         <h3 class="text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center">
                             <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -822,7 +848,7 @@
                     </div>
                     
                     <!-- Modelos de Solicitud -->
-                    <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-xl p-4 md:p-6">
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-xl p-4 md:p-6 card-float-glow hover-glow-green">
                         <h3 class="text-base md:text-lg font-bold text-green-900 mb-4 flex items-center">
                             <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -858,7 +884,7 @@
                     </div>
                     
                     <!-- Manuales (Color Cambiado - Comentarios eliminados) -->
-                    <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl p-4 md:p-6">
+                    <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow">
                         <h3 class="text-base md:text-lg font-bold text-yellow-900 mb-4 flex items-center">
                             <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
