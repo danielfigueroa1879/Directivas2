@@ -77,6 +77,39 @@
         height: auto;
         margin-right: 1rem;
     }
+
+    /* Estilos adicionales para las nuevas secciones */
+    .section-card-hover {
+        transition: all 0.3s ease;
+    }
+    .section-card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    
+    .gradient-card {
+        background: linear-gradient(135deg, var(--from-color) 0%, var(--to-color) 100%);
+    }
+    
+    .scroll-container {
+        max-height: 400px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0,0,0,0.1) transparent;
+    }
+    
+    .scroll-container::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .scroll-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .scroll-container::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 3px;
+    }
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -456,6 +489,389 @@
                 </div>
             </div>
         </section>
+
+        <!-- NUEVA SECCIÓN: Leyes y Normativa -->
+        <section id="leyes-normativa" class="py-16 md:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Leyes y Normativa</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-600">Marco legal y decretos que regulan la seguridad privada</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                    <!-- Columna Leyes -->
+                    <div class="bg-gray-50 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            Leyes Principales
+                        </h3>
+                        <div class="space-y-2">
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=242302" target="_blank" 
+                               class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-blue-50 transition-colors text-xs md:text-sm">
+                                <span class="font-semibold text-blue-600">Constitución Política</span>
+                                <span class="text-gray-600 block text-xs mt-1">Fundamento constitucional</span>
+                            </a>
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=30329" target="_blank" 
+                               class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-blue-50 transition-colors text-xs md:text-sm">
+                                <span class="font-semibold text-blue-600">Ley 18.961</span>
+                                <span class="text-gray-600 block text-xs mt-1">Ley Orgánica Constitucional</span>
+                            </a>
+                  _           <a href="https://www.bcn.cl/leychile/navegar?idNorma=1202067" target="_blank" 
+                               class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-blue-50 transition-colors text-xs md:text-sm">
+                                <span class="font-semibold text-blue-600">Ley 21.659</span>
+                                <span class="text-gray-600 block text-xs mt-1">Ley de Seguridad Privada</span>
+                            </a>
+                            <a href="https://www.leychile.cl/leychile/navegar?i=1213672" target="_blank" 
+                               class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-blue-50 transition-colors text-xs md:text-sm">
+                                <span class="font-semibold text-blue-600">Reglamento 209</span>
+                                <span class="text-gray-600 block text-xs mt-1">Reglamentación vigente</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Columna Decretos -->
+                    <div class="bg-gray-50 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Decretos Supremos
+                        </h3>
+                        <div class="space-y-2 scroll-container">
+                            <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" 
+                               class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-green-50 transition-colors text-xs md:text-sm">
+                                <span class="font-semibold text-green-600">D.E. 261 (2020)</span>
+                            </a>
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" 
+                               class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-green-50 transition-colors text-xs md:text-sm">
+                                <span class="font-semibold text-green-600">D.E. 32 (2024)</span>
+                            </a>
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" 
+                               class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-green-50 transition-colors text-xs md:text-sm">
+                                <span class="font-semibold text-green-600">D.S. 93 (1985)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: Componentes de Seguridad -->
+        <section id="componentes-seguridad" class="py-16 md:py-24 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Componentes de Seguridad</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-600">Requisitos y documentación para cada componente del sistema</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                    <!-- Vigilante Privado -->
+                    <a href="https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf" target="_blank" 
+                       class="group bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 section-card-hover">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 text-blue-600 rounded-lg p-2 md:p-3">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 md:ml-4">
+                                <h3 class="text-sm md:text-base font-semibold text-gray-900 group-hover:text-blue-600">Vigilante Privado</h3>
+                                <p class="text-xs md:text-sm text-gray-600 mt-1">Documentación y requisitos</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Guardia de Seguridad -->
+                    <a href="https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf" target="_blank" 
+                       class="group bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 section-card-hover">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 text-green-600 rounded-lg p-2 md:p-3">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 md:ml-4">
+                                <h3 class="text-sm md:text-base font-semibold text-gray-900 group-hover:text-green-600">Guardia de Seguridad</h3>
+                                <p class="text-xs md:text-sm text-gray-600 mt-1">Guía completa del trámite</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Jefe de Seguridad -->
+                    <div onclick="window.open('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf', '_blank')" 
+                         class="cursor-pointer group bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 section-card-hover">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-purple-100 text-purple-600 rounded-lg p-2 md:p-3">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 md:ml-4">
+                      M         <h3 class="text-sm md:text-base font-semibold text-gray-900 group-hover:text-purple-600">Jefe de Seguridad</h3>
+                                <p class="text-xs md:text-sm text-gray-600 mt-1">Actas y credenciales</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Otros componentes... -->
+                    <a href="https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf" target="_blank" 
+                       class="group bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 section-card-hover">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-red-100 text-red-600 rounded-lg p-2 md:p-3">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 md:ml-4">
+                                <h3 class="text-sm md:text-base font-semibold text-gray-900 group-hover:text-red-600">Supervisor</h3>
+                                <p class="text-xs md:text-sm text-gray-600 mt-1">Documentación necesaria</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Asesor -->
+                    <div onclick="window.open('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf', '_blank')" 
+                         class="cursor-pointer group bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 section-card-hover">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-lg p-2 md:p-3">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 md:ml-4">
+                                <h3 class="text-sm md:text-base font-semibold text-gray-900 group-hover:text-indigo-600">Asesor</h3>
+                                <p class="text-xs md:text-sm text-gray-600 mt-1">Títulos y requisitos</p>
+                            </div>
+                        </div>
+Â                 </div>
+                    
+                    <!-- Capacitador -->
+                    <a href="https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf" target="_blank" 
+                       class="group bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 section-card-hover">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-yellow-100 text-yellow-600 rounded-lg p-2 md:p-3">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 md:ml-4">
+                                <h3 class="text-sm md:text-base font-semibold text-gray-900 group-hover:text-yellow-600">Capacitador</h3>
+                                <p class="text-xs md:text-sm text-gray-600 mt-1">Acreditación y requisitos</p>
+                            </div>
+                        </div>
+Â                 </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: Documentos y Formularios -->
+        <section id="documentos-formularios" class="py-16 md:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Documentos y Formularios</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-600">Plantillas editables y modelos de solicitud</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Documentos Editables -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center">
+                            <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                            Documentos Editables
+                        </h3>
+                        <div class="space-y-2 md:space-y-3">
+                            <a href="https://bit.ly/3QbfmlT" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-blue-700">Estudio de Seguridad</span>
+                            </a>
+                            <a href="https://d6.short.gy/Pl4n" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-blue-700">Planes de Seguridad</span>
+                            </a>
+                            <a href="https://dal5.short.gy/M3" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-blue-700">Medidas de Seguridad</span>
+                            </a>
+                            <a href="https://dal5.short.gy/H23wIF" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-blue-700">Solicitud Simple</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modelos de Solicitud -->
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-bold text-green-900 mb-4 flex items-center">
+                            <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Modelos de Solicitud
+Â                   </h3>
+                        <div class="space-y-2 md:space-y-3 scroll-container" style="max-height: 250px;">
+                            <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada P. Natural</span>
+                            </a>
+                            <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada Empresas</span>
+                            </a>
+                            <a href="https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-green-700">Acreditación de Empresa</span>
+                            </a>
+                            <a href="https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-green-700">Acreditación Asesor</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Manuales -->
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-bold text-purple-900 mb-4 flex items-center">
+
+                            <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            Manuales
+                        </h3>
+                        <div class="space-y-2 md:space-y-3">
+                            <a href="https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-purple-700">Manual de Funcionamiento</span>
+                            </a>
+                            <a href="https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-purple-700">Manual de Capacitación</span>
+                            </a>
+                            <a href="https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf" target="_blank" 
+                               class="block bg-white/80 backdrop-blur px-3 md:px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                                <span class="text-xs md:text-sm font-medium text-purple-700">Manual de Organización</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: Capacitación -->
+        <section id="capacitacion" class="py-16 md:py-24 bg-gradient-to-br from-[#146314] to-[#0c640c] text-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Capacitación y Formación</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-200">Información sobre cursos, empresas capacitadoras y valores</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <a href="https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view" target="_blank" 
+                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
+                                <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-sm md:text-lg">Empresas de Capacitación</h3>
+                            <p class="text-xs md:text-sm text-gray-200 mt-1 md:mt-2">Listado actualizado</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view" target="_blank" 
+                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
+S                               <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-sm md:text-lg">Capacitadores</h3>
+                            <p class="text-xs md:text-sm text-gray-200 mt-1 md:mt-2">Personal autorizado</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view" target="_blank" 
+                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
+                                <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-sm md:text-lg">Curso Formación</h3>
+                            <p class="text-xs md:text-sm text-gray-200 mt-1 md:mt-2">Valores vigentes</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view" target="_blank" 
+                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
+S                               <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-sm md:text-lg">Perfeccionamiento</h3>
+                            <p class="text-xs md:text-sm text-gray-200 mt-1 md:mt-2">Valores actualizados</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: Servicios Adicionales -->
+        <section id="servicios-adicionales" class="py-16 md:py-24 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Servicios Adicionales</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-600">Herramientas y recursos complementarios</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Consultar Curso -->
+                    <a href="https://www.zosepcar.cl/OS10.php#buscador" target="_blank" 
+                       class="group relative overflow-hidden bg-white rounded-xl shadow-sm hover:shadow-xl transition-all section-card-hover">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 p-6 md:p-8 text-white">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            <h3 class="text-lg md:text-xl font-bold">Consultar Curso</h3>
+                            <p class="text-xs md:text-sm mt-2 text-blue-100">Verificar estado de certificaciones</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Valores -->
+                    <div onclick="handleValores()" 
+                         class="cursor-pointer group relative overflow-hidden bg-white rounded-xl shadow-sm hover:shadow-xl transition-all section-card-hover">
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 p-6 md:p-8 text-white">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-lg md:text-xl font-bold">Valores</h3>
+                            <p class="text-xs md:text-sm mt-2 text-green-100">Tabla de valores y aranceles</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ubicación -->
+                    <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" 
+                       class="group relative overflow-hidden bg-white rounded-xl shadow-sm hover:shadow-xl transition-all section-card-hover">
+                        <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-6 md:p-8 text-white">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <h3 class="text-lg md:text-xl font-bold">Ubicación</h3>
+                            <p class="text-xs md:text-sm mt-2 text-purple-100">Calle Cienfuegos 180, La Serena</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="nuestra-labor" class="py-8 md:py-12 bg-white">
             <div class="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div class="text-center">
