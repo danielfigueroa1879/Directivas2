@@ -21,6 +21,12 @@
     <link rel="preload" href="assets/css/styles.css" as="style">
     
     <style>
+        /* --- OPTIMIZACIÓN DE SCROLL AÑADIDA --- */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* --- FIN DE LA OPTIMIZACIÓN --- */
+
         .homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center 40%; transition: background-image 5.5s ease-in-out; }
         body.homepage { background-color: white; background-image: none; }
         .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; }
@@ -1065,7 +1071,7 @@
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     
     <script src="assets/js/inicio.js?v=4" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets.js/main.js" defer></script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
@@ -1123,3 +1129,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
