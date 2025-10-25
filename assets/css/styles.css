@@ -913,12 +913,8 @@ body.homepage {
 #capacitacion a.group:hover .text-yellow-300 { /* Si hubiera amarillos en capacitacion */
   filter: brightness(1.6) drop-shadow(0 0 7px #FACC15); /* Más brillante + glow amarillo */
 }
-
-/* Hover específico para #capacitacion donde el icono es text-white (ya cubierto arriba con el verde)*/
-/* Si necesitas un glow blanco específico, descomenta la siguiente regla: */
-/*
-#capacitacion a.group:hover .text-white {
+capacitacion a.group:hover .text-white {
    filter: brightness(1.8) drop-shadow(0 0 7px rgba(255, 255, 255, 0.8));
 }
-*/
+
 
