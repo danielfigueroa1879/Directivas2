@@ -750,10 +750,9 @@ body.homepage {
   /* Se restaura el space-between dentro del contenedor del banner */
   #banner > div {
     justify-content: space-between; /* Grupos a los extremos */
-    max-width: 7xl; /* O el ancho máximo que prefieras, ej: 1200px */
-    margin-left: auto;
-    margin-right: auto;
-    gap: 0; /* Sin gap adicional */
+    /* Se elimina max-width y gap forzados */
+    /* max-width: 1200px; */ /* Eliminado */
+    /* gap: 34rem; */ /* Eliminado */
   }
 
   /* El resto de las reglas para el dropdown en PC se mantienen */
@@ -890,7 +889,11 @@ body.homepage {
 /* Se aplica a los SVG dentro del div .flex-shrink-0 en los enlaces/divs clickeables */
 #componentes-seguridad a .flex-shrink-0 svg,
 #tramites-principales div[onclick] .flex-shrink-0 svg,
-#capacitacion a.group .bg-white\/20 svg {
+#capacitacion a.group .bg-white\/20 svg,
+/* Añadido para #servicios-adicionales */
+#servicios-adicionales a .text-blue-600,
+#servicios-adicionales div[onclick] .text-green-600,
+#servicios-adicionales a .text-yellow-600 {
   transition: filter 0.25s ease-in-out;
   filter: brightness(1); /* Estado normal */
 }
@@ -898,21 +901,24 @@ body.homepage {
 /* Hover para iconos verdes */
 #componentes-seguridad a:hover .text-green-300,
 #tramites-principales div[onclick]:hover .text-green-300,
-#capacitacion a.group:hover .bg-white\/20 svg { /* En #capacitacion, el color base es blanco */
+#capacitacion a.group:hover .bg-white\/20 svg, /* En #capacitacion, el color base es blanco */
+#servicios-adicionales div[onclick]:hover .text-green-600 {
   filter: brightness(1.6) drop-shadow(0 0 6px #4ADE80); /* Más brillante + glow verde */
 }
 
 /* Hover para iconos azules */
 #componentes-seguridad a:hover .text-blue-300,
 #tramites-principales div[onclick]:hover .text-blue-300,
-#capacitacion a.group:hover .text-blue-300 { /* Si hubiera azules en capacitacion */
+#capacitacion a.group:hover .text-blue-300, /* Si hubiera azules en capacitacion */
+#servicios-adicionales a:hover .text-blue-600 {
   filter: brightness(1.7) drop-shadow(0 0 6px #60A5FA); /* Más brillante + glow azul */
 }
 
 /* Hover para iconos amarillos */
 #componentes-seguridad a:hover .text-yellow-300,
 #tramites-principales div[onclick]:hover .text-yellow-300,
-#capacitacion a.group:hover .text-yellow-300 { /* Si hubiera amarillos en capacitacion */
+#capacitacion a.group:hover .text-yellow-300, /* Si hubiera amarillos en capacitacion */
+#servicios-adicionales a:hover .text-yellow-600 {
   filter: brightness(1.6) drop-shadow(0 0 7px #FACC15); /* Más brillante + glow amarillo */
 }
 
