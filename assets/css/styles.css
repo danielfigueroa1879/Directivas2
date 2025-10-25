@@ -116,14 +116,14 @@ body.homepage {
     40% { transform: scale(1.0); }
 }
 
-/* ===== AJUSTE POSICIONAMIENTO CHATBOT PARA PC (CORREGIDO) ===== */
+/* ===== AJUSTE POSICIONAMIENTO CHATBOT PARA PC (CORREGIDO Y SIMPLIFICADO) ===== */
 @media (min-width: 1024px) {
     #chat-widget-container {
-        /* Se usa 'right' para alinear a la derecha de la ventana */
-        right: 1.5rem; /* Ajusta este valor si es necesario */
-        bottom: 7.9rem;
-        left: auto; /* Asegura que 'left' no interfiera */
-        transform: none; /* Asegura que 'transform' no interfiera */
+        /* Mantiene la posición en la esquina inferior derecha */
+        right: 1.5rem;
+        bottom: 7.9rem; /* Ajusta la altura si es necesario */
+        left: auto;
+        transform: none;
     }
 
     #chat-toggle-button {
@@ -744,14 +744,16 @@ body.homepage {
 }
 
 /* ========================================================= */
-/* AJUSTE BANNER PC - REVERTIR CENTRADO Y RESTAURAR ESPACIOS */
+/* AJUSTE BANNER PC - RESTAURAR LAYOUT ORIGINAL              */
 /* ========================================================= */
 @media (min-width: 1024px) {
-  /* Se revierte el justify-content: center y el gap grande */
+  /* Se restaura el space-between dentro del contenedor del banner */
   #banner > div {
-    justify-content: space-between; /* Vuelve a separar los grupos izq/der */
-    max-width: 100%; /* Permite que ocupe todo el ancho disponible */
-    gap: 0; /* Elimina el gap forzado */
+    justify-content: space-between; /* Grupos a los extremos */
+    max-width: 7xl; /* O el ancho máximo que prefieras, ej: 1200px */
+    margin-left: auto;
+    margin-right: auto;
+    gap: 0; /* Sin gap adicional */
   }
 
   /* El resto de las reglas para el dropdown en PC se mantienen */
@@ -885,9 +887,9 @@ body.homepage {
 /* ============================================================================= */
 
 /* Transición suave para el filtro en todas las secciones relevantes */
-/* Se aplica a los SVG dentro del div .flex-shrink-0 en los enlaces de las secciones */
+/* Se aplica a los SVG dentro del div .flex-shrink-0 en los enlaces/divs clickeables */
 #componentes-seguridad a .flex-shrink-0 svg,
-#tramites-principales div[onclick] .flex-shrink-0 svg, /* Se usa div[onclick] para tramites */
+#tramites-principales div[onclick] .flex-shrink-0 svg,
 #capacitacion a.group .bg-white\/20 svg {
   transition: filter 0.25s ease-in-out;
   filter: brightness(1); /* Estado normal */
@@ -913,8 +915,11 @@ body.homepage {
 #capacitacion a.group:hover .text-yellow-300 { /* Si hubiera amarillos en capacitacion */
   filter: brightness(1.6) drop-shadow(0 0 7px #FACC15); /* Más brillante + glow amarillo */
 }
-capacitacion a.group:hover .text-white {
+
+/* Hover específico para #capacitacion donde el icono es text-white (ya cubierto arriba con el verde)*/
+/* Si necesitas un glow blanco específico, descomenta la siguiente regla: */
+/*
+#capacitacion a.group:hover .text-white {
    filter: brightness(1.8) drop-shadow(0 0 7px rgba(255, 255, 255, 0.8));
 }
-
-
+*/
