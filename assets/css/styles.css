@@ -875,24 +875,25 @@ body.homepage {
     color: #78350F; /* Icono oscuro en hover */
 }
 
-/* ===== NUEVAS REGLAS HOVER PARA ICONOS SVG EN SECCIÓN COMPONENTES ===== */
+/* ===== NUEVAS REGLAS HOVER PARA ICONOS SVG EN SECCIÓN COMPONENTES (CORREGIDO) ===== */
 
 /* Transición suave para el cambio de color en los iconos */
 #componentes-seguridad a .flex-shrink-0 svg {
   transition: color 0.2s ease-in-out;
+  /* El color base lo da la clase text-*-300 en el HTML */
 }
 
-/* Hover para iconos verdes (text-green-300) */
+/* Hover para iconos verdes (original text-green-300) */
 #componentes-seguridad a:hover .text-green-300 {
-  color: #15803d; /* Verde más oscuro (Tailwind green-700) */
+  color: #4ADE80; /* Verde más brillante (Tailwind green-400) */
 }
 
-/* Hover para iconos azules (text-blue-300) */
+/* Hover para iconos azules (original text-blue-300) */
 #componentes-seguridad a:hover .text-blue-300 {
-  color: #1d4ed8; /* Azul más oscuro (Tailwind blue-700) */
+  color: #60A5FA; /* Azul más brillante (Tailwind blue-400) */
 }
 
-/* Hover para iconos amarillos (text-yellow-300) */
+/* Hover para iconos amarillos (original text-yellow-300) */
 #componentes-seguridad a:hover .text-yellow-300 {
-  color: #B45309; /* Amarillo/ámbar más oscuro (Tailwind amber-700) */
+  color: #FACC15; /* Amarillo más brillante (Tailwind yellow-400) */
 }
