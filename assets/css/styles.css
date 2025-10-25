@@ -119,8 +119,8 @@ body.homepage {
 /* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
 @media (min-width: 1024px) {
     #chat-widget-container {
-        left: 50%;
-        transform: translateX(-60%);
+        /* Se elimina left y transform para usar right */
+        right: 1.5rem; /* O el valor que prefieras */
         bottom: 7.9rem;
     }
 
@@ -130,6 +130,7 @@ body.homepage {
         animation: floatAnimation 1.9s ease-in-out infinite;
     }
 }
+
 
 @media (max-width: 767px) {
     #chat-widget-container {
@@ -322,77 +323,77 @@ body.homepage {
 }
 
 /* ================================================================== */
-/* FIX 1: Posiciona el megamenú de Asesor correctamente debajo del banner */
+/* FIX 1: Posiciona el megamenú correctamente debajo del banner */
 /* ================================================================== */
-.asesor-megamenu {
-    position: fixed;
-    top: 4rem;
+.asesor-megamenu, .jefe-megamenu { /* Se aplica a ambos megamenús */
+    position: fixed; /* Cambiado a fixed para asegurar posición relativa a la ventana */
+    top: 4rem; /* Debajo del banner fijo */
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1250;
-    background-color: rgba(249, 250, 251, 0.98);
+    z-index: 1250; /* Por encima del menú móvil */
+    background-color: rgba(249, 250, 251, 0.98); /* Fondo casi opaco con blur */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    border-top: 1px solid #e5e7eb; /* Borde superior sutil */
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(100%); /* Empieza abajo */
     transition: opacity 0.3s ease, transform 0.3s ease;
     overflow-y: auto;
     pointer-events: none;
-    border-radius: 0;
+    border-radius: 0; /* Sin bordes redondeados en móvil */
 }
 
 /* Nueva clase para mostrar el megamenu */
-.asesor-megamenu.show {
+.asesor-megamenu.show, .jefe-megamenu.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* Sube a su posición */
     pointer-events: auto;
 }
 
 /* PC: letra más pequeña y profesional */
 @media (min-width: 1024px) {
-    .asesor-megamenu {
-        width: 48rem;
+    .asesor-megamenu, .jefe-megamenu {
+        width: 48rem; /* Ancho fijo para PC */
         left: 50%;
-        margin-left: -24rem;
+        margin-left: -24rem; /* Centrado */
         right: auto;
-        bottom: auto;
-        border-radius: 0 0 12px 12px;
+        bottom: auto; /* Altura automática */
+        border-radius: 0 0 12px 12px; /* Bordes inferiores redondeados */
         box-shadow: 0 8px 32px rgba(0,0,0,0.15);
     }
 
-    .asesor-megamenu-content {
+    .asesor-megamenu-content, .jefe-megamenu-content { /* Contenido de ambos */
         padding: 1.5rem 2rem;
-        font-size: 0.8rem;
+        font-size: 0.8rem; /* Letra base más pequeña */
     }
 
-    .asesor-megamenu-content h3 {
+    .asesor-megamenu-content h3, .jefe-megamenu-content h3 {
         font-size: 1.1rem;
         font-weight: 600;
     }
 
-    .asesor-megamenu-content h4 {
+    .asesor-megamenu-content h4, .jefe-megamenu-content h4 {
         font-size: 0.95rem;
         font-weight: 600;
     }
 
-    .asesor-megamenu-content h5 {
+    .asesor-megamenu-content h5, .jefe-megamenu-content h5 {
         font-size: 0.85rem;
         font-weight: 600;
     }
 
-    .asesor-megamenu-content p,
-    .asesor-megamenu-content ol,
-    .asesor-megamenu-content li {
-        font-size: 0.8rem;
+    .asesor-megamenu-content p, .jefe-megamenu-content p,
+    .asesor-megamenu-content ol, .jefe-megamenu-content ol,
+    .asesor-megamenu-content li, .jefe-megamenu-content li {
+        font-size: 0.8rem; /* Letra más pequeña para párrafos y listas */
         line-height: 1.5;
     }
 
     .asesor-diploma-title {
-        font-size: 0.8rem !important;
-        font-weight: 700 !important;
+        font-size: 0.8rem !important; /* Asegura tamaño */
+        font-weight: 700 !important; /* Asegura negrita */
         margin-top: 0.75rem;
         margin-bottom: 0.5rem;
     }
@@ -400,91 +401,91 @@ body.homepage {
 
 /* Tamaños de letra para Móvil - cubrir desde abajo hasta banner */
 @media (max-width: 1023px) {
-    .asesor-megamenu {
+    .asesor-megamenu, .jefe-megamenu {
         width: 100vw;
         left: 0;
         right: 0;
         border-radius: 0;
-        border-top: 2px solid #e5e7eb;
+        border-top: 2px solid #e5e7eb; /* Borde superior más grueso en móvil */
     }
 
-    .asesor-megamenu-content {
+    .asesor-megamenu-content, .jefe-megamenu-content {
         padding: 1rem;
-        font-size: 0.85rem;
+        font-size: 0.85rem; /* Letra base ligeramente más pequeña en móvil */
     }
 
-    .asesor-megamenu-content h3 {
-        font-size: 1.15rem;
+    .asesor-megamenu-content h3, .jefe-megamenu-content h3 {
+        font-size: 1.15rem; /* Título principal */
         margin-bottom: 0.75rem;
     }
 
-    .asesor-megamenu-content h4 {
-        font-size: 1rem;
+    .asesor-megamenu-content h4, .jefe-megamenu-content h4 {
+        font-size: 1rem; /* Subtítulos */
         margin-top: 0.75rem;
         margin-bottom: 0.5rem;
     }
 
-    .asesor-megamenu-content h5 {
-        font-size: 0.85rem;
+    .asesor-megamenu-content h5, .jefe-megamenu-content h5 {
+        font-size: 0.85rem; /* Títulos menores */
         margin-top: 0.5rem;
         margin-bottom: 0.4rem;
     }
 
-    .asesor-megamenu-content ol {
-        font-size: 0.8rem;
+    .asesor-megamenu-content ol, .jefe-megamenu-content ol {
+        font-size: 0.8rem; /* Listas */
         line-height: 1.4;
     }
 
-    .asesor-megamenu-content p {
-        font-size: 0.85rem;
+    .asesor-megamenu-content p, .jefe-megamenu-content p {
+        font-size: 0.85rem; /* Párrafos */
         line-height: 1.5;
     }
 }
 
+
 /* ===== ALTURA UNIFORME PARA COMPONENTES ===== */
 .mobile-dropdown .submenu.submenu-compact button,
 .mobile-dropdown .submenu.submenu-compact .submenu-parent-btn {
-    min-height: 28px;
+    min-height: 28px; /* Altura mínima uniforme */
     display: flex;
     align-items: center;
-    padding-top: 0.3rem;
+    padding-top: 0.3rem; /* Ajuste padding vertical */
     padding-bottom: 0.5rem;
 }
 
 /* ===== AJUSTE PARA EL ITEM ASESOR SIN FLECHA Y CON FONDO GRIS ===== */
 .mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
-    min-height: 28px;
+    min-height: 28px; /* Mantiene altura mínima */
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: flex-start !important; /* Alinea a la izquierda */
     padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
-    font-size: 0.78rem;
+    font-size: 0.78rem; /* Tamaño de letra ajustado */
     line-height: 1.2; /* Ayuda al centrado vertical */
 }
 
 /* Ocultar la flecha del item Asesor */
 .mobile-dropdown .submenu-compact .asesor-item .submenu-arrow-asesor {
-    display: none !important;
+    display: none !important; /* Oculta la flecha */
 }
 
 /* ===== FONDO GRIS CLARO PARA TODOS LOS SUBMENÚS ===== */
 .mobile-dropdown .submenu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out;
+    transition: max-height 0.4s ease-out; /* Animación de despliegue */
     background-color: #f3f4f6; /* Gris claro - Tailwind gray-100 */
 }
 
-.mobile-dropdown .submenu.submenu-compact {
-    background-color: #f3f4f6; /* Gris claro */
-}
-
+/* Aplicar fondo gris a todos los submenús */
+.mobile-dropdown .submenu.submenu-compact,
 .mobile-dropdown .submenu.leyes-compactas {
     background-color: #f3f4f6; /* Gris claro */
 }
 
-/* ===== BOTÓN DE CIERRE PARA MEGAMENÚ ASESOR ===== */
-.asesor-close-btn {
+
+/* ===== BOTÓN DE CIERRE PARA MEGAMENÚS ===== */
+.asesor-close-btn, .jefe-close-btn { /* Aplica a ambos botones de cierre */
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -493,100 +494,110 @@ body.homepage {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #e5e7eb;
-    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+    border: 1px solid #e5e7eb; /* Borde sutil */
+    border-radius: 50%; /* Redondo */
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 10;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Encima del contenido */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
-.asesor-close-btn:hover {
-    background-color: #f3f4f6;
-    transform: rotate(90deg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.asesor-close-btn:hover, .jefe-close-btn:hover {
+    background-color: #f3f4f6; /* Fondo gris claro al pasar el mouse */
+    transform: rotate(90deg); /* Gira al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
 }
 
-.asesor-close-btn:active {
-    transform: rotate(90deg) scale(0.95);
+.asesor-close-btn:active, .jefe-close-btn:active {
+    transform: rotate(90deg) scale(0.95); /* Efecto al presionar */
 }
 
-.asesor-close-btn svg {
+.asesor-close-btn svg, .jefe-close-btn svg {
     width: 20px;
     height: 20px;
-    color: #4b5563;
+    color: #4b5563; /* Color del icono (X) */
 }
 
 /* Ajuste para el contenido del megamenú cuando hay botón de cierre */
-.asesor-megamenu-content {
-    padding-top: 2.5rem;
+.asesor-megamenu-content, .jefe-megamenu-content {
+    padding-top: 2.5rem; /* Espacio arriba para el botón */
 }
 
 /* Responsive: Ajustes para móvil */
 @media (max-width: 1023px) {
-    .asesor-close-btn {
+    .asesor-close-btn, .jefe-close-btn {
         top: 0.75rem;
         right: 0.75rem;
-        width: 32px;
+        width: 32px; /* Más pequeño en móvil */
         height: 32px;
     }
-    
-    .asesor-megamenu-content {
-        padding-top: 3rem;
+
+    .asesor-megamenu-content, .jefe-megamenu-content {
+        padding-top: 3rem; /* Más espacio en móvil */
     }
 }
 
 /* Para PC: botón más grande y mejor posicionado */
 @media (min-width: 1024px) {
-    .asesor-close-btn {
+    .asesor-close-btn, .jefe-close-btn {
         top: 1.5rem;
         right: 1.5rem;
-        width: 40px;
+        width: 40px; /* Más grande en PC */
         height: 40px;
     }
-    
-    .asesor-close-btn svg {
-        width: 24px;
+
+    .asesor-close-btn svg, .jefe-close-btn svg {
+        width: 24px; /* Icono más grande en PC */
         height: 24px;
     }
 }
 
+
 /* ===== AJUSTE ADICIONAL PARA UNIFORMIDAD DE COMPONENTES ===== */
+/* Estilo base para botones dentro de submenús compactos */
 .mobile-dropdown .submenu.submenu-compact button {
-    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
-    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3); /* Línea divisoria sutil */
+    transition: all 0.2s ease; /* Transición suave para hover */
 }
 
+/* Eliminar borde del último botón */
 .mobile-dropdown .submenu.submenu-compact button:last-child {
     border-bottom: none;
 }
 
+/* Efecto hover para botones dentro de submenús compactos */
 .mobile-dropdown .submenu.submenu-compact button:hover {
     background-color: rgba(34, 197, 94, 0.2); /* Verde un poco más intenso */
-    color: #15803d;
-    padding-left: 3rem;
+    color: #15803d; /* Verde oscuro */
+    padding-left: 3rem; /* Indentación al pasar el mouse */
 }
 
+/* Estilo para botones de leyes y otros submenús compactos */
 .mobile-dropdown .submenu.leyes-compactas button,
 .mobile-dropdown .submenu.submenu-compact button {
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-    padding-left: 2.5rem;
-    font-size: 0.7rem;
+    padding-left: 2.5rem; /* Indentación base */
+    font-size: 0.7rem; /* Tamaño de letra más pequeño */
 }
 
+/* Estilo para el título dentro del submenú de leyes */
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
     padding-left: 2.5rem;
-    font-size: 0.7rem;
-    background-color: rgba(0,0,0,0.06);
+    font-size: 0.7rem; /* Mismo tamaño que los botones */
+    background-color: rgba(0,0,0,0.06); /* Fondo gris muy sutil */
+    font-weight: 600; /* Negrita para el título */
+    color: #4b5563; /* Color gris oscuro */
 }
 
+/* Ancho específico para el dropdown de leyes en escritorio */
 .leyes-compactas-desktop {
     width: 320px;
 }
+/* Estilos para el título y botones en el dropdown de leyes de escritorio */
 .leyes-compactas-desktop .desktop-dropdown-title {
     padding: 0.2rem 0.6rem;
     font-size: 0.6rem;
@@ -597,46 +608,63 @@ body.homepage {
     font-size: 0.75rem;
 }
 
+/* Mostrar submenú cuando el padre tiene la clase submenu-open */
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
-    max-height: 2000px;
+    max-height: 2000px; /* Altura máxima para permitir animación */
 }
 
-.mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
+/* Estilo base para botones dentro del menú móvil principal y submenús */
+.mobile-dropdown .submenu button,
+.mobile-dropdown .dropdown-menu-content > button,
+.mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.82rem;
-    color: #374151;
-    transition: background-color 0.2s, color 0.2s;
+    padding: 0.5rem 1.5rem; /* Padding base */
+    font-size: 0.82rem; /* Tamaño de letra base */
+    color: #374151; /* Color de texto gris oscuro */
+    transition: background-color 0.2s, color 0.2s; /* Transición suave */
 }
 
+/* Efecto hover para botones de submenú */
 .mobile-dropdown .submenu button:hover {
-    background-color: rgba(34, 197, 94, 0.15);
-    color: #15803d;
+    background-color: rgba(34, 197, 94, 0.15); /* Fondo verde claro */
+    color: #15803d; /* Texto verde oscuro */
 }
 
-.mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: #1d4ed8;
+/* Efecto hover para botones del menú principal */
+.mobile-dropdown .dropdown-menu-content > button:hover,
+.mobile-dropdown .dropdown-menu-content > a:hover {
+    background-color: rgba(59, 130, 246, 0.1); /* Fondo azul claro */
+    color: #1d4ed8; /* Texto azul oscuro */
 }
 
+/* Estilo para el header del menú móvil */
 .mobile-dropdown .dropdown-menu-header {
-    min-height: 32px; /* Altura mínima uniforme */
+    min-height: 32px; /* Altura mínima */
     display: flex;
-    padding: 0.3rem 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 0.5rem;
+    align-items: center; /* Centrar verticalmente */
+    padding: 0.3rem 1.5rem; /* Padding */
+    border-bottom: 1px solid #e5e7eb; /* Borde inferior */
+    margin-bottom: 0.5rem; /* Espacio inferior */
 }
 .mobile-dropdown .dropdown-menu-header h3 {
-    font-weight: 600;
-    color: #1f2937;
-    font-size: 0.9rem;
+    font-weight: 600; /* Negrita */
+    color: #1f2937; /* Color de texto */
+    font-size: 0.9rem; /* Tamaño de letra */
 }
+
 
 /* --- AJUSTE TAMAÑO TEXTO BANNER --- */
 .banner-text-small {
-    font-size: 0.875rem;
+    font-size: 0.875rem; /* Tamaño base para el texto del banner */
+}
+
+/* Ajuste para pantallas grandes (PC) */
+@media (min-width: 1024px) {
+    .banner-text-small {
+        font-size: 0.875rem; /* Mantiene el tamaño en PC */
+    }
 }
 
 /* El resto de los estilos se mantienen */
@@ -646,50 +674,50 @@ body.homepage {
 
 /* ===== AJUSTE SECCIÓN TRÁMITES PRINCIPALES ===== */
 #tramites-principales {
-    padding-top: 5rem;
+    padding-top: 5rem; /* Reduce el padding superior */
 }
 
 @media (min-width: 768px) {
     #tramites-principales {
-        padding-top: 7rem;
+        padding-top: 7rem; /* Mantiene el padding en pantallas medianas y grandes */
     }
 }
 
 /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
 .homepage-section {
-    display: none;
-    height: 75vh;
-    max-height: 700px;
-    min-height: 450px;
+    display: none; /* Oculto por defecto */
+    height: 75vh; /* Altura ajustada */
+    max-height: 700px; /* Altura máxima */
+    min-height: 450px; /* Altura mínima */
 }
 
-.background-transition { animation: none; }
-.text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
-.text-shadow-lg { text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
+.background-transition { animation: none; } /* Desactiva animación si existe */
+.text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); } /* Sombra de texto normal */
+.text-shadow-lg { text-shadow: 2px 2px 5px rgba(0,0,0,0.7); } /* Sombra de texto grande */
 .elegant-card {
     background-color: white;
     padding: 2rem;
-    border-radius: 0.75rem;
-    border: 1px solid #e5e7eb;
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border-radius: 0.75rem; /* Bordes redondeados */
+    border: 1px solid #e5e7eb; /* Borde gris claro */
+    transition: box-shadow 0.4s ease, border-color 0.4s ease; /* Transición suave */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Sombra base */
 }
 
 .elegant-card:hover {
-    border-color: transparent;
-    box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6);
+    border-color: transparent; /* Quita borde al pasar el mouse */
+    box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6); /* Efecto glow verde */
 }
 
-.homepage-btn { min-width: 250px; padding: 0.75rem 2rem; }
+.homepage-btn { min-width: 250px; padding: 0.75rem 2rem; } /* Estilo base para botones de inicio */
 
 @media (max-width: 640px) {
-   .homepage-btn { width: 60%; padding: 0.5rem 1.5rem; background-color: rgba(59, 130, 246, 0.7); color: white; }
-   .homepage-btn.bg-[#ffb700] { background-color: rgba(255, 183, 0, 0.7); color: white; }
+   .homepage-btn { width: 60%; padding: 0.5rem 1.5rem; background-color: rgba(59, 130, 246, 0.7); color: white; } /* Botón azul en móvil */
+   .homepage-btn.bg-[#ffb700] { background-color: rgba(255, 183, 0, 0.7); color: white; } /* Botón amarillo en móvil */
 }
 
 /* Credenciales Section Specific Styles */
-.credenciales-section { display: none; }
-.credenciales-section.active { display: block; }
+.credenciales-section { display: none; } /* Oculto por defecto */
+.credenciales-section.active { display: block; } /* Visible cuando está activo */
 .credenciales-title-container { text-align: center; margin-top: 2rem; line-height: 1; }
 .credenciales-main-title, .credenciales-main-subtitle { color: #EAB308; font-weight: bold; display: block; text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4); transition: all 0.3s ease; margin: 0; padding: 0; }
 .credenciales-main-title { font-size: 2.2rem; transform: translateX(-2px); }
@@ -716,31 +744,155 @@ body.homepage {
 /* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
   #banner > div {
-    justify-content: center !important;
-    gap: 34rem;
-    max-width: 1200px;
+    justify-content: space-between !important; /* Vuelve a space-between */
+    gap: 0; /* Sin gap forzado */
+    max-width: 100%; /* Ancho completo */
   }
 
+  /* El menú móvil (ahora usado como dropdown en PC) */
   .mobile-dropdown {
-    left: calc(50% - 400px);
-    top: 4rem;
-    width: 380px;
+    position: absolute; /* Vuelve a absoluto */
+    left: 0; /* Alineado al botón padre */
+    top: 100%; /* Debajo del botón padre */
+    width: 320px; /* Ancho deseado */
     height: auto;
     max-height: calc(100vh - 5rem);
-    transform: translateX(-20px) scale(0.98);
+    transform: translateY(10px) scale(0.98); /* Empieza ligeramente abajo y escalado */
     opacity: 0;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
     pointer-events: none;
     transform-origin: top left;
+    border-radius: 0 0 8px 8px; /* Bordes redondeados abajo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra */
+    background-color: rgba(255, 255, 255, 0.98); /* Fondo */
+    backdrop-filter: blur(20px);
   }
 
-  .mobile-dropdown.show {
-      transform: translateX(0) scale(1);
+  /* Mostrar el dropdown cuando el grupo (botón padre) está hover */
+  .group:hover .mobile-dropdown {
+      transform: translateY(0) scale(1);
       opacity: 1;
       pointer-events: auto;
   }
 
   #mobile-menu-overlay {
-      display: none !important;
+      display: none !important; /* No se necesita overlay en PC */
   }
+}
+
+/* ===== NUEVAS REGLAS HOVER PARA ICONO JEFE DE SEGURIDAD ===== */
+/* Establece el color base amarillo para el icono de flecha del Jefe de Seguridad */
+.mobile-dropdown .jefe-item > .submenu-parent-btn .submenu-arrow {
+  color: #EAB308; /* Tailwind yellow-500 */
+  transition: color 0.2s ease-in-out;
+}
+
+/* Cambia el color a un amarillo más intenso en hover */
+.mobile-dropdown .jefe-item:hover > .submenu-parent-btn .submenu-arrow {
+  color: #D97706; /* Amarillo más intenso (Tailwind yellow-600) */
+}
+
+/* También aplica el hover al botón disparador del megamenú si existe un SVG */
+#jefe-trigger-btn svg {
+    color: #EAB308; /* Base yellow */
+    transition: color 0.2s ease-in-out;
+}
+#jefe-trigger-btn:hover svg {
+    color: #D97706; /* More intense yellow */
+}
+
+/* ===== REGLAS HOVER GENERALIZADAS PARA TODOS LOS ICONOS DE FLECHA DEL MENÚ ===== */
+/* Establece el color base para TODAS las flechas */
+.mobile-dropdown .has-submenu > .submenu-parent-btn .submenu-arrow {
+  color: #6B7280; /* Color gris por defecto para las flechas (Tailwind gray-500) */
+  transition: color 0.2s ease-in-out;
+}
+
+/* Cambia el color a un azul más intenso en hover para TODAS las flechas */
+.mobile-dropdown .has-submenu:hover > .submenu-parent-btn .submenu-arrow {
+  color: #1D4ED8; /* Azul intenso (Tailwind blue-700) */
+}
+
+/* Mantiene la regla específica para JEFE DE SEGURIDAD (amarillo) */
+.mobile-dropdown .jefe-item > .submenu-parent-btn .submenu-arrow {
+  color: #EAB308; /* Amarillo base */
+}
+.mobile-dropdown .jefe-item:hover > .submenu-parent-btn .submenu-arrow {
+  color: #D97706; /* Amarillo intenso en hover */
+}
+
+/* Si el botón ASESOR también debe ser amarillo */
+.mobile-dropdown .asesor-item > .submenu-parent-btn .submenu-arrow {
+  color: #EAB308; /* Amarillo base */
+}
+.mobile-dropdown .asesor-item:hover > .submenu-parent-btn .submenu-arrow {
+  color: #D97706; /* Amarillo intenso en hover */
+}
+
+/* Aplica hover amarillo a los SVG de los triggers de megamenús */
+#jefe-trigger-btn svg,
+#asesor-trigger-btn svg {
+    color: #EAB308; /* Base yellow */
+    transition: color 0.2s ease-in-out;
+}
+#jefe-trigger-btn:hover svg,
+#asesor-trigger-btn:hover svg {
+    color: #D97706; /* More intense yellow */
+}
+
+/* ===== NUEVAS REGLAS HOVER PARA FONDO DE BOTONES ESPECÍFICOS ===== */
+
+/* Estilo base para los botones específicos (opcional, si quieres un fondo amarillo base) */
+.mobile-dropdown .jefe-item > .submenu-parent-btn,
+.mobile-dropdown .asesor-item > .submenu-parent-btn {
+  /* background-color: #FEF9C3; */ /* Amarillo muy claro base - Opcional */
+  /* color: #CA8A04; */ /* Texto amarillo oscuro - Opcional */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Cambia el color de fondo a un amarillo más intenso en hover */
+.mobile-dropdown .jefe-item:hover > .submenu-parent-btn,
+.mobile-dropdown .asesor-item:hover > .submenu-parent-btn {
+  background-color: #FBBF24; /* Amarillo medio (Tailwind amber-400) */
+  color: #78350F; /* Texto amarillo/marrón oscuro (Tailwind amber-900) */
+}
+
+/* Asegúrate de que el icono de flecha también cambie de color para que contraste */
+.mobile-dropdown .jefe-item:hover > .submenu-parent-btn .submenu-arrow,
+.mobile-dropdown .asesor-item:hover > .submenu-parent-btn .submenu-arrow {
+  color: #78350F; /* Mismo color oscuro que el texto en hover */
+}
+
+/* Aplica hover de fondo amarillo también a los botones disparadores de los megamenús */
+#jefe-trigger-btn:hover,
+#asesor-trigger-btn:hover {
+    background-color: #FBBF24; /* Amarillo medio */
+    color: #78350F; /* Texto oscuro */
+}
+/* Ajusta el color del SVG en hover para los triggers para que contraste */
+#jefe-trigger-btn:hover svg,
+#asesor-trigger-btn:hover svg {
+    color: #78350F; /* Icono oscuro en hover */
+}
+
+/* ===== NUEVAS REGLAS HOVER PARA ICONOS SVG EN SECCIÓN COMPONENTES ===== */
+
+/* Transición suave para el cambio de color en los iconos */
+#componentes-seguridad a .flex-shrink-0 svg {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Hover para iconos verdes (text-green-300) */
+#componentes-seguridad a:hover .text-green-300 {
+  color: #15803d; /* Verde más oscuro (Tailwind green-700) */
+}
+
+/* Hover para iconos azules (text-blue-300) */
+#componentes-seguridad a:hover .text-blue-300 {
+  color: #1d4ed8; /* Azul más oscuro (Tailwind blue-700) */
+}
+
+/* Hover para iconos amarillos (text-yellow-300) */
+#componentes-seguridad a:hover .text-yellow-300 {
+  color: #B45309; /* Amarillo/ámbar más oscuro (Tailwind amber-700) */
 }
