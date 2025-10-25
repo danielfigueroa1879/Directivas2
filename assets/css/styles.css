@@ -72,7 +72,7 @@ body.homepage {
     animation: floatAnimation 2s ease-in-out infinite;
     transition: all 0.3s ease;
     position: relative;
-    border: 1px solid #0c640c;
+    border: 1px solid #0c640c; /* Borde verde oscuro */
 }
 @keyframes floatAnimation {
     0%, 100% { transform: translateY(0px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
@@ -116,12 +116,14 @@ body.homepage {
     40% { transform: scale(1.0); }
 }
 
-/* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
+/* ===== AJUSTE POSICIONAMIENTO CHATBOT PARA PC (CORREGIDO) ===== */
 @media (min-width: 1024px) {
     #chat-widget-container {
-        /* Se elimina left y transform para usar right */
-        right: 1.5rem; /* O el valor que prefieras */
+        /* Se usa 'right' para alinear a la derecha de la ventana */
+        right: 1.5rem; /* Ajusta este valor si es necesario */
         bottom: 7.9rem;
+        left: auto; /* Asegura que 'left' no interfiera */
+        transform: none; /* Asegura que 'transform' no interfiera */
     }
 
     #chat-toggle-button {
@@ -745,14 +747,14 @@ body.homepage {
 /* AJUSTE BANNER PC - REVERTIR CENTRADO Y RESTAURAR ESPACIOS */
 /* ========================================================= */
 @media (min-width: 1024px) {
+  /* Se revierte el justify-content: center y el gap grande */
   #banner > div {
-    /* justify-content: space-between !important;  <-- ELIMINADO */
-    justify-content: center; /* Volver a centrar (o eliminar si flex-start es mejor) */
-    gap: 1rem; /* Restaurar un gap razonable (ajusta si es necesario) */
-    max-width: 1200px; /* Restaurar ancho máximo si se había quitado */
+    justify-content: space-between; /* Vuelve a separar los grupos izq/der */
+    max-width: 100%; /* Permite que ocupe todo el ancho disponible */
+    gap: 0; /* Elimina el gap forzado */
   }
 
-  /* Asegurar que el menú desplegable siga funcionando con hover */
+  /* El resto de las reglas para el dropdown en PC se mantienen */
   .mobile-dropdown {
     position: absolute;
     left: 0;
@@ -769,7 +771,7 @@ body.homepage {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
-    z-index: 1250; /* Asegurar que esté por encima */
+    z-index: 1250;
   }
 
   .group:hover .mobile-dropdown {
@@ -883,38 +885,40 @@ body.homepage {
 /* ============================================================================= */
 
 /* Transición suave para el filtro en todas las secciones relevantes */
+/* Se aplica a los SVG dentro del div .flex-shrink-0 en los enlaces de las secciones */
 #componentes-seguridad a .flex-shrink-0 svg,
-#tramites-principales a .flex-shrink-0 svg, /* Añadido */
-#capacitacion a .group .bg-white\/20 svg { /* Añadido y más específico */
+#tramites-principales div[onclick] .flex-shrink-0 svg, /* Se usa div[onclick] para tramites */
+#capacitacion a.group .bg-white\/20 svg {
   transition: filter 0.25s ease-in-out;
   filter: brightness(1); /* Estado normal */
 }
 
-/* Hover para iconos verdes (original text-green-300) */
+/* Hover para iconos verdes */
 #componentes-seguridad a:hover .text-green-300,
-#tramites-principales a:hover .text-green-300, /* Añadido */
-#capacitacion a.group:hover .text-white { /* Adaptado para #capacitacion (color base blanco) */
+#tramites-principales div[onclick]:hover .text-green-300,
+#capacitacion a.group:hover .bg-white\/20 svg { /* En #capacitacion, el color base es blanco */
   filter: brightness(1.6) drop-shadow(0 0 6px #4ADE80); /* Más brillante + glow verde */
 }
 
-/* Hover para iconos azules (original text-blue-300) */
+/* Hover para iconos azules */
 #componentes-seguridad a:hover .text-blue-300,
-#tramites-principales a:hover .text-blue-300, /* Añadido */
-#capacitacion a.group:hover .text-blue-300 { /* Añadido (si hubiera azules) */
+#tramites-principales div[onclick]:hover .text-blue-300,
+#capacitacion a.group:hover .text-blue-300 { /* Si hubiera azules en capacitacion */
   filter: brightness(1.7) drop-shadow(0 0 6px #60A5FA); /* Más brillante + glow azul */
 }
 
-/* Hover para iconos amarillos (original text-yellow-300) */
+/* Hover para iconos amarillos */
 #componentes-seguridad a:hover .text-yellow-300,
-#tramites-principales a:hover .text-yellow-300, /* Añadido */
-#capacitacion a.group:hover .text-yellow-300 { /* Añadido (si hubiera amarillos) */
+#tramites-principales div[onclick]:hover .text-yellow-300,
+#capacitacion a.group:hover .text-yellow-300 { /* Si hubiera amarillos en capacitacion */
   filter: brightness(1.6) drop-shadow(0 0 7px #FACC15); /* Más brillante + glow amarillo */
 }
 
-/* Hover específico para #capacitacion donde el icono es text-white */
+/* Hover específico para #capacitacion donde el icono es text-white (ya cubierto arriba con el verde)*/
+/* Si necesitas un glow blanco específico, descomenta la siguiente regla: */
+/*
 #capacitacion a.group:hover .text-white {
-  /* Aplicamos un glow blanco o ligeramente coloreado si prefieres */
-  /* filter: brightness(1.8) drop-shadow(0 0 7px rgba(255, 255, 255, 0.8)); */
-  /* O usar el color del hover del fondo (verde en este caso) */
-   filter: brightness(1.6) drop-shadow(0 0 6px #4ADE80);
+   filter: brightness(1.8) drop-shadow(0 0 7px rgba(255, 255, 255, 0.8));
 }
+*/
+
