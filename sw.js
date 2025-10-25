@@ -23,6 +23,7 @@ const urlsToCache = [
   './assets/images/foto (1).webp',
   './assets/images/foto (2).webp',
   './assets/images/foto (3).webp',
+  './assets/images/foto (3a).webp',
   './assets/images/foto (4).webp',
   './assets/images/foto (5).webp',
   './assets/images/foto (6).webp',
