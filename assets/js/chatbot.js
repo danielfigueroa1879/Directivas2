@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Variables de voz globales
     let selectedVoiceId = ELEVENLABS_VOICES.Alejandro; // Voz predeterminada: Alejandro
     let selectedVoiceName = 'Alejandro';
-    let elevenLabsApiKey = null; // API key deshabilitada - usar solo navegador
+    let elevenLabsApiKey = "AIzaSyB-K7XZDxhh6kIFKteLyuaIGyPBLefLr7s";
     let isAutoReadEnabled = true;
     let isListening = false;
     let recognition;
