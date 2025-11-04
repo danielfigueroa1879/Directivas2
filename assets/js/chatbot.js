@@ -845,9 +845,16 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Warning! Rules could not be loaded from 'rules/chatbot-rules.js'. The bot will operate in 'AI-only' mode.");
     }
 
-    // El bot siempre dará la bienvenida con información de voz moderna.
+    // El bot siempre dará la bienvenida con información de voz moderna (PERO SIN VOZ).
     setTimeout(() => {
-        const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-        addMessage('bot', 'Hola! Soy **Mauricio** tu asistente virtual de OS10 Coquimbo. Dime en qué puedo ayudarte?', welcomeButtons);
+    const originalAutoReadState = isAutoReadEnabled; // Guarda el estado actual (ej. true)
+    isAutoReadEnabled = false; // Desactiva la voz temporalmente
+
+    // Agrega el mensaje de bienvenida (sin voz)
+    const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
+    addMessage('bot', 'Hola! Soy **Daniel** tu asistente virtual de OS10 Coquimbo. En qué puedo ayudarte hoy?', welcomeButtons);
+
+    // Restaura la configuración original para los siguientes mensajes
+    isAutoReadEnabled = originalAutoReadState; 
     }, 1000);
-});
+    });
