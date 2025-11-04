@@ -848,6 +848,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // El bot siempre dará la bienvenida con información de voz moderna.
     setTimeout(() => {
         const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-        addMessage('bot', '', welcomeButtons);
+        addMessage('bot', 'Hola! Soy **Mauricio** tu asistente virtual de OS10 Coquimbo. Dime en qué puedo ayudarte?', welcomeButtons);
     }, 1000);
 });
