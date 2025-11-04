@@ -1,5 +1,5 @@
 // sw.js - Service Worker
-const CACHE_NAME = 'directivas-os10-cache-v1.8'; // Versión incrementada para forzar la actualización
+const CACHE_NAME = 'directivas-os10-cache-v1.9'; // Versión incrementada para forzar la actualización
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
