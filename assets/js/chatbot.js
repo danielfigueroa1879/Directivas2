@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Variables de voz globales
-    let selectedVoiceId = ELEVENLABS_VOICES['Alejandro']; // Voz predeterminada: Tu voz
+    let selectedVoiceId = ELEVENLABS_VOICES['Voz Personalizada']; // Voz predeterminada: Tu voz
     let selectedVoiceName = 'Voz Personalizada';
     
     // Clave API de ElevenLabs (¡Clave correcta!)
