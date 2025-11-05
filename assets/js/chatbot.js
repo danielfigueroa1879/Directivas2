@@ -644,7 +644,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // FUNCIÓN CORREGIDA PARA MOSTRAR NEGRITAS
-    function addMessage(sender, text, buttons = []) {
+    // ----- MODIFICACIÓN 1: Añadir 'speakMessage = true' -----
+    function addMessage(sender, text, buttons = [], speakMessage = true) {
         const chatMessages = document.getElementById('chat-messages');
         const messageDiv = document.createElement('div');
         
@@ -683,7 +684,8 @@ document.addEventListener('DOMContentLoaded', function() {
             content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
             
             // QUINTO: TTS por separado (usando texto ORIGINAL sin procesar)
-            if (isAutoReadEnabled) {
+            // ----- MODIFICACIÓN 2: Añadir '&& speakMessage' -----
+            if (isAutoReadEnabled && speakMessage) {
                 // Limpiar SOLO para síntesis de voz (no afecta el HTML ya creado)
                 const textForTTS = text
                     .replace(/\*\*(.*?)\*\*/g, '$1')          // Quitar asteriscos para TTS
@@ -957,7 +959,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Agrega el mensaje de bienvenida (con voz, si isAutoReadEnabled = true)
         const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-        addMessage('bot', randomWelcomeMessage, welcomeButtons);
+        
+        // ----- MODIFICACIÓN 3: Pasa 'false' para silenciar este mensaje -----
+        addMessage('bot', randomWelcomeMessage, welcomeButtons, false); 
 
     }, 1000);
 });
