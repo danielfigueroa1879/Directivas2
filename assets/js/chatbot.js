@@ -21,9 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedVoiceId = ELEVENLABS_VOICES['Voz Personalizada']; // Voz predeterminada: Tu voz
     let selectedVoiceName = 'Voz Personalizada';
     
-    // !!! ADVERTENCIA: ESTA CLAVE 'sk_...' PARECE INCORRECTA para ElevenLabs. !!!
-    // !!! Debe ser tu clave de 32 caracteres de ElevenLabs para que la voz de paga funcione. !!!
-    let elevenLabsApiKey = "sk_1b80fca9e199e8985befc0a89a387eb5777b055f866b9cbf"; 
+    // Clave API de ElevenLabs (¡Clave correcta!)
+    let elevenLabsApiKey = "eb62a63b06f1d5c221a01fd2ea90794c7647ae5f032a043a1378caef5a328662"; 
     
     let isAutoReadEnabled = true;
     let isListening = false;
