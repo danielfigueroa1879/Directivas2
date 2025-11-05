@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // IDs de Voces de ElevenLabs (CALIDAD PREMIUM)
     const ELEVENLABS_VOICES = {
-        'Voz Personalizada': 'snqW63vshkdHVHeYDTnJ', // <-- ¡TU VOZ AGREGADA!
+        'Voz Personalizada': 'C1bXqZJA3hjyNeTdcjMW', // <-- ¡TU VOZ AGREGADA!
         'Alejandro': 'nPczCjzI2devNBz1zQrb', // Voz latina masculina
         'Diego': 'g5CIjZEefAph4nQFvHAz',    // Voz española masculina profesional
         'Antoni': 'ErXwobaYiN019PkySvjV',   // Voz joven y energética
