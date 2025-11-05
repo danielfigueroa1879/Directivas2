@@ -797,7 +797,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (indicator) indicator.remove();
     }
 
-Verify that the `App` class is generated and exported correctly, and that `ChangeDetectionStrategy.OnPush` is set in the `@Component` decorator.
+    // --- El texto erróneo que estaba aquí fue eliminado ---
+
     function startVoiceInput() {
         if (!recognition) return;
         const voiceBtn = document.getElementById('voice-btn');
