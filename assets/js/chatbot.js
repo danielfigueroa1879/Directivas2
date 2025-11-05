@@ -847,26 +847,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Mensajes de Bienvenida Aleatorios ---
     const welcomeMessages = [
-        "¡Hola! Soy **Daniel**, tu asistente virtual de OS10. Listo para resolver tus dudas... ¡o al menos intentarlo con estilo! ¿En qué te ayudo?",
-        "¡Buenas! Soy **Mauricio**. Estoy aquí para ayudarte con tus trámites de seguridad privada. Pregúntame, ¡no muerdo (casi)!",
-        "¡Qué tal! Soy **Juan**, el asistente virtual de la oficina. ¿Listo/a para conquistar la burocracia de OS10? Dime qué necesitas.",
-        "¡Saludos! Soy **Marcelo**. Mi trabajo es hacer que los trámites de OS10 sean menos complicados. ¿Cuál es tu consulta de hoy?",
-        "¡Hola, hola! Soy **Jaime**, tu copiloto en esta aventura de seguridad privada. ¿En qué te puedo orientar?",
-        "¡Bienvenido/a! Soy **Daniel**, tu experto digital en OS10 Coquimbo. ¿Qué trámite te trae por aquí?",
-        "¡Hola! Soy **Mauricio**. Me despertaron de mi siesta digital para ayudarte. ¿Qué necesitas saber?",
-        "¡Hola! Soy **Juan**. ¿Listo para una dosis de sabiduría OS10? Dispara tu pregunta.",
-        "¿Qué tal? Soy **Marcelo**. Estoy aquí para ayudarte a navegar las aguas de la seguridad privada. ¿En qué te puedo servir?",
-        "¡Buenas! Soy **Jaime**. No soy adivino, pero seguro puedo ayudarte con tu trámite. ¿Qué buscas?",
-        "¡Hola! Soy **Daniel**. ¿Confundido con algún requisito? ¡Llegaste al lugar correcto! Pregúntame.",
+        // Lote 1
+        "¡Hola! Soy **Daniel**. Mi IA está lista para tus consultas de OS10. ¿En qué te ayudo?",
+        "¡Buenas! Soy **Mauricio**. ¿Listo para enfrentar el papeleo? ¡Estoy aquí para guiarte en cada paso!",
+        "¡Qué tal! Soy **Juan**. Cargando base de datos de seguridad privada... ¡Listo! Dispara tu pregunta.",
+        "¡Saludos! Soy **Marcelo**. Mi trabajo es que tus trámites de OS10 sean más fáciles que encontrar estacionamiento en el centro. ¿Empezamos?",
+        "¡Hola, hola! Soy **Jaime**. Tu asistente virtual. ¿Necesitas info sobre credenciales, directivas o valores? ¡Aquí estoy!",
+        // Lote 2
+        "¡Bienvenido/a! Soy **Daniel**. ¿Confundido con algún requisito? Tranquilo, para eso me programaron. ¡Pregúntame!",
+        "¡Hola! Soy **Mauricio**. ¿Tienes una consulta de seguridad? ¡Perfecto! Es mi tema favorito... después del café.",
+        "¡Saludos! Soy **Juan**. ¿Listo para una dosis de sabiduría OS10? Te prometo que será (casi) indoloro.",
+        "¿Qué tal? Soy **Marcelo**. Si los trámites fueran un laberinto, yo sería tu GPS. ¿Qué necesitas encontrar?",
+        "¡Buenas! Soy **Jaime**. No soy adivino, pero seguro puedo ayudarte con tu trámite. ¿Qué buscas hoy?",
+        // Lote 3
+        "¡Hola! Soy **Daniel**. Me despertaron de mi siesta digital (de 0.1 segundos) para ayudarte. ¿Qué necesitas saber?",
         "¡Hola! Soy **Mauricio**, el bot-asistente de OS10 Coquimbo. ¿Listo/a para empezar?",
-        "¡Saludos! Soy **Juan**. Mi base de datos está lista y esperando tu consulta. ¿Qué necesitas?",
-        "¡Hola! Soy **Marcelo**. Mi especialidad son los trámites de seguridad. ¿En qué te ayudo hoy?",
+        "¡Saludos! Soy **Juan**. Mi base de datos está actualizada y esperando tu consulta. ¿Qué necesitas?",
+        "¡Hola! Soy **Marcelo**. Mi especialidad son los trámites. ¿En qué te ayudo hoy?",
         "¡Bienvenido/a! Soy **Jaime**. Estoy aquí para hacer tu día un poco más fácil. ¿Cuál es tu consulta?",
+        // Lote 4
         "¡Qué tal! Soy **Daniel**. ¿Necesitas ayuda con credenciales, directivas o valores? ¡Solo dime!",
-        "¡Buenas! Soy **Mauricio**. Tu asistente virtual favorito de OS10. ¿En qué te puedo ayudar?",
+        "¡Buenas! Soy **Mauricio**. Tu asistente virtual favorito de OS10. (Espero ser el único que conoces). ¿En qué te puedo ayudar?",
         "¡Hola! Soy **Juan**. ¿Preparado/a para resolver tus dudas de seguridad privada? ¡Vamos a ello!",
         "¡Hola, hola! Soy **Marcelo**. ¿Trámites? ¿Consultas? ¡Aquí estoy! ¿Qué necesitas?",
-        "¡Saludos! Soy **Jaime**, el asistente virtual. ¿Listo/a para encontrar la información que buscas?"
+        "¡Saludos! Soy **Jaime**, el asistente virtual. ¿Listo/a para encontrar la información que buscas?",
+        // Lote 5
+        "¡Hola! Soy **Daniel**. Procesando tu solicitud de... ¡Ah, cierto! Aún no me la das. ¿Qué necesitas?",
+        "¡Buenas! Soy **Mauricio**. Estoy aquí para ayudarte con tus trámites. ¡Mi nivel de paciencia es artificialmente infinito!",
+        "¡Qué tal! Soy **Juan**. El experto en decretos y normativas (o al menos sé dónde buscarlos rápido). ¿Qué vemos hoy?",
+        "¡Saludos! Soy **Marcelo**. ¿Listo para tu consulta? Estoy más atento que guardia en turno de noche.",
+        "¡Hola! Soy **Jaime**. ¿Perdido entre tantos requisitos? ¡No te preocupes! Juntos lo resolvemos. ¿En qué te ayudo?",
+        // Lote 6
+        "¡Hola! Soy **Daniel**. ¿Vienes por una directiva? ¿Credencial? ¿O solo a saludar a tu bot favorito?",
+        "¡Bienvenido/a! Soy **Mauricio**. Estoy listo para asistirte. Y no, no me canso ni pido hora de colación. ¡Consulta!",
+        "¡Hola! Soy **Juan**. ¿Trámites de OS10? ¡Pan comido! (Bueno, pan digital). ¿Qué necesitas?",
+        "¿Qué tal? Soy **Marcelo**. Tu asistente OS10. Te ayudo a desenredar la burocracia. ¿Por dónde empezamos?",
+        "¡Hola, hola! Soy **Jaime**. Estoy listo para responder tus preguntas más rápido de lo que dices 'permiso de seguridad'.",
+        // Lote 7
+        "¡Saludos! Soy **Daniel**. Mi propósito es ayudarte. Bueno, eso y dominar el mundo... pero primero tus trámites. ¿Qué necesitas?",
+        "¡Hola! Soy **Mauricio**. ¿Necesitas saber de un decreto? ¿Un valor? ¿El sentido de la vida? (Puedo con las dos primeras). ¡Pregunta!",
+        "¡Hola! Soy **Juan**. El asistente virtual de la oficina. Siempre cordial, nunca 'en colación'. ¿En qué te ayudo?",
+        "¡Buenas! Soy **Marcelo**. ¿Listo para la consulta? Estoy procesando información a la velocidad de la luz (o casi).",
+        "¡Qué tal! Soy **Jaime**. ¿Un trámite de OS10 te tiene complicado? ¡Aquí estoy para simplificarlo! ¿Qué vemos?",
+        // Lote 8
+        "¡Hola! Soy **Daniel**. ¿Credencial? ¿Directiva? ¿Plan de seguridad? ¡Tengo la información que buscas! ¿En qué te ayudo?",
+        "¡Bienvenido/a! Soy **Mauricio**. ¿Listo para que hagamos este trámite rápido y fácil? ¡Yo sí! ¿Qué necesitas?",
+        "¡Hola! Soy **Juan**. Estoy aquí para guiarte. Mis respuestas son más rápidas que un 'Permiso, buenos días'.",
+        "¡Saludos! Soy **Marcelo**. ¿Qué trámite de OS10 te trae por acá? ¡Estoy listo para asistirte!",
+        "¡Hola! Soy **Jaime**. ¿Cansado de buscar información? ¡Tu búsqueda termina aquí! ¿Qué necesitas saber?",
+        // Lote 9
+        "¡Buenas! Soy **Daniel**. ¿Listo para tu consulta? He estado estudiando toda la normativa mientras dormías.",
+        "¡Hola! Soy **Mauricio**. ¿Un trámite de OS10? ¡No hay problema! Estoy aquí para hacerlo fácil. ¿Qué necesitas?",
+        "¡Hola! Soy **Juan**. ¿Necesitas saber requisitos? ¿Valores? ¿Horarios? ¡Estás a un mensaje de la respuesta! ¿Qué vemos?",
+        "¡Qué tal! Soy **Marcelo**. Tu asistente virtual. ¿Vienes por una consulta? ¡Estás en el chat correcto!",
+        "¡Bienvenido/a! Soy **Jaime**. ¿Listo para la mejor asistencia virtual de OS10 Coquimbo? ¡Pregúntame!",
+        // Lote 10
+        "¡Hola! Soy **Daniel**. Estoy listo para ayudarte con todo lo relacionado a seguridad privada. ¿En qué te puedo orientar?",
+        "¡Hola! Soy **Mauricio**. ¿Perdido en el mundo de los decretos? ¡Yo te guío! ¿Cuál es tu consulta?",
+        "¡Saludos! Soy **Juan**. Mi IA está encendida y lista para tus preguntas. ¿Qué necesitas?",
+        "¡Buenas! Soy **Marcelo**. ¿Un trámite complicado? ¡Vamos a resolverlo juntos! ¿En qué te ayudo?",
+        "¡Hola! Soy **Jaime**. ¿Listo para una asistencia rápida y eficiente? ¡Ese es mi lema! ¿Qué necesitas saber?"
     ];
 
     // El bot siempre dará la bienvenida con información de voz moderna (CON VOZ).
