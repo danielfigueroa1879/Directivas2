@@ -666,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .replace(/\\/g, '')                       // Eliminar el backslash "\"
                     .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
                     .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
-                    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
+                    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{0AFE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
                     .replace(/\s+/g, ' ')
                     .trim();
                     
@@ -845,10 +845,41 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Warning! Rules could not be loaded from 'rules/chatbot-rules.js'. The bot will operate in 'AI-only' mode.");
     }
 
-    // El bot siempre dará la bienvenida con información de voz moderna (PERO SIN VOZ).
-    // El bot siempre dará la bienvenida con información de voz moderna.
-setTimeout(() => {
-    const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-    addMessage('bot', 'Hola! Soy **Daniel** tu asistente virtual de OS10 Coquimbo. Digame en que lo puedo asistir', welcomeButtons);
-}, 1000);
+    // --- Mensajes de Bienvenida Aleatorios ---
+    const welcomeMessages = [
+        "¡Hola! Soy **Daniel**, tu asistente virtual de OS10. Listo para resolver tus dudas... ¡o al menos intentarlo con estilo! ¿En qué te ayudo?",
+        "¡Buenas! Soy **Mauricio**. Estoy aquí para ayudarte con tus trámites de seguridad privada. Pregúntame, ¡no muerdo (casi)!",
+        "¡Qué tal! Soy **Juan**, el asistente virtual de la oficina. ¿Listo/a para conquistar la burocracia de OS10? Dime qué necesitas.",
+        "¡Saludos! Soy **Marcelo**. Mi trabajo es hacer que los trámites de OS10 sean menos complicados. ¿Cuál es tu consulta de hoy?",
+        "¡Hola, hola! Soy **Jaime**, tu copiloto en esta aventura de seguridad privada. ¿En qué te puedo orientar?",
+        "¡Bienvenido/a! Soy **Daniel**, tu experto digital en OS10 Coquimbo. ¿Qué trámite te trae por aquí?",
+        "¡Hola! Soy **Mauricio**. Me despertaron de mi siesta digital para ayudarte. ¿Qué necesitas saber?",
+        "¡Hola! Soy **Juan**. ¿Listo para una dosis de sabiduría OS10? Dispara tu pregunta.",
+        "¿Qué tal? Soy **Marcelo**. Estoy aquí para ayudarte a navegar las aguas de la seguridad privada. ¿En qué te puedo servir?",
+        "¡Buenas! Soy **Jaime**. No soy adivino, pero seguro puedo ayudarte con tu trámite. ¿Qué buscas?",
+        "¡Hola! Soy **Daniel**. ¿Confundido con algún requisito? ¡Llegaste al lugar correcto! Pregúntame.",
+        "¡Hola! Soy **Mauricio**, el bot-asistente de OS10 Coquimbo. ¿Listo/a para empezar?",
+        "¡Saludos! Soy **Juan**. Mi base de datos está lista y esperando tu consulta. ¿Qué necesitas?",
+        "¡Hola! Soy **Marcelo**. Mi especialidad son los trámites de seguridad. ¿En qué te ayudo hoy?",
+        "¡Bienvenido/a! Soy **Jaime**. Estoy aquí para hacer tu día un poco más fácil. ¿Cuál es tu consulta?",
+        "¡Qué tal! Soy **Daniel**. ¿Necesitas ayuda con credenciales, directivas o valores? ¡Solo dime!",
+        "¡Buenas! Soy **Mauricio**. Tu asistente virtual favorito de OS10. ¿En qué te puedo ayudar?",
+        "¡Hola! Soy **Juan**. ¿Preparado/a para resolver tus dudas de seguridad privada? ¡Vamos a ello!",
+        "¡Hola, hola! Soy **Marcelo**. ¿Trámites? ¿Consultas? ¡Aquí estoy! ¿Qué necesitas?",
+        "¡Saludos! Soy **Jaime**, el asistente virtual. ¿Listo/a para encontrar la información que buscas?"
+    ];
+
+    // El bot siempre dará la bienvenida con información de voz moderna (CON VOZ).
+    setTimeout(() => {
+        // Selecciona un mensaje aleatorio
+        const randomIndex = Math.floor(Math.random() * welcomeMessages.length);
+        const randomWelcomeMessage = welcomeMessages[randomIndex];
+
+        // Agrega el mensaje de bienvenida (con voz, si isAutoReadEnabled = true)
+        const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
+        addMessage('bot', randomWelcomeMessage, welcomeButtons);
+
+    }, 1000);
 });
+
+
