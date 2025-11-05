@@ -5,21 +5,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.documentElement.classList.remove('dark');
     localStorage.setItem('theme', 'light');
     
-    // ===== CONFIGURACIÓN DE VOCES MODERNAS =====
+    // ===== CONFIGURACIÓN DE VOCES MODERNAS (ElevenLabs) =====
     
     // IDs de Voces de ElevenLabs (CALIDAD PREMIUM)
     const ELEVENLABS_VOICES = {
+        'Voz Personalizada': 'snqW63vshkdHVHeYDTnJ', // <-- ¡TU VOZ AGREGADA!
+        'Alejandro': 'nPczCjzI2devNBz1zQrb', // Voz latina masculina
         'Diego': 'g5CIjZEefAph4nQFvHAz',    // Voz española masculina profesional
         'Antoni': 'ErXwobaYiN019PkySvjV',   // Voz joven y energética
         'Josh': 'TxGEqnHWrfWFTfGW9XjX',     // Voz madura y confiable
-        'Adam': 'pNInz6obpgDQGcFmaJgB',     // Voz profunda narrativa
-        'Alejandro': 'nPczCjzI2devNBz1zQrb' // Voz latina masculina
+        'Adam': 'pNInz6obpgDQGcFmaJgB'      // Voz profunda narrativa
     };
     
     // Variables de voz globales
-    let selectedVoiceId = ELEVENLABS_VOICES.Alejandro; // Voz predeterminada: Alejandro
-    let selectedVoiceName = 'Alejandro';
-    let elevenLabsApiKey = "sk_1b80fca9e199e8985befc0a89a387eb5777b055f866b9cbf";
+    let selectedVoiceId = ELEVENLABS_VOICES['Voz Personalizada']; // Voz predeterminada: Tu voz
+    let selectedVoiceName = 'Voz Personalizada';
+    
+    // !!! ADVERTENCIA: ESTA CLAVE 'sk_...' PARECE INCORRECTA para ElevenLabs. !!!
+    // !!! Debe ser tu clave de 32 caracteres de ElevenLabs para que la voz de paga funcione. !!!
+    let elevenLabsApiKey = "sk_1b80fca9e199e8985befc0a89a387eb5777b055f866b9cbf"; 
+    
     let isAutoReadEnabled = true;
     let isListening = false;
     let recognition;
@@ -330,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
         speechSynth.speak(utterance);
     }
 
-    // TTS de ElevenLabs mejorado con mejor manejo de errores
+    // ===== FUNCIÓN RESTAURADA PARA ELEVENLABS =====
     async function speakWithElevenLabs(text) {
         if (!elevenLabsApiKey) {
             console.warn('ElevenLabs API key no configurada');
@@ -347,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     text: text,
-                    model_id: 'eleven_multilingual_v2',
+                    model_id: 'eleven_multilingual_v2', // Modelo para español
                     voice_settings: {
                         stability: 0.75,
                         similarity_boost: 0.9,
@@ -370,6 +375,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error('Cuota excedida');
                 }
                 
+                const errorData = await response.json();
+                console.error('ElevenLabs API error:', errorData);
                 throw new Error(`ElevenLabs API error: ${response.status}`);
             }
 
@@ -392,6 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+
     // Función principal de TTS con fallback inteligente
     async function speakText(text) {
         if (!text || !text.trim()) return;
@@ -409,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Intentar ElevenLabs solo si la API key está disponible
             if (elevenLabsApiKey) {
-                await speakWithElevenLabs(cleanText);
+                await speakWithElevenLabs(cleanText); // <-- VUELTO A ELEVENLABS
                 // Resetear flag de fallback si ElevenLabs funciona
                 if (fallbackMessageShown) {
                     fallbackMessageShown = false;
@@ -417,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
         } catch (error) {
-            console.warn('ElevenLabs no disponible, usando voz del navegador:', error.message);
+            console.warn('Fish.audio no disponible, usando voz del navegador:', error.message);
             
             // Mostrar mensaje de cambio solo una vez por sesión
             if (!fallbackMessageShown) {
@@ -472,16 +480,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Función para cambiar la voz de ElevenLabs
-    function changeVoice(voiceName) {
-        if (ELEVENLABS_VOICES[voiceName]) {
-            selectedVoiceId = ELEVENLABS_VOICES[voiceName];
-            selectedVoiceName = voiceName;
-            console.log(`Voz de ElevenLabs cambiada a: ${voiceName}`);
+    // Función para cambiar la voz de ElevenLabs (Restaurada)
+    function changeVoice(voiceID) {
+        if (voiceID && Object.values(ELEVENLABS_VOICES).includes(voiceID)) {
+            selectedVoiceId = voiceID;
+            selectedVoiceName = Object.keys(ELEVENLABS_VOICES).find(key => ELEVENLABS_VOICES[key] === voiceID) || 'Voz seleccionada';
             
-            // Probar la nueva voz solo si ElevenLabs está disponible
+            console.log(`Voz de ElevenLabs cambiada a: ${selectedVoiceName} (ID: ${selectedVoiceId})`);
+            
             if (elevenLabsApiKey) {
-                const testText = `Hola, soy ${voiceName}, tu asistente de voz de OS10.`;
+                const testText = `Hola, soy ${selectedVoiceName}, tu asistente de voz de OS10.`;
                 speakText(testText);
             } else {
                 console.log('ElevenLabs no disponible, usando voz del navegador');
@@ -490,6 +498,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
 
     // Función de inicialización del sistema de voces
     async function initializeVoiceSystem() {
@@ -501,6 +510,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Cargar voces del navegador
         await loadVoices();
         
+        // --- NUEVO: Poblar el selector de voces ---
+        populateVoiceSelector();
+        // --- FIN NUEVO ---
+
         // Configurar listener para cambios de voces
         if (speechSynth.onvoiceschanged !== undefined) {
             speechSynth.onvoiceschanged = () => {
@@ -522,6 +535,28 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(deviceMessages[deviceType] || deviceMessages.desktop);
         }, 1500);
     }
+
+    // --- NUEVA FUNCIÓN ---
+    // Puebla dinámicamente el <select> con las voces de ELEVENLABS_VOICES
+    function populateVoiceSelector() {
+        const voiceSelectorElement = document.getElementById('voiceSelector');
+        if (!voiceSelectorElement) return;
+
+        voiceSelectorElement.innerHTML = ''; // Limpiar opciones existentes
+
+        for (const name in ELEVENLABS_VOICES) {
+            const voiceID = ELEVENLABS_VOICES[name];
+            const option = document.createElement('option');
+            option.value = voiceID;
+            option.textContent = name;
+            
+            if (voiceID === selectedVoiceId) {
+                option.selected = true; // Marcar la voz predeterminada (Voz Personalizada)
+            }
+            voiceSelectorElement.appendChild(option);
+        }
+    }
+    // --- FIN NUEVA FUNCIÓN ---
 
     if (SpeechRecognition) {
         recognition = new SpeechRecognition();
@@ -666,7 +701,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .replace(/\\/g, '')                       // Eliminar el backslash "\"
                     .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
                     .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
-                    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{0AFE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
+                    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
                     .replace(/\s+/g, ' ')
                     .trim();
                     
@@ -763,6 +798,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (indicator) indicator.remove();
     }
 
+Verify that the `App` class is generated and exported correctly, and that `ChangeDetectionStrategy.OnPush` is set in the `@Component` decorator.
     function startVoiceInput() {
         if (!recognition) return;
         const voiceBtn = document.getElementById('voice-btn');
@@ -813,10 +849,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sendButton) sendButton.addEventListener('click', handleMessage);
     if (userInput) userInput.addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
     
-    // Evento para cambiar el selector de voz
-    document.getElementById('voiceSelector').addEventListener('change', (e) => {
-        changeVoice(e.target.value);
-    });
+    // Evento para cambiar el selector de voz (Restaurado y Activado)
+    const voiceSelectorElement = document.getElementById('voiceSelector');
+    if (voiceSelectorElement) {
+        voiceSelectorElement.style.display = 'block'; // Asegurarse que el selector esté visible
+        voiceSelectorElement.addEventListener('change', (e) => {
+            changeVoice(e.target.value);
+        });
+    }
     
     const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
     const speakerOnIcon = document.getElementById('speaker-on-icon');
