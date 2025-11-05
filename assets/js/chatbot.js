@@ -5,21 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     document.documentElement.classList.remove('dark');
     localStorage.setItem('theme', 'light');
     
-    // ===== CONFIGURACIÓN DE VOCES MODERNAS =====
-    
-    // IDs de Voces de ElevenLabs (CALIDAD PREMIUM)
-    const ELEVENLABS_VOICES = {
-        'Diego': 'g5CIjZEefAph4nQFvHAz',    // Voz española masculina profesional
-        'Antoni': 'ErXwobaYiN019PkySvjV',   // Voz joven y energética
-        'Josh': 'TxGEqnHWrfWFTfGW9XjX',     // Voz madura y confiable
-        'Adam': 'pNInz6obpgDQGcFmaJgB',     // Voz profunda narrativa
-        'Alejandro': 'nPczCjzI2devNBz1zQrb' // Voz latina masculina
+    // ===== CONFIGURACIÓN DE VOZ (Fish.audio) =====
+    // IDs de Voces de Fish.audio (¡Puedes encontrar más en su web!)
+    const FISH_AUDIO_VOICES = {
+        'Pablo (Español)': 'fi-pablo', 
+        'Sofia (Español)': 'fi-sofia'
+        // Puedes encontrar más IDs de voz en fish.audio y agregarlos aquí
     };
     
     // Variables de voz globales
-    let selectedVoiceId = ELEVENLABS_VOICES.Alejandro; // Voz predeterminada: Alejandro
-    let selectedVoiceName = 'Alejandro';
-    let elevenLabsApiKey = "sk_1b80fca9e199e8985befc0a89a387eb5777b055f866b9cbf";
+    let selectedVoiceId = FISH_AUDIO_VOICES['Pablo (Español)']; // Voz predeterminada: Pablo
+    let selectedVoiceName = 'Pablo (Español)';
+    // ¡TU NUEVA CLAVE DE FISH.AUDIO!
+    let fishAudioApiKey = "1e78fc2460904a1dafa67549318f2de7V"; 
     let isAutoReadEnabled = true;
     let isListening = false;
     let recognition;
@@ -330,67 +328,75 @@ document.addEventListener('DOMContentLoaded', function() {
         speechSynth.speak(utterance);
     }
 
-    // TTS de ElevenLabs mejorado con mejor manejo de errores
-    async function speakWithElevenLabs(text) {
-        if (!elevenLabsApiKey) {
-            console.warn('ElevenLabs API key no configurada');
-            throw new Error('No API key configured');
+    // ===== NUEVA FUNCIÓN PARA FISH.AUDIO =====
+    async function speakWithFishAudio(text) {
+        if (!fishAudioApiKey) {
+            console.warn('Fish.audio API key no configurada');
+            throw new Error('No API key configured for Fish.audio');
         }
 
         try {
-            const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${selectedVoiceId}`, {
+            // URL de la API de Fish.audio
+            const API_URL = 'https://api.fish.audio/v1/tts';
+            
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
-                    'Accept': 'audio/mpeg',
+                    'Accept': 'application/json', // Pide JSON para obtener la URL del audio
                     'Content-Type': 'application/json',
-                    'xi-api-key': elevenLabsApiKey
+                    'Authorization': `Bearer ${fishAudioApiKey}` // Autenticación Bearer
                 },
                 body: JSON.stringify({
                     text: text,
-                    model_id: 'eleven_multilingual_v2',
-                    voice_settings: {
-                        stability: 0.75,
-                        similarity_boost: 0.9,
-                        style: 0.6,
-                        use_speaker_boost: true
-                    }
+                    voice_id: selectedVoiceId,
+                    // model_id: 'fish-tts-v1' // (Opcional)
                 })
             });
 
             if (!response.ok) {
-                // Si la API key expiró o es inválida, deshabilitarla para esta sesión
                 if (response.status === 401 || response.status === 403) {
-                    console.error('ElevenLabs API key expirada o inválida, deshabilitando para esta sesión');
-                    elevenLabsApiKey = null; // Deshabilitar para esta sesión
-                    throw new Error('API key expirada');
+                    console.error('Fish.audio API key expirada o inválida, deshabilitando.');
+                    fishAudioApiKey = null; // Deshabilitar si es inválida
+                    throw new Error('Fish.audio API key expirada');
                 }
-                
                 if (response.status === 429) {
-                    console.error('ElevenLabs: límite de cuota excedido');
+                    console.error('Fish.audio: límite de cuota excedido');
                     throw new Error('Cuota excedida');
                 }
-                
-                throw new Error(`ElevenLabs API error: ${response.status}`);
+                const errorData = await response.json();
+                console.error('Fish.audio API error:', errorData);
+                throw new Error(`Fish.audio API error: ${response.status}`);
             }
 
-            const audioBlob = await response.blob();
-            const audioUrl = URL.createObjectURL(audioBlob);
+            const data = await response.json();
+
+            // fish.audio devuelve la URL del audio en 'audio_url'
+            if (!data || !data.audio_url) {
+                console.error('Respuesta de Fish.audio no contiene audio_url', data);
+                throw new Error('Respuesta de Fish.audio inválida');
+            }
+
+            const audioUrl = data.audio_url;
             const audio = new Audio(audioUrl);
             
-            // Configurar limpieza automática
-            const cleanup = () => URL.revokeObjectURL(audioUrl);
-            audio.onended = cleanup;
-            audio.onerror = cleanup;
+            // Usar una Promesa para esperar a que termine de reproducir
+            await new Promise((resolve, reject) => {
+                audio.onended = resolve;
+                audio.onerror = (e) => {
+                    console.error('Error al reproducir audio de Fish.audio', e);
+                    reject(new Error('Error al reproducir audio'));
+                };
+                audio.play();
+            });
             
-            // Reproducir audio
-            await audio.play();
-            console.log('ElevenLabs: reproducción exitosa');
+            console.log('Fish.audio: reproducción exitosa');
             
         } catch (error) {
-            console.warn('ElevenLabs falló:', error.message);
+            console.warn('Fish.audio falló:', error.message);
             throw error; // Re-lanzar para activar fallback
         }
     }
+
 
     // Función principal de TTS con fallback inteligente
     async function speakText(text) {
@@ -407,17 +413,17 @@ document.addEventListener('DOMContentLoaded', function() {
             .trim();
         
         try {
-            // Intentar ElevenLabs solo si la API key está disponible
-            if (elevenLabsApiKey) {
-                await speakWithElevenLabs(cleanText);
-                // Resetear flag de fallback si ElevenLabs funciona
+            // Intentar Fish.audio solo si la API key está disponible
+            if (fishAudioApiKey) {
+                await speakWithFishAudio(cleanText);
+                // Resetear flag de fallback si Fish.audio funciona
                 if (fallbackMessageShown) {
                     fallbackMessageShown = false;
                 }
                 return;
             }
         } catch (error) {
-            console.warn('ElevenLabs no disponible, usando voz del navegador:', error.message);
+            console.warn('Fish.audio no disponible, usando voz del navegador:', error.message);
             
             // Mostrar mensaje de cambio solo una vez por sesión
             if (!fallbackMessageShown) {
@@ -472,24 +478,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Función para cambiar la voz de ElevenLabs
+    // Función para cambiar la voz de Fish.audio (DESHABILITADA, pero lista si se actualiza el HTML)
     function changeVoice(voiceName) {
-        if (ELEVENLABS_VOICES[voiceName]) {
-            selectedVoiceId = ELEVENLABS_VOICES[voiceName];
-            selectedVoiceName = voiceName;
-            console.log(`Voz de ElevenLabs cambiada a: ${voiceName}`);
+        console.warn("El selector de voz está deshabilitado. La voz se configura al inicio.");
+        // Esta función está deshabilitada porque el <select> en index.html
+        // tiene nombres de ElevenLabs ("Diego", "Alejandro", etc.)
+        // y no los IDs de Fish.audio ("fi-pablo", etc.).
+        
+        // Si quisieras reactivarlo, deberías:
+        // 1. Modificar el <select> en index.html con los IDs de FISH_AUDIO_VOICES
+        // 2. Usar este código:
+        /*
+        if (voiceName) { // voiceName sería el ID 'fi-pablo'
+            selectedVoiceId = voiceName;
+            selectedVoiceName = Object.keys(FISH_AUDIO_VOICES).find(key => FISH_AUDIO_VOICES[key] === voiceName) || 'Voz seleccionada';
             
-            // Probar la nueva voz solo si ElevenLabs está disponible
-            if (elevenLabsApiKey) {
-                const testText = `Hola, soy ${voiceName}, tu asistente de voz de OS10.`;
+            console.log(`Voz de Fish.audio cambiada a: ${selectedVoiceName} (ID: ${selectedVoiceId})`);
+            
+            if (fishAudioApiKey) {
+                const testText = `Hola, soy ${selectedVoiceName}, tu asistente de voz de OS10.`;
                 speakText(testText);
             } else {
-                console.log('ElevenLabs no disponible, usando voz del navegador');
+                console.log('Fish.audio no disponible, usando voz del navegador');
                 const testText = `Voz cambiada. Usando configuración optimizada del navegador.`;
                 speakWithEnhancedBrowser(testText);
             }
         }
+        */
     }
+
 
     // Función de inicialización del sistema de voces
     async function initializeVoiceSystem() {
@@ -666,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .replace(/\\/g, '')                       // Eliminar el backslash "\"
                     .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
                     .replace(/\+?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,9}[-\s]?\d{1,9}/g, '')
-                    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{0AFE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
+                    .replace(/[\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{1F191}-\u{1F251}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F171}\u{1F17E}-\u{1F17F}\u{1F18E}\u{3030}\u{2B50}\u{2B55}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{3297}\u{3299}\u{303D}\u{00A9}\u{00AE}\u{2122}\u{23F3}\u{24C2}\u{23E9}-\u{23EF}\u{25AA}-\u{25AB}\u{23FA}\u{200D}\u{FE0F}]/ug, '')
                     .replace(/\s+/g, ' ')
                     .trim();
                     
@@ -813,10 +830,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sendButton) sendButton.addEventListener('click', handleMessage);
     if (userInput) userInput.addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
     
-    // Evento para cambiar el selector de voz
-    document.getElementById('voiceSelector').addEventListener('change', (e) => {
-        changeVoice(e.target.value);
-    });
+    // Evento para cambiar el selector de voz (Deshabilitado y oculto)
+    const voiceSelectorElement = document.getElementById('voiceSelector');
+    if (voiceSelectorElement) {
+        voiceSelectorElement.style.display = 'none'; // Ocultar el selector
+    }
+    // document.getElementById('voiceSelector').addEventListener('change', (e) => {
+    //     changeVoice(e.target.value);
+    // });
     
     const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
     const speakerOnIcon = document.getElementById('speaker-on-icon');
@@ -921,5 +942,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }, 1000);
 });
-
-
