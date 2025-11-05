@@ -928,7 +928,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "¡Hola como  estamos?! Soy **Mauricio**. ¿Necesitas saber de un decreto? ¿Un valor? ¿El sentido de la vida? (Puedo con las dos primeras). ¡Pregunta!",
         "¡Hola! Soy **Juan**. El asistente virtual de la oficina. Siempre cordial, nunca 'en colación'. ¿En qué te ayudo?",
         "¡Buenas! Soy **Marcelo**. ¿Listo para la consulta? Estoy procesando información a la velocidad de la luz (o casi).",
-        "¡Qué tal! Soy **Jaime**. ¿Un trámite de OS10 te tiene complicado? ¡Aquí estoy para simplificarlo! ¿Qué vemos?",
+        "¡Qué tal! Soy **Jaime**. ¿Un trámite de OS10 te tiene complicado? ¡Aquí estoy para simplificarlo  -  ¿digame su consulta?",
         // Lote 8
         "¡Hola! Soy **Daniel**. ¿Credencial? ¿Directiva? ¿Plan de seguridad? ¡Tengo la información que buscas! ¿En qué te ayudo?",
         "¡Bienvenido! Soy **Mauricio**. ¿Listo para que hagamos este trámite rápido y fácil? ¡Yo sí! ¿Qué necesitas?",
