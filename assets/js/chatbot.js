@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Variables de voz globales
     let selectedVoiceId = FISH_AUDIO_VOICES['Pablo (Español)']; // Voz predeterminada: Pablo
     let selectedVoiceName = 'Pablo (Español)';
-    // ¡TU NUEVA CLAVE DE FISH.AUDIO!
+    // ¡TU NUEVA CLAVE DE FISH.AUDIO! (Corregida sin la "V" al final)
     let fishAudioApiKey = "1e78fc2460904a1dafa67549318f2de7"; 
     let isAutoReadEnabled = true;
     let isListening = false;
