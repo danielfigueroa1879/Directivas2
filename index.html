@@ -553,12 +553,16 @@
 <!-- ========== SECCIÓN 1: LEYES Y NORMATIVA (FONDO BLANCO) ========== -->
 <section id="leyes-normativa" class="py-16 md:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Leyes y Normativa</h2>
-            <p class="mt-4 text-lg leading-8 text-gray-600">Marco legal y decretos que regulan la seguridad privada</p>
-        </div>
+       <button id="docs-toggle" class="w-full text-center mb-12 md:pointer-events-none group">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Documentos y Formularios</h2>
+            <p class="mt-4 text-lg leading-8 text-gray-600">Plantillas editables y modelos de solicitud</p>
+    
+            <svg id="docs-arrow" class="w-6 h-6 text-gray-600 transition-transform duration-200 md:hidden mx-auto mt-2 group-[.submenu-open]:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+       </button>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div id="docs-content" class="hidden md:grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             
             <!-- Columna Leyes -->
             <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue">
@@ -1344,7 +1348,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setupAccordion('leyes-toggle', 'leyes-content', 'leyes-arrow');
             setupAccordion('decretos-toggle', 'decretos-content', 'decretos-arrow');
             setupAccordion('resoluciones-toggle', 'resoluciones-content', 'resoluciones-arrow');
-            
+            setupAccordion('docs-toggle', 'docs-content', 'docs-arrow');
             // Similar para la sección de Documentos (si se quisiera)
             setupAccordion('docs-editables-toggle', 'docs-editables-content', 'docs-editables-arrow');
             setupAccordion('modelos-solicitud-toggle', 'modelos-solicitud-content', 'modelos-solicitud-arrow');
