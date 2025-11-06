@@ -136,6 +136,9 @@ body.homepage {
         right: 1rem;
         bottom: 3rem;
     }
+    .card-container {
+        width: 98%;
+    }
     #chat-toggle-button {
         width: 70px;
         height: 70px;
