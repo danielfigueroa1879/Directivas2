@@ -1297,6 +1297,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+<!-- SCRIPT PARA ACORDEÓN (AÑADIDO) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Función reutilizable para configurar cada sección colapsable
+            function setupAccordion(toggleId, contentId, arrowId) {
+                const toggleButton = document.getElementById(toggleId);
+                const contentElement = document.getElementById(contentId);
+                const arrowElement = document.getElementById(arrowId);
 
+                // Nos aseguramos que todos los elementos existan antes de agregar el evento
+                if (toggleButton && contentElement && arrowElement) {
+                    toggleButton.addEventListener('click', function() {
+                        // Muestra u oculta el contenido
+                        contentElement.classList.toggle('hidden');
+                        
+                        // Gira la flecha
+                        arrowElement.classList.toggle('rotate-90');
+                    });
+                }
+            }
+
+            // Configurar las tres secciones
+            setupAccordion('leyes-toggle', 'leyes-content', 'leyes-arrow');
+            setupAccordion('decretos-toggle', 'decretos-content', 'decretos-arrow');
+            setupAccordion('resoluciones-toggle', 'resoluciones-content', 'resoluciones-arrow');
+            
+            // Similar para la sección de Documentos (si se quisiera)
+            setupAccordion('docs-editables-toggle', 'docs-editables-content', 'docs-editables-arrow');
+            setupAccordion('modelos-solicitud-toggle', 'modelos-solicitud-content', 'modelos-solicitud-arrow');
+            setupAccordion('manuales-toggle', 'manuales-content', 'manuales-arrow');
+        });
+    </script>
 </body>
 </html>
