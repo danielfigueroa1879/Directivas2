@@ -563,7 +563,7 @@
             <!-- Columna Leyes -->
             <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue">
                 <!-- CABECERA DE BOTÓN -->
-                <button id="leyes-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left">
+                <button id="leyes-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
                     <span class="flex items-center">
                         <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -571,11 +571,11 @@
                         Leyes Principales
                     </span>
                     <!-- Icono de Flecha (Chevron) -->
-                    <svg id="leyes-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    <svg id="leyes-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
                 
-                <!-- CONTENIDO COLAPSABLE (añadido 'hidden') -->
-                <div id="leyes-content" class="space-y-2 hidden">
+                <!-- CONTENIDO COLAPSABLE (añadido 'hidden md:block') -->
+                <div id="leyes-content" class="space-y-2 hidden md:block">
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=242302" target="_blank" 
                        class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all text-sm border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
                         <span class="font-semibold text-blue-700">Constitución Política</span>
@@ -612,7 +612,7 @@
             <!-- Columna Decretos -->
             <div class="bg-green-200/30 border border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green">
                 <!-- CABECERA DE BOTÓN -->
-                <button id="decretos-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left">
+                <button id="decretos-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
                     <span class="flex items-center">
                         <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -620,11 +620,11 @@
                         Decretos Supremos
                     </span>
                     <!-- Icono de Flecha (Chevron) -->
-                    <svg id="decretos-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    <svg id="decretos-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
 
-                <!-- CONTENIDO COLAPSABLE (añadido 'hidden') -->
-                <div id="decretos-content" class="space-y-2 scroll-container hidden">
+                <!-- CONTENIDO COLAPSABLE (añadido 'hidden md:block') -->
+                <div id="decretos-content" class="space-y-2 scroll-container hidden md:block">
                     <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" 
                        class="block px-3 md:px-4 py-2 md:py-3 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all text-sm border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
                         <span class="font-semibold text-green-700">D.E. 261 (2020)</span>
@@ -683,7 +683,7 @@
             <!-- Columna Resoluciones -->
             <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow">
                 <!-- CABECERA DE BOTÓN -->
-                <button id="resoluciones-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left">
+                <button id="resoluciones-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
                     <span class="flex items-center">
                         <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
@@ -691,11 +691,11 @@
                         Resoluciones
                     </span>
                     <!-- Icono de Flecha (Chevron) -->
-                    <svg id="resoluciones-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    <svg id="resoluciones-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
 
-                <!-- CONTENIDO COLAPSABLE (añadido 'hidden') -->
-                <div id="resoluciones-content" class="space-y-2 md:space-y-3 scroll-container hidden" style="max-height: 400px;">
+                <!-- CONTENIDO COLAPSABLE (añadido 'hidden md:block') -->
+                <div id="resoluciones-content" class="space-y-2 md:space-y-3 scroll-container hidden md:block" style="max-height: 400px;">
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_111.pdf" target="_blank" 
                        class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all text-xs md:text-sm border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
                         <span class="font-semibold text-yellow-700">1. Res. Exenta N° 111 (18-06-2010)</span>
