@@ -811,127 +811,6 @@
         </div>
     </div>
 </section>
-
-<!-- NUEVA SECCIÓN: Documentos y Formularios -->
-<section id="documentos-formularios" class="py-16 md:py-24 bg-white relative overflow-hidden">
-    <!-- Icono decorativo de libro -->
-    <div class="absolute top-8 left-8 opacity-10 transition-all duration-500 pointer-events-none md:pointer-events-auto book-icon-wrapper">
-        <svg class="w-24 h-24 md:w-32 md:h-32 text-gray-600 book-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 18V6h14v12H7z"/>
-            <path d="M9 8h10v2H9zm0 4h10v2H9z"/>
-            <path d="M3 6v13a2 2 0 0 0 2 2h14v-2H5V6H3z"/>
-        </svg>
-    </div>
-    
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Documentos y Formularios</h2>
-            <p class="mt-4 text-lg leading-8 text-gray-600">Plantillas editables y modelos de solicitud</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <!-- Documentos Editables -->
-            <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue">
-                <button id="docs-editables-toggle" class="w-full text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
-                    <span class="flex items-center">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                        </svg>
-                        Documentos Editables
-                    </span>
-                    <svg id="docs-editables-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                </button>
-                
-                <div id="docs-editables-content" class="space-y-2 md:space-y-3 hidden md:block">
-                    <a href="https://dal5.short.gy/3st" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-blue-700">Estudio de Seguridad</span>
-                    </a>
-                    <a href="https://d6.short.gy/Pl4n" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-blue-700">Planes de Seguridad</span>
-                    </a>
-                    <a href="https://dal5.short.gy/M3" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-blue-700">Medidas de Seguridad</span>
-                    </a>
-                    <a href="https://dal5.short.gy/H23wIF" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-blue-700">Solicitud Simple</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Modelos de Solicitud -->
-            <div class="bg-green-200/30 border border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green">
-                <button id="modelos-solicitud-toggle" class="w-full text-base md:text-lg font-bold text-green-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
-                    <span class="flex items-center">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                        Modelos de Solicitud
-                    </span>
-                    <svg id="modelos-solicitud-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                </button>
-
-                <div id="modelos-solicitud-content" class="space-y-2 md:space-y-3 scroll-container hidden md:block" style="max-height: 250px;">
-                    <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada P. Natural</span>
-                    </a>
-                    <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada Empresas</span>
-                    </a>
-                    <a href="https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-green-700">Acreditación de Empresa</span>
-                    </a>
-                    <a href="https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-green-700">Acreditación Asesor</span>
-                    </a>
-                     <a href="https://www.zosepcar.cl/content/OS10/MOD_solicitud_pers_natural_dependiente.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-green-700">Solic. Pers. Natural Dep.</span>
-                    </a>
-                     <a href="https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-green-700">Acred. Capacitador</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Manuales -->
-            <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow">
-                <button id="manuales-toggle" class="w-full text-base md:text-lg font-bold text-yellow-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
-                    <span class="flex items-center">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                        Manuales
-                    </span>
-                    <svg id="manuales-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                </button>
-
-                <div id="manuales-content" class="space-y-2 md:space-y-3 hidden md:block">
-                    <a href="https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-yellow-700">Manual de Funcionamiento</span>
-                    </a>
-                    <a href="https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-yellow-700">Manual de Capacitación</span>
-                    </a>
-                    <a href="https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf" target="_blank" 
-                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="text-xs md:text-sm font-medium text-yellow-700">Manual de Organización</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- ========== SECCIÓN 2: COMPONENTES DEL SISTEMA (FONDO VERDE DEGRADADO) ========== -->
 <section id="componentes-seguridad" class="py-16 md:py-24 bg-[#146314] backdrop-blur-sm">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
@@ -1100,8 +979,17 @@
         </div>
     </div>
 </section>
-        <!-- NUEVA SECCIÓN: Documentos y Formularios -->
-<section id="documentos-formularios" class="py-16 md:py-24 bg-white">
+<!-- NUEVA SECCIÓN: Documentos y Formularios -->
+<section id="documentos-formularios" class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <!-- Icono decorativo de libro -->
+    <div class="absolute top-8 left-8 opacity-10 transition-all duration-500 pointer-events-none md:pointer-events-auto book-icon-wrapper">
+        <svg class="w-24 h-24 md:w-32 md:h-32 text-gray-600 book-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 18V6h14v12H7z"/>
+            <path d="M9 8h10v2H9zm0 4h10v2H9z"/>
+            <path d="M3 6v13a2 2 0 0 0 2 2h14v-2H5V6H3z"/>
+        </svg>
+    </div>
+    
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Documentos y Formularios</h2>
@@ -1111,7 +999,6 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <!-- Documentos Editables -->
             <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue">
-                <!-- CABECERA DE BOTÓN -->
                 <button id="docs-editables-toggle" class="w-full text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
                     <span class="flex items-center">
                         <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1119,11 +1006,9 @@
                         </svg>
                         Documentos Editables
                     </span>
-                    <!-- Icono de Flecha (Chevron) -->
                     <svg id="docs-editables-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
                 
-                <!-- CONTENIDO COLAPSABLE (añadido 'hidden md:block') -->
                 <div id="docs-editables-content" class="space-y-2 md:space-y-3 hidden md:block">
                     <a href="https://dal5.short.gy/3st" target="_blank" 
                        class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
@@ -1146,7 +1031,6 @@
             
             <!-- Modelos de Solicitud -->
             <div class="bg-green-200/30 border border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green">
-                <!-- CABECERA DE BOTÓN -->
                 <button id="modelos-solicitud-toggle" class="w-full text-base md:text-lg font-bold text-green-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
                     <span class="flex items-center">
                         <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1154,11 +1038,9 @@
                         </svg>
                         Modelos de Solicitud
                     </span>
-                    <!-- Icono de Flecha (Chevron) -->
                     <svg id="modelos-solicitud-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
 
-                <!-- CONTENIDO COLAPSABLE (añadido 'hidden md:block') -->
                 <div id="modelos-solicitud-content" class="space-y-2 md:space-y-3 scroll-container hidden md:block" style="max-height: 250px;">
                     <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf" target="_blank" 
                        class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
@@ -1189,7 +1071,6 @@
             
             <!-- Manuales -->
             <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow">
-                <!-- CABECERA DE BOTÓN -->
                 <button id="manuales-toggle" class="w-full text-base md:text-lg font-bold text-yellow-900 mb-4 flex items-center justify-between text-left md:pointer-events-none">
                     <span class="flex items-center">
                         <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1197,11 +1078,9 @@
                         </svg>
                         Manuales
                     </span>
-                    <!-- Icono de Flecha (Chevron) -->
                     <svg id="manuales-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200 md:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
 
-                <!-- CONTENIDO COLAPSABLE (añadido 'hidden md:block') -->
                 <div id="manuales-content" class="space-y-2 md:space-y-3 hidden md:block">
                     <a href="https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf" target="_blank" 
                        class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
