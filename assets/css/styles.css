@@ -835,8 +835,8 @@ body.homepage {
      */
     #leyes-normativa .absolute.top-4.left-4 > svg,
     #documentos-formularios .absolute.top-4.left-4 > svg {
-        width: 8rem;  /* 16 * 0.25rem = 4rem (equivale a w-16) */
-        height: 8rem; /* 16 * 0.25rem = 4rem (equivale a h-16) */
+        width: 5rem;  /* 20 * 0.25rem = 5rem (equivale a w-20) */
+        height: 5rem; /* 20 * 0.25rem = 5rem (equivale a h-20) */
     }
 }
 /* --- FIN DE AJUSTE --- */
