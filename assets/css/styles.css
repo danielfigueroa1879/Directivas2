@@ -826,3 +826,17 @@ body.homepage {
   background-color: rgba(255, 255, 255, 0.35);
   box-shadow: 0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
+
+/* --- AJUSTE DE TAMAÑO DE ICONOS EN PC (SOLICITUD DE USUARIO) --- */
+@media (min-width: 768px) {
+    /* * Aumenta el tamaño de los iconos decorativos (libro, etc.) 
+     * en las secciones "Leyes" y "Documentos" para PC.
+     * (Original: md:w-12 md:h-12 -> 3rem)
+     */
+    #leyes-normativa .absolute.top-4.left-4 > svg,
+    #documentos-formularios .absolute.top-4.left-4 > svg {
+        width: 4rem;  /* 16 * 0.25rem = 4rem (equivale a w-16) */
+        height: 4rem; /* 16 * 0.25rem = 4rem (equivale a h-16) */
+    }
+}
+/* --- FIN DE AJUSTE --- */
