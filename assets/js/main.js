@@ -4,265 +4,849 @@
  * animaciones y el banner para instalar la PWA.
  */
 
-// Variables globales para PWA
-let deferredPrompt = null;
-let bannerShown = false;
-
-// Registrar el evento beforeinstallprompt INMEDIATAMENTE
-window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('🎯 PWA: beforeinstallprompt event captured');
-    e.preventDefault();
-    deferredPrompt = e;
-    
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-    
-    if (isMobile && !isStandalone && !bannerShown) {
-        showPWABanner();
-    }
-});
-
-function showPWABanner() {
-    const pwaBanner = document.getElementById('pwa-install-banner');
-    if (!pwaBanner || bannerShown) return;
-    
-    console.log('📱 PWA: Showing install banner');
-    bannerShown = true;
-    pwaBanner.classList.add('show');
-    
-    setTimeout(() => {
-        if (pwaBanner.classList.contains('show')) {
-            pwaBanner.classList.remove('show');
-        }
-    }, 10000);
+/* --- ESTILOS BASE Y CHATBOT --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('../images/101.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-top: 4rem;
 }
 
-async function installPWA() {
-    console.log('🔽 PWA: Install button clicked');
-    const pwaBanner = document.getElementById('pwa-install-banner');
-    if (pwaBanner) pwaBanner.classList.remove('show');
-    
-    if (deferredPrompt) {
-        try {
-            await deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`🎯 PWA: User choice: ${outcome}`);
-            if (outcome === 'accepted') {
-                console.log('✅ PWA: Installation accepted');
-            } else {
-                console.log('❌ PWA: Installation dismissed');
-            }
-            deferredPrompt = null;
-        } catch (error) {
-            console.error('💥 PWA: Error during installation:', error);
-        }
+body.homepage {
+    background-color: white;
+    background-image: none;
+}
+
+#homepage-section {
+    transition: background-image 5.5s ease-in-out;
+}
+
+.card-container {
+    max-width: 750px;
+    width: 90%;
+    margin: 0.5rem auto;
+    position: relative;
+}
+
+.logo-os10-container {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    height: 60px;
+    z-index: 10;
+}
+
+.section-card {
+    border-left-width: 4px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+/* ===== ESTILOS CHATBOT (RESTAURADOS Y CORREGIDOS) ===== */
+#chat-widget-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+#chat-popup {
+    width: 450px;
+    height: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.chat-popup-hidden {
+    display: none !important;
+}
+.chat-popup-visible {
+    display: flex !important;
+}
+#chat-toggle-button {
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    animation: floatAnimation 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid #0c640c;
+}
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    50% { transform: translateY(-15px); box-shadow: 0 12px 20px rgba(0,0,0,0.25); }
+}
+#chat-toggle-button:hover {
+    animation-play-state: paused;
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 10px 18px rgba(0,0,0,0.3);
+}
+#chat-toggle-button::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
+    border-radius: 50%;
+    animation: pulseGlow 4s ease-in-out infinite;
+    z-index: -1;
+}
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+.chat-messages-container {
+    scroll-behavior: smooth;
+}
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
+    background-color: #9ca3af;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
+
+/* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
+@media (min-width: 1024px) {
+    #chat-widget-container {
+        left: 50%;
+        transform: translateX(-60%);
+        bottom: 7.9rem;
+    }
+
+    #chat-toggle-button {
+        width: 90px;
+        height: 90px;
+        animation: floatAnimation 1.9s ease-in-out infinite;
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // --- MANEJO DEL MENÚ (MÓVIL Y ESCRITORIO) ---
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    let menuTimeout;
-
-    const openMenu = () => {
-        clearTimeout(menuTimeout);
-        if (mobileDropdown.classList.contains('hidden')) {
-            mobileDropdown.classList.remove('hidden');
-            setTimeout(() => mobileDropdown.classList.add('show'), 10);
-            if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
-                mobileMenuOverlay.classList.remove('hidden');
-            }
-        }
-    };
-
-    const closeMenu = (immediate = false) => {
-        const delay = immediate ? 0 : 200;
-        menuTimeout = setTimeout(() => {
-            if (mobileDropdown.classList.contains('show')) {
-                mobileDropdown.classList.remove('show');
-                setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-                 if (window.innerWidth < 1024) {
-                    mobileMenuOverlay.classList.add('hidden');
-                }
-            }
-        }, delay);
-    };
-
-    const toggleMenu = () => {
-        if (mobileDropdown.classList.contains('hidden')) {
-            openMenu();
-        } else {
-            closeMenu(true);
-        }
-    };
-
-    if (mobileMenuBtn && mobileDropdown) {
-        mobileDropdown.addEventListener('click', (e) => e.stopPropagation());
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
-        if (window.innerWidth >= 1024) {
-            mobileMenuBtn.addEventListener('mouseenter', openMenu);
-            mobileMenuBtn.addEventListener('mouseleave', () => closeMenu());
-            mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
-            mobileDropdown.addEventListener('mouseleave', () => closeMenu());
-        }
+@media (max-width: 767px) {
+    #chat-widget-container {
+        right: 1rem;
+        bottom: 3rem;
     }
-
-    if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
+    .card-container {
+        width: 98%;
     }
-    
-    // --- LÓGICA DE SUBMENÚS ---
-    const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
-    submenuContainers.forEach(parent => {
-        const btn = parent.querySelector('.submenu-parent-btn');
-        if (!btn) return;
-        btn.addEventListener('click', (e) => {
-            if (!e.currentTarget.closest('.asesor-item') && !e.currentTarget.closest('.jefe-item')) {
-                e.stopPropagation();
-            }
-            document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                if (other !== parent && !other.classList.contains('asesor-item') && !other.classList.contains('jefe-item')) {
-                    other.classList.remove('submenu-open');
-                }
-            });
-            if (!parent.classList.contains('asesor-item') && !parent.classList.contains('jefe-item')) {
-                parent.classList.toggle('submenu-open');
-            }
-        });
-    });
-
-    // --- LÓGICA PARA MEGAMENÚS ---
-    const setupMegamenu = (config) => {
-        const item = document.querySelector(config.itemSelector);
-        const megamenu = document.getElementById(config.megamenuId);
-        const closeBtn = document.getElementById(config.closeBtnId);
-        const triggerBtn = document.getElementById(config.triggerBtnId);
-        let timeout;
-
-        const openMegamenu = () => {
-            if (!item || !megamenu) return;
-            clearTimeout(timeout);
-            closeAllMegamenus(config.megamenuId);
-            if (window.innerWidth < 1024) closeMenu(true);
-            item.classList.add('megamenu-open');
-            megamenu.classList.add('show');
-        };
-
-        const closeMegamenu = (immediate = false) => {
-            if (!item || !megamenu) return;
-            const delay = immediate ? 0 : 300;
-            timeout = setTimeout(() => {
-                item.classList.remove('megamenu-open');
-                megamenu.classList.remove('show');
-            }, delay);
-        };
-
-        if (item && megamenu && triggerBtn) {
-            triggerBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = item.classList.contains('megamenu-open');
-                if (isOpen) {
-                    closeMegamenu(true);
-                } else {
-                    openMegamenu();
-                }
-            });
-            if (closeBtn) {
-                closeBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    closeMegamenu(true);
-                });
-            }
-            // The hover logic for desktop has been removed.
-        }
-    };
-
-    const closeAllMegamenus = (excludeId = null) => {
-        document.querySelectorAll('.asesor-megamenu').forEach(menu => {
-            if (menu.id !== excludeId) {
-                menu.classList.remove('show');
-                const itemClass = menu.id.replace('-megamenu', '-item');
-                document.querySelector(`.${itemClass}`)?.classList.remove('megamenu-open');
-            }
-        });
-    };
-
-    setupMegamenu({
-        itemSelector: '.asesor-item',
-        megamenuId: 'asesor-megamenu',
-        closeBtnId: 'asesor-close-btn',
-        triggerBtnId: 'asesor-trigger-btn'
-    });
-
-    setupMegamenu({
-        itemSelector: '.jefe-item',
-        megamenuId: 'jefe-megamenu',
-        closeBtnId: 'jefe-close-btn',
-        triggerBtnId: 'jefe-trigger-btn'
-    });
-    
-    // Cerrar todo con clic afuera
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.has-submenu') && !e.target.closest('.asesor-megamenu')) {
-            closeAllMegamenus();
-        }
-    });
-    
-    // Cerrar todo con Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeAllMegamenus();
-        }
-    });
-
-    // --- LÓGICA PWA ---
-    const installButton = document.getElementById('install-button');
-    if (installButton) installButton.addEventListener('click', installPWA);
-    const closeButton = document.getElementById('close-install-banner');
-    if (closeButton) {
-        closeButton.addEventListener('click', () => {
-            const pwaBanner = document.getElementById('pwa-install-banner');
-            if (pwaBanner) pwaBanner.classList.remove('show');
-        });
+    #chat-toggle-button {
+        width: 70px;
+        height: 70px;
     }
-
-    console.log('✅ All components initialized successfully');
-});
-
-window.addEventListener('appinstalled', (e) => {
-    console.log('🎉 PWA: App was installed successfully');
-    deferredPrompt = null;
-    bannerShown = false;
-});
-
-// Función global para cerrar el menú desde los enlaces
-function closeActiveMenu() {
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    if (mobileDropdown && mobileDropdown.classList.contains('show')) {
-        mobileDropdown.classList.remove('show');
-        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-        if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
+    #chat-popup {
+        position: fixed;
+        bottom: 0.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 97%;
+        height: 500px;
     }
-    // Cerrar todos los megamenús también
-    document.querySelectorAll('.asesor-megamenu').forEach(menu => menu.classList.remove('show'));
-    document.querySelectorAll('.has-submenu').forEach(item => item.classList.remove('megamenu-open'));
 }
 
-// Handlers de navegación (globales)
-window.openNewLink = function(url) {
-    window.open(url, '_blank');
-    closeActiveMenu();
-};
-window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
-window.handleDirectiva = function() { showDirectiva(); closeActiveMenu(); }
-window.handleCredenciales = function() { showCredenciales(); closeActiveMenu(); }
-window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb'); }
-window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
-window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); }
-window.handleBuscarCurso = function(url) { openNewLink(url); }
+/* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
+
+#desktop-menu {
+    margin-left: 1rem;
+}
+
+.menu-item {
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.25rem;
+    border-radius: 0.375rem;
+    transition: color 0.2s, background-color 0.2s;
+    white-space: nowrap;
+    font-size: 0.6rem;
+}
+
+@media (min-width: 1400px) {
+    .menu-item {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.4rem;
+    }
+     #desktop-menu {
+        margin-left: 2rem;
+    }
+}
+
+.menu-item:hover {
+    color: #2563eb;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.desktop-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    width: 280px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    z-index: 1250;
+    border: 1px solid rgba(0,0,0,0.05);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.group:hover .desktop-dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.desktop-dropdown .desktop-dropdown-title {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: #6b7280;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    border-top: 1px solid #e5e7eb;
+}
+.desktop-dropdown .desktop-dropdown-title:first-of-type {
+    margin-top: 0;
+    border-top: none;
+}
+
+.desktop-dropdown button,
+.desktop-dropdown a {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 0.75rem;
+    color: #374151;
+}
+
+.desktop-dropdown button:hover,
+.desktop-dropdown a:hover {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #15803d;
+}
+
+/* --- Menú Móvil --- */
+.mobile-dropdown {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    width: 320px;
+    height: calc(100vh - 4rem);
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(-105%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1200;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+}
+
+.mobile-dropdown.show {
+    transform: translateX(0);
+}
+
+#mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1199;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+#mobile-menu-overlay:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-dropdown .submenu-parent-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.82rem;
+}
+
+.mobile-dropdown .submenu-parent-btn:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
+}
+
+.mobile-dropdown .submenu-arrow {
+    transition: transform 0.3s;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
+}
+
+/* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
+#tramites-arrow, .submenu-arrow {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+/* --- Asesor Megamenu Styles --- */
+.asesor-item .submenu-arrow-asesor {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+}
+
+.asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
+.asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
+    transform: rotate(360deg);
+}
+
+/* ================================================================== */
+/* FIX 1: Posiciona el megamenú de Asesor correctamente debajo del banner */
+/* ================================================================== */
+.asesor-megamenu {
+    position: fixed;
+    top: 4rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1250;
+    background-color: rgba(249, 250, 251, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    border-top: 1px solid #e5e7eb;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    overflow-y: auto;
+    pointer-events: none;
+    border-radius: 0;
+}
+
+/* Nueva clase para mostrar el megamenú */
+.asesor-megamenu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* PC: letra más pequeña y profesional */
+@media (min-width: 1024px) {
+    .asesor-megamenu {
+        width: 48rem;
+        left: 50%;
+        margin-left: -24rem;
+        right: auto;
+        bottom: auto;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .asesor-megamenu-content {
+        padding: 1.5rem 2rem;
+        font-size: 0.8rem;
+    }
+
+    .asesor-megamenu-content h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .asesor-megamenu-content h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    .asesor-megamenu-content h5 {
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .asesor-megamenu-content p,
+    .asesor-megamenu-content ol,
+    .asesor-megamenu-content li {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .asesor-diploma-title {
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Tamaños de letra para Móvil - cubrir desde abajo hasta banner */
+@media (max-width: 1023px) {
+    .asesor-megamenu {
+        width: 100vw;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        border-top: 2px solid #e5e7eb;
+    }
+
+    .asesor-megamenu-content {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .asesor-megamenu-content h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .asesor-megamenu-content h4 {
+        font-size: 1rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .asesor-megamenu-content h5 {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .asesor-megamenu-content ol {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .asesor-megamenu-content p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+}
+
+/* ===== ALTURA UNIFORME PARA COMPONENTES ===== */
+.mobile-dropdown .submenu.submenu-compact button,
+.mobile-dropdown .submenu.submenu-compact .submenu-parent-btn {
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    padding-top: 0.3rem;
+    padding-bottom: 0.5rem;
+}
+
+/* ===== AJUSTE PARA EL ITEM ASESOR SIN FLECHA Y CON FONDO GRIS ===== */
+.mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
+    min-height: 28px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
+    font-size: 0.78rem;
+    line-height: 1.2; /* Ayuda al centrado vertical */
+}
+
+/* Ocultar la flecha del item Asesor */
+.mobile-dropdown .submenu-compact .asesor-item .submenu-arrow-asesor {
+    display: none !important;
+}
+
+/* ===== FONDO GRIS CLARO PARA TODOS LOS SUBMENÚS ===== */
+.mobile-dropdown .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: #f3f4f6; /* Gris claro - Tailwind gray-100 */
+}
+
+.mobile-dropdown .submenu.submenu-compact {
+    background-color: #f3f4f6; /* Gris claro */
+}
+
+.mobile-dropdown .submenu.leyes-compactas {
+    background-color: #f3f4f6; /* Gris claro */
+}
+
+/* ===== BOTÓN DE CIERRE PARA MEGAMENÚ ASESOR ===== */
+.asesor-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.asesor-close-btn:hover {
+    background-color: #f3f4f6;
+    transform: rotate(90deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.asesor-close-btn:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+.asesor-close-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #4b5563;
+}
+
+/* Ajuste para el contenido del megamenú cuando hay botón de cierre */
+.asesor-megamenu-content {
+    padding-top: 2.5rem;
+}
+
+/* Responsive: Ajustes para móvil */
+@media (max-width: 1023px) {
+    .asesor-close-btn {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .asesor-megamenu-content {
+        padding-top: 3rem;
+    }
+}
+
+/* Para PC: botón más grande y mejor posicionado */
+@media (min-width: 1024px) {
+    .asesor-close-btn {
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .asesor-close-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* ===== AJUSTE ADICIONAL PARA UNIFORMIDAD DE COMPONENTES ===== */
+.mobile-dropdown .submenu.submenu-compact button {
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+    transition: all 0.2s ease;
+}
+
+.mobile-dropdown .submenu.submenu-compact button:last-child {
+    border-bottom: none;
+}
+
+.mobile-dropdown .submenu.submenu-compact button:hover {
+    background-color: rgba(34, 197, 94, 0.2); /* Verde un poco más intenso */
+    color: #15803d;
+    padding-left: 3rem;
+}
+
+.mobile-dropdown .submenu.leyes-compactas button,
+.mobile-dropdown .submenu.submenu-compact button {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 2.5rem;
+    font-size: 0.7rem;
+}
+
+.mobile-dropdown .submenu.leyes-compactas .submenu-title {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 2.5rem;
+    font-size: 0.7rem;
+    background-color: rgba(0,0,0,0.06);
+}
+
+.leyes-compactas-desktop {
+    width: 320px;
+}
+.leyes-compactas-desktop .desktop-dropdown-title {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.6rem;
+    margin-top: 0.2rem;
+}
+.leyes-compactas-desktop button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+}
+
+.mobile-dropdown .has-submenu.submenu-open > .submenu {
+    max-height: 2000px;
+}
+
+.mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.82rem;
+    color: #374151;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.mobile-dropdown .submenu button:hover {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #15803d;
+}
+
+.mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
+}
+
+.mobile-dropdown .dropdown-menu-header {
+    min-height: 32px; /* Altura mínima uniforme */
+    display: flex;
+    padding: 0.3rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0.5rem;
+}
+.mobile-dropdown .dropdown-menu-header h3 {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.9rem;
+}
+
+/* --- AJUSTE TAMAÑO TEXTO BANNER --- */
+.banner-text-small {
+    font-size: 0.875rem;
+}
+
+/* ===== INICIO CAMBIO USUARIO ===== */
+/* Ajuste para ordenar el contador de visitas en PC */
+/* @media (min-width: 1024px) {
+    .banner-text-small {
+        order: 3;
+    }
+} */ /* <-- Esta regla ya no es necesaria */
+/* ===== FIN CAMBIO USUARIO ===== */
+
+
+/* El resto de los estilos se mantienen */
+.voice-button, .response-button, .typing-indicator, .voice-selector, .os10-coquimbo-center {
+    /* Estilos existentes se mantienen */
+}
+
+/* ===== AJUSTE SECCIÓN TRÁMITES PRINCIPALES ===== */
+#tramites-principales {
+    padding-top: 5rem;
+}
+
+@media (min-width: 768px) {
+    #tramites-principales {
+        padding-top: 7rem;
+    }
+}
+
+/* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
+.homepage-section {
+    display: none;
+    height: 75vh;
+    max-height: 700px;
+    min-height: 450px;
+}
+
+.background-transition { animation: none; }
+.text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
+.text-shadow-lg { text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
+.elegant-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.elegant-card:hover {
+    border-color: transparent;
+    box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6);
+}
+
+.homepage-btn { min-width: 250px; padding: 0.75rem 2rem; }
+
+@media (max-width: 640px) {
+   .homepage-btn { width: 60%; padding: 0.5rem 1.5rem; background-color: rgba(59, 130, 246, 0.7); color: white; }
+   .homepage-btn.bg-[#ffb700] { background-color: rgba(255, 183, 0, 0.7); color: white; }
+}
+
+/* Credenciales Section Specific Styles */
+.credenciales-section { display: none; }
+.credenciales-section.active { display: block; }
+.credenciales-title-container { text-align: center; margin-top: 2rem; line-height: 1; }
+.credenciales-main-title, .credenciales-main-subtitle { color: #EAB308; font-weight: bold; display: block; text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4); transition: all 0.3s ease; margin: 0; padding: 0; }
+.credenciales-main-title { font-size: 2.2rem; transform: translateX(-2px); }
+.credenciales-main-subtitle { font-size: 1.6rem; transform: translateX(10px); }
+.credenciales-section-title { color: #F54C38; font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; }
+.credenciales-download-btn { display: inline-flex; justify-content: center; align-items: center; padding: 8px 24px; margin: 0.5rem 0; width: auto; min-width: 240px; font-size: 1rem; font-weight: bold; color: white; border-radius: 7px; text-align: center; transition: all 0.3s ease; text-decoration: none; }
+.credenciales-download-btn:hover { transform: translateY(-3px); }
+.credenciales-photo-example, .credenciales-valores-example { max-width: 100%; border-radius: 8px; }
+.credenciales-table-container { overflow-x: auto; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.credenciales-responsive-table { width: 100%; border-collapse: collapse; }
+.credenciales-responsive-table th, .credenciales-responsive-table td { border: 1px solid #ddd; padding: 12px; text-align: left; font-size: 0.95rem; white-space: nowrap; }
+.credenciales-responsive-table th { background-color: #f1f5f9; position: sticky; top: 0; z-index: 10; }
+.credenciales-table-select { min-width: 200px; }
+.credenciales-qr-image { width: 80px; height: auto; }
+#credenciales-arrow-back-btn { position: absolute; top: 1rem; right: 0.5rem; z-index: 20; color: #4B5563; transition: all 0.2s ease; cursor: pointer; padding: 0.5rem; border-radius: 9999px; }
+#credenciales-arrow-back-btn:hover { color: #2563EB; background-color: rgba(0, 0, 0, 0.05); }
+
+@media (max-width: 640px) {
+    .credenciales-main-title { font-size: 1.4rem; }
+    .credenciales-main-subtitle { font-size: 1.0rem; }
+    .credenciales-section-title { font-size: 1.1rem; }
+}
+
+/* Ajuste para centrar elementos del banner en PC */
+@media (min-width: 1024px) {
+  #banner > div {
+    justify-content: center !important;
+    gap: 34rem;
+    max-width: 1200px;
+  }
+
+  .mobile-dropdown {
+    left: calc(50% - 400px);
+    top: 4rem;
+    width: 380px;
+    height: auto;
+    max-height: calc(100vh - 5rem);
+    transform: translateX(-20px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    pointer-events: none;
+    transform-origin: top left;
+  }
+
+  .mobile-dropdown.show {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+  }
+
+  #mobile-menu-overlay {
+      display: none !important;
+  }
+}
+
+/* ===== EFECTO DE ENCENDIDO PARA ICONOS SVG - MEJORADO Y CON MÁS INTENSIDAD ===== */
+/* Transición suave para todos los iconos SVG en secciones específicas */
+#componentes-seguridad a .flex-shrink-0 svg,
+#tramites-principales div[onclick] .flex-shrink-0 svg,
+#capacitacion a.group .bg-white\/20 svg,
+#servicios-adicionales a svg,
+#servicios-adicionales div[onclick] svg {
+  transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
+  filter: brightness(1);
+  transform: scale(1);
+}
+
+/* Efecto hover para iconos VERDES - INTENSIDAD AUMENTADA */
+#componentes-seguridad a:hover .text-green-300,
+#componentes-seguridad a:hover .text-green-600,
+#tramites-principales div[onclick]:hover .text-green-300,
+#tramites-principales div[onclick]:hover .text-green-600,
+#capacitacion a.group:hover .text-green-300,
+#capacitacion a.group:hover .text-green-600,
+#servicios-adicionales div[onclick]:hover .text-green-600 {
+  filter: brightness(2) drop-shadow(0 0 10px #4ADE80) drop-shadow(0 0 20px rgba(74, 222, 128, 0.6));
+  transform: scale(1.15);
+}
+
+/* Efecto hover para iconos AZULES - INTENSIDAD AUMENTADA */
+#componentes-seguridad a:hover .text-blue-300,
+#componentes-seguridad a:hover .text-blue-600,
+#tramites-principales div[onclick]:hover .text-blue-300,
+#tramites-principales div[onclick]:hover .text-blue-600,
+#capacitacion a.group:hover .text-blue-300,
+#capacitacion a.group:hover .text-blue-600,
+#servicios-adicionales a:hover .text-blue-600 {
+  filter: brightness(2.1) drop-shadow(0 0 10px #60A5FA) drop-shadow(0 0 20px rgba(96, 165, 250, 0.6));
+  transform: scale(1.15);
+}
+
+/* Efecto hover para iconos AMARILLOS - INTENSIDAD AUMENTADA */
+#componentes-seguridad a:hover .text-yellow-300,
+#componentes-seguridad a:hover .text-yellow-600,
+#tramites-principales div[onclick]:hover .text-yellow-300,
+#tramites-principales div[onclick]:hover .text-yellow-600,
+#capacitacion a.group:hover .text-yellow-300,
+#capacitacion a.group:hover .text-yellow-600,
+#servicios-adicionales a:hover .text-yellow-600 {
+  filter: brightness(2) drop-shadow(0 0 10px #FACC15) drop-shadow(0 0 20px rgba(250, 204, 21, 0.6));
+  transform: scale(1.15);
+}
+
+/* Efecto hover para iconos ROJOS - NUEVOS */
+#componentes-seguridad a:hover .text-red-300,
+#componentes-seguridad a:hover .text-red-600,
+#tramites-principales div[onclick]:hover .text-red-300,
+#tramites-principales div[onclick]:hover .text-red-600,
+#capacitacion a.group:hover .text-red-300,
+#capacitacion a.group:hover .text-red-600,
+#servicios-adicionales a:hover .text-red-600,
+#servicios-adicionales div[onclick]:hover .text-red-600 {
+  filter: brightness(2.1) drop-shadow(0 0 10px #EF4444) drop-shadow(0 0 20px rgba(239, 68, 68, 0.6));
+  transform: scale(1.15);
+}
+
+/* ===== EFECTO MEJORADO PARA BOTONES EN SECCIÓN CAPACITACIÓN ===== */
+#capacitacion a.group,
+#capacitacion div[onclick] {
+  transition: all 0.3s ease-in-out;
+}
+
+#capacitacion a.group:hover,
+#capacitacion div[onclick]:hover {
+  transform: translateY(-8px) scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.4)) drop-shadow(0 0 25px rgba(96, 165, 250, 0.3));
+}
+
+#capacitacion a.group:hover .bg-white\/20,
+#capacitacion div[onclick]:hover .bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* --- AJUSTE DE TAMAÑO DE ICONOS EN PC (SOLICITUD DE USUARIO) --- */
+@media (min-width: 768px) {
+    /* * Aumenta el tamaño de los iconos decorativos (libro, etc.) 
+     * en las secciones "Leyes" y "Documentos" para PC.
+     * (Original: md:w-12 md:h-12 -> 3rem)
+     */
+    #leyes-normativa .absolute.top-4.left-4 > svg,
+    #documentos-formularios .absolute.top-4.left-4 > svg {
+        width: 5rem;  /* 20 * 0.25rem = 5rem (equivale a w-20) */
+        height: 5rem; /* 20 * 0.25rem = 5rem (equivale a h-20) */
+    }
+}
+/* --- FIN DE AJUSTE --- */
