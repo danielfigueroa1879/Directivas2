@@ -714,6 +714,17 @@ body.homepage {
     .credenciales-main-title { font-size: 1.4rem; }
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
+    /* --- AÑADE ESTO DENTRO DEL BLOQUE --- */
+    .banner-text-small {
+      /* Aumenta el texto a 16px */
+      font-size: 1rem; 
+    }
+  
+    .banner-text-small svg {
+      /* Aumenta el icono a 24px */
+      width: 1.5rem;
+      height: 1.5rem;
+    }
 }
 
 /* Ajuste para centrar elementos del banner en PC */
