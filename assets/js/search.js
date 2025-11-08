@@ -1,852 +1,786 @@
 /**
- * assets/js/main.js
- * Este archivo contiene la lógica para la interfaz de usuario,
- * animaciones y el banner para instalar la PWA.
+ * Sistema de Búsqueda Global - OS10 Coquimbo
+ * Versión 1.0
+ * 
+ * Funcionalidad completa de búsqueda con indexación de contenido
  */
 
-/* --- ESTILOS BASE Y CHATBOT --- */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-image: url('../images/101.webp');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    padding-top: 4rem;
-}
-
-body.homepage {
-    background-color: white;
-    background-image: none;
-}
-
-#homepage-section {
-    transition: background-image 5.5s ease-in-out;
-}
-
-.card-container {
-    max-width: 750px;
-    width: 90%;
-    margin: 0.5rem auto;
-    position: relative;
-}
-
-.logo-os10-container {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    height: 60px;
-    z-index: 10;
-}
-
-.section-card {
-    border-left-width: 4px;
-    padding: 1rem;
-    border-radius: 0.5rem;
-}
-
-/* ===== ESTILOS CHATBOT (RESTAURADOS Y CORREGIDOS) ===== */
-#chat-widget-container {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-#chat-popup {
-    width: 450px;
-    height: 600px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-.chat-popup-hidden {
-    display: none !important;
-}
-.chat-popup-visible {
-    display: flex !important;
-}
-#chat-toggle-button {
-    width: 80px;
-    height: 80px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    animation: floatAnimation 2s ease-in-out infinite;
-    transition: all 0.3s ease;
-    position: relative;
-    border: 1px solid #0c640c;
-}
-@keyframes floatAnimation {
-    0%, 100% { transform: translateY(0px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
-    50% { transform: translateY(-15px); box-shadow: 0 12px 20px rgba(0,0,0,0.25); }
-}
-#chat-toggle-button:hover {
-    animation-play-state: paused;
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 10px 18px rgba(0,0,0,0.3);
-}
-#chat-toggle-button::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
-    border-radius: 50%;
-    animation: pulseGlow 4s ease-in-out infinite;
-    z-index: -1;
-}
-@keyframes pulseGlow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.1); }
-}
-.chat-messages-container {
-    scroll-behavior: smooth;
-}
-.typing-indicator span {
-    height: 8px;
-    width: 8px;
-    margin: 0 2px;
-    background-color: #9ca3af;
-    border-radius: 50%;
-    display: inline-block;
-    animation: bounce 1.4s infinite ease-in-out both;
-}
-@keyframes bounce {
-    0%, 80%, 100% { transform: scale(0); }
-    40% { transform: scale(1.0); }
-}
-
-/* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
-@media (min-width: 1024px) {
-    #chat-widget-container {
-        left: 50%;
-        transform: translateX(-60%);
-        bottom: 7.9rem;
+class GlobalSearch {
+    constructor() {
+        this.searchIndex = [];
+        this.isOpen = false;
+        this.currentResults = [];
+        this.currentResultIndex = -1;
+        this.init();
     }
 
-    #chat-toggle-button {
-        width: 90px;
-        height: 90px;
-        animation: floatAnimation 1.9s ease-in-out infinite;
+    init() {
+        // Crear elementos de búsqueda
+        this.createSearchElements();
+        // Indexar contenido
+        this.buildSearchIndex();
+        // Configurar eventos
+        this.setupEventListeners();
+        // Log de inicialización
+        console.log('🔍 Sistema de búsqueda global inicializado');
+    }
+
+    createSearchElements() {
+        // Botón de búsqueda en el banner
+        const searchButton = document.createElement('button');
+        searchButton.id = 'global-search-button';
+        searchButton.className = 'banner-search-button';
+        searchButton.setAttribute('aria-label', 'Buscar en el sitio');
+        searchButton.setAttribute('title', 'Buscar (Ctrl+K)');
+        searchButton.innerHTML = `
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+        `;
+        
+        // Insertar el botón en el banner existente
+        const banner = document.getElementById('banner');
+        if (banner) {
+            // En PC: insertar después del logo
+            const desktopMenu = document.getElementById('desktop-menu');
+            if (desktopMenu) {
+                // Insertar antes del menú desktop
+                desktopMenu.parentNode.insertBefore(searchButton, desktopMenu);
+            } else {
+                // Si no hay menú desktop, insertar antes del contador de visitas
+                const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+                if (bannerContent) {
+                    const visitCounter = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
+                    if (visitCounter) {
+                        bannerContent.insertBefore(searchButton, visitCounter);
+                    } else {
+                        bannerContent.appendChild(searchButton);
+                    }
+                }
+            }
+        } else {
+            // Fallback: agregar al body si no se encuentra el banner
+            document.body.appendChild(searchButton);
+        }
+
+        // Modal de búsqueda
+        const searchModal = document.createElement('div');
+        searchModal.id = 'global-search-modal';
+        searchModal.className = 'search-modal-hidden';
+        searchModal.innerHTML = `
+            <div class="search-modal-overlay"></div>
+            <div class="search-modal-content">
+                <div class="search-header">
+                    <div class="search-input-wrapper">
+                        <svg class="search-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="global-search-input" placeholder="Buscar en OS10 Coquimbo..." autocomplete="off">
+                        <div class="search-shortcuts">
+                            <span class="shortcut-badge">ESC para cerrar</span>
+                            <span class="shortcut-badge">↑↓ para navegar</span>
+                            <span class="shortcut-badge">Enter para ir</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-results-container">
+                    <div id="search-results"></div>
+                    <div id="search-no-results" class="hidden">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                            <path d="M8 11h6"></path>
+                        </svg>
+                        <p>No se encontraron resultados</p>
+                        <small>Intenta con otros términos de búsqueda</small>
+                    </div>
+                    <div id="search-help" class="search-help">
+                        <h4>Sugerencias de búsqueda:</h4>
+                        <div class="search-suggestions">
+                            <button class="suggestion-pill" data-search="directiva">Directivas</button>
+                            <button class="suggestion-pill" data-search="credencial">Credenciales</button>
+                            <button class="suggestion-pill" data-search="decreto">Decretos</button>
+                            <button class="suggestion-pill" data-search="ley">Leyes</button>
+                            <button class="suggestion-pill" data-search="guardia">Guardias</button>
+                            <button class="suggestion-pill" data-search="seguridad">Seguridad</button>
+                            <button class="suggestion-pill" data-search="capacitación">Capacitación</button>
+                            <button class="suggestion-pill" data-search="formulario">Formularios</button>
+                            <button class="suggestion-pill" data-search="manual">Manuales</button>
+                            <button class="suggestion-pill" data-search="valores">Valores</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(searchModal);
+    }
+
+    buildSearchIndex() {
+        this.searchIndex = [
+            // SECCIÓN: Trámites Principales
+            {
+                title: 'Certificados O.S.10 Online - Cerofila',
+                content: 'Certificado para Guardias de Seguridad, Conserjes y Vigilantes Privados. Trámite online sistema cerofila',
+                section: 'Trámites Principales',
+                action: () => window.open('https://dal5.short.gy/CFil', '_blank'),
+                keywords: ['certificado', 'os10', 'online', 'cerofila', 'cerofilas', 'guardia', 'seguridad', 'conserje', 'vigilante']
+            },
+            {
+                title: 'Directivas de Funcionamiento',
+                content: 'Accede y gestiona los requerimientos para instalaciones, eventos y más. Vigencia 03 años en instalación.',
+                section: 'Trámites Principales',
+                action: () => window.showDirectiva && window.showDirectiva(),
+                keywords: ['directiva', 'funcionamiento', 'instalación', 'evento', 'partido', 'fútbol']
+            },
+            {
+                title: 'Credenciales',
+                content: 'Encuentra todos los formularios y requisitos para la acreditación de personal. Credencial empresa e independiente.',
+                section: 'Trámites Principales',
+                action: () => window.showCredenciales && window.showCredenciales(),
+                keywords: ['credencial', 'acreditación', 'empresa', 'independiente', 'personal', 'requisitos']
+            },
+            {
+                title: 'Reclamos de Seguridad Privada',
+                content: 'Requerimiento de fiscalización (Reclamos de seguridad privada)',
+                section: 'Trámites Principales',
+                action: () => window.open('https://dal5.short.gy/R3', '_blank'),
+                keywords: ['reclamo', 'fiscalización', 'denuncia', 'seguridad privada']
+            },
+
+            // SECCIÓN: Leyes
+            {
+                title: 'Constitución Política',
+                content: 'Fundamento constitucional de la seguridad privada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=242302', '_blank'),
+                keywords: ['constitución', 'política', 'fundamento', 'ley']
+            },
+            {
+                title: 'Ley 18.961',
+                content: 'Ley Orgánica Constitucional de Carabineros',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30329', '_blank'),
+                keywords: ['ley', '18961', 'orgánica', 'constitucional', 'carabineros']
+            },
+            {
+                title: 'Ley 19.303',
+                content: 'Normativa complementaria de seguridad privada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30670', '_blank'),
+                keywords: ['ley', '19303', 'normativa', 'complementaria']
+            },
+            {
+                title: 'D.L. 3.607 (1981)',
+                content: 'Decreto Ley histórico sobre seguridad privada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=7193', '_blank'),
+                keywords: ['decreto', 'ley', '3607', '1981', 'histórico']
+            },
+            {
+                title: 'Ley 21.659',
+                content: 'Ley de Seguridad Privada actualizada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067', '_blank'),
+                keywords: ['ley', '21659', 'seguridad', 'privada', 'actualizada']
+            },
+            {
+                title: 'Reglamento 209',
+                content: 'Reglamentación vigente de seguridad privada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.leychile.cl/leychile/navegar?i=1213672', '_blank'),
+                keywords: ['reglamento', '209', 'vigente']
+            },
+
+            // SECCIÓN: Decretos
+            {
+                title: 'D.E. 261 (2020)',
+                content: 'Decreto Exento 261 del año 2020',
+                section: 'Decretos Supremos',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf', '_blank'),
+                keywords: ['decreto', 'exento', '261', '2020']
+            },
+            {
+                title: 'D.E. 32 (2024)',
+                content: 'Decreto Exento 32 del año 2024 - Uniformes',
+                section: 'Decretos Supremos',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1200633', '_blank'),
+                keywords: ['decreto', '32', '2024', 'uniforme']
+            },
+            {
+                title: 'D. 298 (2019)',
+                content: 'Decreto 298 del año 2019',
+                section: 'Decretos Supremos',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1136545', '_blank'),
+                keywords: ['decreto', '298', '2019']
+            },
+            {
+                title: 'D. 123 (2019)',
+                content: 'Decreto 123 del año 2019',
+                section: 'Decretos Supremos',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1130300', '_blank'),
+                keywords: ['decreto', '123', '2019']
+            },
+            {
+                title: 'D. 93 (1985)',
+                content: 'Decreto Supremo 93 del año 1985',
+                section: 'Decretos Supremos',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=9081', '_blank'),
+                keywords: ['decreto', '93', '1985']
+            },
+
+            // SECCIÓN: Componentes del Sistema
+            {
+                title: 'Vigilante Privado',
+                content: 'Documentación y requisitos para la acreditación de vigilantes privados',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf', '_blank'),
+                keywords: ['vigilante', 'privado', 'acreditación', 'requisitos']
+            },
+            {
+                title: 'Guardia de Seguridad',
+                content: 'Guía completa del trámite y requisitos para guardias de seguridad',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf', '_blank'),
+                keywords: ['guardia', 'seguridad', 'trámite', 'requisitos']
+            },
+            {
+                title: 'Jefe de Seguridad',
+                content: 'Actas, credenciales y requisitos para jefes de seguridad civil y ex fuerzas armadas',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf', '_blank'),
+                keywords: ['jefe', 'seguridad', 'actas', 'credenciales', 'ffaa', 'civil']
+            },
+            {
+                title: 'Encargado de Seguridad',
+                content: 'Requisitos y documentación necesaria para encargados de seguridad',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf', '_blank'),
+                keywords: ['encargado', 'seguridad', 'documentación']
+            },
+            {
+                title: 'Supervisor de Seguridad',
+                content: 'Documentación necesaria para supervisores de seguridad',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf', '_blank'),
+                keywords: ['supervisor', 'seguridad']
+            },
+            {
+                title: 'Asesor',
+                content: 'Títulos afines y requisitos para asesores de seguridad. Resol. 4070 y 2660',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf', '_blank'),
+                keywords: ['asesor', 'títulos', 'requisitos', 'resolución', '4070', '2660']
+            },
+            {
+                title: 'Capacitador de Seguridad',
+                content: 'Acreditación y requisitos para capacitadores',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf', '_blank'),
+                keywords: ['capacitador', 'acreditación', 'formación']
+            },
+            {
+                title: 'Técnico en Seguridad',
+                content: 'Requisitos técnicos para técnicos de seguridad',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf', '_blank'),
+                keywords: ['técnico', 'seguridad', 'requisitos']
+            },
+            {
+                title: 'Operador de Cajeros (ATM)',
+                content: 'Documentación específica para operadores de cajeros automáticos',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf', '_blank'),
+                keywords: ['operador', 'cajero', 'atm', 'automático']
+            },
+            {
+                title: 'Instalador Técnico',
+                content: 'Certificación de instaladores técnicos',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf', '_blank'),
+                keywords: ['instalador', 'técnico', 'certificación']
+            },
+            {
+                title: 'Operador de CC.TV.',
+                content: 'Control y monitoreo de sistemas CCTV',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf', '_blank'),
+                keywords: ['operador', 'cctv', 'cámaras', 'monitoreo', 'vigilancia']
+            },
+            {
+                title: 'Empresas Prestadoras',
+                content: 'Requisitos y documentación para empresas prestadoras de seguridad',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf', '_blank'),
+                keywords: ['empresa', 'prestadora', 'seguridad', 'documentación']
+            },
+
+            // SECCIÓN: Documentos Editables
+            {
+                title: 'Estudio de Seguridad',
+                content: 'Plantilla editable para estudios de seguridad',
+                section: 'Documentos Editables',
+                action: () => window.open('https://dal5.short.gy/3st', '_blank'),
+                keywords: ['estudio', 'seguridad', 'plantilla', 'editable']
+            },
+            {
+                title: 'Planes de Seguridad',
+                content: 'Plantillas editables para planes de seguridad',
+                section: 'Documentos Editables',
+                action: () => window.open('https://d6.short.gy/Pl4n', '_blank'),
+                keywords: ['plan', 'seguridad', 'plantilla', 'editable']
+            },
+            {
+                title: 'Medidas de Seguridad',
+                content: 'Documentos para medidas de seguridad',
+                section: 'Documentos Editables',
+                action: () => window.open('https://dal5.short.gy/M3', '_blank'),
+                keywords: ['medidas', 'seguridad', 'documento']
+            },
+            {
+                title: 'Solicitud Simple',
+                content: 'Formato de solicitud simple editable',
+                section: 'Documentos Editables',
+                action: () => window.open('https://dal5.short.gy/H23wIF', '_blank'),
+                keywords: ['solicitud', 'simple', 'formato', 'carta']
+            },
+
+            // SECCIÓN: Modelos de Solicitud
+            {
+                title: 'Declaración Jurada Persona Natural',
+                content: 'Modelo de declaración jurada para personas naturales',
+                section: 'Modelos de Solicitud',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf', '_blank'),
+                keywords: ['declaración', 'jurada', 'persona', 'natural']
+            },
+            {
+                title: 'Declaración Jurada Empresas',
+                content: 'Modelo de declaración jurada para empresas',
+                section: 'Modelos de Solicitud',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf', '_blank'),
+                keywords: ['declaración', 'jurada', 'empresa']
+            },
+            {
+                title: 'Acreditación de Empresa',
+                content: 'Solicitud simple de acreditación de empresa',
+                section: 'Modelos de Solicitud',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf', '_blank'),
+                keywords: ['acreditación', 'empresa', 'solicitud']
+            },
+            {
+                title: 'Acreditación Asesor',
+                content: 'Modelo de solicitud de acreditación para asesor',
+                section: 'Modelos de Solicitud',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf', '_blank'),
+                keywords: ['acreditación', 'asesor', 'modelo']
+            },
+
+            // SECCIÓN: Manuales
+            {
+                title: 'Manual de Funcionamiento',
+                content: 'Manual completo de funcionamiento del sistema',
+                section: 'Manuales',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf', '_blank'),
+                keywords: ['manual', 'funcionamiento', 'sistema']
+            },
+            {
+                title: 'Manual de Capacitación',
+                content: 'Manual de capacitación para personal de seguridad',
+                section: 'Manuales',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf', '_blank'),
+                keywords: ['manual', 'capacitación', 'formación', 'personal']
+            },
+            {
+                title: 'Manual de Organización',
+                content: 'Manual de organización empresarial',
+                section: 'Manuales',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf', '_blank'),
+                keywords: ['manual', 'organización', 'empresarial']
+            },
+
+            // SECCIÓN: Capacitación
+            {
+                title: 'Empresas de Capacitación',
+                content: 'Listado actualizado de empresas autorizadas para capacitación',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view', '_blank'),
+                keywords: ['empresa', 'capacitación', 'listado', 'autorizada']
+            },
+            {
+                title: 'Capacitadores',
+                content: 'Personal autorizado para capacitación',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view', '_blank'),
+                keywords: ['capacitador', 'personal', 'autorizado']
+            },
+            {
+                title: 'Valor Curso Formación',
+                content: 'Valores vigentes para cursos de formación',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view', '_blank'),
+                keywords: ['valor', 'curso', 'formación', 'precio', 'costo']
+            },
+            {
+                title: 'Valor Curso Perfeccionamiento',
+                content: 'Valores actualizados para cursos de perfeccionamiento',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view', '_blank'),
+                keywords: ['valor', 'curso', 'perfeccionamiento', 'precio', 'costo']
+            },
+
+            // SECCIÓN: Servicios Adicionales
+            {
+                title: 'Consultar Curso',
+                content: 'Verificar estado de certificaciones y cursos',
+                section: 'Servicios Adicionales',
+                action: () => window.open('https://www.zosepcar.cl/OS10.php#buscador', '_blank'),
+                keywords: ['consultar', 'curso', 'certificación', 'verificar', 'estado', 'buscador']
+            },
+            {
+                title: 'Valores y Aranceles',
+                content: 'Tabla de valores y aranceles vigentes. Vale vista $5.890',
+                section: 'Servicios Adicionales',
+                action: () => window.handleValores && window.handleValores(),
+                keywords: ['valores', 'aranceles', 'tabla', 'precio', 'vale', 'vista', '5890']
+            },
+            {
+                title: 'Ubicación OS10',
+                content: 'Calle Cienfuegos 180, La Serena, Región de Coquimbo',
+                section: 'Servicios Adicionales',
+                action: () => window.open('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6', '_blank'),
+                keywords: ['ubicación', 'dirección', 'cienfuegos', '180', 'serena', 'mapa']
+            },
+
+            // SECCIÓN: Información de contacto
+            {
+                title: 'Teléfono OS10',
+                content: 'Teléfono de contacto: +56 51 265 1024',
+                section: 'Contacto',
+                action: () => window.open('tel:+56512651024', '_self'),
+                keywords: ['teléfono', 'contacto', '512651024', 'llamar']
+            },
+            {
+                title: 'Correo Electrónico',
+                content: 'Email: os10.coquimbo@carabineros.cl',
+                section: 'Contacto',
+                action: () => window.open('mailto:os10.coquimbo@carabineros.cl', '_self'),
+                keywords: ['correo', 'email', 'contacto', 'os10.coquimbo']
+            },
+
+            // SECCIÓN: Resoluciones importantes
+            {
+                title: 'Resolución 4070 - Requisitos Asesores',
+                content: 'Resolución N° 4070 del 20-10-2021 sobre requisitos para asesores',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf', '_blank'),
+                keywords: ['resolución', '4070', 'asesor', 'requisitos']
+            },
+            {
+                title: 'Resolución 2660 - Amplía Asesores',
+                content: 'Resolución N° 2660 del 20-07-2022 que amplía Res. 4070 sobre asesores',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf', '_blank'),
+                keywords: ['resolución', '2660', 'asesor', 'amplía']
+            },
+            {
+                title: 'Resolución 2522 - Regulariza Credenciales',
+                content: 'Resolución N° 2522 del 26-08-2024 que regulariza tramitación de credenciales',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf', '_blank'),
+                keywords: ['resolución', '2522', 'credencial', 'regulariza', 'tramitación']
+            },
+
+            // SECCIÓN: Información institucional
+            {
+                title: 'Misión OS10',
+                content: 'El OS10 Coquimbo ejerce la fiscalización, control y supervisión de las personas naturales y jurídicas que desarrollan actividades de vigilancia y seguridad privada',
+                section: 'Nuestra Labor',
+                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
+                keywords: ['misión', 'fiscalización', 'control', 'supervisión']
+            },
+            {
+                title: 'Visión OS10',
+                content: 'Consolidarnos como un organismo especializado de excelencia en la gestión, fiscalización y control de la seguridad privada',
+                section: 'Nuestra Labor',
+                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
+                keywords: ['visión', 'excelencia', 'gestión']
+            }
+        ];
+
+        console.log(`📚 Índice de búsqueda construido con ${this.searchIndex.length} elementos`);
+    }
+
+    setupEventListeners() {
+        const searchButton = document.getElementById('global-search-button');
+        const searchModal = document.getElementById('global-search-modal');
+        const searchInput = document.getElementById('global-search-input');
+        const overlay = document.querySelector('.search-modal-overlay');
+
+        // Abrir búsqueda con botón
+        searchButton?.addEventListener('click', () => this.openSearch());
+
+        // Abrir búsqueda con atajo de teclado (Ctrl+K o Cmd+K)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                this.openSearch();
+            }
+            // Cerrar con ESC
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeSearch();
+            }
+            // Navegar resultados con flechas
+            if (this.isOpen && this.currentResults.length > 0) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    this.navigateResults(1);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    this.navigateResults(-1);
+                } else if (e.key === 'Enter' && this.currentResultIndex >= 0) {
+                    e.preventDefault();
+                    this.selectResult(this.currentResultIndex);
+                }
+            }
+        });
+
+        // Cerrar con overlay
+        overlay?.addEventListener('click', () => this.closeSearch());
+
+        // Búsqueda en tiempo real
+        searchInput?.addEventListener('input', (e) => {
+            this.performSearch(e.target.value);
+        });
+
+        // Sugerencias de búsqueda
+        document.querySelectorAll('.suggestion-pill').forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                const searchTerm = e.target.dataset.search;
+                searchInput.value = searchTerm;
+                this.performSearch(searchTerm);
+            });
+        });
+    }
+
+    openSearch() {
+        const modal = document.getElementById('global-search-modal');
+        const input = document.getElementById('global-search-input');
+        
+        if (modal) {
+            modal.classList.remove('search-modal-hidden');
+            modal.classList.add('search-modal-visible');
+            this.isOpen = true;
+            
+            // Focus en el input
+            setTimeout(() => {
+                input?.focus();
+            }, 100);
+        }
+    }
+
+    closeSearch() {
+        const modal = document.getElementById('global-search-modal');
+        const input = document.getElementById('global-search-input');
+        
+        if (modal) {
+            modal.classList.remove('search-modal-visible');
+            modal.classList.add('search-modal-hidden');
+            this.isOpen = false;
+            
+            // Limpiar búsqueda
+            if (input) {
+                input.value = '';
+            }
+            this.clearResults();
+        }
+    }
+
+    normalizeText(text) {
+        return text
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
+            .replace(/[^a-z0-9\s]/g, ' ') // Eliminar caracteres especiales
+            .trim();
+    }
+
+    performSearch(query) {
+        if (!query || query.length < 2) {
+            this.clearResults();
+            return;
+        }
+
+        const normalizedQuery = this.normalizeText(query);
+        const queryWords = normalizedQuery.split(/\s+/);
+        
+        // Buscar coincidencias
+        const results = this.searchIndex.map(item => {
+            const normalizedTitle = this.normalizeText(item.title);
+            const normalizedContent = this.normalizeText(item.content);
+            const normalizedKeywords = item.keywords.map(k => this.normalizeText(k)).join(' ');
+            const searchableText = `${normalizedTitle} ${normalizedContent} ${normalizedKeywords}`;
+            
+            let score = 0;
+            let matches = [];
+            
+            queryWords.forEach(word => {
+                // Coincidencia exacta en título
+                if (normalizedTitle.includes(word)) {
+                    score += 10;
+                    matches.push('title');
+                }
+                // Coincidencia exacta en keywords
+                if (normalizedKeywords.includes(word)) {
+                    score += 8;
+                    matches.push('keyword');
+                }
+                // Coincidencia exacta en contenido
+                if (normalizedContent.includes(word)) {
+                    score += 5;
+                    matches.push('content');
+                }
+                // Coincidencia parcial
+                if (searchableText.includes(word)) {
+                    score += 2;
+                }
+            });
+            
+            return {
+                ...item,
+                score,
+                matches: [...new Set(matches)]
+            };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 10); // Máximo 10 resultados
+        
+        this.displayResults(results, query);
+    }
+
+    displayResults(results, query) {
+        const resultsContainer = document.getElementById('search-results');
+        const noResultsContainer = document.getElementById('search-no-results');
+        const helpContainer = document.getElementById('search-help');
+        
+        if (!resultsContainer) return;
+        
+        this.currentResults = results;
+        this.currentResultIndex = -1;
+        
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '';
+            resultsContainer.classList.add('hidden');
+            noResultsContainer?.classList.remove('hidden');
+            helpContainer?.classList.add('hidden');
+        } else {
+            noResultsContainer?.classList.add('hidden');
+            helpContainer?.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            resultsContainer.innerHTML = results.map((item, index) => {
+                const highlightedTitle = this.highlightText(item.title, query);
+                const highlightedContent = this.highlightText(item.content, query);
+                
+                return `
+                    <div class="search-result-item" data-index="${index}">
+                        <div class="result-section-badge">${item.section}</div>
+                        <div class="result-content">
+                            <h4 class="result-title">${highlightedTitle}</h4>
+                            <p class="result-description">${highlightedContent}</p>
+                        </div>
+                        <svg class="result-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 7h10v10"></path>
+                            <path d="M7 17L17 7"></path>
+                        </svg>
+                    </div>
+                `;
+            }).join('');
+            
+            // Agregar event listeners a los resultados
+            document.querySelectorAll('.search-result-item').forEach((item, index) => {
+                item.addEventListener('click', () => this.selectResult(index));
+                item.addEventListener('mouseenter', () => {
+                    this.currentResultIndex = index;
+                    this.updateResultSelection();
+                });
+            });
+        }
+    }
+
+    highlightText(text, query) {
+        if (!query) return text;
+        
+        const words = query.split(/\s+/).filter(w => w.length > 1);
+        let highlightedText = text;
+        
+        words.forEach(word => {
+            const regex = new RegExp(`(${word})`, 'gi');
+            highlightedText = highlightedText.replace(regex, '<mark>$1</mark>');
+        });
+        
+        return highlightedText;
+    }
+
+    navigateResults(direction) {
+        if (this.currentResults.length === 0) return;
+        
+        this.currentResultIndex += direction;
+        
+        if (this.currentResultIndex < 0) {
+            this.currentResultIndex = this.currentResults.length - 1;
+        } else if (this.currentResultIndex >= this.currentResults.length) {
+            this.currentResultIndex = 0;
+        }
+        
+        this.updateResultSelection();
+    }
+
+    updateResultSelection() {
+        document.querySelectorAll('.search-result-item').forEach((item, index) => {
+            if (index === this.currentResultIndex) {
+                item.classList.add('selected');
+                item.scrollIntoView({ block: 'nearest' });
+            } else {
+                item.classList.remove('selected');
+            }
+        });
+    }
+
+    selectResult(index) {
+        const result = this.currentResults[index];
+        if (result && result.action) {
+            this.closeSearch();
+            setTimeout(() => {
+                result.action();
+            }, 200);
+        }
+    }
+
+    clearResults() {
+        const resultsContainer = document.getElementById('search-results');
+        const noResultsContainer = document.getElementById('search-no-results');
+        const helpContainer = document.getElementById('search-help');
+        
+        if (resultsContainer) {
+            resultsContainer.innerHTML = '';
+            resultsContainer.classList.add('hidden');
+        }
+        
+        noResultsContainer?.classList.add('hidden');
+        helpContainer?.classList.remove('hidden');
+        
+        this.currentResults = [];
+        this.currentResultIndex = -1;
     }
 }
 
-@media (max-width: 767px) {
-    #chat-widget-container {
-        right: 1rem;
-        bottom: 3rem;
-    }
-    .card-container {
-        width: 98%;
-    }
-    #chat-toggle-button {
-        width: 70px;
-        height: 70px;
-    }
-    #chat-popup {
-        position: fixed;
-        bottom: 0.75rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 97%;
-        height: 500px;
-    }
+// Inicializar el sistema de búsqueda cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        window.globalSearch = new GlobalSearch();
+    });
+} else {
+    window.globalSearch = new GlobalSearch();
 }
-
-/* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
-
-#desktop-menu {
-    margin-left: 1rem;
-}
-
-.menu-item {
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0.4rem 0.25rem;
-    border-radius: 0.375rem;
-    transition: color 0.2s, background-color 0.2s;
-    white-space: nowrap;
-    font-size: 0.6rem;
-}
-
-@media (min-width: 1400px) {
-    .menu-item {
-        font-size: 0.65rem;
-        padding: 0.4rem 0.4rem;
-    }
-     #desktop-menu {
-        margin-left: 2rem;
-    }
-}
-
-.menu-item:hover {
-    color: #2563eb;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.desktop-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    padding: 0.5rem;
-    width: 280px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    pointer-events: none;
-    z-index: 1250;
-    border: 1px solid rgba(0,0,0,0.05);
-    max-height: calc(100vh - 80px);
-    overflow-y: auto;
-}
-
-.group:hover .desktop-dropdown {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.desktop-dropdown .desktop-dropdown-title {
-    padding: 0.2rem 0.6rem;
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    color: #6b7280;
-    font-weight: 600;
-    margin-top: 0.2rem;
-    border-top: 1px solid #e5e7eb;
-}
-.desktop-dropdown .desktop-dropdown-title:first-of-type {
-    margin-top: 0;
-    border-top: none;
-}
-
-.desktop-dropdown button,
-.desktop-dropdown a {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    font-size: 0.75rem;
-    color: #374151;
-}
-
-.desktop-dropdown button:hover,
-.desktop-dropdown a:hover {
-    background-color: rgba(34, 197, 94, 0.15);
-    color: #15803d;
-}
-
-/* --- Menú Móvil --- */
-.mobile-dropdown {
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    width: 320px;
-    height: calc(100vh - 4rem);
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-    transform: translateX(-105%);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    z-index: 1200;
-    overflow-y: auto;
-    padding: 0.5rem 0;
-}
-
-.mobile-dropdown.show {
-    transform: translateX(0);
-}
-
-#mobile-menu-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.4);
-    z-index: 1199;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-}
-#mobile-menu-overlay:not(.hidden) {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.mobile-dropdown .submenu-parent-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0.6rem 1.5rem;
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
-    font-size: 0.82rem;
-}
-
-.mobile-dropdown .submenu-parent-btn:hover {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: #1d4ed8;
-}
-
-.mobile-dropdown .submenu-arrow {
-    transition: transform 0.3s;
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-.mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: #1d4ed8;
-}
-
-/* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
-#tramites-arrow, .submenu-arrow {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-}
-
-/* --- Asesor Megamenu Styles --- */
-.asesor-item .submenu-arrow-asesor {
-    transform: rotate(-90deg);
-    transition: transform 0.3s ease;
-}
-
-.asesor-item.megamenu-open > .submenu-parent-btn .submenu-arrow-asesor,
-.asesor-item:hover > .submenu-parent-btn .submenu-arrow-asesor {
-    transform: rotate(360deg);
-}
-
-/* ================================================================== */
-/* FIX 1: Posiciona el megamenú de Asesor correctamente debajo del banner */
-/* ================================================================== */
-.asesor-megamenu {
-    position: fixed;
-    top: 4rem;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1250;
-    background-color: rgba(249, 250, 251, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    border-top: 1px solid #e5e7eb;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    overflow-y: auto;
-    pointer-events: none;
-    border-radius: 0;
-}
-
-/* Nueva clase para mostrar el megamenú */
-.asesor-megamenu.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-/* PC: letra más pequeña y profesional */
-@media (min-width: 1024px) {
-    .asesor-megamenu {
-        width: 48rem;
-        left: 50%;
-        margin-left: -24rem;
-        right: auto;
-        bottom: auto;
-        border-radius: 0 0 12px 12px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    }
-
-    .asesor-megamenu-content {
-        padding: 1.5rem 2rem;
-        font-size: 0.8rem;
-    }
-
-    .asesor-megamenu-content h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-
-    .asesor-megamenu-content h4 {
-        font-size: 0.95rem;
-        font-weight: 600;
-    }
-
-    .asesor-megamenu-content h5 {
-        font-size: 0.85rem;
-        font-weight: 600;
-    }
-
-    .asesor-megamenu-content p,
-    .asesor-megamenu-content ol,
-    .asesor-megamenu-content li {
-        font-size: 0.8rem;
-        line-height: 1.5;
-    }
-
-    .asesor-diploma-title {
-        font-size: 0.8rem !important;
-        font-weight: 700 !important;
-        margin-top: 0.75rem;
-        margin-bottom: 0.5rem;
-    }
-}
-
-/* Tamaños de letra para Móvil - cubrir desde abajo hasta banner */
-@media (max-width: 1023px) {
-    .asesor-megamenu {
-        width: 100vw;
-        left: 0;
-        right: 0;
-        border-radius: 0;
-        border-top: 2px solid #e5e7eb;
-    }
-
-    .asesor-megamenu-content {
-        padding: 1rem;
-        font-size: 0.85rem;
-    }
-
-    .asesor-megamenu-content h3 {
-        font-size: 1.15rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .asesor-megamenu-content h4 {
-        font-size: 1rem;
-        margin-top: 0.75rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .asesor-megamenu-content h5 {
-        font-size: 0.85rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0.4rem;
-    }
-
-    .asesor-megamenu-content ol {
-        font-size: 0.8rem;
-        line-height: 1.4;
-    }
-
-    .asesor-megamenu-content p {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-}
-
-/* ===== ALTURA UNIFORME PARA COMPONENTES ===== */
-.mobile-dropdown .submenu.submenu-compact button,
-.mobile-dropdown .submenu.submenu-compact .submenu-parent-btn {
-    min-height: 28px;
-    display: flex;
-    align-items: center;
-    padding-top: 0.3rem;
-    padding-bottom: 0.5rem;
-}
-
-/* ===== AJUSTE PARA EL ITEM ASESOR SIN FLECHA Y CON FONDO GRIS ===== */
-.mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
-    min-height: 28px;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
-    font-size: 0.78rem;
-    line-height: 1.2; /* Ayuda al centrado vertical */
-}
-
-/* Ocultar la flecha del item Asesor */
-.mobile-dropdown .submenu-compact .asesor-item .submenu-arrow-asesor {
-    display: none !important;
-}
-
-/* ===== FONDO GRIS CLARO PARA TODOS LOS SUBMENÚS ===== */
-.mobile-dropdown .submenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    background-color: #f3f4f6; /* Gris claro - Tailwind gray-100 */
-}
-
-.mobile-dropdown .submenu.submenu-compact {
-    background-color: #f3f4f6; /* Gris claro */
-}
-
-.mobile-dropdown .submenu.leyes-compactas {
-    background-color: #f3f4f6; /* Gris claro */
-}
-
-/* ===== BOTÓN DE CIERRE PARA MEGAMENÚ ASESOR ===== */
-.asesor-close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #e5e7eb;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.asesor-close-btn:hover {
-    background-color: #f3f4f6;
-    transform: rotate(90deg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.asesor-close-btn:active {
-    transform: rotate(90deg) scale(0.95);
-}
-
-.asesor-close-btn svg {
-    width: 20px;
-    height: 20px;
-    color: #4b5563;
-}
-
-/* Ajuste para el contenido del megamenú cuando hay botón de cierre */
-.asesor-megamenu-content {
-    padding-top: 2.5rem;
-}
-
-/* Responsive: Ajustes para móvil */
-@media (max-width: 1023px) {
-    .asesor-close-btn {
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 32px;
-        height: 32px;
-    }
-    
-    .asesor-megamenu-content {
-        padding-top: 3rem;
-    }
-}
-
-/* Para PC: botón más grande y mejor posicionado */
-@media (min-width: 1024px) {
-    .asesor-close-btn {
-        top: 1.5rem;
-        right: 1.5rem;
-        width: 40px;
-        height: 40px;
-    }
-    
-    .asesor-close-btn svg {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-/* ===== AJUSTE ADICIONAL PARA UNIFORMIDAD DE COMPONENTES ===== */
-.mobile-dropdown .submenu.submenu-compact button {
-    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
-    transition: all 0.2s ease;
-}
-
-.mobile-dropdown .submenu.submenu-compact button:last-child {
-    border-bottom: none;
-}
-
-.mobile-dropdown .submenu.submenu-compact button:hover {
-    background-color: rgba(34, 197, 94, 0.2); /* Verde un poco más intenso */
-    color: #15803d;
-    padding-left: 3rem;
-}
-
-.mobile-dropdown .submenu.leyes-compactas button,
-.mobile-dropdown .submenu.submenu-compact button {
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    padding-left: 2.5rem;
-    font-size: 0.7rem;
-}
-
-.mobile-dropdown .submenu.leyes-compactas .submenu-title {
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-    padding-left: 2.5rem;
-    font-size: 0.7rem;
-    background-color: rgba(0,0,0,0.06);
-}
-
-.leyes-compactas-desktop {
-    width: 320px;
-}
-.leyes-compactas-desktop .desktop-dropdown-title {
-    padding: 0.2rem 0.6rem;
-    font-size: 0.6rem;
-    margin-top: 0.2rem;
-}
-.leyes-compactas-desktop button {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-}
-
-.mobile-dropdown .has-submenu.submenu-open > .submenu {
-    max-height: 2000px;
-}
-
-.mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.82rem;
-    color: #374151;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.mobile-dropdown .submenu button:hover {
-    background-color: rgba(34, 197, 94, 0.15);
-    color: #15803d;
-}
-
-.mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: #1d4ed8;
-}
-
-.mobile-dropdown .dropdown-menu-header {
-    min-height: 32px; /* Altura mínima uniforme */
-    display: flex;
-    padding: 0.3rem 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 0.5rem;
-}
-.mobile-dropdown .dropdown-menu-header h3 {
-    font-weight: 600;
-    color: #1f2937;
-    font-size: 0.9rem;
-}
-
-/* --- AJUSTE TAMAÑO TEXTO BANNER --- */
-.banner-text-small {
-    font-size: 0.875rem;
-}
-
-/* ===== INICIO CAMBIO USUARIO ===== */
-/* Ajuste para ordenar el contador de visitas en PC */
-@media (min-width: 1024px) {
-    .banner-text-small {
-        order: 3;
-    }
-}
-/* ===== FIN CAMBIO USUARIO ===== */
-
-
-/* El resto de los estilos se mantienen */
-.voice-button, .response-button, .typing-indicator, .voice-selector, .os10-coquimbo-center {
-    /* Estilos existentes se mantienen */
-}
-
-/* ===== AJUSTE SECCIÓN TRÁMITES PRINCIPALES ===== */
-#tramites-principales {
-    padding-top: 5rem;
-}
-
-@media (min-width: 768px) {
-    #tramites-principales {
-        padding-top: 7rem;
-    }
-}
-
-/* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
-.homepage-section {
-    display: none;
-    height: 75vh;
-    max-height: 700px;
-    min-height: 450px;
-}
-
-.background-transition { animation: none; }
-.text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
-.text-shadow-lg { text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
-.elegant-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    border: 1px solid #e5e7eb;
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-
-.elegant-card:hover {
-    border-color: transparent;
-    box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6);
-}
-
-.homepage-btn { min-width: 250px; padding: 0.75rem 2rem; }
-
-@media (max-width: 640px) {
-   .homepage-btn { width: 60%; padding: 0.5rem 1.5rem; background-color: rgba(59, 130, 246, 0.7); color: white; }
-   .homepage-btn.bg-[#ffb700] { background-color: rgba(255, 183, 0, 0.7); color: white; }
-}
-
-/* Credenciales Section Specific Styles */
-.credenciales-section { display: none; }
-.credenciales-section.active { display: block; }
-.credenciales-title-container { text-align: center; margin-top: 2rem; line-height: 1; }
-.credenciales-main-title, .credenciales-main-subtitle { color: #EAB308; font-weight: bold; display: block; text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4); transition: all 0.3s ease; margin: 0; padding: 0; }
-.credenciales-main-title { font-size: 2.2rem; transform: translateX(-2px); }
-.credenciales-main-subtitle { font-size: 1.6rem; transform: translateX(10px); }
-.credenciales-section-title { color: #F54C38; font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; }
-.credenciales-download-btn { display: inline-flex; justify-content: center; align-items: center; padding: 8px 24px; margin: 0.5rem 0; width: auto; min-width: 240px; font-size: 1rem; font-weight: bold; color: white; border-radius: 7px; text-align: center; transition: all 0.3s ease; text-decoration: none; }
-.credenciales-download-btn:hover { transform: translateY(-3px); }
-.credenciales-photo-example, .credenciales-valores-example { max-width: 100%; border-radius: 8px; }
-.credenciales-table-container { overflow-x: auto; margin-top: 1.5rem; margin-bottom: 1.5rem; }
-.credenciales-responsive-table { width: 100%; border-collapse: collapse; }
-.credenciales-responsive-table th, .credenciales-responsive-table td { border: 1px solid #ddd; padding: 12px; text-align: left; font-size: 0.95rem; white-space: nowrap; }
-.credenciales-responsive-table th { background-color: #f1f5f9; position: sticky; top: 0; z-index: 10; }
-.credenciales-table-select { min-width: 200px; }
-.credenciales-qr-image { width: 80px; height: auto; }
-#credenciales-arrow-back-btn { position: absolute; top: 1rem; right: 0.5rem; z-index: 20; color: #4B5563; transition: all 0.2s ease; cursor: pointer; padding: 0.5rem; border-radius: 9999px; }
-#credenciales-arrow-back-btn:hover { color: #2563EB; background-color: rgba(0, 0, 0, 0.05); }
-
-@media (max-width: 640px) {
-    .credenciales-main-title { font-size: 1.4rem; }
-    .credenciales-main-subtitle { font-size: 1.0rem; }
-    .credenciales-section-title { font-size: 1.1rem; }
-}
-
-/* Ajuste para centrar elementos del banner en PC */
-@media (min-width: 1024px) {
-  #banner > div {
-    justify-content: center !important;
-    gap: 34rem;
-    max-width: 1200px;
-  }
-
-  .mobile-dropdown {
-    left: calc(50% - 400px);
-    top: 4rem;
-    width: 380px;
-    height: auto;
-    max-height: calc(100vh - 5rem);
-    transform: translateX(-20px) scale(0.98);
-    opacity: 0;
-    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-    pointer-events: none;
-    transform-origin: top left;
-  }
-
-  .mobile-dropdown.show {
-      transform: translateX(0) scale(1);
-      opacity: 1;
-      pointer-events: auto;
-  }
-
-  #mobile-menu-overlay {
-      display: none !important;
-  }
-}
-
-/* ===== EFECTO DE ENCENDIDO PARA ICONOS SVG - MEJORADO Y CON MÁS INTENSIDAD ===== */
-/* Transición suave para todos los iconos SVG en secciones específicas */
-#componentes-seguridad a .flex-shrink-0 svg,
-#tramites-principales div[onclick] .flex-shrink-0 svg,
-#capacitacion a.group .bg-white\/20 svg,
-#servicios-adicionales a svg,
-#servicios-adicionales div[onclick] svg {
-  transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
-  filter: brightness(1);
-  transform: scale(1);
-}
-
-/* Efecto hover para iconos VERDES - INTENSIDAD AUMENTADA */
-#componentes-seguridad a:hover .text-green-300,
-#componentes-seguridad a:hover .text-green-600,
-#tramites-principales div[onclick]:hover .text-green-300,
-#tramites-principales div[onclick]:hover .text-green-600,
-#capacitacion a.group:hover .text-green-300,
-#capacitacion a.group:hover .text-green-600,
-#servicios-adicionales div[onclick]:hover .text-green-600 {
-  filter: brightness(2) drop-shadow(0 0 10px #4ADE80) drop-shadow(0 0 20px rgba(74, 222, 128, 0.6));
-  transform: scale(1.15);
-}
-
-/* Efecto hover para iconos AZULES - INTENSIDAD AUMENTADA */
-#componentes-seguridad a:hover .text-blue-300,
-#componentes-seguridad a:hover .text-blue-600,
-#tramites-principales div[onclick]:hover .text-blue-300,
-#tramites-principales div[onclick]:hover .text-blue-600,
-#capacitacion a.group:hover .text-blue-300,
-#capacitacion a.group:hover .text-blue-600,
-#servicios-adicionales a:hover .text-blue-600 {
-  filter: brightness(2.1) drop-shadow(0 0 10px #60A5FA) drop-shadow(0 0 20px rgba(96, 165, 250, 0.6));
-  transform: scale(1.15);
-}
-
-/* Efecto hover para iconos AMARILLOS - INTENSIDAD AUMENTADA */
-#componentes-seguridad a:hover .text-yellow-300,
-#componentes-seguridad a:hover .text-yellow-600,
-#tramites-principales div[onclick]:hover .text-yellow-300,
-#tramites-principales div[onclick]:hover .text-yellow-600,
-#capacitacion a.group:hover .text-yellow-300,
-#capacitacion a.group:hover .text-yellow-600,
-#servicios-adicionales a:hover .text-yellow-600 {
-  filter: brightness(2) drop-shadow(0 0 10px #FACC15) drop-shadow(0 0 20px rgba(250, 204, 21, 0.6));
-  transform: scale(1.15);
-}
-
-/* Efecto hover para iconos ROJOS - NUEVOS */
-#componentes-seguridad a:hover .text-red-300,
-#componentes-seguridad a:hover .text-red-600,
-#tramites-principales div[onclick]:hover .text-red-300,
-#tramites-principales div[onclick]:hover .text-red-600,
-#capacitacion a.group:hover .text-red-300,
-#capacitacion a.group:hover .text-red-600,
-#servicios-adicionales a:hover .text-red-600,
-#servicios-adicionales div[onclick]:hover .text-red-600 {
-  filter: brightness(2.1) drop-shadow(0 0 10px #EF4444) drop-shadow(0 0 20px rgba(239, 68, 68, 0.6));
-  transform: scale(1.15);
-}
-
-/* ===== EFECTO MEJORADO PARA BOTONES EN SECCIÓN CAPACITACIÓN ===== */
-#capacitacion a.group,
-#capacitacion div[onclick] {
-  transition: all 0.3s ease-in-out;
-}
-
-#capacitacion a.group:hover,
-#capacitacion div[onclick]:hover {
-  transform: translateY(-8px) scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.4)) drop-shadow(0 0 25px rgba(96, 165, 250, 0.3));
-}
-
-#capacitacion a.group:hover .bg-white\/20,
-#capacitacion div[onclick]:hover .bg-white\/20 {
-  background-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
-}
-
-/* --- AJUSTE DE TAMAÑO DE ICONOS EN PC (SOLICITUD DE USUARIO) --- */
-@media (min-width: 768px) {
-    /* * Aumenta el tamaño de los iconos decorativos (libro, etc.) 
-     * en las secciones "Leyes" y "Documentos" para PC.
-     * (Original: md:w-12 md:h-12 -> 3rem)
-     */
-    #leyes-normativa .absolute.top-4.left-4 > svg,
-    #documentos-formularios .absolute.top-4.left-4 > svg {
-        width: 5rem;  /* 20 * 0.25rem = 5rem (equivale a w-20) */
-        height: 5rem; /* 20 * 0.25rem = 5rem (equivale a h-20) */
-    }
-}
-/* --- FIN DE AJUSTE --- */
