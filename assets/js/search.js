@@ -306,6 +306,8 @@ class GlobalSearch {
             keywords: ['decreto', 'supremo', '93', 'ds', 'd.s.', 'ds93', 'd.s.93', '1985']
         },
 
+        ];
+
         console.log(`📚 Índice de búsqueda construido con ${this.searchIndex.length} elementos`);
     }
 
