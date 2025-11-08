@@ -124,20 +124,15 @@ class GlobalSearch {
             if (!searchButton) return;
     
             if (window.innerWidth >= 1024 && searchCenterContainer) {
-                // En PC: mover al centro
-                if (searchButton.parentElement !== searchCenterContainer) {
-                    searchCenterContainer.appendChild(searchButton);
-                }
-            } else {
-                // En móvil: mover DENTRO del grupo del contador
-                const banner = document.getElementById('banner');
-                if (banner) {
-                    const bannerContent = banner.querySelector('.flex.items-center.justify-between');
-                    const visitCounterContainer = bannerContent?.querySelector('.flex.items-center.space-x-2.banner-text-small');
-                    
-                    // Solo mover si no está ya ahí
-                    if (visitCounterContainer && searchButton.parentElement !== visitCounterContainer) {
-                         visitCounterContainer.prepend(searchButton); // <--- ¡LÍNEA CAMBIADA!
+                // SIEMPRE mover DENTRO del grupo del contador (móvil y PC)
+        const banner = document.getElementById('banner');
+        if (banner) {
+            const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+            const visitCounterContainer = bannerContent?.querySelector('.flex.items-center.space-x-2.banner-text-small');
+
+            // Solo mover si no está ya ahí
+            if (visitCounterContainer && searchButton.parentElement !== visitCounterContainer) {
+                 visitCounterContainer.prepend(searchButton);
                     }
                 }
             }
