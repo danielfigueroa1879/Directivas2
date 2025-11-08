@@ -411,7 +411,7 @@ mark {
     #global-search-modal {
         padding-top: 5vh;
     }
-    
+    margin-right: 2.5rem; /* Esto le dará el espacio que querías */
     .search-modal-content {
         width: 95%;
         max-height: 85vh;
