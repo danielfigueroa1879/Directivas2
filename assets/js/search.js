@@ -39,28 +39,28 @@ class GlobalSearch {
             </svg>
         `;
 
-        // Insertar el botón en el banner existente
-// Insertar el botón en el contenedor central para PC o en el banner para móvil
-const banner = document.getElementById('banner');
-const searchCenterContainer = document.getElementById('search-center-container');
+                // Insertar el botón en el banner existente
+            // Insertar el botón en el contenedor central para PC o en el banner para móvil
+        const banner = document.getElementById('banner');
+        const searchCenterContainer = document.getElementById('search-center-container');
 
-if (banner) {
-    // En PC: insertar en el contenedor central
-    if (searchCenterContainer && window.innerWidth >= 1024) {
-        searchCenterContainer.appendChild(searchButton);
-    } else {
-        // En móvil: insertar antes del contador de visitas
-        const bannerContent = banner.querySelector('.flex.items-center.justify-between');
-        if (bannerContent) {
-            const visitCounter = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
-            if (visitCounter) {
-                bannerContent.insertBefore(searchButton, visitCounter);
+        if (banner) {
+            // En PC: insertar en el contenedor central
+            if (searchCenterContainer && window.innerWidth >= 1024) {
+                searchCenterContainer.appendChild(searchButton);
             } else {
-                bannerContent.appendChild(searchButton);
-            }
-        }
-    }
-}
+                // En móvil: insertar antes del contador de visitas
+                const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+                if (bannerContent) {
+                    const visitCounter = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
+                    if (visitCounter) {
+                        bannerContent.insertBefore(searchButton, visitCounter);
+                    } else {
+                        bannerContent.appendChild(searchButton);
+                    }
+                 }
+              }
+           }
         // Modal de búsqueda
         const searchModal = document.createElement('div');
         searchModal.id = 'global-search-modal';
