@@ -76,7 +76,7 @@
 /* Estilo para móvil */
 @media (max-width: 1023px) {
     #global-search-button {
-        margin-right: 2.5rem; /* Esto añade 16px de espacio a la derecha de la lupa */
+        margin-right: 2.0rem; /* Esto añade 16px de espacio a la derecha de la lupa */
     }
 
     
