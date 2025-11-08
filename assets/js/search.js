@@ -45,20 +45,17 @@ class GlobalSearch {
         const searchCenterContainer = document.getElementById('search-center-container');
 
       if (banner) {
-                // En PC: insertar en el contenedor central
-                if (searchCenterContainer && window.innerWidth >= 1024) {
-                    searchCenterContainer.appendChild(searchButton);
-                } else {
-                    // En móvil: insertar DENTRO del grupo del contador de visitas
-                    const bannerContent = banner.querySelector('.flex.items-center.justify-between');
-                    if (bannerContent) {
-                        const visitCounterContainer = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
-                        if (visitCounterContainer) {
-                            // Usamos prepend() para que sea el primer hijo de ese div
-                            visitCounterContainer.prepend(searchButton); // <--- ¡LÍNEA CAMBIADA!
-                        } else {
-                            // Fallback por si no encuentra el div del contador
-                            bannerContent.appendChild(searchButton);
+                if (banner) {
+                // SIEMPRE insertar DENTRO del grupo del contador de visitas (móvil y PC)
+                const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+                if (bannerContent) {
+                    const visitCounterContainer = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
+                    if (visitCounterContainer) {
+                        // Usamos prepend() para que sea el primer hijo de ese div
+                        visitCounterContainer.prepend(searchButton); 
+                    } else {
+                        // Fallback por si no encuentra el div del contador
+                        bannerContent.appendChild(searchButton);
                         }
                  }
               }
