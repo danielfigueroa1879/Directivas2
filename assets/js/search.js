@@ -40,30 +40,27 @@ class GlobalSearch {
         `;
         
         // Insertar el botón en el banner existente
-        const banner = document.getElementById('banner');
-        if (banner) {
-            // En PC: insertar después del logo
-            const desktopMenu = document.getElementById('desktop-menu');
-            if (desktopMenu) {
-                // Insertar antes del menú desktop
-                desktopMenu.parentNode.insertBefore(searchButton, desktopMenu);
-            } else {
-                // Si no hay menú desktop, insertar antes del contador de visitas
-                const bannerContent = banner.querySelector('.flex.items-center.justify-between');
-                if (bannerContent) {
-                    const visitCounter = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
-                    if (visitCounter) {
-                        bannerContent.insertBefore(searchButton, visitCounter);
-                    } else {
-                        bannerContent.appendChild(searchButton);
-                    }
-                }
-            }
-        } else {
-            // Fallback: agregar al body si no se encuentra el banner
-            document.body.appendChild(searchButton);
-        }
+// Insertar el botón en el contenedor central para PC o en el banner para móvil
+const banner = document.getElementById('banner');
+const searchCenterContainer = document.getElementById('search-center-container');
 
+if (banner) {
+    // En PC: insertar en el contenedor central
+    if (searchCenterContainer && window.innerWidth >= 1024) {
+        searchCenterContainer.appendChild(searchButton);
+    } else {
+        // En móvil: insertar antes del contador de visitas
+        const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+        if (bannerContent) {
+            const visitCounter = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
+            if (visitCounter) {
+                bannerContent.insertBefore(searchButton, visitCounter);
+            } else {
+                bannerContent.appendChild(searchButton);
+            }
+        }
+    }
+}
         // Modal de búsqueda
         const searchModal = document.createElement('div');
         searchModal.id = 'global-search-modal';
