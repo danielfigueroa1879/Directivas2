@@ -76,10 +76,10 @@
 /* Estilo para móvil */
 @media (max-width: 1023px) {
     #global-search-button {
-        /* margin: 0 10px 0 0; */ /* <-- Ya no es necesario, el space-x-2 del padre lo maneja */
+        margin-right: 2.5rem; /* Esto añade 16px de espacio a la derecha de la lupa */
     }
 
-    margin-right: 2.5rem; /* Esto añade 16px de espacio a la derecha de la lupa */
+    
     
     #global-search-button .search-icon {
         width: 20px;  /* Se hace más pequeño */
@@ -411,7 +411,7 @@ mark {
     #global-search-modal {
         padding-top: 5vh;
     }
-    margin-right: 2.5rem; /* Esto le dará el espacio que querías */
+    
     .search-modal-content {
         width: 95%;
         max-height: 85vh;
