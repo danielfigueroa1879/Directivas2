@@ -866,12 +866,13 @@ body.homepage {
 
   /* 2. Contenedor central (donde va la lupa) */
   #search-center-container {
-    flex-grow: 1;       /* Permite que crezca para llenar el espacio */
-    flex-shrink: 1;     /* ¡LA SOLUCIÓN! Permite que se encoja si no hay espacio */
-    min-width: 50px;    /* ¡LA SOLUCIÓN! Evita que colapse a 0px, siempre tendrá 50px para la lupa */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 50px;
     display: flex;
-    justify-content: center;
-  }
+    justify-content: flex-end; /* <-- CAMBIA 'center' POR 'flex-end' */
+    padding-right: 1rem; 
+   }
 }
 
 /* 3. Arreglo para el contador "Visitas" (palabra arriba del número) */
