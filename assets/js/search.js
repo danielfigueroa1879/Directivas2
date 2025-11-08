@@ -1,6 +1,8 @@
 /**
  * Sistema de Búsqueda Global - OS10 Coquimbo
- * Versión 1.2 - CORREGIDA
+ * Versión 1.0
+ * 
+ * Funcionalidad completa de búsqueda con indexación de contenido
  */
 
 class GlobalSearch {
@@ -13,9 +15,13 @@ class GlobalSearch {
     }
 
     init() {
+        // Crear elementos de búsqueda
         this.createSearchElements();
+        // Indexar contenido
         this.buildSearchIndex();
+        // Configurar eventos
         this.setupEventListeners();
+        // Log de inicialización
         console.log('🔍 Sistema de búsqueda global inicializado');
     }
 
@@ -27,23 +33,33 @@ class GlobalSearch {
         searchButton.setAttribute('aria-label', 'Buscar en el sitio');
         searchButton.setAttribute('title', 'Buscar (Ctrl+K)');
         searchButton.innerHTML = `
-            <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.35-4.35"></path>
             </svg>
         `;
 
-        // CORRECCIÓN: Insertar en el contenedor correcto
+                // Insertar el botón en el banner existente
+            // Insertar el botón en el contenedor central para PC o en el banner para móvil
+        const banner = document.getElementById('banner');
         const searchCenterContainer = document.getElementById('search-center-container');
-        
-        if (searchCenterContainer) {
-            searchCenterContainer.innerHTML = '';
-            searchCenterContainer.appendChild(searchButton);
-            console.log('✅ Botón de búsqueda agregado correctamente');
-        } else {
-            console.error('❌ No se encontró #search-center-container');
-        }
-        
+
+      if (banner) {
+                if (banner) {
+                // SIEMPRE insertar DENTRO del grupo del contador de visitas (móvil y PC)
+                const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+                if (bannerContent) {
+                    const visitCounterContainer = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
+                    if (visitCounterContainer) {
+                        // Usamos prepend() para que sea el primer hijo de ese div
+                        visitCounterContainer.prepend(searchButton); 
+                    } else {
+                        // Fallback por si no encuentra el div del contador
+                        bannerContent.appendChild(searchButton);
+                        }
+                 }
+              }
+           }
         // Modal de búsqueda
         const searchModal = document.createElement('div');
         searchModal.id = 'global-search-modal';
@@ -81,12 +97,13 @@ class GlobalSearch {
                         <div class="search-suggestions">
                             <button class="suggestion-pill" data-search="directiva">Directivas</button>
                             <button class="suggestion-pill" data-search="credencial">Credenciales</button>
-                            <button class="suggestion-pill" data-search="18961">Ley 18.961</button>
-                            <button class="suggestion-pill" data-search="21659">Ley 21.659</button>
+                            <button class="suggestion-pill" data-search="decreto">Decretos</button>
+                            <button class="suggestion-pill" data-search="ley">Leyes</button>
                             <button class="suggestion-pill" data-search="guardia">Guardias</button>
                             <button class="suggestion-pill" data-search="seguridad">Seguridad</button>
                             <button class="suggestion-pill" data-search="capacitación">Capacitación</button>
                             <button class="suggestion-pill" data-search="formulario">Formularios</button>
+                            <button class="suggestion-pill" data-search="manual">Manuales</button>
                             <button class="suggestion-pill" data-search="valores">Valores</button>
                         </div>
                     </div>
@@ -94,8 +111,32 @@ class GlobalSearch {
             </div>
         `;
         document.body.appendChild(searchModal);
+        // Listener para reposicionar el botón en cambio de tamaño de ventana
+        window.addEventListener('resize', () => {
+        this.repositionSearchButton();
+        });     
     }
+    
+        repositionSearchButton() {
+            const searchButton = document.getElementById('global-search-button');
+            const searchCenterContainer = document.getElementById('search-center-container');
+    
+            if (!searchButton) return;
+    
+            if (window.innerWidth >= 1024 && searchCenterContainer) {
+                // SIEMPRE mover DENTRO del grupo del contador (móvil y PC)
+        const banner = document.getElementById('banner');
+        if (banner) {
+            const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+            const visitCounterContainer = bannerContent?.querySelector('.flex.items-center.space-x-2.banner-text-small');
 
+            // Solo mover si no está ya ahí
+            if (visitCounterContainer && searchButton.parentElement !== visitCounterContainer) {
+                 visitCounterContainer.prepend(searchButton);
+                    }
+                }
+            }
+        }
     buildSearchIndex() {
         this.searchIndex = [
             // SECCIÓN: Trámites Principales
@@ -128,7 +169,7 @@ class GlobalSearch {
                 keywords: ['reclamo', 'fiscalización', 'denuncia', 'seguridad privada']
             },
 
-            // SECCIÓN: Leyes (CON AMBAS VERSIONES DE NÚMEROS)
+            // SECCIÓN: Leyes
             {
                 title: 'Constitución Política',
                 content: 'Fundamento constitucional de la seguridad privada',
@@ -141,28 +182,28 @@ class GlobalSearch {
                 content: 'Ley Orgánica Constitucional de Carabineros',
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30329', '_blank'),
-                keywords: ['ley', '18961', '18.961', 'orgánica', 'constitucional', 'carabineros']
+                keywords: ['ley', '18961', 'orgánica', 'constitucional', 'carabineros']
             },
             {
                 title: 'Ley 19.303',
                 content: 'Normativa complementaria de seguridad privada',
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30670', '_blank'),
-                keywords: ['ley', '19303', '19.303', 'normativa', 'complementaria']
+                keywords: ['ley', '19303', 'normativa', 'complementaria']
             },
             {
                 title: 'D.L. 3.607 (1981)',
                 content: 'Decreto Ley histórico sobre seguridad privada',
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=7193', '_blank'),
-                keywords: ['decreto', 'ley', '3607', '3.607', 'dl', '1981', 'histórico']
+                keywords: ['decreto', 'ley', '3607', '1981', 'histórico']
             },
             {
                 title: 'Ley 21.659',
                 content: 'Ley de Seguridad Privada actualizada',
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067', '_blank'),
-                keywords: ['ley', '21659', '21.659', 'seguridad', 'privada', 'actualizada']
+                keywords: ['ley', '21659', 'seguridad', 'privada', 'actualizada']
             },
             {
                 title: 'Reglamento 209',
@@ -172,20 +213,20 @@ class GlobalSearch {
                 keywords: ['reglamento', '209', 'vigente']
             },
 
-            // SECCIÓN: Decretos (TODOS CON AMBAS VERSIONES)
+            // SECCIÓN: Decretos
             {
                 title: 'D.E. 261 (2020)',
                 content: 'Decreto Exento 261 del año 2020',
                 section: 'Decretos Supremos',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf', '_blank'),
-                keywords: ['decreto', 'exento', '261', 'de', '2020']
+                keywords: ['decreto', 'exento', '261', '2020']
             },
             {
                 title: 'D.E. 32 (2024)',
                 content: 'Decreto Exento 32 del año 2024 - Uniformes',
                 section: 'Decretos Supremos',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1200633', '_blank'),
-                keywords: ['decreto', 'exento', '32', 'de', '2024', 'uniforme', 'uniformes']
+                keywords: ['decreto', '32', '2024', 'uniforme']
             },
             {
                 title: 'D. 298 (2019)',
@@ -202,90 +243,11 @@ class GlobalSearch {
                 keywords: ['decreto', '123', '2019']
             },
             {
-                title: 'D. 1045 (2018)',
-                content: 'Decreto 1045 del año 2018',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1122982', '_blank'),
-                keywords: ['decreto', '1045', '2018']
-            },
-            {
-                title: 'D. 867 (2017)',
-                content: 'Decreto 867 del año 2017',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1116274', '_blank'),
-                keywords: ['decreto', '867', '2017']
-            },
-            {
-                title: 'D. 1814 (2014)',
-                content: 'Decreto 1814 del año 2014',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1069299', '_blank'),
-                keywords: ['decreto', '1814', '2014']
-            },
-            {
-                title: 'D.S. 222 (2014)',
-                content: 'Decreto Supremo 222 del año 2014',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1055580', '_blank'),
-                keywords: ['decreto', 'supremo', '222', 'ds', '2014']
-            },
-            {
-                title: 'D.E. 1122 (1994)',
-                content: 'Decreto Exento 1122 del año 1994',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1072929', '_blank'),
-                keywords: ['decreto', 'exento', '1122', 'de', '1994']
-            },
-            {
-                title: 'D.S. 41 (1996)',
-                content: 'Decreto Supremo 41 del año 1996',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=19870', '_blank'),
-                keywords: ['decreto', 'supremo', '41', 'ds', '1996']
-            },
-            {
-                title: 'D.S. 1772 (1995)',
-                content: 'Decreto Supremo 1772 del año 1995',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=18592', '_blank'),
-                keywords: ['decreto', 'supremo', '1772', 'ds', '1995']
-            },
-            {
-                title: 'D.S. 1773 (1994)',
-                content: 'Decreto Supremo 1773 del año 1994',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=18594', '_blank'),
-                keywords: ['decreto', 'supremo', '1773', 'ds', '1994']
-            },
-            {
                 title: 'D. 93 (1985)',
                 content: 'Decreto Supremo 93 del año 1985',
                 section: 'Decretos Supremos',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=9081', '_blank'),
                 keywords: ['decreto', '93', '1985']
-            },
-
-            // SECCIÓN: Resoluciones (CON AMBAS VERSIONES)
-            {
-                title: 'Resolución 4070 - Requisitos Asesores',
-                content: 'Resolución N° 4070 del 20-10-2021 sobre requisitos para asesores',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf', '_blank'),
-                keywords: ['resolución', '4070', '4.070', 'asesor', 'requisitos', '2021']
-            },
-            {
-                title: 'Resolución 2660 - Amplía Asesores',
-                content: 'Resolución N° 2660 del 20-07-2022 que amplía Res. 4070 sobre asesores',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf', '_blank'),
-                keywords: ['resolución', '2660', '2.660', 'asesor', 'amplía', '2022']
-            },
-            {
-                title: 'Resolución 2522 - Regulariza Credenciales',
-                content: 'Resolución N° 2522 del 26-08-2024 que regulariza tramitación de credenciales',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf', '_blank'),
-                keywords: ['resolución', '2522', '2.522', 'credencial', 'regulariza', 'tramitación', '2024']
             },
 
             // SECCIÓN: Componentes del Sistema
@@ -524,6 +486,45 @@ class GlobalSearch {
                 section: 'Contacto',
                 action: () => window.open('mailto:os10.coquimbo@carabineros.cl', '_self'),
                 keywords: ['correo', 'email', 'contacto', 'os10.coquimbo']
+            },
+
+            // SECCIÓN: Resoluciones importantes
+            {
+                title: 'Resolución 4070 - Requisitos Asesores',
+                content: 'Resolución N° 4070 del 20-10-2021 sobre requisitos para asesores',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf', '_blank'),
+                keywords: ['resolución', '4070', 'asesor', 'requisitos']
+            },
+            {
+                title: 'Resolución 2660 - Amplía Asesores',
+                content: 'Resolución N° 2660 del 20-07-2022 que amplía Res. 4070 sobre asesores',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf', '_blank'),
+                keywords: ['resolución', '2660', 'asesor', 'amplía']
+            },
+            {
+                title: 'Resolución 2522 - Regulariza Credenciales',
+                content: 'Resolución N° 2522 del 26-08-2024 que regulariza tramitación de credenciales',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf', '_blank'),
+                keywords: ['resolución', '2522', 'credencial', 'regulariza', 'tramitación']
+            },
+
+            // SECCIÓN: Información institucional
+            {
+                title: 'Misión OS10',
+                content: 'El OS10 Coquimbo ejerce la fiscalización, control y supervisión de las personas naturales y jurídicas que desarrollan actividades de vigilancia y seguridad privada',
+                section: 'Nuestra Labor',
+                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
+                keywords: ['misión', 'fiscalización', 'control', 'supervisión']
+            },
+            {
+                title: 'Visión OS10',
+                content: 'Consolidarnos como un organismo especializado de excelencia en la gestión, fiscalización y control de la seguridad privada',
+                section: 'Nuestra Labor',
+                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
+                keywords: ['visión', 'excelencia', 'gestión']
             }
         ];
 
@@ -536,18 +537,20 @@ class GlobalSearch {
         const searchInput = document.getElementById('global-search-input');
         const overlay = document.querySelector('.search-modal-overlay');
 
-        if (searchButton) {
-            searchButton.addEventListener('click', () => this.openSearch());
-        }
+        // Abrir búsqueda con botón
+        searchButton?.addEventListener('click', () => this.openSearch());
 
+        // Abrir búsqueda con atajo de teclado (Ctrl+K o Cmd+K)
         document.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
                 this.openSearch();
             }
+            // Cerrar con ESC
             if (e.key === 'Escape' && this.isOpen) {
                 this.closeSearch();
             }
+            // Navegar resultados con flechas
             if (this.isOpen && this.currentResults.length > 0) {
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
@@ -562,23 +565,20 @@ class GlobalSearch {
             }
         });
 
-        if (overlay) {
-            overlay.addEventListener('click', () => this.closeSearch());
-        }
+        // Cerrar con overlay
+        overlay?.addEventListener('click', () => this.closeSearch());
 
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                this.performSearch(e.target.value);
-            });
-        }
+        // Búsqueda en tiempo real
+        searchInput?.addEventListener('input', (e) => {
+            this.performSearch(e.target.value);
+        });
 
+        // Sugerencias de búsqueda
         document.querySelectorAll('.suggestion-pill').forEach(pill => {
             pill.addEventListener('click', (e) => {
                 const searchTerm = e.target.dataset.search;
-                if (searchInput) {
-                    searchInput.value = searchTerm;
-                    this.performSearch(searchTerm);
-                }
+                searchInput.value = searchTerm;
+                this.performSearch(searchTerm);
             });
         });
     }
@@ -592,8 +592,9 @@ class GlobalSearch {
             modal.classList.add('search-modal-visible');
             this.isOpen = true;
             
+            // Focus en el input
             setTimeout(() => {
-                if (input) input.focus();
+                input?.focus();
             }, 100);
         }
     }
@@ -607,6 +608,7 @@ class GlobalSearch {
             modal.classList.add('search-modal-hidden');
             this.isOpen = false;
             
+            // Limpiar búsqueda
             if (input) {
                 input.value = '';
             }
@@ -618,9 +620,8 @@ class GlobalSearch {
         return text
             .toLowerCase()
             .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/\./g, '')
-            .replace(/[^a-z0-9\s]/g, ' ')
+            .replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
+            .replace(/[^a-z0-9\s]/g, ' ') // Eliminar caracteres especiales
             .trim();
     }
 
@@ -633,6 +634,7 @@ class GlobalSearch {
         const normalizedQuery = this.normalizeText(query);
         const queryWords = normalizedQuery.split(/\s+/);
         
+        // Buscar coincidencias
         const results = this.searchIndex.map(item => {
             const normalizedTitle = this.normalizeText(item.title);
             const normalizedContent = this.normalizeText(item.content);
@@ -643,18 +645,22 @@ class GlobalSearch {
             let matches = [];
             
             queryWords.forEach(word => {
+                // Coincidencia exacta en título
                 if (normalizedTitle.includes(word)) {
                     score += 10;
                     matches.push('title');
                 }
+                // Coincidencia exacta en keywords
                 if (normalizedKeywords.includes(word)) {
                     score += 8;
                     matches.push('keyword');
                 }
+                // Coincidencia exacta en contenido
                 if (normalizedContent.includes(word)) {
                     score += 5;
                     matches.push('content');
                 }
+                // Coincidencia parcial
                 if (searchableText.includes(word)) {
                     score += 2;
                 }
@@ -668,7 +674,7 @@ class GlobalSearch {
         })
         .filter(item => item.score > 0)
         .sort((a, b) => b.score - a.score)
-        .slice(0, 10);
+        .slice(0, 10); // Máximo 10 resultados
         
         this.displayResults(results, query);
     }
@@ -686,11 +692,11 @@ class GlobalSearch {
         if (results.length === 0) {
             resultsContainer.innerHTML = '';
             resultsContainer.classList.add('hidden');
-            if (noResultsContainer) noResultsContainer.classList.remove('hidden');
-            if (helpContainer) helpContainer.classList.add('hidden');
+            noResultsContainer?.classList.remove('hidden');
+            helpContainer?.classList.add('hidden');
         } else {
-            if (noResultsContainer) noResultsContainer.classList.add('hidden');
-            if (helpContainer) helpContainer.classList.add('hidden');
+            noResultsContainer?.classList.add('hidden');
+            helpContainer?.classList.add('hidden');
             resultsContainer.classList.remove('hidden');
             
             resultsContainer.innerHTML = results.map((item, index) => {
@@ -712,6 +718,7 @@ class GlobalSearch {
                 `;
             }).join('');
             
+            // Agregar event listeners a los resultados
             document.querySelectorAll('.search-result-item').forEach((item, index) => {
                 item.addEventListener('click', () => this.selectResult(index));
                 item.addEventListener('mouseenter', () => {
@@ -781,8 +788,8 @@ class GlobalSearch {
             resultsContainer.classList.add('hidden');
         }
         
-        if (noResultsContainer) noResultsContainer.classList.add('hidden');
-        if (helpContainer) helpContainer.classList.remove('hidden');
+        noResultsContainer?.classList.add('hidden');
+        helpContainer?.classList.remove('hidden');
         
         this.currentResults = [];
         this.currentResultIndex = -1;
