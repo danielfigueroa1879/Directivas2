@@ -181,30 +181,27 @@
             <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
     </div>
-
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
-        <div class="w-full max-w-full mx-auto h-full flex items-center justify-between px-4">
-            
-            <div class="flex items-center">
-                <button id="mobile-menu-btn" class="p-2 mr-4">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-                <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center space-x-1">
-                    <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy" width="41" height="41">
-                </a>
+    <div class="w-full max-w-6xl mx-auto h-full flex items-center justify-between px-4">
+        
+        <div class="flex items-center space-x-2">
+            <button id="mobile-menu-btn" class="p-2">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center space-x-1 h-10">
+                <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy" width="41" height="41">
+            </a>
+        </div>
+
+        <div id="search-center-container" class="flex-grow flex justify-center px-4">
             </div>
 
-            <nav id="desktop-menu" class="hidden items-center justify-start flex-grow space-x-1 lg:space-x-2">
-                <!-- El menú de escritorio ahora está oculto -->
-            </nav>
-
-            <div class="flex items-center space-x-2 banner-text-small">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
-            </div>
+        <div class="flex items-center space-x-2 banner-text-small">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            <span class="flex items-center">Visitas: <span id="visit-counter" class="font-bold ml-1">--</span></span>
         </div>
     </div>
-
+</div>
     <!-- Menú desplegable para móvil y ahora también para PC -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
         <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
