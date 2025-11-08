@@ -266,25 +266,158 @@ class GlobalSearch {
 
             // SECCIÓN: Resoluciones
             {
+                title: 'Resolución 111 - Conexión Alpha II',
+                content: 'Res. Exenta N° 111 del 18-06-2010 sobre Conexión sistema Alpha II',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_111.pdf', '_blank'),
+                keywords: ['resolución', '111', 'exenta', 'conexión', 'alpha', 'ii', '2010']
+            },
+            {
+                title: 'Resolución 112 - Delega conexión Alpha II',
+                content: 'Res. Exenta N° 112 del 18-06-2010 que Delega conexión Alpha II',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_112.pdf', '_blank'),
+                keywords: ['resolución', '112', 'exenta', 'delega', 'conexión', 'alpha', 'ii', '2010']
+            },
+            {
+                title: 'Resolución 253 - Capacitación independientes',
+                content: 'Res. Exenta N° 253 del 29-10-2013 sobre Capacitación independientes',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_253.pdf', '_blank'),
+                keywords: ['resolución', '253', 'exenta', 'capacitación', 'independientes', '2013']
+            },
+            {
+                title: 'Resolución 59 - Conserjes y mayordomos',
+                content: 'Res. Exenta N° 59 del 30-09-2014 sobre Conserjes y mayordomos',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_59.pdf', '_blank'),
+                keywords: ['resolución', '59', 'exenta', 'conserjes', 'mayordomos', '2014']
+            },
+            {
+                title: 'Resolución 281 - Operador cajeros automáticos',
+                content: 'Res. Exenta N° 281 del 13-11-2015 sobre Operador cajeros automáticos',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_281.pdf', '_blank'),
+                keywords: ['resolución', '281', 'exenta', 'operador', 'cajeros', 'automáticos', 'atm', '2015']
+            },
+            {
+                title: 'Resolución 50 - Medidas COVID-19',
+                content: 'Res. Exenta N° 50 del 22-05-2020 sobre Medidas COVID-19',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/RESOLUCION%20EXENTA%20NRO.50.pdf', '_blank'),
+                keywords: ['resolución', '50', 'exenta', 'medidas', 'covid-19', 'covid', '2020']
+            },
+            {
+                title: 'Resolución 23 - Extiende medidas COVID-19',
+                content: 'Res. Exenta N° 23 del 05-03-2021 que Extiende medidas COVID-19',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_23.pdf', '_blank'),
+                keywords: ['resolución', '23', 'exenta', 'extiende', 'medidas', 'covid-19', 'covid', '2021']
+            },
+            {
+                title: 'Resolución 133 - Amplía medidas COVID-19',
+                content: 'Res. Exenta N° 133 del 26-05-2021 que Amplía medidas COVID-19',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_133.pdf', '_blank'),
+                keywords: ['resolución', '133', 'exenta', 'amplía', 'medidas', 'covid-19', 'covid', '2021']
+            },
+            {
+                title: 'Resolución 2432 - Declaraciones juradas',
+                content: 'Res. N° 2432 del 05-07-2021 sobre Declaraciones juradas',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2432.pdf', '_blank'),
+                keywords: ['resolución', '2432', 'declaraciones', 'juradas', '2021']
+            },
+            {
                 title: 'Resolución 4070 - Requisitos Asesores',
-                content: 'Resolución N° 4070 del 20-10-2021 sobre requisitos para asesores',
+                content: 'Res. N° 4070 del 20-10-2021 sobre Requisitos para Asesores',
                 section: 'Resoluciones',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf', '_blank'),
-                keywords: ['resolución', '4070', '4.070', 'asesor', 'requisitos', '2021']
+                keywords: ['resolución', '4070', '4.070', 'requisitos', 'asesores', '2021']
             },
             {
-                title: 'Resolución 2660 - Amplía Asesores',
-                content: 'Resolución N° 2660 del 20-07-2022 que amplía Res. 4070 sobre asesores',
+                title: 'Resolución 20 - Amplía vigencia credenciales',
+                content: 'Res. N° 20 del 14-02-2022 que Amplía vigencia credenciales',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_20.pdf', '_blank'),
+                keywords: ['resolución', '20', 'amplía', 'vigencia', 'credenciales', '2022']
+            },
+            {
+                title: 'Resolución 2660 - Amplía Res. 4070 Asesores',
+                content: 'Res. N° 2660 del 20-07-2022 que Amplía Res. 4070 sobre Asesores',
                 section: 'Resoluciones',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf', '_blank'),
-                keywords: ['resolución', '2660', '2.660', 'asesor', 'amplía', '2022']
+                keywords: ['resolución', '2660', '2.660', 'amplía', '4070', 'asesores', '2022']
             },
             {
-                title: 'Resolución 2522 - Regulariza Credenciales',
-                content: 'Resolución N° 2522 del 26-08-2024 que regulariza tramitación de credenciales',
+                title: 'Resolución 123 - Amplía vigencia credenciales',
+                content: 'Res. Exenta N° 123 del 09-08-2022 que Amplía vigencia credenciales',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_123.pdf', '_blank'),
+                keywords: ['resolución', '123', 'exenta', 'amplía', 'vigencia', 'credenciales', '2022']
+            },
+            {
+                title: 'Resolución 4651 - Toma de exámenes',
+                content: 'Res. Exenta N° 4651 del 27-12-2022 sobre Toma de exámenes',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resol_4651.pdf', '_blank'),
+                keywords: ['resolución', '4651', '4.651', 'exenta', 'toma', 'exámenes', '2022']
+            },
+            {
+                title: 'Resolución 2095 - Exime autorización vigente',
+                content: 'Res. N° 2095 del 01-08-2023 que Exime autorización vigente',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf', '_blank'),
+                keywords: ['resolución', '2095', 'exime', 'autorización', 'vigente', '2023']
+            },
+            {
+                title: 'Resolución 2114 - Aclara Res. 2095',
+                content: 'Res. N° 2114 del 03-08-2023 que Aclara Res. 2095',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf', '_blank'),
+                keywords: ['resolución', '2114', 'aclara', '2095', '2023']
+            },
+            {
+                title: 'Resolución 2340 - Suspende tramitación credenciales',
+                content: 'Res. N° 2340 del 22-08-2023 que Suspende tramitación credenciales',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf', '_blank'),
+                keywords: ['resolución', '2340', 'suspende', 'tramitación', 'credenciales', '2023']
+            },
+            {
+                title: 'Resolución 1763 - Amplía carrera IPLACEX',
+                content: 'Res. N° 1763 del 10-06-2023 que Amplía carrera IPLACEX',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf', '_blank'),
+                keywords: ['resolución', '1763', 'amplía', 'carrera', 'iplacex', '2023']
+            },
+            {
+                title: 'Resolución 3632 - Certificado acreditación',
+                content: 'Res. N° 3632 del 21-12-2022 sobre Certificado acreditación',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/Resol_3632.pdf', '_blank'),
+                keywords: ['resolución', '3632', 'certificado', 'acreditación', '2022']
+            },
+            {
+                title: 'Resolución 370 - Tarjetas identificación',
+                content: 'Res. N° 370 del 13-02-2024 sobre Tarjetas identificación',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_370.pdf', '_blank'),
+                keywords: ['resolución', '370', 'tarjetas', 'identificación', '2024']
+            },
+            {
+                title: 'Resolución 80 - Cursos modalidad telemática',
+                content: 'Res. Exenta N° 80 del 20-03-2024 sobre Cursos modalidad telemática',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_80.pdf', '_blank'),
+                keywords: ['resolución', '80', 'exenta', 'cursos', 'modalidad', 'telemática', 'online', '2024']
+            },
+            {
+                title: 'Resolución 2522 - Regulariza tramitación credenciales',
+                content: 'Res. N° 2522 del 26-08-2024 que Regulariza tramitación credenciales',
                 section: 'Resoluciones',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf', '_blank'),
-                keywords: ['resolución', '2522', '2.522', 'credencial', 'regulariza', 'tramitación', '2024']
+                keywords: ['resolución', '2522', '2.522', 'regulariza', 'tramitación', 'credenciales', '2024']
             },
 
             // SECCIÓN: Componentes del Sistema
