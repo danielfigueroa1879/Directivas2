@@ -6,10 +6,9 @@
 /* ===== BOTÓN DE BÚSQUEDA EN BANNER ===== */
 .banner-search-button,
 #global-search-button {
-    /* Estilo consistente con otros elementos del banner */
     background: transparent;
     border: none;
-    color: inherit;
+    color: currentColor;
     cursor: pointer;
     padding: 8px;
     display: inline-flex;
@@ -17,7 +16,7 @@
     justify-content: center;
     border-radius: 8px;
     transition: all 0.2s ease;
-    margin: 0 1rem 0 0;
+    margin: 0;
     position: relative;
 }
 
@@ -63,20 +62,11 @@
     transform: translateX(-50%) scale(1);
 }
 
-/* ===== INICIO CAMBIO USUARIO ===== */
-/* Integración específica para PC en el banner */
-@media (min-width: 1024px) {
-    #global-search-button {
-        margin-right: 1.5rem;
-        /* margin-left: auto; */ /* <-- Ya no es necesario */
-        /* margin-right: 16px; */ /* <-- Ya no es necesario, el space-x-2 del padre lo maneja */
-    }
-}
-    
-    
+/* Responsive - Móvil */
+@media (max-width: 1023px) {
     #global-search-button .search-icon {
-        width: 20px;  /* Se hace más pequeño */
-        height: 20px; /* Se hace más pequeño */
+        width: 20px;
+        height: 20px;
     }
     
     /* Ocultar tooltip en móvil */
@@ -84,14 +74,15 @@
         display: none;
     }
 }
-/* ===== FIN CAMBIO USUARIO ===== */
 
-
-/* ===== MODAL DE BÚSQUEDA ===== */
+/* ===== MODAL DE BÚSQUEDA - CORREGIDO ===== */
 #global-search-modal {
     position: fixed;
-    inset: 0;
-    z-index: 2000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -118,7 +109,10 @@
 
 .search-modal-overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
@@ -135,6 +129,7 @@
     display: flex;
     flex-direction: column;
     animation: slideDown 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10000;
 }
 
 @keyframes slideDown {
