@@ -17,7 +17,7 @@
     justify-content: center;
     border-radius: 8px;
     transition: all 0.2s ease;
-    margin: 0 8px;
+    margin: 0 1rem 0 0;
     position: relative;
 }
 
@@ -72,13 +72,6 @@
         /* margin-right: 16px; */ /* <-- Ya no es necesario, el space-x-2 del padre lo maneja */
     }
 }
-
-/* Estilo para móvil */
-@media (max-width: 1023px) {
-    #global-search-button {
-        margin-right: 0.5rem; /* Esto añade 16px de espacio a la derecha de la lupa */
-    }
-
     
     
     #global-search-button .search-icon {
