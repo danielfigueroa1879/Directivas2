@@ -67,7 +67,7 @@
 /* Integración específica para PC en el banner */
 @media (min-width: 1024px) {
     #global-search-button {
-        /* order: 2; */ /* <-- Ya no es necesario */
+        margin-right: 1.5rem;
         /* margin-left: auto; */ /* <-- Ya no es necesario */
         /* margin-right: 16px; */ /* <-- Ya no es necesario, el space-x-2 del padre lo maneja */
     }
@@ -76,7 +76,7 @@
 /* Estilo para móvil */
 @media (max-width: 1023px) {
     #global-search-button {
-        margin-right: 1.5rem; /* Esto añade 16px de espacio a la derecha de la lupa */
+        margin-right: 1rem; /* Esto añade 16px de espacio a la derecha de la lupa */
     }
 
     
