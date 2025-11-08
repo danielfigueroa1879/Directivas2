@@ -26,17 +26,43 @@ class GlobalSearch {
     }
 
     createSearchElements() {
-        // Botón flotante de búsqueda
-        const searchButton = document.createElement('div');
+        // Botón de búsqueda en el banner
+        const searchButton = document.createElement('button');
         searchButton.id = 'global-search-button';
+        searchButton.className = 'banner-search-button';
+        searchButton.setAttribute('aria-label', 'Buscar en el sitio');
+        searchButton.setAttribute('title', 'Buscar (Ctrl+K)');
         searchButton.innerHTML = `
-            <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.35-4.35"></path>
             </svg>
-            <span class="search-tooltip">Buscar (Ctrl+K)</span>
         `;
-        document.body.appendChild(searchButton);
+        
+        // Insertar el botón en el banner existente
+        const banner = document.getElementById('banner');
+        if (banner) {
+            // En PC: insertar después del logo
+            const desktopMenu = document.getElementById('desktop-menu');
+            if (desktopMenu) {
+                // Insertar antes del menú desktop
+                desktopMenu.parentNode.insertBefore(searchButton, desktopMenu);
+            } else {
+                // Si no hay menú desktop, insertar antes del contador de visitas
+                const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+                if (bannerContent) {
+                    const visitCounter = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
+                    if (visitCounter) {
+                        bannerContent.insertBefore(searchButton, visitCounter);
+                    } else {
+                        bannerContent.appendChild(searchButton);
+                    }
+                }
+            }
+        } else {
+            // Fallback: agregar al body si no se encuentra el banner
+            document.body.appendChild(searchButton);
+        }
 
         // Modal de búsqueda
         const searchModal = document.createElement('div');
