@@ -79,7 +79,7 @@
         /* margin: 0 10px 0 0; */ /* <-- Ya no es necesario, el space-x-2 del padre lo maneja */
     }
 
-    margin-right: 1rem; /* Esto añade 16px de espacio a la derecha de la lupa */
+    margin-right: 1.5rem; /* Esto añade 16px de espacio a la derecha de la lupa */
     
     #global-search-button .search-icon {
         width: 20px;  /* Se hace más pequeño */
