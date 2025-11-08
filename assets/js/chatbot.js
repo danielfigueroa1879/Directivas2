@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let isAutoReadEnabled = true;
     let isListening = false;
+    let isBotSpeaking = false; // <-- AÑADE ESTA LÍNEA
     let recognition;
     let availableVoices = [];
     let fallbackMessageShown = false;
@@ -252,17 +253,25 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('No se encontró ninguna voz en español, usando voz por defecto');
         return null;
     }
-
-    // Función principal de TTS con configuración adaptativa por dispositivo
+// Función principal de TTS con configuración adaptativa por dispositivo
     function speakWithEnhancedBrowser(text) {
-        if (!text || !text.trim()) return;
+        if (!text || !text.trim()) {
+            isBotSpeaking = false; // Asegura que la bandera se libere si no hay nada que decir
+            return null; // Devuelve null si no hay nada que hablar
+        }
         
         const deviceType = getDeviceType();
         
         // Para iOS, usar la función optimizada específica
         if (deviceType === 'ios') {
             speakWithIOSOptimization(text);
-            return;
+            // iOS no tiene un 'onend' fiable, usamos un temporizador como fallback
+            const estimatedTime = text.length * 100; // 100ms por caracter (estimación)
+            setTimeout(() => {
+                isBotSpeaking = false;
+                console.log("iOS speaking flag reset (timer).");
+            }, estimatedTime);
+            return null; // No podemos devolver una 'utterance' única
         }
         
         // Cancelar cualquier síntesis anterior
@@ -277,38 +286,34 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`Usando voz: ${selectedVoice.name} en ${deviceType}`);
         }
 
-        // Configuración específica por tipo de dispositivo (excluyendo iOS)
+        // (Aquí va tu 'switch (deviceType)'... se mantiene igual)
         switch (deviceType) {
             case 'android':
-                // Android: adaptar voz femenina a sonar más masculina
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.3;   // Velocidad moderada-lenta
-                utterance.pitch = 0.6;  // Pitch muy bajo para simular voz masculina
+                utterance.rate = 1.3;
+                utterance.pitch = 0.6;
                 utterance.volume = 1.0;
                 console.log('Configuración Android aplicada: rate=0.75, pitch=0.45 (adaptación masculina)');
                 break;
                 
             case 'windows':
-                // Windows PC: configuración estándar masculina
                 utterance.lang = 'es-CL';
-                utterance.rate = 1.5;   // Velocidad natural
-                utterance.pitch = 0.7;  // Tono masculino estándar
+                utterance.rate = 1.5;
+                utterance.pitch = 0.7;
                 utterance.volume = 1.0;
                 console.log('Configuración Windows aplicada: rate=0.85, pitch=0.65');
                 break;
                 
             case 'macos':
-                // macOS: ajuste para voces del sistema
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.2;    // Ligeramente más lento
-                utterance.pitch = 0.8;   // Tono masculino
+                utterance.rate = 1.2;
+                utterance.pitch = 0.8;
                 utterance.volume = 1.0;
                 console.log('Configuración macOS aplicada: rate=0.8, pitch=0.6');
                 break;
                 
             case 'desktop':
             default:
-                // Otros escritorios: configuración por defecto
                 utterance.lang = 'es-CL';
                 utterance.rate = 1.2;
                 utterance.pitch = 0.8;
@@ -322,16 +327,22 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`Iniciando síntesis en ${deviceType} con ${selectedVoice?.name || 'voz por defecto'}`);
         };
         
+        // --- AÑADE ESTOS MANEJADORES PARA LIBERAR LA BANDERA ---
         utterance.onend = () => {
-            console.log('Síntesis completada');
+            console.log('Síntesis del navegador completada.');
+            isBotSpeaking = false;
         };
         
         utterance.onerror = (event) => {
             console.error('Error en síntesis de voz:', event.error);
+            isBotSpeaking = false; // Libera la bandera también en caso de error
         };
+        // --- FIN DE LA MODIFICACIÓN ---
 
         // Reproducir
         speechSynth.speak(utterance);
+        
+        return utterance; // <-- ASEGÚRATE DE DEVOLVER ESTO
     }
 
     // ===== FUNCIÓN RESTAURADA PARA ELEVENLABS =====
