@@ -850,7 +850,7 @@ body.homepage {
     gap: 1rem !important; 
     
     /* Tu valor para "juntarlos" */
-    max-width: 850px !important; 
+    max-width: 800px !important; 
   }
 
   /* 2. Contenedor central (donde va la lupa) */
