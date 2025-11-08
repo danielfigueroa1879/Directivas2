@@ -420,10 +420,20 @@ async function speakWithElevenLabs(text) {
         }
     }
 
-
-    // Función principal de TTS con fallback inteligente
+// Función principal de TTS con fallback inteligente
     async function speakText(text) {
         if (!text || !text.trim()) return;
+
+        // --- 1. ¡AQUÍ ESTÁ LA SOLUCIÓN! ---
+        // Si el bot ya está hablando, ignora este nuevo clic.
+        if (isBotSpeaking) {
+            console.log("Bot is already speaking, ignoring new request.");
+            return; 
+        }
+
+        // --- 2. PONER EL "SEGURO" ---
+        isBotSpeaking = true;
+        console.log("Speech started, setting lock.");
 
         // Limpiar texto para TTS
        const cleanText = text
@@ -433,31 +443,28 @@ async function speakWithElevenLabs(text) {
             .replace(/<br>/gy, '. ') // Reemplazar <br> con pausas
             .replace(/\n/gy, '. ') // Reemplazar saltos de línea con puntos
             .replace(/\s+/gy, ' ') // Normalizar espacios en blanco
+            .replace(/(?:https?:\/\/)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?/g, '') // Quitar URLs
+            // ... (el resto de tu lógica de limpieza de texto) ...
             .trim();
         
         try {
             // Intentar ElevenLabs solo si la API key está disponible
             if (elevenLabsApiKey) {
-                await speakWithElevenLabs(cleanText); // <-- VUELTO A ELEVENLABS
-                // Resetear flag de fallback si ElevenLabs funciona
-                if (fallbackMessageShown) {
-                    fallbackMessageShown = false;
-                }
-                return;
+                await speakWithElevenLabs(cleanText);
+                // --- 3. QUITAR EL "SEGURO" (después de que ElevenLabs termine) ---
+                isBotSpeaking = false; 
+                console.log("ElevenLabs speech finished, releasing lock.");
+            } else {
+                // Fallback: voz del navegador
+                // Esta función ahora se encarga de quitar el seguro por sí sola (con onend)
+                speakWithEnhancedBrowser(cleanText);
             }
         } catch (error) {
-            console.warn('Fish.audio no disponible, usando voz del navegador:', error.message);
-            
-            // Mostrar mensaje de cambio solo una vez por sesión
-            if (!fallbackMessageShown) {
-                // Solo logear el cambio, no mostrar mensaje al usuario
-                console.log('Cambiando a voz del navegador con configuración optimizada');
-                fallbackMessageShown = true;
-            }
+            // Esto se activa si ElevenLabs falla
+            console.warn('ElevenLabs falló, usando voz del navegador:', error.message);
+            // Fallback a la voz del navegador, que también quitará el seguro (con onend)
+            speakWithEnhancedBrowser(cleanText);
         }
-
-        // Fallback: voz del navegador con configuración mejorada
-        speakWithEnhancedBrowser(cleanText);
     }
 
     // Función mejorada para cargar voces
