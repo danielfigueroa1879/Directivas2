@@ -840,35 +840,35 @@ body.homepage {
     }
 }
 /* --- FIN DE AJUSTE --- */
-/* --- CORRECCIONES PARA EL BANNER EN PC (Logo, Centrado, Contador) --- */
+/* --- CORRECCIONES PARA EL BANNER EN PC (Centrado, Lupa y Contador) --- */
 
-/* 1. Arregla el problema de los iconos "muy abiertos" en PC */
 @media (min-width: 1024px) {
+  
+  /* 1. Contenedor principal del banner */
   #banner > div {
-    /* Reemplaza 'justify-center' por 'justify-between' */
     justify-content: space-between !important; 
+    gap: 1rem !important; 
     
-    /* Elimina el 'gap' gigante (de 34rem) que separaba los elementos */
-    gap: 1rem !important; /* Un espacio pequeño es suficiente */
-    
-    /* Ajusta el max-width para un centrado agradable */
-    max-width: 870px !important; 
+    /* Tu valor para "juntarlos" */
+    max-width: 850px !important; 
   }
 
-  /* Asegura que el contenedor de búsqueda (que añadimos en el HTML) crezca */
+  /* 2. Contenedor central (donde va la lupa) */
   #search-center-container {
-    flex-grow: 1;
+    flex-grow: 1;       /* Permite que crezca para llenar el espacio */
+    flex-shrink: 1;     /* ¡LA SOLUCIÓN! Permite que se encoja si no hay espacio */
+    min-width: 50px;    /* ¡LA SOLUCIÓN! Evita que colapse a 0px, siempre tendrá 50px para la lupa */
     display: flex;
     justify-content: center;
   }
 }
 
-/* 2. Arregla el contador "Visitas" (palabra arriba del número) */
+/* 3. Arreglo para el contador "Visitas" (palabra arriba del número) */
 .banner-text-small span {
    display: inline-flex;
-   align-items: center; /* Alinea verticalmente "Visitas:" y el número */
+   align-items: center; 
 }
 
 #visit-counter {
-    margin-left: 0.25rem; /* Pequeño espacio entre "Visitas:" y el número */
+    margin-left: 0.25rem;
 }
