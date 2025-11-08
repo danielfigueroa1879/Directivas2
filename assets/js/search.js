@@ -1,8 +1,6 @@
 /**
  * Sistema de Búsqueda Global - OS10 Coquimbo
- * Versión 1.1 - CORREGIDA
- * 
- * FIX: Ahora busca correctamente números de leyes con o sin puntos
+ * Versión 1.2 - CORREGIDA
  */
 
 class GlobalSearch {
@@ -29,25 +27,21 @@ class GlobalSearch {
         searchButton.setAttribute('aria-label', 'Buscar en el sitio');
         searchButton.setAttribute('title', 'Buscar (Ctrl+K)');
         searchButton.innerHTML = `
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.35-4.35"></path>
             </svg>
         `;
 
-        const banner = document.getElementById('banner');
+        // CORRECCIÓN: Insertar en el contenedor correcto
         const searchCenterContainer = document.getElementById('search-center-container');
-
-        if (banner) {
-            const bannerContent = banner.querySelector('.flex.items-center.justify-between');
-            if (bannerContent) {
-                const visitCounterContainer = bannerContent.querySelector('.flex.items-center.space-x-2.banner-text-small');
-                if (visitCounterContainer) {
-                    visitCounterContainer.prepend(searchButton);
-                } else {
-                    bannerContent.appendChild(searchButton);
-                }
-            }
+        
+        if (searchCenterContainer) {
+            searchCenterContainer.innerHTML = '';
+            searchCenterContainer.appendChild(searchButton);
+            console.log('✅ Botón de búsqueda agregado correctamente');
+        } else {
+            console.error('❌ No se encontró #search-center-container');
         }
         
         // Modal de búsqueda
@@ -100,29 +94,6 @@ class GlobalSearch {
             </div>
         `;
         document.body.appendChild(searchModal);
-        
-        window.addEventListener('resize', () => {
-            this.repositionSearchButton();
-        });     
-    }
-    
-    repositionSearchButton() {
-        const searchButton = document.getElementById('global-search-button');
-        const searchCenterContainer = document.getElementById('search-center-container');
-
-        if (!searchButton) return;
-
-        if (window.innerWidth >= 1024 && searchCenterContainer) {
-            const banner = document.getElementById('banner');
-            if (banner) {
-                const bannerContent = banner.querySelector('.flex.items-center.justify-between');
-                const visitCounterContainer = bannerContent?.querySelector('.flex.items-center.space-x-2.banner-text-small');
-
-                if (visitCounterContainer && searchButton.parentElement !== visitCounterContainer) {
-                    visitCounterContainer.prepend(searchButton);
-                }
-            }
-        }
     }
 
     buildSearchIndex() {
@@ -557,113 +528,6 @@ class GlobalSearch {
         ];
 
         console.log(`📚 Índice de búsqueda construido con ${this.searchIndex.length} elementos`);
-    } '_blank'),
-                keywords: ['reglamento', '209', 'vigente']
-            },
-
-            // SECCIÓN: Decretos (CON NÚMEROS ALTERNATIVOS)
-            {
-                title: 'D.E. 261 (2020)',
-                content: 'Decreto Exento 261 del año 2020',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf', '_blank'),
-                keywords: ['decreto', 'exento', '261', 'de', '2020']
-            },
-            {
-                title: 'D.E. 32 (2024)',
-                content: 'Decreto Exento 32 del año 2024 - Uniformes',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1200633', '_blank'),
-                keywords: ['decreto', 'exento', '32', 'de', '2024', 'uniforme']
-            },
-            {
-                title: 'D. 298 (2019)',
-                content: 'Decreto 298 del año 2019',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1136545', '_blank'),
-                keywords: ['decreto', '298', '2019']
-            },
-            {
-                title: 'D. 123 (2019)',
-                content: 'Decreto 123 del año 2019',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1130300', '_blank'),
-                keywords: ['decreto', '123', '2019']
-            },
-            {
-                title: 'D. 93 (1985)',
-                content: 'Decreto Supremo 93 del año 1985',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=9081', '_blank'),
-                keywords: ['decreto', '93', '1985']
-            },
-
-            // SECCIÓN: Componentes del Sistema
-            {
-                title: 'Vigilante Privado',
-                content: 'Documentación y requisitos para la acreditación de vigilantes privados',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf', '_blank'),
-                keywords: ['vigilante', 'privado', 'acreditación', 'requisitos']
-            },
-            {
-                title: 'Guardia de Seguridad',
-                content: 'Guía completa del trámite y requisitos para guardias de seguridad',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf', '_blank'),
-                keywords: ['guardia', 'seguridad', 'trámite', 'requisitos']
-            },
-
-            // SECCIÓN: Servicios Adicionales
-            {
-                title: 'Valores y Aranceles',
-                content: 'Tabla de valores y aranceles vigentes. Vale vista $5.890',
-                section: 'Servicios Adicionales',
-                action: () => window.handleValores && window.handleValores(),
-                keywords: ['valores', 'aranceles', 'tabla', 'precio', 'vale', 'vista', '5890']
-            },
-            {
-                title: 'Ubicación OS10',
-                content: 'Calle Cienfuegos 180, La Serena, Región de Coquimbo',
-                section: 'Servicios Adicionales',
-                action: () => window.open('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6', '_blank'),
-                keywords: ['ubicación', 'dirección', 'cienfuegos', '180', 'serena', 'mapa']
-            },
-
-            // SECCIÓN: Información de contacto
-            {
-                title: 'Teléfono OS10',
-                content: 'Teléfono de contacto: +56 51 265 1024',
-                section: 'Contacto',
-                action: () => window.open('tel:+56512651024', '_self'),
-                keywords: ['teléfono', 'contacto', '512651024', 'llamar']
-            },
-            {
-                title: 'Correo Electrónico',
-                content: 'Email: os10.coquimbo@carabineros.cl',
-                section: 'Contacto',
-                action: () => window.open('mailto:os10.coquimbo@carabineros.cl', '_self'),
-                keywords: ['correo', 'email', 'contacto', 'os10.coquimbo']
-            },
-
-            // SECCIÓN: Información institucional
-            {
-                title: 'Misión OS10',
-                content: 'El OS10 Coquimbo ejerce la fiscalización, control y supervisión de las personas naturales y jurídicas que desarrollan actividades de vigilancia y seguridad privada',
-                section: 'Nuestra Labor',
-                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
-                keywords: ['misión', 'fiscalización', 'control', 'supervisión']
-            },
-            {
-                title: 'Visión OS10',
-                content: 'Consolidarnos como un organismo especializado de excelencia en la gestión, fiscalización y control de la seguridad privada',
-                section: 'Nuestra Labor',
-                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
-                keywords: ['visión', 'excelencia', 'gestión']
-            }
-        ];
-
-        console.log(`📚 Índice de búsqueda construido con ${this.searchIndex.length} elementos`);
     }
 
     setupEventListeners() {
@@ -672,7 +536,9 @@ class GlobalSearch {
         const searchInput = document.getElementById('global-search-input');
         const overlay = document.querySelector('.search-modal-overlay');
 
-        searchButton?.addEventListener('click', () => this.openSearch());
+        if (searchButton) {
+            searchButton.addEventListener('click', () => this.openSearch());
+        }
 
         document.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -696,16 +562,23 @@ class GlobalSearch {
             }
         });
 
-        overlay?.addEventListener('click', () => this.closeSearch());
-        searchInput?.addEventListener('input', (e) => {
-            this.performSearch(e.target.value);
-        });
+        if (overlay) {
+            overlay.addEventListener('click', () => this.closeSearch());
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.performSearch(e.target.value);
+            });
+        }
 
         document.querySelectorAll('.suggestion-pill').forEach(pill => {
             pill.addEventListener('click', (e) => {
                 const searchTerm = e.target.dataset.search;
-                searchInput.value = searchTerm;
-                this.performSearch(searchTerm);
+                if (searchInput) {
+                    searchInput.value = searchTerm;
+                    this.performSearch(searchTerm);
+                }
             });
         });
     }
@@ -720,7 +593,7 @@ class GlobalSearch {
             this.isOpen = true;
             
             setTimeout(() => {
-                input?.focus();
+                if (input) input.focus();
             }, 100);
         }
     }
@@ -741,14 +614,13 @@ class GlobalSearch {
         }
     }
 
-    // ✅ FUNCIÓN CORREGIDA - Ahora elimina puntos para buscar números
     normalizeText(text) {
         return text
             .toLowerCase()
             .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
-            .replace(/\./g, '')               // ← ELIMINAR PUNTOS (para 18.961 → 18961)
-            .replace(/[^a-z0-9\s]/g, ' ')    // Eliminar otros caracteres especiales
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\./g, '')
+            .replace(/[^a-z0-9\s]/g, ' ')
             .trim();
     }
 
@@ -814,11 +686,11 @@ class GlobalSearch {
         if (results.length === 0) {
             resultsContainer.innerHTML = '';
             resultsContainer.classList.add('hidden');
-            noResultsContainer?.classList.remove('hidden');
-            helpContainer?.classList.add('hidden');
+            if (noResultsContainer) noResultsContainer.classList.remove('hidden');
+            if (helpContainer) helpContainer.classList.add('hidden');
         } else {
-            noResultsContainer?.classList.add('hidden');
-            helpContainer?.classList.add('hidden');
+            if (noResultsContainer) noResultsContainer.classList.add('hidden');
+            if (helpContainer) helpContainer.classList.add('hidden');
             resultsContainer.classList.remove('hidden');
             
             resultsContainer.innerHTML = results.map((item, index) => {
@@ -909,8 +781,8 @@ class GlobalSearch {
             resultsContainer.classList.add('hidden');
         }
         
-        noResultsContainer?.classList.add('hidden');
-        helpContainer?.classList.remove('hidden');
+        if (noResultsContainer) noResultsContainer.classList.add('hidden');
+        if (helpContainer) helpContainer.classList.remove('hidden');
         
         this.currentResults = [];
         this.currentResultIndex = -1;
