@@ -67,17 +67,16 @@
 /* Integración específica para PC en el banner */
 @media (min-width: 1024px) {
     #global-search-button {
-        order: 2; /* Se mantiene el orden 2 */
-        /* margin-left: auto; */ /* Se elimina para que no se pegue a la derecha */
-        margin-right: 16px; /* Se mantiene el margen derecho */
+        /* order: 2; */ /* <-- Ya no es necesario */
+        /* margin-left: auto; */ /* <-- Ya no es necesario */
+        /* margin-right: 16px; */ /* <-- Ya no es necesario, el space-x-2 del padre lo maneja */
     }
 }
 
 /* Estilo para móvil */
 @media (max-width: 1023px) {
     #global-search-button {
-        /* Posicionar junto a los otros iconos del banner */
-        margin: 0 10px 0 0; /* Margen derecho para separarlo del contador */
+        /* margin: 0 10px 0 0; */ /* <-- Ya no es necesario, el space-x-2 del padre lo maneja */
     }
     
     #global-search-button .search-icon {
