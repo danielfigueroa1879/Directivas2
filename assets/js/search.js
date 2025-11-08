@@ -138,395 +138,173 @@ class GlobalSearch {
             }
         }
     buildSearchIndex() {
-        this.searchIndex = [
-            // SECCIÓN: Trámites Principales
-            {
-                title: 'Certificados O.S.10 Online - Cerofila',
-                content: 'Certificado para Guardias de Seguridad, Conserjes y Vigilantes Privados. Trámite online sistema cerofila',
-                section: 'Trámites Principales',
-                action: () => window.open('https://dal5.short.gy/CFil', '_blank'),
-                keywords: ['certificado', 'os10', 'online', 'cerofila', 'cerofilas', 'guardia', 'seguridad', 'conserje', 'vigilante']
-            },
-            {
-                title: 'Directivas de Funcionamiento',
-                content: 'Accede y gestiona los requerimientos para instalaciones, eventos y más. Vigencia 03 años en instalación.',
-                section: 'Trámites Principales',
-                action: () => window.showDirectiva && window.showDirectiva(),
-                keywords: ['directiva', 'funcionamiento', 'instalación', 'evento', 'partido', 'fútbol']
-            },
-            {
-                title: 'Credenciales',
-                content: 'Encuentra todos los formularios y requisitos para la acreditación de personal. Credencial empresa e independiente.',
-                section: 'Trámites Principales',
-                action: () => window.showCredenciales && window.showCredenciales(),
-                keywords: ['credencial', 'acreditación', 'empresa', 'independiente', 'personal', 'requisitos']
-            },
-            {
-                title: 'Reclamos de Seguridad Privada',
-                content: 'Requerimiento de fiscalización (Reclamos de seguridad privada)',
-                section: 'Trámites Principales',
-                action: () => window.open('https://dal5.short.gy/R3', '_blank'),
-                keywords: ['reclamo', 'fiscalización', 'denuncia', 'seguridad privada']
-            },
+    this.searchIndex = [
+        // SECCIÓN: Trámites Principales
+        {
+            title: 'Certificados O.S.10 Online - Cerofila',
+            content: 'Certificado para Guardias de Seguridad, Conserjes y Vigilantes Privados. Trámite online sistema cerofila',
+            section: 'Trámites Principales',
+            action: () => window.open('https://dal5.short.gy/CFil', '_blank'),
+            keywords: ['certificado', 'os10', 'online', 'cerofila', 'cerofilas', 'guardia', 'seguridad', 'conserje', 'vigilante']
+        },
+        {
+            title: 'Directivas de Funcionamiento',
+            content: 'Accede y gestiona los requerimientos para instalaciones, eventos y más. Vigencia 03 años en instalación.',
+            section: 'Trámites Principales',
+            action: () => window.showDirectiva && window.showDirectiva(),
+            keywords: ['directiva', 'funcionamiento', 'instalación', 'evento', 'partido', 'fútbol']
+        },
+        {
+            title: 'Credenciales',
+            content: 'Encuentra todos los formularios y requisitos para la acreditación de personal. Credencial empresa e independiente.',
+            section: 'Trámites Principales',
+            action: () => window.showCredenciales && window.showCredenciales(),
+            keywords: ['credencial', 'acreditación', 'empresa', 'independiente', 'personal', 'requisitos']
+        },
+        {
+            title: 'Reclamos de Seguridad Privada',
+            content: 'Requerimiento de fiscalización (Reclamos de seguridad privada)',
+            section: 'Trámites Principales',
+            action: () => window.open('https://dal5.short.gy/R3', '_blank'),
+            keywords: ['reclamo', 'fiscalización', 'denuncia', 'seguridad privada']
+        },
 
-            // SECCIÓN: Leyes
-            {
-                title: 'Constitución Política',
-                content: 'Fundamento constitucional de la seguridad privada',
-                section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=242302', '_blank'),
-                keywords: ['constitución', 'política', 'fundamento', 'ley']
-            },
-            {
-                title: 'Ley 18.961',
-                content: 'Ley Orgánica Constitucional de Carabineros',
-                section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30329', '_blank'),
-                keywords: ['ley', '18961', 'orgánica', 'constitucional', 'carabineros']
-            },
-            {
-                title: 'Ley 19.303',
-                content: 'Normativa complementaria de seguridad privada',
-                section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30670', '_blank'),
-                keywords: ['ley', '19303', 'normativa', 'complementaria']
-            },
-            {
-                title: 'D.L. 3.607 (1981)',
-                content: 'Decreto Ley histórico sobre seguridad privada',
-                section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=7193', '_blank'),
-                keywords: ['decreto', 'ley', '3607', '1981', 'histórico']
-            },
-            {
-                title: 'Ley 21.659',
-                content: 'Ley de Seguridad Privada actualizada',
-                section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067', '_blank'),
-                keywords: ['ley', '21659', 'seguridad', 'privada', 'actualizada']
-            },
-            {
-                title: 'Reglamento 209',
-                content: 'Reglamentación vigente de seguridad privada',
-                section: 'Leyes y Normativa',
-                action: () => window.open('https://www.leychile.cl/leychile/navegar?i=1213672', '_blank'),
-                keywords: ['reglamento', '209', 'vigente']
-            },
+        // SECCIÓN: Leyes (CON AMBAS VERSIONES DE NÚMEROS)
+        {
+            title: 'Constitución Política',
+            content: 'Fundamento constitucional de la seguridad privada',
+            section: 'Leyes y Normativa',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=242302', '_blank'),
+            keywords: ['constitución', 'política', 'fundamento', 'ley']
+        },
+        {
+            title: 'Ley 18.961',
+            content: 'Ley Orgánica Constitucional de Carabineros',
+            section: 'Leyes y Normativa',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30329', '_blank'),
+            keywords: ['ley', '18961', '18.961', 'orgánica', 'constitucional', 'carabineros']
+        },
+        {
+            title: 'Ley 19.303',
+            content: 'Normativa complementaria de seguridad privada',
+            section: 'Leyes y Normativa',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30670', '_blank'),
+            keywords: ['ley', '19303', '19.303', 'normativa', 'complementaria']
+        },
+        {
+            title: 'D.L. 3.607 (1981)',
+            content: 'Decreto Ley 3607 del año 1981 histórico sobre seguridad privada',
+            section: 'Leyes y Normativa',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=7193', '_blank'),
+            keywords: ['decreto', 'ley', '3607', '3.607', 'dl', '1981', 'histórico']
+        },
+        {
+            title: 'Ley 21.659',
+            content: 'Ley de Seguridad Privada actualizada',
+            section: 'Leyes y Normativa',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067', '_blank'),
+            keywords: ['ley', '21659', '21.659', 'seguridad', 'privada', 'actualizada']
+        },
+        {
+            title: 'Reglamento 209',
+            content: 'Reglamentación vigente de seguridad privada',
+            section: 'Leyes y Normativa',
+            action: () => window.open('https://www.leychile.cl/leychile/navegar?i=1213672', '_blank'),
+            keywords: ['reglamento', '209', 'vigente']
+        },
 
-            // SECCIÓN: Decretos
-            {
-                title: 'D.E. 261 (2020)',
-                content: 'Decreto Exento 261 del año 2020',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf', '_blank'),
-                keywords: ['decreto', 'exento', '261', '2020']
-            },
-            {
-                title: 'D.E. 32 (2024)',
-                content: 'Decreto Exento 32 del año 2024 - Uniformes',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1200633', '_blank'),
-                keywords: ['decreto', '32', '2024', 'uniforme']
-            },
-            {
-                title: 'D. 298 (2019)',
-                content: 'Decreto 298 del año 2019',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1136545', '_blank'),
-                keywords: ['decreto', '298', '2019']
-            },
-            {
-                title: 'D. 123 (2019)',
-                content: 'Decreto 123 del año 2019',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1130300', '_blank'),
-                keywords: ['decreto', '123', '2019']
-            },
-            {
-                title: 'D. 93 (1985)',
-                content: 'Decreto Supremo 93 del año 1985',
-                section: 'Decretos Supremos',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=9081', '_blank'),
-                keywords: ['decreto', '93', '1985']
-            },
-
-            // SECCIÓN: Componentes del Sistema
-            {
-                title: 'Vigilante Privado',
-                content: 'Documentación y requisitos para la acreditación de vigilantes privados',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf', '_blank'),
-                keywords: ['vigilante', 'privado', 'acreditación', 'requisitos']
-            },
-            {
-                title: 'Guardia de Seguridad',
-                content: 'Guía completa del trámite y requisitos para guardias de seguridad',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf', '_blank'),
-                keywords: ['guardia', 'seguridad', 'trámite', 'requisitos']
-            },
-            {
-                title: 'Jefe de Seguridad',
-                content: 'Actas, credenciales y requisitos para jefes de seguridad civil y ex fuerzas armadas',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf', '_blank'),
-                keywords: ['jefe', 'seguridad', 'actas', 'credenciales', 'ffaa', 'civil']
-            },
-            {
-                title: 'Encargado de Seguridad',
-                content: 'Requisitos y documentación necesaria para encargados de seguridad',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf', '_blank'),
-                keywords: ['encargado', 'seguridad', 'documentación']
-            },
-            {
-                title: 'Supervisor de Seguridad',
-                content: 'Documentación necesaria para supervisores de seguridad',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf', '_blank'),
-                keywords: ['supervisor', 'seguridad']
-            },
-            {
-                title: 'Asesor',
-                content: 'Títulos afines y requisitos para asesores de seguridad. Resol. 4070 y 2660',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf', '_blank'),
-                keywords: ['asesor', 'títulos', 'requisitos', 'resolución', '4070', '2660']
-            },
-            {
-                title: 'Capacitador de Seguridad',
-                content: 'Acreditación y requisitos para capacitadores',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf', '_blank'),
-                keywords: ['capacitador', 'acreditación', 'formación']
-            },
-            {
-                title: 'Técnico en Seguridad',
-                content: 'Requisitos técnicos para técnicos de seguridad',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf', '_blank'),
-                keywords: ['técnico', 'seguridad', 'requisitos']
-            },
-            {
-                title: 'Operador de Cajeros (ATM)',
-                content: 'Documentación específica para operadores de cajeros automáticos',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf', '_blank'),
-                keywords: ['operador', 'cajero', 'atm', 'automático']
-            },
-            {
-                title: 'Instalador Técnico',
-                content: 'Certificación de instaladores técnicos',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf', '_blank'),
-                keywords: ['instalador', 'técnico', 'certificación']
-            },
-            {
-                title: 'Operador de CC.TV.',
-                content: 'Control y monitoreo de sistemas CCTV',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf', '_blank'),
-                keywords: ['operador', 'cctv', 'cámaras', 'monitoreo', 'vigilancia']
-            },
-            {
-                title: 'Empresas Prestadoras',
-                content: 'Requisitos y documentación para empresas prestadoras de seguridad',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf', '_blank'),
-                keywords: ['empresa', 'prestadora', 'seguridad', 'documentación']
-            },
-
-            // SECCIÓN: Documentos Editables
-            {
-                title: 'Estudio de Seguridad',
-                content: 'Plantilla editable para estudios de seguridad',
-                section: 'Documentos Editables',
-                action: () => window.open('https://dal5.short.gy/3st', '_blank'),
-                keywords: ['estudio', 'seguridad', 'plantilla', 'editable']
-            },
-            {
-                title: 'Planes de Seguridad',
-                content: 'Plantillas editables para planes de seguridad',
-                section: 'Documentos Editables',
-                action: () => window.open('https://d6.short.gy/Pl4n', '_blank'),
-                keywords: ['plan', 'seguridad', 'plantilla', 'editable']
-            },
-            {
-                title: 'Medidas de Seguridad',
-                content: 'Documentos para medidas de seguridad',
-                section: 'Documentos Editables',
-                action: () => window.open('https://dal5.short.gy/M3', '_blank'),
-                keywords: ['medidas', 'seguridad', 'documento']
-            },
-            {
-                title: 'Solicitud Simple',
-                content: 'Formato de solicitud simple editable',
-                section: 'Documentos Editables',
-                action: () => window.open('https://dal5.short.gy/H23wIF', '_blank'),
-                keywords: ['solicitud', 'simple', 'formato', 'carta']
-            },
-
-            // SECCIÓN: Modelos de Solicitud
-            {
-                title: 'Declaración Jurada Persona Natural',
-                content: 'Modelo de declaración jurada para personas naturales',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf', '_blank'),
-                keywords: ['declaración', 'jurada', 'persona', 'natural']
-            },
-            {
-                title: 'Declaración Jurada Empresas',
-                content: 'Modelo de declaración jurada para empresas',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf', '_blank'),
-                keywords: ['declaración', 'jurada', 'empresa']
-            },
-            {
-                title: 'Acreditación de Empresa',
-                content: 'Solicitud simple de acreditación de empresa',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf', '_blank'),
-                keywords: ['acreditación', 'empresa', 'solicitud']
-            },
-            {
-                title: 'Acreditación Asesor',
-                content: 'Modelo de solicitud de acreditación para asesor',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf', '_blank'),
-                keywords: ['acreditación', 'asesor', 'modelo']
-            },
-
-            // SECCIÓN: Manuales
-            {
-                title: 'Manual de Funcionamiento',
-                content: 'Manual completo de funcionamiento del sistema',
-                section: 'Manuales',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf', '_blank'),
-                keywords: ['manual', 'funcionamiento', 'sistema']
-            },
-            {
-                title: 'Manual de Capacitación',
-                content: 'Manual de capacitación para personal de seguridad',
-                section: 'Manuales',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf', '_blank'),
-                keywords: ['manual', 'capacitación', 'formación', 'personal']
-            },
-            {
-                title: 'Manual de Organización',
-                content: 'Manual de organización empresarial',
-                section: 'Manuales',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf', '_blank'),
-                keywords: ['manual', 'organización', 'empresarial']
-            },
-
-            // SECCIÓN: Capacitación
-            {
-                title: 'Empresas de Capacitación',
-                content: 'Listado actualizado de empresas autorizadas para capacitación',
-                section: 'Capacitación y Formación',
-                action: () => window.open('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view', '_blank'),
-                keywords: ['empresa', 'capacitación', 'listado', 'autorizada']
-            },
-            {
-                title: 'Capacitadores',
-                content: 'Personal autorizado para capacitación',
-                section: 'Capacitación y Formación',
-                action: () => window.open('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view', '_blank'),
-                keywords: ['capacitador', 'personal', 'autorizado']
-            },
-            {
-                title: 'Valor Curso Formación',
-                content: 'Valores vigentes para cursos de formación',
-                section: 'Capacitación y Formación',
-                action: () => window.open('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view', '_blank'),
-                keywords: ['valor', 'curso', 'formación', 'precio', 'costo']
-            },
-            {
-                title: 'Valor Curso Perfeccionamiento',
-                content: 'Valores actualizados para cursos de perfeccionamiento',
-                section: 'Capacitación y Formación',
-                action: () => window.open('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view', '_blank'),
-                keywords: ['valor', 'curso', 'perfeccionamiento', 'precio', 'costo']
-            },
-
-            // SECCIÓN: Servicios Adicionales
-            {
-                title: 'Consultar Curso',
-                content: 'Verificar estado de certificaciones y cursos',
-                section: 'Servicios Adicionales',
-                action: () => window.open('https://www.zosepcar.cl/OS10.php#buscador', '_blank'),
-                keywords: ['consultar', 'curso', 'certificación', 'verificar', 'estado', 'buscador']
-            },
-            {
-                title: 'Valores y Aranceles',
-                content: 'Tabla de valores y aranceles vigentes. Vale vista $5.890',
-                section: 'Servicios Adicionales',
-                action: () => window.handleValores && window.handleValores(),
-                keywords: ['valores', 'aranceles', 'tabla', 'precio', 'vale', 'vista', '5890']
-            },
-            {
-                title: 'Ubicación OS10',
-                content: 'Calle Cienfuegos 180, La Serena, Región de Coquimbo',
-                section: 'Servicios Adicionales',
-                action: () => window.open('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6', '_blank'),
-                keywords: ['ubicación', 'dirección', 'cienfuegos', '180', 'serena', 'mapa']
-            },
-
-            // SECCIÓN: Información de contacto
-            {
-                title: 'Teléfono OS10',
-                content: 'Teléfono de contacto: +56 51 265 1024',
-                section: 'Contacto',
-                action: () => window.open('tel:+56512651024', '_self'),
-                keywords: ['teléfono', 'contacto', '512651024', 'llamar']
-            },
-            {
-                title: 'Correo Electrónico',
-                content: 'Email: os10.coquimbo@carabineros.cl',
-                section: 'Contacto',
-                action: () => window.open('mailto:os10.coquimbo@carabineros.cl', '_self'),
-                keywords: ['correo', 'email', 'contacto', 'os10.coquimbo']
-            },
-
-            // SECCIÓN: Resoluciones importantes
-            {
-                title: 'Resolución 4070 - Requisitos Asesores',
-                content: 'Resolución N° 4070 del 20-10-2021 sobre requisitos para asesores',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf', '_blank'),
-                keywords: ['resolución', '4070', 'asesor', 'requisitos']
-            },
-            {
-                title: 'Resolución 2660 - Amplía Asesores',
-                content: 'Resolución N° 2660 del 20-07-2022 que amplía Res. 4070 sobre asesores',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf', '_blank'),
-                keywords: ['resolución', '2660', 'asesor', 'amplía']
-            },
-            {
-                title: 'Resolución 2522 - Regulariza Credenciales',
-                content: 'Resolución N° 2522 del 26-08-2024 que regulariza tramitación de credenciales',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf', '_blank'),
-                keywords: ['resolución', '2522', 'credencial', 'regulariza', 'tramitación']
-            },
-
-            // SECCIÓN: Información institucional
-            {
-                title: 'Misión OS10',
-                content: 'El OS10 Coquimbo ejerce la fiscalización, control y supervisión de las personas naturales y jurídicas que desarrollan actividades de vigilancia y seguridad privada',
-                section: 'Nuestra Labor',
-                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
-                keywords: ['misión', 'fiscalización', 'control', 'supervisión']
-            },
-            {
-                title: 'Visión OS10',
-                content: 'Consolidarnos como un organismo especializado de excelencia en la gestión, fiscalización y control de la seguridad privada',
-                section: 'Nuestra Labor',
-                action: () => document.getElementById('nuestra-labor')?.scrollIntoView({ behavior: 'smooth' }),
-                keywords: ['visión', 'excelencia', 'gestión']
-            }
-        ];
+        // SECCIÓN: Decretos (CORREGIDOS CON AMBAS VERSIONES)
+        {
+            title: 'D.E. 261 (2020)',
+            content: 'Decreto Exento 261 del año 2020',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf', '_blank'),
+            keywords: ['decreto', 'exento', '261', 'de', 'd.e.', 'de261', '2020']
+        },
+        {
+            title: 'D.E. 32 (2024)',
+            content: 'Decreto Exento 32 del año 2024 - Uniformes',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1200633', '_blank'),
+            keywords: ['decreto', 'exento', '32', 'de', 'd.e.', 'de32', '2024', 'uniforme', 'uniformes']
+        },
+        {
+            title: 'D. 298 (2019)',
+            content: 'Decreto 298 del año 2019',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1136545', '_blank'),
+            keywords: ['decreto', '298', 'd.298', 'd298', '2019']
+        },
+        {
+            title: 'D. 123 (2019)',
+            content: 'Decreto 123 del año 2019',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1130300', '_blank'),
+            keywords: ['decreto', '123', 'd.123', 'd123', '2019']
+        },
+        {
+            title: 'D. 1045 (2018)',
+            content: 'Decreto 1045 del año 2018',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1122982', '_blank'),
+            keywords: ['decreto', '1045', 'd.1045', 'd1045', '2018']
+        },
+        {
+            title: 'D. 867 (2017)',
+            content: 'Decreto 867 del año 2017',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1116274', '_blank'),
+            keywords: ['decreto', '867', 'd.867', 'd867', '2017']
+        },
+        {
+            title: 'D. 1814 (2014)',
+            content: 'Decreto 1814 del año 2014',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1069299', '_blank'),
+            keywords: ['decreto', '1814', 'd.1814', 'd1814', '2014']
+        },
+        {
+            title: 'D.S. 222 (2014)',
+            content: 'Decreto Supremo 222 del año 2014',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1055580', '_blank'),
+            keywords: ['decreto', 'supremo', '222', 'ds', 'd.s.', 'ds222', 'd.s.222', '2014']
+        },
+        {
+            title: 'D.E. 1122 (1994)',
+            content: 'Decreto Exento 1122 del año 1994',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1072929', '_blank'),
+            keywords: ['decreto', 'exento', '1122', 'de', 'd.e.', 'de1122', 'd.e.1122', '1994']
+        },
+        {
+            title: 'D.S. 41 (1996)',
+            content: 'Decreto Supremo 41 del año 1996',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=19870', '_blank'),
+            keywords: ['decreto', 'supremo', '41', 'ds', 'd.s.', 'ds41', 'd.s.41', '1996']
+        },
+        {
+            title: 'D.S. 1772 (1995)',
+            content: 'Decreto Supremo 1772 del año 1995',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=18592', '_blank'),
+            keywords: ['decreto', 'supremo', '1772', 'ds', 'd.s.', 'ds1772', 'd.s.1772', '1995']
+        },
+        {
+            title: 'D.S. 1773 (1994)',
+            content: 'Decreto Supremo 1773 del año 1994',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=18594', '_blank'),
+            keywords: ['decreto', 'supremo', '1773', 'ds', 'd.s.', 'ds1773', 'd.s.1773', '1994']
+        },
+        {
+            title: 'D.S. 93 (1985)',
+            content: 'Decreto Supremo 93 del año 1985',
+            section: 'Decretos Supremos',
+            action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=9081', '_blank'),
+            keywords: ['decreto', 'supremo', '93', 'ds', 'd.s.', 'ds93', 'd.s.93', '1985']
+        },
 
         console.log(`📚 Índice de búsqueda construido con ${this.searchIndex.length} elementos`);
     }
