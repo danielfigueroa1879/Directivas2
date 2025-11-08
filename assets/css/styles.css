@@ -852,7 +852,7 @@ body.homepage {
     gap: 1rem !important; /* Un espacio pequeño es suficiente */
     
     /* Ajusta el max-width para un centrado agradable */
-    max-width: 1200px !important; 
+    max-width: 1024px !important; 
   }
 
   /* Asegura que el contenedor de búsqueda (que añadimos en el HTML) crezca */
