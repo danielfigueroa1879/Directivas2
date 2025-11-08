@@ -39,30 +39,6 @@ class GlobalSearch {
             </svg>
         `;
 
-    repositionSearchButton() {
-    const searchButton = document.getElementById('global-search-button');
-    const searchCenterContainer = document.getElementById('search-center-container');
-    
-    if (!searchButton) return;
-    
-    if (window.innerWidth >= 1024 && searchCenterContainer) {
-        // En PC: mover al centro
-        if (searchButton.parentElement !== searchCenterContainer) {
-            searchCenterContainer.appendChild(searchButton);
-        }
-    } else {
-        // En móvil: mover antes del contador
-        const banner = document.getElementById('banner');
-        if (banner) {
-            const bannerContent = banner.querySelector('.flex.items-center.justify-between');
-            const visitCounter = bannerContent?.querySelector('.flex.items-center.space-x-2.banner-text-small');
-            if (visitCounter && searchButton.parentElement === searchCenterContainer) {
-                bannerContent.insertBefore(searchButton, visitCounter);
-            }
-        }
-    }
-}
-
         // Insertar el botón en el banner existente
 // Insertar el botón en el contenedor central para PC o en el banner para móvil
 const banner = document.getElementById('banner');
@@ -136,8 +112,35 @@ if (banner) {
             </div>
         `;
         document.body.appendChild(searchModal);
+        // Listener para reposicionar el botón en cambio de tamaño de ventana
+        window.addEventListener('resize', () => {
+        this.repositionSearchButton();
+        });     
     }
-
+    
+        repositionSearchButton() {
+            const searchButton = document.getElementById('global-search-button');
+            const searchCenterContainer = document.getElementById('search-center-container');
+    
+            if (!searchButton) return;
+    
+            if (window.innerWidth >= 1024 && searchCenterContainer) {
+                // En PC: mover al centro
+                if (searchButton.parentElement !== searchCenterContainer) {
+                    searchCenterContainer.appendChild(searchButton);
+                }
+            } else {
+                // En móvil: mover antes del contador
+                const banner = document.getElementById('banner');
+                if (banner) {
+                    const bannerContent = banner.querySelector('.flex.items-center.justify-between');
+                    const visitCounter = bannerContent?.querySelector('.flex.items-center.space-x-2.banner-text-small');
+                    if (visitCounter && searchButton.parentElement === searchCenterContainer) {
+                        bannerContent.insertBefore(searchButton, visitCounter);
+                    }
+                }
+            }
+        }
     buildSearchIndex() {
         this.searchIndex = [
             // SECCIÓN: Trámites Principales
@@ -805,7 +808,4 @@ if (document.readyState === 'loading') {
 } else {
     window.globalSearch = new GlobalSearch();
 }
-// Listener para reposicionar el botón en cambio de tamaño de ventana
-window.addEventListener('resize', () => {
-    this.repositionSearchButton();
-});
+
