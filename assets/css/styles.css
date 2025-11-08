@@ -840,3 +840,35 @@ body.homepage {
     }
 }
 /* --- FIN DE AJUSTE --- */
+/* --- CORRECCIONES PARA EL BANNER EN PC (Logo, Centrado, Contador) --- */
+
+/* 1. Arregla el problema de los iconos "muy abiertos" en PC */
+@media (min-width: 1024px) {
+  #banner > div {
+    /* Reemplaza 'justify-center' por 'justify-between' */
+    justify-content: space-between !important; 
+    
+    /* Elimina el 'gap' gigante (de 34rem) que separaba los elementos */
+    gap: 1rem !important; /* Un espacio pequeño es suficiente */
+    
+    /* Ajusta el max-width para un centrado agradable */
+    max-width: 1200px !important; 
+  }
+
+  /* Asegura que el contenedor de búsqueda (que añadimos en el HTML) crezca */
+  #search-center-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* 2. Arregla el contador "Visitas" (palabra arriba del número) */
+.banner-text-small span {
+   display: inline-flex;
+   align-items: center; /* Alinea verticalmente "Visitas:" y el número */
+}
+
+#visit-counter {
+    margin-left: 0.25rem; /* Pequeño espacio entre "Visitas:" y el número */
+}
