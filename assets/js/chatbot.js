@@ -345,8 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return utterance; // <-- ASEGÚRATE DE DEVOLVER ESTO
     }
 
-    // ===== FUNCIÓN RESTAURADA PARA ELEVENLABS =====
-    async function speakWithElevenLabs(text) {
+async function speakWithElevenLabs(text) {
         if (!elevenLabsApiKey) {
             console.warn('ElevenLabs API key no configurada');
             throw new Error('No API key configured');
@@ -362,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     text: text,
-                    model_id: 'eleven_multilingual_v2', // Modelo para español
+                    model_id: 'eleven_multilingual_v2',
                     voice_settings: {
                         stability: 0.75,
                         similarity_boost: 0.9,
@@ -373,18 +372,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (!response.ok) {
-                // Si la API key expiró o es inválida, deshabilitarla para esta sesión
                 if (response.status === 401 || response.status === 403) {
                     console.error('ElevenLabs API key expirada o inválida, deshabilitando para esta sesión');
-                    elevenLabsApiKey = null; // Deshabilitar para esta sesión
+                    elevenLabsApiKey = null; 
                     throw new Error('API key expirada');
                 }
-                
                 if (response.status === 429) {
                     console.error('ElevenLabs: límite de cuota excedido');
                     throw new Error('Cuota excedida');
                 }
-                
                 const errorData = await response.json();
                 console.error('ElevenLabs API error:', errorData);
                 throw new Error(`ElevenLabs API error: ${response.status}`);
@@ -394,13 +390,28 @@ document.addEventListener('DOMContentLoaded', function() {
             const audioUrl = URL.createObjectURL(audioBlob);
             const audio = new Audio(audioUrl);
             
-            // Configurar limpieza automática
-            const cleanup = () => URL.revokeObjectURL(audioUrl);
-            audio.onended = cleanup;
-            audio.onerror = cleanup;
+            // --- MODIFICACIÓN: Envolver la reproducción en una Promise ---
+            await new Promise((resolve, reject) => {
+                const cleanup = () => {
+                    URL.revokeObjectURL(audioUrl);
+                    audio.onended = null;
+                    audio.onerror = null;
+                };
+                
+                audio.onended = () => {
+                    cleanup();
+                    resolve(); // Resuelve la Promise cuando el audio termina
+                };
+                
+                audio.onerror = (err) => {
+                    cleanup();
+                    reject(err); // Rechaza la Promise si hay un error
+                };
+                
+                audio.play();
+            });
+            // --- FIN DE LA MODIFICACIÓN ---
             
-            // Reproducir audio
-            await audio.play();
             console.log('ElevenLabs: reproducción exitosa');
             
         } catch (error) {
