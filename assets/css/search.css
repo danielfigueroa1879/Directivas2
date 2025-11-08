@@ -3,85 +3,90 @@
  * OS10 Coquimbo
  */
 
-/* ===== BOTÓN FLOTANTE DE BÚSQUEDA ===== */
+/* ===== BOTÓN DE BÚSQUEDA EN BANNER ===== */
+.banner-search-button,
 #global-search-button {
-    position: fixed;
-    bottom: 100px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, #146314 0%, #0c640c 100%);
-    border-radius: 50%;
-    display: flex;
+    /* Estilo consistente con otros elementos del banner */
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 8px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(20, 99, 20, 0.3), 
-                0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 999;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    margin: 0 8px;
+    position: relative;
 }
 
+/* Estilo del icono */
+#global-search-button .search-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect sutil */
 #global-search-button:hover {
-    transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 8px 20px rgba(20, 99, 20, 0.4), 
-                0 4px 8px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
 }
 
 #global-search-button:active {
     transform: scale(0.95);
 }
 
-#global-search-button .search-icon {
-    color: white;
-    width: 24px;
-    height: 24px;
-}
-
-#global-search-button .search-tooltip {
+/* Tooltip */
+#global-search-button::after {
+    content: 'Buscar (Ctrl+K)';
     position: absolute;
-    bottom: calc(100% + 10px);
-    right: 0;
-    background: rgba(0, 0, 0, 0.9);
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
     white-space: nowrap;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(5px);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    z-index: 1000;
 }
 
-#global-search-button:hover .search-tooltip {
+#global-search-button:hover::after {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) scale(1);
 }
 
-/* Efecto de pulso */
-#global-search-button::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(20, 99, 20, 0.3) 0%, transparent 70%);
-    animation: pulse-ring 2s infinite;
+/* Integración específica para PC en el banner */
+@media (min-width: 1024px) {
+    #global-search-button {
+        order: 2; /* Posicionar después del logo */
+        margin-left: auto;
+        margin-right: 16px;
+    }
 }
 
-@keyframes pulse-ring {
-    0% {
-        transform: scale(0.95);
-        opacity: 1;
+/* Estilo para móvil */
+@media (max-width: 1023px) {
+    #global-search-button {
+        /* Posicionar junto a los otros iconos del banner */
+        margin: 0 4px;
     }
-    50% {
-        transform: scale(1.15);
-        opacity: 0.3;
+    
+    #global-search-button .search-icon {
+        width: 24px;
+        height: 24px;
     }
-    100% {
-        transform: scale(0.95);
-        opacity: 1;
+    
+    /* Ocultar tooltip en móvil */
+    #global-search-button::after {
+        display: none;
     }
 }
 
@@ -399,13 +404,6 @@ mark {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-    #global-search-button {
-        bottom: 80px;
-        right: 16px;
-        width: 48px;
-        height: 48px;
-    }
-    
     #global-search-modal {
         padding-top: 5vh;
     }
@@ -470,12 +468,6 @@ mark {
 }
 
 /* ===== AJUSTES PARA COMPATIBILIDAD CON EL SITIO EXISTENTE ===== */
-/* Asegurar que el botón de búsqueda no interfiera con otros elementos */
-@media (max-width: 640px) {
-    #global-search-button {
-        bottom: 140px; /* Ajustado para no interferir con el chatbot */
-    }
-}
 
 /* Ajuste de z-index para asegurar visibilidad correcta */
 #global-search-modal {
@@ -485,9 +477,4 @@ mark {
 /* Prevenir conflictos con estilos existentes de Tailwind */
 #global-search-modal * {
     box-sizing: border-box;
-}
-
-/* Estilos específicos para cuando el chatbot está activo */
-body.chat-active #global-search-button {
-    right: 100px; /* Mover el botón si el chat está abierto */
 }
