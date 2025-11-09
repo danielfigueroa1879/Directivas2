@@ -49,7 +49,9 @@
     min-height: 28rem; /* 448px - Altura aumentada (casi el doble) */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribuye el contenido verticalmente (título arriba, texto abajo) */
+    justify-content: center; /* MODIFICADO: Centra verticalmente el contenido */
+    align-items: center; /* AÑADIDO: Centra horizontalmente los bloques de contenido */
+    text-align: center; /* AÑADIDO: Centra todo el texto por defecto */
     /* --- FIN MODIFICACIÓN --- */
     
     min-width: 280px;
@@ -90,6 +92,18 @@
     transition: all 0.3s ease;
 }
 
+/* AÑADIDO: Centra el bloque de (icono + título) y lo apila verticalmente */
+.componente-card .flex {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* AÑADIDO: Quita el margen izquierdo del wrapper del título (que venía de Tailwind) */
+.componente-card .flex > div:last-child {
+    margin-left: 0;
+}
+
+
 .componente-card:hover .flex-shrink-0 {
     background: rgba(255, 255, 255, 0.3);
     transform: scale(1.1);
@@ -99,14 +113,17 @@
     color: white;
     font-size: 1.25rem;
     font-weight: bold;
-    margin-left: 1rem;
+    margin-left: 0; /* MODIFICADO: Quitado margen izquierdo */
+    margin-top: 0.75rem; /* AÑADIDO: Espacio entre icono y título */
     transition: all 0.3s ease;
+    /* text-align: center; ya no es necesario, se hereda de .componente-card */
 }
 
 .componente-card p {
     color: rgba(255, 255, 255, 0.9);
     margin-top: 1rem;
     line-height: 1.6;
+    text-align: center; /* AÑADIDO: Asegura centrado del párrafo */
 }
 
 .componente-card .arrow-indicator {
@@ -194,5 +211,6 @@
 .componente-card:hover .text-yellow-300 {
     filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.8));
 }
+
 
 
