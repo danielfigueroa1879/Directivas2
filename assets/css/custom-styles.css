@@ -1,0 +1,39 @@
+
+/* ========================================
+   CUSTOM STYLES
+   ======================================== */
+
+/* --- DESKTOP: Centrar las tarjetas --- */
+@media (min-width: 769px) {
+    .componentes-scroll-container {
+        justify-content: center;
+    }
+
+    /* Ajuste de tamaño de letra en PC para que sea más sutil */
+    .componente-card h3 {
+        font-size: 0.9rem; /* Reducido desde 1.25rem */
+    }
+}
+
+/* --- MOBILE: Ajustes de tamaño de tarjeta y letra --- */
+@media (max-width: 768px) {
+    .componente-card {
+        flex-basis: 90%; /* Más ancho */
+        min-height: 30rem; /* Más alto */
+    }
+
+    .componente-card h3 {
+        font-size: 1rem; /* Ligeramente más grande para el nuevo tamaño */
+    }
+
+    .componente-card .flex-shrink-0 {
+        /* Hacer el icono un poco más grande para que no se vea perdido */
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .componente-card .flex-shrink-0 svg {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
