@@ -1,5 +1,5 @@
 /* ========================================
-   ESTILOS PARA SCROLL HORIZONTAL
+   ESTILOS PARA SCROLL HORIZONTAL (CORREGIDO CON PEEK)
    Sección: Componentes del Sistema
    ======================================== */
 
@@ -9,10 +9,12 @@
     overflow-x: auto;
     overflow-y: hidden;
     gap: 1.5rem;
-    padding: 0 1.5rem 2rem 1.5rem;
+    /* El padding es clave para el "peek" en los extremos */
+    padding: 0 1.5rem 2rem 1.5rem; 
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+    /* Fuerza el "snap" al inicio de cada tarjeta */
+    scroll-snap-type: x mandatory; 
     
     /* Ocultar scrollbar pero mantener funcionalidad */
     scrollbar-width: thin;
@@ -37,12 +39,21 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* Tarjetas de componentes - ancho fijo para crear el efecto de "peek" */
+/* Tarjetas de componentes - ANCHO Y ALTO MODIFICADOS */
 .componente-card {
+    /* --- REGLA DE ANCHO --- */
     flex: 0 0 85%;
-    max-width: 400px;
+    max-width: 450px; 
+    
+    /* --- MODIFICACIÓN DE ALTURA (SOLICITUD DEL USUARIO) --- */
+    min-height: 28rem; /* 448px - Altura aumentada (casi el doble) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el contenido verticalmente (título arriba, texto abajo) */
+    /* --- FIN MODIFICACIÓN --- */
+    
     min-width: 280px;
-    scroll-snap-align: start;
+    scroll-snap-align: start; /* Se alinea al inicio del contenedor */
     cursor: pointer;
     position: relative;
     padding: 2rem;
@@ -111,7 +122,9 @@
     opacity: 1;
 }
 
-/* RESPONSIVE: Móvil */
+/* --- MEDIA QUERIES SIMPLIFICADAS --- */
+
+/* RESPONSIVE: Móvil (Ajuste ligero) */
 @media (max-width: 768px) {
     .componentes-scroll-container {
         padding: 0 1rem 1.5rem 1rem;
@@ -119,9 +132,10 @@
     }
     
     .componente-card {
-        flex: 0 0 82%;
+        flex-basis: 82%; /* Un peek un poco más grande en móviles */
         min-width: 260px;
         padding: 1.5rem;
+        min-height: 24rem; /* 384px - Altura ajustada para móviles */
     }
     
     .componente-card h3 {
@@ -130,26 +144,6 @@
     
     .componente-card p {
         font-size: 0.9rem;
-    }
-}
-
-/* RESPONSIVE: Tablet */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .componente-card {
-        flex: 0 0 70%;
-        max-width: 450px;
-    }
-}
-
-/* RESPONSIVE: Desktop Grande */
-@media (min-width: 1400px) {
-    .componente-card {
-        flex: 0 0 30%;
-        max-width: 450px;
-    }
-    
-    .componentes-scroll-container {
-        padding: 0 3rem 2rem 3rem;
     }
 }
 
@@ -200,3 +194,5 @@
 .componente-card:hover .text-yellow-300 {
     filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.8));
 }
+
+
