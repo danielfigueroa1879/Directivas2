@@ -851,7 +851,21 @@ body.homepage {
     }
 }
 /* --- FIN DE AJUSTE --- */
+
+/* * -----------------------------------------------------------------
+ * INICIO DE LA MODIFICACIÓN (LUPA A LA DERECHA)
+ * -----------------------------------------------------------------
+ */
+
 /* --- CORRECCIONES PARA EL BANNER EN PC (Centrado, Lupa y Contador) --- */
+
+/* * ESTA ES LA NUEVA REGLA GLOBAL
+ * Mueve la lupa a la derecha en TODAS las pantallas (móvil y PC)
+ */
+#search-center-container {
+    justify-content: flex-end; /* Mueve la lupa a la derecha */
+    padding-right: 0.5rem;     /* Añade un pequeño espacio en celular */
+}
 
 @media (min-width: 1024px) {
   
@@ -865,24 +879,19 @@ body.homepage {
   }
 
   /* 2. Contenedor central (donde va la lupa) */
-
-/* AÑADE ESTA NUEVA REGLA (fuera de cualquier @media) */
-/* Esto arregla el centrado en celulares */
-#search-center-container {
-    justify-content: flex-end; /* Mueve la lupa a la derecha en TODOS los tamaños */
-    padding-right: 0.5rem;     /* Añade un pequeño espacio en celular */
-}
-
-/* MODIFICA LA REGLA DE ESCRITORIO que ya tenías */
-@media (min-width: 1024px) {
-  
-  /* ... (aqui van tus otras reglas de escritorio como #banner > div) ... */
-
   #search-center-container {
-    padding-right: 1rem;      /* Mantenemos el padding más grande para escritorio */
-    /* Ya no necesitamos el justify-content aquí, lo hereda de la regla de arriba */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 50px;
+    display: flex;
+    /* justify-content: center; <-- ESTO SE ELIMINÓ */
+    padding-right: 1rem;      /* <-- Se ajusta el padding para PC */
   }
 }
+/* * -----------------------------------------------------------------
+ * FIN DE LA MODIFICACIÓN
+ * -----------------------------------------------------------------
+ */
 
 
 /* 3. Arreglo para el contador "Visitas" (palabra arriba del número) */
