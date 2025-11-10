@@ -134,7 +134,7 @@ body.homepage {
 @media (max-width: 767px) {
     #chat-widget-container {
         right: 1rem;
-        bottom: 3rem;
+        bottom: 4rem;
     }
     .card-container {
         width: 98%;
