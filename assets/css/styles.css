@@ -939,6 +939,41 @@ body.homepage {
     background: rgba(255, 255, 255, 0.5);
 }
 
+/* ===== INICIO: Estilos Scroll Trámites Principales ===== */
+
+.tramites-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1.5rem; /* Separación entre tarjetas */
+    padding: 0 1.5rem 2rem 1.5rem; /* Padding para "peek" */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory; /* Snap al scroll */
+    
+    /* Estilos de Scrollbar (igual que componentes) */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.tramites-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tramites-scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.tramites-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.tramites-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
 /* Estilos de las tarjetas de trámite */
 .tramite-card {
     /* ----- Ancho en Móvil (default) ----- */
@@ -966,11 +1001,16 @@ body.homepage {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         gap: 2rem; /* Separación de 'gap-8' de Tailwind */
+        
+        /* --- MODIFICACIONES --- */
+        overflow-x: hidden; /* Oculta el scroll horizontal en PC */
+        flex-wrap: wrap;   /* Permite que las tarjetas se ajusten y pasen a la siguiente línea si no caben */
     }
     
     .tramite-card {
-        /* Ancho fijo en desktop */
-        flex-basis: 350px; 
+        /* Ancho flexible en desktop */
+        flex: 1 1 300px; /* Permite crecer, encogerse, con base de 300px */
+        max-width: 350px; /* Límite para que no se estiren demasiado */
     }
 }
 
