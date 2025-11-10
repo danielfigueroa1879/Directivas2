@@ -68,8 +68,8 @@
 
 .componente-card:hover {
     background: rgba(255, 255, 255, 0.25); /* MODIFICADO: 0.2 -> 0.25 (más oscuro) */
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    /* transform: translateY(-8px); <-- MODIFICADO: Eliminado para que no se eleve */
+    /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); <-- MODIFICADO: Eliminado */
 }
 
 /* Indicador visual de "hay más contenido" */
@@ -151,7 +151,7 @@ p.componente-descripcion {
     }
     
     .componente-card {
-        flex-basis: 88%; /* MODIFICADO: 82% -> 88% (más ancho) */
+        flex-basis: 92%; /* MODIFICADO: 88% -> 92% (más ancho) */
         min-width: 260px;
         padding: 1.5rem;
         min-height: 27rem; /* MODIFICADO: 24rem -> 27rem (más alto) */
