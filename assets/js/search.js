@@ -642,6 +642,100 @@ class GlobalSearch {
                 keywords: ['ubicación', 'dirección', 'cienfuegos', '180', 'serena', 'mapa']
             },
 
+            // ===== NUEVOS ITEMS DE LA SECCIÓN DIRECTIVAS =====
+            {
+                title: 'Solicitud Simple (Directiva)',
+                content: 'Formato de solicitud simple para presentar Directiva de Funcionamiento (DD.FF.)',
+                section: 'Directivas',
+                action: () => window.open('https://dal5.short.gy/Solic', '_blank'),
+                keywords: ['solicitud', 'simple', 'directiva', 'ddff', 'formato', 'carta']
+            },
+            {
+                title: 'Plantilla Directiva DD.FF. (Editable)',
+                content: 'Documento Word editable para completar la Directiva de Funcionamiento (DD.FF.)',
+                section: 'Directivas',
+                action: () => window.open('https://dal5.short.gy/D', '_blank'),
+                keywords: ['plantilla', 'directiva', 'ddff', 'editable', 'word', 'completa']
+            },
+            {
+                title: 'Requisitos Directiva (Según Tipo)',
+                content: 'Documento con los requisitos para presentar una Directiva de Funcionamiento según el tipo (instalación, evento, etc.)',
+                section: 'Directivas',
+                action: () => window.open('https://dal5.short.gy/Re24', '_blank'),
+                keywords: ['requisitos', 'directiva', 'tipo', 'documento', 'ddff']
+            },
+            {
+                title: 'Ejemplo Uniforme (Decreto 32/2024)',
+                content: 'Ejemplo visual del uniforme reglamentario según el Decreto 32/2024',
+                section: 'Directivas',
+                action: () => window.open('https://dal5.short.gy/0u', '_blank'),
+                keywords: ['uniforme', 'ejemplo', 'decreto 32', 'ddff', 'vestimenta']
+            },
+            {
+                title: 'Análisis de Vulnerabilidades (Editable)',
+                content: 'Plantilla editable para realizar el Análisis de Vulnerabilidades de una Directiva de Funcionamiento',
+                section: 'Directivas',
+                action: () => window.open('https://dal5.short.gy/6ydn', '_blank'),
+                keywords: ['analisis', 'vulnerabilidades', 'editable', 'plantilla', 'directiva', 'ddff']
+            },
+            {
+                title: 'Solicitud Uniforme Distinto (Editable)',
+                content: 'Documento Word editable para solicitar el uso de un uniforme distinto al reglamentario',
+                section: 'Directivas',
+                action: () => window.open('https://d6.short.gy/G8', '_blank'),
+                keywords: ['solicitud', 'uniforme', 'distinto', 'editable', 'word', 'directiva']
+            },
+            {
+                title: 'Herramienta para unir PDF',
+                content: 'Utilidad online para escanear y unir múltiples documentos en un solo archivo PDF',
+                section: 'Directivas',
+                action: () => window.open('https://dal5.short.gy/I', '_blank'),
+                keywords: ['pdf', 'unir', 'escanear', 'herramienta', 'digital', 'directiva']
+            },
+            {
+                title: 'Resolución 1480 (10.04.2025)',
+                content: 'Resolución asociada a la tramitación de credenciales y directivas',
+                section: 'Directivas',
+                action: () => window.open('https://d6.short.gy/dsds', '_blank'),
+                keywords: ['resolucion', '1480', '2025', 'credenciales', 'directiva']
+            },
+
+            // ===== NUEVOS ITEMS DE LA SECCIÓN CREDENCIALES =====
+            {
+                title: 'Solicitud Simple (Credencial Empresa/Independiente)',
+                content: 'Carta conductora o solicitud simple para tramitar credencial de empresa o independiente',
+                section: 'Credenciales',
+                action: () => window.open('https://d6.short.gy/bv', '_blank'),
+                keywords: ['solicitud', 'simple', 'credencial', 'empresa', 'independiente', 'carta']
+            },
+            {
+                title: 'Listado GG.SS. (Word Empresa)',
+                content: 'Plantilla Word para que las empresas completen el listado de Guardias de Seguridad (GG.SS.)',
+                section: 'Credenciales',
+                action: () => window.open('https://docs.google.com/document/d/14mzX_kderPmSKiui__WIqVKiRSKgFe7x/edit?usp=drive_link&ouid=106863493232977056654&rtpof=true&sd=true', '_blank'),
+                keywords: ['listado', 'ggss', 'guardias', 'empresa', 'word', 'plantilla', 'credencial']
+            },
+            {
+                title: 'Guía Credencial Independiente',
+                content: 'Documento con todos los requisitos para tramitar la credencial de Guardia de Seguridad Independiente',
+                section: 'Credenciales',
+                action: () => window.open('https://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb', '_blank'),
+                keywords: ['guia', 'credencial', 'independiente', 'requisitos', 'documento']
+            },
+            {
+                title: 'Tabla de Valores (Credenciales)',
+                content: 'Imagen con la tabla de valores y aranceles para el pago de credenciales ($5.890)',
+                section: 'Credenciales',
+                action: () => window.open('https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ', '_blank'),
+                keywords: ['valores', 'tabla', 'pago', 'vale vista', '5890', 'arancel', 'credencial']
+            },
+            {
+                title: 'Requisitos Fotografía (Credencial)',
+                content: 'Ejemplo de la fotografía digital requerida: Formato JPG, 260x320 píxeles, fondo blanco, camisa negra',
+                section: 'Credenciales',
+                action: () => window.showCredenciales && window.showCredenciales(), // Abre la sección de credenciales
+                keywords: ['foto', 'fotografia', 'requisitos', 'jpg', '260x320', 'camisa negra', 'credencial']
+            },
             // SECCIÓN: Información de contacto
             {
                 title: 'Teléfono OS10',
