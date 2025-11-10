@@ -59,7 +59,7 @@
     cursor: pointer;
     position: relative;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15); /* MODIFICADO: 0.1 -> 0.15 (más oscuro) */
     border-radius: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
@@ -67,7 +67,7 @@
 }
 
 .componente-card:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25); /* MODIFICADO: 0.2 -> 0.25 (más oscuro) */
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
@@ -119,11 +119,13 @@
     /* text-align: center; ya no es necesario, se hereda de .componente-card */
 }
 
-.componente-card p {
+/* MODIFICADO: Se cambia 'p' por 'p.componente-descripcion' y se ajusta tamaño y margen */
+p.componente-descripcion {
     color: rgba(255, 255, 255, 0.9);
-    margin-top: 1rem;
-    line-height: 1.6;
-    text-align: center; /* AÑADIDO: Asegura centrado del párrafo */
+    margin-top: 0.5rem; /* MODIFICADO: 1rem -> 0.5rem */
+    line-height: 1.5; /* MODIFICADO: 1.6 -> 1.5 */
+    text-align: center;
+    font-size: 0.85rem; /* AÑADIDO: Tamaño claro para PC */
 }
 
 .componente-card .arrow-indicator {
@@ -149,18 +151,20 @@
     }
     
     .componente-card {
-        flex-basis: 82%; /* Un peek un poco más grande en móviles */
+        flex-basis: 88%; /* MODIFICADO: 82% -> 88% (más ancho) */
         min-width: 260px;
         padding: 1.5rem;
-        min-height: 24rem; /* 384px - Altura ajustada para móviles */
+        min-height: 27rem; /* MODIFICADO: 24rem -> 27rem (más alto) */
     }
     
     .componente-card h3 {
         font-size: 1.1rem;
     }
     
-    .componente-card p {
-        font-size: 0.9rem;
+    /* MODIFICADO: Se cambia 'p' por 'p.componente-descripcion' y se achica la letra */
+    p.componente-descripcion {
+        font-size: 0.75rem; /* MODIFICADO: 0.9rem -> 0.75rem (más pequeño en móvil) */
+        line-height: 1.4;
     }
 }
 
@@ -211,6 +215,3 @@
 .componente-card:hover .text-yellow-300 {
     filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.8));
 }
-
-
-
