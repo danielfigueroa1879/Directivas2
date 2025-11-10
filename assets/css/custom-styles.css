@@ -17,7 +17,7 @@
 /* --- MOBILE: Ajustes de tamaño de tarjeta y letra --- */
 @media (max-width: 768px) {
     .componente-card {
-        flex-basis: 90%; /* Más ancho */
+        flex-basis: 95%; /* Más ancho */
         min-height: 30rem; /* Más alto */
     }
 
