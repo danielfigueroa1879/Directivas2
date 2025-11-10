@@ -152,7 +152,7 @@ p.componente-descripcion {
     }
     
     .componente-card {
-        flex-basis: 96%; /* MODIFICADO: 88% -> 92% (más ancho) */
+        flex-basis: 98%; /* MODIFICADO: 88% -> 92% (más ancho) */
         min-width: 260px;
         padding: 1.5rem;
         min-height: 27rem; /* MODIFICADO: 24rem -> 27rem (más alto) */
