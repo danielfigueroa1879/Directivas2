@@ -60,9 +60,9 @@
     position: relative;
     padding: 2rem;
     /* MODIFICADO: Hecho más transparente como solicitaste */
-    background: rgba(255, 255, 255, 0.1); 
+    background: rgba(255, 255, 255, 0.05); 
     border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Borde también más sutil */
     transition: all 0.3s ease;
     transform: translateY(0);
 }
