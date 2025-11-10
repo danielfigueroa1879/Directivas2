@@ -1,4 +1,3 @@
-
 /* ========================================
    CUSTOM STYLES
    ======================================== */
@@ -28,12 +27,12 @@
 
     .componente-card .flex-shrink-0 {
         /* Hacer el icono un poco más grande para que no se vea perdido */
-        width: 4rem;
-        height: 4rem;
+        width: 3.5rem; /* MODIFICADO: 4rem -> 3.5rem */
+        height: 3.5rem; /* MODIFICADO: 4rem -> 3.5rem */
     }
 
     .componente-card .flex-shrink-0 svg {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 2.25rem; /* MODIFICADO: 2.5rem -> 2.25rem (más chico) */
+        height: 2.25rem; /* MODIFICADO: 2.5rem -> 2.25rem (más chico) */
     }
 }
