@@ -204,3 +204,25 @@ p.componente-descripcion {
 .componente-card .text-yellow-300 {
     filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.5));
 }
+
+/* Estilos para la paginación de puntos */
+.pagination-dots {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active {
+    background-color: #ffffff;
+}
+
