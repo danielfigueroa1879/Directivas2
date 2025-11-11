@@ -6,8 +6,8 @@
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
         /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
-        width: 5.5rem;
-        height: 5.5rem;
+        width: 6.5rem;
+        height: 6.5rem;
     }
 
     /* --- COMPONENTES DEL SISTEMA --- */
@@ -21,8 +21,8 @@
     #capacitacion a.group .bg-white\/20 svg,
     #capacitacion div[onclick] .bg-white\/20 svg {
         /* MODIFICADO: Aumentado de 5rem a 6rem */
-        width: 6rem;
-        height: 6rem;
+        width: 7rem;
+        height: 7rem;
     }
 
     /* --- Colores para los iconos de Capacitación (visibles por defecto) --- */
@@ -50,8 +50,8 @@
     #servicios-adicionales a svg,
     #servicios-adicionales div[onclick] svg {
         /* MODIFICADO: Aumentado de 4rem a 5rem */
-        width: 5rem;
-        height: 5rem;
+        width: 7rem;
+        height: 7rem;
     }
 
     #servicios-adicionales a span,
