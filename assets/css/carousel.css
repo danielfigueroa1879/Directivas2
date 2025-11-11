@@ -232,21 +232,44 @@ p.carousel-card-description {
 @media (min-width: 769px) {
     .carousel-desktop-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem; /* Añadido para espaciar las tarjetas */
         overflow-x: visible;
-        padding: 0;
+        padding: 0 1.5rem; /* Añadido padding horizontal */
         scroll-snap-type: none;
+        max-width: 1400px; /* Ancho máximo para el grid */
+        margin: 0 auto; /* Centrar el grid */
     }
 
     #componentes-seguridad .carousel-desktop-grid {
         grid-template-columns: repeat(3, 1fr);
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 1200px; /* Un ancho más ajustado para 3 columnas */
+    }
+
+    #tramites-principales .carousel-card,
+    #capacitacion .carousel-card,
+    #servicios-adicionales .carousel-card {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    #tramites-principales .carousel-card h3,
+    #capacitacion .carousel-card h3,
+    #servicios-adicionales .carousel-card h3 {
+        font-size: 1.1rem;
+    }
+
+    #tramites-principales .carousel-card p,
+    #capacitacion .carousel-card p,
+    #servicios-adicionales .carousel-card p {
+        font-size: 0.85rem;
     }
 
     .carousel-desktop-grid .carousel-card {
-        flex: 1 1 300px; /* Permite que las tarjetas crezcan y se encojan */
+        flex: 1 1 300px;
         scroll-snap-align: none;
+        width: auto; /* Permitir que el grid controle el ancho */
+        max-width: none; /* Eliminar el max-width de la tarjeta */
     }
 
     /* Ocultar los puntos en la vista de grid */
