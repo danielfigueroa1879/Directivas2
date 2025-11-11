@@ -107,7 +107,7 @@
     #servicios-adicionales a svg,
     #servicios-adicionales div[onclick] svg {
         /* MODIFICADO: Aumentado de 4rem a 5rem */
-        width: 16rem;
+        width: 36rem;
         height: 16rem;
     }
 
