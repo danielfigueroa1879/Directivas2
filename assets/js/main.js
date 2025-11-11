@@ -233,108 +233,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('✅ All components initialized successfully');
 
-    // --- LÓGICA PARA EL SCROLL HORIZONTAL CON PAGINACIÓN ---
-    const scrollContainer = document.querySelector('.componentes-scroll-container');
-    const dotsContainer = document.querySelector('.pagination-dots');
+    // --- INICIALIZACIÓN DE CARRUSELES ---
+    // Se llama a la función initializeCarousel (definida en carousel.js) para cada sección.
     
-    if (scrollContainer && dotsContainer) {
-        const cards = scrollContainer.querySelectorAll('.componente-card');
-        const cardCount = cards.length;
-        let autoScrollInterval;
-        let currentIndex = 0;
+    // Carrusel para "Trámites Principales"
+    initializeCarousel({
+        containerSelector: '#tramites-principales .carousel-container',
+        cardSelector: '.carousel-card',
+        dotsSelector: '#tramites-principales .pagination-dots',
+        autoScroll: 'mobile'
+    });
 
-        // 1. Crear los puntos de paginación
-        for (let i = 0; i < cardCount; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.addEventListener('click', () => {
-                goToSlide(i);
-                resetAutoScroll();
-            });
-            dotsContainer.appendChild(dot);
-        }
+    // Carrusel para "Componentes del Sistema"
+    initializeCarousel({
+        containerSelector: '#componentes-seguridad .carousel-container',
+        cardSelector: '.carousel-card',
+        dotsSelector: '#componentes-seguridad .pagination-dots',
+        autoScroll: 'mobile'
+    });
 
-        const dots = dotsContainer.querySelectorAll('.dot');
-        if (dots.length > 0) {
-            dots[0].classList.add('active');
-        }
+    // Carrusel para "Capacitación y Formación"
+    initializeCarousel({
+        containerSelector: '#capacitacion .carousel-container',
+        cardSelector: '.carousel-card',
+        dotsSelector: '#capacitacion .pagination-dots',
+        autoScroll: 'mobile'
+    });
 
-        // 2. Función para ir a un slide específico
-        function goToSlide(index) {
-            if (index >= 0 && index < cardCount) {
-                const card = cards[index];
-                const scrollLeft = card.offsetLeft - (scrollContainer.offsetWidth - card.offsetWidth) / 2;
-                scrollContainer.scrollTo({
-                    left: scrollLeft,
-                    behavior: 'smooth'
-                });
-                currentIndex = index;
-                updateDots();
-            }
-        }
-
-        // 3. Actualizar el punto activo
-        function updateDots() {
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
-
-        // 4. Detectar el slide actual mientras se hace scroll
-        scrollContainer.addEventListener('scroll', () => {
-            const scrollLeft = scrollContainer.scrollLeft;
-            const containerWidth = scrollContainer.offsetWidth;
-            
-            let closestCardIndex = 0;
-            let minDistance = Infinity;
-
-            cards.forEach((card, i) => {
-                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                const scrollCenter = scrollLeft + containerWidth / 2;
-                const distance = Math.abs(cardCenter - scrollCenter);
-
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestCardIndex = i;
-                }
-            });
-
-            if (currentIndex !== closestCardIndex) {
-                currentIndex = closestCardIndex;
-                updateDots();
-            }
-        });
-
-        // 5. Auto-scroll
-        function startAutoScroll() {
-            autoScrollInterval = setInterval(() => {
-                let nextIndex = (currentIndex + 1) % cardCount;
-                goToSlide(nextIndex);
-            }, 8000); // Cambiado a 8 segundos según solicitud
-        }
-
-        function resetAutoScroll() {
-            // Solo reiniciar si estamos en móvil
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (isMobile) {
-                clearInterval(autoScrollInterval);
-                startAutoScroll();
-            }
-        }
-
-        // Iniciar el auto-scroll y la interacción solo en móviles
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobile) {
-            // 6. Pausar en interacción del usuario
-            scrollContainer.addEventListener('touchstart', () => clearInterval(autoScrollInterval), { passive: true });
-            
-            // Reanudar después de un tiempo si no hay más interacción
-            scrollContainer.addEventListener('touchend', resetAutoScroll);
-
-            // Iniciar el auto-scroll
-            startAutoScroll();
-        }
-    }
+    // Carrusel para "Servicios Adicionales"
+    initializeCarousel({
+        containerSelector: '#servicios-adicionales .carousel-container',
+        cardSelector: '.carousel-card',
+        dotsSelector: '#servicios-adicionales .pagination-dots',
+        autoScroll: 'mobile'
+    });
 });
 
 window.addEventListener('appinstalled', (e) => {
