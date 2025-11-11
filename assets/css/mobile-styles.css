@@ -21,8 +21,8 @@
     #capacitacion a.group .bg-white\/20 svg,
     #capacitacion div[onclick] .bg-white\/20 svg {
         /* MODIFICADO: Aumentado de 5rem a 6rem */
-        width: 7rem;
-        height: 7rem;
+        width: 9rem;
+        height: 9rem;
     }
 
     /* --- Colores para los iconos de Capacitación (visibles por defecto) --- */
