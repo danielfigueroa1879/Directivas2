@@ -58,7 +58,6 @@ async function installPWA() {
         }
     }
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- MANEJO DEL MENÚ (MÓVIL Y ESCRITORIO) ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
