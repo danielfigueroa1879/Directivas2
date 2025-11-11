@@ -6,8 +6,8 @@
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
         /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
-        width: 6.5rem;
-        height: 6.5rem;
+        width: 7.5rem;
+        height: 7.5rem;
     }
 
     /* --- COMPONENTES DEL SISTEMA --- */
@@ -50,8 +50,8 @@
     #servicios-adicionales a svg,
     #servicios-adicionales div[onclick] svg {
         /* MODIFICADO: Aumentado de 4rem a 5rem */
-        width: 7rem;
-        height: 7rem;
+        width: 9rem;
+        height: 9rem;
     }
 
     #servicios-adicionales a span,
