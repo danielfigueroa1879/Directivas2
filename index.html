@@ -35,7 +35,7 @@
 
     <link rel="preload" href="assets/images/foto%20(1).webp" as="image" fetchpriority="high">
     <link rel="preload" href="assets/css/styles.css" as="style">
-    <link rel="stylesheet" href="assets/css/componentes-horizontal.css">
+    <link rel="stylesheet" href="assets/css/carousel.css">
     <style>
         /* --- OPTIMIZACIÓN DE SCROLL AÑADIDA --- */
         html {
@@ -513,10 +513,8 @@
                     </div>
                     <p class="mt-4 text-lg leading-8 text-gray-300">Acceso directo a la información que buscas</p>
                 </div>
-                <!-- MODIFICADO: Contenedor de 'grid' cambiado por 'tramites-scroll-container' -->
-                <div class="tramites-scroll-container mt-16">
-                    <!-- MODIFICADO: Clases de Tailwind de padding/transform eliminadas, añadidas 'tramite-card' -->
-                    <div onclick="openNewLink('https://dal5.short.gy/CFil')" class="tramite-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
+                <div class="carousel-container carousel-desktop-grid mt-16">
+                    <div onclick="openNewLink('https://dal5.short.gy/CFil')" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-green-500/20 text-green-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                             <h3 class="ml-4 text-xl font-bold text-white">Certificados O.S.10 Online - Cerofila</h3>
@@ -524,8 +522,7 @@
                         <p class="mt-4 text-gray-300">Certificado para Guardias de Seguridad, Conserjes y Vigilantes Privados.</p>
                         <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
                     </div>
-                    <!-- MODIFICADO: Clases de Tailwind de padding/transform eliminadas, añadidas 'tramite-card' -->
-                    <div onclick="showDirectiva()" class="tramite-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
+                    <div onclick="showDirectiva()" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-blue-500/20 text-blue-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>
                             <h3 class="ml-4 text-xl font-bold text-white">Directivas de Funcionamiento</h3>
@@ -533,8 +530,7 @@
                         <p class="mt-4 text-gray-300">Accede y gestiona los requerimientos para instalaciones, eventos y más.</p>
                         <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
                     </div>
-                    <!-- MODIFICADO: Clases de Tailwind de padding/transform eliminadas, añadidas 'tramite-card' -->
-                    <div onclick="showCredenciales()" class="tramite-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
+                    <div onclick="showCredenciales()" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-yellow-500/20 text-yellow-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h2a2 2 0 012 2v1m-6 0h6"></path></svg></div>
                             <h3 class="ml-4 text-xl font-bold text-white">Credenciales</h3>
@@ -542,8 +538,7 @@
                         <p class="mt-4 text-gray-300">Encuentra todos los formularios y requisitos para la acreditación de personal.</p>
                         <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
                     </div>
-                    <!-- MODIFICADO: Clases de Tailwind de padding/transform eliminadas, añadidas 'tramite-card' -->
-                    <div onclick="openNewLink('https://dal5.short.gy/R3')" class="tramite-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
+                    <div onclick="openNewLink('https://dal5.short.gy/R3')" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-green-500/20 text-green-300 rounded-lg p-3"><svg class="w-8 h-8 text-green-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.377 11.082c-.06 1.929-2.229 3.126-8.409 3.126-6.193 0-8.358-1.203-8.409-3.139 1.508 0 4.379-1.958 8.409-1.958 3.927-.001 7.144 1.971 8.409 1.971zm-8.408 4.09c-2.062 0-3.74-.131-5.078-.397.062.555.469 3.322 2.409 3.322 1.721 0 1.673-1.316 2.721-1.316 1.047 0 1.169 1.316 2.852 1.316 2.09 0 2.46-3.063 2.494-3.389-1.387.311-3.169.464-5.398.464zm6.405-.741c-.04 2.171-.717 4.769-2.28 6.437-1.048 1.119-2.377 1.687-3.949 1.687-1.575 0-2.898-.533-3.931-1.582-1.646-1.673-2.302-4.345-2.396-6.461-.523-.158-1.01-.347-1.484-.628-.016 2.472.704 5.942 2.821 8.094 1.321 1.341 3 2.022 4.99 2.022 1.972 0 3.712-.745 5.033-2.153 2.131-2.273 2.76-5.679 2.661-8.111-.459.308-.944.521-1.465.695zm-6.237-10.984l-.313.623-.701.1.507.485-.119.685.626-.324.627.324-.12-.685.507-.485-.7-.1-.314-.623zm7.211-.206s-2.537-.686-7.348-3.241c-4.812 2.555-7.348 3.241-7.348 3.241s-1.295 2.4-3.652 5.016l2.266 1.908c1.533-.165 4.64-2.082 8.734-2.082s7.201 1.917 8.734 2.083l2.266-1.909c-2.357-2.616-3.652-5.016-3.652-5.016zm-6.345 3.214c-.526.131-.605.188-.875.402-.269-.214-.349-.271-.875-.402-.731-.183-1.151-.656-1.151-1.299 0-.359.147-.691.318-1.146.192-.513.083-.675-.119-.882l-.171-.176.987-.819c.098.098.235.278.486.278.248 0 .416-.175.528-.271.102.09.268.271.523.271.248 0 .381-.171.49-.281l.983.823-.172.176c-.202.207-.311.369-.119.882.17.455.318.786.318 1.146 0 .641-.42 1.115-1.151 1.298z"/></svg></div>
                             <h3 class="ml-4 text-xl font-bold text-white">Reclamos de Seguridad Privada</h3>
@@ -552,6 +547,7 @@
                         <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
                     </div>
                 </div>
+                <div class="pagination-dots"></div>
             </div>
         </section>
 <!-- ========== SECCIÓN 1: LEYES Y NORMATIVA (FONDO BLANCO) ========== -->
@@ -821,91 +817,106 @@
             </div>
             <p class="mt-4 text-lg leading-8 text-gray-300">Requisitos y documentación para cada componente del sistema de seguridad privada</p>
         </div>
-        <div class="componentes-scroll-container">
+        <div class="carousel-container carousel-desktop-grid">
             <!-- Tarjeta 1 -->
-            <div class="componente-card">
-                <div class="grid grid-cols-2 gap-4 w-full">
+            <div class="carousel-card">
+                <div class="grid grid-cols-1 gap-4 w-full">
                     <!-- Asesor -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Asesor</h3>
-                        <p class="componente-descripcion">Títulos y requisitos para asesores de seguridad.</p>
+                        <p class="carousel-card-description">Títulos y requisitos para asesores de seguridad.</p>
                     </a>
                     <!-- Capacitador -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Capacitador</h3>
-                        <p class="componente-descripcion">Acreditación y requisitos para capacitadores.</p>
+                        <p class="carousel-card-description">Acreditación y requisitos para capacitadores.</p>
                     </a>
+                </div>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="carousel-card">
+                <div class="grid grid-cols-1 gap-4 w-full">
                     <!-- Jefe de Seguridad -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-500/20 text-yellow-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Jefe de Seguridad</h3>
-                        <p class="componente-descripcion">Actas, credenciales y requisitos para jefes de seguridad.</p>
+                        <p class="carousel-card-description">Actas, credenciales y requisitos para jefes de seguridad.</p>
                     </a>
                     <!-- Encargado de Seguridad -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/20 text-green-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h2a2 2 0 012 2v1m-6 0h6"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Encargado de Seg.</h3>
-                        <p class="componente-descripcion">Requisitos y documentación necesaria para encargados de seguridad.</p>
+                        <p class="carousel-card-description">Requisitos y documentación necesaria para encargados de seguridad.</p>
                     </a>
                 </div>
             </div>
-            <!-- Tarjeta 2 -->
-            <div class="componente-card">
-                <div class="grid grid-cols-2 gap-4 w-full">
+            <!-- Tarjeta 3 -->
+            <div class="carousel-card">
+                <div class="grid grid-cols-1 gap-4 w-full">
                     <!-- Supervisor de Seguridad -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-500/20 text-yellow-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Supervisor</h3>
-                        <p class="componente-descripcion">Documentación necesaria para supervisores de seguridad.</p>
+                        <p class="carousel-card-description">Documentación necesaria para supervisores de seguridad.</p>
                     </a>
                     <!-- Vigilante Privado -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/20 text-green-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Vigilante Privado</h3>
-                        <p class="componente-descripcion">Documentación y requisitos para la acreditación de vigilantes privados.</p>
+                        <p class="carousel-card-description">Documentación y requisitos para la acreditación de vigilantes privados.</p>
                     </a>
+                </div>
+            </div>
+            <!-- Tarjeta 4 -->
+            <div class="carousel-card">
+                <div class="grid grid-cols-1 gap-4 w-full">
                     <!-- Guardia de Seguridad -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Guardia de Seg.</h3>
-                        <p class="componente-descripcion">Guía completa del trámite y requisitos para guardias de seguridad.</p>
+                        <p class="carousel-card-description">Guía completa del trámite y requisitos para guardias de seguridad.</p>
                     </a>
                     <!-- Operador CCTV -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-500/20 text-yellow-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Operador CCTV</h3>
-                        <p class="componente-descripcion">Control y monitoreo de sistemas CCTV.</p>
+                        <p class="carousel-card-description">Control y monitoreo de sistemas CCTV.</p>
                     </a>
                 </div>
             </div>
-            <!-- Tarjeta 3 -->
-                        <div class="componente-card">
-                <div class="grid grid-cols-2 gap-4 w-full">
+            <!-- Tarjeta 5 -->
+            <div class="carousel-card">
+                <div class="grid grid-cols-1 gap-4 w-full">
                     <!-- Empresas de Seguridad -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Empresas de Seg.</h3>
-                        <p class="componente-descripcion">Requisitos y documentación para empresas prestadoras de seguridad.</p>
+                        <p class="carousel-card-description">Requisitos y documentación para empresas prestadoras de seguridad.</p>
                     </a>
                     <!-- Operador de ATM -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-500/20 text-yellow-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Operador ATM</h3>
-                        <p class="componente-descripcion">Documentación específica para operadores de cajeros.</p>
+                        <p class="carousel-card-description">Documentación específica para operadores de cajeros.</p>
                     </a>
+                </div>
+            </div>
+            <!-- Tarjeta 6 -->
+            <div class="carousel-card">
+                <div class="grid grid-cols-1 gap-4 w-full">
                     <!-- Tecnico en Seguridad -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/20 text-green-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Técnico en Seg.</h3>
-                        <p class="componente-descripcion">Requisitos técnicos para técnicos de seguridad.</p>
+                        <p class="carousel-card-description">Requisitos técnicos para técnicos de seguridad.</p>
                     </a>
                     <!-- Instalador Tecnico -->
                     <a href="https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/20 text-green-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg></div>
                         <h3 class="text-white font-bold mt-3 text-center text-sm">Instalador Técnico</h3>
-                        <p class="componente-descripcion">Certificación de instaladores técnicos.</p>
+                        <p class="carousel-card-description">Certificación de instaladores técnicos.</p>
                     </a>
                 </div>
             </div>
@@ -1039,9 +1050,9 @@
                     <p class="mt-4 text-lg leading-8 text-gray-200">Información sobre cursos, empresas capacitadoras y valores</p>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div class="carousel-container carousel-desktop-grid">
                     <a href="https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view" target="_blank" 
-                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                       class="carousel-card group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
                         <div class="text-center">
                             <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
                                 <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1054,7 +1065,7 @@
                     </a>
                     
                     <a href="https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view" target="_blank" 
-                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                       class="carousel-card group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
                         <div class="text-center">
                             <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
                                 <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1067,9 +1078,9 @@
                     </a>
                     
                     <a href="https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view" target="_blank" 
-                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                       class="carousel-card group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
                         <div class="text-center">
-                            <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
+                            <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md-h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
                                 <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
@@ -1080,7 +1091,7 @@
                     </a>
                     
                     <a href="https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view" target="_blank" 
-                       class="group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                       class="carousel-card group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
                         <div class="text-center">
                             <div class="bg-white/20 rounded-full p-3 md:p-4 w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30">
                                 <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1092,6 +1103,7 @@
                         </div>
                     </a>
                 </div>
+                <div class="pagination-dots"></div>
             </div>
         </section>
 
@@ -1103,10 +1115,10 @@
                     <p class="mt-4 text-lg leading-8 text-gray-600">Herramientas y recursos complementarios</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="carousel-container carousel-desktop-grid">
                     <!-- Consultar Curso -->
                     <a href="https://www.zosepcar.cl/OS10.php#buscador" target="_blank" 
-                       class="group relative overflow-hidden rounded-xl p-6 md:p-8 bg-blue-200/30 border border-blue-400 backdrop-blur-sm card-float-glow hover-glow-blue">
+                       class="carousel-card group relative overflow-hidden rounded-xl p-6 md:p-8 bg-blue-200/30 border border-blue-400 backdrop-blur-sm card-float-glow hover-glow-blue">
                         <svg class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
@@ -1116,7 +1128,7 @@
                     
                     <!-- Valores -->
                     <div onclick="handleValores()" 
-                         class="cursor-pointer group relative overflow-hidden rounded-xl p-6 md:p-8 bg-green-200/30 border border-green-400 backdrop-blur-sm card-float-glow hover-glow-green">
+                         class="carousel-card cursor-pointer group relative overflow-hidden rounded-xl p-6 md:p-8 bg-green-200/30 border border-green-400 backdrop-blur-sm card-float-glow hover-glow-green">
                         <svg class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-green-600" 
                              xmlns="http://www.w3.org/2000/svg" 
                              viewBox="0 0 24 24" 
@@ -1128,9 +1140,8 @@
                         <p class="text-xs md:text-sm mt-2 text-green-700">Tabla de valores y aranceles</p>
                     </div>
                     
-                    <!-- Ubicación (Color Cambiado - Comentarios eliminados) -->
                     <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" 
-                       class="group relative overflow-hidden rounded-xl p-6 md:p-8 bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm card-float-glow hover-glow-yellow">
+                       class="carousel-card group relative overflow-hidden rounded-xl p-6 md:p-8 bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm card-float-glow hover-glow-yellow">
                         <svg class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -1139,6 +1150,7 @@
                         <p class="text-xs md:text-sm mt-2 text-yellow-700">Calle Cienfuegos 180, La Serena</p>
                     </a>
                 </div>
+                <div class="pagination-dots"></div>
             </div>
         </section>
 
@@ -1216,6 +1228,7 @@
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     
     <script src="assets/js/inicio.js?v=4" defer></script>
+    <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
