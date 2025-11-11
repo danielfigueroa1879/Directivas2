@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
             autoScrollInterval = setInterval(() => {
                 let nextIndex = (currentIndex + 1) % cardCount;
                 goToSlide(nextIndex);
-            }, 4000); // Cambiado a 4 segundos según solicitud
+            }, 8000); // Cambiado a 8 segundos según solicitud
         }
 
         function resetAutoScroll() {
