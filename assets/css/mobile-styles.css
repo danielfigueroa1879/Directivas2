@@ -1,0 +1,122 @@
+
+
+
+
+
+/* ========================================
+
+   CUSTOM MOBILE STYLES
+
+   ======================================== */
+
+
+
+@media (max-width: 768px) {
+
+    /* --- TRAMITES PRINCIPALES --- */
+
+    #tramites-principales .tramite-card .flex-shrink-0 svg {
+
+        width: 4.5rem; /* Aumentado de 4rem a 4.5rem */
+
+        height: 4.5rem; /* Aumentado de 4rem a 4.5rem */
+
+    }
+
+
+
+    /* --- COMPONENTES DEL SISTEMA --- */
+
+    #componentes-seguridad .carousel-card .flex-shrink-0 svg {
+
+        width: 3.5rem; /* Aumentado de 3rem a 3.5rem */
+
+        height: 3.5rem; /* Aumentado de 3rem a 3.5rem */
+
+    }
+
+
+
+    /* --- CAPACITACION Y FORMACION --- */
+
+    #capacitacion a.group .bg-white\/20 svg,
+
+    #capacitacion div[onclick] .bg-white\/20 svg {
+
+        width: 5rem; /* Aumentado de 4rem a 5rem */
+
+        height: 5rem; /* Aumentado de 4rem a 5rem */
+
+    }
+
+
+
+    /* --- Colores para los iconos de Capacitación (visibles por defecto) --- */
+
+    #capacitacion .text-green-300,
+
+    #capacitacion .text-green-600 {
+
+        color: #4ADE80; /* Verde */
+
+    }
+
+
+
+    #capacitacion .text-blue-300,
+
+    #capacitacion .text-blue-600 {
+
+        color: #60A5FA; /* Azul */
+
+    }
+
+
+
+    #capacitacion .text-yellow-300,
+
+    #capacitacion .text-yellow-600 {
+
+        color: #FACC15; /* Amarillo */
+
+    }
+
+
+
+    #capacitacion .text-red-300,
+
+    #capacitacion .text-red-600 {
+
+        color: #EF4444; /* Rojo */
+
+    }
+
+
+
+
+
+    /* --- SERVICIOS ADICIONALES --- */
+
+    #servicios-adicionales a svg,
+
+    #servicios-adicionales div[onclick] svg {
+
+        width: 4rem; /* Aumentado de 3.5rem a 4rem */
+
+        height: 4rem; /* Aumentado de 3.5rem a 4rem */
+
+    }
+
+
+
+    #servicios-adicionales a span,
+
+    #servicios-adicionales div[onclick] span {
+
+        color: #374151; /* Dark gray */
+
+    }
+
+}
+
+
