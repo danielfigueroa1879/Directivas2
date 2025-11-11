@@ -2,7 +2,7 @@
    CUSTOM MOBILE STYLES
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
         /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
