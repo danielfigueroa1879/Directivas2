@@ -267,6 +267,42 @@ document.addEventListener('DOMContentLoaded', () => {
         dotsSelector: '#servicios-adicionales .pagination-dots',
         autoScroll: 'mobile'
     });
+
+    // --- LÓGICA PARA CAMBIAR COLOR DE FLECHA DE SCROLL ---
+    const chevron = document.getElementById('scroll-up-chevron');
+    if (chevron) {
+        const chevronSvg = chevron.querySelector('svg');
+        const greenSections = document.querySelectorAll('#tramites-principales, #componentes-seguridad, #capacitacion, #main-footer');
+
+        const handleScrollColor = () => {
+            if (!chevron.classList.contains('visible') || !chevronSvg) return;
+
+            const chevronRect = chevron.getBoundingClientRect();
+            const chevronMidY = chevronRect.top + chevronRect.height / 2;
+
+            let isOverGreen = false;
+            greenSections.forEach(section => {
+                const sectionRect = section.getBoundingClientRect();
+                if (chevronMidY > sectionRect.top && chevronMidY < sectionRect.bottom) {
+                    isOverGreen = true;
+                }
+            });
+
+            if (isOverGreen) {
+                if (!chevronSvg.classList.contains('text-white')) {
+                    chevronSvg.classList.remove('text-green-600');
+                    chevronSvg.classList.add('text-white');
+                }
+            } else {
+                if (!chevronSvg.classList.contains('text-green-600')) {
+                    chevronSvg.classList.remove('text-white');
+                    chevronSvg.classList.add('text-green-600');
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScrollColor, { passive: true });
+    }
 });
 
 window.addEventListener('appinstalled', (e) => {
