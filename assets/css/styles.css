@@ -151,6 +151,33 @@ body.homepage {
         width: 97%;
         height: 500px;
     }
+    /* Chevron para móvil */
+    #scroll-up-chevron {
+        animation: none;
+    }
+    
+    #scroll-up-chevron.visible {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        animation: chevronBounce 0.6s ease-in-out infinite;
+    }
+    
+    #scroll-up-chevron:hover {
+        background: #146314;
+    }
+    
+    #scroll-up-chevron:hover svg {
+        color: white;
+    }
+    
+    @keyframes chevronBounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
 }
 
 /* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
