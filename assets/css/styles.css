@@ -162,12 +162,9 @@ body.homepage {
         animation: chevronBounce 0.6s ease-in-out infinite;
     }
     
-    #scroll-up-chevron:hover {
-        background: #146314;
-    }
-    
     #scroll-up-chevron:hover svg {
-        color: white;
+        color: #146314; /* Darker green */
+        transform: scale(1.1);
     }
     
     @keyframes chevronBounce {
