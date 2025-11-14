@@ -1278,13 +1278,20 @@ document.addEventListener('DOMContentLoaded', function() {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const chevronButton = document.getElementById('scroll-up-chevron');
-            
+            let scrollTimeout;
+
             if (!chevronButton) return;
             
             // Mostrar/ocultar chevron según scroll
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 300) {
                     chevronButton.classList.add('visible');
+                    
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        chevronButton.classList.remove('visible');
+                    }, 5000);
+
                 } else {
                     chevronButton.classList.remove('visible');
                 }
