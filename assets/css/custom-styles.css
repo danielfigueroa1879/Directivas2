@@ -43,7 +43,7 @@
     top: 63px; 
     
     /* Posición FINAL deseada (cuando está abierto) */
-    left: 67% !important; 
+    left: 67,5% !important; 
     
     /* === ANIMACIÓN DE ENTRADA DESDE LA IZQUIERDA === */
     /* Estado inicial (cerrado): Desplazado hacia la izquierda y oculto */
