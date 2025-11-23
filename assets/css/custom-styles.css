@@ -179,6 +179,11 @@
         background-color: #f8f9fa; /* Fondo gris claro y profesional */
     }
 
+    .mobile-dropdown .submenu.leyes-compactas .submenu-column {
+        display: flex;
+        flex-direction: column;
+    }
+
     .mobile-dropdown .submenu.leyes-compactas .submenu-title {
         font-size: 0.8rem; /* Tamaño de fuente optimizado */
         font-weight: 700; /* Negrita para destacar */
@@ -212,11 +217,5 @@
         border-color: #4caf50; /* Borde verde al hover */
         transform: translateX(3px); /* Efecto de desplazamiento sutil */
         box-shadow: 0 2px 6px rgba(76, 175, 80, 0.15); /* Sombra al hover */
-    }
-
-    /* Asegurar que cada columna tenga el mismo ancho y distribución */
-    .mobile-dropdown .submenu.leyes-compactas > div {
-        display: flex;
-        flex-direction: column;
     }
 }
