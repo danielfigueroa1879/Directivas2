@@ -183,16 +183,19 @@
    BLOQUE DE RESCATE: VISIBILIDAD DE SECCIONES
    ============================================================ */
 
+/* MODIFICADO: Se eliminaron los estilos de "tarjeta" (fondo blanco, sombra)
+   de las secciones internas para evitar el doble borde, manteniendo solo
+   la estructura necesaria. */
 #credenciales-section,
 #directiva-section, 
 section[id$="-section"]:not(#homepage-section) {
     display: none;
-    background-color: rgba(255, 255, 255, 0.95); 
-    border-radius: 1rem;
-    padding: 2rem;
-    margin: 6rem auto 2rem auto; 
-    max-width: 1200px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background-color: transparent; /* Eliminado el fondo blanco */
+    border-radius: 0;             /* Eliminado el borde redondeado */
+    padding: 0;                   /* Eliminado padding extra */
+    margin: 5rem auto 1rem auto;  /* Ajustado margen superior para respetar el logo */
+    max-width: 100%;              /* Ancho completo dentro del contenedor padre */
+    box-shadow: none;             /* Eliminada la sombra */
     position: relative;
     z-index: 50; 
 }
