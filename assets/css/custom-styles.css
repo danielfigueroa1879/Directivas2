@@ -44,7 +44,7 @@
     position: fixed;
     top: 64px; /* Altura del banner superior */
     left: 700px; /* Move further right */
-    width: 900px; /* Ancho del panel */
+    width: 350px; /* Ancho del panel */
     height: calc(100vh - 64px);
     background-color: #ffffff;
     border-left: 1px solid #e5e7eb;
