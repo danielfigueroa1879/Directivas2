@@ -40,7 +40,7 @@
    ======================================== */
 #desktop-submenu-panel {
     position: fixed;
-    top: 65px; 
+    top: 66px; 
     
     /* Posición FINAL deseada (cuando está abierto) */
     left: 66% !important; 
