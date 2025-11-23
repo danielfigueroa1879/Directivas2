@@ -43,7 +43,7 @@
 #desktop-submenu-panel {
     position: fixed;
     top: 64px; /* Altura del banner superior */
-    left: 0; /* Default left position */
+    left: 700px; /* Move further right */
     width: 900px; /* Ancho del panel */
     height: calc(100vh - 64px);
     background-color: #ffffff;
@@ -58,12 +58,6 @@
     z-index: 1201; /* Por encima del menú principal */
     overflow-y: auto;
     padding: 1.5rem;
-}
-
-@media (min-width: 1024px) {
-    #desktop-submenu-panel {
-        left: calc(50% - 20px); /* Position it to the right of the main menu */
-    }
 }
 
 #desktop-submenu-panel.is-open {
@@ -124,4 +118,89 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
+}
+
+
+.dropdown-menu-content {
+    background-color: white;
+}
+
+.menu-item-stack {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    text-align: left;
+    font-size: 1rem;
+    color: #374151;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.menu-item-stack:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
+}
+
+/* Ajustes para la sección Leyes y Normativa en PC (más agresivo) */
+@media (min-width: 1024px) {
+
+    /* Asegurar que los botones del menú principal se apilen verticalmente en PC */
+    .mobile-dropdown .dropdown-menu-content > .menu-item-stack {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #leyes-normativa .grid > div a { /* Target links within the columns */
+        padding: 0.3rem 0.5rem !important; /* Further reduced padding */
+        font-size: 0.7rem !important; /* Even smaller font size for main text */
+        line-height: 1.2 !important; /* Adjust line height for better fit */
+    }
+
+    #leyes-normativa .grid > div a span.text-gray-600 { /* Target description text */
+        font-size: 0.6rem !important; /* Even smaller font size for description */
+        margin-top: 0 !important; /* Remove top margin */
+    }
+
+    /* Adjust the button text size for the column headers */
+    #leyes-normativa .grid > div button {
+        font-size: 0.9rem !important; /* Smaller font size for column headers */
+        padding: 0.5rem !important; /* Reduced padding for column headers */
+    }
+
+    /* Estilos para el megamenú de Leyes y Normativa en PC */
+    .mobile-dropdown .submenu.leyes-compactas {
+        width: 800px; /* Ancho aumentado para 3 columnas */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
+        gap: 1rem; /* Espacio entre columnas aumentado */
+        padding: 1rem; /* Padding general para el megamenú */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra para destacar */
+        border-radius: 0.5rem; /* Bordes redondeados */
+        background-color: #f0f2f5; /* Fondo gris un poco más claro y profesional */
+    }
+
+    .mobile-dropdown .submenu.leyes-compactas .submenu-title {
+        font-size: 0.75rem; /* Tamaño de fuente reducido */
+        font-weight: bold;
+        text-align: left;
+        padding: 0.2rem 0.5rem;
+        background-color: transparent;
+        border-bottom: 1px solid #cbd5e1;
+        margin-bottom: 0.5rem;
+        color: #1f2937; /* Color de texto más oscuro */
+    }
+
+    .mobile-dropdown .submenu.leyes-compactas button {
+        font-size: 0.65rem; /* Tamaño de fuente de botones reducido */
+        padding: 0.2rem 0.4rem; /* Padding ajustado */
+        text-align: left;
+        white-space: normal; /* Permitir que el texto se rompa en varias líneas */
+        border-bottom: none;
+        border-radius: 3px; /* Bordes ligeramente redondeados para botones */
+        transition: background-color 0.2s;
+    }
+
+    .mobile-dropdown .submenu.leyes-compactas button:hover {
+        background-color: rgba(34, 197, 94, 0.1);
+    }
 }
