@@ -755,16 +755,38 @@ body.homepage {
     }
 }
 
-/* Ajuste para centrar elementos del banner en PC */
+/* * -----------------------------------------------------------------
+ * MODIFICACIÓN PARA PC: Menú/Logo a la izquierda, Ancho Contenido
+ * -----------------------------------------------------------------
+ */
+
 @media (min-width: 1024px) {
+  
+  /* 1. Contenedor principal del banner */
   #banner > div {
-    justify-content: center !important;
-    gap: 34rem;
-    max-width: 1200px;
+    justify-content: space-between !important; 
+    gap: 1rem !important; 
+    
+    /* CORRECCIÓN SOLICITADA: Ancho amplio pero con margenes (no extremo) */
+    max-width: 90% !important; 
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
+  /* 2. Contenedor central (donde va la lupa) */
+  #search-center-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 50px;
+    display: flex;
+    justify-content: flex-end; /* Mueve la lupa a la derecha */
+    padding-right: 1rem;
+  }
+
+  /* 3. Ajuste del Menú Desplegable para alinearse con el botón */
   .mobile-dropdown {
-    left: 20rem; /* Movido un poco más a la derecha */
+    /* Alineado al 5% para coincidir con el margen del banner (100% - 90% / 2 = 5%) */
+    left: 5% !important; 
     top: 4rem;
     width: 380px;
     height: auto;
@@ -811,141 +833,6 @@ body.homepage {
     max-height: 70vh; /* Aseguramos el valor correcto */
   }
 }
-
-/* ===== EFECTO DE ENCENDIDO PARA ICONOS SVG - MEJORADO Y CON MÁS INTENSIDAD ===== */
-/* Transición suave para todos los iconos SVG en secciones específicas */
-#componentes-seguridad a .flex-shrink-0 svg,
-#tramites-principales div[onclick] .flex-shrink-0 svg,
-#capacitacion a.group .bg-white\/20 svg,
-#servicios-adicionales a svg,
-#servicios-adicionales div[onclick] svg {
-  transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
-  filter: brightness(1);
-  transform: scale(1);
-}
-
-/* Efecto hover para iconos VERDES - INTENSIDAD AUMENTADA */
-#componentes-seguridad a:hover .text-green-300,
-#componentes-seguridad a:hover .text-green-600,
-#tramites-principales div[onclick]:hover .text-green-300,
-#tramites-principales div[onclick]:hover .text-green-600,
-#capacitacion a.group:hover .text-green-300,
-#capacitacion a.group:hover .text-green-600,
-#servicios-adicionales div[onclick]:hover .text-green-600 {
-  filter: brightness(2) drop-shadow(0 0 10px #4ADE80) drop-shadow(0 0 20px rgba(74, 222, 128, 0.6));
-  transform: scale(1.15);
-}
-
-/* Efecto hover para iconos AZULES - INTENSIDAD AUMENTADA */
-#componentes-seguridad a:hover .text-blue-300,
-#componentes-seguridad a:hover .text-blue-600,
-#tramites-principales div[onclick]:hover .text-blue-300,
-#tramites-principales div[onclick]:hover .text-blue-600,
-#capacitacion a.group:hover .text-blue-300,
-#capacitacion a.group:hover .text-blue-600,
-#servicios-adicionales a:hover .text-blue-600 {
-  filter: brightness(2.1) drop-shadow(0 0 10px #60A5FA) drop-shadow(0 0 20px rgba(96, 165, 250, 0.6));
-  transform: scale(1.15);
-}
-
-/* Efecto hover para iconos AMARILLOS - INTENSIDAD AUMENTADA */
-#componentes-seguridad a:hover .text-yellow-300,
-#componentes-seguridad a:hover .text-yellow-600,
-#tramites-principales div[onclick]:hover .text-yellow-300,
-#tramites-principales div[onclick]:hover .text-yellow-600,
-#capacitacion a.group:hover .text-yellow-300,
-#capacitacion a.group:hover .text-yellow-600,
-#servicios-adicionales a:hover .text-yellow-600 {
-  filter: brightness(2) drop-shadow(0 0 10px #FACC15) drop-shadow(0 0 20px rgba(250, 204, 21, 0.6));
-  transform: scale(1.15);
-}
-
-/* Efecto hover para iconos ROJOS - NUEVOS */
-#componentes-seguridad a:hover .text-red-300,
-#componentes-seguridad a:hover .text-red-600,
-#tramites-principales div[onclick]:hover .text-red-300,
-#tramites-principales div[onclick]:hover .text-red-600,
-#capacitacion a.group:hover .text-red-300,
-#capacitacion a.group:hover .text-red-600,
-#servicios-adicionales a:hover .text-red-600,
-#servicios-adicionales div[onclick]:hover .text-red-600 {
-  filter: brightness(2.1) drop-shadow(0 0 10px #EF4444) drop-shadow(0 0 20px rgba(239, 68, 68, 0.6));
-  transform: scale(1.15);
-}
-
-/* ===== EFECTO MEJORADO PARA BOTONES EN SECCIÓN CAPACITACIÓN ===== */
-#capacitacion a.group,
-#capacitacion div[onclick] {
-  transition: all 0.3s ease-in-out;
-}
-
-#capacitacion a.group:hover,
-#capacitacion div[onclick]:hover {
-  transform: translateY(-8px) scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.4)) drop-shadow(0 0 25px rgba(96, 165, 250, 0.3));
-}
-
-#capacitacion a.group:hover .bg-white\/20,
-#capacitacion div[onclick]:hover .bg-white\/20 {
-  background-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
-}
-
-/* --- AJUSTE DE TAMAÑO DE ICONOS EN PC (SOLICITUD DE USUARIO) --- */
-@media (min-width: 768px) {
-    /* * Aumenta el tamaño de los iconos decorativos (libro, etc.) 
-     * en las secciones "Leyes" y "Documentos" para PC.
-     * (Original: md:w-12 md:h-12 -> 3rem)
-     */
-    #leyes-normativa .absolute.top-4.left-4 > svg,
-    #documentos-formularios .absolute.top-4.left-4 > svg {
-        width: 5rem;  /* 20 * 0.25rem = 5rem (equivale a w-20) */
-        height: 5rem; /* 20 * 0.25rem = 5rem (equivale a h-20) */
-    }
-}
-/* --- FIN DE AJUSTE --- */
-
-/* * -----------------------------------------------------------------
- * INICIO DE LA MODIFICACIÓN (LUPA A LA DERECHA)
- * -----------------------------------------------------------------
- */
-
-/* --- CORRECCIONES PARA EL BANNER EN PC (Centrado, Lupa y Contador) --- */
-
-/* * ESTA ES LA NUEVA REGLA GLOBAL
- * Mueve la lupa a la derecha en TODAS las pantallas (móvil y PC)
- */
-#search-center-container {
-    justify-content: flex-end; /* Mueve la lupa a la derecha */
-    padding-right: 0.5rem;     /* Añade un pequeño espacio en celular */
-}
-
-@media (min-width: 1024px) {
-  
-  /* 1. Contenedor principal del banner */
-  #banner > div {
-    justify-content: space-between !important; 
-    gap: 1rem !important; 
-    
-    /* Tu valor para "juntarlos" */
-    max-width: 800px !important; 
-  }
-
-  /* 2. Contenedor central (donde va la lupa) */
-  #search-center-container {
-    flex-grow: 1;
-    flex-shrink: 1;
-    min-width: 50px;
-    display: flex;
-    /* justify-content: center; <-- ESTO SE ELIMINÓ */
-    padding-right: 1rem;      /* <-- Se ajusta el padding para PC */
-  }
-}
-/* * -----------------------------------------------------------------
- * FIN DE LA MODIFICACIÓN
- * -----------------------------------------------------------------
- */
-
 
 /* 3. Arreglo para el contador "Visitas" (palabra arriba del número) */
 .banner-text-small span {
@@ -1047,5 +934,97 @@ body.homepage {
 
     .tramite-card h3 {
         font-size: 1.1rem;
+    }
+}
+
+/* ===== EFECTO DE ENCENDIDO PARA ICONOS SVG - MEJORADO Y CON MÁS INTENSIDAD ===== */
+/* Transición suave para todos los iconos SVG en secciones específicas */
+#componentes-seguridad a .flex-shrink-0 svg,
+#tramites-principales div[onclick] .flex-shrink-0 svg,
+#capacitacion a.group .bg-white\/20 svg,
+#servicios-adicionales a svg,
+#servicios-adicionales div[onclick] svg {
+  transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
+  filter: brightness(1);
+  transform: scale(1);
+}
+
+/* Efecto hover para iconos VERDES - INTENSIDAD AUMENTADA */
+#componentes-seguridad a:hover .text-green-300,
+#componentes-seguridad a:hover .text-green-600,
+#tramites-principales div[onclick]:hover .text-green-300,
+#tramites-principales div[onclick]:hover .text-green-600,
+#capacitacion a.group:hover .text-green-300,
+#capacitacion a.group:hover .text-green-600,
+#servicios-adicionales div[onclick]:hover .text-green-600 {
+  filter: brightness(2) drop-shadow(0 0 10px #4ADE80) drop-shadow(0 0 20px rgba(74, 222, 128, 0.6));
+  transform: scale(1.15);
+}
+
+/* Efecto hover para iconos AZULES - INTENSIDAD AUMENTADA */
+#componentes-seguridad a:hover .text-blue-300,
+#componentes-seguridad a:hover .text-blue-600,
+#tramites-principales div[onclick]:hover .text-blue-300,
+#tramites-principales div[onclick]:hover .text-blue-600,
+#capacitacion a.group:hover .text-blue-300,
+#capacitacion a.group:hover .text-blue-600,
+#servicios-adicionales a:hover .text-blue-600 {
+  filter: brightness(2.1) drop-shadow(0 0 10px #60A5FA) drop-shadow(0 0 20px rgba(96, 165, 250, 0.6));
+  transform: scale(1.15);
+}
+
+/* Efecto hover para iconos AMARILLOS - INTENSIDAD AUMENTADA */
+#componentes-seguridad a:hover .text-yellow-300,
+#componentes-seguridad a:hover .text-yellow-600,
+#tramites-principales div[onclick]:hover .text-yellow-300,
+#tramites-principales div[onclick]:hover .text-yellow-600,
+#capacitacion a.group:hover .text-yellow-300,
+#capacitacion a.group:hover .text-yellow-600,
+#servicios-adicionales a:hover .text-yellow-600 {
+  filter: brightness(2) drop-shadow(0 0 10px #FACC15) drop-shadow(0 0 20px rgba(250, 204, 21, 0.6));
+  transform: scale(1.15);
+}
+
+/* Efecto hover para iconos ROJOS - NUEVOS */
+#componentes-seguridad a:hover .text-red-300,
+#componentes-seguridad a:hover .text-red-600,
+#tramites-principales div[onclick]:hover .text-red-300,
+#tramites-principales div[onclick]:hover .text-red-600,
+#capacitacion a.group:hover .text-red-300,
+#capacitacion a.group:hover .text-red-600,
+#servicios-adicionales a:hover .text-red-600,
+#servicios-adicionales div[onclick]:hover .text-red-600 {
+  filter: brightness(2.1) drop-shadow(0 0 10px #EF4444) drop-shadow(0 0 20px rgba(239, 68, 68, 0.6));
+  transform: scale(1.15);
+}
+
+/* ===== EFECTO MEJORADO PARA BOTONES EN SECCIÓN CAPACITACIÓN ===== */
+#capacitacion a.group,
+#capacitacion div[onclick] {
+  transition: all 0.3s ease-in-out;
+}
+
+#capacitacion a.group:hover,
+#capacitacion div[onclick]:hover {
+  transform: translateY(-8px) scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.4)) drop-shadow(0 0 25px rgba(96, 165, 250, 0.3));
+}
+
+#capacitacion a.group:hover .bg-white\/20,
+#capacitacion div[onclick]:hover .bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* --- AJUSTE DE TAMAÑO DE ICONOS EN PC (SOLICITUD DE USUARIO) --- */
+@media (min-width: 768px) {
+    /* * Aumenta el tamaño de los iconos decorativos (libro, etc.) 
+     * en las secciones "Leyes" y "Documentos" para PC.
+     * (Original: md:w-12 md:h-12 -> 3rem)
+     */
+    #leyes-normativa .absolute.top-4.left-4 > svg,
+    #documentos-formularios .absolute.top-4.left-4 > svg {
+        width: 5rem;  /* 20 * 0.25rem = 5rem (equivale a w-20) */
+        height: 5rem; /* 20 * 0.25rem = 5rem (equivale a h-20) */
     }
 }
