@@ -786,7 +786,7 @@ body.homepage {
   /* 3. Ajuste del Menú Desplegable para alinearse con el botón */
   .mobile-dropdown {
     /* Alineado al 5% para coincidir con el margen del banner (100% - 90% / 2 = 5%) */
-    left: 3% !important; 
+    left: 25% !important; 
     top: 4rem;
     width: 380px;
     height: auto;
