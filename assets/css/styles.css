@@ -241,7 +241,7 @@ body.homepage {
     color: #6b7280;
     font-weight: 600;
     margin-top: 0.2rem;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #f1f2f5;
     text-align: center; /* Título centrado */
 }
 .desktop-dropdown .desktop-dropdown-title:first-of-type {
@@ -1049,3 +1049,4 @@ body.homepage {
         font-size: 1.1rem;
     }
 }
+
