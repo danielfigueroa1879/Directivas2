@@ -755,16 +755,22 @@ body.homepage {
     }
 }
 
-/* Ajuste para centrar elementos del banner en PC */
+/* Ajuste para posicionar elementos del banner a la izquierda en PC */
 @media (min-width: 1024px) {
   #banner > div {
-    justify-content: center !important;
-    gap: 34rem;
-    max-width: 1200px;
+    justify-content: flex-start !important; /* Cambiado de center a flex-start */
+    gap: 2rem; /* Reducido el gap para acercar los elementos */
+    max-width: 1400px; /* Aumentado para dar más espacio */
+    padding-left: 2rem !important; /* Padding izquierdo para separar del borde */
+  }
+  
+  /* Ajuste adicional para el contenedor del logo y menú */
+  #banner .flex.items-center.space-x-2 {
+    margin-right: auto; /* Empuja los elementos hacia la izquierda */
   }
 
   .mobile-dropdown {
-    left: 15rem; /* Movido un poco más a la derecha */
+    left: 20rem; /* Movido un poco más a la derecha */
     top: 4rem;
     width: 380px;
     height: auto;
