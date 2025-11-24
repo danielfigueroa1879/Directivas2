@@ -309,6 +309,7 @@ body.homepage {
     width: 100%;
     padding: 0.8rem 1.5rem;
     font-weight: 500;
+    background-color: #f3f4f6; /* Gris suave */
     transition: background-color 0.2s, color 0.2s;
     font-size: 1rem; /* Aumentado */
 }
@@ -485,6 +486,7 @@ body.homepage {
     padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
     font-size: 0.78rem;
     line-height: 1.2; /* Ayuda al centrado vertical */
+    background-color: #f9fafb; /* Gris suave para item asesor */
 }
 
 /* Ocultar la flecha del item Asesor */
@@ -599,6 +601,7 @@ body.homepage {
     padding-bottom: 0.3rem;
     padding-left: 2.5rem;
     font-size: 0.7rem;
+    background-color: #f9fafb; /* Gris suave más claro para submenú */
 }
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
@@ -759,7 +762,7 @@ body.homepage {
 @media (min-width: 1024px) {
 
   .mobile-dropdown {
-    left: 15rem; /* Movido un poco más a la derecha */
+    left: 20rem; /* Movido un poco más a la derecha */
     top: 4rem;
     width: 380px;
     height: auto;
@@ -922,7 +925,7 @@ body.homepage {
     justify-content: flex-start !important; 
     gap: 2rem !important; 
     max-width: 1400px !important;
-    padding-left: 8rem !important; /* Aumentado para mover más a la derecha */
+    padding-left: 8rem !important; /* Aumentado para mover aún más a la derecha */
   }
 
   /* 2. Contenedor central (donde va la lupa) */
