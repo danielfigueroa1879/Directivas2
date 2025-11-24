@@ -102,7 +102,7 @@
     padding: 0.5rem 0.8rem; 
     margin-bottom: 0.4rem;
     text-align: left;
-    font-size: 0.8rem; 
+    font-size: 1rem; /* Aumentado para PC */
     line-height: 1.3;
     color: #374151; 
     background-color: #dcfce7; /* Verde claro sutil */
