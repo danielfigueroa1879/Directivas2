@@ -64,7 +64,7 @@
     
     background-color: #ffffff;
     border: 2px solid hwb(152 88% 5%); /* Borde verde claro */
-    border-radius: 0 0 32px 08px; /* Esquinas más redondeadas */
+    border-radius: 0 0 32px 04px; /* Esquinas más redondeadas */
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     z-index: 1201; 
     overflow-y: auto;
