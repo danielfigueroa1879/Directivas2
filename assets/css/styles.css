@@ -25,7 +25,7 @@ body.homepage {
 
 .card-container {
     max-width: 750px;
-    width: 94%;
+    width: 90%;
     margin: 0.5rem auto;
     position: relative;
 }
@@ -768,7 +768,7 @@ body.homepage {
     gap: 1rem !important; 
     
     /* CORRECCIÓN SOLICITADA: Ancho amplio pero con margenes (no extremo) */
-    max-width: 90% !important; 
+    max-width: 94% !important; 
     padding-left: 1rem;
     padding-right: 1rem;
   }
