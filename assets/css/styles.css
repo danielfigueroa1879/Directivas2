@@ -309,7 +309,8 @@ body.homepage {
     width: 100%;
     padding: 0.8rem 1.5rem;
     font-weight: 500;
-    background-color: #f3f4f6; /* Gris suave */
+    background-color: #e5e7eb; /* Gris más oscuro */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     transition: background-color 0.2s, color 0.2s;
     font-size: 1rem; /* Aumentado */
 }
@@ -486,7 +487,8 @@ body.homepage {
     padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
     font-size: 0.78rem;
     line-height: 1.2; /* Ayuda al centrado vertical */
-    background-color: #f9fafb; /* Gris suave para item asesor */
+    background-color: #f3f4f6; /* Gris más oscuro para item asesor */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra sutil */
 }
 
 /* Ocultar la flecha del item Asesor */
@@ -601,7 +603,8 @@ body.homepage {
     padding-bottom: 0.3rem;
     padding-left: 2.5rem;
     font-size: 0.7rem;
-    background-color: #f9fafb; /* Gris suave más claro para submenú */
+    background-color: #f3f4f6; /* Gris más oscuro para submenú */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra sutil */
 }
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
@@ -762,7 +765,7 @@ body.homepage {
 @media (min-width: 1024px) {
 
   .mobile-dropdown {
-    left: 15rem; /* Movido un poco más a la derecha */
+    left: 15rem; /* Ajustado a 15rem */
     top: 4rem;
     width: 380px;
     height: auto;
