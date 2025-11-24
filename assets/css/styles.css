@@ -764,7 +764,7 @@ body.homepage {
   }
 
   .mobile-dropdown {
-    left: 15rem; /* Movido un poco más a la derecha */
+    left: 10rem; /* Movido un poco más a la derecha */
     top: 4rem;
     width: 380px;
     height: auto;
