@@ -922,7 +922,7 @@ body.homepage {
     justify-content: flex-start !important; 
     gap: 2rem !important; 
     max-width: 1400px !important;
-    padding-left: 5rem !important; /* Aumentado para mover más a la derecha */
+    padding-left: 7rem !important; /* Aumentado para mover más a la derecha */
   }
 
   /* 2. Contenedor central (donde va la lupa) */
