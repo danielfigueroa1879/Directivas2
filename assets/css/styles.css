@@ -787,6 +787,17 @@ body.homepage {
       display: none !important;
   }
 
+  /* Aumentar tamaño de letra de botones del submenú en PC */
+  .mobile-dropdown .submenu.submenu-compact button,
+  .mobile-dropdown .submenu.leyes-compactas button {
+      font-size: 0.9rem !important; /* Aumentado para PC */
+  }
+
+  /* Aumentar tamaño de letra del item Asesor en PC */
+  .mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
+      font-size: 0.9rem !important; /* Aumentado para PC */
+  }
+
   /* --- Nuevas reglas para submenu lateral en PC --- */
   .mobile-dropdown .has-submenu {
     position: relative;
