@@ -56,15 +56,15 @@
     /* ============================================== */
     
     /* Dimensiones Fijas */
-    width: 1150px !important;  
+    width: 1250px !important;  /* Aumentado un poco */
     max-width: 98vw !important; 
     min-width: 300px !important;
     height: 755px !important; 
     max-height: calc(100vh - 80px) !important; 
     
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 0 0 12px 12px; 
+    border: 2px solid #86efac; /* Borde verde claro */
+    border-radius: 0 0 16px 16px; /* Esquinas más redondeadas */
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     z-index: 1201; 
     overflow-y: auto;
@@ -94,10 +94,10 @@
     text-align: center;
 }
 
-/* Estilos de los botones (Ancho 350px) */
+/* Estilos de los botones (Ancho 370px) */
 #desktop-submenu-panel .panel-button {
     display: block;
-    width: 350px !important; 
+    width: 370px !important; /* Aumentado para aprovechar el espacio */
     max-width: 100%;
     padding: 0.5rem 0.8rem; 
     margin-bottom: 0.4rem;
@@ -148,7 +148,7 @@
 .panel-columns > div {
     display: flex;
     flex-direction: column;
-    width: 350px !important; 
+    width: 370px !important; /* Aumentado para aprovechar el espacio */
     flex-shrink: 0;
 }
 
