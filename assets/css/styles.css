@@ -487,7 +487,7 @@ body.homepage {
     padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
     font-size: 0.78rem;
     line-height: 1.2; /* Ayuda al centrado vertical */
-    background-color: #f9fafb; /* Gris suave más claro original */
+    background-color: #e5e7eb; /* Gris más oscuro para item asesor */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra sutil */
 }
 
@@ -603,7 +603,7 @@ body.homepage {
     padding-bottom: 0.3rem;
     padding-left: 2.5rem;
     font-size: 0.7rem;
-    background-color: #f9fafb; /* Gris suave más claro original */
+    background-color: #e5e7eb; /* Gris más oscuro para submenú */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra sutil */
 }
 
