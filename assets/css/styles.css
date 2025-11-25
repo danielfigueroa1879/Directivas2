@@ -487,8 +487,8 @@ body.homepage {
     padding: 0.4rem 1.5rem 0.4rem 2.5rem; /* Padding uniforme arriba y abajo */
     font-size: 0.78rem;
     line-height: 1.2; /* Ayuda al centrado vertical */
-    background-color: #dcfce7; /* Verde claro sutil para item asesor */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    background-color: #f9fafb; /* Color original */
+    cursor: pointer; /* Asegurar que sea clickeable */
 }
 
 /* Ocultar la flecha del item Asesor */
@@ -603,8 +603,7 @@ body.homepage {
     padding-bottom: 0.3rem;
     padding-left: 2.5rem;
     font-size: 0.7rem;
-    background-color: #dcfce7; /* Verde claro sutil */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    background-color: #f9fafb; /* Color original */
 }
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
@@ -765,7 +764,7 @@ body.homepage {
 @media (min-width: 1024px) {
 
   .mobile-dropdown {
-    left: 11rem; /* Ajustado a 15rem */
+    left: 13rem; /* Ajustado a 15rem */
     top: 4rem;
     width: 380px;
     height: auto;
@@ -796,6 +795,23 @@ body.homepage {
   /* Aumentar tamaño de letra del item Asesor en PC */
   .mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
       font-size: 0.9rem !important; /* Aumentado para PC */
+  }
+
+  /* Color verde y sombra SOLO para PC en botones del submenú */
+  .mobile-dropdown .submenu.submenu-compact button,
+  .mobile-dropdown .submenu.leyes-compactas button {
+      background-color: #dcfce7 !important; /* Verde claro sutil */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; /* Sombra sutil */
+      cursor: pointer !important; /* Asegurar que sea clickeable */
+      pointer-events: auto !important; /* Asegurar que responda a clics */
+  }
+
+  /* Color verde y sombra SOLO para PC en item Asesor */
+  .mobile-dropdown .submenu-compact .asesor-item > .submenu-parent-btn {
+      background-color: #dcfce7 !important; /* Verde claro sutil */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; /* Sombra sutil */
+      cursor: pointer !important; /* Asegurar que sea clickeable */
+      pointer-events: auto !important; /* Asegurar que responda a clics */
   }
 
   /* --- Nuevas reglas para submenu lateral en PC --- */
