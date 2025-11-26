@@ -11,7 +11,7 @@
     border: none;
     color: inherit;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -45,7 +45,7 @@
         background: transparent;
         border: 2px solid #e5e7eb;
         border-radius: 12px;
-        padding: 8px 28px;
+        padding: 4px 28px;
         min-width: 360px;
         margin-right: 1.5rem;
         position: relative;
@@ -74,7 +74,7 @@
 
     /* Ícono de lupa en gris */
     #global-search-button::after {
-        content: '🔍';
+        content: '⌕';
         color: #9ca3af;
         font-size: 20px;
         opacity: 0.8;
