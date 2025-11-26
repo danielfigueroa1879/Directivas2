@@ -39,30 +39,6 @@
     transform: scale(0.95);
 }
 
-/* Tooltip (SOLO PC) */
-#global-search-button::after {
-    content: 'Buscar (Ctrl+K)';
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%) scale(0.8);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transition: all 0.2s ease;
-    z-index: 1000;
-}
-
-#global-search-button:hover::after {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-}
-
 /* ===== SOLO EN PC: BARRA DE BÚSQUEDA E ÍCONO ===== */
 @media (min-width: 1024px) {
     #global-search-button {
@@ -84,15 +60,32 @@
         display: none;
     }
 
-    /* Texto placeholder con ícono de lupa */
+    /* Texto placeholder en gris */
     #global-search-button::before {
-        content: 'Buscar en la pagina ⌕';
-        color: #146314;
+        content: 'Buscar en la pagina';
+        color: #9ca3af;
         font-size: 14px;
         font-weight: 400;
         letter-spacing: 0.3px;
-        opacity: 0.7;
+        opacity: 0.8;
         transition: opacity 0.3s ease;
+        margin-right: 6px;
+    }
+
+    /* Ícono de lupa en gris */
+    #global-search-button::after {
+        content: '⌕';
+        color: #9ca3af;
+        font-size: 16px;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+        position: static;
+        transform: none;
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        animation: none;
+        pointer-events: auto;
     }
 
     /* Efecto hover */
@@ -103,7 +96,8 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
-    #global-search-button:hover::before {
+    #global-search-button:hover::before,
+    #global-search-button:hover::after {
         opacity: 1;
         color: #6b7280;
     }
@@ -117,10 +111,6 @@
         display: block;
     }
 
-    #global-search-button::after {
-        display: none;
-    }
-
     #global-search-button {
         background: transparent;
         border: none;
@@ -129,7 +119,8 @@
         min-width: auto;
     }
 
-    #global-search-button::before {
+    #global-search-button::before,
+    #global-search-button::after {
         display: none;
     }
 }
