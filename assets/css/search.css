@@ -99,7 +99,7 @@
     #global-search-button:hover::before,
     #global-search-button:hover::after {
         opacity: 1;
-        color: #6b7280;
+        color: #92ada4;
     }
 }
 
