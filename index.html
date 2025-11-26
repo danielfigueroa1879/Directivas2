@@ -1,3 +1,6 @@
+Index · HTML
+Copiar
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -260,14 +263,14 @@
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
                     <!-- Jefe de Seguridad Item -->
                     <div class="has-submenu jefe-item">
-                        <button id="jefe-trigger-btn" class="submenu-parent-btn">
+                        <button id="jefe-trigger-btn" class="submenu-parent-btn" onclick="document.getElementById('jefe-megamenu').classList.add('show'); event.stopPropagation();">
                             <span>3. Jefe de Seguridad</span>
                         </button>
                     </div>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
                     <div class="has-submenu asesor-item">
-                        <button id="asesor-trigger-btn" class="submenu-parent-btn">
+                        <button id="asesor-trigger-btn" class="submenu-parent-btn" onclick="document.getElementById('asesor-megamenu').classList.add('show'); event.stopPropagation();">
                             <span>6. Asesor</span>
                         </button>
                     </div>
@@ -1112,6 +1115,18 @@
         <p class="text-xs md:text-sm text-gray-200 mt-1 md:mt-2">Valores actualizados</p>
     </div>
 </a>
+<a href="https://dal5.short.gy/4S3" target="_blank" 
+   class="carousel-card group bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 border border-white/20 hover:bg-white/20 transition-all transform hover:-translate-y-1">
+    <div class="text-center">
+        <div class="bg-white/20 rounded-full p-3 md:p-4 w-20 h-20 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 group-hover:bg-white/30 flex items-center justify-center">
+            <svg class="w-12 h-12 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+        </div>
+        <h3 class="font-semibold text-sm md:text-lg">Asesores</h3>
+        <p class="text-xs md:text-sm text-gray-200 mt-1 md:mt-2">Información de asesores</p>
+    </div>
+</a>
                 </div>
                 <div class="pagination-dots"></div>
             </div>
@@ -1187,7 +1202,7 @@
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#4b24387a7b6528243a3e222629240b282a392a2922252e392438652827" class="hover:text-white"><span class="__cf_email__" data-cfemail="4d223e7c7d632e223c3824202f220d2e2c3f2c2f2423283f223e632e21">[email&#160;protected]</span></a></li></ul></div>
                 <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
@@ -1235,7 +1250,7 @@
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
@@ -1341,7 +1356,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     chevronButton.classList.remove('visible');
                 }
             });
-            
+
             // Click en chevron para subir
             chevronButton.addEventListener('click', function(e) {
                 e.preventDefault();
