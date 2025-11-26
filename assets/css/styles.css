@@ -764,7 +764,7 @@ body.homepage {
 @media (min-width: 1024px) {
 
   .mobile-dropdown {
-    left: 13rem; /* Ajustado a 15rem */
+    left: 10rem; /* Ajustado a 15rem */
     top: 4rem;
     width: 380px;
     height: auto;
