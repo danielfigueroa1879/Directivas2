@@ -1,13 +1,12 @@
 /**
  * Estilos para el Sistema de Búsqueda Global
  * OS10 Coquimbo
- * VERSIÓN FINAL: Brillo en borde, placeholder gris, más cuadrado y ancho
+ * VERSIÓN FINAL: Brillo en borde, placeholder con ícono de lupa
  */
 
 /* ===== BOTÓN DE BÚSQUEDA EN BANNER ===== */
 .banner-search-button,
 #global-search-button {
-    /* Estilo consistente con otros elementos del banner */
     background: transparent;
     border: none;
     color: inherit;
@@ -64,126 +63,64 @@
     transform: translateX(-50%) scale(1);
 }
 
-/* * -----------------------------------------------------------------
- * MODIFICACIÓN PRINCIPAL: BARRA DE BÚSQUEDA EN PC
- * Brillo SOLO en el borde verde
- * -----------------------------------------------------------------
- */
-
-/* ===== SOLO EN PC: BARRA DE BÚSQUEDA CON ANIMACIÓN EN BORDE ===== */
+/* ===== SOLO EN PC: BARRA DE BÚSQUEDA E ÍCONO ===== */
 @media (min-width: 1024px) {
     #global-search-button {
-        /* Transformar en barra de búsqueda rectangular */
         background: transparent;
-        border: 2px solid #146314; /* Verde trébol */
-        border-radius: 6px; /* Más cuadrado - antes era 20px */
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
         padding: 8px 28px;
-        min-width: 360px; /* Más ancho - antes era 280px */
+        min-width: 360px;
         margin-right: 1.5rem;
         position: relative;
-        overflow: visible; /* Cambio importante: permite que el brillo se vea fuera */
         transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
-    /* Ocultar el ícono de lupa en PC */
+    /* Ocultar el ícono SVG de lupa en PC */
     #global-search-button .search-icon {
         display: none;
     }
 
-    /* Agregar texto placeholder gris claro sutil */
+    /* Texto placeholder con ícono de lupa */
     #global-search-button::before {
-        content: 'Buscar en la pagina';
-        color: #9ca3af; /* Gris claro sutil */
+        content: 'Buscar en la pagina 🔍';
+        color: #9ca3af;
         font-size: 14px;
-        font-weight: 400; /* Más ligero, más sutil */
+        font-weight: 400;
         letter-spacing: 0.3px;
-        opacity: 0.8; /* Sutil */
+        opacity: 0.8;
         transition: opacity 0.3s ease;
     }
 
-    /* Efecto hover en el botón */
+    /* Efecto hover */
     #global-search-button:hover {
-        background: rgba(20, 99, 20, 0.02);
-        border-color: #146314;
+        background: rgba(0, 0, 0, 0.02);
+        border-color: #9ca3af;
         transform: scale(1.02);
-        box-shadow: 0 2px 8px rgba(20, 99, 20, 0.15);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     #global-search-button:hover::before {
         opacity: 1;
-        color: #6b7280; /* Un poco más oscuro al hover */
-    }
-
-    /* ===== ANIMACIÓN DE BRILLO EN EL BORDE (NO EN EL INTERIOR) ===== */
-    #global-search-button::after {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        border-radius: 6px; /* Mismo que el botón */
-        padding: 2px; /* Grosor del brillo */
-        background: linear-gradient(
-            90deg,
-            transparent 0%,
-            transparent 35%,
-            #22c55e 48%,  /* Verde brillante */
-            #86efac 50%,  /* Verde claro brillante */
-            #22c55e 52%,  /* Verde brillante */
-            transparent 65%,
-            transparent 100%
-        );
-        -webkit-mask: 
-            linear-gradient(#fff 0 0) content-box, 
-            linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        animation: shine-border 3s linear infinite;
-        pointer-events: none;
-        opacity: 0.9;
-    }
-
-    /* Keyframes para la animación de brillo en el borde */
-    @keyframes shine-border {
-        0% {
-            background-position: -500px 0;
-        }
-        100% {
-            background-position: 500px 0;
-        }
-    }
-
-    /* Efecto adicional al hacer hover: brillo más rápido e intenso */
-    #global-search-button:hover::after {
-        animation: shine-border-fast 1.5s linear infinite;
-        opacity: 1;
-    }
-
-    @keyframes shine-border-fast {
-        0% {
-            background-position: -500px 0;
-        }
-        100% {
-            background-position: 500px 0;
-        }
+        color: #6b7280;
     }
 }
 
 /* ===== MANTENER LUPA EN MÓVIL ===== */
 @media (max-width: 1023px) {
     #global-search-button .search-icon {
-        width: 26px;  /* Tamaño más grande en móvil */
+        width: 26px;
         height: 26px;
-        display: block; /* Asegurar que se muestre en móvil */
+        display: block;
     }
 
-    /* Ocultar tooltip en móvil */
     #global-search-button::after {
         display: none;
     }
 
-    /* Mantener estilo de botón circular en móvil */
     #global-search-button {
         background: transparent;
         border: none;
@@ -192,17 +129,10 @@
         min-width: auto;
     }
 
-    /* Sin animación de brillo en móvil */
     #global-search-button::before {
         display: none;
     }
 }
-
-/* * -----------------------------------------------------------------
- * FIN DE LA MODIFICACIÓN PRINCIPAL
- * -----------------------------------------------------------------
- */
-
 
 /* ===== MODAL DE BÚSQUEDA ===== */
 #global-search-modal {
@@ -415,7 +345,6 @@
     transform: translateY(-50%) translateX(2px);
 }
 
-/* Resaltado de búsqueda */
 mark {
     background: #fef08a;
     color: inherit;
@@ -532,7 +461,7 @@ mark {
     }
     
     #global-search-input {
-        font-size: 16px; /* Prevenir zoom en iOS */
+        font-size: 16px;
     }
     
     .result-section-badge {
@@ -555,12 +484,6 @@ mark {
     }
 }
 
-/* ===== MODO OSCURO (opcional) ===== */
-@media (prefers-color-scheme: dark) {
-    /* Puedes agregar estilos para modo oscuro aquí si lo deseas */
-}
-
-/* ===== ANIMACIONES ADICIONALES ===== */
 @keyframes shimmer {
     0% {
         background-position: -1000px 0;
@@ -581,14 +504,10 @@ mark {
     animation: shimmer 2s infinite;
 }
 
-/* ===== AJUSTES PARA COMPATIBILIDAD CON EL SITIO EXISTENTE ===== */
-
-/* Ajuste de z-index para asegurar visibilidad correcta */
 #global-search-modal {
-    z-index: 10000; /* Mayor que el chatbot y otros elementos */
+    z-index: 10000;
 }
 
-/* Prevenir conflictos con estilos existentes de Tailwind */
 #global-search-modal * {
     box-sizing: border-box;
 }
