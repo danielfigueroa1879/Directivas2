@@ -91,7 +91,7 @@
     /* Efecto hover */
     #global-search-button:hover {
         background: rgba(0, 0, 0, 0.02);
-        border-color: #c2c7ce;
+        border-color: #d9dde2;
         transform: scale(1.02);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
