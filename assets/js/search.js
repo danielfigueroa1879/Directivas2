@@ -593,8 +593,8 @@ class GlobalSearch {
 
             {
                 title: 'Asesores',
-                content: 'Información de asesores',
-                section: 'Capacitación y Formación',
+                content: 'Información de Asesores en la Región',
+                section: 'Personal Autorizado',
                 action: () => window.open('https://dal5.short.gy/4S3', '_blank'),
                 keywords: ['asesores', 'capacitador', 'personal', 'autorizado']
             },
