@@ -590,6 +590,14 @@ class GlobalSearch {
             },
 
             // SECCIÓN: Capacitación
+
+            {
+                title: 'Asesores',
+                content: 'Información de asesores',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://dal5.short.gy/4S3', '_blank'),
+                keywords: ['asesores', 'capacitador', 'personal', 'autorizado']
+            },
             {
                 title: 'Empresas de Capacitación',
                 content: 'Listado actualizado de empresas autorizadas para capacitación',
