@@ -1,7 +1,7 @@
 /**
  * Estilos para el Sistema de Búsqueda Global
  * OS10 Coquimbo
- * VERSIÓN FINAL: Brillo en borde, placeholder con ícono de lupa
+ * VERSIÓN FINAL: Brillo en borde, placeholder con ícono de lupa SVG
  */
 
 /* ===== BOTÓN DE BÚSQUEDA EN BANNER ===== */
@@ -21,7 +21,7 @@
     position: relative;
 }
 
-/* Estilo del icono (SOLO MÓVIL) */
+/* Estilo del icono (SOLO MÓVIL - Usa el SVG inline del HTML) */
 #global-search-button .search-icon {
     width: 24px;
     height: 24px;
@@ -55,7 +55,7 @@
         gap: 8px;
     }
 
-    /* Ocultar el ícono SVG de lupa en PC */
+    /* Ocultar el ícono SVG inline (el del HTML) en PC */
     #global-search-button .search-icon {
         display: none;
     }
@@ -68,24 +68,33 @@
         font-weight: 400;
         letter-spacing: 0.3px;
         opacity: 0.8;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease, color 0.3s ease;
         margin-right: 6px;
     }
 
-    /* Ícono de lupa en gris */
+    /* Ícono de lupa SVG (Usando Máscara CSS para controlar el color) */
     #global-search-button::after {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
-        color: #9ca3af;
-        font-size: 20px;
+        content: '';
+        width: 20px;
+        height: 20px;
+        display: block;
+        
+        /* El color del icono se define aquí */
+        background-color: #9ca3af; 
+        
+        /* Definimos la forma del icono usando el SVG como máscara */
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+        
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+
         opacity: 0.8;
-        transition: opacity 0.3s ease;
-        position: static;
-        transform: none;
-        background: none;
-        padding: 0;
-        border-radius: 0;
-        animation: none;
-        pointer-events: auto;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
     }
 
     /* Efecto hover */
@@ -96,10 +105,15 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
-    #global-search-button:hover::before,
-    #global-search-button:hover::after {
+    #global-search-button:hover::before {
         opacity: 1;
         color: #92ada4;
+    }
+
+    /* Cambia el color del icono SVG al hacer hover */
+    #global-search-button:hover::after {
+        opacity: 1;
+        background-color: #92ada4; /* El icono cambia a verde */
     }
 }
 
