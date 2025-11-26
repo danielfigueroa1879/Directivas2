@@ -63,7 +63,7 @@
     max-height: calc(100vh - 80px) !important; 
     
     background-color: #ffffff;
-    border: 2px solid #86efac; /* Borde verde claro */
+    border: 2px solid #eff3f1; /* Borde grs claro */
     border-radius: 0 0 32px 16px; /* Esquina inferior derecha más redondeada */
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     z-index: 1201; 
