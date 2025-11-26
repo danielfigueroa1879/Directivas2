@@ -43,7 +43,7 @@
 @media (min-width: 1024px) {
     #global-search-button {
         background: transparent;
-        border: 2px solid #0b633a;       /* #e5e7eb */
+        border: 2px solid #eceef1;       /* #e5e7eb */
         border-radius: 12px;
         padding: 4px 28px;
         min-width: 960px;
@@ -107,7 +107,7 @@
 
     #global-search-button:hover::before {
         opacity: 1;
-        color: #92ada4;
+        color: #147a58;
     }
 
     /* Cambia el color del icono SVG al hacer hover */
