@@ -64,7 +64,7 @@
     #global-search-button::before {
         content: 'Buscar en la pagina';
         color: #9ca3af;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 400;
         letter-spacing: 0.3px;
         opacity: 0.8;
@@ -75,8 +75,8 @@
     /* Ícono de lupa SVG (Usando Máscara CSS para controlar el color) */
     #global-search-button::after {
         content: '';
-        width: 25px;
-        height: 25px;
+        width: 23px;
+        height: 23px;
         display: block;
         
         /* El color del icono se define aquí */
