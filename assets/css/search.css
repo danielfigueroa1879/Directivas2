@@ -113,7 +113,7 @@
     /* Cambia el color del icono SVG al hacer hover */
     #global-search-button:hover::after {
         opacity: 1;
-        background-color: #92ada4; /* El icono cambia a verde */
+        background-color: #43584b; /* #92ada4 El icono cambia a verde */
     }
 }
 
