@@ -107,7 +107,7 @@
 
     #global-search-button:hover::before {
         opacity: 1;
-        color: #ee2a07;
+        color: #a8a4a3;  /* letra al lado de la lupa*/
     }
 
     /* Cambia el color del icono SVG al hacer hover */
