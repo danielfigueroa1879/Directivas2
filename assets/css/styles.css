@@ -764,7 +764,7 @@ body.homepage {
 @media (min-width: 1024px) {
 
   .mobile-dropdown {
-    left: 9rem; /* Ajustado a 15rem */
+    left: 10rem; /* Ajustado a 15rem */
     top: 4rem;
     width: 380px;
     height: auto;
@@ -966,55 +966,6 @@ body.homepage {
     display: flex;
     /* justify-content: center; <-- ESTO SE ELIMINÓ */
     padding-right: 1rem;      /* <-- Se ajusta el padding para PC */
-    max-width: 500px;         /* Más amplio en PC */
-    position: relative;
-    border: 3px solid #166534; /* Borde verde oscuro fijo */
-    border-radius: 50px;
-    background-color: white;
-    overflow: visible;
-  }
-
-  /* Brillo sutil que viaja por el borde */
-  #search-center-container::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50px;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      transparent 260deg,
-      rgba(34, 197, 94, 0.4) 280deg,
-      rgba(74, 222, 128, 0.7) 300deg,
-      rgba(134, 239, 172, 0.9) 310deg,
-      rgba(74, 222, 128, 0.7) 320deg,
-      rgba(34, 197, 94, 0.4) 340deg,
-      transparent 360deg
-    );
-    animation: shine-rotate 4s linear infinite;
-    pointer-events: none;
-    z-index: -1;
-    filter: blur(8px);
-  }
-
-  @keyframes shine-rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* Estilos para el input dentro del contenedor */
-  #search-center-container input,
-  #search-center-container > div {
-    background-color: transparent;
-    border: none;
-    border-radius: 50px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
   }
 }
 /* * -----------------------------------------------------------------
