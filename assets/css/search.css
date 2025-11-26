@@ -1,7 +1,7 @@
 /**
  * Estilos para el Sistema de Búsqueda Global
  * OS10 Coquimbo
- * MODIFICADO: Barra de búsqueda en PC con animación de brillo
+ * VERSIÓN FINAL: Brillo en borde, placeholder gris, más cuadrado y ancho
  */
 
 /* ===== BOTÓN DE BÚSQUEDA EN BANNER ===== */
@@ -66,21 +66,22 @@
 
 /* * -----------------------------------------------------------------
  * MODIFICACIÓN PRINCIPAL: BARRA DE BÚSQUEDA EN PC
+ * Brillo SOLO en el borde verde
  * -----------------------------------------------------------------
  */
 
-/* ===== SOLO EN PC: BARRA DE BÚSQUEDA CON ANIMACIÓN ===== */
+/* ===== SOLO EN PC: BARRA DE BÚSQUEDA CON ANIMACIÓN EN BORDE ===== */
 @media (min-width: 1024px) {
     #global-search-button {
         /* Transformar en barra de búsqueda rectangular */
         background: transparent;
         border: 2px solid #146314; /* Verde trébol */
-        border-radius: 20px; /* Bordes redondeados */
-        padding: 6px 20px;
-        min-width: 280px;
+        border-radius: 6px; /* Más cuadrado - antes era 20px */
+        padding: 8px 28px;
+        min-width: 360px; /* Más ancho - antes era 280px */
         margin-right: 1.5rem;
         position: relative;
-        overflow: hidden;
+        overflow: visible; /* Cambio importante: permite que el brillo se vea fuera */
         transition: all 0.3s ease;
     }
 
@@ -89,20 +90,20 @@
         display: none;
     }
 
-    /* Agregar texto placeholder en el botón */
+    /* Agregar texto placeholder gris claro sutil */
     #global-search-button::before {
-        content: 'Buscar...';
-        color: #146314;
+        content: 'Buscar en la pagina';
+        color: #9ca3af; /* Gris claro sutil */
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 400; /* Más ligero, más sutil */
         letter-spacing: 0.3px;
-        opacity: 0.7;
+        opacity: 0.8; /* Sutil */
         transition: opacity 0.3s ease;
     }
 
     /* Efecto hover en el botón */
     #global-search-button:hover {
-        background: rgba(20, 99, 20, 0.03);
+        background: rgba(20, 99, 20, 0.02);
         border-color: #146314;
         transform: scale(1.02);
         box-shadow: 0 2px 8px rgba(20, 99, 20, 0.15);
@@ -110,9 +111,10 @@
 
     #global-search-button:hover::before {
         opacity: 1;
+        color: #6b7280; /* Un poco más oscuro al hover */
     }
 
-    /* ANIMACIÓN DE BRILLO QUE VIAJA POR EL BORDE */
+    /* ===== ANIMACIÓN DE BRILLO EN EL BORDE (NO EN EL INTERIOR) ===== */
     #global-search-button::after {
         content: '';
         position: absolute;
@@ -120,34 +122,39 @@
         left: -2px;
         right: -2px;
         bottom: -2px;
+        border-radius: 6px; /* Mismo que el botón */
+        padding: 2px; /* Grosor del brillo */
         background: linear-gradient(
             90deg,
-            transparent,
-            transparent,
-            rgba(20, 99, 20, 0.4),
-            rgba(255, 255, 255, 0.6),
-            rgba(20, 99, 20, 0.4),
-            transparent,
-            transparent
+            transparent 0%,
+            transparent 35%,
+            #22c55e 48%,  /* Verde brillante */
+            #86efac 50%,  /* Verde claro brillante */
+            #22c55e 52%,  /* Verde brillante */
+            transparent 65%,
+            transparent 100%
         );
-        border-radius: 20px;
+        -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
         animation: shine-border 3s linear infinite;
         pointer-events: none;
-        opacity: 0.8;
-        z-index: -1;
+        opacity: 0.9;
     }
 
-    /* Keyframes para la animación de brillo */
+    /* Keyframes para la animación de brillo en el borde */
     @keyframes shine-border {
         0% {
-            transform: translateX(-100%) rotate(0deg);
+            background-position: -500px 0;
         }
         100% {
-            transform: translateX(100%) rotate(0deg);
+            background-position: 500px 0;
         }
     }
 
-    /* Efecto adicional al hacer hover: brillo más intenso */
+    /* Efecto adicional al hacer hover: brillo más rápido e intenso */
     #global-search-button:hover::after {
         animation: shine-border-fast 1.5s linear infinite;
         opacity: 1;
@@ -155,22 +162,11 @@
 
     @keyframes shine-border-fast {
         0% {
-            transform: translateX(-100%) rotate(0deg);
+            background-position: -500px 0;
         }
         100% {
-            transform: translateX(100%) rotate(0deg);
+            background-position: 500px 0;
         }
-    }
-
-    /* Modificar el tooltip para PC */
-    #global-search-button::after {
-        /* Este pseudo-elemento ahora es para la animación de brillo */
-        /* El tooltip se mantiene pero se ajusta */
-    }
-
-    /* Nuevo tooltip para PC (usamos un atributo data) */
-    #global-search-button:hover {
-        position: relative;
     }
 }
 
