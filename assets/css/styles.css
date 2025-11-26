@@ -764,7 +764,7 @@ body.homepage {
 @media (min-width: 1024px) {
 
   .mobile-dropdown {
-    left: 10rem; /* Ajustado a 15rem */
+    left: 9rem; /* Ajustado a 15rem */
     top: 4rem;
     width: 380px;
     height: auto;
@@ -959,7 +959,7 @@ body.homepage {
   }
 
   /* 2. Contenedor central (donde va la lupa) */
- #search-center-container {
+  #search-center-container {
     flex-grow: 1;
     flex-shrink: 1;
     min-width: 50px;
@@ -968,25 +968,36 @@ body.homepage {
     padding-right: 1rem;      /* <-- Se ajusta el padding para PC */
     max-width: 500px;         /* Más amplio en PC */
     position: relative;
+    border: 3px solid #166534; /* Borde verde oscuro fijo */
+    border-radius: 50px;
+    background-color: white;
+    overflow: visible;
   }
 
-  /* Borde verde giratorio para la lupa en PC */
+  /* Brillo sutil que viaja por el borde */
   #search-center-container::before {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -6px;
     border-radius: 50px;
-    padding: 3px;
-    background: linear-gradient(45deg, #10b981, #22c55e, #10b981, #22c55e);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: rotateBorder 3s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 260deg,
+      rgba(34, 197, 94, 0.4) 280deg,
+      rgba(74, 222, 128, 0.7) 300deg,
+      rgba(134, 239, 172, 0.9) 310deg,
+      rgba(74, 222, 128, 0.7) 320deg,
+      rgba(34, 197, 94, 0.4) 340deg,
+      transparent 360deg
+    );
+    animation: shine-rotate 4s linear infinite;
     pointer-events: none;
     z-index: -1;
+    filter: blur(8px);
   }
 
-  @keyframes rotateBorder {
+  @keyframes shine-rotate {
     0% {
       transform: rotate(0deg);
     }
@@ -998,15 +1009,20 @@ body.homepage {
   /* Estilos para el input dentro del contenedor */
   #search-center-container input,
   #search-center-container > div {
-    background-color: white;
+    background-color: transparent;
+    border: none;
     border-radius: 50px;
     width: 100%;
+    position: relative;
+    z-index: 1;
   }
 }
 /* * -----------------------------------------------------------------
  * FIN DE LA MODIFICACIÓN
  * -----------------------------------------------------------------
  */
+
+
 /* 3. Arreglo para el contador "Visitas" (palabra arriba del número) */
 .banner-text-small span {
    display: inline-flex;
