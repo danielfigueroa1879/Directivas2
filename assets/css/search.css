@@ -74,7 +74,7 @@
 
     /* Ícono de lupa en gris */
     #global-search-button::after {
-        content: '⌕';
+        content: '🔍';
         color: #9ca3af;
         font-size: 20px;
         opacity: 0.8;
