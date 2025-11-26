@@ -1,6 +1,7 @@
 /**
  * Estilos para el Sistema de Búsqueda Global
  * OS10 Coquimbo
+ * MODIFICADO: Barra de búsqueda en PC con animación de brillo
  */
 
 /* ===== BOTÓN DE BÚSQUEDA EN BANNER ===== */
@@ -21,7 +22,7 @@
     position: relative;
 }
 
-/* Estilo del icono */
+/* Estilo del icono (SOLO MÓVIL) */
 #global-search-button .search-icon {
     width: 24px;
     height: 24px;
@@ -39,7 +40,7 @@
     transform: scale(0.95);
 }
 
-/* Tooltip */
+/* Tooltip (SOLO PC) */
 #global-search-button::after {
     content: 'Buscar (Ctrl+K)';
     position: absolute;
@@ -64,35 +65,145 @@
 }
 
 /* * -----------------------------------------------------------------
- * INICIO DE LA MODIFICACIÓN (TAMAÑO LUPA Y ARREGLO)
+ * MODIFICACIÓN PRINCIPAL: BARRA DE BÚSQUEDA EN PC
  * -----------------------------------------------------------------
  */
 
-/* ===== INICIO CAMBIO USUARIO (CORREGIDO) ===== */
-
-/* Regla para PC (mantiene el margen) */
+/* ===== SOLO EN PC: BARRA DE BÚSQUEDA CON ANIMACIÓN ===== */
 @media (min-width: 1024px) {
     #global-search-button {
+        /* Transformar en barra de búsqueda rectangular */
+        background: transparent;
+        border: 2px solid #146314; /* Verde trébol */
+        border-radius: 20px; /* Bordes redondeados */
+        padding: 6px 20px;
+        min-width: 280px;
         margin-right: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* Ocultar el ícono de lupa en PC */
+    #global-search-button .search-icon {
+        display: none;
+    }
+
+    /* Agregar texto placeholder en el botón */
+    #global-search-button::before {
+        content: 'Buscar...';
+        color: #146314;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Efecto hover en el botón */
+    #global-search-button:hover {
+        background: rgba(20, 99, 20, 0.03);
+        border-color: #146314;
+        transform: scale(1.02);
+        box-shadow: 0 2px 8px rgba(20, 99, 20, 0.15);
+    }
+
+    #global-search-button:hover::before {
+        opacity: 1;
+    }
+
+    /* ANIMACIÓN DE BRILLO QUE VIAJA POR EL BORDE */
+    #global-search-button::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            transparent,
+            rgba(20, 99, 20, 0.4),
+            rgba(255, 255, 255, 0.6),
+            rgba(20, 99, 20, 0.4),
+            transparent,
+            transparent
+        );
+        border-radius: 20px;
+        animation: shine-border 3s linear infinite;
+        pointer-events: none;
+        opacity: 0.8;
+        z-index: -1;
+    }
+
+    /* Keyframes para la animación de brillo */
+    @keyframes shine-border {
+        0% {
+            transform: translateX(-100%) rotate(0deg);
+        }
+        100% {
+            transform: translateX(100%) rotate(0deg);
+        }
+    }
+
+    /* Efecto adicional al hacer hover: brillo más intenso */
+    #global-search-button:hover::after {
+        animation: shine-border-fast 1.5s linear infinite;
+        opacity: 1;
+    }
+
+    @keyframes shine-border-fast {
+        0% {
+            transform: translateX(-100%) rotate(0deg);
+        }
+        100% {
+            transform: translateX(100%) rotate(0deg);
+        }
+    }
+
+    /* Modificar el tooltip para PC */
+    #global-search-button::after {
+        /* Este pseudo-elemento ahora es para la animación de brillo */
+        /* El tooltip se mantiene pero se ajusta */
+    }
+
+    /* Nuevo tooltip para PC (usamos un atributo data) */
+    #global-search-button:hover {
+        position: relative;
     }
 }
 
-/* Regla para Móvil (aumenta tamaño y oculta tooltip) */
+/* ===== MANTENER LUPA EN MÓVIL ===== */
 @media (max-width: 1023px) {
     #global-search-button .search-icon {
-        width: 26px;  /* <-- TAMAÑO MÁS GRANDE SOLICITADO */
-        height: 26px; /* <-- TAMAÑO MÁS GRANDE SOLICITADO */
+        width: 26px;  /* Tamaño más grande en móvil */
+        height: 26px;
+        display: block; /* Asegurar que se muestre en móvil */
     }
 
     /* Ocultar tooltip en móvil */
     #global-search-button::after {
         display: none;
     }
+
+    /* Mantener estilo de botón circular en móvil */
+    #global-search-button {
+        background: transparent;
+        border: none;
+        padding: 8px;
+        border-radius: 50%;
+        min-width: auto;
+    }
+
+    /* Sin animación de brillo en móvil */
+    #global-search-button::before {
+        display: none;
+    }
 }
-/* ===== FIN CAMBIO USUARIO (CORREGIDO) ===== */
 
 /* * -----------------------------------------------------------------
- * FIN DE LA MODIFICACIÓN
+ * FIN DE LA MODIFICACIÓN PRINCIPAL
  * -----------------------------------------------------------------
  */
 
