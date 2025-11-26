@@ -107,7 +107,7 @@
 
     #global-search-button:hover::before {
         opacity: 1;
-        color: #92ada4;
+        color: #8cb3a6;
     }
 
     /* Cambia el color del icono SVG al hacer hover */
