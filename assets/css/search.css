@@ -86,12 +86,12 @@
 
     /* Texto placeholder con ícono de lupa */
     #global-search-button::before {
-        content: 'Buscar en la pagina 🔍';
-        color: #9ca3af;
+        content: 'Buscar en la pagina ⌕';
+        color: #146314;
         font-size: 14px;
         font-weight: 400;
         letter-spacing: 0.3px;
-        opacity: 0.8;
+        opacity: 0.7;
         transition: opacity 0.3s ease;
     }
 
