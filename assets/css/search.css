@@ -76,7 +76,7 @@
     #global-search-button::after {
         content: '⌕';
         color: #9ca3af;
-        font-size: 16px;
+        font-size: 20px;
         opacity: 0.8;
         transition: opacity 0.3s ease;
         position: static;
