@@ -74,15 +74,44 @@ function showDirectiva() {
 ===== FIN FUNCIÓN SHOWDIRECTIVA ===== */
 
 function showCredenciales() {
+    // Ocultar homepage
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
     document.getElementById('main-footer').style.display = 'none';
-    document.getElementById('contenido').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-    document.getElementById('credenciales-section')?.classList.add('active');
+    
+    // Ocultar sección de directivas si existe
+    const mainSection = document.getElementById('main-section');
+    if (mainSection) mainSection.style.display = 'none';
+    
+    // Mostrar contenedor principal
+    const contenido = document.getElementById('contenido');
+    if (contenido) {
+        contenido.style.display = 'block';
+        contenido.style.visibility = 'visible';
+        contenido.style.opacity = '1';
+    }
+    
+    // Mostrar sección de credenciales
+    const credencialesSection = document.getElementById('credenciales-section');
+    if (credencialesSection) {
+        credencialesSection.classList.add('active');
+        credencialesSection.style.display = 'block';
+        credencialesSection.style.visibility = 'visible';
+        credencialesSection.style.opacity = '1';
+    }
+    
+    // Limpiar clases del body
     document.body.className = '';
-    document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
+    
+    // Mostrar botón de retroceso
+    const backBtn = document.getElementById('credenciales-arrow-back-btn');
+    if (backBtn) backBtn.classList.remove('hidden');
+    
+    // Scroll al inicio
     window.scrollTo(0, 0);
+    
+    // Debug en consola
+    console.log('✅ Sección de credenciales activada');
 }
 
 // These handle... functions are called by onclick attributes in the HTML.
