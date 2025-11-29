@@ -59,6 +59,7 @@ function showHomepage() {
     window.scrollTo(0, 0);
 }
 
+/* ===== FUNCIÓN SHOWDIRECTIVA (COMENTADA - PARA USO FUTURO) =====
 function showDirectiva() {
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
@@ -70,6 +71,7 @@ function showDirectiva() {
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
 }
+===== FIN FUNCIÓN SHOWDIRECTIVA ===== */
 
 function showCredenciales() {
     document.getElementById('homepage-section').style.display = 'none';
