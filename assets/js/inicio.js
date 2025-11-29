@@ -88,7 +88,8 @@ function showCredenciales() {
 // These handle... functions are called by onclick attributes in the HTML.
 // The menu closing is handled by the logic in main.js.
 function handleCerofilas() { window.open('https://dal5.short.gy/CFil', '_blank'); }
-function handleDirectiva() { showDirectiva(); }
+// ✅ CORREGIDO: handleDirectiva ahora redirige a URL externa
+function handleDirectiva() { window.open('https://segprivada.minsegpublica.gob.cl/', '_blank'); }
 function handleCredenciales() { showCredenciales(); }
 function handleCredencialIndependiente() {
     const link = document.querySelector('.indep-btn');
