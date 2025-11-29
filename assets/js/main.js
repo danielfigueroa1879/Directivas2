@@ -303,7 +303,8 @@ function closeActiveMenu() {
 // Handlers de navegación globales
 window.openNewLink = function(url) { window.open(url, '_blank'); closeActiveMenu(); };
 window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); };
-window.handleDirectiva = function() { if(typeof showDirectiva === 'function') showDirectiva(); closeActiveMenu(); };
+// ✅ CORREGIDO: handleDirectiva ahora redirige a URL externa
+window.handleDirectiva = function() { openNewLink('https://segprivada.minsegpublica.gob.cl/'); };
 window.handleCredenciales = function() { if(typeof showCredenciales === 'function') showCredenciales(); closeActiveMenu(); };
 window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb'); };
 window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); };
