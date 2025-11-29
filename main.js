@@ -214,7 +214,7 @@ window.openNewLink = function(url) {
     closeActiveMenu();
 };
 window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
-window.handleDirectiva = function() { showDirectiva(); closeActiveMenu(); }
+window.handleDirectiva = function() { window.open('https://segprivada.minsegpublica.gob.cl/', '_blank'); closeActiveMenu(); }
 window.handleCredenciales = function() { showCredenciales(); closeActiveMenu(); }
 window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
 window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
