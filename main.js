@@ -8,15 +8,11 @@
 let deferredPrompt = null;
 let bannerShown = false;
 
-// Registrar el evento beforeinstallprompt INMEDIATAMENTE
 window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('🎯 PWA: beforeinstallprompt event captured');
     e.preventDefault();
     deferredPrompt = e;
-    
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-    
     if (isMobile && !isStandalone && !bannerShown) {
         showPWABanner();
     }
@@ -25,11 +21,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
 function showPWABanner() {
     const pwaBanner = document.getElementById('pwa-install-banner');
     if (!pwaBanner || bannerShown) return;
-    
-    console.log('📱 PWA: Showing install banner');
     bannerShown = true;
     pwaBanner.classList.add('show');
-    
     setTimeout(() => {
         if (pwaBanner.classList.contains('show')) {
             pwaBanner.classList.remove('show');
@@ -38,167 +31,258 @@ function showPWABanner() {
 }
 
 async function installPWA() {
-    console.log('🔽 PWA: Install button clicked');
     const pwaBanner = document.getElementById('pwa-install-banner');
     if (pwaBanner) pwaBanner.classList.remove('show');
-    
     if (deferredPrompt) {
         try {
             await deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
-            console.log(`🎯 PWA: User choice: ${outcome}`);
-            if (outcome === 'accepted') {
-                console.log('✅ PWA: Installation accepted');
-            } else {
-                console.log('❌ PWA: Installation dismissed');
-            }
             deferredPrompt = null;
         } catch (error) {
-            console.error('💥 PWA: Error during installation:', error);
+            console.error('Error during PWA installation:', error);
         }
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
-    // --- MANEJO DEL MENÚ (MÓVIL Y ESCRITORIO) ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const desktopSubmenuPanel = document.getElementById('desktop-submenu-panel');
     let menuTimeout;
+    let panelTimeout;
+
+    // --- LÓGICA UNIFICADA DE MENÚ Y PANEL PARA ESCRITORIO ---
 
     const openMenu = () => {
         clearTimeout(menuTimeout);
         if (mobileDropdown.classList.contains('hidden')) {
             mobileDropdown.classList.remove('hidden');
             setTimeout(() => mobileDropdown.classList.add('show'), 10);
-            if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
-                mobileMenuOverlay.classList.remove('hidden');
-            }
         }
     };
 
     const closeMenu = (immediate = false) => {
-        const delay = immediate ? 0 : 200;
+        const delay = immediate ? 0 : 300;
         menuTimeout = setTimeout(() => {
             if (mobileDropdown.classList.contains('show')) {
                 mobileDropdown.classList.remove('show');
                 setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-                 if (window.innerWidth < 1024) {
-                    mobileMenuOverlay.classList.add('hidden');
-                }
             }
         }, delay);
     };
-
-    const toggleMenu = () => {
-        if (mobileDropdown.classList.contains('hidden')) {
-            openMenu();
-        } else {
-            closeMenu(true);
+    
+    const openPanel = (parentMenuItem) => {
+        if (window.innerWidth < 1024 || !desktopSubmenuPanel) return;
+        if (parentMenuItem.classList.contains('asesor-item') || parentMenuItem.classList.contains('jefe-item')) {
+            if (desktopSubmenuPanel.classList.contains('is-open')) {
+                desktopSubmenuPanel.classList.remove('is-open');
+            }
+            return;
         }
+        clearTimeout(panelTimeout);
+        const parentButton = parentMenuItem.querySelector('.submenu-parent-btn');
+        const submenu = parentMenuItem.querySelector('.submenu');
+        if (!parentButton || !submenu) return;
+
+        const title = parentButton.firstChild.textContent.trim();
+        const items = submenu.querySelectorAll('button, .submenu-title');
+        desktopSubmenuPanel.innerHTML = '';
+
+        const titleEl = document.createElement('h3');
+        titleEl.className = 'panel-title';
+        titleEl.textContent = title;
+        desktopSubmenuPanel.appendChild(titleEl);
+
+        // Create a container for the columns
+        const columnsContainer = document.createElement('div');
+        columnsContainer.className = 'panel-columns';
+        desktopSubmenuPanel.appendChild(columnsContainer);
+
+        let currentColumn = document.createElement('div');
+        columnsContainer.appendChild(currentColumn);
+
+        items.forEach(item => {
+            if (item.classList.contains('submenu-title')) {
+                // If there's already content in the current column, create a new one
+                if (currentColumn.children.length > 0) {
+                    currentColumn = document.createElement('div');
+                    columnsContainer.appendChild(currentColumn);
+                }
+                const subtitleEl = document.createElement('h4');
+                subtitleEl.className = 'panel-submenu-title';
+                subtitleEl.textContent = item.textContent;
+                currentColumn.appendChild(subtitleEl);
+            } else {
+                const newButton = item.cloneNode(true);
+                newButton.className = 'panel-button';
+                const originalOnclick = item.getAttribute('onclick');
+                if (originalOnclick) {
+                    newButton.setAttribute('onclick', originalOnclick);
+                }
+                currentColumn.appendChild(newButton);
+            }
+        });
+        desktopSubmenuPanel.classList.add('is-open');
     };
 
-    if (mobileMenuBtn && mobileDropdown) {
-        // Detener la propagación de clics dentro del menú para evitar que se cierre
-        mobileDropdown.addEventListener('click', (e) => {
-            e.stopPropagation();
+    const closePanel = (immediate = false) => {
+        if (!desktopSubmenuPanel) return;
+        const delay = immediate ? 0 : 300;
+        panelTimeout = setTimeout(() => {
+            desktopSubmenuPanel.classList.remove('is-open');
+        }, delay);
+    };
+
+    const closeEverything = (immediate = false) => {
+        closeMenu(immediate);
+        closePanel(immediate);
+    };
+
+    // --- ASIGNACIÓN DE EVENTOS ---
+
+    if (window.innerWidth >= 1024) {
+        // Eventos para el menú principal y el panel lateral
+        mobileMenuBtn.addEventListener('mouseenter', openMenu);
+        mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
+        
+        mobileMenuBtn.addEventListener('mouseleave', () => closeEverything());
+        mobileDropdown.addEventListener('mouseleave', () => closeEverything());
+        
+        if (desktopSubmenuPanel) {
+            desktopSubmenuPanel.addEventListener('mouseenter', () => {
+                clearTimeout(menuTimeout);
+                clearTimeout(panelTimeout);
+            });
+            desktopSubmenuPanel.addEventListener('mouseleave', () => closeEverything());
+        }
+
+        const menuItemsWithSubmenu = document.querySelectorAll('#mobile-dropdown .has-submenu');
+        menuItemsWithSubmenu.forEach(item => {
+            item.addEventListener('mouseenter', () => openPanel(item));
         });
 
-        // Comportamiento de clic para todos los dispositivos
+    } else {
+        // Lógica para móvil
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleMenu();
+            const isOpen = !mobileDropdown.classList.contains('hidden');
+            if (isOpen) {
+                closeMenu(true);
+                mobileMenuOverlay.classList.add('hidden');
+            } else {
+                openMenu();
+                mobileMenuOverlay.classList.remove('hidden');
+            }
         });
-
-        // Comportamiento de hover solo para escritorio (PC)
-        if (window.innerWidth >= 1024) {
-            mobileMenuBtn.addEventListener('mouseenter', openMenu);
-            mobileMenuBtn.addEventListener('mouseleave', () => closeMenu());
-            mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
-            mobileDropdown.addEventListener('mouseleave', () => closeMenu());
-        }
+        mobileMenuOverlay.addEventListener('click', () => {
+            closeMenu(true);
+            mobileMenuOverlay.classList.add('hidden');
+        });
     }
 
-    if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
-    }
-    
-    // --- LÓGICA DE SUBMENÚS (MODIFICADA) ---
+    // --- LÓGICA DE SUBMENÚS (ACORDEÓN EN MÓVIL) ---
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
-        const arrow = parent.querySelector('.submenu-arrow');
         if (!btn) return;
-
-        // Lógica de CLIC para TODO el botón (abre o cierra el submenú)
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Previene que el menú principal se cierre
-            
-            // Cierra otros submenús abiertos
-            document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                if (other !== parent) {
-                    other.classList.remove('submenu-open');
+            if (window.innerWidth < 1024) { // Solo comportamiento de acordeón en móvil
+                if (!e.currentTarget.closest('.asesor-item') && !e.currentTarget.closest('.jefe-item')) {
+                    e.stopPropagation();
                 }
-            });
-            
-            // Alterna el estado del submenú actual
-            parent.classList.toggle('submenu-open');
-        });
-
-        // Lógica de HOVER solo para la FLECHA en ESCRITORIO
-        if (window.innerWidth >= 1024 && arrow) {
-            let submenuTimeout;
-
-            // Abre el submenú cuando el cursor entra en la flecha
-            arrow.addEventListener('mouseenter', (e) => {
-                e.stopPropagation();
-                clearTimeout(submenuTimeout);
-                 // Cierra otros submenús abiertos
                 document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                    if (other !== parent) {
+                    if (other !== parent && !other.classList.contains('asesor-item') && !other.classList.contains('jefe-item')) {
                         other.classList.remove('submenu-open');
                     }
                 });
-                parent.classList.add('submenu-open');
-            });
-            
-            // Programa el cierre cuando el cursor sale del elemento padre completo
-            parent.addEventListener('mouseleave', () => {
-                submenuTimeout = setTimeout(() => {
-                    parent.classList.remove('submenu-open');
-                }, 300);
-            });
-
-            // Cancela el cierre si el cursor entra de nuevo en el elemento padre (para poder navegar al submenú)
-            parent.addEventListener('mouseenter', () => {
-                 clearTimeout(submenuTimeout);
-            });
-        }
+                if (!parent.classList.contains('asesor-item') && !parent.classList.contains('jefe-item')) {
+                    parent.classList.toggle('submenu-open');
+                }
+            }
+        });
     });
 
+    // --- LÓGICA PARA MEGAMENÚS (Asesor, Jefe, etc.) ---
+    const setupMegamenu = (config) => {
+        const item = document.querySelector(config.itemSelector);
+        const megamenu = document.getElementById(config.megamenuId);
+        const closeBtn = document.getElementById(config.closeBtnId);
+        const triggerBtn = document.getElementById(config.triggerBtnId);
+
+        const openMegamenu = () => {
+            if (!item || !megamenu) return;
+            closeAllMegamenus(config.megamenuId);
+            if (window.innerWidth < 1024) closeMenu(true);
+            item.classList.add('megamenu-open');
+            megamenu.classList.add('show');
+        };
+
+        const closeMegamenu = (immediate = true) => {
+            if (!item || !megamenu) return;
+            item.classList.remove('megamenu-open');
+            megamenu.classList.remove('show');
+        };
+
+        if (item && megamenu && triggerBtn) {
+            triggerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = item.classList.contains('megamenu-open');
+                if (isOpen) closeMegamenu();
+                else openMegamenu();
+            });
+            if (closeBtn) closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeMegamenu();
+            });
+        }
+    };
+
+    const closeAllMegamenus = (excludeId = null) => {
+        document.querySelectorAll('.asesor-megamenu').forEach(menu => {
+            if (menu.id !== excludeId) {
+                menu.classList.remove('show');
+                const itemClass = menu.id.replace('-megamenu', '-item');
+                document.querySelector(`.${itemClass}`)?.classList.remove('megamenu-open');
+            }
+        });
+    };
+
+    setupMegamenu({ itemSelector: '.asesor-item', megamenuId: 'asesor-megamenu', closeBtnId: 'asesor-close-btn', triggerBtnId: 'asesor-trigger-btn' });
+    setupMegamenu({ itemSelector: '.jefe-item', megamenuId: 'jefe-megamenu', closeBtnId: 'jefe-close-btn', triggerBtnId: 'jefe-trigger-btn' });
+    
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.has-submenu') && !e.target.closest('.asesor-megamenu')) closeAllMegamenus();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllMegamenus(); });
 
     // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
     if (installButton) installButton.addEventListener('click', installPWA);
-
     const closeButton = document.getElementById('close-install-banner');
-    if (closeButton) {
-        closeButton.addEventListener('click', () => {
-            const pwaBanner = document.getElementById('pwa-install-banner');
-            if (pwaBanner) pwaBanner.classList.remove('show');
-        });
+    if (closeButton) closeButton.addEventListener('click', () => {
+        const pwaBanner = document.getElementById('pwa-install-banner');
+        if (pwaBanner) pwaBanner.classList.remove('show');
+    });
+
+    // --- INICIALIZACIÓN DE CARRUSELES ---
+    if (typeof initializeCarousel === 'function') {
+        initializeCarousel({ containerSelector: '#tramites-principales .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#tramites-principales .pagination-dots', autoScroll: 'mobile' });
+        initializeCarousel({ containerSelector: '#componentes-seguridad .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#componentes-seguridad .pagination-dots', autoScroll: 'mobile' });
+        initializeCarousel({ containerSelector: '#capacitacion .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#capacitacion .pagination-dots', autoScroll: 'mobile' });
+        initializeCarousel({ containerSelector: '#servicios-adicionales .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#servicios-adicionales .pagination-dots', autoScroll: 'mobile' });
     }
 
     console.log('✅ All components initialized successfully');
 });
 
-window.addEventListener('appinstalled', (e) => {
-    console.log('🎉 PWA: App was installed successfully');
+window.addEventListener('appinstalled', () => {
     deferredPrompt = null;
     bannerShown = false;
 });
 
-// Función global para cerrar el menú desde los enlaces
 function closeActiveMenu() {
+    // Cierra menú móvil
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     if (mobileDropdown && mobileDropdown.classList.contains('show')) {
@@ -206,17 +290,24 @@ function closeActiveMenu() {
         setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
         if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
     }
+    // Cierra megamenús
+    document.querySelectorAll('.asesor-megamenu').forEach(menu => menu.classList.remove('show'));
+    document.querySelectorAll('.has-submenu').forEach(item => item.classList.remove('megamenu-open'));
+    // Cierra panel lateral de escritorio
+    const desktopPanel = document.getElementById('desktop-submenu-panel');
+    if (desktopPanel && desktopPanel.classList.contains('is-open')) {
+        desktopPanel.classList.remove('is-open');
+    }
 }
 
-// Handlers de navegación (globales)
-window.openNewLink = function(url) {
-    window.open(url, '_blank');
-    closeActiveMenu();
-};
-window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
-window.handleDirectiva = function() { window.open('https://segprivada.minsegpublica.gob.cl/', '_blank'); closeActiveMenu(); }
-window.handleCredenciales = function() { showCredenciales(); closeActiveMenu(); }
-window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
-window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
-window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); }
-window.handleBuscarCurso = function(url) { openNewLink(url); }
+// Handlers de navegación globales
+window.openNewLink = function(url) { window.open(url, '_blank'); closeActiveMenu(); };
+window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); };
+window.handleDirectiva = function() { if(typeof showDirectiva === 'function') showDirectiva(); closeActiveMenu(); };
+window.handleCredenciales = function() { if(typeof showCredenciales === 'function') showCredenciales(); closeActiveMenu(); };
+window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb'); };
+window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); };
+window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); };
+window.handleBuscarCurso = function(url) { openNewLink(url); };
+// NUEVA FUNCIÓN PARA SPD
+window.handleSPD = function() { window.location.href = 'spd.html'; closeActiveMenu(); };
