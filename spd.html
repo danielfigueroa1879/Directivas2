@@ -38,16 +38,12 @@
             text-decoration: none;
             transition: all 0.3s;
             text-align: center;
-            gap: 0.5rem; /* Espacio entre icono y texto */
+            /* gap: 0.5rem; Eliminado ya que no hay icono */
         }
         .btn-spd:hover {
             background-color: #1d4ed8;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-        }
-        /* Regla base para el icono del botón (Desktop) */
-        .btn-spd svg {
-            flex-shrink: 0; /* Evita que el icono se aplaste */
         }
 
         .section-spd {
@@ -133,12 +129,6 @@
                 margin: 0 auto;
                 padding: 0.75rem 1rem;
             }
-
-
-            .btn-spd svg {
-            flex-shrink: 0; /* Evita que el icono se aplaste */
-        }
-            
         }
         
         /* 📱 PANTALLAS MUY PEQUEÑAS (< 375px) - FOCO EN 320PX */
@@ -172,15 +162,9 @@
             /* Ajuste específico para el botón SPD en móviles pequeños */
             .btn-spd {
                 width: 95%; /* Un poco más de margen */
-                padding: 0.5rem 0.5rem; /* Padding más compacto */
-                font-size: 0.75rem; /* Texto ligeramente más pequeño */
-                gap: 0.25rem; /* Menos espacio entre icono y texto */
+                padding: 0.6rem 0.5rem; /* Padding equilibrado verticalmente */
+                font-size: 0.8rem; /* Texto legible */
             }
-            
-            /* ICONO MUY PEQUEÑO (12px) PARA PANTALLAS TIPO 320px */
-            .btn-spd svg {
-            flex-shrink: 0; /* Evita que el icono se aplaste */
-        }
         }
     </style>
 </head>
@@ -217,13 +201,9 @@
                 <p class="text-base sm:text-lg text-gray-600">Plataforma de Seguridad Privada</p>
             </div>
 
-            <!-- Botón principal de acceso -->
+            <!-- Botón principal de acceso - SIN ICONO -->
             <div class="text-center mb-6 sm:mb-8">
-                <!-- Se cambió w-5/h-5 por w-3/h-3 (12px) como base para móviles muy pequeños -->
                 <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd text-sm sm:text-lg">
-                    <svg class="w-3 h-3 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
                     <span>Acceder a la Plataforma SPD</span>
                 </a>
             </div>
