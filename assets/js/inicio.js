@@ -49,6 +49,12 @@ function showHomepage() {
     document.getElementById('homepage-content-wrapper').style.display = 'block';
     document.getElementById('main-footer').style.display = 'block';
     document.getElementById('contenido').style.display = 'none';
+    // Hide SPD section when going back to homepage
+    const spdSection = document.getElementById('spd-section');
+    if (spdSection) {
+        spdSection.style.display = 'none';
+        spdSection.classList.remove('active');
+    }
     document.body.className = 'homepage background-transition';
     const homepageSection = document.getElementById('homepage-section');
     if (homepageSection) {
@@ -66,6 +72,11 @@ function showDirectiva() {
     document.getElementById('contenido').style.display = 'block';
     document.getElementById('main-section').style.display = 'block';
     document.getElementById('credenciales-section')?.classList.remove('active');
+    const spdSection = document.getElementById('spd-section');
+    if (spdSection) {
+        spdSection.style.display = 'none';
+        spdSection.classList.remove('active');
+    }
     document.body.className = '';
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
@@ -78,6 +89,28 @@ function showCredenciales() {
     document.getElementById('contenido').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
     document.getElementById('credenciales-section')?.classList.add('active');
+    const spdSection = document.getElementById('spd-section');
+    if (spdSection) {
+        spdSection.style.display = 'none';
+        spdSection.classList.remove('active');
+    }
+    document.body.className = '';
+    document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
+    window.scrollTo(0, 0);
+}
+
+function showSPD() {
+    document.getElementById('homepage-section').style.display = 'none';
+    document.getElementById('homepage-content-wrapper').style.display = 'none';
+    document.getElementById('main-footer').style.display = 'none';
+    document.getElementById('contenido').style.display = 'block';
+    document.getElementById('main-section').style.display = 'none';
+    document.getElementById('credenciales-section')?.classList.remove('active');
+    const spdSection = document.getElementById('spd-section');
+    if (spdSection) {
+        spdSection.style.display = 'block';
+        spdSection.classList.add('active');
+    }
     document.body.className = '';
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
@@ -88,6 +121,7 @@ function showCredenciales() {
 function handleCerofilas() { window.open('https://dal5.short.gy/CFil', '_blank'); }
 function handleDirectiva() { showDirectiva(); }
 function handleCredenciales() { showCredenciales(); }
+function handleSPD() { showSPD(); }
 function handleCredencialIndependiente() {
     const link = document.querySelector('.indep-btn');
     if (link) window.open(link.href, '_blank');
