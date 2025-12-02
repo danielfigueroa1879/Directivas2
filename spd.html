@@ -1,3 +1,6 @@
+
+Copiar
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -55,6 +58,7 @@
             margin: 0.5rem 0;
             font-family: 'Courier New', monospace;
             word-break: break-all;
+            font-size: 0.875rem;
         }
         .note-important {
             background-color: #fef3c7;
@@ -63,19 +67,142 @@
             border-radius: 0.5rem;
             margin-top: 1.5rem;
         }
+
+        /* 📱 OPTIMIZACIÓN PARA CELULARES PEQUEÑOS */
+        @media (max-width: 640px) {
+            body {
+                padding-top: 60px; /* Menos espacio en top */
+            }
+            
+            .card-spd {
+                padding: 1rem; /* Reducir padding de 2rem a 1rem */
+                margin: 1rem 0.5rem; /* Márgenes más pequeños */
+                border-radius: 0.75rem;
+            }
+            
+            .section-spd {
+                padding: 1rem; /* Reducir padding */
+                margin-bottom: 1.5rem;
+                border-radius: 0.5rem;
+            }
+            
+            .email-box {
+                padding: 0.75rem;
+                font-size: 0.75rem; /* Texto más pequeño en móvil */
+            }
+            
+            .note-important {
+                padding: 0.875rem;
+                margin-top: 1rem;
+            }
+            
+            .btn-spd {
+                padding: 0.625rem 1rem; /* Botones más compactos */
+                font-size: 0.875rem;
+                width: 100%; /* Botones de ancho completo en móvil */
+            }
+            
+            /* Títulos más pequeños en móvil */
+            h1.text-3xl {
+                font-size: 1.5rem !important; /* 24px */
+                line-height: 1.3;
+            }
+            
+            h1.text-4xl {
+                font-size: 1.5rem !important;
+            }
+            
+            h2.text-2xl {
+                font-size: 1.25rem !important; /* 20px */
+            }
+            
+            h3.font-bold {
+                font-size: 0.95rem;
+            }
+            
+            /* Iconos más pequeños */
+            .card-spd svg {
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+            }
+            
+            .section-spd svg {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+            }
+            
+            /* Banner superior más compacto */
+            .fixed.top-0 {
+                height: 56px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            
+            .fixed.top-0 img {
+                height: 32px !important;
+            }
+            
+            .fixed.top-0 span {
+                font-size: 0.875rem;
+            }
+            
+            /* Espaciado reducido */
+            .space-x-3 > * + * {
+                margin-left: 0.5rem !important;
+            }
+            
+            .mb-8 {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .mb-4 {
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .space-y-4 > * + * {
+                margin-top: 1rem !important;
+            }
+        }
+        
+        /* 📱 OPTIMIZACIÓN EXTRA para celulares MUY pequeños (iPhone SE, etc) */
+        @media (max-width: 375px) {
+            .card-spd {
+                padding: 0.75rem;
+                margin: 0.75rem 0.25rem;
+            }
+            
+            h1.text-3xl, h1.text-4xl {
+                font-size: 1.25rem !important;
+            }
+            
+            h2.text-2xl {
+                font-size: 1.125rem !important;
+            }
+            
+            .email-box {
+                font-size: 0.7rem;
+                padding: 0.5rem;
+            }
+            
+            .btn-spd {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
-<body class="min-h-screen pt-20">
+<body class="min-h-screen pt-16 sm:pt-20">
     <!-- Banner superior -->
-    <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 h-16 flex items-center justify-between px-4 shadow-sm">
-        <a href="index.html" class="flex items-center space-x-2">
-            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-10" loading="lazy">
-            <span class="font-bold text-gray-800">OS10 Coquimbo</span>
+    <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 h-14 sm:h-16 flex items-center justify-between px-3 sm:px-4 shadow-sm">
+        <a href="index.html" class="flex items-center space-x-1 sm:space-x-2">
+            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-8 sm:h-10" loading="lazy">
+            <span class="font-bold text-gray-800 text-sm sm:text-base">OS10 Coquimbo</span>
         </a>
-        <a href="index.html" class="text-gray-600 hover:text-gray-800">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        <a href="index.html" class="text-gray-600 hover:text-gray-800 flex items-center space-x-1 font-semibold text-sm sm:text-base transition-colors">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
+            <span class="hidden sm:inline">Volver</span>
         </a>
     </div>
 
@@ -83,22 +210,22 @@
     <div class="container mx-auto px-4">
         <div class="card-spd">
             <!-- Encabezado -->
-            <div class="text-center mb-8">
-                <div class="flex items-center justify-center space-x-3 mb-4">
-                    <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center mb-6 sm:mb-8">
+                <div class="flex items-center justify-center space-x-3 mb-3 sm:mb-4">
+                    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                     </svg>
                 </div>
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+                <h1 class="text-xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 px-2">
                     SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
                 </h1>
-                <p class="text-lg text-gray-600">Plataforma de Seguridad Privada</p>
+                <p class="text-base sm:text-lg text-gray-600">Plataforma de Seguridad Privada</p>
             </div>
 
             <!-- Botón principal de acceso -->
-            <div class="text-center mb-8">
-                <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd inline-flex items-center space-x-2 text-lg">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center mb-6 sm:mb-8">
+                <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd inline-flex items-center justify-center space-x-2 text-base sm:text-lg">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                     </svg>
                     <span>Acceder a la Plataforma SPD</span>
@@ -107,13 +234,13 @@
 
             <!-- Preguntas Frecuentes -->
             <div class="section-spd">
-                <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
-                    <svg class="w-7 h-7 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
+                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     Preguntas Frecuentes
                 </h2>
-                <p class="mb-3 text-gray-700">Encuentra respuestas a las consultas más comunes sobre seguridad privada:</p>
+                <p class="mb-3 text-sm sm:text-base text-gray-700">Encuentra respuestas a las consultas más comunes sobre seguridad privada:</p>
                 <a href="https://segprivada.minsegpublica.gob.cl/preguntas-frecuentes" target="_blank" class="btn-spd">
                     Ver Preguntas Frecuentes
                 </a>
@@ -121,24 +248,24 @@
 
             <!-- Contacto por Correo -->
             <div class="section-spd">
-                <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
-                    <svg class="w-7 h-7 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
+                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                     Contacto por Correo Electrónico
                 </h2>
-                <p class="mb-4 text-gray-700 font-semibold">Si en la plataforma no funciona, enviar a los siguientes correos:</p>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base text-gray-700 font-semibold">Si en la plataforma no funciona, enviar a los siguientes correos:</p>
                 
-                <div class="space-y-4">
+                <div class="space-y-3 sm:space-y-4">
                     <!-- Correo 1 -->
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
                         <div class="email-box">
                             <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
                                 spd-cargadimensionada@minsegpublica.gob.cl
                             </a>
                         </div>
-                        <ul class="mt-2 ml-6 text-sm text-gray-600 list-disc">
+                        <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
                             <li>Organismos Técnicos de Capacitación (OTEC)</li>
                             <li>Consultas sobre carga sobredimensionada</li>
                             <li>Trámites para personas naturales y jurídicas</li>
@@ -147,13 +274,13 @@
 
                     <!-- Correo 2 -->
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
                         <div class="email-box">
                             <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
                                 spd-capacitacionessp@minsegpublica.gob.cl
                             </a>
                         </div>
-                        <ul class="mt-2 ml-6 text-sm text-gray-600 list-disc">
+                        <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
                             <li>Consultas sobre planes de capacitación</li>
                             <li>Programas de formación en seguridad privada</li>
                             <li>Información sobre cursos disponibles</li>
@@ -164,13 +291,13 @@
 
             <!-- Nota Importante -->
             <div class="note-important">
-                <div class="flex items-start space-x-3">
-                    <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-start space-x-2 sm:space-x-3">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 flex-shrink-0 mt-0.5 sm:mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-1">ℹ️ Información Importante</h3>
-                        <p class="text-gray-700">
+                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-1">ℹ️ Información Importante</h3>
+                        <p class="text-xs sm:text-sm text-gray-700">
                             En la plataforma de la SPD <strong>no es necesario el Certificado de Idoneidad Cívica</strong>, 
                             ya que ellos mantienen esa información actualizada en su sistema.
                         </p>
@@ -179,9 +306,9 @@
             </div>
 
             <!-- Botón de regreso -->
-            <div class="text-center mt-8">
-                <a href="index.html" class="inline-flex items-center space-x-2 text-gray-600 hover:text-gray-800 font-semibold">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center mt-6 sm:mt-8">
+                <a href="index.html" class="inline-flex items-center space-x-2 text-gray-600 hover:text-gray-800 font-semibold text-sm sm:text-base">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
                     <span>Volver a la página principal</span>
@@ -191,10 +318,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-6 mt-12">
+    <footer class="bg-gray-800 text-gray-300 py-4 sm:py-6 mt-8 sm:mt-12">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">© 2025 OS10 Coquimbo - Prefectura de Coquimbo</p>
-            <p class="text-xs mt-2">Desarrollado por Daniel Figueroa Chacama - Ingeniero en Informática</p>
+            <p class="text-xs sm:text-sm">© 2025 OS10 Coquimbo - Prefectura de Coquimbo</p>
+            <p class="text-xs mt-1 sm:mt-2">Desarrollado por Daniel Figueroa Chacama - Ingeniero en Informática</p>
         </div>
     </footer>
 </body>
