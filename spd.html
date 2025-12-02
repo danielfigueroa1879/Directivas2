@@ -107,12 +107,11 @@
             }
             
             .card-spd {
-                padding: 1.25rem; /* Un poco más de espacio */
+                padding: 1.25rem;
                 margin: 0.5rem 0.5rem 1.5rem 0.5rem;
                 border-radius: 0.75rem;
             }
             
-            /* Ajuste Botón Volver */
             .btn-volver-card {
                 top: 0.75rem;
                 right: 0.5rem;
@@ -123,28 +122,25 @@
                 height: 1.75rem !important;
             }
             
-            /* Icono principal (escudo) */
             .text-center.mb-6 svg {
                 width: 3.5rem !important;
                 height: 3.5rem !important;
             }
             
-            /* Ajuste del Botón Principal SPD */
             .btn-spd {
                 width: 100%;
                 max-width: 350px;
                 margin: 0 auto;
-                padding: 0.75rem 1rem; /* Padding equilibrado */
+                padding: 0.75rem 1rem;
             }
             
-            /* CORRECCIÓN DEL ÍCONO QUE SE VEÍA GRANDE */
             .btn-spd svg {
-                width: 0.25rem !important; /* 20px - Tamaño estándar */
-                height: 0.25rem !important;
+                width: 1.25rem !important; /* 20px */
+                height: 1.25rem !important;
             }
         }
         
-        /* 📱 PANTALLAS MUY PEQUEÑAS (< 375px) */
+        /* 📱 PANTALLAS MUY PEQUEÑAS (< 375px) - FOCO EN 320PX */
         @media (max-width: 375px) {
             body {
                 padding-top: 56px;
@@ -172,15 +168,19 @@
                 height: 3rem !important;
             }
             
+            /* Ajuste específico para el botón SPD en móviles pequeños */
             .btn-spd {
-                width: 100%;
-                padding: 0.5rem;
-                font-size: 0.8rem;
+                width: 95%; /* Un poco más de margen */
+                padding: 0.5rem 0.5rem; /* Padding más compacto */
+                font-size: 0.75rem; /* Texto ligeramente más pequeño */
+                gap: 0.25rem; /* Menos espacio entre icono y texto */
             }
             
+            /* ICONO MUY PEQUEÑO (12px) PARA PANTALLAS TIPO 320px */
             .btn-spd svg {
-                width: 1rem !important; /* 16px */
-                height: 1rem !important;
+                width: 0.75rem !important; /* 12px */
+                height: 0.75rem !important;
+                min-width: 0.75rem !important; /* Asegurar que no colapse */
             }
         }
     </style>
@@ -220,9 +220,9 @@
 
             <!-- Botón principal de acceso -->
             <div class="text-center mb-6 sm:mb-8">
-                <!-- Se agregaron clases w-5 h-5 para forzar el tamaño correcto en todos los dispositivos -->
+                <!-- Se cambió w-5/h-5 por w-3/h-3 (12px) como base para móviles muy pequeños -->
                 <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd text-sm sm:text-lg">
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-3 h-3 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                     </svg>
                     <span>Acceder a la Plataforma SPD</span>
