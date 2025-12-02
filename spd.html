@@ -1,3 +1,6 @@
+Spd · HTML
+Copiar
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,8 +25,9 @@
             border-radius: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 2rem;
-            margin: 2rem auto;
+            margin: 1rem auto 2rem auto;
             max-width: 900px;
+            position: relative;
         }
         .btn-spd {
             display: inline-block;
@@ -64,17 +68,43 @@
             border-radius: 0.5rem;
             margin-top: 1.5rem;
         }
+        
+        /* Botón volver dentro del card */
+        .btn-volver-card {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #4b5563;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .btn-volver-card:hover {
+            color: #1f2937;
+            transform: translateX(-2px);
+        }
 
         /* 📱 OPTIMIZACIÓN PARA CELULARES PEQUEÑOS */
         @media (max-width: 640px) {
             body {
-                padding-top: 60px; /* Menos espacio en top */
+                padding-top: 56px; /* Ajustar a la altura del banner móvil (56px) */
             }
             
             .card-spd {
                 padding: 1rem; /* Reducir padding de 2rem a 1rem */
-                margin: 1rem 0.5rem; /* Márgenes más pequeños */
+                margin: 0.5rem 0.5rem 1.5rem 0.5rem; /* Reducir margen superior */
                 border-radius: 0.75rem;
+            }
+            
+            /* Botón volver más pequeño en móvil */
+            .btn-volver-card {
+                top: 0.5rem;
+                right: 0.5rem;
+                font-size: 0.75rem;
             }
             
             .section-spd {
@@ -165,7 +195,13 @@
         @media (max-width: 375px) {
             .card-spd {
                 padding: 0.75rem;
-                margin: 0.75rem 0.25rem;
+                margin: 0.25rem 0.25rem 0.75rem 0.25rem;
+            }
+            
+            .btn-volver-card {
+                top: 0.25rem;
+                right: 0.25rem;
+                font-size: 0.7rem;
             }
             
             h1.text-3xl, h1.text-4xl {
@@ -188,26 +224,28 @@
         }
     </style>
 </head>
-<body class="min-h-screen pt-16 sm:pt-20">
+<body class="min-h-screen pt-14 sm:pt-16">
     <!-- Banner superior -->
     <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 h-14 sm:h-16 flex items-center justify-between px-3 sm:px-4 shadow-sm">
         <a href="index.html" class="flex items-center space-x-1 sm:space-x-2">
             <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-8 sm:h-10" loading="lazy">
             <span class="font-bold text-gray-800 text-sm sm:text-base">OS10 Coquimbo</span>
         </a>
-        <a href="index.html" class="text-gray-600 hover:text-gray-800 flex items-center space-x-1 font-semibold text-sm sm:text-base transition-colors">
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-            <span class="hidden sm:inline">Volver</span>
-        </a>
     </div>
 
     <!-- Contenido principal -->
     <div class="container mx-auto px-4">
         <div class="card-spd">
+            <!-- BOTÓN VOLVER EN ESQUINA SUPERIOR DERECHA DEL CARD -->
+            <a href="index.html" class="btn-volver-card">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span class="hidden sm:inline">Volver</span>
+            </a>
+            
             <!-- Encabezado -->
-            <div class="text-center mb-6 sm:mb-8">
+            <div class="text-center mb-6 sm:mb-8 pt-8 sm:pt-10">
                 <div class="flex items-center justify-center space-x-3 mb-3 sm:mb-4">
                     <svg class="w-12 h-12 sm:w-16 sm:h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -258,8 +296,8 @@
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
                         <div class="email-box">
-                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                spd-cargadimensionada@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#ea999a8ec7898b988d8b8e83878f84998385848b8e8baa878384998f8d9a9f888683898bc48d8588c48986" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="691a190d440a081b0e080d00040c071a000607080d08290400071a0c0e191c0b05000a08470e060b470a05">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
@@ -273,8 +311,8 @@
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
                         <div class="email-box">
-                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                spd-capacitacionessp@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#89faf9eda4eae8f9e8eae0fde8eae0e6e7ecfafaf9c9e4e0e7faeceef9fcebe5e0eae8a7eee6eba7eae5" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="037073672e60627362606a7762606a6c6d66707073436e6a6d7066647376616f6a60622d646c612d606f">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
@@ -301,7 +339,8 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
             <!-- Botón de regreso -->
             <div class="text-center mt-6 sm:mt-8">
                 <a href="index.html" class="inline-flex items-center space-x-2 text-gray-600 hover:text-gray-800 font-semibold text-sm sm:text-base">
