@@ -305,6 +305,7 @@ window.openNewLink = function(url) { window.open(url, '_blank'); closeActiveMenu
 window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); };
 window.handleDirectiva = function() { if(typeof showDirectiva === 'function') showDirectiva(); closeActiveMenu(); };
 window.handleCredenciales = function() { if(typeof showCredenciales === 'function') showCredenciales(); closeActiveMenu(); };
+window.handleSPD = function() { if(typeof showSPD === 'function') showSPD(); closeActiveMenu(); };
 window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb'); };
 window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); };
 window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); };
