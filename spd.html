@@ -133,11 +133,12 @@
                 margin: 0 auto;
                 padding: 0.75rem 1rem;
             }
-            
+
+
             .btn-spd svg {
-                width: 1.25rem !important; /* 20px */
-                height: 1.25rem !important;
-            }
+            flex-shrink: 0; /* Evita que el icono se aplaste */
+        }
+            
         }
         
         /* 📱 PANTALLAS MUY PEQUEÑAS (< 375px) - FOCO EN 320PX */
@@ -178,10 +179,8 @@
             
             /* ICONO MUY PEQUEÑO (12px) PARA PANTALLAS TIPO 320px */
             .btn-spd svg {
-                width: 0.75rem !important; /* 12px */
-                height: 0.75rem !important;
-                min-width: 0.75rem !important; /* Asegurar que no colapse */
-            }
+            flex-shrink: 0; /* Evita que el icono se aplaste */
+        }
         }
     </style>
 </head>
