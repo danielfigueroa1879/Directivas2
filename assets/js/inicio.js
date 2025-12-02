@@ -59,7 +59,6 @@ function showHomepage() {
     window.scrollTo(0, 0);
 }
 
-/* ===== FUNCIÓN SHOWDIRECTIVA (COMENTADA - PARA USO FUTURO) =====
 function showDirectiva() {
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
@@ -71,54 +70,23 @@ function showDirectiva() {
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
 }
-===== FIN FUNCIÓN SHOWDIRECTIVA ===== */
 
 function showCredenciales() {
-    // Ocultar homepage
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
     document.getElementById('main-footer').style.display = 'none';
-    
-    // Ocultar sección de directivas si existe
-    const mainSection = document.getElementById('main-section');
-    if (mainSection) mainSection.style.display = 'none';
-    
-    // Mostrar contenedor principal
-    const contenido = document.getElementById('contenido');
-    if (contenido) {
-        contenido.style.display = 'block';
-        contenido.style.visibility = 'visible';
-        contenido.style.opacity = '1';
-    }
-    
-    // Mostrar sección de credenciales
-    const credencialesSection = document.getElementById('credenciales-section');
-    if (credencialesSection) {
-        credencialesSection.classList.add('active');
-        credencialesSection.style.display = 'block';
-        credencialesSection.style.visibility = 'visible';
-        credencialesSection.style.opacity = '1';
-    }
-    
-    // Limpiar clases del body
+    document.getElementById('contenido').style.display = 'block';
+    document.getElementById('main-section').style.display = 'none';
+    document.getElementById('credenciales-section')?.classList.add('active');
     document.body.className = '';
-    
-    // Mostrar botón de retroceso
-    const backBtn = document.getElementById('credenciales-arrow-back-btn');
-    if (backBtn) backBtn.classList.remove('hidden');
-    
-    // Scroll al inicio
+    document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
-    
-    // Debug en consola
-    console.log('✅ Sección de credenciales activada');
 }
 
 // These handle... functions are called by onclick attributes in the HTML.
 // The menu closing is handled by the logic in main.js.
 function handleCerofilas() { window.open('https://dal5.short.gy/CFil', '_blank'); }
-// ✅ CORREGIDO: handleDirectiva ahora redirige a URL externa
-function handleDirectiva() { window.open('https://segprivada.minsegpublica.gob.cl/', '_blank'); }
+function handleDirectiva() { showDirectiva(); }
 function handleCredenciales() { showCredenciales(); }
 function handleCredencialIndependiente() {
     const link = document.querySelector('.indep-btn');
