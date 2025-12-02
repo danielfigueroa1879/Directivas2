@@ -76,185 +76,103 @@
             gap: 0.5rem;
             color: #4b5563;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.125rem;
             transition: all 0.3s;
             z-index: 10;
-            padding: 0.5rem;
+            padding: 0.75rem;
         }
         .btn-volver-card:hover {
             color: #1f2937;
             transform: translateX(-2px);
         }
         .btn-volver-card svg {
-            width: 2rem; /* 32px base para PC */
-            height: 2rem;
-            display: block;
-            flex-shrink: 0;
+            width: 3rem !important;
+            height: 3rem !important;
+            min-width: 3rem !important;
+            min-height: 3rem !important;
+            max-width: 3rem !important;
+            max-height: 3rem !important;
+            display: block !important;
+            flex-shrink: 0 !important;
         }
 
-        /* 📱 OPTIMIZACIÓN PARA CELULARES PEQUEÑOS */
-        @media (max-width: 640px) {
+        /* 📱 RANGO MEDIO (376px - 639px) - BOTÓN VOLVER MÁS GRANDE */
+        @media (min-width: 376px) and (max-width: 639px) {
             body {
-                padding-top: 56px; /* Ajustar a la altura del banner móvil (56px) */
+                padding-top: 56px;
             }
             
             .card-spd {
-                padding: 1rem; /* Reducir padding de 2rem a 1rem */
-                margin: 0.5rem 0.25rem 1.5rem 0.25rem; /* Márgenes laterales mínimos para 98% ancho */
+                padding: 1rem;
+                margin: 0.5rem 0.25rem 1.5rem 0.25rem;
                 border-radius: 0.75rem;
-            }
-            
-            /* Botón volver más grande y un poco más abajo en móvil */
-            .btn-volver-card {
-                top: 1rem;
-                right: 0.5rem;
-                font-size: 1.1rem;
-                padding: 0.6rem;
-            }
-            
-            .btn-volver-card svg {
-                width: 2.5rem !important; /* 40px - MUY GRANDE */
-                height: 2.5rem !important;
-                display: block;
-            }
-            
-            .section-spd {
-                padding: 1rem; /* Reducir padding */
-                margin-bottom: 1.5rem;
-                border-radius: 0.5rem;
-            }
-            
-            .email-box {
-                padding: 0.75rem;
-                font-size: 0.75rem; /* Texto más pequeño en móvil */
-            }
-            
-            .note-important {
-                padding: 0.875rem;
-                margin-top: 1rem;
-            }
-            
-            .btn-spd {
-                padding: 0.625rem 1rem; /* Botones más compactos */
-                font-size: 0.875rem;
-                width: 90%; /* Más angosto - antes 100% */
-                max-width: 320px; /* Límite de ancho */
-                margin: 0 auto; /* Centrado */
-            }
-            
-            /* Títulos más pequeños en móvil */
-            h1.text-3xl {
-                font-size: 1.5rem !important; /* 24px */
-                line-height: 1.3;
-            }
-            
-            h1.text-4xl {
-                font-size: 1.5rem !important;
-            }
-            
-            h2.text-2xl {
-                font-size: 1.25rem !important; /* 20px */
-            }
-            
-            h3.font-bold {
-                font-size: 0.95rem;
-            }
-            
-            /* Iconos más pequeños */
-            .card-spd svg {
-                width: 1.25rem !important;
-                height: 1.25rem !important;
-            }
-            
-            /* Icono principal (escudo) MÁS GRANDE en móvil */
-            .text-center.mb-6 svg.w-12 {
-                width: 3.5rem !important;  /* 56px - más grande */
-                height: 3.5rem !important;
-            }
-            
-            .section-spd svg {
-                width: 1.5rem !important;
-                height: 1.5rem !important;
-            }
-            
-            /* Banner superior más compacto */
-            .fixed.top-0 {
-                height: 56px !important;
-                padding-left: 0.75rem !important;
-                padding-right: 0.75rem !important;
-            }
-            
-            .fixed.top-0 img {
-                height: 32px !important;
-            }
-            
-            .fixed.top-0 span {
-                font-size: 0.875rem;
-            }
-            
-            /* Espaciado reducido */
-            .space-x-3 > * + * {
-                margin-left: 0.5rem !important;
-            }
-            
-            .mb-8 {
-                margin-bottom: 1.5rem !important;
-            }
-            
-            .mb-4 {
-                margin-bottom: 0.75rem !important;
-            }
-            
-            .space-y-4 > * + * {
-                margin-top: 1rem !important;
-            }
-        }
-        
-        /* 📱 OPTIMIZACIÓN EXTRA para celulares MUY pequeños (iPhone SE, etc) */
-        @media (max-width: 375px) {
-            .card-spd {
-                padding: 0.75rem;
-                margin: 0.25rem 0.125rem 0.75rem 0.125rem; /* Márgenes mínimos para 98% */
             }
             
             .btn-volver-card {
                 top: 0.75rem;
                 right: 0.5rem;
-                font-size: 1.05rem;
-                padding: 0.5rem;
+                font-size: 1.25rem;
+                padding: 0.75rem;
             }
             
             .btn-volver-card svg {
-                width: 2.25rem !important; /* 36px - MÁS GRANDE */
-                height: 2.25rem !important;
-                display: block;
+                width: 3.5rem !important; /* 56px - EL MÁS GRANDE */
+                height: 3.5rem !important;
+                min-width: 3.5rem !important;
+                min-height: 3.5rem !important;
+                max-width: 3.5rem !important;
+                max-height: 3.5rem !important;
             }
             
-            /* Icono principal en móviles muy pequeños */
-            .text-center.mb-6 svg.w-12 {
-                width: 3rem !important;  /* 48px */
+            /* Icono principal (escudo) */
+            .text-center.mb-6 svg {
+                width: 3.5rem !important;
+                height: 3.5rem !important;
+            }
+            
+            .btn-spd {
+                width: 90%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* 📱 PANTALLAS MUY PEQUEÑAS (< 375px) - BOTÓN REDUCIDO */
+        @media (max-width: 375px) {
+            body {
+                padding-top: 56px;
+            }
+            
+            .card-spd {
+                padding: 0.75rem;
+                margin: 0.25rem 0.125rem 0.75rem 0.125rem;
+            }
+            
+            .btn-volver-card {
+                top: 0.5rem;
+                right: 0.5rem;
+                font-size: 1.05rem;
+                padding: 0.55rem;
+            }
+            
+            .btn-volver-card svg {
+                width: 2.75rem !important; /* 44px - REDUCIDO */
+                height: 2.75rem !important;
+                min-width: 2.75rem !important;
+                min-height: 2.75rem !important;
+                max-width: 2.75rem !important;
+                max-height: 2.75rem !important;
+            }
+            
+            /* Icono principal (escudo) reducido */
+            .text-center.mb-6 svg {
+                width: 3rem !important;
                 height: 3rem !important;
             }
             
             .btn-spd {
-                width: 92%; /* Un poco más angosto */
+                width: 92%;
                 max-width: 280px;
-            }
-            
-            h1.text-3xl, h1.text-4xl {
-                font-size: 1.25rem !important;
-            }
-            
-            h2.text-2xl {
-                font-size: 1.125rem !important;
-            }
-            
-            .email-box {
-                font-size: 0.7rem;
-                padding: 0.5rem;
-            }
-            
-            .btn-spd {
                 padding: 0.5rem 0.75rem;
                 font-size: 0.8rem;
             }
@@ -275,7 +193,7 @@
         <div class="card-spd">
             <!-- BOTÓN VOLVER EN ESQUINA SUPERIOR DERECHA DEL CARD -->
             <a href="index.html" class="btn-volver-card">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
                 <span class="hidden sm:inline">Volver</span>
@@ -333,8 +251,8 @@
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
                         <div class="email-box">
-                            <a href="/cdn-cgi/l/email-protection#ea999a8ec7898b988d8b8e83878f84998385848b8e8baa878384998f8d9a9f888683898bc48d8588c48986" class="text-blue-600 hover:text-blue-800">
-                                <span class="__cf_email__" data-cfemail="691a190d440a081b0e080d00040c071a000607080d08290400071a0c0e191c0b05000a08470e060b470a05">[email&#160;protected]</span>
+                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
+                                spd-cargadimensionada@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
@@ -348,8 +266,8 @@
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
                         <div class="email-box">
-                            <a href="/cdn-cgi/l/email-protection#89faf9eda4eae8f9e8eae0fde8eae0e6e7ecfafaf9c9e4e0e7faeceef9fcebe5e0eae8a7eee6eba7eae5" class="text-blue-600 hover:text-blue-800">
-                                <span class="__cf_email__" data-cfemail="037073672e60627362606a7762606a6c6d66707073436e6a6d7066647376616f6a60622d646c612d606f">[email&#160;protected]</span>
+                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
+                                spd-capacitacionessp@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
