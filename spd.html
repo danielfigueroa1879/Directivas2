@@ -102,13 +102,13 @@
             .btn-volver-card {
                 top: 1rem; /* Bajado un poco más (antes era 0.5rem) */
                 right: 0.5rem;
-                font-size: 0.95rem; /* Más grande (antes 0.75rem) */
-                padding: 0.4rem;
+                font-size: 1.05rem; /* Más grande - antes 0.95rem */
+                padding: 0.5rem; /* Aumentado padding */
             }
             
             .btn-volver-card svg {
-                width: 1.5rem !important;
-                height: 1.5rem !important;
+                width: 1.75rem !important; /* 28px - más grande */
+                height: 1.75rem !important;
             }
             
             .section-spd {
@@ -130,7 +130,9 @@
             .btn-spd {
                 padding: 0.625rem 1rem; /* Botones más compactos */
                 font-size: 0.875rem;
-                width: 100%; /* Botones de ancho completo en móvil */
+                width: 90%; /* Más angosto - antes 100% */
+                max-width: 320px; /* Límite de ancho */
+                margin: 0 auto; /* Centrado */
             }
             
             /* Títulos más pequeños en móvil */
@@ -155,6 +157,12 @@
             .card-spd svg {
                 width: 1.25rem !important;
                 height: 1.25rem !important;
+            }
+            
+            /* Icono principal (escudo) MÁS GRANDE en móvil */
+            .text-center.mb-6 svg.w-12 {
+                width: 3.5rem !important;  /* 56px - más grande */
+                height: 3.5rem !important;
             }
             
             .section-spd svg {
@@ -205,13 +213,24 @@
             .btn-volver-card {
                 top: 0.75rem;
                 right: 0.5rem;
-                font-size: 0.9rem;
-                padding: 0.3rem;
+                font-size: 1rem;
+                padding: 0.4rem;
             }
             
             .btn-volver-card svg {
-                width: 1.25rem !important;
-                height: 1.25rem !important;
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+            }
+            
+            /* Icono principal en móviles muy pequeños */
+            .text-center.mb-6 svg.w-12 {
+                width: 3rem !important;  /* 48px */
+                height: 3rem !important;
+            }
+            
+            .btn-spd {
+                width: 92%; /* Un poco más angosto */
+                max-width: 280px;
             }
             
             h1.text-3xl, h1.text-4xl {
@@ -261,7 +280,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                     </svg>
                 </div>
-                <h1 class="text-xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 px-2">
+                <h1 class="text-xl sm:text-3xl md:text-3xl font-bold text-gray-800 mb-2 px-2">
                     SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
                 </h1>
                 <p class="text-base sm:text-lg text-gray-600">Plataforma de Seguridad Privada</p>
@@ -333,6 +352,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Nota Importante -->
             <div class="note-important">
                 <div class="flex items-start space-x-2 sm:space-x-3">
@@ -350,18 +370,6 @@
             </div>
         </div>
     </div>
-            <!-- Botón de regreso -->
-            <div class="text-center mt-6 sm:mt-8">
-                <a href="index.html" class="inline-flex items-center space-x-2 text-gray-600 hover:text-gray-800 font-semibold text-sm sm:text-base">
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
-                    <span>Volver a la página principal</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300 py-4 sm:py-6 mt-8 sm:mt-12">
         <div class="container mx-auto px-4 text-center">
