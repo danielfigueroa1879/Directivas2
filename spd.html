@@ -38,12 +38,25 @@
             text-decoration: none;
             transition: all 0.3s;
             text-align: center;
-            /* gap: 0.5rem; Eliminado ya que no hay icono */
         }
         .btn-spd:hover {
             background-color: #1d4ed8;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* ✨ Animación sutil para el texto alternante */
+        .text-alternante {
+            display: inline-block;
+            position: relative;
+        }
+        .text-alternante .texto {
+            opacity: 1;
+            transition: opacity 0.6s ease-in-out;
+            display: inline-block;
+        }
+        .text-alternante .texto.fade-out {
+            opacity: 0;
         }
 
         .section-spd {
@@ -169,9 +182,9 @@
             
             /* Ajuste específico para el botón SPD en móviles pequeños */
             .btn-spd {
-                width: 95%; /* Un poco más de margen */
-                padding: 0.6rem 0.5rem; /* Padding equilibrado verticalmente */
-                font-size: 0.8rem; /* Texto legible */
+                width: 95%;
+                padding: 0.6rem 0.5rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -204,17 +217,19 @@
                     </svg>
                 </div>
                 <h1 class="text-xl sm:text-3xl md:text-3xl font-bold text-gray-800 mb-2 px-2">
-                    ACCESO A LA PAGINA DE LA SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
+                    SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
                 </h1>
                 <p class="text-base sm:text-lg text-gray-600">Lo que no aparezca en la plataforma de la Subsecretaría de Prevención de Delito (SPD) Lo deben tramitar en el O.S.10 Coquimbo.</p><br>
                 <p class="text-base sm:text-lg text-gray-600">Accede con tu Clave Única</p>
             </div>
-            <!-- Botón principal de acceso - SIN ICONO -->
+            
+            <!-- ✨ Botón principal de acceso - CON TEXTO ALTERNANTE -->
             <div class="text-center mb-6 sm:mb-8">
                 <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd text-sm sm:text-lg">
-                    <span>Acceder a la Plataforma SPD</span>
+                    <span>Acceder a la Plataforma <span class="text-alternante"><span class="texto" id="texto-spd">SPD</span></span></span>
                 </a>
             </div>
+            
             <!-- Informativo División Seguridad Privada -->
             <div class="section-spd">
                 <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
@@ -304,6 +319,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300 py-4 sm:py-6 mt-8 sm:mt-12">
         <div class="container mx-auto px-4 text-center">
@@ -311,5 +327,33 @@
             <p class="text-xs mt-1 sm:mt-2">Desarrollado por Daniel Figueroa Chacama - Ingeniero en Informática</p>
         </div>
     </footer>
+    
+    <!-- ✨ Script para animar el texto SPD -->
+    <script>
+        (function() {
+            const textoElement = document.getElementById('texto-spd');
+            if (!textoElement) return; // Protección por si no existe el elemento
+            
+            const textos = ['SPD', 'Subsecretaría de Prevención del Delito'];
+            let indiceActual = 0;
+            
+            function alternarTexto() {
+                // Fade out
+                textoElement.classList.add('fade-out');
+                
+                // Después de 600ms (duración del fade out), cambiar el texto
+                setTimeout(function() {
+                    indiceActual = (indiceActual + 1) % textos.length;
+                    textoElement.textContent = textos[indiceActual];
+                    
+                    // Fade in
+                    textoElement.classList.remove('fade-out');
+                }, 600);
+            }
+            
+            // Alternar cada 3 segundos
+            setInterval(alternarTexto, 3000);
+        })();
+    </script>
 </body>
 </html>
