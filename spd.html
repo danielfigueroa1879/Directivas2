@@ -38,6 +38,7 @@
             text-decoration: none;
             transition: all 0.3s;
             text-align: center;
+            min-height: 3rem;
         }
         .btn-spd:hover {
             background-color: #1d4ed8;
@@ -48,7 +49,8 @@
         /* ✨ Animación sutil para el texto alternante */
         .text-alternante {
             display: inline-block;
-            position: relative;
+            width: 100%;
+            text-align: center;
         }
         .text-alternante .texto {
             opacity: 1;
@@ -91,7 +93,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
-        /* Botón volver dentro del card */
         .btn-volver-card {
             position: absolute;
             top: 1rem;
@@ -117,7 +118,6 @@
             flex-shrink: 0 !important;
         }
 
-        /* 📱 RANGO MEDIO (376px - 639px) */
         @media (min-width: 376px) and (max-width: 639px) {
             body {
                 padding-top: 56px;
@@ -152,7 +152,6 @@
             }
         }
         
-        /* 📱 PANTALLAS MUY PEQUEÑAS (< 375px) - FOCO EN 320PX */
         @media (max-width: 375px) {
             body {
                 padding-top: 56px;
@@ -180,11 +179,10 @@
                 height: 3rem !important;
             }
             
-            /* Ajuste específico para el botón SPD en móviles pequeños */
             .btn-spd {
                 width: 95%;
                 padding: 0.6rem 0.5rem;
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -201,7 +199,7 @@
     <!-- Contenido principal -->
     <div class="container mx-auto px-1 sm:px-4">
         <div class="card-spd">
-            <!-- BOTÓN VOLVER EN ESQUINA SUPERIOR DERECHA DEL CARD -->
+            <!-- BOTÓN VOLVER -->
             <a href="index.html" class="btn-volver-card">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -217,20 +215,20 @@
                     </svg>
                 </div>
                 <h1 class="text-xl sm:text-3xl md:text-3xl font-bold text-gray-800 mb-2 px-2">
-                    SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
+                    ACCESO A LA PAGINA DE LA SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
                 </h1>
                 <p class="text-base sm:text-lg text-gray-600">Lo que no aparezca en la plataforma de la Subsecretaría de Prevención de Delito (SPD) Lo deben tramitar en el O.S.10 Coquimbo.</p><br>
                 <p class="text-base sm:text-lg text-gray-600">Accede con tu Clave Única</p>
             </div>
             
-            <!-- ✨ Botón principal de acceso - CON TEXTO ALTERNANTE -->
+            <!-- ✨ Botón principal CON ANIMACIÓN -->
             <div class="text-center mb-6 sm:mb-8">
                 <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd text-sm sm:text-lg">
-                    <span>Acceder a la Plataforma <span class="text-alternante"><span class="texto" id="texto-spd">SPD</span></span></span>
+                    <span class="text-alternante"><span class="texto" id="texto-spd">ACCEDER A LA PLATAFORMA (SPD)</span></span>
                 </a>
             </div>
             
-            <!-- Informativo División Seguridad Privada -->
+            <!-- Informativo -->
             <div class="section-spd">
                 <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
                     <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -269,7 +267,6 @@
                 <p class="mb-3 sm:mb-4 text-sm sm:text-base text-gray-700 font-semibold">Si en la plataforma no funciona, enviar a los siguientes correos:</p>
                 
                 <div class="space-y-3 sm:space-y-4">
-                    <!-- Correo 1 -->
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
                         <div class="email-box">
@@ -284,7 +281,6 @@
                         </ul>
                     </div>
 
-                    <!-- Correo 2 -->
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
                         <div class="email-box">
@@ -328,20 +324,23 @@
         </div>
     </footer>
     
-    <!-- ✨ Script para animar el texto SPD -->
+    <!-- ✨ SCRIPT PARA ANIMACIÓN -->
     <script>
         (function() {
             const textoElement = document.getElementById('texto-spd');
-            if (!textoElement) return; // Protección por si no existe el elemento
+            if (!textoElement) {
+                console.error('No se encontró el elemento texto-spd');
+                return;
+            }
             
-            const textos = ['SPD', 'Subsecretaría de Prevención del Delito'];
+            const textos = ['ACCEDER A LA PLATAFORMA (SPD)', 'SUBSECRETARÍA DE PREVENCIÓN DEL DELITO'];
             let indiceActual = 0;
             
             function alternarTexto() {
                 // Fade out
                 textoElement.classList.add('fade-out');
                 
-                // Después de 600ms (duración del fade out), cambiar el texto
+                // Después de 600ms cambiar el texto
                 setTimeout(function() {
                     indiceActual = (indiceActual + 1) % textos.length;
                     textoElement.textContent = textos[indiceActual];
