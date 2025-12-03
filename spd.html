@@ -51,23 +51,31 @@
             padding: 1.5rem;
             background-color: #f8fafc;
             border-radius: 0.75rem;
+            border: 2px solid #cbd5e1;
             border-left: 4px solid #2563eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         .email-box {
             background-color: #e0f2fe;
             padding: 1rem;
             border-radius: 0.5rem;
             margin: 0.5rem 0;
-            font-family: 'Courier New', monospace;
+            font-family: 'Poppins', sans-serif;
             word-break: break-all;
-            font-size: 0.875rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .email-box a {
+            font-weight: 700;
         }
         .note-important {
             background-color: #fef3c7;
+            border: 2px solid #fcd34d;
             border-left: 4px solid #f59e0b;
             padding: 1rem;
             border-radius: 0.5rem;
             margin-top: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         /* Botón volver dentro del card */
@@ -249,7 +257,11 @@
                     <!-- Correo 1 -->
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
-                         <li>spd-cargadimensionada@minsegpublica.gob.cl</li>
+                        <div class="email-box">
+                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
+                                spd-cargadimensionada@minsegpublica.gob.cl
+                            </a>
+                        </div>
                         <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
                             <li>Organismos Técnicos de Capacitación (OTEC)</li>
                             <li>Consultas sobre carga sobredimensionada</li>
