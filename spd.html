@@ -257,6 +257,23 @@
                 </a>
             </div>
 
+            <!-- Componentes de Seguridad Privada -->
+            <div class="section-spd" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left-color: #2563eb;">
+                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
+                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    📋 Requisitos por Componente
+                </h2>
+                <p class="mb-3 text-sm sm:text-base text-gray-700">Consulta los requisitos completos de cada componente del sistema de seguridad privada según <strong>Ley 21.659</strong> y <strong>Decreto 209</strong>:</p>
+                <a href="componentes-seguridad.html" class="btn-spd text-sm sm:text-base" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);">
+                    🔍 Ver Requisitos por Componente
+                </a>
+                <p class="mt-3 text-xs sm:text-sm text-gray-600 italic">
+                    ✓ Vigilantes Privados &nbsp;•&nbsp; ✓ Jefes de Seguridad &nbsp;•&nbsp; ✓ Guardias &nbsp;•&nbsp; ✓ Supervisores &nbsp;•&nbsp; ✓ Asesores &nbsp;•&nbsp; ✓ Capacitadores y más...
+                </p>
+            </div>
+
             <!-- Contacto por Correo -->
             <div class="section-spd">
                 <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
@@ -271,8 +288,8 @@
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
                         <div class="email-box">
-                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
-                                spd-cargadimensionada@minsegpublica.gob.cl
+                            <a href="mailto:segprivada.otec@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
+                                segprivada.otec@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
@@ -285,8 +302,8 @@
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
                         <div class="email-box">
-                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
-                               spd-capacitacionessp@minsegpublica.gob.cl
+                            <a href="mailto:segprivada.capacitacion@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
+                                segprivada.capacitacion@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
@@ -342,17 +359,19 @@
                 textoElement.classList.add('fade-out');
                 
                 // Después de 600ms cambiar el texto
-                setTimeout(function() {
+                setTimeout(() => {
                     indiceActual = (indiceActual + 1) % textos.length;
                     textoElement.textContent = textos[indiceActual];
                     
                     // Fade in
-                    textoElement.classList.remove('fade-out');
+                    setTimeout(() => {
+                        textoElement.classList.remove('fade-out');
+                    }, 50);
                 }, 600);
             }
             
-            // Alternar cada 3 segundos
-            setInterval(alternarTexto, 3000);
+            // Alternar cada 4 segundos
+            setInterval(alternarTexto, 4000);
         })();
     </script>
 </body>
