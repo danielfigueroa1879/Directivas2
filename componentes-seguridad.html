@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -28,86 +28,104 @@
             position: relative;
         }
         
+        /* --- NUEVO DISEÑO PROFESIONAL DE BOTONES --- */
+        
         .btn-componente {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 1.5rem;
-            background: white;
-            color: #1e40af;
-            border: 2px solid #dbeafe;
+            gap: 1.25rem; /* Más espacio entre icono y texto */
+            padding: 1rem 1.25rem;
+            background: #ffffff;
+            color: #334155; /* Texto gris oscuro profesional (Slate 700) */
+            border: 1px solid #e2e8f0; /* Borde muy sutil inicial */
             border-radius: 0.75rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Animación fluida */
             cursor: pointer;
             width: 100%;
             text-align: left;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra imperceptible */
             position: relative;
             overflow: hidden;
         }
         
+        /* Línea lateral decorativa (invisible hasta el hover) */
         .btn-componente::before {
             content: '';
             position: absolute;
-            top: 0;
             left: 0;
+            top: 0;
+            bottom: 0;
             width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            transition: width 0.3s ease;
+            background: #2563eb; /* Azul intenso */
+            opacity: 0;
+            transform: scaleY(0.5);
+            transition: all 0.3s ease;
         }
-        
+
+        /* ESTADO HOVER (AL PASAR EL MOUSE) */
         .btn-componente:hover {
-            transform: translateX(4px);
-            border-color: #2563eb;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            transform: translateY(-2px); /* Elevación sutil vertical */
+            border-color: #bfdbfe; /* Borde azul muy claro */
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.15); /* Sombra difusa azulada */
+            color: #1e40af; /* Texto azul oscuro */
         }
-        
+
         .btn-componente:hover::before {
-            width: 100%;
-            opacity: 0.05;
+            opacity: 1;
+            transform: scaleY(1); /* La línea lateral crece suavemente */
         }
-        
+
+        /* CONTENEDOR DEL ICONO */
         .btn-componente-icon {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            border-radius: 0.5rem;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: #f8fafc; /* Fondo casi blanco (Slate 50) */
+            border: 1px solid #f1f5f9;
+            border-radius: 0.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            color: #64748b; /* Icono gris suave */
         }
-        
+
         .btn-componente:hover .btn-componente-icon {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            background: #2563eb; /* Fondo azul sólido profesional */
+            border-color: #2563eb;
+            color: #ffffff; /* Icono blanco */
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
         }
-        
+
+        /* SVG DEL ICONO */
         .btn-componente-icon svg {
-            width: 24px;
-            height: 24px;
-            color: #2563eb;
-            transition: all 0.3s ease;
+            width: 22px;
+            height: 22px;
+            stroke-width: 2; /* Trazo firme */
+            transition: transform 0.3s ease;
         }
         
         .btn-componente:hover .btn-componente-icon svg {
-            color: white;
+            transform: scale(1.1); /* Ligero zoom al icono */
+            color: white; /* Asegurar color blanco */
         }
-        
+
+        /* FLECHA INDICADORA (Derecha) */
         .btn-componente-arrow {
             margin-left: auto;
-            color: #94a3b8;
+            color: #cbd5e1; /* Gris muy claro, casi invisible */
             transition: all 0.3s ease;
         }
-        
+
         .btn-componente:hover .btn-componente-arrow {
-            color: #2563eb;
-            transform: translateX(4px);
+            color: #2563eb; /* Se ilumina en azul */
+            transform: translateX(2px);
         }
         
+        /* --- FIN NUEVOS ESTILOS --- */
+
         .modal-requisitos {
             display: none;
             position: fixed;
