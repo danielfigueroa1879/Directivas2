@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Componentes de Seguridad Privada | OS10 Coquimbo</title>
-    <meta name="description" content="Requisitos para cada componente del sistema de seguridad privada según Ley 21.659 y Decreto 209">
+    <title>SPD - Subsecretaría de Prevención del Delito | OS10 Coquimbo</title>
+    <meta name="description" content="Información sobre la Subsecretaría de Prevención del Delito - Plataforma de Seguridad Privada">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff"/>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -17,172 +17,80 @@
             background-position: center;
             background-attachment: fixed;
         }
-        
         .card-spd {
             background-color: white;
             border-radius: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin: 1rem auto 2rem auto;
-            max-width: 1200px;
+            max-width: 900px;
             position: relative;
         }
-        
-        .btn-componente {
-            display: flex;
+        .btn-spd {
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1.5rem;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background-color: #2563eb;
             color: white;
-            border-radius: 0.75rem;
+            border-radius: 0.5rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-            text-align: left;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            text-align: center;
+            min-height: 3rem;
         }
-        
-        .btn-componente:hover {
+        .btn-spd:hover {
+            background-color: #1d4ed8;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
         }
         
-        .modal-requisitos {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 1rem;
-            backdrop-filter: blur(4px);
-        }
-        
-        .modal-requisitos.active {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 1rem;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideDown 0.3s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .modal-header {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 1rem 1rem 0 0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        
-        .modal-body {
-            padding: 1.5rem;
-        }
-        
-        .btn-cerrar {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-cerrar:hover {
-            background: white;
-            color: #2563eb;
-        }
-        
-        .requisito-section {
-            background: #f8fafc;
-            border-left: 4px solid #2563eb;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 0.5rem;
-        }
-        
-        .requisito-item {
-            background: white;
-            padding: 0.75rem;
-            margin: 0.5rem 0;
-            border-radius: 0.5rem;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: start;
-            gap: 0.75rem;
-        }
-        
-        .requisito-numero {
-            background: #2563eb;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        
-        .badge {
+        /* ✨ Animación sutil para el texto alternante */
+        .text-alternante {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
+            width: 100%;
+            text-align: center;
         }
-        
-        .badge-ley {
-            background: #dbeafe;
-            color: #1e40af;
+        .text-alternante .texto {
+            opacity: 1;
+            transition: opacity 0.6s ease-in-out;
+            display: inline-block;
         }
-        
-        .badge-decreto {
-            background: #fef3c7;
-            color: #92400e;
+        .text-alternante .texto.fade-out {
+            opacity: 0;
         }
-        
-        .grid-componentes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
+
+        .section-spd {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-left: 4px solid #2563eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .email-box {
+            background-color: #e0f2fe;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            font-family: 'Poppins', sans-serif;
+            word-break: break-all;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .email-box a {
+            font-weight: 700;
+        }
+        .note-important {
+            background-color: #fef3c7;
+            border: 2px solid #fcd34d;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 0.5rem;
             margin-top: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         .btn-volver-card {
@@ -194,42 +102,87 @@
             gap: 0.5rem;
             color: #4b5563;
             font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s;
             z-index: 10;
             padding: 0.5rem;
         }
-        
         .btn-volver-card:hover {
             color: #1f2937;
             transform: translateX(-2px);
         }
-        
-        @media (max-width: 640px) {
+        .btn-volver-card svg {
+            width: 2rem !important; 
+            height: 2rem !important;
+            display: block !important;
+            flex-shrink: 0 !important;
+        }
+
+        @media (min-width: 376px) and (max-width: 639px) {
+            body {
+                padding-top: 56px;
+            }
+            
             .card-spd {
-                padding: 1rem;
-                margin: 0.5rem;
+                padding: 1.25rem;
+                margin: 0.5rem 0.5rem 1.5rem 0.5rem;
+                border-radius: 0.75rem;
             }
             
-            .modal-content {
-                margin: 0.5rem;
-                max-height: 95vh;
+            .btn-volver-card {
+                top: 0.75rem;
+                right: 0.5rem;
+                font-size: 0.9rem;
+            }
+            .btn-volver-card svg {
+                width: 1.75rem !important;
+                height: 1.75rem !important;
             }
             
-            .modal-header {
-                padding: 1rem;
+            .text-center.mb-6 svg {
+                width: 3.5rem !important;
+                height: 3.5rem !important;
             }
             
-            .modal-body {
-                padding: 1rem;
+            .btn-spd {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+                padding: 0.75rem 1rem;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            body {
+                padding-top: 56px;
             }
             
-            .btn-componente {
-                padding: 0.875rem 1rem;
-                font-size: 0.875rem;
+            .card-spd {
+                padding: 0.75rem;
+                margin: 0.25rem 0.125rem 0.75rem 0.125rem;
             }
             
-            .grid-componentes {
-                grid-template-columns: 1fr;
+            .btn-volver-card {
+                top: 0.5rem;
+                right: 0.5rem;
+                font-size: 0.85rem;
+                padding: 0.4rem;
+            }
+            
+            .btn-volver-card svg {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+            }
+            
+            .text-center.mb-6 svg {
+                width: 3rem !important;
+                height: 3rem !important;
+            }
+            
+            .btn-spd {
+                width: 95%;
+                padding: 0.6rem 0.5rem;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -239,152 +192,131 @@
     <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 h-14 sm:h-16 flex items-center justify-between px-3 sm:px-4 shadow-sm">
         <a href="index.html" class="flex items-center space-x-1 sm:space-x-2">
             <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-8 sm:h-10" loading="lazy">
-            <span class="font-bold text-gray-800 text-sm sm:text-base">OS10 Coquimbo</span>
+            <span class="font-bold text-gray-800 text-sm sm:text-base">  OS10 Coquimbo</span>
         </a>
     </div>
 
     <!-- Contenido principal -->
     <div class="container mx-auto px-1 sm:px-4">
         <div class="card-spd">
-            <!-- Botón volver -->
+            <!-- BOTÓN VOLVER -->
             <a href="index.html" class="btn-volver-card">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-6 h-6">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
                 <span class="hidden sm:inline">Volver</span>
             </a>
             
             <!-- Encabezado -->
-            <div class="text-center mb-6 sm:mb-8 pt-8 sm:pt-4">
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3">
-                    📋 Componentes de Seguridad Privada
+            <div class="text-center mb-6 sm:mb-8 pt-8 sm:pt-10">
+                <div class="flex items-center justify-center space-x-3 mb-3 sm:mb-4">
+                    
+                </div>
+                <h1 class="text-xl sm:text-3xl md:text-3xl font-bold text-gray-800 mb-2 px-2">
+                    ACCESO A LA PAGINA DE LA SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
                 </h1>
-                <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-                    Selecciona un componente para ver sus requisitos completos según la <strong>Ley 21.659</strong> y <strong>Decreto 209</strong>
-                </p>
-                <div class="mt-3 flex flex-wrap justify-center gap-2">
-                    <span class="badge badge-ley">Ley 21.659</span>
-                    <span class="badge badge-decreto">Decreto 209</span>
-                    <span class="badge" style="background:#dcfce7; color:#166534;">Vigente desde 28-Nov-2025</span>
+                <p class="text-base sm:text-lg text-gray-600">Lo que no aparezca en la plataforma de la Subsecretaría de Prevención de Delito (SPD) Lo deben tramitar en el O.S.10 Coquimbo.</p><br>
+                <p class="text-base sm:text-lg text-gray-600">Accede con tu Clave Única</p>
+            </div>
+            
+            <!-- ✨ Botón principal CON ANIMACIÓN -->
+            <div class="text-center mb-6 sm:mb-8">
+                <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd text-sm sm:text-lg">
+                    <span class="text-alternante"><span class="texto" id="texto-spd">ACCEDER A LA PLATAFORMA (SPD)</span></span>
+                </a>
+            </div>
+            
+            <!-- Informativo -->
+            <div class="section-spd">
+                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
+                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Informativo División Seguridad Privada
+                </h2>
+                <p class="mb-3 text-sm sm:text-base text-gray-700">Accede al informativo oficial de la División de Seguridad Privada:</p>
+                <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm sm:text-base">
+                    ¿Donde hacer los trámites?
+                </a><br><br>
+                <a href="https://siac-msp.interior.gob.cl/ingreso" target="_blank" class="btn-spd text-sm sm:text-base">
+                   Dudas, consultas y reclamos SPD
+                </a>
+            </div>
+
+            <!-- Preguntas Frecuentes -->
+            <div class="section-spd">
+                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
+                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Preguntas Frecuentes
+                </h2>
+                <p class="mb-3 text-sm sm:text-base text-gray-700">Encuentra respuestas a las consultas más comunes sobre seguridad privada:</p>
+                <a href="https://segprivada.minsegpublica.gob.cl/preguntas-frecuentes" target="_blank" class="btn-spd text-sm sm:text-base">
+                    Ver Preguntas Frecuentes
+                </a>
+            </div>
+
+            <!-- Contacto por Correo -->
+            <div class="section-spd">
+                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
+                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    Contacto por Correo Electrónico
+                </h2>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base text-gray-700 font-semibold">Si en la plataforma no funciona, enviar a los siguientes correos:</p>
+                
+                <div class="space-y-3 sm:space-y-4">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
+                        <div class="email-box">
+                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
+                                spd-cargadimensionada@minsegpublica.gob.cl
+                            </a>
+                        </div>
+                        <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
+                            <li>Organismos Técnicos de Capacitación (OTEC)</li>
+                            <li>Consultas sobre carga sobredimensionada</li>
+                            <li>Trámites para personas naturales y jurídicas</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
+                        <div class="email-box">
+                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
+                               spd-capacitacionessp@minsegpublica.gob.cl
+                            </a>
+                        </div>
+                        <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
+                            <li>Consultas sobre planes de capacitación</li>
+                            <li>Programas de formación en seguridad privada</li>
+                            <li>Información sobre cursos disponibles</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Grid de componentes -->
-            <div class="grid-componentes">
-                <!-- Vigilante Privado -->
-                <button class="btn-componente" onclick="mostrarRequisitos('vigilante')">
-                    <span>🔫 Vigilante Privado</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            <!-- Nota Importante -->
+            <div class="note-important">
+                <div class="flex items-start space-x-2 sm:space-x-3">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 flex-shrink-0 mt-0.5 sm:mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                </button>
-
-                <!-- Jefe de Seguridad -->
-                <button class="btn-componente" onclick="mostrarRequisitos('jefe')">
-                    <span>👔 Jefe de Seguridad</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Encargado de Seguridad -->
-                <button class="btn-componente" onclick="mostrarRequisitos('encargado')">
-                    <span>📍 Encargado de Seguridad</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Guardia de Seguridad -->
-                <button class="btn-componente" onclick="mostrarRequisitos('guardia')">
-                    <span>🛡️ Guardia de Seguridad</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Supervisor -->
-                <button class="btn-componente" onclick="mostrarRequisitos('supervisor')">
-                    <span>👁️ Supervisor de Seguridad</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Asesor -->
-                <button class="btn-componente" onclick="mostrarRequisitos('asesor')">
-                    <span>💼 Asesor de Seguridad</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Capacitador -->
-                <button class="btn-componente" onclick="mostrarRequisitos('capacitador')">
-                    <span>🎓 Capacitador</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Portero/Nochero/Rondín -->
-                <button class="btn-componente" onclick="mostrarRequisitos('portero')">
-                    <span>🚪 Portero / Nochero / Rondín</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Encargado de Armas -->
-                <button class="btn-componente" onclick="mostrarRequisitos('encargadoArmas')">
-                    <span>🔐 Encargado de Armas</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Técnico en Seguridad -->
-                <button class="btn-componente" onclick="mostrarRequisitos('tecnico')">
-                    <span>🔧 Técnico en Seguridad</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Operador de Cámaras -->
-                <button class="btn-componente" onclick="mostrarRequisitos('operador')">
-                    <span>📹 Operador de Cámaras</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Instalador Técnico -->
-                <button class="btn-componente" onclick="mostrarRequisitos('instalador')">
-                    <span>⚙️ Instalador Técnico</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para mostrar requisitos -->
-    <div id="modalRequisitos" class="modal-requisitos">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="flex justify-between items-center">
-                    <h2 id="modalTitulo" class="text-xl sm:text-2xl font-bold"></h2>
-                    <button class="btn-cerrar" onclick="cerrarModal()">✕ Cerrar</button>
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-1">ℹ️ Información Importante</h3>
+                        <p class="text-xs sm:text-sm text-gray-700">
+                            ➢ Lo que no aparezca en la plataforma de la Subsecretaría de Prevención de Delito (SPD) <strong>Lo deben tramitar en el O.S.10 Coquimbo.</strong><br> 
+                            ➢ En la plataforma de la SPD <strong>no es necesario el Certificado de Idoneidad Cívica</strong>, 
+                            ya que ellos mantienen esa información actualizada en su sistema.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="modal-body" id="modalContenido">
-                <!-- El contenido se cargará dinámicamente -->
-            </div>
         </div>
     </div>
-
+    
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300 py-4 sm:py-6 mt-8 sm:mt-12">
         <div class="container mx-auto px-4 text-center">
@@ -392,320 +324,36 @@
             <p class="text-xs mt-1 sm:mt-2">Desarrollado por Daniel Figueroa Chacama - Ingeniero en Informática</p>
         </div>
     </footer>
-
+    
+    <!-- ✨ SCRIPT PARA ANIMACIÓN -->
     <script>
-        // Requisitos generales del Artículo 46
-        const requisitosGenerales = [
-            "Ser mayor de 18 años",
-            "Tener condiciones físicas y psíquicas compatibles con las labores a desempeñar (certificado médico y psicológico del Registro Nacional de Prestadores)",
-            "Haber cursado educación media completa o su equivalente",
-            "No haber sido condenado por crimen o simple delito",
-            "No haber sido condenado por actos de violencia intrafamiliar (Ley N° 20.066)",
-            "No estar acusado por delitos de: Ley de Control de Armas (17.798), Tráfico de Drogas (20.000), Terrorismo (18.314), Lavado de Activos (19.913), Seguridad del Estado (12.927), VIF (20.066), ni delitos sexuales o de crimen organizado del Código Penal",
-            "No haber dejado de pertenecer a FF.AA., Fuerzas de Orden y Seguridad Pública o Gendarmería por sanciones o medidas disciplinarias",
-            "No haber sido sancionado en los últimos 5 años por infracciones gravísimas o graves de la Ley 21.659",
-            "No haber sido sancionado conforme a la Ley N° 19.327 (Ley del Fútbol)",
-            "No haber ejercido funciones de supervisión, control o fiscalización de seguridad privada como integrante de Carabineros en los últimos 2 años",
-            "Aprobar los exámenes de capacitación correspondientes",
-            "Comprender y comunicarse en idioma castellano",
-            "Si es extranjero: contar con residencia definitiva (Ley N° 21.325)"
-        ];
-
-        // Base de datos de requisitos por componente
-        const requisitosComponentes = {
-            vigilante: {
-                titulo: "🔫 VIGILANTE PRIVADO",
-                definicion: "Persona que realiza labores de protección a personas y bienes dentro de un recinto o área determinada, autorizado para portar armas, credencial y uniforme.",
-                ley: "Arts. 25 y 26 Ley 21.659",
-                decreto: "Arts. 26 y 27 Decreto 209",
-                especificos: [
-                    "Haber cumplido con el DS N° 83/2007 del Ministerio de Defensa sobre Control de Armas (certificado de la DGMN)",
-                    "No haber sido declarado con invalidez de 2ª o 3ª clase por CAPREDENA o DIPRECA",
-                    "Curso de FORMACIÓN: 100 horas pedagógicas (se rinde una sola vez)",
-                    "Curso de PERFECCIONAMIENTO: 40 horas cada 2 años"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 1 AÑO",
-                    "Debe portar arma de fuego durante la jornada de trabajo",
-                    "Solo puede portar armas dentro del recinto o área autorizada",
-                    "Certificación válida por 2 años"
-                ]
-            },
-            jefe: {
-                titulo: "👔 JEFE DE SEGURIDAD",
-                definicion: "Responsable de la organización, dirección, administración, control y gestión de recursos destinados a la protección de personas y bienes. Coordina con autoridad fiscalizadora y SPD.",
-                ley: "Art. 23 Ley 21.659",
-                decreto: "Arts. 23 y 24 Decreto 209",
-                especificos: [
-                    "Título profesional de mínimo 8 semestres (educación superior estatal o reconocida)",
-                    "Curso de especialidad en seguridad o materias afines de mínimo 400 horas académicas",
-                    "No haber sido declarado con invalidez de 2ª o 3ª clase por CAPREDENA o DIPRECA",
-                    "Si trabaja en entidad obligada con sistema de vigilancia privada: debe cumplir requisitos de vigilante privado"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "Ex-integrantes de FF.AA. o Carabineros pueden eximirse de algunas materias según malla curricular",
-                    "Se reconocen cursos previos de seguridad privada para completar las 400 horas"
-                ]
-            },
-            encargado: {
-                titulo: "📍 ENCARGADO DE SEGURIDAD",
-                definicion: "Persona designada para cada recinto, oficina, agencia o sucursal que vela por el cumplimiento de las medidas del estudio de seguridad, coordinando con jefe de seguridad y autoridad fiscalizadora.",
-                ley: "Art. 24 Ley 21.659",
-                decreto: "Art. 25 Decreto 209",
-                especificos: [
-                    "Cumplir todos los mismos requisitos que los vigilantes privados",
-                    "Curso relacionado con seguridad o materias afines de mínimo 120 horas académicas"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "Se relaciona con la autoridad fiscalizadora para efectos de la ley"
-                ]
-            },
-            guardia: {
-                titulo: "🛡️ GUARDIA DE SEGURIDAD",
-                definicion: "Persona que realiza labores de protección a personas y bienes dentro de recinto o área determinada, SIN autorización para portar armas de fuego. Debe usar uniforme y credencial.",
-                ley: "Arts. 50, 51, 52, 53 y 54 Ley 21.659",
-                decreto: "Arts. 87, 88 y 89 Decreto 209",
-                especificos: [
-                    "Curso de FORMACIÓN: 90 horas pedagógicas (se rinde una sola vez)",
-                    "Curso de PERFECCIONAMIENTO: 36 horas cada 4 años (entidades no obligadas)",
-                    "Curso de ESPECIALIZACIÓN: 36 horas cada 4 años (nivel riesgo medio o alto)"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 2 AÑOS",
-                    "PROHIBICIÓN: NO puede portar armas de fuego (Art. 56 Ley 21.659)",
-                    "Puede usar elementos defensivos autorizados por SPD (no armas de fuego)",
-                    "Debe usar uniforme color negro según especificaciones del Decreto 209"
-                ]
-            },
-            supervisor: {
-                titulo: "👁️ SUPERVISOR DE SEGURIDAD PRIVADA",
-                definicion: "Persona que efectúa labores de supervigilancia y control de recursos humanos, materiales, tecnológicos o procedimientos destinados a la protección de personas y bienes.",
-                ley: "No tiene artículo específico en Ley 21.659",
-                decreto: "Art. 108 Decreto 209",
-                especificos: [
-                    "OPCIÓN 1: Curso de supervisión y control de 120 horas",
-                    "OPCIÓN 2: Si tiene curso de guardias (90h), requiere 30 horas adicionales de supervisión",
-                    "OPCIÓN 3: Si tiene curso de vigilantes (100h), requiere 20 horas adicionales de supervisión",
-                    "OPCIÓN 4: Si tiene título técnico (4 semestres mín.) o profesional (8 semestres mín.), requiere 20 horas de supervisión",
-                    "IMPORTANTE: Si trabaja en entidad obligada con sistema vigilancia privada, debe cumplir requisitos de vigilante privado"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "Los cursos deben haberse aprobado dentro de los 4 años anteriores a la postulación"
-                ]
-            },
-            asesor: {
-                titulo: "💼 ASESOR DE SEGURIDAD",
-                definicion: "Persona natural que asesora sobre seguridad privada, propone medidas para neutralizar vulnerabilidades. Puede elaborar estudios y planes de seguridad.",
-                ley: "No tiene artículo específico en Ley 21.659",
-                decreto: "Art. 109 Decreto 209",
-                especificos: [
-                    "Título profesional relacionado con el área de seguridad o materias afines",
-                    "Diplomado en seguridad privada o gestión de seguridad empresarial de mínimo 400 horas académicas (educación superior reconocida)"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada",
-                    "Puede elaborar estudios de seguridad y planes de seguridad para entidades obligadas"
-                ]
-            },
-            capacitador: {
-                titulo: "🎓 CAPACITADOR",
-                definicion: "Profesionales y técnicos autorizados por SPD dedicados a la instrucción, formación, capacitación y perfeccionamiento de vigilantes privados, guardias, porteros, nocheros, rondines y conserjes.",
-                ley: "Art. 59 Ley 21.659",
-                decreto: "Arts. 104 y 105 Decreto 209",
-                especificos: [
-                    "Nivel de educación profesional y técnico en materias de seguridad privada según asignatura a impartir",
-                    "Diplomado en seguridad privada o gestión de seguridad empresarial (salvo excepciones por asignatura específica)",
-                    "Requisitos varían según materia: abogados para legislación, profesionales de salud para primeros auxilios, etc."
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada",
-                    "Los exámenes de capacitación finalizan ante Carabineros de Chile",
-                    "La certificación la otorga la Subsecretaría de Prevención del Delito"
-                ]
-            },
-            portero: {
-                titulo: "🚪 PORTERO / NOCHERO / RONDÍN",
-                definicion: "Personas que cumplen funciones de seguridad privada en recintos. Capacitación especializada y diferenciada de guardias de seguridad.",
-                ley: "Arts. 55 y 56 Ley 21.659",
-                decreto: "Arts. 97, 98 y 99 Decreto 209",
-                especificos: [
-                    "Curso de FORMACIÓN: 60 horas pedagógicas (se rinde una sola vez)",
-                    "Curso de PERFECCIONAMIENTO: 30 horas cada 4 años"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "PROHIBICIÓN: NO pueden usar armas de fuego (Art. 56 Ley 21.659)",
-                    "Seguro de vida obligatorio: mínimo 132 UF (contratado por empleador)",
-                    "Los conserjes pueden someterse voluntariamente a este régimen"
-                ]
-            },
-            encargadoArmas: {
-                titulo: "🔐 ENCARGADO DE ARMAS",
-                definicion: "Persona que mantiene a resguardo las armas de fuego de la entidad obligada y realiza entrega/recepción a vigilantes privados al inicio/término de jornada.",
-                ley: "Art. 26 (inciso 5°) Ley 21.659",
-                decreto: "Art. 30 Decreto 209",
-                especificos: [
-                    "Cumplir todos los mismos requisitos establecidos para los vigilantes privados"
-                ],
-                adicional: [
-                    "Puede ser la misma persona que el encargado de seguridad",
-                    "Responsable del registro diario de armas según Art. 104 del DS 83/2007",
-                    "Debe guardar armas y municiones en lugar cerrado con garantías de seguridad"
-                ]
-            },
-            tecnico: {
-                titulo: "🔧 TÉCNICO EN SEGURIDAD PRIVADA",
-                definicion: "Persona que proporciona, instala, mantiene, repara y/o controla equipos, dispositivos y sistemas de seguridad electrónica conectados a centrales receptoras.",
-                ley: "No tiene artículo específico en Ley 21.659",
-                decreto: "Art. 110 Decreto 209",
-                especificos: [
-                    "Certificado de título profesional o técnico en la materia de seguridad electrónica"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "Trabaja con sistemas conectados a centrales receptoras de alarmas",
-                    "Autorizado por la Subsecretaría de Prevención del Delito"
-                ]
-            },
-            operador: {
-                titulo: "📹 OPERADOR DE CÁMARAS DE TELEVIGILANCIA Y ALARMAS",
-                definicion: "Persona que opera en centros de control o videovigilancia mediante CCTV o alarmas para detectar riesgos y coordinar con autoridades.",
-                ley: "No tiene artículo específico en Ley 21.659",
-                decreto: "Art. 111 Decreto 209",
-                especificos: [
-                    "Certificado de capacitación en el área de televigilancia y alarmas"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "Trabaja en centros de control o videovigilancia",
-                    "Coordina con autoridad policial para neutralizar amenazas"
-                ]
-            },
-            instalador: {
-                titulo: "⚙️ INSTALADOR TÉCNICO",
-                definicion: "Persona que instala sistemas de CCTV y/o alarmas para el funcionamiento de instalaciones de seguridad.",
-                ley: "No tiene artículo específico en Ley 21.659",
-                decreto: "Art. 112 Decreto 209",
-                especificos: [
-                    "Certificado de capacitación en el área de instalación de sistemas de seguridad"
-                ],
-                adicional: [
-                    "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
-                    "Instala sistemas de circuito cerrado de televisión y alarmas",
-                    "Autorizado por la Subsecretaría de Prevención del Delito"
-                ]
-            }
-        };
-
-        function mostrarRequisitos(tipo) {
-            const modal = document.getElementById('modalRequisitos');
-            const titulo = document.getElementById('modalTitulo');
-            const contenido = document.getElementById('modalContenido');
-            
-            const data = requisitosComponentes[tipo];
-            
-            titulo.textContent = data.titulo;
-            
-            let html = `
-                <div class="mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                    <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500">${data.definicion}</p>
-                </div>
-                
-                <div class="mb-4 flex flex-wrap gap-2">
-                    <span class="badge badge-ley">${data.ley}</span>
-                    <span class="badge badge-decreto">${data.decreto}</span>
-                </div>
-                
-                <div class="requisito-section">
-                    <h3 class="text-lg font-bold text-gray-800 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659)</h3>
-                    <p class="text-sm text-gray-600 mb-3 italic">Estos requisitos aplican a TODAS las personas naturales que ejercen funciones de seguridad privada:</p>
-            `;
-            
-            requisitosGenerales.forEach((req, index) => {
-                html += `
-                    <div class="requisito-item">
-                        <div class="requisito-numero">${index + 1}</div>
-                        <div class="flex-1 text-sm text-gray-700">${req}</div>
-                    </div>
-                `;
-            });
-            
-            html += `</div>`;
-            
-            if (data.especificos && data.especificos.length > 0) {
-                html += `
-                    <div class="requisito-section mt-4">
-                        <h3 class="text-lg font-bold text-gray-800 mb-3">🎯 REQUISITOS ESPECÍFICOS</h3>
-                `;
-                
-                data.especificos.forEach((req, index) => {
-                    html += `
-                        <div class="requisito-item">
-                            <div class="requisito-numero" style="background:#f59e0b;">${index + 1}</div>
-                            <div class="flex-1 text-sm text-gray-700"><strong>${req}</strong></div>
-                        </div>
-                    `;
-                });
-                
-                html += `</div>`;
+        (function() {
+            const textoElement = document.getElementById('texto-spd');
+            if (!textoElement) {
+                console.error('No se encontró el elemento texto-spd');
+                return;
             }
             
-            if (data.adicional && data.adicional.length > 0) {
-                html += `
-                    <div class="requisito-section mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                        <h3 class="text-lg font-bold text-gray-800 mb-3">ℹ️ INFORMACIÓN ADICIONAL</h3>
-                `;
+            const textos = ['ACCEDER A LA PLATAFORMA (SPD)', 'SUBSECRETARÍA DE PREVENCIÓN DEL DELITO'];
+            let indiceActual = 0;
+            
+            function alternarTexto() {
+                // Fade out
+                textoElement.classList.add('fade-out');
                 
-                data.adicional.forEach((info) => {
-                    html += `
-                        <div class="requisito-item" style="background:#fefce8;">
-                            <div class="text-2xl">💡</div>
-                            <div class="flex-1 text-sm text-gray-700">${info}</div>
-                        </div>
-                    `;
-                });
-                
-                html += `</div>`;
+                // Después de 600ms cambiar el texto
+                setTimeout(function() {
+                    indiceActual = (indiceActual + 1) % textos.length;
+                    textoElement.textContent = textos[indiceActual];
+                    
+                    // Fade in
+                    textoElement.classList.remove('fade-out');
+                }, 600);
             }
             
-            html += `
-                <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                    <p class="text-sm text-gray-700">
-                        <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                    </p>
-                </div>
-            `;
-            
-            contenido.innerHTML = html;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function cerrarModal() {
-            const modal = document.getElementById('modalRequisitos');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Cerrar modal al hacer clic fuera del contenido
-        document.getElementById('modalRequisitos').addEventListener('click', function(e) {
-            if (e.target === this) {
-                cerrarModal();
-            }
-        });
-
-        // Cerrar modal con tecla ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                cerrarModal();
-            }
-        });
+            // Alternar cada 3 segundos
+            setInterval(alternarTexto, 3000);
+        })();
     </script>
 </body>
 </html>
