@@ -17,6 +17,7 @@
             background-position: center;
             background-attachment: fixed;
         }
+        
         .card-spd {
             background-color: white;
             border-radius: 1rem;
@@ -26,71 +27,101 @@
             max-width: 900px;
             position: relative;
         }
+        
         .btn-spd {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.75rem 1.5rem;
-            background-color: #2563eb;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             text-align: center;
-            min-height: 3rem;
-        }
-        .btn-spd:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            width: 100%;
+            max-width: 400px;
         }
         
-        /* ✨ Animación sutil para el texto alternante */
-        .text-alternante {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
+        .btn-spd:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
         }
-        .text-alternante .texto {
-            opacity: 1;
-            transition: opacity 0.6s ease-in-out;
-            display: inline-block;
+        
+        .btn-spd.btn-green {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
         }
-        .text-alternante .texto.fade-out {
-            opacity: 0;
+        
+        .btn-spd.btn-green:hover {
+            background: linear-gradient(135deg, #15803d 0%, #166534 100%);
         }
-
+        
         .section-spd {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             padding: 1.5rem;
-            background-color: #f8fafc;
+            background-color: #ffffff;
             border-radius: 0.75rem;
-            border: 2px solid #cbd5e1;
-            border-left: 4px solid #2563eb;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .section-icon {
+            width: 2rem;
+            height: 2rem;
+            min-width: 2rem;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #2563eb;
+        }
+        
         .email-box {
-            background-color: #e0f2fe;
+            background-color: #f0f9ff;
             padding: 1rem;
             border-radius: 0.5rem;
-            margin: 0.5rem 0;
-            font-family: 'Poppins', sans-serif;
-            word-break: break-all;
-            font-size: 1rem;
-            font-weight: 700;
+            margin: 0.75rem 0;
+            border: 1px solid #bfdbfe;
         }
+        
         .email-box a {
-            font-weight: 700;
+            color: #1e40af;
+            font-weight: 600;
+            word-break: break-all;
+            text-decoration: none;
         }
+        
+        .email-box a:hover {
+            color: #1e3a8a;
+            text-decoration: underline;
+        }
+        
         .note-important {
             background-color: #fef3c7;
-            border: 2px solid #fcd34d;
+            border: 1px solid #fcd34d;
             border-left: 4px solid #f59e0b;
             padding: 1rem;
             border-radius: 0.5rem;
             margin-top: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         .btn-volver-card {
@@ -100,89 +131,86 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #4b5563;
+            color: #6b7280;
             font-weight: 600;
-            font-size: 1rem;
             transition: all 0.3s;
             z-index: 10;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: #f3f4f6;
         }
+        
         .btn-volver-card:hover {
             color: #1f2937;
-            transform: translateX(-2px);
+            background: #e5e7eb;
         }
-        .btn-volver-card svg {
-            width: 2rem !important; 
-            height: 2rem !important;
-            display: block !important;
-            flex-shrink: 0 !important;
+        
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.875rem;
+            background: #f0f9ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            color: #1e40af;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        @media (min-width: 376px) and (max-width: 639px) {
-            body {
-                padding-top: 56px;
-            }
-            
+        /* Responsive */
+        @media (max-width: 768px) {
             .card-spd {
                 padding: 1.25rem;
-                margin: 0.5rem 0.5rem 1.5rem 0.5rem;
-                border-radius: 0.75rem;
+                margin: 0.75rem;
             }
             
-            .btn-volver-card {
-                top: 0.75rem;
-                right: 0.5rem;
-                font-size: 0.9rem;
-            }
-            .btn-volver-card svg {
-                width: 1.75rem !important;
-                height: 1.75rem !important;
+            .section-spd {
+                padding: 1.25rem;
             }
             
-            .text-center.mb-6 svg {
-                width: 3.5rem !important;
-                height: 3.5rem !important;
+            .section-title {
+                font-size: 1.125rem;
             }
             
             .btn-spd {
-                width: 100%;
-                max-width: 350px;
-                margin: 0 auto;
-                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+                padding: 0.75rem 1.25rem;
+            }
+            
+            .btn-volver-card {
+                padding: 0.5rem;
+            }
+            
+            .btn-volver-card span {
+                display: none;
             }
         }
         
         @media (max-width: 375px) {
-            body {
-                padding-top: 56px;
-            }
-            
             .card-spd {
-                padding: 0.75rem;
-                margin: 0.25rem 0.125rem 0.75rem 0.125rem;
+                padding: 1rem;
+                margin: 0.5rem;
             }
             
-            .btn-volver-card {
-                top: 0.5rem;
-                right: 0.5rem;
-                font-size: 0.85rem;
-                padding: 0.4rem;
+            .section-spd {
+                padding: 1rem;
             }
             
-            .btn-volver-card svg {
-                width: 1.5rem !important;
-                height: 1.5rem !important;
+            .section-title {
+                font-size: 1rem;
             }
             
-            .text-center.mb-6 svg {
-                width: 3rem !important;
-                height: 3rem !important;
+            .section-icon {
+                width: 1.75rem;
+                height: 1.75rem;
+                min-width: 1.75rem;
             }
             
-            .btn-spd {
-                width: 95%;
-                padding: 0.6rem 0.5rem;
-                font-size: 0.75rem;
+            .section-icon svg {
+                width: 1rem;
+                height: 1rem;
             }
         }
     </style>
@@ -192,7 +220,7 @@
     <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 h-14 sm:h-16 flex items-center justify-between px-3 sm:px-4 shadow-sm">
         <a href="index.html" class="flex items-center space-x-1 sm:space-x-2">
             <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-8 sm:h-10" loading="lazy">
-            <span class="font-bold text-gray-800 text-sm sm:text-base">  OS10 Coquimbo</span>
+            <span class="font-bold text-gray-800 text-sm sm:text-base">OS10 Coquimbo</span>
         </a>
     </div>
 
@@ -201,98 +229,124 @@
         <div class="card-spd">
             <!-- BOTÓN VOLVER -->
             <a href="index.html" class="btn-volver-card">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
-                <span class="hidden sm:inline">Volver</span>
+                <span>Volver</span>
             </a>
             
             <!-- Encabezado -->
-            <div class="text-center mb-6 sm:mb-8 pt-8 sm:pt-10">
-                <div class="flex items-center justify-center space-x-3 mb-3 sm:mb-4">
-                    
-                </div>
-                <h1 class="text-xl sm:text-3xl md:text-3xl font-bold text-gray-800 mb-2 px-2">
-                    ACCESO A LA PAGINA DE LA SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
+            <div class="text-center mb-8 pt-12 sm:pt-4">
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
+                    Subsecretaría de Prevención del Delito
                 </h1>
-                <p class="text-base sm:text-lg text-gray-600">Lo que no aparezca en la plataforma de la Subsecretaría de Prevención de Delito (SPD) Lo deben tramitar en el O.S.10 Coquimbo.</p><br>
-                <p class="text-base sm:text-lg text-gray-600">Accede con tu Clave Única</p>
-            </div>
-            
-            <!-- ✨ Botón principal CON ANIMACIÓN -->
-            <div class="text-center mb-6 sm:mb-8">
-                <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd text-sm sm:text-lg">
-                    <span class="text-alternante"><span class="texto" id="texto-spd">ACCEDER A LA PLATAFORMA (SPD)</span></span>
-                </a>
+                <p class="text-sm sm:text-base text-gray-600 mb-4">
+                    Accede a la plataforma de Seguridad Privada y consulta información relevante
+                </p>
+                <div class="flex justify-center">
+                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd">
+                        Acceder a la Plataforma SPD
+                    </a>
+                </div>
             </div>
             
             <!-- Informativo -->
             <div class="section-spd">
-                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
-                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    Informativo División Seguridad Privada
-                </h2>
-                <p class="mb-3 text-sm sm:text-base text-gray-700">Accede al informativo oficial de la División de Seguridad Privada:</p>
-                <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm sm:text-base">
-                    ¿Donde hacer los trámites?
-                </a><br><br>
-                <a href="https://siac-msp.interior.gob.cl/ingreso" target="_blank" class="btn-spd text-sm sm:text-base">
-                   Dudas, consultas y reclamos SPD
-                </a>
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <span>Información y Trámites</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    Consulta el informativo oficial y realiza consultas sobre trámites:
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm">
+                        📄 ¿Dónde hacer los trámites?
+                    </a>
+                    <a href="https://siac-msp.interior.gob.cl/ingreso" target="_blank" class="btn-spd text-sm">
+                        💬 Dudas, consultas y reclamos
+                    </a>
+                </div>
             </div>
 
             <!-- Preguntas Frecuentes -->
             <div class="section-spd">
-                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
-                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    Preguntas Frecuentes
-                </h2>
-                <p class="mb-3 text-sm sm:text-base text-gray-700">Encuentra respuestas a las consultas más comunes sobre seguridad privada:</p>
-                <a href="https://segprivada.minsegpublica.gob.cl/preguntas-frecuentes" target="_blank" class="btn-spd text-sm sm:text-base">
-                    Ver Preguntas Frecuentes
-                </a>
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <span>Preguntas Frecuentes</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    Encuentra respuestas a las consultas más comunes sobre seguridad privada:
+                </p>
+                <div class="flex justify-center">
+                    <a href="https://segprivada.minsegpublica.gob.cl/preguntas-frecuentes" target="_blank" class="btn-spd text-sm">
+                        Ver Preguntas Frecuentes
+                    </a>
+                </div>
             </div>
 
             <!-- Componentes de Seguridad Privada -->
-            <div class="section-spd" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left-color: #2563eb;">
-                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
-                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    📋 Requisitos por Componente
-                </h2>
-                <p class="mb-3 text-sm sm:text-base text-gray-700">Consulta los requisitos completos de cada componente del sistema de seguridad privada según <strong>Ley 21.659</strong> y <strong>Decreto 209</strong>:</p>
-                <a href="componentes-seguridad.html" class="btn-spd text-sm sm:text-base" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);">
-                    🔍 Ver Requisitos por Componente
-                </a>
-                <p class="mt-3 text-xs sm:text-sm text-gray-600 italic">
-                    ✓ Vigilantes Privados &nbsp;•&nbsp; ✓ Jefes de Seguridad &nbsp;•&nbsp; ✓ Guardias &nbsp;•&nbsp; ✓ Supervisores &nbsp;•&nbsp; ✓ Asesores &nbsp;•&nbsp; ✓ Capacitadores y más...
+            <div class="section-spd" style="background: linear-gradient(135deg, #eff6ff 0%, #f9fafb 100%);">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <span>Requisitos por Componente</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                    Consulta los requisitos completos según <strong>Ley 21.659</strong> y <strong>Decreto 209</strong>:
                 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="feature-badge">✓ Vigilantes Privados</span>
+                    <span class="feature-badge">✓ Jefes de Seguridad</span>
+                    <span class="feature-badge">✓ Guardias</span>
+                    <span class="feature-badge">✓ Supervisores</span>
+                    <span class="feature-badge">✓ Asesores</span>
+                    <span class="feature-badge">✓ Capacitadores</span>
+                    <span class="feature-badge">✓ Y más...</span>
+                </div>
+                <div class="flex justify-center">
+                    <a href="componentes-seguridad.html" class="btn-spd btn-green text-sm">
+                        📋 Ver Requisitos por Componente
+                    </a>
+                </div>
             </div>
 
             <!-- Contacto por Correo -->
             <div class="section-spd">
-                <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 flex items-center">
-                    <svg class="w-5 h-5 sm:w-7 sm:h-7 mr-2 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                    Contacto por Correo Electrónico
-                </h2>
-                <p class="mb-3 sm:mb-4 text-sm sm:text-base text-gray-700 font-semibold">Si en la plataforma no funciona, enviar a los siguientes correos:</p>
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <span>Contacto por Correo Electrónico</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-semibold">
+                    Si la plataforma no funciona, contacta por correo:
+                </p>
                 
-                <div class="space-y-3 sm:space-y-4">
+                <div class="space-y-4">
                     <div>
-                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica</h3>
+                        <h3 class="text-sm font-bold text-gray-800 mb-2">
+                            📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
+                        </h3>
                         <div class="email-box">
-                            <a href="mailto:segprivada.otec@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
+                            <a href="mailto:segprivada.otec@minsegpublica.gob.cl">
                                 segprivada.otec@minsegpublica.gob.cl
                             </a>
                         </div>
-                        <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
+                        <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
                             <li>Organismos Técnicos de Capacitación (OTEC)</li>
                             <li>Consultas sobre carga sobredimensionada</li>
                             <li>Trámites para personas naturales y jurídicas</li>
@@ -300,13 +354,15 @@
                     </div>
 
                     <div>
-                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2">🎓 Planes, Programas y Cursos de Capacitación</h3>
+                        <h3 class="text-sm font-bold text-gray-800 mb-2">
+                            🎓 Planes, Programas y Cursos de Capacitación
+                        </h3>
                         <div class="email-box">
-                            <a href="mailto:segprivada.capacitacion@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 break-all">
+                            <a href="mailto:segprivada.capacitacion@minsegpublica.gob.cl">
                                 segprivada.capacitacion@minsegpublica.gob.cl
                             </a>
                         </div>
-                        <ul class="mt-2 ml-4 sm:ml-6 text-xs sm:text-sm text-gray-600 list-disc">
+                        <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
                             <li>Consultas sobre planes de capacitación</li>
                             <li>Programas de formación en seguridad privada</li>
                             <li>Información sobre cursos disponibles</li>
@@ -317,16 +373,15 @@
 
             <!-- Nota Importante -->
             <div class="note-important">
-                <div class="flex items-start space-x-2 sm:space-x-3">
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 flex-shrink-0 mt-0.5 sm:mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <div>
-                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-1">ℹ️ Información Importante</h3>
-                        <p class="text-xs sm:text-sm text-gray-700">
-                            ➢ Lo que no aparezca en la plataforma de la Subsecretaría de Prevención de Delito (SPD) <strong>Lo deben tramitar en el O.S.10 Coquimbo.</strong><br> 
-                            ➢ En la plataforma de la SPD <strong>no es necesario el Certificado de Idoneidad Cívica</strong>, 
-                            ya que ellos mantienen esa información actualizada en su sistema.
+                        <h3 class="text-sm font-bold text-gray-800 mb-2">ℹ️ Información Importante</h3>
+                        <p class="text-xs text-gray-700 space-y-1">
+                            <span class="block">➢ Lo que no aparezca en la plataforma de la SPD debe tramitarse en el <strong>OS10 Coquimbo</strong>.</span>
+                            <span class="block">➢ En la plataforma SPD <strong>no es necesario el Certificado de Idoneidad Cívica</strong>, ya que mantienen esa información actualizada.</span>
                         </p>
                     </div>
                 </div>
@@ -335,44 +390,11 @@
     </div>
     
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-4 sm:py-6 mt-8 sm:mt-12">
+    <footer class="bg-gray-800 text-gray-300 py-4 sm:py-6 mt-8">
         <div class="container mx-auto px-4 text-center">
             <p class="text-xs sm:text-sm">© 2025 OS10 Coquimbo - Prefectura de Coquimbo</p>
             <p class="text-xs mt-1 sm:mt-2">Desarrollado por Daniel Figueroa Chacama - Ingeniero en Informática</p>
         </div>
     </footer>
-    
-    <!-- ✨ SCRIPT PARA ANIMACIÓN -->
-    <script>
-        (function() {
-            const textoElement = document.getElementById('texto-spd');
-            if (!textoElement) {
-                console.error('No se encontró el elemento texto-spd');
-                return;
-            }
-            
-            const textos = ['ACCEDER A LA PLATAFORMA (SPD)', 'SUBSECRETARÍA DE PREVENCIÓN DEL DELITO'];
-            let indiceActual = 0;
-            
-            function alternarTexto() {
-                // Fade out
-                textoElement.classList.add('fade-out');
-                
-                // Después de 600ms cambiar el texto
-                setTimeout(() => {
-                    indiceActual = (indiceActual + 1) % textos.length;
-                    textoElement.textContent = textos[indiceActual];
-                    
-                    // Fade in
-                    setTimeout(() => {
-                        textoElement.classList.remove('fade-out');
-                    }, 50);
-                }, 600);
-            }
-            
-            // Alternar cada 4 segundos
-            setInterval(alternarTexto, 4000);
-        })();
-    </script>
 </body>
 </html>
