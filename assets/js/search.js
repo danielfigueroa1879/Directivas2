@@ -167,7 +167,7 @@ class GlobalSearch {
                 title: 'Reglamento 209',
                 content: 'Reglamentación vigente de seguridad privada',
                 section: 'Leyes y Normativa',
-                action: () => window.open('https://www.leychile.cl/leychile/navegar?i=1213672', '_blank'),
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1213672', '_blank'),
                 keywords: ['reglamento', '209', 'vigente']
             },
 
