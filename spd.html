@@ -42,13 +42,16 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
             width: 100%;
-            max-width: 400px;
         }
         
         .btn-spd:hover {
             background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-spd-centered {
+            max-width: 400px;
         }
         
         .btn-spd.btn-green {
@@ -244,7 +247,7 @@
                     Accede a la plataforma de Seguridad Privada y consulta información relevante
                 </p>
                 <div class="flex justify-center">
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd">
+                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd btn-spd-centered">
                         Acceder a la Plataforma SPD
                     </a>
                 </div>
@@ -263,7 +266,7 @@
                 <p class="text-sm text-gray-600 mb-4">
                     Consulta el informativo oficial y realiza consultas sobre trámites:
                 </p>
-                <div class="flex flex-col sm:flex-row gap-3">
+                <div class="flex flex-col gap-3">
                     <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm">
                         📄 ¿Dónde hacer los trámites?
                     </a>
@@ -286,7 +289,7 @@
                 <p class="text-sm text-gray-600 mb-4">
                     Encuentra respuestas a las consultas más comunes sobre seguridad privada:
                 </p>
-                <div class="flex justify-center">
+                <div>
                     <a href="https://segprivada.minsegpublica.gob.cl/preguntas-frecuentes" target="_blank" class="btn-spd text-sm">
                         Ver Preguntas Frecuentes
                     </a>
@@ -315,7 +318,7 @@
                     <span class="feature-badge">✓ Capacitadores</span>
                     <span class="feature-badge">✓ Y más...</span>
                 </div>
-                <div class="flex justify-center">
+                <div>
                     <a href="componentes-seguridad.html" class="btn-spd btn-green text-sm">
                         📋 Ver Requisitos por Componente
                     </a>
