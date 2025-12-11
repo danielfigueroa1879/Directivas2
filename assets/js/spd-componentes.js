@@ -410,7 +410,7 @@ function renderizarContenidoModal(tipo) {
     
     // Asegurar que el modal esté visible
     modal.style.display = 'flex';
-    modal.style.zIndex = '1000';
+    modal.style.zIndex = '9999';
     modal.classList.add('active');
     
     // Prevenir scroll del body
