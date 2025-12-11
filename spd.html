@@ -1,6 +1,3 @@
-Spd · HTML
-Copiar
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -314,7 +311,7 @@ Copiar
             background-color: rgba(0, 0, 0, 0.75);
             z-index: 1000;
             overflow-y: auto;
-            padding: 0.5rem;
+            padding: 1rem;
             backdrop-filter: blur(4px);
         }
         
@@ -322,15 +319,15 @@ Copiar
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
         
         .modal-content {
             background: white;
             border-radius: 1rem;
-            width: 99%; 
-            max-width: 99%;
+            width: 100%; 
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -484,6 +481,15 @@ Copiar
                 width: 99% !important;
                 max-width: 99% !important;
                 margin: 0 auto;
+            }
+            
+            .modal-requisitos {
+                padding: 0.25rem !important;
+            }
+            
+            .modal-requisitos.active {
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
             }
 
             .modal-body {
