@@ -185,11 +185,8 @@
             align-items: center;
             gap: 1.25rem;
             padding: 1.25rem 1.25rem;
-            
-            /* Fondo azul claro y borde azul oscuro visible */
             background: #eff6ff; 
-            border: 2px solid #1e40af; /* Azul oscuro solicitado */
-            
+            border: 2px solid #1e40af; 
             border-radius: 0.75rem;
             font-weight: 600;
             text-decoration: none;
@@ -201,6 +198,15 @@
             position: relative;
             overflow: hidden;
             margin-bottom: 0.75rem;
+        }
+        
+        /* Modificación para PC: Botones más angostos */
+        @media (min-width: 768px) {
+            .btn-componente {
+                max-width: 600px; /* Ancho máximo en PC */
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
         
         .btn-componente::before {
@@ -218,10 +224,10 @@
 
         .btn-componente:hover {
             transform: translateY(-4px);
-            background: #dbeafe; /* Azul un poco más oscuro al pasar el mouse */
-            border-color: #1e3a8a; /* Borde aún más oscuro */
+            background: #dbeafe; 
+            border-color: #1e3a8a; 
             box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 4px 4px rgba(30, 64, 175, 0.1);
-            color: #1e3a8a; /* Texto azul oscuro */
+            color: #1e3a8a; 
         }
 
         .btn-componente:hover::before {
@@ -241,7 +247,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            color: #1e40af; /* Icono azul */
+            color: #1e40af; 
         }
 
         .btn-componente:hover .btn-componente-icon {
@@ -296,13 +302,13 @@
             padding-bottom: 2rem;
         }
         
-        /* === MODIFICACIÓN: Ancho del Modal al 99% === */
+        /* === MODAL: ESTILO POR DEFECTO (PC / Tablet) === */
         .modal-content {
             background: white;
-            border-radius: 2rem;
-            width: 99%; /* Solicitado: 99% del ancho */
-            max-width: 99%; /* Asegurar que ocupe el 99% */
-            max-height: 95vh;
+            border-radius: 1rem;
+            width: 100%; 
+            max-width: 900px; /* En PC se mantiene acotado como estaba */
+            max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideDown 0.3s ease-out;
@@ -387,7 +393,7 @@
             border-left: 4px solid #2563eb; /* Línea azul */
         }
         
-        /* === MODIFICACIÓN: Contenido optimizado === */
+        /* === Contenido Interno === */
         .requisito-item-componentes {
             display: flex;
             gap: 0.875rem;
@@ -400,10 +406,8 @@
             border: 1px solid #e2e8f0;
             transition: all 0.2s;
             
-            /* Ancho 99% centrado dentro de su contenedor padre */
-            width: 99%;
-            margin-left: auto;
-            margin-right: auto;
+            /* En PC usa el ancho del contenedor padre */
+            width: 100%;
         }
         
         .requisito-item-componentes:hover {
@@ -443,7 +447,7 @@
             animation: fadeIn 0.4s ease-out;
         }
 
-        /* === OPTIMIZACIÓN ESPECÍFICA PARA CELULARES (Responsive) === */
+        /* === OPTIMIZACIÓN ESPECÍFICA PARA CELULARES (Responsive < 768px) === */
         @media (max-width: 768px) {
             .card-spd {
                 padding: 1rem;
@@ -464,9 +468,10 @@
                 padding: 0.75rem;
             }
 
-            /* Los items de requisitos también ocupan 99% dentro del modal */
+            /* Los items de requisitos ocupan 99% dentro del modal en móvil */
             .requisito-item-componentes {
                 width: 99%;
+                margin: 0 auto;
                 padding: 0.75rem;
                 font-size: 0.9rem;
             }
@@ -534,6 +539,8 @@
             .btn-componente {
                 padding: 1rem 1rem;
                 gap: 1rem;
+                /* En móvil sigue ocupando 100% del contenedor padre */
+                width: 100%; 
             }
 
             .btn-componente-icon {
