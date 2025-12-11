@@ -179,16 +179,16 @@
             display: block;
         }
 
-        /* === BOTONES DE COMPONENTES VERDE CLARO === */
+        /* === BOTONES DE COMPONENTES AZUL CLARO === */
         .btn-componente {
             display: flex;
             align-items: center;
             gap: 1.25rem;
             padding: 1.25rem 1.25rem;
             
-            /* Fondo verde claro y borde verde suave */
-            background: #f0fdf4; 
-            border: 2px solid #86efac;
+            /* Fondo azul claro y borde azul oscuro visible */
+            background: #eff6ff; 
+            border: 2px solid #1e40af; /* Azul oscuro solicitado */
             
             border-radius: 0.75rem;
             font-weight: 600;
@@ -210,7 +210,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: #16a34a; /* Verde más fuerte para el indicador */
+            background: #2563eb; /* Azul indicador */
             opacity: 0;
             transform: scaleY(0.5);
             transition: all 0.3s ease;
@@ -218,10 +218,10 @@
 
         .btn-componente:hover {
             transform: translateY(-4px);
-            background: #dcfce7; /* Un poco más oscuro al pasar el mouse */
-            border-color: #22c55e; /* Borde verde intenso al seleccionar */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 4px 4px rgba(22, 163, 74, 0.1);
-            color: #14532d; /* Texto verde oscuro */
+            background: #dbeafe; /* Azul un poco más oscuro al pasar el mouse */
+            border-color: #1e3a8a; /* Borde aún más oscuro */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 4px 4px rgba(30, 64, 175, 0.1);
+            color: #1e3a8a; /* Texto azul oscuro */
         }
 
         .btn-componente:hover::before {
@@ -229,26 +229,26 @@
             transform: scaleY(1);
         }
 
-        /* Icono dentro del botón verde */
+        /* Icono dentro del botón azul */
         .btn-componente-icon {
             width: 44px;
             height: 44px;
             min-width: 44px;
             background: #ffffff;
-            border: 1px solid #bbf7d0;
+            border: 1px solid #bfdbfe;
             border-radius: 0.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            color: #15803d; /* Icono verde */
+            color: #1e40af; /* Icono azul */
         }
 
         .btn-componente:hover .btn-componente-icon {
-            background: #16a34a;
-            border-color: #16a34a;
+            background: #2563eb;
+            border-color: #2563eb;
             color: #ffffff;
-            box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
         }
 
         .btn-componente-icon svg {
@@ -264,12 +264,12 @@
 
         .btn-componente-arrow {
             margin-left: auto;
-            color: #86efac;
+            color: #93c5fd;
             transition: all 0.3s ease;
         }
 
         .btn-componente:hover .btn-componente-arrow {
-            color: #16a34a;
+            color: #2563eb;
             transform: translateX(2px);
         }
 
@@ -296,16 +296,17 @@
             padding-bottom: 2rem;
         }
         
-        /* === MODIFICACIÓN: Ancho del Modal === */
+        /* === MODIFICACIÓN: Ancho del Modal al 99% === */
         .modal-content {
             background: white;
             border-radius: 1rem;
-            width: 98%; /* Por defecto amplio */
-            max-width: 900px; /* En escritorio tiene límite */
+            width: 99%; /* Solicitado: 99% del ancho */
+            max-width: 99%; /* Asegurar que ocupe el 99% */
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideDown 0.3s ease-out;
+            margin: 0 auto;
         }
         
         @keyframes slideDown {
@@ -319,8 +320,9 @@
             }
         }
         
+        /* Modal Header - Tema Azul */
         .modal-header {
-            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); /* Header verde para combinar */
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
             color: white;
             padding: 1.5rem;
             border-radius: 1rem 1rem 0 0;
@@ -382,10 +384,10 @@
             padding: 1.25rem;
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
-            border-left: 4px solid #16a34a; /* Línea verde */
+            border-left: 4px solid #2563eb; /* Línea azul */
         }
         
-        /* === MODIFICACIÓN: Contenido optimizado al 98% === */
+        /* === MODIFICACIÓN: Contenido optimizado === */
         .requisito-item-componentes {
             display: flex;
             gap: 0.875rem;
@@ -398,8 +400,8 @@
             border: 1px solid #e2e8f0;
             transition: all 0.2s;
             
-            /* Ancho 98% centrado dentro de su contenedor padre */
-            width: 98%;
+            /* Ancho 99% centrado dentro de su contenedor padre */
+            width: 99%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -407,14 +409,14 @@
         .requisito-item-componentes:hover {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transform: translateX(2px);
-            border-color: #bbf7d0;
+            border-color: #bfdbfe;
         }
         
         .requisito-numero-componentes {
             min-width: 2rem;
             width: 2rem;
             height: 2rem;
-            background: #16a34a; /* Icono verde */
+            background: #2563eb; /* Icono azul */
             color: white;
             border-radius: 0.5rem;
             display: flex;
@@ -422,7 +424,7 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.875rem;
-            flex-shrink: 0; /* Evita que se aplaste en móviles */
+            flex-shrink: 0;
         }
 
         /* === ANIMACIONES === */
@@ -451,23 +453,22 @@
                 border-radius: 0.5rem;
             }
             
-            /* En celular, el modal ocupa estrictamente el 98% de la pantalla */
+            /* En celular, el modal ocupa estrictamente el 99% de la pantalla */
             .modal-content {
-                width: 98% !important;
-                max-width: 98% !important;
+                width: 99% !important;
+                max-width: 99% !important;
                 margin: 0 auto;
             }
 
-            /* Reducir padding en modal body para dar espacio al contenido del 98% */
             .modal-body {
                 padding: 0.75rem;
             }
 
-            /* Los items de requisitos también ocupan 98% dentro del modal */
+            /* Los items de requisitos también ocupan 99% dentro del modal */
             .requisito-item-componentes {
-                width: 98%;
+                width: 99%;
                 padding: 0.75rem;
-                font-size: 0.9rem; /* Fuente ajustada para pantallas pequeñas */
+                font-size: 0.9rem;
             }
 
             .container {
