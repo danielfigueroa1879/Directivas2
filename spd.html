@@ -28,7 +28,7 @@
             position: relative;
         }
         
-        /* Botones generales (Escritorio y Header) */
+        /* Botones generales (Acciones principales) */
         .btn-spd {
             display: inline-flex;
             align-items: center;
@@ -68,14 +68,13 @@
             background: linear-gradient(135deg, #15803d 0%, #166534 100%);
         }
         
-        /* === CAMBIO 1: LÍNEAS DE SEPARACIÓN MÁS CLARAS === */
+        /* Estilos de Sección */
         .section-spd {
             margin-bottom: 1.5rem;
             padding: 1.5rem;
             background-color: #ffffff;
             border-radius: 0.75rem;
-            /* Color gris mucho más claro y sutil */
-            border: 1px solid #f8fafc; 
+            border: 1px solid #f8fafc; /* Gris muy claro */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); 
         }
         
@@ -182,13 +181,17 @@
             display: block;
         }
 
-        /* === BOTONES DE COMPONENTES AZUL CLARO === */
+        /* === ESTILOS GLOBALES BOTONES COMPONENTES (PC Y MÓVIL) === */
         .btn-componente {
             display: flex;
             align-items: center;
             gap: 1.25rem;
             padding: 1.25rem 1.25rem;
-            background: #eff6ff; 
+            
+            /* FORZADO: Fondo Azul y Letras Blancas */
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+            color: white !important;
+            
             border: 2px solid #1e40af; 
             border-radius: 0.75rem;
             font-weight: 600;
@@ -197,10 +200,19 @@
             cursor: pointer;
             width: 100%;
             text-align: left;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
             margin-bottom: 0;
+        }
+        
+        /* Aseguramos que los textos internos sean blancos o muy claros */
+        .btn-componente .font-bold {
+            color: white !important;
+        }
+        
+        .btn-componente .text-xs {
+            color: #dbeafe !important; /* Azul muy claro para subtítulos */
         }
         
         /* PC: Botones más chicos y compactos */
@@ -226,7 +238,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: #2563eb;
+            background: rgba(255, 255, 255, 0.3);
             opacity: 0;
             transform: scaleY(0.5);
             transition: all 0.3s ease;
@@ -234,10 +246,10 @@
 
         .btn-componente:hover {
             transform: translateY(-4px);
-            background: #dbeafe; 
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
             border-color: #1e3a8a; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 4px 4px rgba(30, 64, 175, 0.1);
-            color: #1e3a8a; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 4px 4px rgba(0,0,0,0.1);
+            color: white !important;
         }
 
         .btn-componente:hover::before {
@@ -245,25 +257,24 @@
             transform: scaleY(1);
         }
 
+        /* Icono dentro del botón */
         .btn-componente-icon {
             width: 44px;
             height: 44px;
             min-width: 44px;
-            background: #ffffff;
-            border: 1px solid #bfdbfe;
+            background: #ffffff; /* Fondo blanco */
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 0.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            color: #1e40af; 
+            color: #2563eb; /* Icono azul */
         }
 
         .btn-componente:hover .btn-componente-icon {
-            background: #2563eb;
-            border-color: #2563eb;
-            color: #ffffff;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+            background: #eff6ff;
+            color: #1e40af;
         }
 
         .btn-componente-icon svg {
@@ -279,12 +290,12 @@
 
         .btn-componente-arrow {
             margin-left: auto;
-            color: #93c5fd;
+            color: #bfdbfe; /* Flecha clara */
             transition: all 0.3s ease;
         }
 
         .btn-componente:hover .btn-componente-arrow {
-            color: #2563eb;
+            color: white;
             transform: translateX(2px);
         }
 
@@ -451,7 +462,7 @@
             animation: fadeIn 0.4s ease-out;
         }
 
-        /* === OPTIMIZACIÓN ESPECÍFICA PARA CELULARES (Responsive < 768px) === */
+        /* === RESPONSIVE (MÓVIL) === */
         @media (max-width: 768px) {
             .card-spd {
                 padding: 1rem;
@@ -495,17 +506,15 @@
                 font-size: 1.125rem;
             }
             
-            /* === CAMBIO 2: BOTONES PEQUEÑOS Y ALINEADOS A LA IZQUIERDA EN MÓVIL === */
-            /* Aplica solo a botones dentro de las secciones informativas */
+            /* Botones de información pequeños y a la izquierda en móvil */
             .section-spd .btn-spd:not(.btn-green) {
                 width: auto !important;
                 min-width: 0 !important;
-                max-width: 60%; /* Mitad del tamaño aprox */
+                max-width: 60%;
                 padding: 0.75rem 1rem;
                 font-size: 0.8rem;
-                margin-left: 0; /* Alinear a la izquierda */
+                margin-left: 0;
                 margin-right: auto;
-                /* Color azul más claro */
                 background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); 
             }
             
@@ -545,6 +554,7 @@
                 height: 1rem;
             }
 
+            /* En móvil los botones de componentes ocupan casi todo el ancho pero centrados */
             .btn-componente {
                 padding: 1rem 1rem;
                 gap: 1rem;
@@ -565,7 +575,7 @@
             }
         }
 
-        /* Responsive para móviles pequeños (hasta 480px) */
+        /* Responsive extra pequeño */
         @media (max-width: 480px) {
             .card-spd {
                 padding: 0.75rem;
@@ -603,7 +613,7 @@
             }
         }
 
-        /* Responsive para móviles medianos (481px - 640px) */
+        /* Tablets y móviles grandes */
         @media (min-width: 481px) and (max-width: 640px) {
             .card-spd {
                 width: 96%;
@@ -611,7 +621,6 @@
             }
         }
 
-        /* Responsive para móviles grandes (641px - 768px) */
         @media (min-width: 641px) and (max-width: 768px) {
             .card-spd {
                 width: 94%;
@@ -669,7 +678,7 @@
                 <p class="text-sm text-gray-600 mb-4">
                     Consulta el informativo oficial y realiza consultas sobre trámites:
                 </p>
-                <!-- Añadido items-start para alinear a la izquierda en móvil -->
+                <!-- Items alineados a la izquierda en móvil -->
                 <div class="flex flex-col gap-3 items-start w-full">
                     <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm">
                         📄 ¿Dónde hacer los trámites?
@@ -815,7 +824,7 @@
                 </p>
             </div>
 
-            <!-- LISTA DE COMPONENTES: AHORA EN GRID 2 COLUMNAS PARA PC -->
+            <!-- LISTA DE COMPONENTES: GRID 2 COLUMNAS PARA PC -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <button onclick="mostrarRequisitos('vigilante')" class="btn-componente">
                     <div class="btn-componente-icon">
@@ -974,7 +983,7 @@
                 <button onclick="mostrarRequisitos('tecnico')" class="btn-componente">
                     <div class="btn-componente-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
                     </div>
@@ -1047,6 +1056,7 @@
             <p class="text-sm">&copy; 2024 OS10 Coquimbo - Dirección de Seguridad Ciudadana</p>
         </div>
     </footer>
+
     <!-- JAVASCRIPT INTEGRADO -->
     <script src="assets/js/spd-componentes.js"></script>
 </body>
