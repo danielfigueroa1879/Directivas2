@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#ffffff"/>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -16,6 +16,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-color: #f3f4f6; /* Fallback color */
         }
         
         .card-spd {
@@ -24,7 +25,8 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin: 1rem auto 2rem auto;
-            max-width: 900px;
+            /* MODIFICADO: Aumentado a 1100px para que quepan bien las 3 columnas */
+            max-width: 1100px; 
             position: relative;
         }
         
@@ -68,13 +70,12 @@
             background: linear-gradient(135deg, #15803d 0%, #166534 100%);
         }
         
-        /* === MODIFICACIÓN: LÍNEAS DE SEPARACIÓN MÁS VISIBLES (PC Y MÓVIL) === */
+        /* === LÍNEAS DE SEPARACIÓN === */
         .section-spd {
             margin-bottom: 1.5rem;
             padding: 1.5rem;
             background-color: #ffffff;
             border-radius: 0.75rem;
-            /* Borde más grueso (2px) y gris visible (#cbd5e1) para todas las vistas */
             border: 2px solid #cbd5e1; 
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
         }
@@ -182,100 +183,109 @@
             display: block;
         }
 
-        /* === ESTILOS GLOBALES BOTONES COMPONENTES (PC Y MÓVIL) === */
+        /* === ESTILOS GLOBALES BOTONES COMPONENTES (PC Y MÓVIL) - ESTILO MODERNIZADO === */
         .btn-componente {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
-            padding: 1.25rem 1.25rem;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
             
-            /* FORZADO: Fondo Azul y Letras Blancas */
-            background:  #a0b2be !important;
-            color: rgb(1, 37, 78) !important;
+            /* ESTILO BASE: Blanco con borde gris claro */
+            background: #ffffff;
+            color: #1e293b;
             
-            border: 2px solid #1e40af; 
-            border-radius: 0.75rem;
-            font-weight: 600;
+            border: 1px solid #e2e8f0; /* Contorno gris claro */
+            
+            /* MODIFICADO: Bordes mucho más redondos (antes 0.75rem) */
+            border-radius: 1.5rem; 
+            
+            font-weight: 500;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             width: 100%;
             text-align: left;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            /* Sombras Modernas (Suaves) */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            
             position: relative;
             overflow: hidden;
             margin-bottom: 0;
+            
+            /* Asegurar que la altura sea consistente para las 3 columnas */
+            min-height: 100px;
         }
-        
-        /* Aseguramos que los textos internos sean blancos o muy claros */
+
+        /* TÍTULO PRINCIPAL DEL BOTÓN */
         .btn-componente .font-bold {
-            color: white !important;
+            color: #0f172a !important; /* Texto casi negro por defecto */
+            font-weight: 600;
+            font-size: 0.95rem; /* Ajuste leve para que quepa mejor en 3 col */
+            display: block;
+            transition: color 0.3s ease;
         }
-        
+
+        /* SUBTÍTULO DEL BOTÓN */
         .btn-componente .text-xs {
-            color: #dbeafe !important; /* Azul muy claro para subtítulos */
+            color: #64748b !important; /* Gris medio por defecto */
+            font-weight: 400;
+            margin-top: 2px;
+            transition: color 0.3s ease;
+            font-size: 0.7rem; /* Texto un poco más pequeño para optimizar espacio */
         }
-        
-        /* PC: Botones más chicos y compactos */
+
+        /* RESPONSIVE PC */
         @media (min-width: 768px) {
             .btn-componente {
-                padding: 0.875rem 1rem; 
-                gap: 1rem;
-                font-size: 0.95rem;
-                max-width: none; 
+                padding: 1.25rem; 
+                gap: 0.75rem; /* Reducir un poco el gap para las 3 columnas */
             }
-            
-            .btn-componente-icon {
-                width: 40px !important;
-                height: 40px !important;
-                min-width: 40px !important;
-            }
+        }
+
+        /* EFECTO HOVER: Fondo Azul, Texto Blanco */
+        .btn-componente:hover {
+            transform: translateY(-3px);
+            border-color: #2563eb; 
+            /* Fondo Azul Intenso */
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important; 
+            /* Sombra azulada moderna */
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+        }
+
+        /* CAMBIO DE TEXTO A BLANCO AL HOVER */
+        .btn-componente:hover .font-bold {
+            color: #ffffff !important;
         }
         
-        .btn-componente::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            transform: scaleY(0.5);
-            transition: all 0.3s ease;
+        .btn-componente:hover .text-xs {
+            color: #e0e7ff !important; /* Azul muy pálido para subtítulo */
         }
 
-        .btn-componente:hover {
-            transform: translateY(-4px);
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
-            border-color: #1e3a8a; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 4px 4px rgba(0,0,0,0.1);
-            color: white !important;
-        }
-
-        .btn-componente:hover::before {
-            opacity: 1;
-            transform: scaleY(1);
-        }
-
-        /* Icono dentro del botón */
+        /* === ICONO DENTRO DEL BOTÓN === */
         .btn-componente-icon {
-            width: 44px;
+            width: 44px; /* Un poco más pequeño para 3 columnas */
             height: 44px;
             min-width: 44px;
-            background: #ffffff; /* Fondo blanco */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0.6rem;
+            
+            /* Estado Normal: Fondo azul muy suave */
+            background: #eff6ff; 
+            color: #2563eb; 
+            
+            border-radius: 1rem; /* Icono también más redondo para combinar */
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            color: #2563eb; /* Icono azul */
+            border: none;
         }
 
+        /* AL HOVER: El icono cambia a fondo blanco para resaltar sobre el botón azul */
         .btn-componente:hover .btn-componente-icon {
-            background: #eff6ff;
-            color: #1e40af;
+            background: #ffffff; 
+            color: #1d4ed8; 
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .btn-componente-icon svg {
@@ -285,19 +295,30 @@
             transition: transform 0.3s ease;
         }
         
-        .btn-componente:hover .btn-componente-icon svg {
-            transform: scale(1.1);
-        }
-
+        /* FLECHA A LA DERECHA - OCULTAR EN 3 COLUMNAS PARA LIMPIEZA VISUAL, O HACER PEQUEÑA */
         .btn-componente-arrow {
             margin-left: auto;
-            color: #bfdbfe; /* Flecha clara */
+            color: #cbd5e1; /* Gris claro */
             transition: all 0.3s ease;
         }
+        
+        @media (min-width: 1024px) {
+            /* En pantallas grandes (3 columnas), quizás ocultar la flecha si falta espacio, 
+               pero con 1100px de ancho debería caber. */
+            .btn-componente-arrow svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
 
+        /* AL HOVER: Flecha blanca */
         .btn-componente:hover .btn-componente-arrow {
-            color: white;
-            transform: translateX(2px);
+            color: #ffffff; 
+            transform: translateX(4px);
+        }
+        
+        .btn-componente::before {
+            display: none;
         }
 
         /* === ESTILOS DEL MODAL === */
@@ -522,14 +543,13 @@
                 font-size: 1.125rem;
             }
             
-            /* === MODIFICACIÓN: UNIFICACIÓN DE ANCHO EN MÓVIL === */
             .section-spd .btn-spd {
-                width: 85% !important; /* Ancho unificado al 94% */
+                width: 85% !important; 
                 min-width: auto !important;
                 max-width: 85% !important;
                 padding: 0.875rem 1rem;
                 font-size: 0.875rem;
-                margin-right: auto !important; /* Centrado */
+                margin-right: auto !important;
                 background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
                 display: flex;
             }
@@ -574,6 +594,7 @@
                 height: 1rem;
             }
 
+            /* Ajustes Minimalistas Móvil */
             .btn-componente {
                 padding: 1rem 1rem;
                 gap: 1rem;
@@ -583,14 +604,14 @@
             }
 
             .btn-componente-icon {
-                width: 38px;
-                height: 38px;
-                min-width: 38px;
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
             }
 
             .btn-componente-icon svg {
-                width: 20px;
-                height: 20px;
+                width: 22px;
+                height: 22px;
             }
         }
 
@@ -614,17 +635,6 @@
             .section-title {
                 font-size: 1rem;
                 gap: 0.5rem;
-            }
-            
-            .btn-componente {
-                padding: 0.875rem 0.875rem;
-                gap: 0.875rem;
-            }
-            
-            .btn-componente-icon {
-                width: 36px;
-                height: 36px;
-                min-width: 36px;
             }
             
             body {
@@ -843,8 +853,8 @@
                 </p>
             </div>
 
-            <!-- LISTA DE COMPONENTES: GRID 2 COLUMNAS PARA PC -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            <!-- LISTA DE COMPONENTES: GRID 3 COLUMNAS PARA PC (MODIFICADO) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
                 <button onclick="mostrarRequisitos('vigilante')" class="btn-componente">
                     <div class="btn-componente-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -852,8 +862,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Vigilante Privado</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Protección con armas de fuego</div>
+                        <div class="font-bold">Vigilante Privado</div>
+                        <div class="text-xs">Protección con armas de fuego</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -869,8 +879,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Jefe de Seguridad</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Dirección y gestión de seguridad</div>
+                        <div class="font-bold">Jefe de Seguridad</div>
+                        <div class="text-xs">Dirección y gestión de seguridad</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -886,8 +896,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Encargado de Seguridad</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Coordinación en recintos</div>
+                        <div class="font-bold">Encargado de Seguridad</div>
+                        <div class="text-xs">Coordinación en recintos</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -903,8 +913,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Guardia de Seguridad</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Protección sin armas de fuego</div>
+                        <div class="font-bold">Guardia de Seguridad</div>
+                        <div class="text-xs">Protección sin armas de fuego</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -921,8 +931,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Supervisor de Seguridad</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Supervisión y control</div>
+                        <div class="font-bold">Supervisor de Seguridad</div>
+                        <div class="text-xs">Supervisión y control</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -938,8 +948,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Asesor de Seguridad</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Asesoría y estudios de seguridad</div>
+                        <div class="font-bold">Asesor de Seguridad</div>
+                        <div class="text-xs">Asesoría y estudios de seguridad</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -955,8 +965,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Capacitador</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Formación y capacitación</div>
+                        <div class="font-bold">Capacitador</div>
+                        <div class="text-xs">Formación y capacitación</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -972,8 +982,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Portero / Nochero / Rondín</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Funciones en recintos</div>
+                        <div class="font-bold">Portero / Nochero / Rondín</div>
+                        <div class="text-xs">Funciones en recintos</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -989,8 +999,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Encargado de Armas</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Resguardo de armamento</div>
+                        <div class="font-bold">Encargado de Armas</div>
+                        <div class="text-xs">Resguardo de armamento</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1007,8 +1017,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Técnico en Seguridad Privada</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Sistemas electrónicos</div>
+                        <div class="font-bold">Técnico en Seguridad Privada</div>
+                        <div class="text-xs">Sistemas electrónicos</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1024,8 +1034,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Operador de Cámaras y Alarmas</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Televigilancia y control</div>
+                        <div class="font-bold">Operador de Cámaras y Alarmas</div>
+                        <div class="text-xs">Televigilancia y control</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1041,8 +1051,8 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <div class="font-bold text-gray-800">Instalador Técnico</div>
-                        <div class="text-xs text-gray-500 mt-0.5">Instalación de sistemas</div>
+                        <div class="font-bold">Instalador Técnico</div>
+                        <div class="text-xs">Instalación de sistemas</div>
                     </div>
                     <div class="btn-componente-arrow">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
