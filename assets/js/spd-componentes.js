@@ -142,7 +142,7 @@ const requisitosComponentes = {
         ley: "Arts. 55 y 56 Ley 21.659",
         decreto: "Arts. 97, 98 y 99 Decreto 209",
         especificos: [
-            "Curso de FORMACIÓN: 60 horas pedagógicas (se rinde una sola vez)",
+            "Curso de FORMACIÓN: 60 horas pedagógicas",
             "Curso de PERFECCIONAMIENTO: 30 horas cada 4 años"
         ],
         adicional: [
