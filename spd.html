@@ -19,7 +19,7 @@
         }
         
         .card-spd {
-            background-color: #ffffff; /* Fondo blanco puro */
+            background-color: #ffffff;
             border-radius: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 2rem;
@@ -28,12 +28,11 @@
             position: relative;
         }
         
-        /* === MODIFICACIÓN: BOTONES AZULES MÁS ALTOS === */
         .btn-spd {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1.25rem 1.5rem; /* Aumentado verticalmente (antes 0.875rem) */
+            padding: 1.25rem 1.5rem;
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
             border-radius: 0.75rem;
@@ -46,7 +45,7 @@
             min-width: 280px;
             cursor: pointer;
             border: none;
-            min-height: 3.5rem; /* Asegura altura mínima uniforme */
+            min-height: 3.5rem;
         }
         
         .btn-spd:hover {
@@ -71,10 +70,10 @@
         .section-spd {
             margin-bottom: 1.5rem;
             padding: 1.5rem;
-            background-color: #ffffff; /* Asegura fondo blanco */
+            background-color: #ffffff;
             border-radius: 0.75rem;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); 
         }
         
         .section-title {
@@ -180,17 +179,13 @@
             display: block;
         }
 
-        /* === MODIFICACIÓN: BOTONES DE COMPONENTES (ESTILO SOLICITADO) === */
         .btn-componente {
             display: flex;
             align-items: center;
             gap: 1.25rem;
-            padding: 1.25rem 1.25rem; /* Un poco más de padding vertical */
-            
-            /* Cambios solicitados: Fondo Blanco, Borde Gris Oscuro */
+            padding: 1.25rem 1.25rem;
             background: #ffffff; 
-            border: 2px solid #94a3b8; /* Gris más oscuro y visible */
-            
+            border: 2px solid #94a3b8;
             border-radius: 0.75rem;
             font-weight: 600;
             text-decoration: none;
@@ -217,11 +212,10 @@
             transition: all 0.3s ease;
         }
 
-        /* Efecto Hover solicitado: Elevación mayor y Borde Azul */
         .btn-componente:hover {
-            transform: translateY(-6px); /* Se eleva más (efecto solicitado) */
-            background: #ffffff; /* Mantiene fondo blanco */
-            border-color: #2563eb; /* Borde AZUL al seleccionar/pasar mouse */
+            transform: translateY(-6px);
+            background: #ffffff;
+            border-color: #2563eb;
             box-shadow: 0 15px 30px rgba(0,0,0,0.15), 0 10px 10px rgba(37, 99, 235, 0.1);
             color: #1e40af;
         }
@@ -297,11 +291,15 @@
             padding-bottom: 2rem;
         }
         
+        /* === MODIFICACIÓN: Ancho del Modal al 98% === */
         .modal-content {
             background: white;
             border-radius: 1rem;
-            max-width: 900px;
-            width: 100%;
+            
+            /* Cambios solicitados para el ancho del modal */
+            width: 98%;
+            max-width: 98%;
+            
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -385,6 +383,7 @@
             border-left: 4px solid #2563eb;
         }
         
+        /* === MODIFICACIÓN: Ancho de los requisitos al 98% === */
         .requisito-item-componentes {
             display: flex;
             gap: 0.875rem;
@@ -395,6 +394,11 @@
             margin-bottom: 0.75rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             transition: all 0.2s;
+            
+            /* Cambios solicitados para el ancho de los items */
+            width: 98%;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .requisito-item-componentes:hover {
@@ -461,7 +465,7 @@
             
             .btn-spd {
                 font-size: 0.875rem;
-                padding: 1rem 1.25rem; /* Ajustado en móvil también */
+                padding: 1rem 1.25rem;
                 width: 100%;
                 min-width: auto;
             }
@@ -576,6 +580,7 @@
     </style>
 </head>
 <body class="min-h-screen pt-14 sm:pt-16">
+    <!-- Banner superior -->
     <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 h-14 sm:h-16 flex items-center justify-between px-3 sm:px-4 shadow-sm">
         <a href="index.html" class="flex items-center space-x-1 sm:space-x-2">
             <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-8 sm:h-10" loading="lazy">
@@ -583,8 +588,11 @@
         </a>
     </div>
 
+    <!-- Contenido principal -->
     <div id="main-content" class="container mx-auto px-1 sm:px-4">
+        <!-- VISTA PRINCIPAL (SPD) -->
         <div id="vistaPrincipal" class="card-spd">
+            <!-- BOTÓN VOLVER -->
             <a href="index.html" class="btn-volver-card" onclick="volverAlIndex(event)">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -592,6 +600,7 @@
                 <span>Volver</span>
             </a>
             
+            <!-- Encabezado -->
             <div class="text-center mb-8 pt-12 sm:pt-4">
                 <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
                     Subsecretaría de Prevención del Delito
@@ -606,6 +615,7 @@
                 </div>
             </div>
             
+            <!-- Informativo -->
             <div class="section-spd">
                 <div class="section-title">
                     <div class="section-icon">
@@ -628,6 +638,7 @@
                 </div>
             </div>
 
+            <!-- Preguntas Frecuentes -->
             <div class="section-spd">
                 <div class="section-title">
                     <div class="section-icon">
@@ -647,6 +658,7 @@
                 </div>
             </div>
 
+            <!-- Componentes de Seguridad Privada (BOTÓN ORIGINAL) -->
             <div class="section-spd" style="background: linear-gradient(135deg, #eff6ff 0%, #f9fafb 100%);">
                 <div class="section-title">
                     <div class="section-icon">
@@ -675,6 +687,7 @@
                 </div>
             </div>
 
+            <!-- Contacto por Correo -->
             <div class="section-spd">
                 <div class="section-title">
                     <div class="section-icon">
@@ -723,6 +736,7 @@
                 </div>
             </div>
 
+            <!-- Nota Importante -->
             <div class="note-important">
                 <div class="flex items-start gap-3">
                     <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -739,7 +753,9 @@
             </div>
         </div>
 
+        <!-- VISTA DE COMPONENTES (OCULTA POR DEFECTO) -->
         <div id="vistaComponentes" class="card-spd animate-in">
+            <!-- BOTÓN VOLVER A SPD -->
             <button onclick="volverASPD()" class="btn-volver-card">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -747,6 +763,7 @@
                 <span>Volver</span>
             </button>
 
+            <!-- Encabezado -->
             <div class="text-center mb-6 pt-12 sm:pt-4">
                 <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
                     Componentes de Seguridad Privada
@@ -756,6 +773,7 @@
                 </p>
             </div>
 
+            <!-- LISTA DE COMPONENTES -->
             <div class="space-y-3">
                 <button onclick="mostrarRequisitos('vigilante')" class="btn-componente">
                     <div class="btn-componente-icon">
@@ -966,6 +984,7 @@
         </div>
     </div>
     
+    <!-- MODAL DE REQUISITOS -->
     <div id="modalRequisitos" class="modal-requisitos">
         <div class="modal-content">
             <div class="modal-header">
@@ -980,12 +999,14 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 mt-8">
         <div class="container mx-auto px-4 text-center">
             <p class="text-sm">&copy; 2024 OS10 Coquimbo - Dirección de Seguridad Ciudadana</p>
         </div>
     </footer>
 
+    <!-- JAVASCRIPT INTEGRADO -->
     <script src="assets/js/spd-componentes.js"></script>
 </body>
 </html>
