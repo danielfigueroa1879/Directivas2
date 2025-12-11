@@ -511,14 +511,15 @@
             
             /* === MODIFICACIÓN: UNIFICACIÓN DE ANCHO EN MÓVIL === */
             .section-spd .btn-spd {
-                width: 100% !important;
+                width: 94% !important; /* Ancho unificado al 94% */
                 min-width: auto !important;
-                max-width: 100% !important;
+                max-width: 94% !important;
                 padding: 0.875rem 1rem;
                 font-size: 0.875rem;
-                margin-left: 0;
-                margin-right: 0;
+                margin-left: auto !important; /* Centrado */
+                margin-right: auto !important; /* Centrado */
                 background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+                display: flex;
             }
             
             .section-spd .btn-spd.btn-green {
