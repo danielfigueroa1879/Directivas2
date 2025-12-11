@@ -398,7 +398,13 @@ function renderizarContenidoModal(tipo) {
     `;
     
     contenido.innerHTML = html;
+    
+    // SOLUCIÓN: Forzar repaint antes de mostrar el modal
+    void modal.offsetHeight; // Forzar reflow
+    
+    // Agregar clase active y estilos
     modal.classList.add('active');
+    modal.style.display = 'flex'; // Forzar display explícitamente
     document.body.style.overflow = 'hidden';
 
     // Ocultar contenedor principal
@@ -407,6 +413,12 @@ function renderizarContenidoModal(tipo) {
         container.setAttribute('data-modal-hidden', 'true');
         container.style.display = 'none';
     }
+    
+    // SOLUCIÓN ADICIONAL: Asegurar visibilidad con un pequeño delay
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        modal.style.visibility = 'visible';
+    }, 10);
 }
 
 // Función de apertura del modal
@@ -421,6 +433,12 @@ function mostrarRequisitos(tipo) {
 function cerrarModalVisualmente() {
     const modal = document.getElementById('modalRequisitos');
     if (modal) {
+        // SOLUCIÓN: Remover estilos inline primero
+        modal.style.display = '';
+        modal.style.opacity = '';
+        modal.style.visibility = '';
+        
+        // Luego remover clase
         modal.classList.remove('active');
     }
     
