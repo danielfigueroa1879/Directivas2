@@ -1,6 +1,7 @@
 // ===== NAVEGACIÓN POR CAPAS: SPD → COMPONENTES → MODAL =====
 // Versión con FIX ANDROID - Pantalla en blanco corregida
 // VERSIÓN OPTIMIZADA PARA MÓVILES + FIX NAVEGACIÓN A INDEX.HTML
+// ✨ ACTUALIZADO: Asignaturas de Capacitación + Requisitos Capacitadores Art. 105
 
 // Requisitos generales del Artículo 46
 const requisitosGenerales = [
@@ -17,6 +18,139 @@ const requisitosGenerales = [
     "Aprobar los exámenes de capacitación correspondientes",
     "Comprender y comunicarse en idioma castellano",
     "Si es extranjero: contar con residencia definitiva (Ley N° 21.325)"
+];
+
+// ✨ NUEVO: Asignaturas de capacitación por cargo
+const asignaturasCapacitacion = {
+    vigilantes: {
+        titulo: "VIGILANTES PRIVADOS",
+        referencia: "Artículo 27 - Decreto 209",
+        formacion: "100 horas pedagógicas",
+        perfeccionamiento: "40 horas cada 2 años",
+        observacion: "AUTORIZADOS PARA PORTAR ARMAS DE FUEGO",
+        asignaturas: [
+            "Legislación aplicada a la seguridad privada",
+            "Respeto y promoción de los derechos humanos",
+            "Privacidad y uso de datos personales",
+            "Instrucción física",
+            "Correcto uso de elementos defensivos y de protección",
+            "Primeros auxilios",
+            "Prevención de riesgos",
+            "Seguridad de instalaciones",
+            "Probidad, no discriminación y perspectiva de género",
+            "Seguridad electrónica",
+            "Sistema de telecomunicaciones",
+            "Técnicas de reducción",
+            "Conocimiento de arma y tiro, de conformidad al reglamento complementario de la ley N° 17.798, sobre Control de Armas y Elementos Similares, aprobado por decreto supremo N° 83, de 2007, del Ministerio de Defensa Nacional"
+        ]
+    },
+    guardias: {
+        titulo: "GUARDIAS DE SEGURIDAD",
+        referencia: "Artículo 107 N°1 - Decreto 209",
+        formacion: "90 horas pedagógicas",
+        perfeccionamiento: "36 horas cada 4 años",
+        observacion: "SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO",
+        asignaturas: [
+            "Legislación aplicada a seguridad privada",
+            "Respeto y promoción de los derechos humanos",
+            "Privacidad y uso de datos personales",
+            "Instrucción física",
+            "Correcto uso de elementos defensivos y de protección",
+            "Primeros auxilios",
+            "Prevención de riesgos",
+            "Seguridad de las instalaciones",
+            "Probidad, no discriminación y perspectiva de género",
+            "Seguridad electrónica",
+            "Sistema de telecomunicaciones",
+            "Técnicas de reducción"
+        ]
+    },
+    porteros: {
+        titulo: "PORTEROS, NOCHEROS, RONDINES U OTROS DE SIMILAR CARÁCTER",
+        referencia: "Artículo 107 N°2 - Decreto 209",
+        formacion: "60 horas pedagógicas",
+        perfeccionamiento: "30 horas cada 4 años",
+        observacion: "SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO",
+        asignaturas: [
+            "Legislación aplicada a seguridad privada",
+            "Respeto y promoción de los derechos humanos",
+            "Privacidad y uso de datos personales",
+            "Correcto uso de elementos defensivos y de protección",
+            "Primeros auxilios",
+            "Prevención de riesgos",
+            "Seguridad de las instalaciones",
+            "Probidad, no discriminación y perspectiva de género"
+        ]
+    }
+};
+
+// ✨ NUEVO: Requisitos para capacitadores (Artículo 105 Decreto 209)
+const requisitosCapacitadores = [
+    {
+        numero: "1",
+        asignatura: "Legislación aplicada a la seguridad privada",
+        requisitos: "Deberán ser licenciados en ciencias jurídicas y sociales o contar con el título de abogado. Podrá eximirse de la obligación de contar con diplomado en materias inherentes a seguridad privada o gestión de seguridad empresarial señalado en el artículo precedente, si se acreditan dos o más años de experiencia profesional en la materia."
+    },
+    {
+        numero: "2",
+        asignatura: "Respeto y promoción de los derechos humanos",
+        requisitos: "Deberán ser licenciados en ciencias jurídicas y sociales o contar con el título de abogado."
+    },
+    {
+        numero: "3",
+        asignatura: "Privacidad y uso de datos personales",
+        requisitos: "Deberán ser licenciados en ciencias jurídicas y sociales o contar con el título de abogado. Asimismo, podrán impartir esta asignatura todos los profesionales del área informática que posean título profesional de educación superior de una carrera de, a lo menos, ocho semestres de duración."
+    },
+    {
+        numero: "4",
+        asignatura: "Correcto uso de elementos defensivos",
+        requisitos: "Todos aquellos Oficiales y Suboficiales de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o de Gendarmería de Chile que hayan obtenido una certificación oficial equivalente a un título profesional o técnico de nivel superior de conformidad a la normativa correspondiente. Asimismo, deberán acreditar el cumplimiento de los cursos respectivos de defensa personal a través de la presentación de la malla curricular vigente a la época en que los aprobaron."
+    },
+    {
+        numero: "5",
+        asignatura: "Primeros auxilios",
+        requisitos: "Haber obtenido un título profesional o técnico de nivel superior en alguna carrera del área de la salud, de conformidad a la normativa vigente. Estos profesionales y técnicos estarán exceptuados de cumplir con el diplomado en materias inherentes a seguridad privada o gestión de seguridad empresarial, que señala el artículo anterior."
+    },
+    {
+        numero: "6",
+        asignatura: "Prevención de riesgos",
+        requisitos: "Para este tipo de cursos se deberá contar con el título profesional o técnico de nivel superior en prevención de riesgos con la correspondiente resolución de la Secretaría Regional Ministerial de Salud."
+    },
+    {
+        numero: "7",
+        asignatura: "Probidad, no discriminación y perspectiva de género",
+        requisitos: "Todos aquellos profesionales universitarios que cuenten con las respectivas aprobaciones de cursos de postgrado en los grados de magister o diplomados en cursos especiales sobre las materias indicadas."
+    },
+    {
+        numero: "8",
+        asignatura: "Seguridad de instalaciones",
+        requisitos: "Para este tipo de cursos se deberá contar con el título profesional o técnico de nivel superior en prevención de riesgos con la correspondiente resolución de la Secretaría Regional Ministerial de Salud."
+    },
+    {
+        numero: "9",
+        asignatura: "Seguridad electrónica",
+        requisitos: "Será necesario contar con el título profesional o técnico de nivel superior en electrónica."
+    },
+    {
+        numero: "10",
+        asignatura: "Sistema de telecomunicaciones",
+        requisitos: "Poseer el título profesional de ingeniero o técnico nivel superior en telecomunicaciones."
+    },
+    {
+        numero: "11",
+        asignatura: "Técnicas de reducción",
+        requisitos: "Todos aquellos Oficiales y Suboficiales de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile que hayan obtenido una certificación oficial equivalente a un título profesional o técnico de nivel superior, de conformidad a la normativa correspondiente. Asimismo, deben acreditar los cursos respectivos de defensa personal a través de la presentación de la malla curricular vigente a la época en que los aprobaron. Excepcionalmente, podrá impartir dicho curso el deportista experto en artes defensivas, debidamente acreditadas."
+    },
+    {
+        numero: "12",
+        asignatura: "Instrucción física",
+        requisitos: "Para este tipo de cursos, se deberá contar con una licenciatura en educación física o título técnico en materias afines otorgado por entidades reconocidas por el Ministerio de Educación. Estos profesionales estarán exceptuados de cumplir con el diplomado en materias inherentes a seguridad privada o gestión de seguridad empresarial, que señala el artículo anterior."
+    },
+    {
+        numero: "13",
+        asignatura: "Conocimiento de arma y tiro",
+        requisitos: "Instructor o experto en manejo y uso de armas y tiro, con un mínimo de cinco años de experiencia; así como oficiales y suboficiales de las Fuerzas Armadas y de Orden y Seguridad Pública o Gendarmería de Chile egresados de sus respectivas escuelas. En cada proceso de acreditación, todos y sin exclusión, deberán rendir un examen práctico ante la autoridad fiscalizadora competente."
+    }
 ];
 
 // Base de datos de requisitos por componente
@@ -127,14 +261,16 @@ const requisitosComponentes = {
         especificos: [
             "Nivel de educación profesional y técnico en materias de seguridad privada según asignatura a impartir",
             "Diplomado en seguridad privada o gestión de seguridad empresarial (salvo excepciones por asignatura específica)",
-            "Requisitos varían según materia: abogados para legislación, profesionales de salud para primeros auxilios, etc."
+            "Los requisitos específicos varían según la asignatura a impartir (ver detalle completo en Artículo 105)"
         ],
         adicional: [
             "Periodicidad de acreditación física y psíquica: CADA 4 AÑOS",
             "EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada",
             "Los exámenes de capacitación finalizan ante Carabineros de Chile",
             "La certificación la otorga la Subsecretaría de Prevención del Delito"
-        ]
+        ],
+        // ✨ NUEVO: Requisitos especiales por asignatura (Art. 105)
+        requisitosEspecialesCapacitador: requisitosCapacitadores
     },
     portero: {
         titulo: "PORTERO / NOCHERO / RONDÍN",
@@ -214,24 +350,16 @@ const requisitosComponentes = {
 
 // Función para volver al index.html sin pantalla en blanco (FIX MÓVILES)
 function volverAlIndex(event) {
-    // Detectar si es móvil
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // En móviles, prevenir navegación default y usar location.replace
         event.preventDefault();
-        
-        // Limpiar cualquier modal activo
         cerrarModalVisualmente();
         ocultarComponentes();
-        
-        // Pequeño delay para asegurar limpieza
         setTimeout(() => {
-            // Usar replace en vez de href para evitar problemas de caché
             window.location.replace('index.html');
         }, 50);
     }
-    // En escritorio, dejar que funcione normal (href)
 }
 
 // Función para mostrar la vista de componentes (desde SPD)
@@ -239,21 +367,12 @@ function mostrarComponentes() {
     const vistaPrincipal = document.getElementById('vistaPrincipal');
     const vistaComponentes = document.getElementById('vistaComponentes');
     
-    if (!vistaComponentes) {
-        // No es error si estamos en index.html y no existen estas vistas
-        return;
-    }
+    if (!vistaComponentes) return;
     
-    // Ocultar vista principal
     if (vistaPrincipal) vistaPrincipal.style.display = 'none';
-    
-    // Mostrar vista de componentes
     vistaComponentes.classList.add('active');
-    
-    // Scroll al top
     window.scrollTo(0, 0);
     
-    // Agregar al historial
     if (!history.state || history.state.vista !== 'componentes') {
         history.pushState({ vista: 'componentes' }, "", "#componentes");
     }
@@ -281,27 +400,100 @@ function ocultarComponentes() {
         vistaPrincipal.style.display = '';
     }
     
-    // Scroll al top
     window.scrollTo(0, 0);
     
-    // Limpiar hash si existe
     if (window.location.hash === '#componentes') {
         history.replaceState(null, '', window.location.pathname + window.location.search);
     }
 }
 
+// ===== ✨ NUEVA FUNCIÓN: MOSTRAR ASIGNATURAS DE CAPACITACIÓN =====
+function mostrarAsignaturas() {
+    const modal = document.getElementById('modalRequisitos');
+    if (!modal) return;
+    
+    const titulo = document.getElementById('modalTitulo');
+    const contenido = document.getElementById('modalContenido');
+    
+    titulo.textContent = "ASIGNATURAS DE CAPACITACIÓN";
+    
+    let html = `
+        <div class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+            <p class="text-sm text-gray-700 font-semibold">
+                📚 Estas son las asignaturas que deben aprobarse según el Decreto 209 para obtener la certificación correspondiente
+            </p>
+        </div>
+    `;
+    
+    // Vigilantes
+    html += generarSeccionAsignaturas('vigilantes');
+    
+    // Guardias
+    html += generarSeccionAsignaturas('guardias');
+    
+    // Porteros
+    html += generarSeccionAsignaturas('porteros');
+    
+    html += `
+        <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+            <p class="text-sm text-gray-700">
+                <strong>⚠️ Nota Importante:</strong> Las asignaturas de <strong>arma y tiro, técnicas de reducción y primeros auxilios</strong> deben ser <strong>siempre presenciales</strong>. Las demás pueden ser telemáticas o presenciales.
+            </p>
+        </div>
+    `;
+    
+    contenido.innerHTML = html;
+    
+    modal.style.display = 'flex';
+    modal.style.zIndex = '9999';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    setTimeout(() => {
+        modal.scrollTop = 0;
+    }, 50);
+}
+
+function generarSeccionAsignaturas(tipo) {
+    const data = asignaturasCapacitacion[tipo];
+    
+    let html = `
+        <div class="requisito-section-componentes mb-6" style="background:#f8fafc; border-left:4px solid #0071e3;">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">${data.titulo}</h3>
+            <div class="mb-3 flex flex-wrap gap-2">
+                <span class="badge-componentes badge-decreto-componentes">${data.referencia}</span>
+                <span class="badge-componentes" style="background:#10b981; color:white;">${data.formacion}</span>
+                <span class="badge-componentes" style="background:#f59e0b; color:white;">${data.perfeccionamiento}</span>
+            </div>
+            <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
+                <p class="text-sm font-bold text-gray-800">${data.observacion}</p>
+            </div>
+    `;
+    
+    data.asignaturas.forEach((asignatura, index) => {
+        html += `
+            <div class="requisito-item-componentes" style="background:#ffffff;">
+                <div class="requisito-numero-componentes" style="background:#0071e3;">${index + 1}</div>
+                <div class="flex-1 text-sm text-gray-700">${asignatura}</div>
+            </div>
+        `;
+    });
+    
+    html += `</div>`;
+    
+    return html;
+}
+
 // ===== FUNCIONES DEL MODAL =====
 
-// Función para detectar el contenedor principal (mejorada)
 function getMainContainer() {
     const byId = document.getElementById('main-content');
     if (byId) return byId;
     
-    // FIX: Filtrar también las clases del modal en index.html para no ocultarlo a sí mismo
     const bodyChildren = Array.from(document.body.children).filter(el => 
         !el.classList.contains('modal-requisitos') && 
-        !el.classList.contains('modal-requisitos-componentes') && // <--- FIX AGREGADO
-        el.id !== 'modalRequisitos' && // Doble seguridad por ID
+        !el.classList.contains('modal-requisitos-componentes') &&
+        el.id !== 'modalRequisitos' &&
         el.tagName !== 'SCRIPT' && 
         el.tagName !== 'STYLE' &&
         el.tagName !== 'FOOTER' &&
@@ -379,6 +571,29 @@ function renderizarContenidoModal(tipo) {
         html += `</div>`;
     }
     
+    // ✨ NUEVO: Requisitos especiales para capacitadores (Art. 105)
+    if (tipo === 'capacitador' && data.requisitosEspecialesCapacitador) {
+        html += `
+            <div class="requisito-section-componentes mt-4" style="background:#eff6ff; border-left-color:#0071e3;">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">📋 REQUISITOS ESPECIALES POR ASIGNATURA (Artículo 105 Decreto 209)</h3>
+                <p class="text-sm text-gray-600 mb-3 italic">Los capacitadores deben cumplir requisitos adicionales según la asignatura que impartan:</p>
+        `;
+        
+        data.requisitosEspecialesCapacitador.forEach((item) => {
+            html += `
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">${item.numero}</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">${item.asignatura}</p>
+                        <p class="text-sm text-gray-700">${item.requisitos}</p>
+                    </div>
+                </div>
+            `;
+        });
+        
+        html += `</div>`;
+    }
+    
     if (data.adicional && data.adicional.length > 0) {
         html += `<div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
             <h3 class="text-lg font-bold text-gray-800 mb-3">ℹ️ INFORMACIÓN ADICIONAL</h3>`;
@@ -405,18 +620,11 @@ function renderizarContenidoModal(tipo) {
     
     contenido.innerHTML = html;
     
-    // SOLUCIÓN DEFINITIVA: NO ocultar nada, solo mostrar el modal
-    // El backdrop del modal (rgba(0,0,0,0.75)) ya oscurece el fondo
-    
-    // Asegurar que el modal esté visible
     modal.style.display = 'flex';
     modal.style.zIndex = '9999';
     modal.classList.add('active');
-    
-    // Prevenir scroll del body
     document.body.style.overflow = 'hidden';
     
-    // Scroll al inicio del modal
     setTimeout(() => {
         modal.scrollTop = 0;
     }, 50);
@@ -439,10 +647,7 @@ function cerrarModalVisualmente() {
         modal.classList.remove('active');
         modal.style.display = 'none';
     }
-    
-    // Restaurar scroll del body
     document.body.style.overflow = '';
-    
     console.log('Modal cerrado');
 }
 
@@ -458,10 +663,8 @@ function cerrarModal() {
 // ===== MANEJADOR DEL HISTORIAL (POPSTATE) =====
 window.addEventListener('popstate', function(event) {
     if (event.state && event.state.modalOpen) {
-        // Abrir modal
         renderizarContenidoModal(event.state.tipo);
     } else if (event.state && event.state.vista === 'componentes') {
-        // Mostrar vista de componentes
         cerrarModalVisualmente();
         const vistaComponentes = document.getElementById('vistaComponentes');
         const vistaPrincipal = document.getElementById('vistaPrincipal');
@@ -472,7 +675,6 @@ window.addEventListener('popstate', function(event) {
             vistaPrincipal.style.display = 'none';
         }
     } else {
-        // Volver a vista principal SPD
         cerrarModalVisualmente();
         ocultarComponentes();
     }
@@ -481,7 +683,6 @@ window.addEventListener('popstate', function(event) {
 // Manejador PAGESHOW (para caché de navegación)
 window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
-        // Página viene del caché (navegación hacia atrás)
         cerrarModalVisualmente();
         ocultarComponentes();
         
@@ -490,7 +691,6 @@ window.addEventListener('pageshow', function(event) {
             modal.classList.remove('active');
         }
         
-        // Scroll al top
         window.scrollTo(0, 0);
     }
 });
@@ -499,7 +699,6 @@ window.addEventListener('pageshow', function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('modalRequisitos');
     
-    // Click fuera del modal
     if (modal) {
         modal.addEventListener('click', function(e) {
             if (e.target === this) {
@@ -508,7 +707,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Tecla ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const activeModal = document.querySelector('#modalRequisitos.active, .modal-requisitos.active, .modal-requisitos-componentes.active');
@@ -518,24 +716,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Restaurar estado inicial
     if (history.state && history.state.modalOpen && history.state.tipo) {
-        // Hay modal abierto en el historial
         mostrarComponentes();
         renderizarContenidoModal(history.state.tipo);
     } else if (history.state && history.state.vista === 'componentes') {
-        // Hay vista de componentes en el historial
         mostrarComponentes();
     } else if (window.location.hash === '#componentes') {
-        // URL tiene #componentes
         mostrarComponentes();
     } else {
-        // Vista inicial SPD
         cerrarModalVisualmente();
         ocultarComponentes();
     }
     
-    // Verificación adicional retardada
     setTimeout(() => {
         if (!history.state || (!history.state.modalOpen && history.state.vista !== 'componentes')) {
             cerrarModalVisualmente();
@@ -544,7 +736,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
 });
 
-// Detectar cambios de visibilidad
 document.addEventListener('visibilitychange', function() {
     if (!document.hidden) {
         const modal = document.getElementById('modalRequisitos');
