@@ -320,13 +320,19 @@ function getMainContainer() {
 // Función de renderizado del modal
 function renderizarContenidoModal(tipo) {
     const modal = document.getElementById('modalRequisitos');
-    if (!modal) return;
+    if (!modal) {
+        console.error('Modal no encontrado');
+        return;
+    }
     
     const titulo = document.getElementById('modalTitulo');
     const contenido = document.getElementById('modalContenido');
     const data = requisitosComponentes[tipo];
     
-    if (!data) return;
+    if (!data) {
+        console.error('Datos no encontrados para:', tipo);
+        return;
+    }
     
     titulo.textContent = data.titulo;
     
@@ -399,26 +405,23 @@ function renderizarContenidoModal(tipo) {
     
     contenido.innerHTML = html;
     
-    // SOLUCIÓN: Forzar repaint antes de mostrar el modal
-    void modal.offsetHeight; // Forzar reflow
+    // SOLUCIÓN DEFINITIVA: NO ocultar nada, solo mostrar el modal
+    // El backdrop del modal (rgba(0,0,0,0.75)) ya oscurece el fondo
     
-    // Agregar clase active y estilos
+    // Asegurar que el modal esté visible
+    modal.style.display = 'flex';
+    modal.style.zIndex = '1000';
     modal.classList.add('active');
-    modal.style.display = 'flex'; // Forzar display explícitamente
-    document.body.style.overflow = 'hidden';
-
-    // Ocultar contenedor principal
-    const container = getMainContainer();
-    if (container) {
-        container.setAttribute('data-modal-hidden', 'true');
-        container.style.display = 'none';
-    }
     
-    // SOLUCIÓN ADICIONAL: Asegurar visibilidad con un pequeño delay
+    // Prevenir scroll del body
+    document.body.style.overflow = 'hidden';
+    
+    // Scroll al inicio del modal
     setTimeout(() => {
-        modal.style.opacity = '1';
-        modal.style.visibility = 'visible';
-    }, 10);
+        modal.scrollTop = 0;
+    }, 50);
+    
+    console.log('Modal abierto:', tipo);
 }
 
 // Función de apertura del modal
@@ -429,45 +432,18 @@ function mostrarRequisitos(tipo) {
     renderizarContenidoModal(tipo);
 }
 
-// Función de cierre visual del modal (FIX ANDROID)
+// Función de cierre visual del modal
 function cerrarModalVisualmente() {
     const modal = document.getElementById('modalRequisitos');
     if (modal) {
-        // SOLUCIÓN: Remover estilos inline primero
-        modal.style.display = '';
-        modal.style.opacity = '';
-        modal.style.visibility = '';
-        
-        // Luego remover clase
         modal.classList.remove('active');
+        modal.style.display = 'none';
     }
     
+    // Restaurar scroll del body
     document.body.style.overflow = '';
     
-    // FIX CRÍTICO: Restaurar contenedor principal
-    const container = getMainContainer();
-    if (container && container.hasAttribute('data-modal-hidden')) {
-        container.removeAttribute('data-modal-hidden');
-        container.style.display = '';
-        container.style.opacity = '1';
-        container.style.visibility = 'visible';
-        void container.offsetHeight; // Forzar reflow
-    }
-    
-    // Fallback adicional
-    document.querySelectorAll('[data-modal-hidden]').forEach(el => {
-        el.removeAttribute('data-modal-hidden');
-        el.style.display = '';
-        el.style.opacity = '1';
-        el.style.visibility = 'visible';
-    });
-    
-    // Forzar repaint en Android
-    setTimeout(() => {
-        document.body.style.display = 'none';
-        void document.body.offsetHeight;
-        document.body.style.display = '';
-    }, 0);
+    console.log('Modal cerrado');
 }
 
 // Función de cierre interactiva
@@ -481,8 +457,6 @@ function cerrarModal() {
 
 // ===== MANEJADOR DEL HISTORIAL (POPSTATE) =====
 window.addEventListener('popstate', function(event) {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
     if (event.state && event.state.modalOpen) {
         // Abrir modal
         renderizarContenidoModal(event.state.tipo);
@@ -498,45 +472,13 @@ window.addEventListener('popstate', function(event) {
             vistaPrincipal.style.display = 'none';
         }
     } else {
-        // Volver a vista principal SPD o index.html
+        // Volver a vista principal SPD
         cerrarModalVisualmente();
         ocultarComponentes();
-        
-        // FIX ADICIONAL: Restaurar visibilidad completa
-        const mainContent = document.getElementById('main-content');
-        if (mainContent) {
-            mainContent.style.display = '';
-            mainContent.style.opacity = '1';
-            mainContent.style.visibility = 'visible';
-        }
-        
-        // Restaurar todos los elementos que puedan estar ocultos
-        document.querySelectorAll('.card-spd, #vistaPrincipal').forEach(el => {
-            el.style.display = '';
-            el.style.opacity = '1';
-            el.style.visibility = 'visible';
-        });
-    }
-    
-    // Doble verificación para Android
-    if (isMobile) {
-        setTimeout(() => {
-            const container = getMainContainer();
-            if (container && window.getComputedStyle(container).display === 'none') {
-                cerrarModalVisualmente();
-                
-                // Forzar restauración completa
-                document.querySelectorAll('#main-content, .card-spd, #vistaPrincipal').forEach(el => {
-                    el.style.display = '';
-                    el.style.opacity = '1';
-                    el.style.visibility = 'visible';
-                });
-            }
-        }, 100);
     }
 });
 
-// Manejador PAGESHOW (para caché de Android y navegación de vuelta)
+// Manejador PAGESHOW (para caché de navegación)
 window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
         // Página viene del caché (navegación hacia atrás)
@@ -547,13 +489,6 @@ window.addEventListener('pageshow', function(event) {
         if (modal && modal.classList.contains('active')) {
             modal.classList.remove('active');
         }
-        
-        // Asegurar que todo el contenido sea visible
-        document.querySelectorAll('#main-content, .card-spd, #vistaPrincipal').forEach(el => {
-            el.style.display = '';
-            el.style.opacity = '1';
-            el.style.visibility = 'visible';
-        });
         
         // Scroll al top
         window.scrollTo(0, 0);
