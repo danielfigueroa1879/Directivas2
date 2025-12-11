@@ -1,5 +1,6 @@
 // ===== NAVEGACIÓN POR CAPAS: SPD → COMPONENTES → MODAL =====
 // Versión con FIX ANDROID - Pantalla en blanco corregida
+// VERSIÓN OPTIMIZADA PARA MÓVILES + FIX NAVEGACIÓN A INDEX.HTML
 
 // Requisitos generales del Artículo 46
 const requisitosGenerales = [
@@ -210,6 +211,28 @@ const requisitosComponentes = {
 };
 
 // ===== FUNCIONES DE NAVEGACIÓN =====
+
+// Función para volver al index.html sin pantalla en blanco (FIX MÓVILES)
+function volverAlIndex(event) {
+    // Detectar si es móvil
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // En móviles, prevenir navegación default y usar location.replace
+        event.preventDefault();
+        
+        // Limpiar cualquier modal activo
+        cerrarModalVisualmente();
+        ocultarComponentes();
+        
+        // Pequeño delay para asegurar limpieza
+        setTimeout(() => {
+            // Usar replace en vez de href para evitar problemas de caché
+            window.location.replace('index.html');
+        }, 50);
+    }
+    // En escritorio, dejar que funcione normal (href)
+}
 
 // Función para mostrar la vista de componentes (desde SPD)
 function mostrarComponentes() {
@@ -454,9 +477,24 @@ window.addEventListener('popstate', function(event) {
             vistaPrincipal.style.display = 'none';
         }
     } else {
-        // Volver a vista principal SPD
+        // Volver a vista principal SPD o index.html
         cerrarModalVisualmente();
         ocultarComponentes();
+        
+        // FIX ADICIONAL: Restaurar visibilidad completa
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+            mainContent.style.display = '';
+            mainContent.style.opacity = '1';
+            mainContent.style.visibility = 'visible';
+        }
+        
+        // Restaurar todos los elementos que puedan estar ocultos
+        document.querySelectorAll('.card-spd, #vistaPrincipal').forEach(el => {
+            el.style.display = '';
+            el.style.opacity = '1';
+            el.style.visibility = 'visible';
+        });
     }
     
     // Doble verificación para Android
@@ -465,20 +503,39 @@ window.addEventListener('popstate', function(event) {
             const container = getMainContainer();
             if (container && window.getComputedStyle(container).display === 'none') {
                 cerrarModalVisualmente();
+                
+                // Forzar restauración completa
+                document.querySelectorAll('#main-content, .card-spd, #vistaPrincipal').forEach(el => {
+                    el.style.display = '';
+                    el.style.opacity = '1';
+                    el.style.visibility = 'visible';
+                });
             }
         }, 100);
     }
 });
 
-// Manejador PAGESHOW (para caché de Android)
+// Manejador PAGESHOW (para caché de Android y navegación de vuelta)
 window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
+        // Página viene del caché (navegación hacia atrás)
         cerrarModalVisualmente();
         ocultarComponentes();
+        
         const modal = document.getElementById('modalRequisitos');
         if (modal && modal.classList.contains('active')) {
             modal.classList.remove('active');
         }
+        
+        // Asegurar que todo el contenido sea visible
+        document.querySelectorAll('#main-content, .card-spd, #vistaPrincipal').forEach(el => {
+            el.style.display = '';
+            el.style.opacity = '1';
+            el.style.visibility = 'visible';
+        });
+        
+        // Scroll al top
+        window.scrollTo(0, 0);
     }
 });
 
