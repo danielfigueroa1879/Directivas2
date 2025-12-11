@@ -28,6 +28,7 @@
             position: relative;
         }
         
+        /* Botones generales (Escritorio y Header) */
         .btn-spd {
             display: inline-flex;
             align-items: center;
@@ -67,12 +68,14 @@
             background: linear-gradient(135deg, #15803d 0%, #166534 100%);
         }
         
+        /* === CAMBIO 1: LÍNEAS DE SEPARACIÓN MÁS CLARAS === */
         .section-spd {
             margin-bottom: 1.5rem;
             padding: 1.5rem;
             background-color: #ffffff;
             border-radius: 0.75rem;
-            border: 1px solid #e2e8f0; 
+            /* Color gris mucho más claro y sutil */
+            border: 1px solid #f8fafc; 
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); 
         }
         
@@ -197,15 +200,22 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0;
         }
         
-        /* Modificación para PC: Botones más angostos */
+        /* PC: Botones más chicos y compactos */
         @media (min-width: 768px) {
             .btn-componente {
-                max-width: 600px; /* Ancho máximo en PC */
-                margin-left: auto;
-                margin-right: auto;
+                padding: 0.875rem 1rem; 
+                gap: 1rem;
+                font-size: 0.95rem;
+                max-width: none; 
+            }
+            
+            .btn-componente-icon {
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px !important;
             }
         }
         
@@ -216,7 +226,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: #2563eb; /* Azul indicador */
+            background: #2563eb;
             opacity: 0;
             transform: scaleY(0.5);
             transition: all 0.3s ease;
@@ -235,7 +245,6 @@
             transform: scaleY(1);
         }
 
-        /* Icono dentro del botón azul */
         .btn-componente-icon {
             width: 44px;
             height: 44px;
@@ -302,12 +311,11 @@
             padding-bottom: 2rem;
         }
         
-        /* === MODAL: ESTILO POR DEFECTO (PC / Tablet) === */
         .modal-content {
             background: white;
             border-radius: 1rem;
             width: 100%; 
-            max-width: 900px; /* En PC se mantiene acotado como estaba */
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -326,7 +334,6 @@
             }
         }
         
-        /* Modal Header - Tema Azul */
         .modal-header {
             background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
             color: white;
@@ -390,10 +397,9 @@
             padding: 1.25rem;
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
-            border-left: 4px solid #2563eb; /* Línea azul */
+            border-left: 4px solid #2563eb;
         }
         
-        /* === Contenido Interno === */
         .requisito-item-componentes {
             display: flex;
             gap: 0.875rem;
@@ -405,8 +411,6 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
             transition: all 0.2s;
-            
-            /* En PC usa el ancho del contenedor padre */
             width: 100%;
         }
         
@@ -420,7 +424,7 @@
             min-width: 2rem;
             width: 2rem;
             height: 2rem;
-            background: #2563eb; /* Icono azul */
+            background: #2563eb;
             color: white;
             border-radius: 0.5rem;
             display: flex;
@@ -457,7 +461,6 @@
                 border-radius: 0.5rem;
             }
             
-            /* En celular, el modal ocupa estrictamente el 99% de la pantalla */
             .modal-content {
                 width: 99% !important;
                 max-width: 99% !important;
@@ -468,7 +471,6 @@
                 padding: 0.75rem;
             }
 
-            /* Los items de requisitos ocupan 99% dentro del modal en móvil */
             .requisito-item-componentes {
                 width: 99%;
                 margin: 0 auto;
@@ -493,11 +495,18 @@
                 font-size: 1.125rem;
             }
             
-            .btn-spd {
-                font-size: 0.875rem;
-                padding: 1rem 1.25rem;
-                width: 100%;
-                min-width: auto;
+            /* === CAMBIO 2: BOTONES PEQUEÑOS Y ALINEADOS A LA IZQUIERDA EN MÓVIL === */
+            /* Aplica solo a botones dentro de las secciones informativas */
+            .section-spd .btn-spd:not(.btn-green) {
+                width: auto !important;
+                min-width: 0 !important;
+                max-width: 60%; /* Mitad del tamaño aprox */
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+                margin-left: 0; /* Alinear a la izquierda */
+                margin-right: auto;
+                /* Color azul más claro */
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); 
             }
             
             .btn-spd-centered {
@@ -539,8 +548,9 @@
             .btn-componente {
                 padding: 1rem 1rem;
                 gap: 1rem;
-                /* En móvil sigue ocupando 100% del contenedor padre */
-                width: 100%; 
+                width: 94%; 
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .btn-componente-icon {
@@ -564,7 +574,6 @@
                 max-width: 99%;
             }
             
-            /* Ajuste crítico para pantallas muy pequeñas */
             .modal-content {
                 width: 99% !important;
             }
@@ -576,11 +585,6 @@
             .section-title {
                 font-size: 1rem;
                 gap: 0.5rem;
-            }
-            
-            .btn-spd {
-                font-size: 0.8rem;
-                padding: 0.875rem 1rem;
             }
             
             .btn-componente {
@@ -665,7 +669,8 @@
                 <p class="text-sm text-gray-600 mb-4">
                     Consulta el informativo oficial y realiza consultas sobre trámites:
                 </p>
-                <div class="flex flex-col gap-3">
+                <!-- Añadido items-start para alinear a la izquierda en móvil -->
+                <div class="flex flex-col gap-3 items-start w-full">
                     <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm">
                         📄 ¿Dónde hacer los trámites?
                     </a>
@@ -810,8 +815,8 @@
                 </p>
             </div>
 
-            <!-- LISTA DE COMPONENTES -->
-            <div class="space-y-3">
+            <!-- LISTA DE COMPONENTES: AHORA EN GRID 2 COLUMNAS PARA PC -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <button onclick="mostrarRequisitos('vigilante')" class="btn-componente">
                     <div class="btn-componente-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
