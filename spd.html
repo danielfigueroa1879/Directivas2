@@ -179,13 +179,17 @@
             display: block;
         }
 
+        /* === BOTONES DE COMPONENTES VERDE CLARO === */
         .btn-componente {
             display: flex;
             align-items: center;
             gap: 1.25rem;
             padding: 1.25rem 1.25rem;
-            background: #ffffff; 
-            border: 2px solid #94a3b8;
+            
+            /* Fondo verde claro y borde verde suave */
+            background: #f0fdf4; 
+            border: 2px solid #86efac;
+            
             border-radius: 0.75rem;
             font-weight: 600;
             text-decoration: none;
@@ -206,18 +210,18 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: #2563eb;
+            background: #16a34a; /* Verde más fuerte para el indicador */
             opacity: 0;
             transform: scaleY(0.5);
             transition: all 0.3s ease;
         }
 
         .btn-componente:hover {
-            transform: translateY(-6px);
-            background: #ffffff;
-            border-color: #2563eb;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15), 0 10px 10px rgba(37, 99, 235, 0.1);
-            color: #1e40af;
+            transform: translateY(-4px);
+            background: #dcfce7; /* Un poco más oscuro al pasar el mouse */
+            border-color: #22c55e; /* Borde verde intenso al seleccionar */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 4px 4px rgba(22, 163, 74, 0.1);
+            color: #14532d; /* Texto verde oscuro */
         }
 
         .btn-componente:hover::before {
@@ -225,25 +229,26 @@
             transform: scaleY(1);
         }
 
+        /* Icono dentro del botón verde */
         .btn-componente-icon {
             width: 44px;
             height: 44px;
             min-width: 44px;
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            border: 1px solid #bbf7d0;
             border-radius: 0.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            color: #64748b;
+            color: #15803d; /* Icono verde */
         }
 
         .btn-componente:hover .btn-componente-icon {
-            background: #2563eb;
-            border-color: #2563eb;
+            background: #16a34a;
+            border-color: #16a34a;
             color: #ffffff;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
         }
 
         .btn-componente-icon svg {
@@ -259,12 +264,12 @@
 
         .btn-componente-arrow {
             margin-left: auto;
-            color: #cbd5e1;
+            color: #86efac;
             transition: all 0.3s ease;
         }
 
         .btn-componente:hover .btn-componente-arrow {
-            color: #2563eb;
+            color: #16a34a;
             transform: translateX(2px);
         }
 
@@ -291,15 +296,12 @@
             padding-bottom: 2rem;
         }
         
-        /* === MODIFICACIÓN: Ancho del Modal al 98% === */
+        /* === MODIFICACIÓN: Ancho del Modal === */
         .modal-content {
             background: white;
             border-radius: 1rem;
-            
-            /* Cambios solicitados para el ancho del modal */
-            width: 98%;
-            max-width: 98%;
-            
+            width: 98%; /* Por defecto amplio */
+            max-width: 900px; /* En escritorio tiene límite */
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -318,7 +320,7 @@
         }
         
         .modal-header {
-            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); /* Header verde para combinar */
             color: white;
             padding: 1.5rem;
             border-radius: 1rem 1rem 0 0;
@@ -380,10 +382,10 @@
             padding: 1.25rem;
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
-            border-left: 4px solid #2563eb;
+            border-left: 4px solid #16a34a; /* Línea verde */
         }
         
-        /* === MODIFICACIÓN: Ancho de los requisitos al 98% === */
+        /* === MODIFICACIÓN: Contenido optimizado al 98% === */
         .requisito-item-componentes {
             display: flex;
             gap: 0.875rem;
@@ -393,24 +395,26 @@
             border-radius: 0.5rem;
             margin-bottom: 0.75rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
             transition: all 0.2s;
             
-            /* Cambios solicitados para el ancho de los items */
+            /* Ancho 98% centrado dentro de su contenedor padre */
             width: 98%;
             margin-left: auto;
             margin-right: auto;
         }
         
         .requisito-item-componentes:hover {
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transform: translateX(4px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(2px);
+            border-color: #bbf7d0;
         }
         
         .requisito-numero-componentes {
             min-width: 2rem;
             width: 2rem;
             height: 2rem;
-            background: #2563eb;
+            background: #16a34a; /* Icono verde */
             color: white;
             border-radius: 0.5rem;
             display: flex;
@@ -418,6 +422,7 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.875rem;
+            flex-shrink: 0; /* Evita que se aplaste en móviles */
         }
 
         /* === ANIMACIONES === */
@@ -436,7 +441,7 @@
             animation: fadeIn 0.4s ease-out;
         }
 
-        /* Responsive */
+        /* === OPTIMIZACIÓN ESPECÍFICA PARA CELULARES (Responsive) === */
         @media (max-width: 768px) {
             .card-spd {
                 padding: 1rem;
@@ -446,6 +451,25 @@
                 border-radius: 0.5rem;
             }
             
+            /* En celular, el modal ocupa estrictamente el 98% de la pantalla */
+            .modal-content {
+                width: 98% !important;
+                max-width: 98% !important;
+                margin: 0 auto;
+            }
+
+            /* Reducir padding en modal body para dar espacio al contenido del 98% */
+            .modal-body {
+                padding: 0.75rem;
+            }
+
+            /* Los items de requisitos también ocupan 98% dentro del modal */
+            .requisito-item-componentes {
+                width: 98%;
+                padding: 0.75rem;
+                font-size: 0.9rem; /* Fuente ajustada para pantallas pequeñas */
+            }
+
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
@@ -530,6 +554,11 @@
                 margin: 0.5%;
                 width: 99%;
                 max-width: 99%;
+            }
+            
+            /* Ajuste crítico para pantallas muy pequeñas */
+            .modal-content {
+                width: 99% !important;
             }
             
             .section-spd {
