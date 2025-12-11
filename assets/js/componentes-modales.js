@@ -1,4 +1,4 @@
-// ===== SCRIPT PARA MODALES DE COMPONENTES DE SEGURIDAD =====
+// ===== SCRIPT PARA MODALES DE COMPONENTES DE SEGURIDAD (CON FIX ANDROID) =====
 
 // Requisitos generales del Artículo 46
 const requisitosGenerales = [
@@ -208,11 +208,15 @@ const requisitosComponentes = {
     }
 };
 
-function mostrarRequisitos(tipo) {
+// --- MODIFICACIÓN: Variable para control de estado ---
+// Esta función se encarga de renderizar el contenido, pero ahora separada de la lógica de historial
+function renderizarContenidoModal(tipo) {
     const modal = document.getElementById('modalRequisitos');
     const titulo = document.getElementById('modalTitulo');
     const contenido = document.getElementById('modalContenido');
     
+    if (!requisitosComponentes[tipo]) return; // Validación seguridad
+
     const data = requisitosComponentes[tipo];
     
     titulo.textContent = data.titulo;
@@ -293,16 +297,66 @@ function mostrarRequisitos(tipo) {
     document.body.style.overflow = 'hidden';
 }
 
-function cerrarModal() {
-    const modal = document.getElementById('modalRequisitos');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+// --- MODIFICACIÓN: Función principal de apertura con Historial ---
+function mostrarRequisitos(tipo) {
+    // 1. Agregar estado al historial para que el botón "Atrás" funcione
+    // Solo agregamos si no estamos ya en ese estado para no duplicar
+    if (!history.state || history.state.tipo !== tipo) {
+        history.pushState({ modalOpen: true, tipo: tipo }, "", `#${tipo}`);
+    }
+    
+    // 2. Renderizar y mostrar
+    renderizarContenidoModal(tipo);
 }
 
-// Cerrar modal al hacer clic fuera del contenido
-document.addEventListener('DOMContentLoaded', function() {
+// --- MODIFICACIÓN: Función de cierre segura ---
+// Esta función ahora solo hace el cambio visual.
+// La navegación del historial se maneja en los eventos de click.
+function cerrarModalVisualmente() {
     const modal = document.getElementById('modalRequisitos');
     if (modal) {
+        modal.classList.remove('active');
+    }
+    document.body.style.overflow = ''; // Restaurar scroll del body
+    
+    // CRÍTICO PARA ANDROID: Asegurar que el contenedor principal sea visible
+    // Buscamos contenedores comunes por si acaso se ocultaron
+    const mainContainers = document.querySelectorAll('.componentes-grid, .container, main');
+    mainContainers.forEach(container => {
+        container.style.display = ''; 
+        container.style.opacity = '1';
+    });
+}
+
+// Función que llama el usuario (botón X o Overlay)
+function cerrarModal() {
+    // Si hay un estado de modal en el historial, volvemos atrás.
+    // El evento 'popstate' se encargará de cerrar visualmente.
+    if (history.state && history.state.modalOpen) {
+        history.back();
+    } else {
+        // Fallback por si no hay historial
+        cerrarModalVisualmente();
+    }
+}
+
+// --- NUEVO: Manejador del botón Atrás (Hardware Back Button) ---
+window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.modalOpen) {
+        // El usuario fue "Adelante" en el historial hacia un modal abierto
+        renderizarContenidoModal(event.state.tipo);
+    } else {
+        // El usuario presionó "Atrás" o el estado es nulo
+        cerrarModalVisualmente();
+    }
+});
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modalRequisitos');
+    
+    if (modal) {
+        // Click en Overlay (fuera del contenido)
         modal.addEventListener('click', function(e) {
             if (e.target === this) {
                 cerrarModal();
@@ -310,10 +364,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Cerrar modal con tecla ESC
+    // Cerrar con tecla ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            cerrarModal();
+            const activeModal = document.querySelector('#modalRequisitos.active');
+            if (activeModal) {
+                cerrarModal();
+            }
         }
     });
+
+    // Limpieza inicial por si se recarga la página con basura en el historial
+    if (!history.state || !history.state.modalOpen) {
+        cerrarModalVisualmente();
+    }
 });
