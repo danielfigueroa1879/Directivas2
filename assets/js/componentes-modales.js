@@ -1,4 +1,5 @@
 // ===== SCRIPT PARA MODALES DE COMPONENTES DE SEGURIDAD (FIX ANDROID + SPD) =====
+// VERSIÓN CORREGIDA - Soluciona pantalla en blanco en Android al usar botón atrás
 
 // Requisitos generales del Artículo 46
 const requisitosGenerales = [
@@ -208,28 +209,63 @@ const requisitosComponentes = {
     }
 };
 
-// --- FUNCIÓN GLOBAL PARA ENCONTRAR EL CONTENEDOR PRINCIPAL ---
-// Esto busca en orden de prioridad para encontrar qué ocultar/mostrar
-// Útil para spd.html, componentes.html, etc.
+// ===== FUNCIÓN MEJORADA PARA DETECTAR EL CONTENEDOR PRINCIPAL =====
+// Esta función ahora busca de forma más robusta y tiene múltiples fallbacks
 function getMainContainer() {
-    return document.querySelector('.componentes-grid') || 
-           document.querySelector('.grid-container') || 
-           document.querySelector('.container-fluid') ||
-           document.querySelector('.container') ||
-           document.querySelector('#main-content') ||
-           document.querySelector('main') ||
-           document.querySelector('section'); // Último recurso
+    // Intento 1: Buscar por ID específico (si existe)
+    const byId = document.getElementById('main-content') || 
+                 document.getElementById('contenido-principal');
+    if (byId) return byId;
+    
+    // Intento 2: Buscar por clase específica de contenedor
+    const byClass = document.querySelector('.card-spd') ||
+                   document.querySelector('.container.mx-auto') ||
+                   document.querySelector('.container');
+    if (byClass) return byClass;
+    
+    // Intento 3: Buscar el primer elemento <main>
+    const mainElement = document.querySelector('main');
+    if (mainElement) return mainElement;
+    
+    // Intento 4: Buscar el div que contiene la clase card-spd (específico para SPD)
+    const cardParent = document.querySelector('div > .card-spd');
+    if (cardParent && cardParent.parentElement) return cardParent.parentElement;
+    
+    // Intento 5: Buscar cualquier contenedor directo del body que no sea el modal
+    const bodyChildren = Array.from(document.body.children).filter(el => 
+        !el.classList.contains('modal-requisitos') && 
+        el.tagName !== 'SCRIPT' && 
+        el.tagName !== 'STYLE' &&
+        !el.classList.contains('fixed') // Excluir banners fijos
+    );
+    
+    if (bodyChildren.length > 0) {
+        // Buscar el más grande (probablemente el contenedor principal)
+        return bodyChildren.reduce((prev, current) => 
+            (current.offsetHeight > prev.offsetHeight) ? current : prev
+        );
+    }
+    
+    // Si nada funciona, retornar null
+    return null;
 }
 
-// --- RENDERIZADO DEL MODAL ---
+// ===== FUNCIÓN DE RENDERIZADO DEL MODAL =====
 function renderizarContenidoModal(tipo) {
     const modal = document.getElementById('modalRequisitos');
+    if (!modal) {
+        console.error('Modal no encontrado en el DOM');
+        return;
+    }
+    
     const titulo = document.getElementById('modalTitulo');
     const contenido = document.getElementById('modalContenido');
     
-    if (!requisitosComponentes[tipo]) return; 
-
     const data = requisitosComponentes[tipo];
+    if (!data) {
+        console.error('Tipo de componente no válido:', tipo);
+        return;
+    }
     
     titulo.textContent = data.titulo;
     
@@ -308,15 +344,16 @@ function renderizarContenidoModal(tipo) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // OCULTAR EL CONTENEDOR PRINCIPAL
-    // Esto previene scroll doble y mejora el feel nativo
+    // ===== FIX CRÍTICO: OCULTAR CONTENEDOR PRINCIPAL =====
+    // Guardamos referencia al contenedor para poder restaurarlo después
     const container = getMainContainer();
     if (container) {
+        container.setAttribute('data-modal-hidden', 'true');
         container.style.display = 'none';
     }
 }
 
-// --- FUNCIÓN DE APERTURA ---
+// ===== FUNCIÓN DE APERTURA DEL MODAL =====
 function mostrarRequisitos(tipo) {
     if (!history.state || history.state.tipo !== tipo) {
         history.pushState({ modalOpen: true, tipo: tipo }, "", `#${tipo}`);
@@ -324,31 +361,70 @@ function mostrarRequisitos(tipo) {
     renderizarContenidoModal(tipo);
 }
 
-// --- FUNCIÓN DE CIERRE VISUAL ---
+// ===== FUNCIÓN DE CIERRE VISUAL DEL MODAL (FIX ANDROID) =====
 function cerrarModalVisualmente() {
     const modal = document.getElementById('modalRequisitos');
     if (modal) {
         modal.classList.remove('active');
     }
+    
+    // Restaurar scroll del body
     document.body.style.overflow = '';
     
-    // RESTAURAR EL CONTENEDOR PRINCIPAL (CRÍTICO PARA ANDROID)
+    // ===== FIX CRÍTICO PARA ANDROID =====
+    // Restaurar el contenedor principal con múltiples métodos
+    
+    // Método 1: Restaurar el contenedor identificado
     const container = getMainContainer();
-    if (container) {
-        container.style.display = ''; // Quita 'none'
+    if (container && container.hasAttribute('data-modal-hidden')) {
+        container.removeAttribute('data-modal-hidden');
+        container.style.display = '';
         container.style.opacity = '1';
         container.style.visibility = 'visible';
-    } else {
-        // Fallback de emergencia: restaurar TODOS los contenedores posibles
-        // por si spd.html usa algo muy raro
-        document.querySelectorAll('main, .container, section').forEach(el => {
+        
+        // Forzar reflow/repaint en Android
+        void container.offsetHeight;
+        
+        // Asegurar que los elementos hijos también sean visibles
+        const children = container.querySelectorAll('*');
+        children.forEach(child => {
+            if (child.style.display === 'none' && !child.classList.contains('modal-requisitos')) {
+                child.style.display = '';
+            }
+        });
+    }
+    
+    // Método 2: Fallback de emergencia - Restaurar TODOS los contenedores
+    document.querySelectorAll('[data-modal-hidden]').forEach(el => {
+        el.removeAttribute('data-modal-hidden');
+        el.style.display = '';
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+    });
+    
+    // Método 3: Fallback adicional - Buscar elementos ocultos que no deberían estarlo
+    document.querySelectorAll('.card-spd, .container, main, section').forEach(el => {
+        if (el.style.display === 'none' && !el.closest('.modal-requisitos')) {
             el.style.display = '';
             el.style.opacity = '1';
-        });
+            el.style.visibility = 'visible';
+        }
+    });
+    
+    // Método 4: Forzar repaint completo en Android
+    setTimeout(() => {
+        document.body.style.display = 'none';
+        void document.body.offsetHeight;
+        document.body.style.display = '';
+    }, 0);
+    
+    // Limpiar el hash de la URL si existe
+    if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
     }
 }
 
-// --- FUNCIÓN DE CIERRE INTERACTIVA ---
+// ===== FUNCIÓN DE CIERRE INTERACTIVA =====
 function cerrarModal() {
     if (history.state && history.state.modalOpen) {
         history.back();
@@ -357,21 +433,55 @@ function cerrarModal() {
     }
 }
 
-// --- MANEJADOR DE EVENTO BACK DE ANDROID (POPSTATE) ---
+// ===== MANEJADOR CRÍTICO DEL BOTÓN ATRÁS DE ANDROID (POPSTATE) =====
 window.addEventListener('popstate', function(event) {
+    // Detectar si estamos en un dispositivo móvil para logging
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        console.log('PopState detectado en móvil:', event.state);
+    }
+    
     if (event.state && event.state.modalOpen) {
         // Si vamos adelante a un modal
         renderizarContenidoModal(event.state.tipo);
     } else {
-        // Si vamos atrás (cerrar)
+        // Si vamos atrás (cerrar modal) - CRÍTICO PARA ANDROID
         cerrarModalVisualmente();
+        
+        // Doble verificación para Android después de 100ms
+        if (isMobile) {
+            setTimeout(() => {
+                const container = getMainContainer();
+                if (container && window.getComputedStyle(container).display === 'none') {
+                    console.warn('Contenedor aún oculto, forzando restauración');
+                    cerrarModalVisualmente();
+                }
+            }, 100);
+        }
     }
 });
 
-// --- INICIALIZACIÓN ---
+// ===== MANEJADOR PAGESHOW (FIX ADICIONAL PARA CACHE DE ANDROID) =====
+window.addEventListener('pageshow', function(event) {
+    // Si la página viene del caché (navegación hacia atrás)
+    if (event.persisted) {
+        console.log('Página restaurada desde caché');
+        cerrarModalVisualmente();
+        
+        // Asegurar que el modal esté cerrado
+        const modal = document.getElementById('modalRequisitos');
+        if (modal && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+        }
+    }
+});
+
+// ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('modalRequisitos');
     
+    // Click fuera del modal para cerrar
     if (modal) {
         modal.addEventListener('click', function(e) {
             if (e.target === this) {
@@ -380,6 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Tecla ESC para cerrar
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const activeModal = document.querySelector('#modalRequisitos.active');
@@ -389,11 +500,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Limpieza al cargar la página
+    // Limpieza inicial al cargar la página
     if (!history.state || !history.state.modalOpen) {
         cerrarModalVisualmente();
     } else if (history.state.modalOpen && history.state.tipo) {
         // Si recargamos con el modal abierto en la URL/Historial
         renderizarContenidoModal(history.state.tipo);
+    }
+    
+    // Verificación adicional después de 500ms (para Android lento)
+    setTimeout(() => {
+        if (!history.state || !history.state.modalOpen) {
+            cerrarModalVisualmente();
+        }
+    }, 500);
+});
+
+// ===== FIX ADICIONAL: DETECTAR CAMBIOS DE VISIBILIDAD =====
+document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+        // Cuando la página vuelve a ser visible
+        const modal = document.getElementById('modalRequisitos');
+        if (!modal || !modal.classList.contains('active')) {
+            // Si no hay modal activo, asegurar que el contenido sea visible
+            cerrarModalVisualmente();
+        }
     }
 });
