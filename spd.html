@@ -16,7 +16,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: #f3f4f6; /* Fallback color */
+            background-color: #f3f4f6;
         }
         
         .card-spd {
@@ -25,25 +25,24 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin: 1rem auto 2rem auto;
-            /* MODIFICADO: Aumentado a 1100px para que quepan bien las 3 columnas */
             max-width: 1100px; 
             position: relative;
         }
         
-        /* Botones generales (Acciones principales) */
+        /* Botones generales (Acciones principales) - ACTUALIZADO A #0071e3 */
         .btn-spd {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 1.25rem 1.5rem;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            background: #0071e3; /* Color solicitado */
             color: white;
             border-radius: 0.75rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 113, 227, 0.2);
             width: 50%;
             min-width: 280px;
             cursor: pointer;
@@ -52,9 +51,9 @@
         }
         
         .btn-spd:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            background: #0077ed; /* Un tono ligeramente más claro para hover */
             transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 15px rgba(0, 113, 227, 0.3);
         }
         
         .btn-spd-centered {
@@ -90,11 +89,12 @@
             margin-bottom: 1rem;
         }
         
+        /* Íconos de sección también actualizados para combinar */
         .section-icon {
             width: 2rem;
             height: 2rem;
             min-width: 2rem;
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            background: #e1f0ff; /* Fondo muy suave azul */
             border-radius: 0.5rem;
             display: flex;
             align-items: center;
@@ -104,7 +104,7 @@
         .section-icon svg {
             width: 1.25rem;
             height: 1.25rem;
-            color: #2563eb;
+            color: #0071e3; /* Azul solicitado */
         }
         
         .email-box {
@@ -116,14 +116,14 @@
         }
         
         .email-box a {
-            color: #1e40af;
+            color: #0071e3;
             font-weight: 600;
             word-break: break-all;
             text-decoration: none;
         }
         
         .email-box a:hover {
-            color: #1e3a8a;
+            color: #005bb5;
             text-decoration: underline;
         }
         
@@ -169,12 +169,11 @@
             border: 1px solid #bfdbfe;
             border-radius: 0.5rem;
             font-size: 0.75rem;
-            color: #1e40af;
+            color: #0071e3;
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
         }
 
-        /* === VISTA DE COMPONENTES (OCULTA POR DEFECTO) === */
         #vistaComponentes {
             display: none;
         }
@@ -183,20 +182,19 @@
             display: block;
         }
 
-        /* === ESTILOS GLOBALES BOTONES COMPONENTES (PC Y MÓVIL) - ESTILO MODERNIZADO === */
+        /* === ESTILOS GLOBALES BOTONES COMPONENTES - ACTUALIZADO #0071e3 === */
         .btn-componente {
             display: flex;
             align-items: center;
             gap: 1rem;
             padding: 1rem 1.25rem;
             
-            /* ESTILO BASE: Blanco con borde gris claro */
             background: #ffffff;
             color: #1e293b;
             
-            border: 1px solid #e2e8f0; /* Contorno gris claro */
+            /* BORDE FINO DEL COLOR SOLICITADO #0071e3 */
+            border: 1px solid #0071e3;
             
-            /* MODIFICADO: Bordes mucho más redondos (antes 0.75rem) */
             border-radius: 1.5rem; 
             
             font-weight: 500;
@@ -206,51 +204,45 @@
             width: 100%;
             text-align: left;
             
-            /* Sombras Modernas (Suaves) */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
             
             position: relative;
             overflow: hidden;
             margin-bottom: 0;
-            
-            /* Asegurar que la altura sea consistente para las 3 columnas */
             min-height: 100px;
         }
 
         /* TÍTULO PRINCIPAL DEL BOTÓN */
         .btn-componente .font-bold {
-            color: #0f172a !important; /* Texto casi negro por defecto */
+            color: #0f172a !important; 
             font-weight: 600;
-            font-size: 0.95rem; /* Ajuste leve para que quepa mejor en 3 col */
+            font-size: 0.95rem; 
             display: block;
             transition: color 0.3s ease;
         }
 
         /* SUBTÍTULO DEL BOTÓN */
         .btn-componente .text-xs {
-            color: #64748b !important; /* Gris medio por defecto */
+            color: #64748b !important; 
             font-weight: 400;
             margin-top: 2px;
             transition: color 0.3s ease;
-            font-size: 0.7rem; /* Texto un poco más pequeño para optimizar espacio */
+            font-size: 0.7rem; 
         }
 
-        /* RESPONSIVE PC */
         @media (min-width: 768px) {
             .btn-componente {
                 padding: 1.25rem; 
-                gap: 0.75rem; /* Reducir un poco el gap para las 3 columnas */
+                gap: 0.75rem; 
             }
         }
 
-        /* EFECTO HOVER: Fondo Azul, Texto Blanco */
+        /* EFECTO HOVER: FONDO #0071e3 */
         .btn-componente:hover {
             transform: translateY(-3px);
-            border-color: #2563eb; 
-            /* Fondo Azul Intenso */
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important; 
-            /* Sombra azulada moderna */
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+            border-color: #0071e3; /* Mantiene el color del borde */
+            background: #0071e3 !important; /* Relleno azul exacto */
+            box-shadow: 0 10px 25px -5px rgba(0, 113, 227, 0.4), 0 8px 10px -6px rgba(0, 113, 227, 0.1);
         }
 
         /* CAMBIO DE TEXTO A BLANCO AL HOVER */
@@ -259,20 +251,20 @@
         }
         
         .btn-componente:hover .text-xs {
-            color: #e0e7ff !important; /* Azul muy pálido para subtítulo */
+            color: #e0e7ff !important; 
         }
 
         /* === ICONO DENTRO DEL BOTÓN === */
         .btn-componente-icon {
-            width: 44px; /* Un poco más pequeño para 3 columnas */
+            width: 44px; 
             height: 44px;
             min-width: 44px;
             
-            /* Estado Normal: Fondo azul muy suave */
-            background: #eff6ff; 
-            color: #2563eb; 
+            /* Fondo suave y color del icono #0071e3 */
+            background: #f0f7ff; 
+            color: #0071e3; 
             
-            border-radius: 1rem; /* Icono también más redondo para combinar */
+            border-radius: 1rem; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -280,10 +272,10 @@
             border: none;
         }
 
-        /* AL HOVER: El icono cambia a fondo blanco para resaltar sobre el botón azul */
+        /* AL HOVER: Icono fondo blanco, simbolo azul #0071e3 */
         .btn-componente:hover .btn-componente-icon {
             background: #ffffff; 
-            color: #1d4ed8; 
+            color: #0071e3; 
             transform: scale(1.05);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -295,23 +287,19 @@
             transition: transform 0.3s ease;
         }
         
-        /* FLECHA A LA DERECHA - OCULTAR EN 3 COLUMNAS PARA LIMPIEZA VISUAL, O HACER PEQUEÑA */
         .btn-componente-arrow {
             margin-left: auto;
-            color: #cbd5e1; /* Gris claro */
+            color: #cbd5e1; 
             transition: all 0.3s ease;
         }
         
         @media (min-width: 1024px) {
-            /* En pantallas grandes (3 columnas), quizás ocultar la flecha si falta espacio, 
-               pero con 1100px de ancho debería caber. */
             .btn-componente-arrow svg {
                 width: 16px;
                 height: 16px;
             }
         }
 
-        /* AL HOVER: Flecha blanca */
         .btn-componente:hover .btn-componente-arrow {
             color: #ffffff; 
             transform: translateX(4px);
@@ -368,7 +356,8 @@
         }
         
         .modal-header {
-            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            /* Cabecera del modal usando el nuevo azul */
+            background: #0071e3;
             color: white;
             padding: 1.5rem;
             border-radius: 1rem 1rem 0 0;
@@ -415,7 +404,7 @@
         
         .badge-ley-componentes {
             background: #dbeafe;
-            color: #1e40af;
+            color: #0071e3;
             border: 1px solid #93c5fd;
         }
         
@@ -430,8 +419,7 @@
             padding: 1.25rem;
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
-            border-left: 4px solid #2563eb;
-            /* Borde alrededor del grupo */
+            border-left: 4px solid #0071e3; /* Azul actualizado */
             border-top: 1px solid #cbd5e1;
             border-right: 1px solid #cbd5e1;
             border-bottom: 1px solid #cbd5e1;
@@ -461,7 +449,7 @@
             min-width: 2rem;
             width: 2rem;
             height: 2rem;
-            background: #2563eb;
+            background: #0071e3; /* Azul actualizado */
             color: white;
             border-radius: 0.5rem;
             display: flex;
@@ -535,7 +523,6 @@
             
             .section-spd {
                 padding: 1.25rem;
-                /* Borde más visible aún en móvil por si acaso */
                 border: 2px solid #cbd5e1 !important; 
             }
             
@@ -550,7 +537,7 @@
                 padding: 0.875rem 1rem;
                 font-size: 0.875rem;
                 margin-right: auto !important;
-                background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+                background: #0071e3;
                 display: flex;
             }
             
@@ -615,7 +602,6 @@
             }
         }
 
-        /* Responsive extra pequeño */
         @media (max-width: 480px) {
             .card-spd {
                 padding: 0.75rem;
@@ -642,7 +628,6 @@
             }
         }
 
-        /* Tablets y móviles grandes */
         @media (min-width: 481px) and (max-width: 640px) {
             .card-spd {
                 width: 96%;
