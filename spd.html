@@ -68,13 +68,13 @@
             background: linear-gradient(135deg, #15803d 0%, #166534 100%);
         }
         
-        /* Estilos de Sección */
+        /* Estilos de Sección (PC - Borde sutil) */
         .section-spd {
             margin-bottom: 1.5rem;
             padding: 1.5rem;
             background-color: #ffffff;
             border-radius: 0.75rem;
-            border: 1px solid #f8fafc; /* Gris muy claro */
+            border: 1px solid #f8fafc; /* Gris muy claro en PC */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); 
         }
         
@@ -498,24 +498,31 @@
                 padding: 0 !important;
             }
             
+            /* === MODIFICACIÓN: LÍNEAS VISIBLES EN CELULAR === */
             .section-spd {
                 padding: 1.25rem;
+                /* Borde gris más oscuro y grueso solo en móvil */
+                border: 2px solid #cbd5e1 !important; 
             }
             
             .section-title {
                 font-size: 1.125rem;
             }
             
-            /* Botones de información pequeños y a la izquierda en móvil */
-            .section-spd .btn-spd:not(.btn-green) {
-                width: auto !important;
-                min-width: 0 !important;
-                max-width: 60%;
-                padding: 0.75rem 1rem;
-                font-size: 0.8rem;
+            /* === MODIFICACIÓN: UNIFICACIÓN DE ANCHO EN MÓVIL === */
+            .section-spd .btn-spd {
+                width: 100% !important;
+                min-width: auto !important;
+                max-width: 100% !important;
+                padding: 0.875rem 1rem;
+                font-size: 0.875rem;
                 margin-left: 0;
-                margin-right: auto;
-                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); 
+                margin-right: 0;
+                background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            }
+            
+            .section-spd .btn-spd.btn-green {
+                background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
             }
             
             .btn-spd-centered {
@@ -554,7 +561,6 @@
                 height: 1rem;
             }
 
-            /* En móvil los botones de componentes ocupan casi todo el ancho pero centrados */
             .btn-componente {
                 padding: 1rem 1rem;
                 gap: 1rem;
@@ -678,8 +684,8 @@
                 <p class="text-sm text-gray-600 mb-4">
                     Consulta el informativo oficial y realiza consultas sobre trámites:
                 </p>
-                <!-- Items alineados a la izquierda en móvil -->
-                <div class="flex flex-col gap-3 items-start w-full">
+                <!-- Alineación uniforme para botones de ancho completo -->
+                <div class="flex flex-col gap-3 w-full">
                     <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm">
                         📄 ¿Dónde hacer los trámites?
                     </a>
@@ -733,7 +739,7 @@
                 </div>
                 <div>
                     <button onclick="mostrarComponentes()" class="btn-spd btn-green text-sm">
-                        Requisitos por Componente
+                        📋 Ver Requisitos por Componente
                     </button>
                 </div>
             </div>
