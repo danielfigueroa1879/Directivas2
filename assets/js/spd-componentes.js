@@ -240,12 +240,12 @@ function mostrarComponentes() {
     const vistaComponentes = document.getElementById('vistaComponentes');
     
     if (!vistaComponentes) {
-        console.error('Vista de componentes no encontrada');
+        // No es error si estamos en index.html y no existen estas vistas
         return;
     }
     
     // Ocultar vista principal
-    vistaPrincipal.style.display = 'none';
+    if (vistaPrincipal) vistaPrincipal.style.display = 'none';
     
     // Mostrar vista de componentes
     vistaComponentes.classList.add('active');
@@ -297,8 +297,11 @@ function getMainContainer() {
     const byId = document.getElementById('main-content');
     if (byId) return byId;
     
+    // FIX: Filtrar también las clases del modal en index.html para no ocultarlo a sí mismo
     const bodyChildren = Array.from(document.body.children).filter(el => 
         !el.classList.contains('modal-requisitos') && 
+        !el.classList.contains('modal-requisitos-componentes') && // <--- FIX AGREGADO
+        el.id !== 'modalRequisitos' && // Doble seguridad por ID
         el.tagName !== 'SCRIPT' && 
         el.tagName !== 'STYLE' &&
         el.tagName !== 'FOOTER' &&
@@ -555,7 +558,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Tecla ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            const activeModal = document.querySelector('#modalRequisitos.active');
+            const activeModal = document.querySelector('#modalRequisitos.active, .modal-requisitos.active, .modal-requisitos-componentes.active');
             if (activeModal) {
                 cerrarModal();
             }
@@ -592,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('visibilitychange', function() {
     if (!document.hidden) {
         const modal = document.getElementById('modalRequisitos');
-        if (!modal || !modal.classList.contains('active')) {
+        if (!modal || (!modal.classList.contains('active') && window.getComputedStyle(modal).display === 'none')) {
             cerrarModalVisualmente();
         }
     }
