@@ -1,3 +1,6 @@
+Spd · HTML
+Copiar
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -429,8 +432,20 @@
         /* Responsive */
         @media (max-width: 768px) {
             .card-spd {
-                padding: 1.25rem;
-                margin: 0.75rem;
+                padding: 1rem;
+                margin: 1%;
+                width: 98%;
+                max-width: 98%;
+                border-radius: 0.5rem;
+            }
+            
+            .container {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
+            #main-content {
+                padding: 0 !important;
             }
             
             .section-spd {
@@ -500,6 +515,61 @@
                 height: 20px;
             }
         }
+
+        /* Responsive para móviles pequeños (hasta 480px) */
+        @media (max-width: 480px) {
+            .card-spd {
+                padding: 0.75rem;
+                margin: 0.5%;
+                width: 99%;
+                max-width: 99%;
+            }
+            
+            .section-spd {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .btn-spd {
+                font-size: 0.8rem;
+                padding: 0.65rem 1rem;
+            }
+            
+            .btn-componente {
+                padding: 0.75rem 0.875rem;
+                gap: 0.875rem;
+            }
+            
+            .btn-componente-icon {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+            }
+            
+            body {
+                padding-top: 3.5rem;
+            }
+        }
+
+        /* Responsive para móviles medianos (481px - 640px) */
+        @media (min-width: 481px) and (max-width: 640px) {
+            .card-spd {
+                width: 96%;
+                margin: 2%;
+            }
+        }
+
+        /* Responsive para móviles grandes (641px - 768px) */
+        @media (min-width: 641px) and (max-width: 768px) {
+            .card-spd {
+                width: 94%;
+                margin: 3%;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen pt-14 sm:pt-16">
@@ -516,7 +586,7 @@
         <!-- VISTA PRINCIPAL (SPD) -->
         <div id="vistaPrincipal" class="card-spd">
             <!-- BOTÓN VOLVER -->
-            <a href="index.html" class="btn-volver-card">
+            <a href="index.html" class="btn-volver-card" onclick="volverAlIndex(event)">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -630,8 +700,8 @@
                             📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:otec.spd@minsegpublica.gob.cl">
-                                otec.spd@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#1a756e7f7934696a7e5a777374697f7d6a6f787673797b347d7578347976">
+                                <span class="__cf_email__" data-cfemail="6d0219080e431e1d092d0004031e080a1d180f01040e0c430a020f430e01">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -646,8 +716,8 @@
                             🎓 Planes, Programas y Cursos de Capacitación
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:capacitacion.spd@minsegpublica.gob.cl">
-                                capacitacion.spd@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#89eae8f9e8eae0fde8eae0e6e7a7faf9edc9e4e0e7faeceef9fcebe5e0eae8a7eee6eba7eae5">
+                                <span class="__cf_email__" data-cfemail="bad9dbcadbd9d3cedbd9d3d5d494c9cadefad7d3d4c9dfddcacfd8d6d3d9db94ddd5d894d9d6">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
