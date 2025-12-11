@@ -1,4 +1,4 @@
-// ===== SCRIPT PARA MODALES DE COMPONENTES DE SEGURIDAD (CON FIX ANDROID) =====
+// ===== SCRIPT PARA MODALES DE COMPONENTES DE SEGURIDAD (FIX ANDROID + SPD) =====
 
 // Requisitos generales del Artículo 46
 const requisitosGenerales = [
@@ -208,14 +208,26 @@ const requisitosComponentes = {
     }
 };
 
-// --- MODIFICACIÓN: Variable para control de estado ---
-// Esta función se encarga de renderizar el contenido, pero ahora separada de la lógica de historial
+// --- FUNCIÓN GLOBAL PARA ENCONTRAR EL CONTENEDOR PRINCIPAL ---
+// Esto busca en orden de prioridad para encontrar qué ocultar/mostrar
+// Útil para spd.html, componentes.html, etc.
+function getMainContainer() {
+    return document.querySelector('.componentes-grid') || 
+           document.querySelector('.grid-container') || 
+           document.querySelector('.container-fluid') ||
+           document.querySelector('.container') ||
+           document.querySelector('#main-content') ||
+           document.querySelector('main') ||
+           document.querySelector('section'); // Último recurso
+}
+
+// --- RENDERIZADO DEL MODAL ---
 function renderizarContenidoModal(tipo) {
     const modal = document.getElementById('modalRequisitos');
     const titulo = document.getElementById('modalTitulo');
     const contenido = document.getElementById('modalContenido');
     
-    if (!requisitosComponentes[tipo]) return; // Validación seguridad
+    if (!requisitosComponentes[tipo]) return; 
 
     const data = requisitosComponentes[tipo];
     
@@ -295,68 +307,72 @@ function renderizarContenidoModal(tipo) {
     contenido.innerHTML = html;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // OCULTAR EL CONTENEDOR PRINCIPAL
+    // Esto previene scroll doble y mejora el feel nativo
+    const container = getMainContainer();
+    if (container) {
+        container.style.display = 'none';
+    }
 }
 
-// --- MODIFICACIÓN: Función principal de apertura con Historial ---
+// --- FUNCIÓN DE APERTURA ---
 function mostrarRequisitos(tipo) {
-    // 1. Agregar estado al historial para que el botón "Atrás" funcione
-    // Solo agregamos si no estamos ya en ese estado para no duplicar
     if (!history.state || history.state.tipo !== tipo) {
         history.pushState({ modalOpen: true, tipo: tipo }, "", `#${tipo}`);
     }
-    
-    // 2. Renderizar y mostrar
     renderizarContenidoModal(tipo);
 }
 
-// --- MODIFICACIÓN: Función de cierre segura ---
-// Esta función ahora solo hace el cambio visual.
-// La navegación del historial se maneja en los eventos de click.
+// --- FUNCIÓN DE CIERRE VISUAL ---
 function cerrarModalVisualmente() {
     const modal = document.getElementById('modalRequisitos');
     if (modal) {
         modal.classList.remove('active');
     }
-    document.body.style.overflow = ''; // Restaurar scroll del body
+    document.body.style.overflow = '';
     
-    // CRÍTICO PARA ANDROID: Asegurar que el contenedor principal sea visible
-    // Buscamos contenedores comunes por si acaso se ocultaron
-    const mainContainers = document.querySelectorAll('.componentes-grid, .container, main');
-    mainContainers.forEach(container => {
-        container.style.display = ''; 
+    // RESTAURAR EL CONTENEDOR PRINCIPAL (CRÍTICO PARA ANDROID)
+    const container = getMainContainer();
+    if (container) {
+        container.style.display = ''; // Quita 'none'
         container.style.opacity = '1';
-    });
+        container.style.visibility = 'visible';
+    } else {
+        // Fallback de emergencia: restaurar TODOS los contenedores posibles
+        // por si spd.html usa algo muy raro
+        document.querySelectorAll('main, .container, section').forEach(el => {
+            el.style.display = '';
+            el.style.opacity = '1';
+        });
+    }
 }
 
-// Función que llama el usuario (botón X o Overlay)
+// --- FUNCIÓN DE CIERRE INTERACTIVA ---
 function cerrarModal() {
-    // Si hay un estado de modal en el historial, volvemos atrás.
-    // El evento 'popstate' se encargará de cerrar visualmente.
     if (history.state && history.state.modalOpen) {
         history.back();
     } else {
-        // Fallback por si no hay historial
         cerrarModalVisualmente();
     }
 }
 
-// --- NUEVO: Manejador del botón Atrás (Hardware Back Button) ---
+// --- MANEJADOR DE EVENTO BACK DE ANDROID (POPSTATE) ---
 window.addEventListener('popstate', function(event) {
     if (event.state && event.state.modalOpen) {
-        // El usuario fue "Adelante" en el historial hacia un modal abierto
+        // Si vamos adelante a un modal
         renderizarContenidoModal(event.state.tipo);
     } else {
-        // El usuario presionó "Atrás" o el estado es nulo
+        // Si vamos atrás (cerrar)
         cerrarModalVisualmente();
     }
 });
 
-// Event Listeners
+// --- INICIALIZACIÓN ---
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('modalRequisitos');
     
     if (modal) {
-        // Click en Overlay (fuera del contenido)
         modal.addEventListener('click', function(e) {
             if (e.target === this) {
                 cerrarModal();
@@ -364,7 +380,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Cerrar con tecla ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const activeModal = document.querySelector('#modalRequisitos.active');
@@ -374,8 +389,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Limpieza inicial por si se recarga la página con basura en el historial
+    // Limpieza al cargar la página
     if (!history.state || !history.state.modalOpen) {
         cerrarModalVisualmente();
+    } else if (history.state.modalOpen && history.state.tipo) {
+        // Si recargamos con el modal abierto en la URL/Historial
+        renderizarContenidoModal(history.state.tipo);
     }
 });
