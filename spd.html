@@ -872,6 +872,74 @@
             height: 1.25rem;
         }
         /* ===== FIN ESTILOS BOTÓN PDF ===== */
+        
+        /* ===== ANIMACIÓN DESCARGA PDF ===== */
+        .pdf-download-animation {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99999;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        .pdf-download-animation.active {
+            animation: pdfBounce 1.2s ease-out forwards;
+        }
+        
+        .pdf-icon-animated {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.5);
+        }
+        
+        .pdf-icon-animated svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+        
+        @keyframes pdfBounce {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -150%) scale(0.5);
+            }
+            40% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            60% {
+                transform: translate(-50%, -30%) scale(0.95);
+            }
+            75% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+            85% {
+                transform: translate(-50%, 50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, 150%) scale(0.8);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .pdf-icon-animated {
+                width: 70px;
+                height: 70px;
+            }
+            .pdf-icon-animated svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        /* ===== FIN ANIMACIÓN DESCARGA PDF ===== */
     </style>
 </head>
 <body class="min-h-screen pt-14 sm:pt-16">
@@ -1028,8 +1096,8 @@
                             📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                spd-cargadimensionada@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#196a697d347a786b7e787d70747c776a707677787d78597470776a7c7e696c7b75707a78377e767b377a75" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="a9dad9cd84cac8dbcec8cdc0c4ccc7dac0c6c7c8cdc8e9c4c0c7daccced9dccbc5c0cac887cec6cb87cac5">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1044,8 +1112,8 @@
                             🎓 Planes, Programas y Cursos de Capacitación
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                spd-capacitacionessp@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#304340541d535140515359445153595f5e55434340705d595e4355574045525c5953511e575f521e535c" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="91e2e1f5bcf2f0e1f0f2f8e5f0f2f8fefff4e2e2e1d1fcf8ffe2f4f6e1e4f3fdf8f2f0bff6fef3bff2fd">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1320,8 +1388,18 @@
         </div>
     </div>
     
+    <!-- Animación de descarga PDF -->
+    <div id="pdfDownloadAnimation" class="pdf-download-animation">
+        <div class="pdf-icon-animated">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17h6M9 13h6M9 9h3"></path>
+            </svg>
+        </div>
+    </div>
+    
     <!-- JAVASCRIPT PARA MODALES Y PDF -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Función para mostrar el modal con los requisitos
         function mostrarRequisitos(tipo) {
             const modal = document.getElementById('modalRequisitos');
@@ -1444,6 +1522,15 @@
                     orientation: 'portrait' 
                 }
             };
+            
+            // Mostrar animación de descarga
+            const animacion = document.getElementById('pdfDownloadAnimation');
+            if (animacion) {
+                animacion.classList.add('active');
+                setTimeout(() => {
+                    animacion.classList.remove('active');
+                }, 1200);
+            }
             
             // Generar y descargar PDF
             html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
