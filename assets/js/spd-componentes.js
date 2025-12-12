@@ -713,22 +713,12 @@ function descargarModalPDF(tipo) {
     
     // Crear un contenedor temporal con el contenido
     const contenedorTemp = document.createElement('div');
-    contenedorTemp.style.padding = '10px';
-    contenedorTemp.style.backgroundColor = 'white';
-    contenedorTemp.style.margin = '0';
-    contenedorTemp.style.width = '100%';
+    contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
     
     // Agregar título
     const tituloElement = document.createElement('h1');
     tituloElement.textContent = titulo;
-    tituloElement.style.fontSize = '22px';
-    tituloElement.style.fontWeight = 'bold';
-    tituloElement.style.marginTop = '0';
-    tituloElement.style.marginBottom = '15px';
-    tituloElement.style.color = '#1f2937';
-    tituloElement.style.paddingTop = '0';
-    tituloElement.style.pageBreakAfter = 'avoid';
-    tituloElement.style.pageBreakInside = 'avoid';
+    tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
     contenedorTemp.appendChild(tituloElement);
     
     // Clonar el contenido del modal
@@ -737,34 +727,43 @@ function descargarModalPDF(tipo) {
     // Ocultar botón de descarga en el clon
     const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
     if (botonPDF) {
-        botonPDF.style.display = 'none';
+        botonPDF.remove();
     }
     
-    // Eliminar márgenes superiores innecesarios del contenido clonado
-    contenidoClone.style.marginTop = '0';
-    contenidoClone.style.paddingTop = '0';
+    // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
+    contenidoClone.style.cssText = 'margin: 0; padding: 0;';
     
-    // Ajustar el primer elemento hijo para eliminar margen superior
-    if (contenidoClone.firstElementChild) {
-        contenidoClone.firstElementChild.style.marginTop = '0';
-        contenidoClone.firstElementChild.style.paddingTop = '0';
-    }
-    
-    // Aplicar estilos para evitar saltos de página en todas las secciones
-    const secciones = contenidoClone.querySelectorAll('.requisito-section-componentes, .space-y-4, div[class*="bg-"]');
-    secciones.forEach(seccion => {
-        seccion.style.pageBreakInside = 'auto';
-        seccion.style.pageBreakAfter = 'auto';
-        seccion.style.pageBreakBefore = 'auto';
-        seccion.style.breakInside = 'auto';
-    });
-    
-    // Aplicar estilos a todos los divs para evitar saltos forzados
-    const todosLosDivs = contenidoClone.querySelectorAll('div');
-    todosLosDivs.forEach(div => {
-        div.style.pageBreakBefore = 'auto';
-        div.style.pageBreakAfter = 'auto';
-        div.style.pageBreakInside = 'auto';
+    // Aplicar estilos a TODOS los elementos para flujo continuo
+    const todosLosElementos = contenidoClone.querySelectorAll('*');
+    todosLosElementos.forEach(elemento => {
+        // Eliminar márgenes verticales grandes
+        if (elemento.style.marginTop) elemento.style.marginTop = '0';
+        if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
+        if (elemento.style.paddingTop) elemento.style.paddingTop = '0';
+        if (elemento.style.paddingBottom) elemento.style.paddingBottom = '0';
+        
+        // Aplicar márgenes pequeños a secciones
+        if (elemento.classList.contains('requisito-section-componentes')) {
+            elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
+        }
+        
+        // Aplicar estilos a items
+        if (elemento.classList.contains('requisito-item-componentes')) {
+            elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
+        }
+        
+        // Reducir espacios en divs con clases de Tailwind
+        if (elemento.className && typeof elemento.className === 'string') {
+            if (elemento.className.includes('mt-')) {
+                elemento.style.marginTop = '5px';
+            }
+            if (elemento.className.includes('mb-')) {
+                elemento.style.marginBottom = '5px';
+            }
+            if (elemento.className.includes('space-y-')) {
+                elemento.style.cssText += 'gap: 5px;';
+            }
+        }
     });
     
     contenedorTemp.appendChild(contenidoClone);
@@ -772,19 +771,34 @@ function descargarModalPDF(tipo) {
     // Generar nombre de archivo
     const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
     
-    // Configuración del PDF - Sin saltos de página forzados
+    // Configuración del PDF optimizada para flujo continuo
     const opciones = {
-        margin: [10, 10, 10, 10],
+        margin: [8, 8, 8, 8],
         filename: nombreArchivo,
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { 
+            type: 'jpeg', 
+            quality: 0.96 
+        },
         html2canvas: { 
-            scale: 2,
+            scale: 1.5,
             useCORS: true,
             logging: false,
             letterRendering: true,
             backgroundColor: '#ffffff',
             scrollY: 0,
-            scrollX: 0
+            scrollX: 0,
+            windowHeight: document.documentElement.scrollHeight,
+            onclone: function(clonedDoc) {
+                const clonedContent = clonedDoc.body.querySelector('div');
+                if (clonedContent) {
+                    const allElements = clonedContent.querySelectorAll('*');
+                    allElements.forEach(el => {
+                        el.style.pageBreakInside = 'auto';
+                        el.style.pageBreakBefore = 'auto';
+                        el.style.pageBreakAfter = 'auto';
+                    });
+                }
+            }
         },
         jsPDF: { 
             unit: 'mm', 
@@ -793,8 +807,10 @@ function descargarModalPDF(tipo) {
             compress: true
         },
         pagebreak: { 
-            mode: ['css', 'legacy'],
-            avoid: ['div', '.requisito-section-componentes', '.requisito-item-componentes']
+            mode: [],
+            before: [],
+            after: [],
+            avoid: []
         }
     };
     
@@ -803,6 +819,7 @@ function descargarModalPDF(tipo) {
         console.log('PDF descargado:', nombreArchivo);
     });
 }
+
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', function() {
