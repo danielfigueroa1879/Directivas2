@@ -585,7 +585,7 @@ function renderizarContenidoModal(tipo) {
                     <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">${item.numero}</div>
                     <div class="flex-1">
                         <p class="text-sm font-bold text-gray-900 mb-1">${item.asignatura}</p>
-                        <p class="text-sm text-gray-700">${item.requisitos}</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">${item.requisitos}</p>
                     </div>
                 </div>
             `;
