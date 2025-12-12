@@ -956,7 +956,7 @@
         <!-- VISTA PRINCIPAL (SPD) -->
         <div id="vistaPrincipal" class="card-spd">
             <!-- BOTÓN VOLVER -->
-            <a href="index.html" class="btn-volver-card" onclick="volverAlIndex(event)">
+            <a href="index.html" class="btn-volver-card">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -1045,7 +1045,7 @@
                     <span class="feature-badge">✓ Y más...</span>
                 </div>
                 <div>
-                    <button onclick="mostrarComponentes()" class="btn-spd btn-green text-sm">
+                    <button onclick="window.location.href='index.html#componentes-seguridad'" class="btn-spd btn-green text-sm">
                         📋 Requisitos por Componente
                     </button>
                 </div>
@@ -1070,8 +1070,8 @@
                     <span class="feature-badge" style="background: white; color: #d97706; border: 1px solid #d97706;">✓ Porteros/Nocheros/Rondines (8 asignaturas - 60h)</span>
                 </div>
                 <div>
-                    <button onclick="mostrarAsignaturas()" class="btn-spd text-sm" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; box-shadow: 0 4px 6px rgba(217, 119, 6, 0.3);">
-                    📚 Asignaturas Capacitación
+                    <button onclick="window.location.href='index.html#componentes-seguridad'" class="btn-spd text-sm" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; box-shadow: 0 4px 6px rgba(217, 119, 6, 0.3);">
+                    📚 Ver Componentes y Asignaturas
                     </button>
                 </div>
             </div>
@@ -1096,8 +1096,8 @@
                             📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                <strong>spd-cargadimensionada@minsegpublica.gob.cl</strong>
+                            <a href="/cdn-cgi/l/email-protection#81f2f1e5ace2e0f3e6e0e5e8ece4eff2e8eeefe0e5e0c1ece8eff2e4e6f1f4e3ede8e2e0afe6eee3afe2ed" class="text-blue-600 hover:text-blue-800">
+                                <strong><span class="__cf_email__" data-cfemail="265556420b4547544147424f4b4348554f4948474247664b4f485543415653444a4f45470841494408454a">[email&#160;protected]</span></strong>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1112,8 +1112,8 @@
                             🎓 Planes, Programas y Cursos de Capacitación
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                <strong>spd-capacitacionessp@minsegpublica.gob.cl</strong>
+                            <a href="/cdn-cgi/l/email-protection#235053470e40425342404a5742404a4c4d46505053634e4a4d5046445356414f4a40420d444c410d404f" class="text-blue-600 hover:text-blue-800">
+                                <strong><span class="__cf_email__" data-cfemail="0e7d7e6a236d6f7e6f6d677a6f6d6761606b7d7d7e4e6367607d6b697e7b6c62676d6f2069616c206d62">[email&#160;protected]</span></strong>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1145,7 +1145,7 @@
         <!-- VISTA DE COMPONENTES (OCULTA POR DEFECTO) -->
         <div id="vistaComponentes" class="card-spd animate-in">
             <!-- BOTÓN VOLVER A SPD -->
-            <button onclick="volverASPD()" class="btn-volver-card">
+            <button onclick="window.location.href='spd.html'" class="btn-volver-card">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -1399,7 +1399,7 @@
     </div>
     
     <!-- JAVASCRIPT PARA MODALES Y PDF -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Función para mostrar el modal con los requisitos
         function mostrarRequisitos(tipo) {
             const modal = document.getElementById('modalRequisitos');
@@ -1531,7 +1531,6 @@
                     animacion.classList.remove('active');
                 }, 1200);
             }
-            
             // Generar y descargar PDF
             html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
                 console.log('PDF descargado:', nombreArchivo);
