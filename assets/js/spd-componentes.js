@@ -21,7 +21,8 @@ function mostrarRequisitos(tipo) {
         'operador': 'Operador de Cámaras y Alarmas',
         'instalador': 'Instalador Técnico',
         'supervisor': 'Supervisor de Seguridad',
-        'jefe': 'Jefe de Operaciones',
+        'jefe': 'Jefe de Seguridad',
+        'asesor': 'Asesor de Seguridad',
         'capacitador': 'Capacitador',
         'empresa': 'Empresa de Seguridad'
     };
@@ -59,6 +60,9 @@ function mostrarRequisitos(tipo) {
             break;
         case 'jefe':
             html = generarContenidoJefe();
+            break;
+        case 'asesor':
+            html = generarContenidoAsesor();
             break;
         case 'capacitador':
             html = generarContenidoCapacitador();
@@ -427,6 +431,80 @@ function generarContenidoTecnico() {
 }
 
 // ==========================================================================
+// ASESOR DE SEGURIDAD - CON ENCABEZADOS Y 14 REQUISITOS GENERALES
+// ==========================================================================
+function generarContenidoAsesor() {
+    return `
+        <div class="space-y-4">
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
+                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
+                    Persona natural que asesora sobre seguridad privada, propone medidas para neutralizar vulnerabilidades. Puede elaborar estudios y planes de seguridad.
+                </p>
+            </div>
+            
+            <div class="mb-4 flex flex-wrap gap-2">
+                <span class="badge-componentes badge-ley-componentes">No tiene artículo específico en Ley 21.659</span>
+                <span class="badge-componentes badge-decreto-componentes">Art. 109 Decreto 209</span>
+            </div>
+
+            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
+                <h3 class="font-bold text-blue-900 mb-3">📋 REQUISITOS GENERALES:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención de Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
+                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Título profesional relacionado con el área de seguridad o materias afines</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Diplomado en seguridad privada o gestión de seguridad empresarial de mínimo 400 horas académicas (educación superior reconocida)</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+                <h3 class="font-bold text-gray-900 mb-3">💡 INFORMACIÓN ADICIONAL:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">• Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">• EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">• Puede elaborar estudios de seguridad y planes de seguridad para entidades obligadas</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
+                <p class="text-sm text-gray-700">
+                    <strong>📌 Más información:</strong> 
+                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
+                        https://segprivada.minsegpublica.gob.cl/
+                    </a>
+                </p>
+            </div>
+
+            <button onclick="descargarModalPDF('asesor')" class="btn-pdf-modal">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Descargar PDF
+            </button>
+        </div>
+    `;
+}
+
+// ==========================================================================
 // OPERADOR DE CÁMARAS Y ALARMAS - PERSONAS NATURALES
 // ==========================================================================
 function generarContenidoOperador() {
@@ -567,23 +645,54 @@ function generarContenidoSupervisor() {
 function generarContenidoJefe() {
     return `
         <div class="space-y-4">
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
+                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
+                    Responsable de la organización, dirección, administración, control y gestión de recursos destinados a la protección de personas y bienes. Coordina con autoridad fiscalizadora y SPD.
+                </p>
+            </div>
+            
+            <div class="mb-4 flex flex-wrap gap-2">
+                <span class="badge-componentes badge-ley-componentes">Art. 23 Ley 21.659</span>
+                <span class="badge-componentes badge-decreto-componentes">Arts. 23 y 24 Decreto 209</span>
+            </div>
+
             <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
                 <h3 class="font-bold text-blue-900 mb-3">📋 REQUISITOS GENERALES:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes">✓ Certificado emitido por la Subsecretaría de Prevención de Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención de Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
+                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Título profesional de mínimo 8 semestres (educación superior estatal o reconocida)</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Curso de especialidad en seguridad o materias afines de mínimo 400 horas académicas</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ No haber sido declarado con invalidez de 2ª o 3ª clase por CAPREDENA o DIPRECA</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Si trabaja en entidad obligada con sistema de vigilancia privada: debe cumplir requisitos de vigilante privado</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+                <h3 class="font-bold text-gray-900 mb-3">💡 INFORMACIÓN ADICIONAL:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">• Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">• Ex-integrantes de FF.AA. o Carabineros pueden eximirse de algunas materias según malla curricular</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">• Se reconocen cursos previos de seguridad privada para completar las 400 horas</li>
                 </ul>
             </div>
 
