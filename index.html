@@ -1767,6 +1767,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })();
     </script>
     
+    <script>
+        // Función para manejar el clic en SPD y redirigir a spd.html
+        function handleSPD() {
+            window.location.href = 'spd.html';
+        }
+    </script>
+    
     <script src="assets/js/search.js?v=1"></script>
     <!-- Biblioteca para generar PDFs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -1789,7 +1796,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 4000);
 
                 } else {
-                    
                     chevronButton.classList.remove('visible');
                 }
             });
