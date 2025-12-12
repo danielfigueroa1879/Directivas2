@@ -713,16 +713,20 @@ function descargarModalPDF(tipo) {
     
     // Crear un contenedor temporal con el contenido
     const contenedorTemp = document.createElement('div');
-    contenedorTemp.style.padding = '20px';
+    contenedorTemp.style.padding = '10px';
     contenedorTemp.style.backgroundColor = 'white';
+    contenedorTemp.style.margin = '0';
+    contenedorTemp.style.width = '100%';
     
     // Agregar título
     const tituloElement = document.createElement('h1');
     tituloElement.textContent = titulo;
-    tituloElement.style.fontSize = '24px';
+    tituloElement.style.fontSize = '22px';
     tituloElement.style.fontWeight = 'bold';
-    tituloElement.style.marginBottom = '20px';
+    tituloElement.style.marginTop = '0';
+    tituloElement.style.marginBottom = '15px';
     tituloElement.style.color = '#1f2937';
+    tituloElement.style.paddingTop = '0';
     contenedorTemp.appendChild(tituloElement);
     
     // Clonar el contenido del modal
@@ -734,14 +738,24 @@ function descargarModalPDF(tipo) {
         botonPDF.style.display = 'none';
     }
     
+    // Eliminar márgenes superiores innecesarios del contenido clonado
+    contenidoClone.style.marginTop = '0';
+    contenidoClone.style.paddingTop = '0';
+    
+    // Ajustar el primer elemento hijo para eliminar margen superior
+    if (contenidoClone.firstElementChild) {
+        contenidoClone.firstElementChild.style.marginTop = '0';
+        contenidoClone.firstElementChild.style.paddingTop = '0';
+    }
+    
     contenedorTemp.appendChild(contenidoClone);
     
     // Generar nombre de archivo
     const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
     
-    // Configuración del PDF
+    // Configuración del PDF - Márgenes reducidos
     const opciones = {
-        margin: [15, 15, 15, 15],
+        margin: [10, 10, 10, 10],
         filename: nombreArchivo,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
@@ -749,13 +763,18 @@ function descargarModalPDF(tipo) {
             useCORS: true,
             logging: false,
             letterRendering: true,
-            backgroundColor: '#ffffff'
+            backgroundColor: '#ffffff',
+            scrollY: 0,
+            scrollX: 0,
+            windowHeight: contenidoClone.scrollHeight
         },
         jsPDF: { 
             unit: 'mm', 
             format: 'a4', 
-            orientation: 'portrait' 
-        }
+            orientation: 'portrait',
+            compress: true
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     };
     
     // Generar y descargar PDF
