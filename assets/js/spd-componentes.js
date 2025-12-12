@@ -27,7 +27,7 @@ const asignaturasCapacitacion = {
         referencia: "Artículo 27 - Decreto 209",
         formacion: "100 horas pedagógicas",
         perfeccionamiento: "40 horas cada 2 años",
-        observacion: "AUTORIZADOS PARA PORTAR ARMAS DE FUEGO",
+        observacion: "AUTORIZADOS PARA PORTAR ARMAS DE FUEGO DENTRO DE UN RECINTO O ÁREA DETERMINADA",
         asignaturas: [
             "Legislación aplicada a la seguridad privada",
             "Respeto y promoción de los derechos humanos",
