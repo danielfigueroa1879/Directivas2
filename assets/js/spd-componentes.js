@@ -616,6 +616,16 @@ function renderizarContenidoModal(tipo) {
                 <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
             </p>
         </div>
+        
+        <!-- Botón de descarga PDF -->
+        <div class="mt-6 text-center">
+            <button onclick="descargarModalPDF('${tipo}')" class="btn-pdf-modal" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #dc2626; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: all 0.3s; border: none; box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>Descargar Requisitos en PDF</span>
+            </button>
+        </div>
     `;
     
     contenido.innerHTML = html;
@@ -694,6 +704,65 @@ window.addEventListener('pageshow', function(event) {
         window.scrollTo(0, 0);
     }
 });
+
+// Función para descargar el modal en PDF
+function descargarModalPDF(tipo) {
+    // Obtener el título del modal
+    const titulo = document.getElementById('modalTitulo').textContent;
+    const contenido = document.getElementById('modalContenido');
+    
+    // Crear un contenedor temporal con el contenido
+    const contenedorTemp = document.createElement('div');
+    contenedorTemp.style.padding = '20px';
+    contenedorTemp.style.backgroundColor = 'white';
+    
+    // Agregar título
+    const tituloElement = document.createElement('h1');
+    tituloElement.textContent = titulo;
+    tituloElement.style.fontSize = '24px';
+    tituloElement.style.fontWeight = 'bold';
+    tituloElement.style.marginBottom = '20px';
+    tituloElement.style.color = '#1f2937';
+    contenedorTemp.appendChild(tituloElement);
+    
+    // Clonar el contenido del modal
+    const contenidoClone = contenido.cloneNode(true);
+    
+    // Ocultar botón de descarga en el clon
+    const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
+    if (botonPDF) {
+        botonPDF.style.display = 'none';
+    }
+    
+    contenedorTemp.appendChild(contenidoClone);
+    
+    // Generar nombre de archivo
+    const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
+    
+    // Configuración del PDF
+    const opciones = {
+        margin: [15, 15, 15, 15],
+        filename: nombreArchivo,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            letterRendering: true,
+            backgroundColor: '#ffffff'
+        },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait' 
+        }
+    };
+    
+    // Generar y descargar PDF
+    html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
+        console.log('PDF descargado:', nombreArchivo);
+    });
+}
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', function() {
