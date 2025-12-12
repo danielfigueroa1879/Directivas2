@@ -727,6 +727,8 @@ function descargarModalPDF(tipo) {
     tituloElement.style.marginBottom = '15px';
     tituloElement.style.color = '#1f2937';
     tituloElement.style.paddingTop = '0';
+    tituloElement.style.pageBreakAfter = 'avoid';
+    tituloElement.style.pageBreakInside = 'avoid';
     contenedorTemp.appendChild(tituloElement);
     
     // Clonar el contenido del modal
@@ -748,12 +750,29 @@ function descargarModalPDF(tipo) {
         contenidoClone.firstElementChild.style.paddingTop = '0';
     }
     
+    // Aplicar estilos para evitar saltos de página en todas las secciones
+    const secciones = contenidoClone.querySelectorAll('.requisito-section-componentes, .space-y-4, div[class*="bg-"]');
+    secciones.forEach(seccion => {
+        seccion.style.pageBreakInside = 'auto';
+        seccion.style.pageBreakAfter = 'auto';
+        seccion.style.pageBreakBefore = 'auto';
+        seccion.style.breakInside = 'auto';
+    });
+    
+    // Aplicar estilos a todos los divs para evitar saltos forzados
+    const todosLosDivs = contenidoClone.querySelectorAll('div');
+    todosLosDivs.forEach(div => {
+        div.style.pageBreakBefore = 'auto';
+        div.style.pageBreakAfter = 'auto';
+        div.style.pageBreakInside = 'auto';
+    });
+    
     contenedorTemp.appendChild(contenidoClone);
     
     // Generar nombre de archivo
     const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
     
-    // Configuración del PDF - Márgenes reducidos
+    // Configuración del PDF - Sin saltos de página forzados
     const opciones = {
         margin: [10, 10, 10, 10],
         filename: nombreArchivo,
@@ -765,8 +784,7 @@ function descargarModalPDF(tipo) {
             letterRendering: true,
             backgroundColor: '#ffffff',
             scrollY: 0,
-            scrollX: 0,
-            windowHeight: contenidoClone.scrollHeight
+            scrollX: 0
         },
         jsPDF: { 
             unit: 'mm', 
@@ -774,7 +792,10 @@ function descargarModalPDF(tipo) {
             orientation: 'portrait',
             compress: true
         },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { 
+            mode: ['css', 'legacy'],
+            avoid: ['div', '.requisito-section-componentes', '.requisito-item-componentes']
+        }
     };
     
     // Generar y descargar PDF
