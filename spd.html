@@ -50,6 +50,72 @@
             min-height: 3.5rem;
         }
         
+        /* Efecto de brillo tipo burbuja para el botón SPD */
+        #btnSPD {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0071e3 0%, #0064cc 50%, #0071e3 100%);
+            box-shadow: 0 6px 15px rgba(0, 113, 227, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        #btnSPD::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.15) 50%,
+                transparent 70%
+            );
+            animation: bubble-shine 8s infinite;
+            pointer-events: none;
+        }
+        
+        #btnSPD::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(10px);
+            animation: bubble-glow 4s infinite alternate;
+            pointer-events: none;
+        }
+        
+        @keyframes bubble-shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(0deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(360deg);
+            }
+        }
+        
+        @keyframes bubble-glow {
+            0% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+        
+        #btnSPD:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 10px 25px rgba(0, 113, 227, 0.35),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+        
         .btn-spd:hover {
             background: #0077ed; /* Un tono ligeramente más claro para hover */
             transform: translateY(-3px);
@@ -667,7 +733,7 @@
             <!-- Encabezado -->
             <div class="text-center mb-8 pt-12 sm:pt-4">
                 <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
-                    PORTAL DE INFORMACIÓN <br> A LA SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
+                    Portal de Información y Acceso a la Plataforma <br> de la Subsecretaría de Prevención del Delito
                 </h1>
                 <p class="text-sm sm:text-base text-gray-600 mb-4">
                     Accede a la plataforma de Seguridad Privada y consulta información relevante
