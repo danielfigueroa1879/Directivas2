@@ -491,6 +491,74 @@
         transform: translateY(0);
     }
     /* ===== FIN ESTILOS BOTÓN PDF ===== */
+    
+    /* ===== ANIMACIÓN DESCARGA PDF ===== */
+    .pdf-download-animation {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 99999;
+        pointer-events: none;
+        opacity: 0;
+    }
+    
+    .pdf-download-animation.active {
+        animation: pdfBounce 1.2s ease-out forwards;
+    }
+    
+    .pdf-icon-animated {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 40px rgba(220, 38, 38, 0.5);
+    }
+    
+    .pdf-icon-animated svg {
+        width: 50px;
+        height: 50px;
+        color: white;
+    }
+    
+    @keyframes pdfBounce {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -150%) scale(0.5);
+        }
+        40% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+        60% {
+            transform: translate(-50%, -30%) scale(0.95);
+        }
+        75% {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        85% {
+            transform: translate(-50%, 50%) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, 150%) scale(0.8);
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .pdf-icon-animated {
+            width: 70px;
+            height: 70px;
+        }
+        .pdf-icon-animated svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    /* ===== FIN ANIMACIÓN DESCARGA PDF ===== */
     /* ===== FIN ESTILOS MODALES COMPONENTES ===== */
     </style>
 
@@ -1331,6 +1399,17 @@
         </div>
     </div>
 </div>      
+
+<!-- Animación de descarga PDF -->
+<div id="pdfDownloadAnimation" class="pdf-download-animation">
+    <div class="pdf-icon-animated">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17h6M9 13h6M9 9h3"></path>
+        </svg>
+    </div>
+</div>
+
 </section>
 <!-- NUEVA SECCIÓN: Documentos y Formularios -->
 <section id="documentos-formularios" class="py-16 md:py-24 bg-white relative overflow-hidden">
