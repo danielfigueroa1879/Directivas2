@@ -724,7 +724,7 @@
             </div>
 
             <!-- Componentes de Seguridad Privada (BOTÓN ORIGINAL) -->
-            <div class="section-spd" style="background: linear-gradient(135deg, #eff6ff 0%, #f9fafb 100%);">
+            <div class="section-spd">
                 <div class="section-title">
                     <div class="section-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -749,8 +749,30 @@
                     <button onclick="mostrarComponentes()" class="btn-spd btn-green text-sm">
                         📋 Requisitos por Componente
                     </button>
-                    <button onclick="mostrarAsignaturas()" class="btn-spd text-sm" style="background: linear-gradient(135deg, #e49734 0%, #99762b 100%); margin-top: 0.75rem;">
-                        📚 Asignaturas de Capacitación
+                </div>
+            </div>
+
+            <!-- Asignaturas de Capacitación (NUEVA SECCIÓN) -->
+            <div class="section-spd">
+                <div class="section-title">
+                    <div class="section-icon" style="background: #fef3c7;">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="color: #d97706;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span>Asignaturas de Capacitación</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                    Consulta las <strong>mallas de capacitación completas</strong> según <strong>Decreto 209</strong>:
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="feature-badge" style="background: white; color: #d97706; border: 1px solid #d97706;">✓ Vigilantes Privados (13 asignaturas - 100h)</span><br>
+                    <span class="feature-badge" style="background: white; color: #d97706; border: 1px solid #d97706;">✓ Guardias de Seguridad (12 asignaturas - 90h)</span><br>
+                    <span class="feature-badge" style="background: white; color: #d97706; border: 1px solid #d97706;">✓ Porteros/Nocheros/Rondines (8 asignaturas - 60h)</span>
+                </div>
+                <div>
+                    <button onclick="mostrarAsignaturas()" class="btn-spd text-sm" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; box-shadow: 0 4px 6px rgba(217, 119, 6, 0.3);">
+                        📚 Ver Asignaturas de Capacitación
                     </button>
                 </div>
             </div>
@@ -1066,14 +1088,3 @@
             <div id="modalContenido" class="modal-body"></div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 mt-8">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">&copy; 2024 OS10 Coquimbo - Dirección de Seguridad Ciudadana</p>
-        </div>
-    </footer>
-
-    <!-- JAVASCRIPT INTEGRADO -->
-    <script src="assets/js/spd-componentes.js"></script>
-</body>
-</html>
