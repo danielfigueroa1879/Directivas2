@@ -814,6 +814,15 @@ function descargarModalPDF(tipo) {
         }
     };
     
+    // Mostrar animación de descarga
+    const animacion = document.getElementById('pdfDownloadAnimation');
+    if (animacion) {
+        animacion.classList.add('active');
+        setTimeout(() => {
+            animacion.classList.remove('active');
+        }, 1200);
+    }
+    
     // Generar y descargar PDF
     html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
         console.log('PDF descargado:', nombreArchivo);
