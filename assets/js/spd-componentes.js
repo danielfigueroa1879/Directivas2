@@ -184,14 +184,15 @@ function mostrarRequisitos(tipo) {
     const contenido = document.getElementById('modalContenido');
     
     if (!modal || !titulo || !contenido) {
-        console.error('Elementos del modal no encontrados');
+        console.error('❌ Elementos del modal no encontrados');
         return;
     }
     
-    // LIMPIAR CONTENIDO ANTERIOR - CRÍTICO para evitar acumulación
+    // PASO 1: LIMPIAR COMPLETAMENTE
     contenido.innerHTML = '';
+    titulo.textContent = '';
     
-    // Configurar título según el tipo
+    // PASO 2: Configurar títulos
     const titulos = {
         'vigilante': 'Vigilante Privado',
         'guardia': 'Guardia de Seguridad',
@@ -211,70 +212,73 @@ function mostrarRequisitos(tipo) {
     
     titulo.textContent = titulos[tipo] || 'Requisitos';
     
-    // Generar contenido según el tipo
+    // PASO 3: Generar contenido según el tipo
     let html = '';
     
-    switch(tipo) {
-        case 'vigilante':
-            html = generarContenidoVigilante();
-            break;
-        case 'guardia':
-            html = generarContenidoGuardia();
-            break;
-        case 'nochero':
-        case 'portero':
-            html = generarContenidoPortero();
-            break;
-        case 'encargado':
-            html = generarContenidoEncargado();
-            break;
-        case 'encargado-armas':
-            html = generarContenidoEncargadoArmas();
-            break;
-        case 'tecnico':
-            html = generarContenidoTecnico();
-            break;
-        case 'operador':
-            html = generarContenidoOperador();
-            break;
-        case 'instalador':
-            html = generarContenidoInstalador();
-            break;
-        case 'supervisor':
-            html = generarContenidoSupervisor();
-            break;
-        case 'jefe':
-            html = generarContenidoJefe();
-            break;
-        case 'asesor':
-            html = generarContenidoAsesor();
-            break;
-        case 'capacitador':
-            html = generarContenidoCapacitador();
-            break;
-        case 'empresa':
-            html = generarContenidoEmpresa();
-            break;
-        default:
-            html = generarContenidoGenerico(tipo);
+    try {
+        switch(tipo) {
+            case 'vigilante':
+                html = generarContenidoVigilante();
+                break;
+            case 'guardia':
+                html = generarContenidoGuardia();
+                break;
+            case 'nochero':
+            case 'portero':
+                html = generarContenidoPortero();
+                break;
+            case 'encargado':
+                html = generarContenidoEncargado();
+                break;
+            case 'encargado-armas':
+                html = generarContenidoEncargadoArmas();
+                break;
+            case 'tecnico':
+                html = generarContenidoTecnico();
+                break;
+            case 'operador':
+                html = generarContenidoOperador();
+                break;
+            case 'instalador':
+                html = generarContenidoInstalador();
+                break;
+            case 'supervisor':
+                html = generarContenidoSupervisor();
+                break;
+            case 'jefe':
+                html = generarContenidoJefe();
+                break;
+            case 'asesor':
+                html = generarContenidoAsesor();
+                break;
+            case 'capacitador':
+                html = generarContenidoCapacitador();
+                break;
+            case 'empresa':
+                html = generarContenidoEmpresa();
+                break;
+            default:
+                html = generarContenidoGenerico(tipo);
+        }
+    } catch(error) {
+        console.error('❌ Error generando contenido:', error);
+        html = '<p class="text-red-500">Error al cargar la información</p>';
     }
     
-    // Insertar contenido
+    // PASO 4: Insertar contenido
     contenido.innerHTML = html;
     
-    // Mostrar modal - IMPORTANTE: limpiar display inline primero
-    modal.style.display = 'flex';
-    modal.style.zIndex = '9999';
+    // PASO 5: Mostrar modal (usar solo clases, no estilos inline)
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Scroll al inicio del modal contenido
-    setTimeout(() => {
+    // PASO 6: Scroll al inicio
+    requestAnimationFrame(() => {
         const modalContent = modal.querySelector('.modal-content');
         if (modalContent) {
             modalContent.scrollTop = 0;
         }
-    }, 50);
+    });
     
     console.log('✅ Modal abierto:', tipo);
 }
@@ -1587,39 +1591,36 @@ function descargarModalPDF(tipo) {
 // ==========================================================================
 
 /**
- * Cierra el modal visualmente sin afectar el historial
- */
-function cerrarModalVisualmente() {
-    const modal = document.getElementById('modalRequisitos');
-    const contenido = document.getElementById('modalContenido');
-    
-    if (modal) {
-        // Remover clase active primero
-        modal.classList.remove('active');
-        
-        // Restaurar scroll del body inmediatamente
-        document.body.style.overflow = '';
-        
-        // Esperar a que termine la animación antes de ocultar y limpiar
-        setTimeout(() => {
-            modal.style.display = 'none';
-            modal.style.zIndex = '';
-            
-            // LIMPIAR CONTENIDO para evitar acumulación
-            if (contenido) {
-                contenido.innerHTML = '';
-            }
-        }, 150);
-    }
-    
-    console.log('✅ Modal cerrado visualmente');
-}
-
-/**
  * Cierra el modal de forma simple y eficiente
  */
 function cerrarModal() {
-    cerrarModalVisualmente();
+    const modal = document.getElementById('modalRequisitos');
+    const contenido = document.getElementById('modalContenido');
+    
+    if (!modal) {
+        console.error('❌ Modal no encontrado');
+        return;
+    }
+    
+    // PASO 1: Remover clase active
+    modal.classList.remove('active');
+    
+    // PASO 2: Restaurar scroll del body INMEDIATAMENTE
+    document.body.style.overflow = '';
+    
+    // PASO 3: Limpiar contenido
+    if (contenido) {
+        contenido.innerHTML = '';
+    }
+    
+    console.log('✅ Modal cerrado');
+}
+
+/**
+ * Cierra el modal visualmente (alias para compatibilidad)
+ */
+function cerrarModalVisualmente() {
+    cerrarModal();
 }
 
 // ==========================================================================
@@ -1638,35 +1639,37 @@ document.addEventListener('DOMContentLoaded', function() {
     modalListenersInitialized = true;
     
     const modal = document.getElementById('modalRequisitos');
-    
-    // Event listener para cerrar modal al hacer click fuera
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                cerrarModal();
-            }
-        });
+    if (!modal) {
+        console.warn('⚠️ Modal modalRequisitos no encontrado');
+        return;
     }
     
-    // Event listener para cerrar modal con tecla ESC
+    // Cerrar modal al hacer click fuera (en el fondo gris)
+    modal.addEventListener('click', function(e) {
+        // Solo cerrar si el click es en el fondo, no en el contenido
+        if (e.target === modal) {
+            cerrarModal();
+        }
+    });
+    
+    // Cerrar modal con tecla ESC
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const activeModal = document.querySelector('#modalRequisitos.active, .modal-requisitos.active, .modal-requisitos-componentes.active');
+        if (e.key === 'Escape' || e.key === 'Esc') {
+            const activeModal = document.querySelector('#modalRequisitos.active');
             if (activeModal) {
                 cerrarModal();
             }
         }
     });
+    
+    console.log('✅ Event listeners inicializados correctamente');
+});
 
     console.log('✅ Sistema de modales SPD inicializado correctamente');
 });
 
 // Event listener para cambios de visibilidad de la página
 document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-        const modal = document.getElementById('modalRequisitos');
-        if (!modal || (!modal.classList.contains('active') && window.getComputedStyle(modal).display === 'none')) {
-            cerrarModalVisualmente();
-        }
-    }
+    // Si el documento se vuelve visible nuevamente, no hacer nada especial
+    // El modal se maneja con sus propios listeners
 });
