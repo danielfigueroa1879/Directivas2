@@ -544,22 +544,41 @@
     }
     
     @keyframes pdfBounce {
-         0% {
+        0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+        transform: translate(-50%, -50%) scale(0.8);
     }
-    15% {
+    10% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    30% {
-        transform: translate(-50%, -80%) scale(1.1);
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -65%) scale(1.05);
     }
-    45% {
+    40% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
         transform: translate(-50%, -50%) scale(0.95);
     }
     60% {
-        transform: translate(-50%, -70%) scale(1);
+        opacity: 0.95;
+        transform: translate(-30%, -55%) scale(0.85);
+    }
+    70% {
+        opacity: 0.9;
+        transform: translate(0%, -65%) scale(0.7);
+    }
+    80% {
+        opacity: 0.8;
+        transform: translate(30%, -80%) scale(0.55);
+    }
+    90% {
+        opacity: 0.6;
+        transform: translate(calc(50vw - 120px), calc(-50vh - 40px)) scale(0.4);
     }
     100% {
         opacity: 0;
