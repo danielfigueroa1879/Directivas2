@@ -544,45 +544,52 @@
     }
     
     @keyframes pdfBounce {
-        0% {
+    0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
+        transform: translate(-50%, -50%) scale(0.5);
     }
-    10% {
+    8% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    25% {
+    /* PRIMER SALTO GRANDE */
+    20% {
         opacity: 1;
-        transform: translate(-50%, -65%) scale(1.05);
+        transform: translate(-50%, -120%) scale(1.1);
     }
-    40% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
+    32% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(0.95);
     }
-    60% {
+    /* SEGUNDO SALTO GRANDE */
+    44% {
+        opacity: 1;
+        transform: translate(-50%, -110%) scale(1.05);
+    }
+    /* DESDE AQUÍ COMIENZA A SUBIR SUTIL */
+    55% {
         opacity: 0.95;
-        transform: translate(-30%, -55%) scale(0.85);
+        transform: translate(-40%, -90%) scale(0.9);
     }
-    70% {
-        opacity: 0.9;
-        transform: translate(0%, -65%) scale(0.7);
+    65% {
+        opacity: 0.85;
+        transform: translate(-20%, -100%) scale(0.75);
     }
-    80% {
-        opacity: 0.8;
-        transform: translate(30%, -80%) scale(0.55);
+    75% {
+        opacity: 0.7;
+        transform: translate(10%, -120%) scale(0.6);
     }
-    90% {
-        opacity: 0.6;
-        transform: translate(calc(50vw - 120px), calc(-50vh - 40px)) scale(0.4);
+    85% {
+        opacity: 0.5;
+        transform: translate(calc(40vw - 100px), calc(-45vh - 50px)) scale(0.45);
+    }
+    95% {
+        opacity: 0.25;
+        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.35);
     }
     100% {
         opacity: 0;
-        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.3);
+        transform: translate(calc(50vw - 90px), calc(-50vh - 60px)) scale(0.3);
         }
     }
     
