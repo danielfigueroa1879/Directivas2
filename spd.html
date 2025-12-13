@@ -1532,6 +1532,61 @@
                 }, 1200);
             }
             
-            // Generar y descargar PDF
+// Generar y descargar PDF
             html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
-                console.log('PDF descargado:', nombreArch
+                console.log('PDF descargado:', nombreArchivo);
+            });
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modalRequisitos');
+            
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        cerrarModal();
+                    }
+                });
+            }
+            
+            // Cerrar modal con tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeModal = document.querySelector('.modal-requisitos.active');
+                    if (activeModal) {
+                        cerrarModal();
+                    }
+                }
+            });
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2024 OS10 Coquimbo - Dirección de Seguridad Ciudadana</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTEGRADO -->
+    <script>
+        // Alternar texto del botón SPD cada 3 segundos
+        (function() {
+            const btnSPD = document.getElementById('btnSPD');
+            if (!btnSPD) return;
+                       
+            const textos = [
+                'Acceder a la Plataforma SPD',
+                'SUBSECRETARÍA DE PREVENCIÓN DEL DELITO'
+            ];
+            let indiceActual = 0;
+            
+            setInterval(function() {
+                indiceActual = (indiceActual + 1) % textos.length;
+                btnSPD.textContent = textos[indiceActual];
+            }, 3000); // Cambia cada 3 segundos
+        })();
+    </script>
+    <script src="assets/js/spd-componentes.js"></script>
+</body>
+</html>
