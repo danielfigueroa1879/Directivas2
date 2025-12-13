@@ -1875,4 +1875,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 4000);
 
                 } else {
+                animarTextoSPD('texto-spd-mobile');
+                animarTextoSPD('texto-spd-desktop');
+            }
+        })();
+    </script>
+    
+    <script>
+        // Función para manejar el clic en SPD y redirigir a spd.html
+        function handleSPD() {
+            window.location.href = 'spd.html';
+        }
+    </script>
+    
+    <script src="assets/js/search.js?v=1"></script>
+    <!-- Biblioteca para generar PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="assets/js/spd-componentes.js?v=2"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chevronButton = document.getElementById('scroll-up-chevron');
+            let scrollTimeout;
+
+            if (!chevronButton) return;
+            
+            // Mostrar/ocultar chevron según scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    chevronButton.classList.add('visible');
+                    
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        chevronButton.classList.remove('visible');
+                    }, 4000);
+
+                } else {
                     
