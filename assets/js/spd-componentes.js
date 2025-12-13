@@ -183,6 +183,14 @@ function mostrarRequisitos(tipo) {
     const titulo = document.getElementById('modalTitulo');
     const contenido = document.getElementById('modalContenido');
     
+    if (!modal || !titulo || !contenido) {
+        console.error('Elementos del modal no encontrados');
+        return;
+    }
+    
+    // LIMPIAR CONTENIDO ANTERIOR - CRÍTICO para evitar acumulación
+    contenido.innerHTML = '';
+    
     // Configurar título según el tipo
     const titulos = {
         'vigilante': 'Vigilante Privado',
@@ -260,9 +268,12 @@ function mostrarRequisitos(tipo) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Scroll al inicio del modal
+    // Scroll al inicio del modal contenido
     setTimeout(() => {
-        modal.scrollTop = 0;
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.scrollTop = 0;
+        }
     }, 50);
     
     console.log('✅ Modal abierto:', tipo);
@@ -1580,32 +1591,35 @@ function descargarModalPDF(tipo) {
  */
 function cerrarModalVisualmente() {
     const modal = document.getElementById('modalRequisitos');
+    const contenido = document.getElementById('modalContenido');
+    
     if (modal) {
         // Remover clase active primero
         modal.classList.remove('active');
         
-        // Esperar a que termine la animación antes de ocultar
+        // Restaurar scroll del body inmediatamente
+        document.body.style.overflow = '';
+        
+        // Esperar a que termine la animación antes de ocultar y limpiar
         setTimeout(() => {
             modal.style.display = 'none';
             modal.style.zIndex = '';
+            
+            // LIMPIAR CONTENIDO para evitar acumulación
+            if (contenido) {
+                contenido.innerHTML = '';
+            }
         }, 150);
     }
-    
-    // Restaurar scroll del body
-    document.body.style.overflow = '';
     
     console.log('✅ Modal cerrado visualmente');
 }
 
 /**
- * Cierra el modal de forma interactiva usando historial
+ * Cierra el modal de forma simple y eficiente
  */
 function cerrarModal() {
-    if (history.state && history.state.modalOpen) {
-        history.back();
-    } else {
-        cerrarModalVisualmente();
-    }
+    cerrarModalVisualmente();
 }
 
 // ==========================================================================
@@ -1614,8 +1628,15 @@ function cerrarModal() {
 
 /**
  * Inicializa todos los event listeners del sistema de modales
+ * SOLO se ejecuta una vez para evitar duplicación
  */
+let modalListenersInitialized = false;
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Evitar duplicación de listeners
+    if (modalListenersInitialized) return;
+    modalListenersInitialized = true;
+    
     const modal = document.getElementById('modalRequisitos');
     
     // Event listener para cerrar modal al hacer click fuera
