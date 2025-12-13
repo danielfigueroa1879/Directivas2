@@ -885,7 +885,7 @@
         }
         
         .pdf-download-animation.active {
-            animation: pdfBounce 7.5s ease-in-out forwards;
+            animation: pdfBounce 3.5s ease-in-out forwards;
         }
         
         .pdf-icon-animated {
@@ -910,67 +910,49 @@
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.5);
     }
-    5% {
+    8% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    /* PRIMER SALTO GRANDE - MÁS TIEMPO */
-    15% {
-        opacity: 1;
-        transform: translate(-50%, -130%) scale(1.15);
-    }
-    25% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.95);
-    }
-    /* PAUSA ENTRE SALTOS */
-    30% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    /* SEGUNDO SALTO GRANDE - MÁS TIEMPO */
-    40% {
+    /* PRIMER SALTO GRANDE */
+    20% {
         opacity: 1;
         transform: translate(-50%, -120%) scale(1.1);
     }
-    50% {
+    32% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(0.95);
     }
-    /* PAUSA ANTES DE SUBIR */
+    /* SEGUNDO SALTO GRANDE */
+    44% {
+        opacity: 1;
+        transform: translate(-50%, -110%) scale(1.05);
+    }
+    /* DESDE AQUÍ COMIENZA A SUBIR SUTIL */
     55% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.95;
+        transform: translate(-40%, -90%) scale(0.9);
     }
-    /* SUBE MUY LENTO HACIA ARRIBA DERECHA */
-    62% {
-        opacity: 1;
-        transform: translate(-30%, -90%) scale(0.95);
+    65% {
+        opacity: 0.85;
+        transform: translate(-20%, -100%) scale(0.75);
     }
-    69% {
-        opacity: 1;
-        transform: translate(-10%, -120%) scale(0.85);
+    75% {
+        opacity: 0.7;
+        transform: translate(10%, -120%) scale(0.6);
     }
-    76% {
-        opacity: 1;
-        transform: translate(15%, -150%) scale(0.75);
+    85% {
+        opacity: 0.5;
+        transform: translate(calc(40vw - 100px), calc(-45vh - 50px)) scale(0.45);
     }
-    83% {
-        opacity: 1;
-        transform: translate(35%, -180%) scale(0.65);
-    }
-    90% {
-        opacity: 0.8;
-        transform: translate(calc(45vw - 100px), calc(-45vh - 50px)) scale(0.5);
-    }
-    96% {
-        opacity: 0.4;
-        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.4);
+    95% {
+        opacity: 0.25;
+        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.35);
     }
     100% {
         opacity: 0;
-        transform: translate(calc(50vw - 95px), calc(-50vh - 55px)) scale(0.35);
-    }
+        transform: translate(calc(50vw - 90px), calc(-50vh - 60px)) scale(0.3);
+            }
         }
         
         @media (max-width: 640px) {
@@ -1516,136 +1498,71 @@
         }
 
         // Función para descargar el contenido del modal en PDF
-function descargarModalPDF(tipo) {
-    // Obtener el título del modal
-    const titulo = document.getElementById('modalTitulo').textContent;
-    const contenido = document.getElementById('modalContenido');
-    
-    // Mostrar animación PRIMERO
-    const animacion = document.getElementById('pdfDownloadAnimation');
-    if (animacion) {
-        animacion.classList.add('active');
-        setTimeout(() => {
-            animacion.classList.remove('active');
-        },7500);
-    }
-    
-    // ESPERAR 2 SEGUNDOS antes de generar el PDF
-    // Esto permite que la animación se vea primero
-    setTimeout(() => {
-        // Crear un contenedor temporal con el contenido
-        const contenedorTemp = document.createElement('div');
-        contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
-        
-        // Agregar título
-        const tituloElement = document.createElement('h1');
-        tituloElement.textContent = titulo;
-        tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
-        contenedorTemp.appendChild(tituloElement);
-        
-        // Clonar el contenido del modal
-        const contenidoClone = contenido.cloneNode(true);
-        
-        // Ocultar botón de descarga en el clon
-        const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
-        if (botonPDF) {
-            botonPDF.remove();
+        function descargarModalPDF(tipo) {
+            const titulo = document.getElementById('modalTitulo').textContent;
+            const contenido = document.getElementById('modalContenido');
+            
+            // Crear un contenedor temporal con el contenido
+            const contenedorTemp = document.createElement('div');
+            contenedorTemp.style.padding = '20px';
+            contenedorTemp.style.backgroundColor = 'white';
+            
+            // Agregar título
+            const tituloElement = document.createElement('h1');
+            tituloElement.textContent = titulo;
+            tituloElement.style.fontSize = '24px';
+            tituloElement.style.fontWeight = 'bold';
+            tituloElement.style.marginBottom = '20px';
+            tituloElement.style.color = '#1f2937';
+            contenedorTemp.appendChild(tituloElement);
+            
+            // Clonar el contenido del modal
+            const contenidoClone = contenido.cloneNode(true);
+            
+            // Ocultar botón de descarga en el clon
+            const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
+            if (botonPDF) {
+                botonPDF.style.display = 'none';
+            }
+            
+            contenedorTemp.appendChild(contenidoClone);
+            
+            // Generar nombre de archivo
+            const nombreArchivo = `OS10-SPD-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
+            
+            // Configuración del PDF
+            const opciones = {
+                margin: [15, 15, 15, 15],
+                filename: nombreArchivo,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true,
+                    backgroundColor: '#ffffff'
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+            
+            // Mostrar animación de descarga
+            const animacion = document.getElementById('pdfDownloadAnimation');
+            if (animacion) {
+                animacion.classList.add('active');
+                setTimeout(() => {
+                    animacion.classList.remove('active');
+                }, 1200);
+            }
+            
+            // Generar y descargar PDF
+            html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
+                console.log('PDF descargado:', nombreArchivo);
+            });
         }
-        
-        // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
-        contenidoClone.style.cssText = 'margin: 0; padding: 0;';
-        
-        // Aplicar estilos a TODOS los elementos para flujo continuo
-        const todosLosElementos = contenidoClone.querySelectorAll('*');
-        todosLosElementos.forEach(elemento => {
-            // Eliminar márgenes verticales grandes
-            if (elemento.style.marginTop) elemento.style.marginTop = '0';
-            if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
-            if (elemento.style.paddingTop) elemento.style.paddingTop = '0';
-            if (elemento.style.paddingBottom) elemento.style.paddingBottom = '0';
-            
-            // Aplicar márgenes pequeños a secciones
-            if (elemento.classList.contains('requisito-section-componentes')) {
-                elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
-            }
-            
-            // Aplicar estilos a items
-            if (elemento.classList.contains('requisito-item-componentes')) {
-                elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
-            }
-            
-            // Reducir espacios en divs con clases de Tailwind
-            if (elemento.className && typeof elemento.className === 'string') {
-                if (elemento.className.includes('mt-')) {
-                    elemento.style.marginTop = '5px';
-                }
-                if (elemento.className.includes('mb-')) {
-                    elemento.style.marginBottom = '5px';
-                }
-                if (elemento.className.includes('space-y-')) {
-                    elemento.style.cssText += 'gap: 5px;';
-                }
-            }
-        });
-        
-        contenedorTemp.appendChild(contenidoClone);
-        
-        // Generar nombre de archivo
-        const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
-        
-        // Configuración del PDF optimizada para flujo continuo
-        const opciones = {
-            margin: [8, 8, 8, 8],
-            filename: nombreArchivo,
-            image: { 
-                type: 'jpeg', 
-                quality: 0.96 
-            },
-            html2canvas: { 
-                scale: 1.5,
-                useCORS: true,
-                logging: false,
-                letterRendering: true,
-                backgroundColor: '#ffffff',
-                scrollY: 0,
-                scrollX: 0,
-                windowHeight: document.documentElement.scrollHeight,
-                onclone: function(clonedDoc) {
-                    const clonedContent = clonedDoc.body.querySelector('div');
-                    if (clonedContent) {
-                        const allElements = clonedContent.querySelectorAll('*');
-                        allElements.forEach(el => {
-                            el.style.pageBreakInside = 'auto';
-                            el.style.pageBreakBefore = 'auto';
-                            el.style.pageBreakAfter = 'auto';
-                        });
-                    }
-                }
-            },
-            jsPDF: { 
-                unit: 'mm', 
-                format: 'a4', 
-                orientation: 'portrait',
-                compress: true
-            },
-            pagebreak: { 
-                mode: [],
-                before: [],
-                after: [],
-                avoid: []
-            }
-        };
-        
-        // Generar y descargar PDF
-        html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
-            console.log('✅ PDF descargado:', nombreArchivo);
-        }).catch(error => {
-            console.error('❌ Error al generar PDF:', error);
-            alert('Error al generar el PDF. Por favor, intenta nuevamente.');
-        });
-        
-    }, 3000); // ESPERA 2 SEGUNDOS antes de generar PDF
-}
 
         // Cerrar modal al hacer clic fuera
         document.addEventListener('DOMContentLoaded', function() {
