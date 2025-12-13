@@ -1,1651 +1,1820 @@
-// ===== COMPONENTES DE SEGURIDAD PRIVADA - ACTUALIZADO SEGÚN LEY 21.659 =====
-// Información extraída de documentos oficiales SPD
-// Última actualización: Diciembre 2024
-
-// ==========================================================================
-// FUNCIONES DE NAVEGACIÓN DENTRO DE SPD.HTML
-// ==========================================================================
-
-/**
- * Muestra la vista de componentes DENTRO de spd.html
- * Oculta vistaPrincipal y muestra vistaComponentes
- */
-function mostrarComponentes() {
-    const vistaPrincipal = document.getElementById('vistaPrincipal');
-    const vistaComponentes = document.getElementById('vistaComponentes');
-    
-    if (vistaPrincipal && vistaComponentes) {
-        vistaPrincipal.style.display = 'none';
-        vistaComponentes.classList.add('active');
-        window.scrollTo(0, 0);
-    }
-}
-
-/**
- * Vuelve a la vista principal de SPD
- * Oculta vistaComponentes y muestra vistaPrincipal
- */
-function volverASPD() {
-    const vistaPrincipal = document.getElementById('vistaPrincipal');
-    const vistaComponentes = document.getElementById('vistaComponentes');
-    
-    if (vistaPrincipal && vistaComponentes) {
-        vistaComponentes.classList.remove('active');
-        vistaPrincipal.style.display = 'block';
-        window.scrollTo(0, 0);
-    }
-}
-
-/**
- * Muestra modal con asignaturas de capacitación
- * Abre EN LA MISMA PÁGINA de spd.html
- */
-function mostrarAsignaturas() {
-    const modal = document.getElementById('modalRequisitos');
-    if (!modal) return;
-    
-    const titulo = document.getElementById('modalTitulo');
-    const contenido = document.getElementById('modalContenido');
-    
-    titulo.textContent = 'ASIGNATURAS DE CAPACITACIÓN';
-    
-    let html = `
-        <div class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
-            <p class="text-sm text-gray-700 font-semibold" style="text-align: justify;">
-                📚 Estas son las asignaturas que deben aprobarse según el Decreto 209 para obtener la certificación correspondiente
-            </p>
-        </div>
-    `;
-    
-    // VIGILANTES PRIVADOS
-    html += `
-        <div class="requisito-section-componentes mb-6 bg-blue-50 border-l-4 border-blue-500">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">VIGILANTES PRIVADOS</h3>
-            <div class="mb-3 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-decreto-componentes">Artículo 27 - Decreto 209</span>
-                <span class="badge-componentes" style="background:#10b981; color:white;">100 horas pedagógicas</span>
-                <span class="badge-componentes" style="background:#f59e0b; color:white;">40 horas cada 2 años</span>
-            </div>
-            <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
-                <p class="text-sm font-bold text-gray-800" style="text-align: justify;">AUTORIZADOS PARA PORTAR ARMAS DE FUEGO DENTRO DE UN RECINTO O ÁREA DETERMINADA</p>
-            </div>
-            <ul class="space-y-2">
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a la seguridad privada</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Instrucción física</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Correcto uso de elementos defensivos y de protección</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Primeros auxilios</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Prevención de riesgos</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Seguridad de instalaciones</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">9. Probidad, no discriminación y perspectiva de género</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">10. Seguridad electrónica</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">11. Sistema de telecomunicaciones</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">12. Técnicas de reducción</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">13. Conocimiento de arma y tiro, de conformidad al reglamento complementario de la ley N° 17.798, sobre Control de Armas y Elementos Similares</li>
-            </ul>
-        </div>
-    `;
-    
-    // GUARDIAS DE SEGURIDAD
-    html += `
-        <div class="requisito-section-componentes mb-6 bg-green-50 border-l-4 border-green-500">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">GUARDIAS DE SEGURIDAD</h3>
-            <div class="mb-3 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-decreto-componentes">Artículo 107 N°1 - Decreto 209</span>
-                <span class="badge-componentes" style="background:#10b981; color:white;">90 horas pedagógicas</span>
-                <span class="badge-componentes" style="background:#f59e0b; color:white;">36 horas cada 4 años</span>
-            </div>
-            <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
-                <p class="text-sm font-bold text-gray-800" style="text-align: justify;">SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO</p>
-            </div>
-            <ul class="space-y-2">
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a seguridad privada</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Instrucción física</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Correcto uso de elementos defensivos y de protección</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Primeros auxilios</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Prevención de riesgos</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Seguridad de las instalaciones</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">9. Probidad, no discriminación y perspectiva de género</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">10. Seguridad electrónica</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">11. Sistema de telecomunicaciones</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">12. Técnicas de reducción</li>
-            </ul>
-        </div>
-    `;
-    
-    // PORTEROS/NOCHEROS/RONDINES
-    html += `
-        <div class="requisito-section-componentes mb-6 bg-purple-50 border-l-4 border-purple-500">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">PORTEROS, NOCHEROS, RONDINES U OTROS DE SIMILAR CARÁCTER</h3>
-            <div class="mb-3 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-decreto-componentes">Artículo 107 N°2 - Decreto 209</span>
-                <span class="badge-componentes" style="background:#10b981; color:white;">60 horas pedagógicas</span>
-                <span class="badge-componentes" style="background:#f59e0b; color:white;">30 horas cada 4 años</span>
-            </div>
-            <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
-                <p class="text-sm font-bold text-gray-800" style="text-align: justify;">SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO</p>
-            </div>
-            <ul class="space-y-2">
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a seguridad privada</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Correcto uso de elementos defensivos y de protección</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Primeros auxilios</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Prevención de riesgos</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Seguridad de las instalaciones</li>
-                <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Probidad, no discriminación y perspectiva de género</li>
-            </ul>
-        </div>
-    `;
-    
-    html += `
-        <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
-            <p class="text-sm text-gray-700" style="text-align: justify;">
-                <strong>⚠️ Nota Importante:</strong> Las asignaturas de <strong>arma y tiro, técnicas de reducción y primeros auxilios</strong> deben ser <strong>siempre presenciales</strong>. Las demás pueden ser telemáticas o presenciales.
-            </p>
-        </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SPD - Subsecretaría de Prevención del Delito | OS10 Coquimbo</title>
+    <meta name="description" content="Información sobre la Subsecretaría de Prevención del Delito - Plataforma de Seguridad Privada">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff"/>
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="assets/js/spd-componentes.js" defer></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('assets/images/101.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #f3f4f6;
+        }
         
-        <div class="mt-6 p-4 bg-gray-50 border-l-4 border-gray-500 rounded">
-            <p class="text-sm text-gray-700">
-                <strong>📌 Más información:</strong> 
-                <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                    https://segprivada.minsegpublica.gob.cl/
-                </a>
-            </p>
-        </div>
+        .card-spd {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2.3rem;
+            margin: 1rem auto 2.3rem auto;
+            max-width: 1100px; 
+            position: relative;
+        }
         
-        <button onclick="descargarModalPDF('asignaturas')" class="btn-pdf-modal mt-6">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-            </svg>
-            Descargar PDF
-        </button>
-    `;
-    
-    contenido.innerHTML = html;
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    setTimeout(() => {
-        modal.scrollTop = 0;
-    }, 50);
-}
+        /* Botones generales (Acciones principales) - ACTUALIZADO A #0071e3 */
+        .btn-spd {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1.25rem 1.5rem;
+            background: #0071e3; /* Color solicitado */
+            color: white;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 113, 227, 0.2);
+            width: 50%;
+            min-width: 280px;
+            cursor: pointer;
+            border: none;
+            min-height: 3.5rem;
+        }
+        
+        /* Efecto de brillo tipo burbuja para el botón SPD */
+        #btnSPD {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0071e3 0%, #0064cc 50%, #0071e3 100%);
+            box-shadow: 0 6px 15px rgba(0, 113, 227, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        #btnSPD::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.15) 50%,
+                transparent 70%
+            );
+            animation: bubble-shine 8s infinite;
+            pointer-events: none;
+        }
+        
+        #btnSPD::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(10px);
+            animation: bubble-glow 4s infinite alternate;
+            pointer-events: none;
+        }
+        
+        @keyframes bubble-shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(0deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(360deg);
+            }
+        }
+        
+        @keyframes bubble-glow {
+            0% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+        
+        #btnSPD:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 10px 25px rgba(0, 113, 227, 0.35),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+        
+        .btn-spd:hover {
+            background: #0077ed; /* Un tono ligeramente más claro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 113, 227, 0.3);
+        }
+        
+        .btn-spd-centered {
+            width: 100%;
+            max-width: 400px;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .btn-spd.btn-green {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        }
+        
+        .btn-spd.btn-green:hover {
+            background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+        }
+        
+        /* === LÍNEAS DE SEPARACIÓN === */
+        .section-spd {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            border: 2px solid #cbd5e1; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        /* Íconos de sección también actualizados para combinar */
+        .section-icon {
+            width: 2rem;
+            height: 2rem;
+            min-width: 2rem;
+            background: #e1f0ff; /* Fondo muy suave azul */
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #0071e3; /* Azul solicitado */
+        }
+        
+        .email-box {
+            background-color: #f0f9ff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 0.75rem 0;
+            border: 1px solid #bfdbfe;
+        }
+        
+        .email-box a {
+            color: #0071e3;
+            font-weight: 600;
+            word-break: break-all;
+            text-decoration: none;
+        }
+        
+        .email-box a:hover {
+            color: #005bb5;
+            text-decoration: underline;
+        }
+        
+        .note-important {
+            background-color: #fef3c7;
+            border: 1px solid #fcd34d;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-volver-card {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+            font-weight: 600;
+            transition: all 0.3s;
+            z-index: 10;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: #f3f4f6;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-volver-card:hover {
+            color: #1f2937;
+            background: #e5e7eb;
+        }
+        
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.875rem;
+            background: #f0f9ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            color: #0071e3;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
 
-// ==========================================================================
-// FUNCIÓN PARA MOSTRAR REQUISITOS EN MODAL
-// ==========================================================================
-function mostrarRequisitos(tipo) {
-    const modal = document.getElementById('modalRequisitos');
-    const titulo = document.getElementById('modalTitulo');
-    const contenido = document.getElementById('modalContenido');
-    
-    // Configurar título según el tipo
-    const titulos = {
-        'vigilante': 'Vigilante Privado',
-        'guardia': 'Guardia de Seguridad',
-        'nochero': 'Portero / Nochero',
-        'portero': 'Portero / Nochero',
-        'encargado-armas': 'Encargado de Armas y Municiones',
-        'tecnico': 'Técnico en Seguridad Privada',
-        'operador': 'Operador de Cámaras y Alarmas',
-        'instalador': 'Instalador Técnico',
-        'supervisor': 'Supervisor de Seguridad',
-        'jefe': 'Jefe de Seguridad',
-        'asesor': 'Asesor de Seguridad',
-        'encargado': 'Encargado de Seguridad',
-        'capacitador': 'Capacitador',
-        'empresa': 'Empresa de Seguridad'
-    };
-    
-    titulo.textContent = titulos[tipo] || 'Requisitos';
-    
-    // Generar contenido según el tipo
-    let html = '';
-    
-    switch(tipo) {
-        case 'vigilante':
-            html = generarContenidoVigilante();
-            break;
-        case 'guardia':
-            html = generarContenidoGuardia();
-            break;
-        case 'nochero':
-        case 'portero':
-            html = generarContenidoPortero();
-            break;
-        case 'encargado':
-            html = generarContenidoEncargado();
-            break;
-        case 'encargado-armas':
-            html = generarContenidoEncargadoArmas();
-            break;
-        case 'tecnico':
-            html = generarContenidoTecnico();
-            break;
-        case 'operador':
-            html = generarContenidoOperador();
-            break;
-        case 'instalador':
-            html = generarContenidoInstalador();
-            break;
-        case 'supervisor':
-            html = generarContenidoSupervisor();
-            break;
-        case 'jefe':
-            html = generarContenidoJefe();
-            break;
-        case 'asesor':
-            html = generarContenidoAsesor();
-            break;
-        case 'capacitador':
-            html = generarContenidoCapacitador();
-            break;
-        case 'empresa':
-            html = generarContenidoEmpresa();
-            break;
-        default:
-            html = generarContenidoGenerico(tipo);
+        #vistaComponentes {
+            display: none;
+        }
+
+        #vistaComponentes.active {
+            display: block;
+        }
+
+        /* === ESTILOS GLOBALES BOTONES COMPONENTES - ACTUALIZADO #0071e3 === */
+        .btn-componente {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            
+            background: #ffffff;
+            color: #1e293b;
+            
+            /* BORDE FINO DEL COLOR SOLICITADO #0071e3 */
+            border: 1px solid #0071e3;
+            
+            border-radius: 1.5rem; 
+            
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+            min-height: 100px;
+        }
+
+        /* TÍTULO PRINCIPAL DEL BOTÓN */
+        .btn-componente .font-bold {
+            color: #0f172a !important; 
+            font-weight: 600;
+            font-size: 0.95rem; 
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        /* SUBTÍTULO DEL BOTÓN */
+        .btn-componente .text-xs {
+            color: #64748b !important; 
+            font-weight: 400;
+            margin-top: 2px;
+            transition: color 0.3s ease;
+            font-size: 0.7rem; 
+        }
+
+        @media (min-width: 768px) {
+            .btn-componente {
+                padding: 1.25rem; 
+                gap: 0.75rem; 
+            }
+        }
+
+        /* EFECTO HOVER: FONDO #0071e3 */
+        .btn-componente:hover {
+            transform: translateY(-3px);
+            border-color: #0071e3; /* Mantiene el color del borde */
+            background: #0071e3 !important; /* Relleno azul exacto */
+            box-shadow: 0 10px 25px -5px rgba(0, 113, 227, 0.4), 0 8px 10px -6px rgba(0, 113, 227, 0.1);
+        }
+
+        /* CAMBIO DE TEXTO A BLANCO AL HOVER */
+        .btn-componente:hover .font-bold {
+            color: #ffffff !important;
+        }
+        
+        .btn-componente:hover .text-xs {
+            color: #e0e7ff !important; 
+        }
+
+        /* === ICONO DENTRO DEL BOTÓN === */
+        .btn-componente-icon {
+            width: 44px; 
+            height: 44px;
+            min-width: 44px;
+            
+            /* Fondo suave y color del icono #0071e3 */
+            background: #f0f7ff; 
+            color: #0071e3; 
+            
+            border-radius: 1rem; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        /* AL HOVER: Icono fondo blanco, simbolo azul #0071e3 */
+        .btn-componente:hover .btn-componente-icon {
+            background: #ffffff; 
+            color: #0071e3; 
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-componente-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-componente-arrow {
+            margin-left: auto;
+            color: #cbd5e1; 
+            transition: all 0.3s ease;
+        }
+        
+        @media (min-width: 1024px) {
+            .btn-componente-arrow svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .btn-componente:hover .btn-componente-arrow {
+            color: #ffffff; 
+            transform: translateX(4px);
+        }
+        
+        .btn-componente::before {
+            display: none;
+        }
+
+        /* === ESTILOS DEL MODAL === */
+        .modal-requisitos {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-requisitos.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            width: 100%; 
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease-out;
+            margin: 0 auto;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            /* Cabecera del modal usando el nuevo azul */
+            background: #0071e3;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .badge-componentes {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .badge-ley-componentes {
+            background: #dbeafe;
+            color: #0071e3;
+            border: 1px solid #93c5fd;
+        }
+        
+        .badge-decreto-componentes {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+        
+        .requisito-section-componentes {
+            background: #f8fafc;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #0071e3; /* Azul actualizado */
+            border-top: 1px solid #cbd5e1;
+            border-right: 1px solid #cbd5e1;
+            border-bottom: 1px solid #cbd5e1;
+        }
+        
+        .requisito-item-componentes {
+            display: flex;
+            gap: 0.875rem;
+            align-items: flex-start;
+            padding: 0.875rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        
+        .requisito-item-componentes:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(2px);
+            border-color: #bfdbfe;
+        }
+        
+        .requisito-numero-componentes {
+            min-width: 2rem;
+            width: 2rem;
+            height: 2rem;
+            background: #0071e3; /* Azul actualizado */
+            color: white;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        /* === ANIMACIONES === */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        /* === RESPONSIVE (MÓVIL) === */
+        @media (max-width: 768px) {
+            .card-spd {
+                padding: 1rem;
+                margin: 1%;
+                width: 98%;
+                max-width: 98%;
+                border-radius: 0.5rem;
+            }
+            
+            .modal-content {
+                width: 99% !important;
+                max-width: 99% !important;
+                margin: 0 auto;
+            }
+            
+            .modal-requisitos {
+                padding: 0.25rem !important;
+            }
+            
+            .modal-requisitos.active {
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+
+            .modal-body {
+                padding: 0.75rem;
+            }
+
+            .requisito-item-componentes {
+                width: 99%;
+                margin: 0 auto;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
+            #main-content {
+                padding: 0 !important;
+            }
+            
+            .section-spd {
+                padding: 1.25rem;
+                border: 2px solid #cbd5e1 !important; 
+            }
+            
+            .section-title {
+                font-size: 1.125rem;
+            }
+            
+            .section-spd .btn-spd {
+                width: 75% !important; 
+                min-width: auto !important;
+                max-width: 75% !important;
+                padding: 0.875rem 1rem;
+                font-size: 0.875rem;
+                margin-right: auto !important;
+                background: #0071e3;
+                display: flex;
+            }
+            
+            .section-spd .btn-spd.btn-green {
+                background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            }
+            
+            .btn-spd-centered {
+                width: 100%;
+            }
+            
+            .btn-volver-card {
+                top: 0.75rem;
+                right: 0.75rem;
+                padding: 0.375rem 0.75rem;
+                font-size: 0.875rem;
+            }
+            
+            .btn-volver-card span {
+                display: none;
+            }
+            
+            .btn-volver-card svg {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+            
+            .feature-badge {
+                font-size: 0.625rem;
+                padding: 0.375rem 0.625rem;
+            }
+            
+            .section-icon {
+                width: 1.75rem;
+                height: 1.75rem;
+                min-width: 1.75rem;
+            }
+            
+            .section-icon svg {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            /* Ajustes Minimalistas Móvil */
+            .btn-componente {
+                padding: 1rem 1rem;
+                gap: 1rem;
+                width: 94%; 
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-componente-icon {
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
+            }
+
+            .btn-componente-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-spd {
+                padding: 0.75rem;
+                margin: 0.5%;
+                width: 99%;
+                max-width: 99%;
+            }
+            
+            .modal-content {
+                width: 99% !important;
+            }
+            
+            .section-spd {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1rem;
+                gap: 0.5rem;
+            }
+            
+            body {
+                padding-top: 3.5rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 640px) {
+            .card-spd {
+                width: 96%;
+                margin: 2%;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 768px) {
+            .card-spd {
+                width: 94%;
+                margin: 3%;
+            }
+        }
+        
+        /* Botones más angostos en desktop (PC) */
+        @media (min-width: 1024px) {
+            .section-spd .btn-spd {
+                width: 35% !important;
+                max-width: 420px;
+                margin-left: 0 !important;
+                margin-right: auto !important;
+            }
+            
+            .btn-spd-centered {
+                width: 50% !important;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            /* Título un poco más abajo en PC */
+            #vistaPrincipal .text-center.mb-8 {
+                padding-top: 2rem !important;
+            }
+        }
+        
+        /* === ESTILOS DE IMPRESIÓN === */
+        @media print {
+            /* Ocultar elementos innecesarios al imprimir */
+            .fixed,
+            .btn-volver-card,
+            .close-modal,
+            footer,
+            .btn-componente-arrow,
+            #vistaPrincipal,
+            #vistaComponentes,
+            .btn-componente,
+            button {
+                display: none !important;
+            }
+            
+            /* Mostrar solo el modal cuando esté abierto */
+            body {
+                padding-top: 0 !important;
+                background: white !important;
+            }
+            
+            /* Modal ocupa toda la página para impresión */
+            .modal-requisitos {
+                position: static !important;
+                display: block !important;
+                padding: 0 !important;
+                background: white !important;
+                overflow: visible !important;
+            }
+            
+            .modal-requisitos.active {
+                display: block !important;
+            }
+            
+            .modal-content {
+                position: static !important;
+                transform: none !important;
+                max-height: none !important;
+                height: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 20px !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                overflow: visible !important;
+            }
+            
+            .modal-header {
+                border-bottom: 2px solid #333 !important;
+                padding-bottom: 10px !important;
+                margin-bottom: 20px !important;
+                page-break-after: avoid !important;
+            }
+            
+            .modal-body {
+                max-height: none !important;
+                overflow: visible !important;
+                padding: 0 !important;
+            }
+            
+            /* Todo fluye de corrido - sin saltos de página forzados */
+            .requisito-section-componentes {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+                page-break-before: auto !important;
+                page-break-after: auto !important;
+            }
+            
+            .requisito-item-componentes {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Mejorar legibilidad en impresión */
+            body {
+                font-size: 11pt !important;
+                line-height: 1.4 !important;
+                color: #000 !important;
+            }
+            
+            h2, h3, h4 {
+                color: #000 !important;
+                page-break-after: avoid !important;
+            }
+            
+            /* Ajustar badges para impresión */
+            .badge-ley-componentes,
+            .badge-decreto-componentes {
+                border: 1px solid #333 !important;
+                padding: 2px 6px !important;
+            }
+            
+            /* Asegurar que los números de requisitos se vean bien */
+            .requisito-numero-componentes {
+                background: #333 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            /* Forzar la visibilidad de colores de fondo importantes */
+            .requisito-section-componentes {
+                background: #f8f8f8 !important;
+                border-left: 3px solid #333 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+        
+        /* ===== ESTILOS BOTÓN PDF EN MODAL ===== */
+        .btn-pdf-modal {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #dc2626;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+        }
+        .btn-pdf-modal:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5);
+        }
+        .btn-pdf-modal:active {
+            transform: translateY(0);
+        }
+        .btn-pdf-modal svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        /* ===== FIN ESTILOS BOTÓN PDF ===== */
+        
+        /* ===== ANIMACIÓN DESCARGA PDF ===== */
+        .pdf-download-animation {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99999;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        .pdf-download-animation.active {
+            animation: pdfBounce 7.5s ease-in-out forwards;
+        }
+        
+        .pdf-icon-animated {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.5);
+        }
+        
+        .pdf-icon-animated svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+        
+        @keyframes pdfBounce {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
     }
-    
-    // Insertar contenido
-    contenido.innerHTML = html;
-    
-    // Mostrar modal - IMPORTANTE: limpiar display inline primero
-    modal.style.display = 'flex';
-    modal.style.zIndex = '9999';
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Scroll al inicio del modal
-    setTimeout(() => {
-        modal.scrollTop = 0;
-    }, 50);
-    
-    console.log('✅ Modal abierto:', tipo);
-}
+    5% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    /* PRIMER SALTO GRANDE - MÁS TIEMPO */
+    15% {
+        opacity: 1;
+        transform: translate(-50%, -130%) scale(1.15);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    /* PAUSA ENTRE SALTOS */
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    /* SEGUNDO SALTO GRANDE - MÁS TIEMPO */
+    40% {
+        opacity: 1;
+        transform: translate(-50%, -120%) scale(1.1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    /* PAUSA ANTES DE SUBIR */
+    55% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    /* SUBE MUY LENTO HACIA ARRIBA DERECHA */
+    62% {
+        opacity: 1;
+        transform: translate(-30%, -90%) scale(0.95);
+    }
+    69% {
+        opacity: 1;
+        transform: translate(-10%, -120%) scale(0.85);
+    }
+    76% {
+        opacity: 1;
+        transform: translate(15%, -150%) scale(0.75);
+    }
+    83% {
+        opacity: 1;
+        transform: translate(35%, -180%) scale(0.65);
+    }
+    90% {
+        opacity: 0.8;
+        transform: translate(calc(45vw - 100px), calc(-45vh - 50px)) scale(0.5);
+    }
+    96% {
+        opacity: 0.4;
+        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.4);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(50vw - 95px), calc(-50vh - 55px)) scale(0.35);
+    }
+        }
+        
+        @media (max-width: 640px) {
+            .pdf-icon-animated {
+                width: 70px;
+                height: 70px;
+            }
+            .pdf-icon-animated svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        /* ===== FIN ANIMACIÓN DESCARGA PDF ===== */
+    </style>
+</head>
+<body class="min-h-screen pt-14 sm:pt-16">
+    <!-- Banner superior -->
+    <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 h-14 sm:h-16 flex items-center justify-between px-3 sm:px-4 shadow-sm">
+        <a href="index.html" class="flex items-center space-x-1 sm:space-x-2">
+            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-8 sm:h-10" loading="lazy">
+            <span class="font-bold text-gray-980 text-sm sm:text-base">O.S.10 Coquimbo</span>
+        </a>
+    </div>
 
-// ==========================================================================
-// VIGILANTE PRIVADO
-// ==========================================================================
-
-// ==========================================================================
-// VIGILANTE PRIVADO
-// ==========================================================================
-function generarContenidoVigilante() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona que realiza labores de protección a personas y bienes dentro de un recinto o área determinada, autorizado para portar armas, credencial y uniforme.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Arts. 25 y 26 Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Arts. 26 y 27 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Haber cumplido con el DS N° 83/2007 del Ministerio de Defensa sobre Control de Armas (certificado de la DGMN)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. No haber sido declarado con invalidez de 2ª o 3ª clase por CAPREDENA o DIPRECA</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">3. Curso de FORMACIÓN: 100 horas pedagógicas (se rinde una sola vez)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">4. Curso de PERFECCIONAMIENTO: 40 horas cada 2 años</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 1 AÑO</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe portar arma de fuego durante la jornada de trabajo</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Solo puede portar armas dentro del recinto o área autorizada</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Certificación válida por 2 años</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('vigilante')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+    <!-- Contenido principal -->
+    <div id="main-content" class="container mx-auto px-1 sm:px-4">
+        <!-- VISTA PRINCIPAL (SPD) -->
+        <div id="vistaPrincipal" class="card-spd">
+            <!-- BOTÓN VOLVER -->
+            <a href="index.html" class="btn-volver-card" onclick="volverAlIndex(event)">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// GUARDIA DE SEGURIDAD
-// ==========================================================================
-function generarContenidoGuardia() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona que realiza labores de protección a personas y bienes dentro de recinto o área determinada, SIN autorización para portar armas de fuego. Debe usar uniforme y credencial.
-                </p>
-            </div>
+                <span>Volver</span>
+            </a>
             
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Arts. 50, 51, 52, 53 y 54 Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Arts. 87, 88 y 89 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Curso de FORMACIÓN: 90 horas pedagógicas (se rinde una sola vez)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. Curso de PERFECCIONAMIENTO: 36 horas cada 4 años (entidades no obligadas)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">3. Curso de ESPECIALIZACIÓN: 36 horas cada 4 años (nivel riesgo medio o alto)</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 2 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 PROHIBICIÓN: NO puede portar armas de fuego (Art. 56 Ley 21.659)</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Puede usar elementos defensivos autorizados por SPD (no armas de fuego)</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe usar uniforme color negro según especificaciones del Decreto 209</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
+            <!-- Encabezado -->
+            <div class="text-center mb-8 pt-12 sm:pt-4">
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
+                    PORTAL DE INFORMACIÓN A LA SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
+                </h1>
+                <p class="text-sm sm:text-base text-gray-600 mb-4">
+                    Accede a la plataforma de Seguridad Privada y consulta información relevante
                 </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
+                <div class="flex justify-center">
+                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="btn-spd btn-spd-centered" id="btnSPD">
+                        Acceder a la Plataforma SPD
                     </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('guardia')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// PORTERO / NOCHERO / RONDÍN
-// ==========================================================================
-function generarContenidoPortero() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Personas que cumplen funciones de seguridad privada en recintos. Capacitación especializada y diferenciada de guardias de seguridad.
-                </p>
+                </div>
             </div>
             
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Arts. 55 y 56 Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Arts. 97, 98 y 99 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Curso de FORMACIÓN: 60 horas pedagógicas</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. Curso de PERFECCIONAMIENTO: 30 horas cada 4 años</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 PROHIBICIÓN: NO pueden usar armas de fuego (Art. 56 Ley 21.659)</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Seguro de vida obligatorio: mínimo 132 UF (contratado por empleador)</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Los conserjes pueden someterse voluntariamente a este régimen</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
+            <!-- Informativo -->
+            <div class="section-spd">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <span>Información y Trámites</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    Consulta el informativo oficial y realiza consultas sobre trámites:
                 </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
+                <!-- Alineación uniforme para botones de ancho completo -->
+                <div class="flex flex-col gap-3 w-full">
+                    <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="btn-spd text-sm">
+                        📄 ¿Dónde hacer los trámites?
                     </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('portero')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// JEFE DE SEGURIDAD
-// ==========================================================================
-function generarContenidoJefe() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Responsable de la organización, dirección, administración, control y gestión de recursos destinados a la protección de personas y bienes. Coordina con autoridad fiscalizadora y SPD.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Art. 23 Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Arts. 23 y 24 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Título profesional de mínimo 8 semestres (educación superior estatal o reconocida)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. Curso de especialidad en seguridad o materias afines de mínimo 400 horas académicas</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">3. No haber sido declarado con invalidez de 2ª o 3ª clase por CAPREDENA o DIPRECA</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">4. Si trabaja en entidad obligada con sistema de vigilancia privada: debe cumplir requisitos de vigilante privado</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Ex-integrantes de FF.AA. o Carabineros pueden eximirse de algunas materias según malla curricular</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Se reconocen cursos previos de seguridad privada para completar las 400 horas</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
+                    <a href="https://siac-msp.interior.gob.cl/ingreso" target="_blank" class="btn-spd text-sm">
+                        💬 Dudas y consultas 
                     </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('jefe')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// ASESOR DE SEGURIDAD
-// ==========================================================================
-function generarContenidoAsesor() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona natural que asesora sobre seguridad privada, propone medidas para neutralizar vulnerabilidades. Puede elaborar estudios y planes de seguridad.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">No tiene artículo específico en Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Art. 109 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Título profesional relacionado con el área de seguridad o materias afines</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. Diplomado en seguridad privada o gestión de seguridad empresarial de mínimo 400 horas académicas (educación superior reconocida)</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Puede elaborar estudios de seguridad y planes de seguridad para entidades obligadas</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('asesor')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// SUPERVISOR DE SEGURIDAD PRIVADA
-// ==========================================================================
-function generarContenidoSupervisor() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona que efectúa labores de supervigilancia y control de recursos humanos, materiales, tecnológicos o procedimientos destinados a la protección de personas y bienes.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">No tiene artículo específico en Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Art. 108 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. OPCIÓN 1: Curso de supervisión y control de 120 horas</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. OPCIÓN 2: Si tiene curso de guardias (90h), requiere 30 horas adicionales de supervisión</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">3. OPCIÓN 3: Si tiene curso de vigilantes (100h), requiere 20 horas adicionales de supervisión</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">4. OPCIÓN 4: Si tiene título técnico (4 semestres mín.) o profesional (8 semestres mín.), requiere 20 horas de supervisión</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 IMPORTANTE: Si trabaja en entidad obligada con sistema vigilancia privada, debe cumplir requisitos de vigilante privado</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('supervisor')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// CAPACITADOR
-// ==========================================================================
-function generarContenidoCapacitador() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Profesionales y técnicos autorizados por SPD dedicados a la instrucción, formación, capacitación y perfeccionamiento de vigilantes privados, guardias, porteros, nocheros, rondines y conserjes.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Art. 59 Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Arts. 104 y 105 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Nivel de educación profesional y técnico en materias de seguridad privada según asignatura a impartir</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. Diplomado en seguridad privada o gestión de seguridad empresarial (salvo excepciones por asignatura específica)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">3. EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#eff6ff; border-left-color:#0071e3;">
-                <h3 class="font-bold text-gray-900 mb-3">📚 REQUISITOS ESPECIALES POR ASIGNATURA (Artículo 105 Decreto 209):</h3>
-                <p class="text-sm text-gray-600 mb-3 italic" style="text-align: justify;">Los capacitadores deben cumplir requisitos adicionales según la asignatura que impartan:</p>
-                
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">1</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Legislación aplicada a la seguridad privada</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional o certificado que acredite que la persona es licenciada en ciencias jurídicas y sociales o abogado. Podrá eximirse de contar con diplomado en materias inherentes a seguridad privada o gestión de seguridad empresarial si se acreditan dos o más años de experiencia profesional en la materia, con el respectivo certificado.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">2</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Respeto y promoción de los derechos humanos</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional o certificado que acredite que la persona es licenciada en ciencias jurídicas y sociales o abogada.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">3</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Privacidad y uso de datos personales</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional o certificado que acredite que la persona es licenciada en ciencias jurídicas y sociales o abogado, o profesional del área informática con un título profesional de educación superior de una carrera de, a lo menos, ocho semestres de duración.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">4</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Correcto uso de elementos defensivos</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Certificación oficial equivalente a un título profesional o técnico de nivel superior, del oficial o suboficial de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile, y certificado que acredite los cursos de defensa personal mediante la malla curricular vigente a la época en que los aprobaron.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">5</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Primeros auxilios</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional o técnico de nivel superior que acredite que la persona es profesional en el área de la salud.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">6</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Prevención de riesgos</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional o técnico de nivel superior en prevención de riesgos, junto con la correspondiente resolución de la SEREMI de Salud.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">7</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Probidad, no discriminación y perspectiva de género</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Certificado de magíster o diplomado, que acredite que la persona tiene formación en probidad, no discriminación o perspectiva de género.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">8</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Seguridad de instalaciones</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional o técnico de nivel superior en prevención de riesgos, junto con la correspondiente resolución de la SEREMI de Salud.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">9</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Seguridad electrónica</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional o técnico de nivel superior en electrónica</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">10</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Sistema de telecomunicaciones</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Título profesional de ingeniero o técnico de nivel superior en telecomunicaciones.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">11</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Técnicas de reducción</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Certificación oficial equivalente a un título profesional o técnico de nivel superior del oficial y suboficial de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile, y certificado que acredite que la persona tiene formación en defensa personal mediante la malla curricular vigente a la época en que los aprobaron. Certificado emitido por la Dirección General de Movilización Nacional para deportistas expertos en artes defensivas, si procediere</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">12</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Instrucción física</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Certificado de licenciatura en educación física o título técnico en  materias afines otorgado por entidades reconocidas por el Ministerio de Educación.</p>
-                    </div>
-                </div>
-
-                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
-                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">13</div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-gray-900 mb-1">Conocimiento de arma y tiro</p>
-                        <p class="text-sm text-gray-700" style="text-align: justify;">Certificado que acredite que la persona ha sido instructor o es experto en manejo de uso de armas y tiro, con un mínimo de cinco años de experiencia. Certificado de egreso como oficial y suboficial de las Fuerzas Armadas y de Orden y Seguridad Pública o Gendarmería, si procede. En todo caso, se deberá acompañar el certificado de aprobación del examen práctico otorgado por la autoridad fiscalizadora competente.</p>
-                    </div>
                 </div>
             </div>
 
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Los exámenes de capacitación finalizan ante Carabineros de Chile</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 La certificación la otorga la Subsecretaría de Prevención del Delito</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 El capacitador debe acreditar conocimientos y experiencia en la asignatura específica que imparte</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
+            <!-- Preguntas Frecuentes -->
+            <div class="section-spd">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <span>Preguntas Frecuentes</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    Encuentra respuestas a las consultas más comunes sobre seguridad privada:
                 </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
+                <div>
+                    <a href="https://segprivada.minsegpublica.gob.cl/preguntas-frecuentes" target="_blank" class="btn-spd text-sm">
+                        Ver Preguntas Frecuentes
                     </a>
-                </p>
+                </div>
             </div>
 
-            <button onclick="descargarModalPDF('capacitador')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// ENCARGADO DE SEGURIDAD
-// ==========================================================================
-function generarContenidoEncargado() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona designada para cada recinto, oficina, agencia o sucursal que vela por el cumplimiento de las medidas del estudio de seguridad, coordinando con jefe de seguridad y autoridad fiscalizadora.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Art. 24 Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Art. 25 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Cumplir todos los mismos requisitos que los vigilantes privados</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">2. Curso relacionado con seguridad o materias afines de mínimo 120 horas académicas</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Se relaciona con la autoridad fiscalizadora para efectos de la ley</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('encargado')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// ENCARGADO DE ARMAS Y MUNICIONES
-// ==========================================================================
-function generarContenidoEncargadoArmas() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona que mantiene a resguardo las armas de fuego de la entidad obligada y realiza entrega/recepción a vigilantes privados al inicio/término de jornada.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Art. 26 (inciso 5°) Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Art. 30 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Cumplir todos los mismos requisitos establecidos para los vigilantes privados</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Puede ser la misma persona que el encargado de seguridad</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Responsable del registro diario de armas según Art. 104 del DS 83/2007</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe guardar armas y municiones en lugar cerrado con garantías de seguridad</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('encargado-armas')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// TÉCNICO EN SEGURIDAD PRIVADA
-// ==========================================================================
-function generarContenidoTecnico() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona que proporciona, instala, mantiene, repara y/o controla equipos, dispositivos y sistemas de seguridad electrónica conectados a centrales receptoras.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">No tiene artículo específico en Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Art. 110 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Certificado de título profesional o técnico en la materia de seguridad electrónica</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Trabaja con sistemas conectados a centrales receptoras de alarmas</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Autorizado por la Subsecretaría de Prevención del Delito</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('tecnico')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// OPERADOR DE CÁMARAS DE TELEVIGILANCIA Y ALARMAS
-// ==========================================================================
-function generarContenidoOperador() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona que opera en centros de control o videovigilancia mediante CCTV o alarmas para detectar riesgos y coordinar con autoridades.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">No tiene artículo específico en Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Art. 111 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Certificado de capacitación en el área de televigilancia y alarmas</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Trabaja en centros de control o videovigilancia</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Coordina con autoridad policial para neutralizar amenazas</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('operador')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// INSTALADOR TÉCNICO
-// ==========================================================================
-function generarContenidoInstalador() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona que instala sistemas de CCTV y/o alarmas para el funcionamiento de instalaciones de seguridad.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">No tiene artículo específico en Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Art. 112 Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
-                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">1. Certificado de capacitación en el área de instalación de sistemas de seguridad</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Instala sistemas de circuito cerrado de televisión y alarmas</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Autorizado por la Subsecretaría de Prevención del Delito</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('instalador')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// EMPRESA DE SEGURIDAD PRIVADA
-// ==========================================================================
-function generarContenidoEmpresa() {
-    return `
-        <div class="space-y-4">
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
-                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona jurídica que presta servicios de seguridad privada, debiendo cumplir requisitos específicos para su autorización y funcionamiento.
-                </p>
-            </div>
-            
-            <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Arts. 63 y siguientes Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Arts. 113 y siguientes Decreto 209</span>
-            </div>
-
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
-                </ul>
-            </div>
-
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe contar con jefe de seguridad autorizado</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe mantener registro actualizado de personal</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Sujeta a fiscalización permanente de la SPD</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
-                </p>
-            </div>
-
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
-                <p class="text-sm text-gray-700">
-                    <strong>📌 Más información:</strong> 
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
-                </p>
-            </div>
-
-            <button onclick="descargarModalPDF('empresa')" class="btn-pdf-modal">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Descargar PDF
-            </button>
-        </div>
-    `;
-}
-
-// ==========================================================================
-// FUNCIÓN GENÉRICA PARA COMPONENTES NO ESPECIFICADOS
-// ==========================================================================
-function generarContenidoGenerico(tipo) {
-    return `
-        <div class="space-y-4">
-            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">📋 REQUISITOS GENERALES:</h3>
+            <!-- Componentes de Seguridad Privada (BOTÓN ORIGINAL) -->
+            <div class="section-spd">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <span>Requisitos por Componente</span>
+                </div>
                 <p class="text-sm text-gray-600 mb-3">
-                    Los requisitos específicos para este componente están en proceso de actualización según la Ley 21.659.
+                    Consulta los requisitos completos según <strong>Ley 21.659</strong> y <strong>Decreto 209</strong>:
                 </p>
-                <p class="text-sm text-gray-700">
-                    Por favor, consulte la información oficial en:
-                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
-                        https://segprivada.minsegpublica.gob.cl/
-                    </a>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="feature-badge">✓ Vigilantes Privados</span><br>
+                    <span class="feature-badge">✓ Jefes de Seguridad</span><br>
+                    <span class="feature-badge">✓ Guardias</span><br>
+                    <span class="feature-badge">✓ Supervisores</span><br>
+                    <span class="feature-badge">✓ Asesores</span><br>
+                    <span class="feature-badge">✓ Capacitadores</span><br>
+                    <span class="feature-badge">✓ Y más...</span>
+                </div>
+                <div>
+                    <button onclick="mostrarComponentes()" class="btn-spd btn-green text-sm">
+                        📋 Requisitos por Componente
+                    </button>
+                </div>
+            </div>
+
+            <!-- Asignaturas de Capacitación (NUEVA SECCIÓN) -->
+            <div class="section-spd">
+                <div class="section-title">
+                    <div class="section-icon" style="background: #fef3c7;">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="color: #d97706;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span>Asignaturas de Capacitación</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                    Consulta las <strong>mallas de capacitación completas</strong> según <strong>Decreto 209</strong>:
                 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="feature-badge" style="background: white; color: #d97706; border: 1px solid #d97706;">✓ Vigilantes Privados (13 asignaturas - 100h)</span><br>
+                    <span class="feature-badge" style="background: white; color: #d97706; border: 1px solid #d97706;">✓ Guardias de Seguridad (12 asignaturas - 90h)</span><br>
+                    <span class="feature-badge" style="background: white; color: #d97706; border: 1px solid #d97706;">✓ Porteros/Nocheros/Rondines (8 asignaturas - 60h)</span>
+                </div>
+                <div>
+                    <button onclick="mostrarAsignaturas()" class="btn-spd text-sm" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; box-shadow: 0 4px 6px rgba(217, 119, 6, 0.3);">
+                    📚 Asignaturas Capacitación
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contacto por Correo -->
+            <div class="section-spd">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <span>Contacto por Correo Electrónico</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-semibold">
+                    Si la plataforma no funciona, contacta por correo:
+                </p>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-2">
+                            📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
+                        </h3>
+                        <div class="email-box">
+                            <a href="/cdn-cgi/l/email-protection#a7d4d7c38ac4c6d5c0c6c3cecac2c9d4cec8c9c6c3c6e7cacec9d4c2c0d7d2c5cbcec4c689c0c8c589c4cb" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="a9dad9cd84cac8dbcec8cdc0c4ccc7dac0c6c7c8cdc8e9c4c0c7daccced9dccbc5c0cac887cec6cb87cac5">[email&#160;protected]</span>
+                            </a>
+                        </div>
+                        <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
+                            <li>Organismos Técnicos de Capacitación (OTEC)</li>
+                            <li>Consultas sobre carga sobredimensionada</li>
+                            <li>Trámites para personas naturales y jurídicas</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-2">
+                            🎓 Planes, Programas y Cursos de Capacitación
+                        </h3>
+                        <div class="email-box">
+                            <a href="/cdn-cgi/l/email-protection#671417034a04061706040e1306040e080902141417270a0e091402001712050b0e04064900080549040b" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="4d3e3d29602e2c3d2c2e24392c2e242223283e3e3d0d2024233e282a3d382f21242e2c632a222f632e21">[email&#160;protected]</span>
+                            </a>
+                        </div>
+                        <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
+                            <li>Consultas sobre planes de capacitación</li>
+                            <li>Programas de formación en seguridad privada</li>
+                            <li>Información sobre cursos disponibles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nota Importante -->
+            <div class="note-important">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-2">ℹ️ Información Importante</h3>
+                        <p class="text-xs text-gray-700 space-y-1">
+                            <span class="block">➢ Lo que no aparezca en la plataforma de la SPD debe tramitarse en el <strong>OS10 Coquimbo</strong>.</span>
+                            <span class="block">➢ En la plataforma SPD <strong>no es necesario el Certificado de Idoneidad Cívica</strong>, ya que mantienen esa información actualizada.</span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    `;
-}
 
-// ==========================================================================
-// FUNCIÓN DE DESCARGA DE PDF
-// ==========================================================================
+        <!-- VISTA DE COMPONENTES (OCULTA POR DEFECTO) -->
+        <div id="vistaComponentes" class="card-spd animate-in">
+            <!-- BOTÓN VOLVER A SPD -->
+            <button onclick="volverASPD()" class="btn-volver-card">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span>Volver</span>
+            </button>
 
-/**
- * Descarga el contenido del modal como PDF
- * @param {string} tipo - Tipo de componente (vigilante, guardia, etc.)
- */
+            <!-- Encabezado -->
+            <div class="text-center mb-6 pt-12 sm:pt-4">
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
+                    Componentes de Seguridad Privada
+                </h1>
+                <p class="text-sm sm:text-base text-gray-600">
+                    Selecciona un componente para ver sus requisitos completos
+                </p>
+            </div>
+
+            <!-- LISTA DE COMPONENTES: GRID 3 COLUMNAS PARA PC (MODIFICADO) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+                <button onclick="mostrarRequisitos('vigilante')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Vigilante Privado</div>
+                        <div class="text-xs">Protección con armas de fuego</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('jefe')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Jefe de Seguridad</div>
+                        <div class="text-xs">Dirección y gestión de seguridad</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('encargado')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Encargado de Seguridad</div>
+                        <div class="text-xs">Coordinación en recintos</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('guardia')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Guardia de Seguridad</div>
+                        <div class="text-xs">Protección sin armas de fuego</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('supervisor')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Supervisor de Seguridad</div>
+                        <div class="text-xs">Supervisión y control</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('asesor')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Asesor de Seguridad</div>
+                        <div class="text-xs">Asesoría y estudios de seguridad</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('capacitador')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Capacitador</div>
+                        <div class="text-xs">Formación y capacitación</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('portero')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Portero / Nochero / Rondín</div>
+                        <div class="text-xs">Funciones en recintos</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('encargadoArmas')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Encargado de Armas</div>
+                        <div class="text-xs">Resguardo de armamento</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('tecnico')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Técnico en Seguridad Privada</div>
+                        <div class="text-xs">Sistemas electrónicos</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('operador')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Operador de Cámaras y Alarmas</div>
+                        <div class="text-xs">Televigilancia y control</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="mostrarRequisitos('instalador')" class="btn-componente">
+                    <div class="btn-componente-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold">Instalador Técnico</div>
+                        <div class="text-xs">Instalación de sistemas</div>
+                    </div>
+                    <div class="btn-componente-arrow">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODAL DE REQUISITOS -->
+    <div id="modalRequisitos" class="modal-requisitos">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitulo" class="text-xl sm:text-2xl font-bold pr-12"></h2>
+                <button onclick="cerrarModal()" class="close-modal">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="modalContenido" class="modal-body"></div>
+        </div>
+    </div>
+    
+    <!-- Animación de descarga PDF -->
+    <div id="pdfDownloadAnimation" class="pdf-download-animation">
+        <div class="pdf-icon-animated">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17h6M9 13h6M9 9h3"></path>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- JAVASCRIPT PARA MODALES Y PDF -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Función para cerrar el modal
+        function cerrarModal() {
+            const modal = document.getElementById('modalRequisitos');
+            modal.classList.remove('active');
+            
+            // Restaurar scroll del body inmediatamente
+            document.body.style.overflow = '';
+            
+            // Limpiar contenido después de que termine la animación de cierre
+            setTimeout(() => {
+                const contenido = document.getElementById('modalContenido');
+                if (contenido) {
+                    contenido.innerHTML = '';
+                }
+            }, 300);
+        }
+
+        // Función para descargar el contenido del modal en PDF
 function descargarModalPDF(tipo) {
     // Obtener el título del modal
     const titulo = document.getElementById('modalTitulo').textContent;
     const contenido = document.getElementById('modalContenido');
     
-    // Crear un contenedor temporal con el contenido
-    const contenedorTemp = document.createElement('div');
-    contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
-    
-    // Agregar título
-    const tituloElement = document.createElement('h1');
-    tituloElement.textContent = titulo;
-    tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
-    contenedorTemp.appendChild(tituloElement);
-    
-    // Clonar el contenido del modal
-    const contenidoClone = contenido.cloneNode(true);
-    
-    // Ocultar botón de descarga en el clon
-    const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
-    if (botonPDF) {
-        botonPDF.remove();
-    }
-    
-    // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
-    contenidoClone.style.cssText = 'margin: 0; padding: 0;';
-    
-    // Aplicar estilos a TODOS los elementos para flujo continuo
-    const todosLosElementos = contenidoClone.querySelectorAll('*');
-    todosLosElementos.forEach(elemento => {
-        // Eliminar márgenes verticales grandes
-        if (elemento.style.marginTop) elemento.style.marginTop = '0';
-        if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
-        if (elemento.style.paddingTop) elemento.style.paddingTop = '0';
-        if (elemento.style.paddingBottom) elemento.style.paddingBottom = '0';
-        
-        // Aplicar márgenes pequeños a secciones
-        if (elemento.classList.contains('requisito-section-componentes')) {
-            elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
-        }
-        
-        // Aplicar estilos a items
-        if (elemento.classList.contains('requisito-item-componentes')) {
-            elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
-        }
-        
-        // Reducir espacios en divs con clases de Tailwind
-        if (elemento.className && typeof elemento.className === 'string') {
-            if (elemento.className.includes('mt-')) {
-                elemento.style.marginTop = '5px';
-            }
-            if (elemento.className.includes('mb-')) {
-                elemento.style.marginBottom = '5px';
-            }
-            if (elemento.className.includes('space-y-')) {
-                elemento.style.cssText += 'gap: 5px;';
-            }
-        }
-    });
-    
-    contenedorTemp.appendChild(contenidoClone);
-    
-    // Generar nombre de archivo
-    const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
-    
-    // Configuración del PDF optimizada para flujo continuo
-    const opciones = {
-        margin: [8, 8, 8, 8],
-        filename: nombreArchivo,
-        image: { 
-            type: 'jpeg', 
-            quality: 0.96 
-        },
-        html2canvas: { 
-            scale: 1.5,
-            useCORS: true,
-            logging: false,
-            letterRendering: true,
-            backgroundColor: '#ffffff',
-            scrollY: 0,
-            scrollX: 0,
-            windowHeight: document.documentElement.scrollHeight,
-            onclone: function(clonedDoc) {
-                const clonedContent = clonedDoc.body.querySelector('div');
-                if (clonedContent) {
-                    const allElements = clonedContent.querySelectorAll('*');
-                    allElements.forEach(el => {
-                        el.style.pageBreakInside = 'auto';
-                        el.style.pageBreakBefore = 'auto';
-                        el.style.pageBreakAfter = 'auto';
-                    });
-                }
-            }
-        },
-        jsPDF: { 
-            unit: 'mm', 
-            format: 'a4', 
-            orientation: 'portrait',
-            compress: true
-        },
-        pagebreak: { 
-            mode: [],
-            before: [],
-            after: [],
-            avoid: []
-        }
-    };
-    
-    // Mostrar animación de descarga
+    // Mostrar animación PRIMERO
     const animacion = document.getElementById('pdfDownloadAnimation');
     if (animacion) {
         animacion.classList.add('active');
         setTimeout(() => {
             animacion.classList.remove('active');
-        }, 1200);
+        }, 5500);
     }
     
-    // Generar y descargar PDF
-    html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
-        console.log('✅ PDF descargado:', nombreArchivo);
-    }).catch(error => {
-        console.error('❌ Error al generar PDF:', error);
-        alert('Error al generar el PDF. Por favor, intenta nuevamente.');
-    });
-}
-
-// ==========================================================================
-// FUNCIONES DE CIERRE DEL MODAL
-// ==========================================================================
-
-/**
- * Cierra el modal visualmente sin afectar el historial
- */
-function cerrarModalVisualmente() {
-    const modal = document.getElementById('modalRequisitos');
-    if (modal) {
-        // Remover clase active primero
-        modal.classList.remove('active');
+    // ESPERAR 2 SEGUNDOS antes de generar el PDF
+    // Esto permite que la animación se vea primero
+    setTimeout(() => {
+        // Crear un contenedor temporal con el contenido
+        const contenedorTemp = document.createElement('div');
+        contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
         
-        // Esperar a que termine la animación antes de ocultar
-        setTimeout(() => {
-            modal.style.display = 'none';
-            modal.style.zIndex = '';
-        }, 150);
-    }
-    
-    // Restaurar scroll del body
-    document.body.style.overflow = '';
-    
-    console.log('✅ Modal cerrado visualmente');
-}
-
-/**
- * Cierra el modal de forma interactiva usando historial
- */
-function cerrarModal() {
-    if (history.state && history.state.modalOpen) {
-        history.back();
-    } else {
-        cerrarModalVisualmente();
-    }
-}
-
-// ==========================================================================
-// INICIALIZACIÓN Y EVENT LISTENERS
-// ==========================================================================
-
-/**
- * Inicializa todos los event listeners del sistema de modales
- */
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('modalRequisitos');
-    
-    // Event listener para cerrar modal al hacer click fuera
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                cerrarModal();
+        // Agregar título
+        const tituloElement = document.createElement('h1');
+        tituloElement.textContent = titulo;
+        tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
+        contenedorTemp.appendChild(tituloElement);
+        
+        // Clonar el contenido del modal
+        const contenidoClone = contenido.cloneNode(true);
+        
+        // Ocultar botón de descarga en el clon
+        const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
+        if (botonPDF) {
+            botonPDF.remove();
+        }
+        
+        // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
+        contenidoClone.style.cssText = 'margin: 0; padding: 0;';
+        
+        // Aplicar estilos a TODOS los elementos para flujo continuo
+        const todosLosElementos = contenidoClone.querySelectorAll('*');
+        todosLosElementos.forEach(elemento => {
+            // Eliminar márgenes verticales grandes
+            if (elemento.style.marginTop) elemento.style.marginTop = '0';
+            if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
+            if (elemento.style.paddingTop) elemento.style.paddingTop = '0';
+            if (elemento.style.paddingBottom) elemento.style.paddingBottom = '0';
+            
+            // Aplicar márgenes pequeños a secciones
+            if (elemento.classList.contains('requisito-section-componentes')) {
+                elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
+            }
+            
+            // Aplicar estilos a items
+            if (elemento.classList.contains('requisito-item-componentes')) {
+                elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
+            }
+            
+            // Reducir espacios en divs con clases de Tailwind
+            if (elemento.className && typeof elemento.className === 'string') {
+                if (elemento.className.includes('mt-')) {
+                    elemento.style.marginTop = '5px';
+                }
+                if (elemento.className.includes('mb-')) {
+                    elemento.style.marginBottom = '5px';
+                }
+                if (elemento.className.includes('space-y-')) {
+                    elemento.style.cssText += 'gap: 5px;';
+                }
             }
         });
-    }
+        
+        contenedorTemp.appendChild(contenidoClone);
+        
+        // Generar nombre de archivo
+        const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
+        
+        // Configuración del PDF optimizada para flujo continuo
+        const opciones = {
+            margin: [8, 8, 8, 8],
+            filename: nombreArchivo,
+            image: { 
+                type: 'jpeg', 
+                quality: 0.96 
+            },
+            html2canvas: { 
+                scale: 1.5,
+                useCORS: true,
+                logging: false,
+                letterRendering: true,
+                backgroundColor: '#ffffff',
+                scrollY: 0,
+                scrollX: 0,
+                windowHeight: document.documentElement.scrollHeight,
+                onclone: function(clonedDoc) {
+                    const clonedContent = clonedDoc.body.querySelector('div');
+                    if (clonedContent) {
+                        const allElements = clonedContent.querySelectorAll('*');
+                        allElements.forEach(el => {
+                            el.style.pageBreakInside = 'auto';
+                            el.style.pageBreakBefore = 'auto';
+                            el.style.pageBreakAfter = 'auto';
+                        });
+                    }
+                }
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait',
+                compress: true
+            },
+            pagebreak: { 
+                mode: [],
+                before: [],
+                after: [],
+                avoid: []
+            }
+        };
+        
+        // Generar y descargar PDF
+        html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
+            console.log('✅ PDF descargado:', nombreArchivo);
+        }).catch(error => {
+            console.error('❌ Error al generar PDF:', error);
+            alert('Error al generar el PDF. Por favor, intenta nuevamente.');
+        });
+        
+    }, 3000); // ESPERA 2 SEGUNDOS antes de generar PDF
+}
+
+        // Cerrar modal al hacer clic fuera
+        // Variable de control para evitar agregar listeners múltiples veces
+        let modalListenersInitialized = false;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modalRequisitos');
+            
+            if (modal && !modalListenersInitialized) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        cerrarModal();
+                    }
+                });
+                
+                // Cerrar modal con tecla ESC
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        const activeModal = document.querySelector('.modal-requisitos.active');
+                        if (activeModal) {
+                            cerrarModal();
+                        }
+                    }
+                });
+                
+                modalListenersInitialized = true;
+                console.log('✅ Event listeners del modal inicializados correctamente');
+            }
+        });
+    </script>
     
-    // Event listener para cerrar modal con tecla ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const activeModal = document.querySelector('#modalRequisitos.active, .modal-requisitos.active, .modal-requisitos-componentes.active');
-            if (activeModal) {
-                cerrarModal();
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2024 OS10 Coquimbo - Dirección de Seguridad Ciudadana</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTEGRADO -->
+    <script>
+        // ===== FUNCIONES DE NAVEGACIÓN =====
+        
+        // Mostrar vista de componentes
+        function mostrarComponentes() {
+            const vistaPrincipal = document.getElementById('vistaPrincipal');
+            const vistaComponentes = document.getElementById('vistaComponentes');
+            
+            if (vistaPrincipal && vistaComponentes) {
+                vistaPrincipal.style.display = 'none';
+                vistaComponentes.style.display = 'block';
+                vistaComponentes.classList.add('active');
+                window.scrollTo(0, 0);
             }
         }
-    });
 
-    console.log('✅ Sistema de modales SPD inicializado correctamente');
-});
-
-// Event listener para cambios de visibilidad de la página
-document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-        const modal = document.getElementById('modalRequisitos');
-        if (!modal || (!modal.classList.contains('active') && window.getComputedStyle(modal).display === 'none')) {
-            cerrarModalVisualmente();
+        // Volver a vista principal
+        function volverASPD() {
+            const vistaPrincipal = document.getElementById('vistaPrincipal');
+            const vistaComponentes = document.getElementById('vistaComponentes');
+            cerrarModal(); // Cerrar modal si está abierto
+            
+            if (vistaPrincipal && vistaComponentes) {
+                vistaComponentes.classList.remove('active');
+                vistaComponentes.style.display = 'none';
+                vistaPrincipal.style.display = 'block';
+                window.scrollTo(0, 0);
+            }
         }
-    }
-});
+
+        // Mostrar asignaturas de capacitación
+        function mostrarAsignaturas() {
+            const modal = document.getElementById('modalRequisitos');
+            if (!modal) return;
+            
+            const titulo = document.getElementById('modalTitulo');
+            const contenido = document.getElementById('modalContenido');
+            
+            // LIMPIAR CONTENIDO ANTERIOR
+            contenido.innerHTML = '';
+            
+            titulo.textContent = 'ASIGNATURAS DE CAPACITACIÓN';
+            
+            let html = `
+                <div class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+                    <p class="text-sm text-gray-700 font-semibold" style="text-align: justify;">
+                        📚 Estas son las asignaturas que deben aprobarse según el Decreto 209 para obtener la certificación correspondiente
+                    </p>
+                </div>
+            `;
+            
+            // VIGILANTES PRIVADOS
+            html += `
+                <div class="requisito-section-componentes mb-6 bg-blue-50 border-l-4 border-blue-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">VIGILANTES PRIVADOS</h3>
+                    <div class="mb-3 flex flex-wrap gap-2">
+                        <span class="badge-componentes badge-decreto-componentes">Artículo 27 - Decreto 209</span>
+                        <span class="badge-componentes" style="background:#10b981; color:white;">100 horas pedagógicas</span>
+                        <span class="badge-componentes" style="background:#f59e0b; color:white;">40 horas cada 2 años</span>
+                    </div>
+                    <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
+                        <p class="text-sm font-bold text-gray-800" style="text-align: justify;">AUTORIZADOS PARA PORTAR ARMAS DE FUEGO DENTRO DE UN RECINTO O ÁREA DETERMINADA</p>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a la seguridad privada</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Instrucción física</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Correcto uso de elementos defensivos y de protección</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Primeros auxilios</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Prevención de riesgos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Seguridad de instalaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">9. Probidad, no discriminación y perspectiva de género</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">10. Seguridad electrónica</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">11. Sistema de telecomunicaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">12. Técnicas de reducción</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">13. Conocimiento de arma y tiro, de conformidad al reglamento complementario de la ley N° 17.798</li>
+                    </ul>
+                </div>
+            `;
+            
+            // GUARDIAS DE SEGURIDAD
+            html += `
+                <div class="requisito-section-componentes mb-6 bg-green-50 border-l-4 border-green-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">GUARDIAS DE SEGURIDAD</h3>
+                    <div class="mb-3 flex flex-wrap gap-2">
+                        <span class="badge-componentes badge-decreto-componentes">Artículo 107 N°1 - Decreto 209</span>
+                        <span class="badge-componentes" style="background:#10b981; color:white;">90 horas pedagógicas</span>
+                        <span class="badge-componentes" style="background:#f59e0b; color:white;">36 horas cada 4 años</span>
+                    </div>
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
+                        <p class="text-sm font-bold text-gray-800" style="text-align: justify;">SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO</p>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a seguridad privada</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Instrucción física</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Correcto uso de elementos defensivos y de protección</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Primeros auxilios</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Prevención de riesgos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Seguridad de las instalaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">9. Probidad, no discriminación y perspectiva de género</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">10. Seguridad electrónica</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">11. Sistema de telecomunicaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">12. Técnicas de reducción</li>
+                    </ul>
+                </div>
+            `;
+            
+            // PORTEROS/NOCHEROS/RONDINES
+            html += `
+                <div class="requisito-section-componentes mb-6 bg-purple-50 border-l-4 border-purple-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">PORTEROS, NOCHEROS, RONDINES U OTROS DE SIMILAR CARÁCTER</h3>
+                    <div class="mb-3 flex flex-wrap gap-2">
+                        <span class="badge-componentes badge-decreto-componentes">Artículo 107 N°2 - Decreto 209</span>
+                        <span class="badge-componentes" style="background:#10b981; color:white;">60 horas pedagógicas</span>
+                        <span class="badge-componentes" style="background:#f59e0b; color:white;">30 horas cada 4 años</span>
+                    </div>
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
+                        <p class="text-sm font-bold text-gray-800" style="text-align: justify;">SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO</p>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a seguridad privada</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Correcto uso de elementos defensivos y de protección</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Primeros auxilios</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Prevención de riesgos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Seguridad de las instalaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Probidad, no discriminación y perspectiva de género</li>
+                    </ul>
+                </div>
+            `;
+            
+            html += `
+                <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                    <p class="text-sm text-gray-700" style="text-align: justify;">
+                        <strong>⚠️ Nota Importante:</strong> Las asignaturas de <strong>arma y tiro, técnicas de reducción y primeros auxilios</strong> deben ser <strong>siempre presenciales</strong>. Las demás pueden ser telemáticas o presenciales.
+                    </p>
+                </div>
+                
+                <div class="mt-6 p-4 bg-gray-50 border-l-4 border-gray-500 rounded">
+                    <p class="text-sm text-gray-700">
+                        <strong>📌 Más información:</strong> 
+                        <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
+                            https://segprivada.minsegpublica.gob.cl/
+                        </a>
+                    </p>
+                </div>
+                
+                <button onclick="descargarModalPDF('asignaturas')" class="btn-pdf-modal mt-6">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Descargar PDF
+                </button>
+            `;
+            
+            contenido.innerHTML = html;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Alternar texto del botón SPD cada 3 segundos
+        (function() {
+            const btnSPD = document.getElementById('btnSPD');
+            if (!btnSPD) return;
+                       
+            const textos = [
+                '📋 Ver Componentes SPD',
+                '🔍 Información SPD',
+                '📚 Requisitos SPD',
+                '✅ Datos SPD'
+            ];
+            
+            let index = 0;
+            
+            setInterval(() => {
+                btnSPD.textContent = textos[index];
+                index = (index + 1) % textos.length;
+            }, 3000);
+        })();
+    </script>
+</body>
+</html>
