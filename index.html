@@ -523,7 +523,7 @@
     }
     
     .pdf-download-animation.active {
-        animation: pdfBounce 3.5s ease-in-out forwards;
+         animation: pdfBounce 4.5s ease-in-out forwards;
     }
     
     .pdf-icon-animated {
@@ -544,45 +544,61 @@
     }
     
     @keyframes pdfBounce {
-        0% {
+    0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
+        transform: translate(-50%, -50%) scale(0.5);
     }
-    10% {
+    8% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    25% {
+    /* PRIMER SALTO GRANDE */
+    18% {
         opacity: 1;
-        transform: translate(-50%, -65%) scale(1.05);
+        transform: translate(-50%, -120%) scale(1.1);
     }
-    40% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
+    28% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(0.95);
     }
-    60% {
-        opacity: 0.95;
-        transform: translate(-30%, -55%) scale(0.85);
+    /* SEGUNDO SALTO GRANDE */
+    38% {
+        opacity: 1;
+        transform: translate(-50%, -110%) scale(1.05);
     }
-    70% {
+    /* PAUSA BREVE - SE VE CLARAMENTE */
+    45% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    /* COMIENZA A SUBIR MUY LENTO - OPACIDAD ALTA */
+    55% {
+        opacity: 1;
+        transform: translate(-35%, -80%) scale(0.95);
+    }
+    65% {
+        opacity: 1;
+        transform: translate(-15%, -110%) scale(0.85);
+    }
+    75% {
+        opacity: 1;
+        transform: translate(10%, -140%) scale(0.75);
+    }
+    82% {
         opacity: 0.9;
-        transform: translate(0%, -65%) scale(0.7);
+        transform: translate(30%, -170%) scale(0.65);
     }
-    80% {
-        opacity: 0.8;
-        transform: translate(30%, -80%) scale(0.55);
+    88% {
+        opacity: 0.7;
+        transform: translate(45%, -190%) scale(0.55);
     }
-    90% {
-        opacity: 0.6;
-        transform: translate(calc(50vw - 120px), calc(-50vh - 40px)) scale(0.4);
+    94% {
+        opacity: 0.4;
+        transform: translate(calc(50vw - 110px), calc(-50vh - 45px)) scale(0.4);
     }
     100% {
         opacity: 0;
-        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.3);
+        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.35);
         }
     }
     
