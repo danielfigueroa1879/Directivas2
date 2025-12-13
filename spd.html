@@ -1699,6 +1699,169 @@ function descargarModalPDF(tipo) {
 
     <!-- JAVASCRIPT INTEGRADO -->
     <script>
+        // ===== FUNCIONES DE NAVEGACIÓN =====
+        
+        // Mostrar vista de componentes
+        function mostrarComponentes() {
+            const vistaPrincipal = document.getElementById('vistaPrincipal');
+            const vistaComponentes = document.getElementById('vistaComponentes');
+            
+            if (vistaPrincipal && vistaComponentes) {
+                vistaPrincipal.style.display = 'none';
+                vistaComponentes.style.display = 'block';
+                vistaComponentes.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Volver a vista principal
+        function volverASPD() {
+            const vistaPrincipal = document.getElementById('vistaPrincipal');
+            const vistaComponentes = document.getElementById('vistaComponentes');
+            cerrarModal(); // Cerrar modal si está abierto
+            
+            if (vistaPrincipal && vistaComponentes) {
+                vistaComponentes.classList.remove('active');
+                vistaComponentes.style.display = 'none';
+                vistaPrincipal.style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Mostrar asignaturas de capacitación
+        function mostrarAsignaturas() {
+            const modal = document.getElementById('modalRequisitos');
+            if (!modal) return;
+            
+            const titulo = document.getElementById('modalTitulo');
+            const contenido = document.getElementById('modalContenido');
+            
+            // LIMPIAR CONTENIDO ANTERIOR
+            contenido.innerHTML = '';
+            
+            titulo.textContent = 'ASIGNATURAS DE CAPACITACIÓN';
+            
+            let html = `
+                <div class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+                    <p class="text-sm text-gray-700 font-semibold" style="text-align: justify;">
+                        📚 Estas son las asignaturas que deben aprobarse según el Decreto 209 para obtener la certificación correspondiente
+                    </p>
+                </div>
+            `;
+            
+            // VIGILANTES PRIVADOS
+            html += `
+                <div class="requisito-section-componentes mb-6 bg-blue-50 border-l-4 border-blue-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">VIGILANTES PRIVADOS</h3>
+                    <div class="mb-3 flex flex-wrap gap-2">
+                        <span class="badge-componentes badge-decreto-componentes">Artículo 27 - Decreto 209</span>
+                        <span class="badge-componentes" style="background:#10b981; color:white;">100 horas pedagógicas</span>
+                        <span class="badge-componentes" style="background:#f59e0b; color:white;">40 horas cada 2 años</span>
+                    </div>
+                    <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
+                        <p class="text-sm font-bold text-gray-800" style="text-align: justify;">AUTORIZADOS PARA PORTAR ARMAS DE FUEGO DENTRO DE UN RECINTO O ÁREA DETERMINADA</p>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a la seguridad privada</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Instrucción física</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Correcto uso de elementos defensivos y de protección</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Primeros auxilios</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Prevención de riesgos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Seguridad de instalaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">9. Probidad, no discriminación y perspectiva de género</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">10. Seguridad electrónica</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">11. Sistema de telecomunicaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">12. Técnicas de reducción</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">13. Conocimiento de arma y tiro, de conformidad al reglamento complementario de la ley N° 17.798</li>
+                    </ul>
+                </div>
+            `;
+            
+            // GUARDIAS DE SEGURIDAD
+            html += `
+                <div class="requisito-section-componentes mb-6 bg-green-50 border-l-4 border-green-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">GUARDIAS DE SEGURIDAD</h3>
+                    <div class="mb-3 flex flex-wrap gap-2">
+                        <span class="badge-componentes badge-decreto-componentes">Artículo 107 N°1 - Decreto 209</span>
+                        <span class="badge-componentes" style="background:#10b981; color:white;">90 horas pedagógicas</span>
+                        <span class="badge-componentes" style="background:#f59e0b; color:white;">36 horas cada 4 años</span>
+                    </div>
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
+                        <p class="text-sm font-bold text-gray-800" style="text-align: justify;">SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO</p>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a seguridad privada</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Instrucción física</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Correcto uso de elementos defensivos y de protección</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Primeros auxilios</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Prevención de riesgos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Seguridad de las instalaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">9. Probidad, no discriminación y perspectiva de género</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">10. Seguridad electrónica</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">11. Sistema de telecomunicaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">12. Técnicas de reducción</li>
+                    </ul>
+                </div>
+            `;
+            
+            // PORTEROS/NOCHEROS/RONDINES
+            html += `
+                <div class="requisito-section-componentes mb-6 bg-purple-50 border-l-4 border-purple-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">PORTEROS, NOCHEROS, RONDINES U OTROS DE SIMILAR CARÁCTER</h3>
+                    <div class="mb-3 flex flex-wrap gap-2">
+                        <span class="badge-componentes badge-decreto-componentes">Artículo 107 N°2 - Decreto 209</span>
+                        <span class="badge-componentes" style="background:#10b981; color:white;">60 horas pedagógicas</span>
+                        <span class="badge-componentes" style="background:#f59e0b; color:white;">30 horas cada 4 años</span>
+                    </div>
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
+                        <p class="text-sm font-bold text-gray-800" style="text-align: justify;">SIN AUTORIZACIÓN PARA PORTAR ARMAS DE FUEGO</p>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">1. Legislación aplicada a seguridad privada</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">2. Respeto y promoción de los derechos humanos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">3. Privacidad y uso de datos personales</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">4. Correcto uso de elementos defensivos y de protección</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Primeros auxilios</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Prevención de riesgos</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Seguridad de las instalaciones</li>
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Probidad, no discriminación y perspectiva de género</li>
+                    </ul>
+                </div>
+            `;
+            
+            html += `
+                <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                    <p class="text-sm text-gray-700" style="text-align: justify;">
+                        <strong>⚠️ Nota Importante:</strong> Las asignaturas de <strong>arma y tiro, técnicas de reducción y primeros auxilios</strong> deben ser <strong>siempre presenciales</strong>. Las demás pueden ser telemáticas o presenciales.
+                    </p>
+                </div>
+                
+                <div class="mt-6 p-4 bg-gray-50 border-l-4 border-gray-500 rounded">
+                    <p class="text-sm text-gray-700">
+                        <strong>📌 Más información:</strong> 
+                        <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
+                            https://segprivada.minsegpublica.gob.cl/
+                        </a>
+                    </p>
+                </div>
+                
+                <button onclick="descargarModalPDF('asignaturas')" class="btn-pdf-modal mt-6">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Descargar PDF
+                </button>
+            `;
+            
+            contenido.innerHTML = html;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         // Alternar texto del botón SPD cada 3 segundos
         (function() {
             const btnSPD = document.getElementById('btnSPD');
