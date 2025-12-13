@@ -254,9 +254,18 @@ function mostrarRequisitos(tipo) {
     // Insertar contenido
     contenido.innerHTML = html;
     
-    // Mostrar modal
+    // Mostrar modal - IMPORTANTE: limpiar display inline primero
+    modal.style.display = 'flex';
+    modal.style.zIndex = '9999';
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    
+    // Scroll al inicio del modal
+    setTimeout(() => {
+        modal.scrollTop = 0;
+    }, 50);
+    
+    console.log('✅ Modal abierto:', tipo);
 }
 
 // ==========================================================================
@@ -1329,11 +1338,20 @@ function generarContenidoGenerico(tipo) {
 function cerrarModalVisualmente() {
     const modal = document.getElementById('modalRequisitos');
     if (modal) {
+        // Remover clase active primero
         modal.classList.remove('active');
-        modal.style.display = 'none';
+        
+        // Esperar a que termine la animación antes de ocultar
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.style.zIndex = '';
+        }, 150);
     }
+    
+    // Restaurar scroll del body
     document.body.style.overflow = '';
-    console.log('Modal cerrado visualmente');
+    
+    console.log('✅ Modal cerrado visualmente');
 }
 
 /**
