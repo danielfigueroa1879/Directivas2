@@ -1329,6 +1329,140 @@ function generarContenidoGenerico(tipo) {
 }
 
 // ==========================================================================
+// FUNCIÓN DE DESCARGA DE PDF
+// ==========================================================================
+
+/**
+ * Descarga el contenido del modal como PDF
+ * @param {string} tipo - Tipo de componente (vigilante, guardia, etc.)
+ */
+function descargarModalPDF(tipo) {
+    // Obtener el título del modal
+    const titulo = document.getElementById('modalTitulo').textContent;
+    const contenido = document.getElementById('modalContenido');
+    
+    // Crear un contenedor temporal con el contenido
+    const contenedorTemp = document.createElement('div');
+    contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
+    
+    // Agregar título
+    const tituloElement = document.createElement('h1');
+    tituloElement.textContent = titulo;
+    tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
+    contenedorTemp.appendChild(tituloElement);
+    
+    // Clonar el contenido del modal
+    const contenidoClone = contenido.cloneNode(true);
+    
+    // Ocultar botón de descarga en el clon
+    const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
+    if (botonPDF) {
+        botonPDF.remove();
+    }
+    
+    // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
+    contenidoClone.style.cssText = 'margin: 0; padding: 0;';
+    
+    // Aplicar estilos a TODOS los elementos para flujo continuo
+    const todosLosElementos = contenidoClone.querySelectorAll('*');
+    todosLosElementos.forEach(elemento => {
+        // Eliminar márgenes verticales grandes
+        if (elemento.style.marginTop) elemento.style.marginTop = '0';
+        if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
+        if (elemento.style.paddingTop) elemento.style.paddingTop = '0';
+        if (elemento.style.paddingBottom) elemento.style.paddingBottom = '0';
+        
+        // Aplicar márgenes pequeños a secciones
+        if (elemento.classList.contains('requisito-section-componentes')) {
+            elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
+        }
+        
+        // Aplicar estilos a items
+        if (elemento.classList.contains('requisito-item-componentes')) {
+            elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
+        }
+        
+        // Reducir espacios en divs con clases de Tailwind
+        if (elemento.className && typeof elemento.className === 'string') {
+            if (elemento.className.includes('mt-')) {
+                elemento.style.marginTop = '5px';
+            }
+            if (elemento.className.includes('mb-')) {
+                elemento.style.marginBottom = '5px';
+            }
+            if (elemento.className.includes('space-y-')) {
+                elemento.style.cssText += 'gap: 5px;';
+            }
+        }
+    });
+    
+    contenedorTemp.appendChild(contenidoClone);
+    
+    // Generar nombre de archivo
+    const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
+    
+    // Configuración del PDF optimizada para flujo continuo
+    const opciones = {
+        margin: [8, 8, 8, 8],
+        filename: nombreArchivo,
+        image: { 
+            type: 'jpeg', 
+            quality: 0.96 
+        },
+        html2canvas: { 
+            scale: 1.5,
+            useCORS: true,
+            logging: false,
+            letterRendering: true,
+            backgroundColor: '#ffffff',
+            scrollY: 0,
+            scrollX: 0,
+            windowHeight: document.documentElement.scrollHeight,
+            onclone: function(clonedDoc) {
+                const clonedContent = clonedDoc.body.querySelector('div');
+                if (clonedContent) {
+                    const allElements = clonedContent.querySelectorAll('*');
+                    allElements.forEach(el => {
+                        el.style.pageBreakInside = 'auto';
+                        el.style.pageBreakBefore = 'auto';
+                        el.style.pageBreakAfter = 'auto';
+                    });
+                }
+            }
+        },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait',
+            compress: true
+        },
+        pagebreak: { 
+            mode: [],
+            before: [],
+            after: [],
+            avoid: []
+        }
+    };
+    
+    // Mostrar animación de descarga
+    const animacion = document.getElementById('pdfDownloadAnimation');
+    if (animacion) {
+        animacion.classList.add('active');
+        setTimeout(() => {
+            animacion.classList.remove('active');
+        }, 1200);
+    }
+    
+    // Generar y descargar PDF
+    html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
+        console.log('✅ PDF descargado:', nombreArchivo);
+    }).catch(error => {
+        console.error('❌ Error al generar PDF:', error);
+        alert('Error al generar el PDF. Por favor, intenta nuevamente.');
+    });
+}
+
+// ==========================================================================
 // FUNCIONES DE CIERRE DEL MODAL
 // ==========================================================================
 
@@ -1364,3 +1498,46 @@ function cerrarModal() {
         cerrarModalVisualmente();
     }
 }
+
+// ==========================================================================
+// INICIALIZACIÓN Y EVENT LISTENERS
+// ==========================================================================
+
+/**
+ * Inicializa todos los event listeners del sistema de modales
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modalRequisitos');
+    
+    // Event listener para cerrar modal al hacer click fuera
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                cerrarModal();
+            }
+        });
+    }
+    
+    // Event listener para cerrar modal con tecla ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const activeModal = document.querySelector('#modalRequisitos.active, .modal-requisitos.active, .modal-requisitos-componentes.active');
+            if (activeModal) {
+                cerrarModal();
+            }
+        }
+    });
+
+    console.log('✅ Sistema de modales SPD inicializado correctamente');
+});
+
+// Event listener para cambios de visibilidad de la página
+document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+        const modal = document.getElementById('modalRequisitos');
+        if (!modal || (!modal.classList.contains('active') && window.getComputedStyle(modal).display === 'none')) {
+            cerrarModalVisualmente();
+        }
+    }
+});
+
