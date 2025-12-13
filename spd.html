@@ -1641,8 +1641,9 @@ function descargarModalPDF(tipo) {
             const titulo = document.getElementById('modalTitulo');
             const contenido = document.getElementById('modalContenido');
             
-            // LIMPIAR CONTENIDO ANTERIOR
+            // PASO 1: LIMPIAR COMPLETAMENTE
             contenido.innerHTML = '';
+            titulo.textContent = '';
             
             titulo.textContent = 'ASIGNATURAS DE CAPACITACIÓN';
             
