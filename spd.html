@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="assets/js/spd-componentes.js" defer></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -1444,74 +1445,7 @@
     
     <!-- JAVASCRIPT PARA MODALES Y PDF -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Función para mostrar el modal con los requisitos
-        function mostrarRequisitos(tipo) {
-            const modal = document.getElementById('modalRequisitos');
-            const titulo = document.getElementById('modalTitulo');
-            const contenido = document.getElementById('modalContenido');
-            
-            // LIMPIAR CONTENIDO ANTERIOR para evitar acumulación de HTML que congela la página
-            contenido.innerHTML = '';
-            
-            // Configurar título según el tipo
-            const titulos = {
-                'vigilante': 'VIGILANTE PRIVADO',
-                'guardia': 'GUARDIA DE SEGURIDAD',
-                'nochero': 'NOCHERO',
-                'portero': 'PORTERO',
-                'encargadoArmas': 'ENCARGADO DE ARMAS',
-                'tecnico': 'TÉCNICO EN SEGURIDAD PRIVADA',
-                'operador': 'OPERADOR DE CÁMARAS Y ALARMAS',
-                'instalador': 'INSTALADOR TÉCNICO'
-            };
-            
-            titulo.textContent = titulos[tipo] || 'REQUISITOS';
-            
-            // Generar contenido del modal
-            let html = `
-                <div class="space-y-4">
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-                        <h3 class="font-bold text-gray-800 mb-2">📋 Requisitos para ${titulos[tipo]}</h3>
-                        <p class="text-sm text-gray-700">
-                            Información sobre los requisitos necesarios para desempeñarse como ${titulos[tipo]}.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white border-2 border-gray-200 rounded-lg p-4">
-                        <h4 class="font-bold text-gray-800 mb-3">Requisitos Generales:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
-                            <li>Ser mayor de 18 años</li>
-                            <li>Tener condiciones físicas y psíquicas compatibles</li>
-                            <li>Haber cursado educación media completa</li>
-                            <li>No haber sido condenado por crimen o simple delito</li>
-                            <li>Aprobar los exámenes de capacitación correspondientes</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                        <p class="text-sm text-gray-700">
-                            <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong>.
-                        </p>
-                    </div>
-                    
-                    <!-- Botón de descarga PDF -->
-                    <div class="mt-6 text-center">
-                        <button onclick="descargarModalPDF('${tipo}')" class="btn-pdf-modal">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            <span>Descargar Requisitos en PDF</span>
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            contenido.innerHTML = html;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Función para cerrar el modal
+// Función para cerrar el modal
         function cerrarModal() {
             const modal = document.getElementById('modalRequisitos');
             modal.classList.remove('active');
