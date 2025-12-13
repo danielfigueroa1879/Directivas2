@@ -196,6 +196,7 @@ function mostrarRequisitos(tipo) {
         'supervisor': 'Supervisor de Seguridad',
         'jefe': 'Jefe de Seguridad',
         'asesor': 'Asesor de Seguridad',
+        'encargado': 'Encargado de Seguridad',
         'capacitador': 'Capacitador',
         'empresa': 'Empresa de Seguridad'
     };
@@ -215,6 +216,9 @@ function mostrarRequisitos(tipo) {
         case 'nochero':
         case 'portero':
             html = generarContenidoPortero();
+            break;
+        case 'encargado':
+            html = generarContenidoEncargado();
             break;
         case 'encargado-armas':
             html = generarContenidoEncargadoArmas();
@@ -306,13 +310,13 @@ function generarContenidoVigilante() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 1 AÑO</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Debe portar arma de fuego durante la jornada de trabajo</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Solo puede portar armas dentro del recinto o área autorizada</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Certificación válida por 2 años</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 1 AÑO</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe portar arma de fuego durante la jornada de trabajo</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Solo puede portar armas dentro del recinto o área autorizada</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Certificación válida por 2 años</li>
                 </ul>
             </div>
 
@@ -386,13 +390,13 @@ function generarContenidoGuardia() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 2 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 PROHIBICIÓN: NO puede portar armas de fuego (Art. 56 Ley 21.659)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Puede usar elementos defensivos autorizados por SPD (no armas de fuego)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Debe usar uniforme color negro según especificaciones del Decreto 209</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 2 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 PROHIBICIÓN: NO puede portar armas de fuego (Art. 56 Ley 21.659)</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Puede usar elementos defensivos autorizados por SPD (no armas de fuego)</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe usar uniforme color negro según especificaciones del Decreto 209</li>
                 </ul>
             </div>
 
@@ -467,13 +471,13 @@ function generarContenidoPortero() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 PROHIBICIÓN: NO pueden usar armas de fuego (Art. 56 Ley 21.659)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Seguro de vida obligatorio: mínimo 132 UF (contratado por empleador)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Los conserjes pueden someterse voluntariamente a este régimen</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 PROHIBICIÓN: NO pueden usar armas de fuego (Art. 56 Ley 21.659)</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Seguro de vida obligatorio: mínimo 132 UF (contratado por empleador)</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Los conserjes pueden someterse voluntariamente a este régimen</li>
                 </ul>
             </div>
 
@@ -550,12 +554,12 @@ function generarContenidoJefe() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Ex-integrantes de FF.AA. o Carabineros pueden eximirse de algunas materias según malla curricular</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Se reconocen cursos previos de seguridad privada para completar las 400 horas</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Ex-integrantes de FF.AA. o Carabineros pueden eximirse de algunas materias según malla curricular</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Se reconocen cursos previos de seguridad privada para completar las 400 horas</li>
                 </ul>
             </div>
 
@@ -630,12 +634,12 @@ function generarContenidoAsesor() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Puede elaborar estudios de seguridad y planes de seguridad para entidades obligadas</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Puede elaborar estudios de seguridad y planes de seguridad para entidades obligadas</li>
                 </ul>
             </div>
 
@@ -712,11 +716,11 @@ function generarContenidoSupervisor() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 IMPORTANTE: Si trabaja en entidad obligada con sistema vigilancia privada, debe cumplir requisitos de vigilante privado</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 IMPORTANTE: Si trabaja en entidad obligada con sistema vigilancia privada, debe cumplir requisitos de vigilante privado</li>
                 </ul>
             </div>
 
@@ -791,13 +795,13 @@ function generarContenidoCapacitador() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Los exámenes de capacitación finalizan ante Carabineros de Chile</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 La certificación la otorga la Subsecretaría de Prevención del Delito</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Los exámenes de capacitación finalizan ante Carabineros de Chile</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 La certificación la otorga la Subsecretaría de Prevención del Delito</li>
                 </ul>
             </div>
 
@@ -817,6 +821,85 @@ function generarContenidoCapacitador() {
             </div>
 
             <button onclick="descargarModalPDF('capacitador')" class="btn-pdf-modal">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Descargar PDF
+            </button>
+        </div>
+    `;
+}
+
+// ==========================================================================
+// ENCARGADO DE SEGURIDAD
+// ==========================================================================
+function generarContenidoEncargado() {
+    return `
+        <div class="space-y-4">
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
+                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
+                    Persona designada para cada recinto, oficina, agencia o sucursal que vela por el cumplimiento de las medidas del estudio de seguridad, coordinando con jefe de seguridad y autoridad fiscalizadora.
+                </p>
+            </div>
+            
+            <div class="mb-4 flex flex-wrap gap-2">
+                <span class="badge-componentes badge-ley-componentes">Art. 24 Ley 21.659</span>
+                <span class="badge-componentes badge-decreto-componentes">Art. 25 Decreto 209</span>
+            </div>
+
+            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
+                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
+                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">1. Cumplir todos los mismos requisitos que los vigilantes privados</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">2. Curso relacionado con seguridad o materias afines de mínimo 120 horas académicas</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
+                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Se relaciona con la autoridad fiscalizadora para efectos de la ley</li>
+                </ul>
+            </div>
+
+            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
+                <p class="text-sm text-gray-700" style="text-align: justify;">
+                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
+                </p>
+            </div>
+
+            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
+                <p class="text-sm text-gray-700">
+                    <strong>📌 Más información:</strong> 
+                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
+                        https://segprivada.minsegpublica.gob.cl/
+                    </a>
+                </p>
+            </div>
+
+            <button onclick="descargarModalPDF('encargado')" class="btn-pdf-modal">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
@@ -871,12 +954,12 @@ function generarContenidoEncargadoArmas() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Puede ser la misma persona que el encargado de seguridad</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Responsable del registro diario de armas según Art. 104 del DS 83/2007</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Debe guardar armas y municiones en lugar cerrado con garantías de seguridad</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Puede ser la misma persona que el encargado de seguridad</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Responsable del registro diario de armas según Art. 104 del DS 83/2007</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe guardar armas y municiones en lugar cerrado con garantías de seguridad</li>
                 </ul>
             </div>
 
@@ -950,12 +1033,12 @@ function generarContenidoTecnico() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Trabaja con sistemas conectados a centrales receptoras de alarmas</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Autorizado por la Subsecretaría de Prevención del Delito</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Trabaja con sistemas conectados a centrales receptoras de alarmas</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Autorizado por la Subsecretaría de Prevención del Delito</li>
                 </ul>
             </div>
 
@@ -1029,12 +1112,12 @@ function generarContenidoOperador() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Trabaja en centros de control o videovigilancia</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Coordina con autoridad policial para neutralizar amenazas</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Trabaja en centros de control o videovigilancia</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Coordina con autoridad policial para neutralizar amenazas</li>
                 </ul>
             </div>
 
@@ -1108,12 +1191,12 @@ function generarContenidoInstalador() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Instala sistemas de circuito cerrado de televisión y alarmas</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Autorizado por la Subsecretaría de Prevención del Delito</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Instala sistemas de circuito cerrado de televisión y alarmas</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Autorizado por la Subsecretaría de Prevención del Delito</li>
                 </ul>
             </div>
 
@@ -1180,12 +1263,12 @@ function generarContenidoEmpresa() {
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-400">
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Debe contar con jefe de seguridad autorizado</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Debe mantener registro actualizado de personal</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">💡 Sujeta a fiscalización permanente de la SPD</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe contar con jefe de seguridad autorizado</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe mantener registro actualizado de personal</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Sujeta a fiscalización permanente de la SPD</li>
                 </ul>
             </div>
 
@@ -1234,4 +1317,32 @@ function generarContenidoGenerico(tipo) {
             </div>
         </div>
     `;
+}
+
+// ==========================================================================
+// FUNCIONES DE CIERRE DEL MODAL
+// ==========================================================================
+
+/**
+ * Cierra el modal visualmente sin afectar el historial
+ */
+function cerrarModalVisualmente() {
+    const modal = document.getElementById('modalRequisitos');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+    }
+    document.body.style.overflow = '';
+    console.log('Modal cerrado visualmente');
+}
+
+/**
+ * Cierra el modal de forma interactiva usando historial
+ */
+function cerrarModal() {
+    if (history.state && history.state.modalOpen) {
+        history.back();
+    } else {
+        cerrarModalVisualmente();
+    }
 }
