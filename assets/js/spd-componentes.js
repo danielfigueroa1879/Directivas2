@@ -800,17 +800,126 @@ function generarContenidoCapacitador() {
                 <ul class="space-y-2">
                     <li class="requisito-item-componentes" style="text-align: justify;">1. Nivel de educación profesional y técnico en materias de seguridad privada según asignatura a impartir</li>
                     <li class="requisito-item-componentes" style="text-align: justify;">2. Diplomado en seguridad privada o gestión de seguridad empresarial (salvo excepciones por asignatura específica)</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">3. Los requisitos específicos varían según la asignatura a impartir (ver detalle completo en Artículo 105)</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">3. EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
                 </ul>
+            </div>
+
+            <div class="requisito-section-componentes mt-4" style="background:#eff6ff; border-left-color:#0071e3;">
+                <h3 class="font-bold text-gray-900 mb-3">📚 REQUISITOS ESPECIALES POR ASIGNATURA (Artículo 105 Decreto 209):</h3>
+                <p class="text-sm text-gray-600 mb-3 italic" style="text-align: justify;">Los capacitadores deben cumplir requisitos adicionales según la asignatura que impartan:</p>
+                
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">1</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Legislación aplicada a la seguridad privada</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Deberán ser licenciados en ciencias jurídicas y sociales o contar con el título de abogado. Podrá eximirse de la obligación de contar con diplomado en materias inherentes a seguridad privada o gestión de seguridad empresarial señalado en el artículo precedente, si se acreditan dos o más años de experiencia profesional en la materia.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">2</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Respeto y promoción de los derechos humanos</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Deberán ser licenciados en ciencias jurídicas y sociales o contar con el título de abogado.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">3</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Privacidad y uso de datos personales</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Deberán ser licenciados en ciencias jurídicas y sociales o contar con el título de abogado. Asimismo, podrán impartir esta asignatura todos los profesionales del área informática que posean título profesional de educación superior de una carrera de, a lo menos, ocho semestres de duración.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">4</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Correcto uso de elementos defensivos</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Todos aquellos Oficiales y Suboficiales de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o de Gendarmería de Chile que hayan obtenido una certificación oficial equivalente a un título profesional o técnico de nivel superior de conformidad a la normativa correspondiente. Asimismo, deberán acreditar el cumplimiento de los cursos respectivos de defensa personal a través de la presentación de la malla curricular vigente a la época en que los aprobaron.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">5</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Primeros auxilios</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Haber obtenido un título profesional o técnico de nivel superior en alguna carrera del área de la salud, de conformidad a la normativa vigente. Estos profesionales y técnicos estarán exceptuados de cumplir con el diplomado en materias inherentes a seguridad privada o gestión de seguridad empresarial, que señala el artículo anterior.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">6</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Prevención de riesgos</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Para este tipo de cursos se deberá contar con el título profesional o técnico de nivel superior en prevención de riesgos con la correspondiente resolución de la Secretaría Regional Ministerial de Salud.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">7</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Probidad, no discriminación y perspectiva de género</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Todos aquellos profesionales universitarios que cuenten con las respectivas aprobaciones de cursos de postgrado en los grados de magíster o diplomados en cursos especiales sobre las materias indicadas.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">8</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Seguridad de instalaciones</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Para este tipo de cursos se deberá contar con el título profesional o técnico de nivel superior en prevención de riesgos con la correspondiente resolución de la Secretaría Regional Ministerial de Salud.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">9</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Seguridad electrónica</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Será necesario contar con el título profesional o técnico de nivel superior en electrónica.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">10</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Sistema de telecomunicaciones</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Poseer el título profesional de ingeniero o técnico nivel superior en telecomunicaciones.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">11</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Técnicas de reducción</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Todos aquellos Oficiales y Suboficiales de las Fuerzas Armadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile que hayan obtenido una certificación oficial equivalente a un título profesional o técnico de nivel superior, de conformidad a la normativa correspondiente. Asimismo, deben acreditar los cursos respectivos de defensa personal a través de la presentación de la malla curricular vigente a la época en que los aprobaron. Excepcionalmente, podrá impartir dicho curso el deportista experto en artes defensivas, debidamente acreditadas.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">12</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Instrucción física</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Para este tipo de cursos, se deberá contar con una licenciatura en educación física o título técnico en materias afines otorgado por entidades reconocidas por el Ministerio de Educación. Estos profesionales estarán exceptuados de cumplir con el diplomado en materias inherentes a seguridad privada o gestión de seguridad empresarial, que señala el artículo anterior.</p>
+                    </div>
+                </div>
+
+                <div class="requisito-item-componentes" style="background:#ffffff; border:1px solid #e2e8f0; margin-bottom: 8px;">
+                    <div class="requisito-numero-componentes" style="background:#0071e3; min-width:3rem;">13</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Conocimiento de arma y tiro</p>
+                        <p class="text-sm text-gray-700" style="text-align: justify;">Instructor o experto en manejo y uso de armas y tiro, con un mínimo de cinco años de experiencia; así como oficiales y suboficiales de las Fuerzas Armadas y de Orden y Seguridad Pública o Gendarmería de Chile egresados de sus respectivas escuelas. En cada proceso de acreditación, todos y sin exclusión, deberán rendir un examen práctico ante la autoridad fiscalizadora competente.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
                 <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
                 <ul class="space-y-2">
                     <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 EXENCIÓN del diplomado: Título de Ingeniero en Seguridad Privada o Magíster en Seguridad Privada</li>
                     <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Los exámenes de capacitación finalizan ante Carabineros de Chile</li>
                     <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 La certificación la otorga la Subsecretaría de Prevención del Delito</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 El capacitador debe acreditar conocimientos y experiencia en la asignatura específica que imparte</li>
                 </ul>
             </div>
 
@@ -1540,4 +1649,3 @@ document.addEventListener('visibilitychange', function() {
         }
     }
 });
-
