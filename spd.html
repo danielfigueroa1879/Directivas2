@@ -887,7 +887,7 @@
         }
         
         .pdf-download-animation.active {
-            animation: pdfBounce 7.5s ease-in-out forwards;
+            animation: pdfBounce 6s ease-in-out forwards;
         }
         
         .pdf-icon-animated {
@@ -916,62 +916,49 @@
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    /* PRIMER SALTO GRANDE - MÁS TIEMPO */
+    /* ÚNICO REBOTE GRANDE HACIA ARRIBA */
     15% {
         opacity: 1;
         transform: translate(-50%, -130%) scale(1.15);
     }
+    /* CAE DE REGRESO */
     25% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.95);
-    }
-    /* PAUSA ENTRE SALTOS */
-    30% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    /* SEGUNDO SALTO GRANDE - MÁS TIEMPO */
-    40% {
-        opacity: 1;
-        transform: translate(-50%, -120%) scale(1.1);
-    }
-    50% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
     /* PAUSA ANTES DE SUBIR */
-    55% {
+    35% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    /* SUBE MUY LENTO HACIA ARRIBA DERECHA */
-    62% {
+    /* SUBE LENTAMENTE HACIA ARRIBA DERECHA */
+    45% {
         opacity: 1;
-        transform: translate(-30%, -90%) scale(0.95);
+        transform: translate(-30%, -100%) scale(0.9);
     }
-    69% {
+    55% {
         opacity: 1;
-        transform: translate(-10%, -120%) scale(0.85);
+        transform: translate(-10%, -130%) scale(0.8);
     }
-    76% {
-        opacity: 1;
-        transform: translate(15%, -150%) scale(0.75);
+    65% {
+        opacity: 0.9;
+        transform: translate(15%, -160%) scale(0.7);
     }
-    83% {
-        opacity: 1;
-        transform: translate(35%, -180%) scale(0.65);
+    75% {
+        opacity: 0.7;
+        transform: translate(35%, -200%) scale(0.55);
     }
-    90% {
-        opacity: 0.8;
-        transform: translate(calc(45vw - 100px), calc(-45vh - 50px)) scale(0.5);
-    }
-    96% {
+    85% {
         opacity: 0.4;
-        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.4);
+        transform: translate(50%, -250%) scale(0.4);
+    }
+    95% {
+        opacity: 0.2;
+        transform: translate(60%, -300%) scale(0.25);
     }
     100% {
         opacity: 0;
-        transform: translate(calc(50vw - 95px), calc(-50vh - 55px)) scale(0.35);
+        transform: translate(70%, -350%) scale(0.1);
     }
         }
         
@@ -1142,8 +1129,8 @@
                             📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                spd-cargadimensionada@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#ff8c8f9bd29c9e8d989e9b96929a918c9690919e9b9ebf9296918c9a988f8a9d93969c9ed198909dd19c93" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                <span class="__cf_email__" data-cfemail="3a494a5e17595b485d5b5e53575f54495355545b5e5b7a575354495f5d4a4f585653595b145d5558145956">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1158,8 +1145,8 @@
                             🎓 Planes, Programas y Cursos de Capacitación
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                spd-capacitacionessp@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#295a594d044a4859484a405d484a4046474c5a5a59694440475a4c4e595c4b45404a48074e464b074a45" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                <span class="__cf_email__" data-cfemail="710201155c121001101218051012181e1f14020201311c181f0214160104131d1812105f161e135f121d">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1445,7 +1432,7 @@
     </div>
     
     <!-- JAVASCRIPT PARA MODALES Y PDF -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Función para cerrar el modal
         function cerrarModal() {
             const modal = document.getElementById('modalRequisitos');
@@ -1772,8 +1759,7 @@ function descargarModalPDF(tipo) {
         // Alternar texto del botón SPD cada 3 segundos
         (function() {
             const btnSPD = document.getElementById('btnSPD');
-            if (!btnSPD) return;
-                       
+            if (!btnSPD) return;         
             const textos = [
                 '📋 Ver Componentes SPD',
                 '🔍 Información SPD',
