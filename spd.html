@@ -1140,8 +1140,8 @@
                             📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                spd-cargadimensionada@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#a7d4d7c38ac4c6d5c0c6c3cecac2c9d4cec8c9c6c3c6e7cacec9d4c2c0d7d2c5cbcec4c689c0c8c589c4cb" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="a9dad9cd84cac8dbcec8cdc0c4ccc7dac0c6c7c8cdc8e9c4c0c7daccced9dccbc5c0cac887cec6cb87cac5">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1156,8 +1156,8 @@
                             🎓 Planes, Programas y Cursos de Capacitación
                         </h3>
                         <div class="email-box">
-                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800">
-                                spd-capacitacionessp@minsegpublica.gob.cl
+                            <a href="/cdn-cgi/l/email-protection#671417034a04061706040e1306040e080902141417270a0e091402001712050b0e04064900080549040b" class="text-blue-600 hover:text-blue-800">
+                                <span class="__cf_email__" data-cfemail="4d3e3d29602e2c3d2c2e24392c2e242223283e3e3d0d2024233e282a3d382f21242e2c632a222f632e21">[email&#160;protected]</span>
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1443,12 +1443,15 @@
     </div>
     
     <!-- JAVASCRIPT PARA MODALES Y PDF -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Función para mostrar el modal con los requisitos
         function mostrarRequisitos(tipo) {
             const modal = document.getElementById('modalRequisitos');
             const titulo = document.getElementById('modalTitulo');
             const contenido = document.getElementById('modalContenido');
+            
+            // LIMPIAR CONTENIDO ANTERIOR para evitar acumulación de HTML que congela la página
+            contenido.innerHTML = '';
             
             // Configurar título según el tipo
             const titulos = {
@@ -1512,7 +1515,17 @@
         function cerrarModal() {
             const modal = document.getElementById('modalRequisitos');
             modal.classList.remove('active');
+            
+            // Restaurar scroll del body inmediatamente
             document.body.style.overflow = '';
+            
+            // Limpiar contenido después de que termine la animación de cierre
+            setTimeout(() => {
+                const contenido = document.getElementById('modalContenido');
+                if (contenido) {
+                    contenido.innerHTML = '';
+                }
+            }, 300);
         }
 
         // Función para descargar el contenido del modal en PDF
@@ -1648,26 +1661,32 @@ function descargarModalPDF(tipo) {
 }
 
         // Cerrar modal al hacer clic fuera
+        // Variable de control para evitar agregar listeners múltiples veces
+        let modalListenersInitialized = false;
+        
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('modalRequisitos');
             
-            if (modal) {
+            if (modal && !modalListenersInitialized) {
                 modal.addEventListener('click', function(e) {
                     if (e.target === this) {
                         cerrarModal();
                     }
                 });
-            }
-            
-            // Cerrar modal con tecla ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    const activeModal = document.querySelector('.modal-requisitos.active');
-                    if (activeModal) {
-                        cerrarModal();
+                
+                // Cerrar modal con tecla ESC
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        const activeModal = document.querySelector('.modal-requisitos.active');
+                        if (activeModal) {
+                            cerrarModal();
+                        }
                     }
-                }
-            });
+                });
+                
+                modalListenersInitialized = true;
+                console.log('✅ Event listeners del modal inicializados correctamente');
+            }
         });
     </script>
     
@@ -1686,17 +1705,19 @@ function descargarModalPDF(tipo) {
             if (!btnSPD) return;
                        
             const textos = [
-                'Acceder a la Plataforma SPD',
-                'SUBSECRETARÍA DE PREVENCIÓN DEL DELITO'
+                '📋 Ver Componentes SPD',
+                '🔍 Información SPD',
+                '📚 Requisitos SPD',
+                '✅ Datos SPD'
             ];
-            let indiceActual = 0;
             
-            setInterval(function() {
-                indiceActual = (indiceActual + 1) % textos.length;
-                btnSPD.textContent = textos[indiceActual];
-            }, 3000); // Cambia cada 3 segundos
+            let index = 0;
+            
+            setInterval(() => {
+                btnSPD.textContent = textos[index];
+                index = (index + 1) % textos.length;
+            }, 3000);
         })();
     </script>
-    <script src="assets/js/spd-componentes.js"></script>
 </body>
 </html>
