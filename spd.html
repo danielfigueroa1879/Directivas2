@@ -912,7 +912,7 @@
         
         /* KEYFRAMES ADAPTADOS AL CENTRO DE PANTALLA
            Origen: translate(-50%, -50%) 
-           Rebotes: suben en Y (valores negativos)
+           Rebotes: suben en Y (valores negativos en píxeles, más robusto)
            Salida: hacia la derecha superior
         */
         @keyframes bounceAndFlyCenter {
@@ -927,24 +927,24 @@
             }
             
             /* --- Primer Salto (Lento) --- */
-            /* Sube */
+            /* Sube 120px */
             20% { 
                 transform: translate(-50%, calc(-50% - 120px)); 
                 animation-timing-function: ease-out; 
             }
-            /* Baja y cae */
+            /* Baja y cae al centro */
             35% { 
                 transform: translate(-50%, -50%); 
                 animation-timing-function: ease-in; 
             }
             
             /* --- Segundo Salto (Lento) --- */
-            /* Sube */
+            /* Sube 120px */
             50% { 
                 transform: translate(-50%, calc(-50% - 120px)); 
                 animation-timing-function: ease-out; 
             }
-            /* Baja y cae */
+            /* Baja y cae al centro */
             65% { 
                 transform: translate(-50%, -50%); 
                 animation-timing-function: ease-in; 
