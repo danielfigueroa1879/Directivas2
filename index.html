@@ -523,7 +523,7 @@
     }
     
     .pdf-download-animation.active {
-        animation: pdfBounce 8.5s ease-in-out forwards;
+        animation: pdfBounce 6s ease-in-out forwards;
     }
     
     .pdf-icon-animated {
@@ -548,49 +548,54 @@
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.5);
     }
-    8% {
+    5% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    /* PRIMER SALTO GRANDE */
-    20% {
+    /* ÚNICO REBOTE GRANDE HACIA ARRIBA */
+    15% {
         opacity: 1;
-        transform: translate(-50%, -120%) scale(1.1);
+        transform: translate(-50%, -130%) scale(1.15);
     }
-    32% {
+    /* CAE DE REGRESO */
+    25% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(0.95);
+        transform: translate(-50%, -50%) scale(1);
     }
-    /* SEGUNDO SALTO GRANDE */
-    44% {
+    /* PAUSA ANTES DE SUBIR */
+    35% {
         opacity: 1;
-        transform: translate(-50%, -110%) scale(1.05);
+        transform: translate(-50%, -50%) scale(1);
     }
-    /* DESDE AQUÍ COMIENZA A SUBIR SUTIL */
+    /* SUBE LENTAMENTE HACIA ARRIBA DERECHA */
+    45% {
+        opacity: 1;
+        transform: translate(-30%, -100%) scale(0.9);
+    }
     55% {
-        opacity: 0.95;
-        transform: translate(-40%, -90%) scale(0.9);
+        opacity: 1;
+        transform: translate(-10%, -130%) scale(0.8);
     }
     65% {
-        opacity: 0.85;
-        transform: translate(-20%, -100%) scale(0.75);
+        opacity: 0.9;
+        transform: translate(15%, -160%) scale(0.7);
     }
     75% {
         opacity: 0.7;
-        transform: translate(10%, -120%) scale(0.6);
+        transform: translate(35%, -200%) scale(0.55);
     }
     85% {
-        opacity: 0.5;
-        transform: translate(calc(40vw - 100px), calc(-45vh - 50px)) scale(0.45);
+        opacity: 0.4;
+        transform: translate(50%, -250%) scale(0.4);
     }
     95% {
-        opacity: 0.25;
-        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.35);
+        opacity: 0.2;
+        transform: translate(60%, -300%) scale(0.25);
     }
     100% {
         opacity: 0;
-        transform: translate(calc(50vw - 90px), calc(-50vh - 60px)) scale(0.3);
-        }
+        transform: translate(70%, -350%) scale(0.1);
+    }
     }
     
     @media (max-width: 640px) {
@@ -2069,4 +2074,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     </script>
 </body>
-</html>
+    </html>
