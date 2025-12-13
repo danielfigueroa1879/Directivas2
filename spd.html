@@ -873,19 +873,24 @@
         }
         /* ===== FIN ESTILOS BOTÓN PDF ===== */
         
-        /* ===== ANIMACIÓN DESCARGA PDF ===== */
+        /* ===== ANIMACIÓN DESCARGA PDF MEJORADA (2 REBOTES LENTOS) ===== */
         .pdf-download-animation {
             position: fixed;
             top: 50%;
             left: 50%;
+            /* Iniciamos centrados */
             transform: translate(-50%, -50%);
             z-index: 99999;
             pointer-events: none;
             opacity: 0;
+            display: none; /* Se oculta con display para no interferir */
         }
         
+        /* Solo se muestra cuando tiene la clase active */
         .pdf-download-animation.active {
-            animation: pdfBounce  4.5s ease-in-out forwards;
+            display: block;
+            /* Duración lenta: 3 segundos */
+            animation: bounceAndFlyCenter 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
         }
         
         .pdf-icon-animated {
@@ -905,53 +910,56 @@
             color: white;
         }
         
-        @keyframes pdfBounce {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-    8% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    /* PRIMER SALTO GRANDE */
-    20% {
-        opacity: 1;
-        transform: translate(-50%, -120%) scale(1.1);
-    }
-    32% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.95);
-    }
-    /* SEGUNDO SALTO GRANDE */
-    44% {
-        opacity: 1;
-        transform: translate(-50%, -110%) scale(1.05);
-    }
-    /* DESDE AQUÍ COMIENZA A SUBIR SUTIL */
-    55% {
-        opacity: 1;
-        transform: translate(-40%, -90%) scale(0.9);
-    }
-    65% {
-        opacity: 1;
-        transform: translate(-20%, -100%) scale(0.75);
-    }
-    75% {
-        opacity: 1;
-        transform: translate(10%, -120%) scale(0.6);
-    }
-    85% {
-        opacity: 1;
-        transform: translate(calc(40vw - 100px), calc(-45vh - 50px)) scale(0.45);
-    }
-    95% {
-        opacity: 0.25;
-        transform: translate(calc(50vw - 100px), calc(-50vh - 50px)) scale(0.35);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(calc(50vw - 90px), calc(-50vh - 60px)) scale(0.3);
+        /* KEYFRAMES ADAPTADOS AL CENTRO DE PANTALLA
+           Origen: translate(-50%, -50%) 
+           Rebotes: suben en Y (valores negativos)
+           Salida: hacia la derecha superior
+        */
+        @keyframes bounceAndFlyCenter {
+            /* --- Estado Inicial --- */
+            0% { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.5); 
+            }
+            5% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1); 
+            }
+            
+            /* --- Primer Salto (Lento) --- */
+            /* Sube */
+            20% { 
+                transform: translate(-50%, calc(-50% - 120px)); 
+                animation-timing-function: ease-out; 
+            }
+            /* Baja y cae */
+            35% { 
+                transform: translate(-50%, -50%); 
+                animation-timing-function: ease-in; 
+            }
+            
+            /* --- Segundo Salto (Lento) --- */
+            /* Sube */
+            50% { 
+                transform: translate(-50%, calc(-50% - 120px)); 
+                animation-timing-function: ease-out; 
+            }
+            /* Baja y cae */
+            65% { 
+                transform: translate(-50%, -50%); 
+                animation-timing-function: ease-in; 
+            }
+
+            /* --- Preparación para salir (Compresión) --- */
+            70% { 
+                transform: translate(-50%, calc(-50% + 10px)) scale(0.9); 
+            }
+
+            /* --- Salida al costado superior derecho --- */
+            100% { 
+                /* Se va a la esquina superior derecha (aprox 40vw a la derecha, 45vh arriba) */
+                transform: translate(40vw, -45vh) scale(0.1);
+                opacity: 0;
             }
         }
         
@@ -1502,66 +1510,80 @@
             const titulo = document.getElementById('modalTitulo').textContent;
             const contenido = document.getElementById('modalContenido');
             
-            // Crear un contenedor temporal con el contenido
-            const contenedorTemp = document.createElement('div');
-            contenedorTemp.style.padding = '20px';
-            contenedorTemp.style.backgroundColor = 'white';
-            
-            // Agregar título
-            const tituloElement = document.createElement('h1');
-            tituloElement.textContent = titulo;
-            tituloElement.style.fontSize = '24px';
-            tituloElement.style.fontWeight = 'bold';
-            tituloElement.style.marginBottom = '20px';
-            tituloElement.style.color = '#1f2937';
-            contenedorTemp.appendChild(tituloElement);
-            
-            // Clonar el contenido del modal
-            const contenidoClone = contenido.cloneNode(true);
-            
-            // Ocultar botón de descarga en el clon
-            const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
-            if (botonPDF) {
-                botonPDF.style.display = 'none';
-            }
-            
-            contenedorTemp.appendChild(contenidoClone);
-            
-            // Generar nombre de archivo
-            const nombreArchivo = `OS10-SPD-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
-            
-            // Configuración del PDF
-            const opciones = {
-                margin: [15, 15, 15, 15],
-                filename: nombreArchivo,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    letterRendering: true,
-                    backgroundColor: '#ffffff'
-                },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
-                    orientation: 'portrait' 
-                }
-            };
-            
-            // Mostrar animación de descarga
+            // 1. Iniciar Animación
             const animacion = document.getElementById('pdfDownloadAnimation');
             if (animacion) {
+                // Removemos la clase primero por si ya estaba (para reiniciar)
+                animacion.classList.remove('active');
+                
+                // Forzamos un reflow para que el navegador capte el reinicio
+                void animacion.offsetWidth; 
+                
+                // Agregamos la clase que dispara la animación de 3 segundos
                 animacion.classList.add('active');
-                setTimeout(() => {
-                    animacion.classList.remove('active');
-                }, 1200);
             }
-            
-            // Generar y descargar PDF
-            html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
-                console.log('PDF descargado:', nombreArchivo);
-            });
+
+            // 2. Preparar el PDF mientras la animación corre (o esperamos un poco)
+            // Esperamos casi al final de la animación (2.5s) para "generar" el archivo
+            setTimeout(() => {
+                // Crear un contenedor temporal con el contenido
+                const contenedorTemp = document.createElement('div');
+                contenedorTemp.style.padding = '20px';
+                contenedorTemp.style.backgroundColor = 'white';
+                
+                // Agregar título
+                const tituloElement = document.createElement('h1');
+                tituloElement.textContent = titulo;
+                tituloElement.style.fontSize = '24px';
+                tituloElement.style.fontWeight = 'bold';
+                tituloElement.style.marginBottom = '20px';
+                tituloElement.style.color = '#1f2937';
+                contenedorTemp.appendChild(tituloElement);
+                
+                // Clonar el contenido del modal
+                const contenidoClone = contenido.cloneNode(true);
+                
+                // Ocultar botón de descarga en el clon
+                const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
+                if (botonPDF) {
+                    botonPDF.style.display = 'none';
+                }
+                
+                contenedorTemp.appendChild(contenidoClone);
+                
+                // Generar nombre de archivo
+                const nombreArchivo = `OS10-SPD-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
+                
+                // Configuración del PDF
+                const opciones = {
+                    margin: [15, 15, 15, 15],
+                    filename: nombreArchivo,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 2,
+                        useCORS: true,
+                        logging: false,
+                        letterRendering: true,
+                        backgroundColor: '#ffffff'
+                    },
+                    jsPDF: { 
+                        unit: 'mm', 
+                        format: 'a4', 
+                        orientation: 'portrait' 
+                    }
+                };
+                
+                // Generar y descargar PDF
+                html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
+                    console.log('PDF descargado:', nombreArchivo);
+                    
+                    // Opcional: Ocultar animación si terminó (CSS forwards la deja al final)
+                    setTimeout(() => {
+                        animacion.classList.remove('active');
+                    }, 1000);
+                });
+
+            }, 2500); // Sincronizado para que la descarga ocurra cuando el icono "vuela"
         }
 
         // Cerrar modal al hacer clic fuera
@@ -1615,5 +1637,27 @@
         })();
     </script>
     <script src="assets/js/spd-componentes.js"></script>
+    <script>
+        // Scripts adicionales para la vista principal
+        function mostrarComponentes() {
+            document.getElementById('vistaPrincipal').style.display = 'none';
+            document.getElementById('vistaComponentes').classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function volverASPD() {
+            document.getElementById('vistaComponentes').classList.remove('active');
+            document.getElementById('vistaPrincipal').style.display = 'block';
+        }
+        
+        function volverAlIndex(e) {
+            // Lógica para volver al index si fuera una SPA, o dejar el enlace normal
+        }
+        
+        function mostrarAsignaturas() {
+            // Lógica placeholder para asignaturas
+            alert('Esta sección mostraría las asignaturas detalladas según Decreto 209.');
+        }
+    </script>
 </body>
 </html>
