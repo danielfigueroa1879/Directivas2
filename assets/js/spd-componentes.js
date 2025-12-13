@@ -179,9 +179,15 @@ function mostrarAsignaturas() {
 // FUNCIÓN PARA MOSTRAR REQUISITOS EN MODAL
 // ==========================================================================
 function mostrarRequisitos(tipo) {
+    console.log('🚀 MOSTRAR REQUISITOS LLAMADO:', tipo);
+    
     const modal = document.getElementById('modalRequisitos');
     const titulo = document.getElementById('modalTitulo');
     const contenido = document.getElementById('modalContenido');
+    
+    console.log('✅ Modal encontrado?', !!modal);
+    console.log('✅ Título encontrado?', !!titulo);
+    console.log('✅ Contenido encontrado?', !!contenido);
     
     if (!modal || !titulo || !contenido) {
         console.error('❌ Elementos del modal no encontrados');
@@ -192,7 +198,14 @@ function mostrarRequisitos(tipo) {
     contenido.innerHTML = '';
     titulo.textContent = '';
     
-    // PASO 2: Configurar títulos
+    // PASO 2: Normalizar el tipo (convertir encargadoArmas a encargado-armas)
+    let tipoNormalizado = tipo
+        .replace('encargadoArmas', 'encargado-armas')
+        .replace('Armas', '-armas');
+    
+    console.log('📋 Tipo recibido:', tipo, 'Normalizado:', tipoNormalizado);
+    
+    // PASO 3: Configurar títulos
     const titulos = {
         'vigilante': 'Vigilante Privado',
         'guardia': 'Guardia de Seguridad',
@@ -210,77 +223,96 @@ function mostrarRequisitos(tipo) {
         'empresa': 'Empresa de Seguridad'
     };
     
-    titulo.textContent = titulos[tipo] || 'Requisitos';
+    titulo.textContent = titulos[tipoNormalizado] || titulos[tipo] || 'Requisitos';
+    console.log('📋 Título establecido a:', titulo.textContent);
     
-    // PASO 3: Generar contenido según el tipo
+    // PASO 4: Generar contenido según el tipo
     let html = '';
     
     try {
-        switch(tipo) {
+        switch(tipoNormalizado) {
             case 'vigilante':
+                console.log('🎯 Generando contenido Vigilante...');
                 html = generarContenidoVigilante();
                 break;
             case 'guardia':
+                console.log('🎯 Generando contenido Guardia...');
                 html = generarContenidoGuardia();
                 break;
             case 'nochero':
             case 'portero':
+                console.log('🎯 Generando contenido Portero...');
                 html = generarContenidoPortero();
                 break;
             case 'encargado':
+                console.log('🎯 Generando contenido Encargado...');
                 html = generarContenidoEncargado();
                 break;
             case 'encargado-armas':
+                console.log('🎯 Generando contenido Encargado de Armas...');
                 html = generarContenidoEncargadoArmas();
                 break;
             case 'tecnico':
+                console.log('🎯 Generando contenido Técnico...');
                 html = generarContenidoTecnico();
                 break;
             case 'operador':
+                console.log('🎯 Generando contenido Operador...');
                 html = generarContenidoOperador();
                 break;
             case 'instalador':
+                console.log('🎯 Generando contenido Instalador...');
                 html = generarContenidoInstalador();
                 break;
             case 'supervisor':
+                console.log('🎯 Generando contenido Supervisor...');
                 html = generarContenidoSupervisor();
                 break;
             case 'jefe':
+                console.log('🎯 Generando contenido Jefe...');
                 html = generarContenidoJefe();
                 break;
             case 'asesor':
+                console.log('🎯 Generando contenido Asesor...');
                 html = generarContenidoAsesor();
                 break;
             case 'capacitador':
+                console.log('🎯 Generando contenido Capacitador...');
                 html = generarContenidoCapacitador();
                 break;
             case 'empresa':
+                console.log('🎯 Generando contenido Empresa...');
                 html = generarContenidoEmpresa();
                 break;
             default:
+                console.warn('⚠️ Tipo no reconocido:', tipoNormalizado, 'intentando con:', tipo);
                 html = generarContenidoGenerico(tipo);
         }
+        console.log('✅ HTML generado, longitud:', html.length);
     } catch(error) {
-        console.error('❌ Error generando contenido:', error);
-        html = '<p class="text-red-500">Error al cargar la información</p>';
+        console.error('❌ Error generando contenido:', error, 'para tipo:', tipoNormalizado);
+        html = '<div class="p-4 bg-red-50 border border-red-200 rounded"><p class="text-red-600">Error al cargar la información: ' + error.message + '</p></div>';
     }
     
-    // PASO 4: Insertar contenido
+    // PASO 5: Insertar contenido
     contenido.innerHTML = html;
+    console.log('✅ HTML insertado en el contenedor');
     
-    // PASO 5: Mostrar modal (usar solo clases, no estilos inline)
+    // PASO 6: Mostrar modal (usar solo clases, no estilos inline)
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    console.log('✅ Clase active añadida al modal');
     
-    // PASO 6: Scroll al inicio
+    // PASO 7: Scroll al inicio
     requestAnimationFrame(() => {
         const modalContent = modal.querySelector('.modal-content');
         if (modalContent) {
             modalContent.scrollTop = 0;
+            console.log('✅ Scroll al inicio');
         }
     });
     
-    console.log('✅ Modal abierto:', tipo);
+    console.log('✅ Modal abierto:', tipoNormalizado);
 }
 
 // ==========================================================================
@@ -1673,3 +1705,4 @@ document.addEventListener('visibilitychange', function() {
     // Si el documento se vuelve visible nuevamente, no hacer nada especial
     // El modal se maneja con sus propios listeners
 });
+
