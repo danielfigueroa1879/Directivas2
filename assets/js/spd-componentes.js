@@ -1697,12 +1697,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Event listeners inicializados correctamente');
 });
 
-    console.log('✅ Sistema de modales SPD inicializado correctamente');
-});
-
 // Event listener para cambios de visibilidad de la página
 document.addEventListener('visibilitychange', function() {
     // Si el documento se vuelve visible nuevamente, no hacer nada especial
     // El modal se maneja con sus propios listeners
 });
-
