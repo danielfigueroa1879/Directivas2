@@ -873,7 +873,7 @@
         }
         /* ===== FIN ESTILOS BOTÓN PDF ===== */
         
-        /* ===== ANIMACIÓN DESCARGA PDF MEJORADA (2 REBOTES LENTOS) ===== */
+        /* ===== ANIMACIÓN DESCARGA PDF MEJORADA (1 REBOTE + SALIDA SIN DESVANECER) ===== */
         .pdf-download-animation {
             position: fixed;
             top: 50%;
@@ -910,56 +910,38 @@
             color: white;
         }
         
-        /* KEYFRAMES ADAPTADOS AL CENTRO DE PANTALLA
-           Origen: translate(-50%, -50%) 
-           Rebotes: suben en Y (valores negativos en píxeles, más robusto)
-           Salida: hacia la derecha superior
-        */
+        /* KEYFRAMES ADAPTADOS (1 BOTE y salida VISIBLE) */
         @keyframes bounceAndFlyCenter {
-            /* --- Estado Inicial --- */
+            /* --- Estado Inicial (Aparece) --- */
             0% { 
                 opacity: 0; 
                 transform: translate(-50%, -50%) scale(0.5); 
             }
-            5% { 
+            10% { 
                 opacity: 1; 
                 transform: translate(-50%, -50%) scale(1); 
             }
             
-            /* --- Primer Salto (Lento) --- */
-            /* Sube 120px */
-            20% { 
-                transform: translate(-50%, calc(-50% - 120px)); 
+            /* --- Rebote (Un bote) --- */
+            30% { 
+                transform: translate(-50%, calc(-50% - 150px)); /* Sube */
                 animation-timing-function: ease-out; 
             }
-            /* Baja y cae al centro */
-            35% { 
-                transform: translate(-50%, -50%); 
-                animation-timing-function: ease-in; 
-            }
-            
-            /* --- Segundo Salto (Lento) --- */
-            /* Sube 120px */
             50% { 
-                transform: translate(-50%, calc(-50% - 120px)); 
-                animation-timing-function: ease-out; 
-            }
-            /* Baja y cae al centro */
-            65% { 
-                transform: translate(-50%, -50%); 
+                transform: translate(-50%, -50%); /* Baja y cae */
                 animation-timing-function: ease-in; 
             }
 
-            /* --- Preparación para salir (Compresión) --- */
-            70% { 
-                transform: translate(-50%, calc(-50% + 10px)) scale(0.9); 
+            /* --- Preparación (Compresión ligera) --- */
+            60% { 
+                transform: translate(-50%, calc(-50% + 10px)) scale(0.95); 
             }
 
             /* --- Salida al costado superior derecho --- */
             100% { 
-                /* Se va a la esquina superior derecha (aprox 40vw a la derecha, 45vh arriba) */
-                transform: translate(40vw, -45vh) scale(0.1);
-                opacity: 0;
+                /* Se mueve a la esquina, se achica por perspectiva, pero NO desaparece (opacity 1) */
+                transform: translate(45vw, -45vh) scale(0.2);
+                opacity: 1; 
             }
         }
         
@@ -1655,8 +1637,105 @@
         }
         
         function mostrarAsignaturas() {
-            // Lógica placeholder para asignaturas
-            alert('Esta sección mostraría las asignaturas detalladas según Decreto 209.');
+            const modal = document.getElementById('modalRequisitos');
+            const titulo = document.getElementById('modalTitulo');
+            const contenido = document.getElementById('modalContenido');
+
+            titulo.textContent = 'ASIGNATURAS DE CAPACITACIÓN';
+
+            let html = `
+                <div class="space-y-6">
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded">
+                        <h3 class="font-bold text-gray-800 mb-2">📚 Mallas Curriculares (Decreto 209)</h3>
+                        <p class="text-sm text-gray-700">
+                            Detalle de asignaturas y horas cronológicas para los cursos de formación de Seguridad Privada.
+                        </p>
+                    </div>
+
+                    <!-- Vigilantes Privados -->
+                    <div class="border rounded-lg overflow-hidden">
+                        <div class="bg-gray-100 px-4 py-2 border-b font-bold text-gray-800 flex justify-between items-center">
+                            <span>Vigilantes Privados</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 py-1 px-2 rounded-full">100 Horas</span>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <ul class="list-disc list-inside text-sm text-gray-700 grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <li>Legislación de Seguridad Privada</li>
+                                <li>Prevención de Riesgos</li>
+                                <li>Control de Emergencias</li>
+                                <li>Administración de Seguridad</li>
+                                <li>Seguridad de Instalaciones</li>
+                                <li>Conocimiento de Sistemas de Alarma</li>
+                                <li>Sistemas de Comunicación</li>
+                                <li>Conocimiento de Armas y Tiro</li>
+                                <li>Defensa Personal</li>
+                                <li>Primeros Auxilios</li>
+                                <li>Ética y Relaciones Humanas</li>
+                                <li>Psicología de la Emergencia</li>
+                                <li>Acondicionamiento Físico</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Guardias de Seguridad -->
+                    <div class="border rounded-lg overflow-hidden">
+                        <div class="bg-gray-100 px-4 py-2 border-b font-bold text-gray-800 flex justify-between items-center">
+                            <span>Guardias de Seguridad</span>
+                            <span class="text-xs bg-green-100 text-green-800 py-1 px-2 rounded-full">90 Horas</span>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <ul class="list-disc list-inside text-sm text-gray-700 grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <li>Legislación Seguridad Privada</li>
+                                <li>Prevención de Riesgos</li>
+                                <li>Control de Emergencias</li>
+                                <li>Administración de Seguridad</li>
+                                <li>Seguridad de Instalaciones</li>
+                                <li>Conocimiento de Sistemas de Alarma</li>
+                                <li>Sistemas de Comunicación</li>
+                                <li>Valores y Ética</li>
+                                <li>Primeros Auxilios</li>
+                                <li>Defensa Personal</li>
+                                <li>Instrucción Física</li>
+                                <li>Relaciones Humanas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                     <!-- Porteros / Nocheros -->
+                    <div class="border rounded-lg overflow-hidden">
+                        <div class="bg-gray-100 px-4 py-2 border-b font-bold text-gray-800 flex justify-between items-center">
+                            <span>Porteros / Nocheros / Rondines</span>
+                            <span class="text-xs bg-orange-100 text-orange-800 py-1 px-2 rounded-full">60 Horas</span>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <ul class="list-disc list-inside text-sm text-gray-700 grid grid-cols-1 md:grid-cols-2 gap-2">
+                                 <li>Legislación Seguridad Privada</li>
+                                 <li>Prevención de Riesgos</li>
+                                 <li>Control de Emergencias</li>
+                                 <li>Seguridad de Instalaciones</li>
+                                 <li>Sistemas de Comunicación</li>
+                                 <li>Primeros Auxilios</li>
+                                 <li>Defensa Personal</li>
+                                 <li>Relaciones Humanas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Botón de descarga PDF -->
+                    <div class="mt-6 text-center">
+                        <button onclick="descargarModalPDF('asignaturas')" class="btn-pdf-modal">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span>Descargar Mallas en PDF</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            contenido.innerHTML = html;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
     </script>
 </body>
