@@ -1056,7 +1056,7 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
     // ==================== NUEVAS REGLAS AGREGADAS ====================
     
     'rule_directiva_duracion': { 
-        keywords: ["duracion directiva", "vigencia directiva", "cuanto dura directiva", "directiva 3 años"], 
+        keywords: ["duracion directiva", "cuanto dura una directiva de funcionamiento", "cuanto dura una directiva","vigencia directiva", "cuanto dura directiva", "directiva 3 años"], 
         response: '🤖📋 **DURACIÓN DIRECTIVA DE FUNCIONAMIENTO (Art. 92 Decreto 209):**\n\n**VIGENCIA:** 3 AÑOS desde notificación de resolución aprobatoria.\n\n**RENOVACIÓN:** Transcurrido el plazo, debe presentar nueva directiva actualizada.\n\n**EXCEPCIÓN:** Servicios temporales (eventos masivos, construcción condominios): vigencia por duración de la actividad.\n\n**PRESENTACIÓN:** 15 días hábiles antes del inicio del servicio ante SPD.' 
     },
     
@@ -1066,17 +1066,17 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
     },
     
     'rule_vigilante_duracion': {
-        keywords: ["cuanto dura vigilante", "vigencia vigilante", "renovacion vigilante"],
+        keywords: ["cuanto dura un vigilante", "vigencia vigilante", "renovacion vigilante"],
         response: '🤖👮 **VIGILANTE PRIVADO - DURACIÓN:**\n\n✅ Certificación: 2 AÑOS\n✅ Perfeccionamiento: cada 2 años (40 horas)\n✅ NO requiere curso nuevo al cambiar empleador'
     },
     
     'rule_guardia_duracion': {
-        keywords: ["cuanto dura guardia", "vigencia guardia", "renovacion guardia"],
+        keywords: ["cuanto dura un guardia", "vigencia guardia", "renovacion guardia"],
         response: '🤖🛡️ **GUARDIA DE SEGURIDAD - DURACIÓN:**\n\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n✅ NO requiere curso nuevo al cambiar empleador'
     },
     
     'rule_supervisor_duracion': {
-        keywords: ["cuanto dura supervisor", "vigencia supervisor"],
+        keywords: ["cuanto dura un supervisor", "vigencia supervisor"],
         response: '🤖👀 **SUPERVISOR - DURACIÓN:**\n\n✅ Curso: 120 horas (mínimo)\n✅ Si tiene curso guardia: +30 hrs supervisión\n✅ Si tiene curso vigilante: +20 hrs supervisión\n✅ Cursos válidos 4 años antes de postulación'
     },
     
