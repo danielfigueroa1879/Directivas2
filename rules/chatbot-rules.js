@@ -3,36 +3,121 @@ console.log('🔄 Cargando base de datos de reglas OS10...');
 
 const responses = {
     'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib *3 Bot Abogado Virtual GPT* \n dal5.short.gy/Ab0 *4 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTto 5 Bot Ley Karin*\n dal5.short.gy/lkar'},
-    'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: '🤖⚖️ **INFRACCIONES LEY 21.659**:\n\n*Guardia sin curso OS10:*\nInfracción Gravísima (Art. 94). Multa 3-20 UTM.\n\n*Guardia sin credencial:*\nInfracción Gravísima. Multa 3-20 UTM.\n\n*Sin Directiva de Funcionamiento:*\nInfracción Grave para la empresa (Art. 101).\n\n*Porte de armas no autorizadas:*\nInfracción Gravísima. Prohibición absoluta para guardias.' },
+    'rule_2': { 
+        keywords: ["infracciones", "sanciones guardias", "multas guardias", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma", "infracciones ley 21659"], 
+        response: '🤖⚖️ **INFRACCIONES LEY 21.659** (Vigente desde 28-NOV-2025):
+
+**PERSONAS NATURALES (Guardias/Vigilantes) - Art. 102:**
+
+**1. INFRACCIONES GRAVÍSIMAS** (Multa 3-20 UTM):
+• Presentar antecedentes falsos ante SPD (Art. 94 N°1)
+• Desarrollar actividades sin autorización (Art. 94 N°2)
+• Ejercer sin curso de capacitación aprobado
+• Ejercer sin credencial vigente
+• Portar armas no autorizadas
+• Vulnerar sitios del suceso (Art. 94 N°6)
+• Obstaculizar fiscalización (Art. 94 N°7)
+
+**2. INFRACCIONES GRAVES** (Multa 1-3 UTM):
+• 2 infracciones leves en 2 años
+• No portar credencial visible
+
+**3. INFRACCIONES LEVES** (Multa 0,5-1 UTM):
+• Otras infracciones menores
+• Falta de uniforme
+
+**EMPRESAS - Art. 101:**
+• Gravísimas: 50-650 UTM
+• Graves: 15-50 UTM
+• Leves: 1,5-15 UTM' },
     'rule_3': { keywords: ["tipos de empresas", "tipo de empresa"], response: '*EMPRESA DE RR.HH. CAPACITACION O ASESORIAS* https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf'},
-    'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '🤖📂 **COMPONENTES DEL SISTEMA (Ley 21.659):**\nSeleccione para ver requisitos:\n' +
-    '<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">1. Vigilante Privado</button>' +
-    '<button onclick="mostrarRequisitos(\'guardia\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">2. Guardia de Seguridad</button>' +
-    '<button onclick="mostrarRequisitos(\'jefe\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">3. Jefe de Seguridad</button>' +
-    '<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">4. Encargado de Seguridad</button>' +
-    '<button onclick="mostrarRequisitos(\'supervisor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">5. Supervisor de Seguridad</button>' +
-    '<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">6. Asesor de Seguridad</button>' +
-    '<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">7. Capacitador</button>' +
-    '<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">8. Técnico en Seguridad</button>' +
-    '<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">9. Instalador Técnico</button>' +
-    '<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">10. Operador de Cámaras</button>' +
-    '<button onclick="mostrarRequisitos(\'portero\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">11. Portero/Nochero/Rondín</button>' +
-    '<button onclick="mostrarRequisitos(\'encargadoArmas\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">12. Encargado de Armas</button>' },
-    'rule_5': { keywords: ["la guia de guardia","guardia de segurridad", "guardia"], response: '🤖🛡️ **GUARDIA DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'guardia\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Guardia</button>' },
-    'rule_6': { keywords: ["jefe de seguridad", "jefe seguridad"], response: '🤖👨‍✈️ **JEFE DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'jefe\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Jefe</button>' },
-    'rule_7': { keywords: ["supervisor","acreditación supervisor","supervisor seguridad"], response: '🤖👀 **SUPERVISOR DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'supervisor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Supervisor</button>' },
-    'rule_8': { keywords: ["*encargado de seguridad*","*encargado*"], response: '🤖🔧 **ENCARGADO DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Encargado</button>' },
-    'rule_9': { keywords: ["capacitador"], response: '🤖👨‍🏫 **CAPACITADOR**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Capacitador</button>' },
-    'rule_10': { keywords: ["tecnico", "tecnico seguridad"], response: '🤖🛠️ **TÉCNICO EN SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Técnico</button>' },
-    'rule_11': { keywords: ["la guia de asesor", "asesor", "asesor de seguridad"], response: '🤖💼 **ASESOR DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Asesor</button>' },
-    'rule_12': { keywords: ["*instalador tecnico","instalador*"], response: '🤖🔌 **INSTALADOR TÉCNICO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Instalador</button>' },
-    'rule_13': { keywords: ["empresa de seguridad", "empresas de seguridad", "crear empresa seguridad"], response: '🤖🏢 **EMPRESAS DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'empresa\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Empresa</button>' },
-    'rule_14': { keywords: ["*operador cctv","cctv*", "operador de camaras", "operador camaras"], response: '🤖📹 **OPERADOR DE CÁMARAS (CCTV)**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Operador</button>' },
+    'rule_4': { 
+        keywords: ["guias","guia","componentes del sistema","componentes"], 
+        response: '🤖📂 **COMPONENTES DEL SISTEMA (Ley 21.659):**
+Seleccione para ver requisitos:
+' +
+        '<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👮 Vigilante Privado</button>' +
+        '<button onclick="mostrarRequisitos(\'guardia\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛡️ Guardia de Seguridad</button>' +
+        '<button onclick="mostrarRequisitos(\'jefe\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍✈️ Jefe de Seguridad</button>' +
+        '<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔧 Encargado de Seguridad</button>' +
+        '<button onclick="mostrarRequisitos(\'supervisor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👀 Supervisor de Seguridad</button>' +
+        '<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">💼 Asesor de Seguridad</button>' +
+        '<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Capacitador</button>' +
+        '<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛠️ Técnico en Seguridad</button>' +
+        '<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔌 Instalador Técnico</button>' +
+        '<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">📹 Operador de Cámaras</button>' +
+        '<button onclick="mostrarRequisitos(\'portero\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🚪 Portero/Nochero/Rondín</button>' +
+        '<button onclick="mostrarRequisitos(\'encargadoArmas\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔫 Encargado de Armas</button>' },
+    'rule_5': { keywords: ["la guia de guardia","guardia de segurridad", "guardia"], response: '🤖🛡️ **GUARDIA DE SEGURIDAD** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'guardia\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛡️ Ver Requisitos Guardia</button>' },
+    'rule_5b': {
+        keywords: ["vigilante privado", "vigilante", "requisitos vigilante"],
+        response: '🤖👮 **VIGILANTE PRIVADO** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👮 Ver Requisitos Vigilante</button>'
+    },
+    'rule_6': { keywords: ["jefe de seguridad", "jefe seguridad"], response: '🤖👨‍✈️ **JEFE DE SEGURIDAD** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'jefe\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍✈️ Ver Requisitos Jefe</button>' },
+    'rule_7': { keywords: ["supervisor","acreditación supervisor","supervisor seguridad"], response: '🤖👀 **SUPERVISOR DE SEGURIDAD** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'supervisor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👀 Ver Requisitos Supervisor</button>' },
+    'rule_8': { keywords: ["*encargado de seguridad*","*encargado*"], response: '🤖🔧 **ENCARGADO DE SEGURIDAD** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔧 Ver Requisitos Encargado</button>' },
+    'rule_9': { keywords: ["capacitador"], response: '🤖👨‍🏫 **CAPACITADOR** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Ver Requisitos Capacitador</button>' },
+    'rule_10': { keywords: ["tecnico", "tecnico seguridad"], response: '🤖🛠️ **TÉCNICO EN SEGURIDAD** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛠️ Ver Requisitos Técnico</button>' },
+    'rule_11': { keywords: ["la guia de asesor", "asesor", "asesor de seguridad"], response: '🤖💼 **ASESOR DE SEGURIDAD** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">💼 Ver Requisitos Asesor</button>' },
+    'rule_12': { keywords: ["*instalador tecnico","instalador*"], response: '🤖🔌 **INSTALADOR TÉCNICO** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔌 Ver Requisitos Instalador</button>' },
+    'rule_13': { keywords: ["empresa de seguridad", "empresas de seguridad", "crear empresa seguridad"], response: '🤖🏢 **EMPRESAS DE SEGURIDAD** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'empresa\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🏢 Ver Requisitos Empresa</button>' },
+    'rule_14': { keywords: ["*operador cctv","cctv*", "operador de camaras", "operador camaras"], response: '🤖📹 **OPERADOR DE CÁMARAS (CCTV)** (Ley 21.659)
+Requisitos actualizados:
+<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">📹 Ver Requisitos Operador</button>' },
     'rule_15': { keywords: ["manuales"], response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*1M.-* MANUAL DE FUNCIONAMIENTO\n*2M.-* MANUAL DE CAPACITACIÓN \n*3M.-* MANUAL DE ORGANIZACIÓN' },
     'rule_17': { keywords: ["1m"], response: '*MANUAL DE FUNCIONAMIENTO* https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf' },
     'rule_18': { keywords: ["3m"], response: '*MANUAL DE ORGANIZACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_organizacion.pdf' },
     'rule_19': { keywords: ["2m"], response: '*MANUAL DE CAPACITACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf' },
-    'rule_20': { keywords: ["leyes", "*leyes de seguridad privada*"], response: '*ESCRIBE UN NUMERO LEY O DECRETO*.\n 🚦. ⬇️ \n \nDECTO. *261* DEL 31.0 un7.2020\nDECTO. *298* DEL 17.09.2019\n DECTO. *123* DEL 05.04.2019\nDECTO. *1045* DEL 12.09.2018\nDECTO. *867* DEL 12.09.2017\nDECTO. *1814* DEL 10.11.2014\nDECTO. *222* DEL 30.10.2014\nDECTO. *1122* DEL 19.10.1994\nDECTO. *41* DEL 05.03.1996\nDECTO. *1772* DEL 26.01.1995\nDECTO. *1773* DEL 14.11.1994\nDECTO. *93* DEL 21.10.1985\nD. LEY. *3607* DEL 08.01.1981\nLEY *19303* DEL 13.04.1994\nResol. *253* DEL 29.10.2013\nResol. *59* DEL 30.09.2014\nResol. *32* DEL 31.01.2024\nResol. *80* DEL 20.03.2024\nLEY. *21659* DEL 21.03.2024' },
+    'rule_20': { 
+        keywords: ["leyes", "*leyes de seguridad privada*"], 
+        response: '*ESCRIBE UN NUMERO LEY O DECRETO*.
+ 🚦. ⬇️ 
+
+**NORMATIVA VIGENTE:**
+
+LEY *21659* DEL 21.03.2024 ✅ VIGENTE
+DECRETO *208* DEL 14.02.2025 ✅ VIGENTE
+DECRETO *209* DEL 27.05.2025 ✅ VIGENTE
+
+**NORMATIVA ANTERIOR (Referencia):**
+DECTO. *261* DEL 31.07.2020
+DECTO. *298* DEL 17.09.2019
+DECTO. *123* DEL 05.04.2019
+DECTO. *1045* DEL 12.09.2018
+DECTO. *867* DEL 12.09.2017
+DECTO. *1814* DEL 10.11.2014
+DECTO. *222* DEL 30.10.2014
+DECTO. *1122* DEL 19.10.1994
+DECTO. *41* DEL 05.03.1996
+DECTO. *1772* DEL 26.01.1995
+DECTO. *1773* DEL 14.11.1994
+DECTO. *93* DEL 21.10.1985
+D. LEY. *3607* DEL 08.01.1981
+LEY *19303* DEL 13.04.1994
+Resol. *253* DEL 29.10.2013
+Resol. *59* DEL 30.09.2014
+Resol. *32* DEL 31.01.2024
+Resol. *80* DEL 20.03.2024' },
     'rule_21': { keywords: ["261"], response: '*DECRETO NRO 261*. \n\n\nhttps://www.zosepcar.cl/content/OS10/Decreto-261.pdf' },
     'rule_22': { keywords: ["298"], response: '*DECRETO 298*. https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17' },
     'rule_23': { keywords: ["123"], response: '*DECRETO 123*. https://www.bcn.cl/leychile/navegar?idNorma=1130300' },
@@ -1029,21 +1114,431 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
     keywords: ["tramite transitorio spd", "correo carga sobredimensionada", "correo planes capacitacion", "tramitacion transitoria", "excepcion carabineros"],
     response: '🤖📧 **TRAMITACIÓN TRANSITORIA SPD (Vía Email)**\nSe exceptúan del trámite en Carabineros y se envían por email (PDF) a la SPD:\n\n1. **Carga Sobredimensionada:**\n📧 spd-cargadimensionada@minsegpublica.gob.cl\n\n2. **Planes y Programas Capacitación (OTEC):**\n📧 spd-capacitacionessp@minsegpublica.gob.cl\n\n*Vigente hasta implementación de módulos electrónicos.*'
 }
+    ,
+
+    // ==================== NUEVAS PREGUNTAS LEY 21.659 ====================
     
+    'rule_nueva_1': {
+        keywords: ["cuando entra en vigencia", "vigencia ley 21659", "desde cuando rige", "cuando empieza nueva ley"],
+        response: '🤖📅 **VIGENCIA LEY 21.659:**
+
+La Ley 21.659 de Seguridad Privada entró en **VIGENCIA el 28 de NOVIEMBRE de 2025**.
+
+**Decretos reglamentarios:**
+• Decreto 208 (14-FEB-2025)
+• Decreto 209 (27-MAY-2025)
+
+**Autoridad competente:**
+Subsecretaría de Prevención del Delito (SPD) del Ministerio de Seguridad Pública.'
+    },
+    
+    'rule_nueva_2': {
+        keywords: ["subsecretaria prevencion delito", "spd", "que es spd", "autoridad fiscalizadora nueva"],
+        response: '🤖🏛️ **SUBSECRETARÍA DE PREVENCIÓN DEL DELITO (SPD):**
+
+Es el **nuevo órgano rector** de la seguridad privada en Chile según Ley 21.659.
+
+**Funciones principales:**
+• Autorizar empresas de seguridad
+• Certificar personal (guardias, vigilantes)
+• Fiscalizar cumplimiento normativo
+• Aplicar sanciones e infracciones
+• Administrar plataforma digital
+• Supervisar instituciones de capacitación
+
+**Rol de Carabineros OS-10:**
+Se mantiene como autoridad fiscalizadora técnica en terreno, pero la SPD tiene la autoridad administrativa principal.'
+    },
+    
+    'rule_nueva_3': {
+        keywords: ["diferencia guardia vigilante", "guardia vs vigilante", "que diferencia hay", "cual es la diferencia"],
+        response: '🤖⚖️ **DIFERENCIAS: GUARDIA vs VIGILANTE (Ley 21.659):**
+
+**VIGILANTE PRIVADO:**
+✅ Puede portar ARMAS DE FUEGO autorizadas
+✅ Debe aprobar curso OS-11 (control armas)
+✅ Requiere autorización SPD específica
+✅ Curso: 100 horas formación + 40 horas perfeccionamiento c/2 años
+✅ Uniforme tipo slack
+
+**GUARDIA DE SEGURIDAD:**
+❌ NO puede portar armas de fuego
+✅ Puede usar elementos defensivos no letales
+✅ Curso: 90 horas + perfeccionamiento c/4 años
+✅ Uniforme reglamentario
+
+**IMPORTANTE:** Ambos requieren credencial, curso aprobado y certificado de antecedentes.'
+    },
+    
+    'rule_nueva_4': {
+        keywords: ["cuanto dura curso guardia", "horas curso capacitacion", "duracion curso", "cuantas horas"],
+        response: '🤖⏰ **DURACIÓN CURSOS (Decreto 209):**
+
+**VIGILANTE PRIVADO:**
+• Formación: Mínimo 100 horas
+• Perfeccionamiento: 40 horas (cada 2 años)
+
+**GUARDIA DE SEGURIDAD:**
+• Formación: Mínimo 90 horas
+• Perfeccionamiento: Cada 4 años
+
+**SUPERVISOR:**
+• Curso: Mínimo 120 horas
+
+**ENCARGADO:**
+• Curso: Mínimo 120 horas académicas
+
+**ASESOR:**
+• Diplomado: Mínimo 200 horas'
+    },
+    
+    'rule_nueva_5': {
+        keywords: ["requisitos generales", "requisitos para trabajar", "que se necesita", "requisitos personas"],
+        response: '🤖📋 **REQUISITOS GENERALES (Art. 46 Ley 21.659):**
+
+1. Ser mayor de 18 años
+2. Enseñanza media completa
+3. Salud compatible
+4. Certificado antecedentes sin anotaciones
+5. No inhabilidades vigentes
+6. No consumo problemático drogas/alcohol
+7. No destituido FF.AA. por sanciones
+8. No sanciones graves últimos 5 años
+9. No sancionado Ley fútbol profesional
+10. No fiscalizador últimos 2 años
+11. Aprobar cursos capacitación
+12. Comunicarse en castellano
+13. Cumplir servicio militar (cuando proceda)
+14. Extranjeros: residencia definitiva'
+    },
+    
+    'rule_nueva_6': {
+        keywords: ["vigencia credencial", "cada cuanto renovar", "validez certificacion", "cuanto tiempo dura"],
+        response: '🤖⏳ **VIGENCIA CERTIFICACIONES (Art. 60):**
+
+**VIGILANTES PRIVADOS:**
+✅ Vigencia: 2 AÑOS
+✅ Perfeccionamiento cada 2 años
+
+**GUARDIAS DE SEGURIDAD:**
+✅ Vigencia: 4 AÑOS
+✅ Perfeccionamiento cada 4 años
+
+**PORTEROS/NOCHEROS:**
+✅ Vigencia: 4 AÑOS
+
+**IMPORTANTE:**
+No requiere nuevo curso si cambia empleador dentro del plazo.'
+    },
+    
+    'rule_nueva_7': {
+        keywords: ["materias curso", "contenido capacitacion", "que enseñan", "temas del curso"],
+        response: '🤖📚 **MATERIAS OBLIGATORIAS (Art. 60):**
+
+1. Derechos Humanos
+2. Privacidad y datos personales
+3. Uso de elementos defensivos
+4. Legislación seguridad privada
+5. Primeros auxilios
+6. Probidad
+7. No discriminación
+8. Perspectiva de género
+
+**ADICIONAL VIGILANTES:**
+• Manejo armas de fuego
+• Técnicas protección
+• Procedimientos emergencia'
+    },
+    
+    'rule_nueva_8': {
+        keywords: ["reincidencia", "segunda infraccion", "volver a infringir", "otra vez infraccion"],
+        response: '🤖⚠️ **REINCIDENCIA (Art. 105):**
+
+**Definición:**
+Infracción dentro de 24 MESES de sentencia anterior.
+
+**EFECTOS:**
+• Leve + Reincidencia = GRAVE
+• Grave + Reincidencia = GRAVÍSIMA
+
+**Ejemplo:**
+• 1ª vez sin uniforme: 0,5-1 UTM
+• 2ª vez en 2 años: 1-3 UTM'
+    },
+    
+    'rule_nueva_9': {
+        keywords: ["autodenunciarse", "reduccion multa", "allanarse", "descuento sancion"],
+        response: '🤖💰 **REDUCCIÓN SANCIONES (Art. 107):**
+
+**AUTODENUNCIA:**
+Reduce hasta 80% si aporta antecedentes.
+
+**MÚLTIPLES RESPONSABLES:**
+• 1er autodenunciante: 90% reducción
+• 2do autodenunciante: 60% reducción
+• 3ro o más: 30% máximo
+
+**Debe aportar antecedentes sustanciales.**'
+    },
+    
+    'rule_nueva_10': {
+        keywords: ["juzgado policia local", "donde se tramita", "competencia infracciones", "tribunal competente"],
+        response: '🤖⚖️ **COMPETENCIA (Art. 106):**
+
+**Tribunal:**
+Juzgado de Policía Local del domicilio del infractor.
+
+**Procedimiento:**
+Ley N° 18.287 (procedimiento ordinario JPL)
+
+**Denuncia:**
+• SPD
+• Carabineros OS-10
+• Autoridades fiscalizadoras'
+    },
+    
+    'rule_nueva_11': {
+        keywords: ["plataforma spd", "sistema digital", "plataforma digital", "como tramitar online"],
+        response: '🤖💻 **PLATAFORMA SPD:**
+
+**Plazo implementación:**
+Máximo 1 año desde vigencia.
+
+**MÓDULOS al 28-NOV-2025:**
+1. Entidades Obligadas
+2. Personas Naturales
+3. Instituciones Capacitación
+4. Eventos Masivos
+
+**TRANSITORIO:**
+Presentar en Prefectura Carabineros.
+
+**EXCEPCIONES (email):**
+• Carga: spd-cargadimensionada@minsegpublica.gob.cl
+• OTEC: spd-capacitacionessp@minsegpublica.gob.cl'
+    },
+    
+    'rule_nueva_12': {
+        keywords: ["estudios de seguridad", "plan de seguridad", "que es estudio", "como hacer estudio"],
+        response: '🤖📄 **ESTUDIOS Y PLANES:**
+
+**ESTUDIO:**
+Análisis técnico de vulnerabilidades y medidas necesarias.
+
+**PLAN:**
+Documento operativo con procedimientos.
+
+**Elabora:**
+Asesor autorizado por SPD.
+
+**Aprueba:**
+Subsecretaría de Prevención del Delito.
+
+**Obligatorio para:**
+Bancos, transporte valores, empresas estratégicas.'
+    },
+    
+    'rule_nueva_13': {
+        keywords: ["uniforme vigilante", "ropa reglamentaria", "que uniforme usar", "color uniforme"],
+        response: '🤖👔 **UNIFORMES (Decreto 209):**
+
+**VIGILANTE:**
+• Tipo SLACK
+• Credencial visible
+• Identificación clara
+
+**GUARDIA:**
+• Uniforme reglamentario empresa
+• Credencial obligatoria
+
+**PROHIBIDO:**
+❌ Simular uniformes FF.AA. o Carabineros
+❌ Infracción GRAVÍSIMA'
+    },
+    
+    'rule_nueva_14': {
+        keywords: ["elementos defensivos", "que armas puede usar guardia", "spray pimienta", "baston tonfa"],
+        response: '🤖🛡️ **ELEMENTOS DEFENSIVOS:**
+
+**GUARDIAS pueden usar:**
+• Bastón seguridad (tonfa)
+• Aerosol pimienta
+• Chaleco antibalas
+• Esposas
+• Linterna táctica
+
+**VIGILANTES además:**
+• Armas de fuego (autorización específica)
+
+**PROHIBIDO:**
+❌ Guardias NO portan armas fuego
+❌ Elementos no autorizados = Infracción GRAVÍSIMA'
+    },
+    
+    'rule_nueva_15': {
+        keywords: ["eventos masivos", "seguridad eventos", "conciertos", "partidos futbol"],
+        response: '🤖🎭 **EVENTOS MASIVOS (Título IV):**
+
+**Obligaciones organizadores:**
+1. Plan de seguridad
+2. Personal calificado
+3. Presentación ante SPD
+4. Coordinación autoridades
+
+**INFRACCIONES GRAVÍSIMAS:**
+• No medidas suficientes: 501-1.000 UTM
+• Sin plan aprobado
+• Incumplir capacidad'
+    },
+    
+    'rule_nueva_16': {
+        keywords: ["instituciones capacitacion", "otec", "quien puede capacitar", "entidades formacion"],
+        response: '🤖🎓 **INSTITUCIONES CAPACITACIÓN (Art. 59):**
+
+**Pueden capacitar:**
+• OTEC autorizados
+• Educación superior
+• Entidades aprobadas SPD
+
+**Requisitos:**
+• Personal docente calificado
+• Infraestructura adecuada
+• Programas aprobados SPD
+
+**Transitorio:**
+Email: spd-capacitacionessp@minsegpublica.gob.cl'
+    },
+    
+    'rule_nueva_17': {
+        keywords: ["empresas seguridad privada", "requisitos empresa", "crear empresa seguridad", "autorizacion empresa"],
+        response: '🤖🏢 **EMPRESAS SEGURIDAD:**
+
+**TIPOS:**
+1. Servicios Seguridad
+2. Transporte Valores
+3. Sistemas Seguridad
+4. Asesoría Seguridad
+
+**REQUISITOS:**
+• Constitución legal
+• Capital mínimo
+• Personal certificado
+• Póliza seguros
+
+**INFRACCIONES:**
+• Gravísimas: 50-650 UTM
+• Graves: 15-50 UTM
+• Leves: 1,5-15 UTM'
+    },
+    
+    'rule_nueva_18': {
+        keywords: ["transporte valores", "blindados", "empresas valores", "camiones blindados"],
+        response: '🤖🚛 **TRANSPORTE VALORES:**
+
+**Personal:**
+• Solo VIGILANTES autorizados
+• Armados
+• Mínimo 3 por vehículo
+
+**Vehículos:**
+• Blindaje certificado
+• GPS operativo
+• Comunicaciones permanentes
+
+**PROHIBICIÓN:**
+❌ Proporcionar personal armado para otros servicios
+❌ Pena: presidio + inhabilitación perpetua'
+    },
+    
+    'rule_nueva_19': {
+        keywords: ["carga sobredimensionada", "escolta carga", "custodia transporte", "escoltas carreteras"],
+        response: '🤖🚚 **CARGA SOBREDIMENSIONADA (Art. 119):**
+
+**Autorización:**
+Ministerio Transportes puede autorizar servicios seguridad privada.
+
+**Según nivel de riesgo:**
+• Escoltas vehiculares
+• Vigilancia durante transporte
+• Coordinación autoridades
+
+**Trámite:**
+Email: spd-cargadimensionada@minsegpublica.gob.cl'
+    },
+    
+    'rule_nueva_20': {
+        keywords: ["agravante penal", "delito contra guardia", "agresion vigilante", "codigo penal"],
+        response: '🤖⚖️ **AGRAVANTE PENAL (Art. 118):**
+
+**Nuevo Art. 12 N°24 Código Penal:**
+
+ES AGRAVANTE cometer delito contra vigilante, guardia, nochero, portero o personal seguridad privada:
+
+**Requisitos:**
+• Con motivo de su cargo, O
+• En ejercicio funciones
+• Cuando porte uniforme/credencial
+
+**Efecto:**
+Aumenta pena del delito cometido.
+
+**Protección:**
+Equipara parcialmente a FF.AA.'
+    }
 };
 
-const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada O.S.10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada, profesional
-Tus reglas principales son:
-1.  **Asume tu Rol:** Responde siempre como si fueras un miembro del equipo de la oficina O.S.10 Coquimbo. Usa un tono servicial y profesional, se preciso y concreto para responder, responde corto y preciso, no te explayes deja tu respuesta corta y buena.
-2.  **Prioridad a los documentos:** Tu máxima prioridad es buscar y entregar primero cualquier documento, guía o PDF que tengas en tu base de datos cuando se te pregunte por un trámite (ej. "cómo tramitar credencial"). Una vez entregado el documento, puedes responder preguntas adicionales.
-3.  **Respuestas cortas y reales:** Sé conciso y factual. No inventes respuestas. Si no sabes algo, indícalo amablemente.
-4.  **Formato claro:** Usa Markdown para dar formato. Para listas, asegúrate de que cada ítem esté en una nueva línea (ej. "1. Guardia\\n2. Vigilante").
-5.- **OS10 COQUIMBO, OFICINA DE SEGURIDAD PRIVADA OS10 COQUIMBO, OFICINA, O.S.10:** Es una oficina que se ecuentra en en el centro de La Serena, su direccion es Calle Cienfuegos N°180, La Serena, sus fonos son los siguientes: 512651024 o el 512651023.
-6.  **infracciones del os10:** las principales infracciones de guardia de seguridad son las siguiente: sin curso os10 art. 13 del decreto 93, sin directiva de funcionamiento art. 15 del decreto 93, sin credencial de guardia (gg.ss) art 18 del decreto 93, guardia de seguridad no puede usar armamento art. 14 decreto 93, sin uniforme reglamentario art. 8vo del decrero 867 y decreto 23/2024. 
-7.- **Nueva Ley de seguridad privada:** La Nueva ley de seguridad privada entra en vigencia el 28-NOV-2025 pero por el momento no han llegado instrucciones del funcionamiento de la nueva ley de seguridad privada, se informara en forma oportuna si llega alguna información. 
-Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.
-8.- **infracciones de seguridad privda** Sempre que te pregunten por las infracciones que cometen los guardias de seguridad entrega el articulo y la ifraccion ordenada y enumerada con negrillas es decir la 1.articulo 13 sin curso de guardia etx. 2.- artiiculo 14 guardia porta armamento o elpementos no autorizados etc- 3.- articulo 15 sin directiva de funcionamiento etc. 4.- articulo 18 sin credencial etc.
-9.- **Resumen detallado de la nueva ley de seguridad privada 21659 sobre seguridad privada** RESUMEN DETALLADO DE LA LEY 21659 SOBRE SEGURIDAD PRIVADA.`;
+const systemPrompt = `Eres un asistente virtual y funcionario experto de la oficina de Seguridad Privada O.S.10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas sobre seguridad privada.
+
+**CONTEXTO TEMPORAL CRÍTICO:**
+- Fecha actual: 16 de diciembre de 2025
+- La Ley 21.659 y sus reglamentos (Decretos 208 y 209) ESTÁN VIGENTES desde el 28 de noviembre de 2025
+- SIEMPRE debes responder según la normativa VIGENTE (Ley 21.659) a menos que el usuario pregunte específicamente por normativa anterior
+
+**Tus reglas principales:**
+
+1. **NORMATIVA VIGENTE:** 
+   - Desde 28-NOV-2025 rige Ley 21.659, Decreto 208 y Decreto 209
+   - La autoridad principal es la Subsecretaría de Prevención del Delito (SPD)
+   - OS-10 Carabineros mantiene rol de fiscalización técnica
+   - NO menciones Decreto 93 ni DL 3.607 como vigentes (son normativa anterior para referencia histórica)
+
+2. **Asume tu Rol:** 
+   Responde siempre como experto en seguridad privada. Usa tono profesional, preciso y conciso. Responde corto y directo.
+
+3. **Prioridad a documentos:** 
+   Entrega primero cualquier documento, guía o PDF de la base de datos cuando se pregunte por trámites.
+
+4. **Respuestas verdaderas:** 
+   Sé conciso y factual. NO inventes respuestas. Si no sabes algo, indícalo amablemente.
+
+5. **Formato claro:** 
+   Usa Markdown para formato. En conversaciones casuales, responde en párrafos, no listas innecesarias.
+
+6. **OS10 COQUIMBO:** 
+   Oficina ubicada en Calle Cienfuegos N°180, La Serena. Fonos: 512651024 o 512651023.
+
+7. **Infracciones según LEY 21.659:**
+   Referencia artículos de la Ley 21.659:
+   - Gravísimas (Art. 94): Antecedentes falsos, sin autorización, portar armas no autorizadas
+   - Graves (Art. 96): Incumplir directivas, 2 leves en 2 años
+   - Leves (Art. 98): Otras omisiones menores
+   
+   Sanciones personas naturales (Art. 102):
+   - Gravísimas: 3-20 UTM
+   - Graves: 1-3 UTM  
+   - Leves: 0,5-1 UTM
+
+8. **Ley vigente:** 
+   La Ley 21.659 ESTÁ EN VIGENCIA desde 28-NOV-2025. Responde siempre según esta ley.
+
+9. **Diferencia Guardia vs Vigilante:**
+   - Vigilante: puede portar armas autorizadas, curso 100 hrs, perfeccionamiento c/2 años
+   - Guardia: NO porta armas, curso 90 hrs, perfeccionamiento c/4 años
+
+10. **Botones descriptivos:**
+    Los botones muestran emoji + tema específico (ej: "👮 Ver Requisitos Vigilante").
+
+Genera respuestas usando Markdown: **negrita** para énfasis. Mantén respuestas concisas y profesionales.`;
 
 // Hacer variables globalmente accesibles
 window.responses = responses;
