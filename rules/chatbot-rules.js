@@ -3,7 +3,7 @@ console.log('🔄 Cargando base de datos de reglas OS10...');
 
 const responses = {
     'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib *3 Bot Abogado Virtual GPT* \n dal5.short.gy/Ab0 *4 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTto 5 Bot Ley Karin*\n dal5.short.gy/lkar'},
-    'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: 'Infracciones de Guardias (Decreto Supremo N° 93):\n\n*Guardia sin curso OS10:*\nInfringe el *artículo 13*. La empresa que contrata al guardia sin este requisito es la infractora.\n\n*Guardia sin credencial vigente:*\nInfringe el *artículo 18*. La responsabilidad es de la empresa contratante.\n\n*Sin Directiva de Funcionamiento (DD.FF.):*\nInfringe el *artículo 15*. Es una infracción de la empresa si opera sin esta autorización.\n\n*Portando elementos no autorizados:*\nInfringe el *artículo 14*. Los implementos deben estar especificados en la DD.FF. Infracción aplicable a la empresa.\n\n*Portando arma de fuego:*\nInfringe el *artículo 14*. Los guardias tienen prohibido portar armas de fuego. Grave infracción atribuible a la empresa.' },
+    'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: '🤖⚖️ **INFRACCIONES LEY 21.659**:\n\n*Guardia sin curso OS10:*\nInfracción Gravísima (Art. 94). Multa 3-20 UTM.\n\n*Guardia sin credencial:*\nInfracción Gravísima. Multa 3-20 UTM.\n\n*Sin Directiva de Funcionamiento:*\nInfracción Grave para la empresa (Art. 101).\n\n*Porte de armas no autorizadas:*\nInfracción Gravísima. Prohibición absoluta para guardias.' },
     'rule_3': { keywords: ["tipos de empresas", "tipo de empresa"], response: '*EMPRESA DE RR.HH. CAPACITACION O ASESORIAS* https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf'},
     'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: 'ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
     'rule_5': { keywords: ["la guia de guardia","guardia de segurridad"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de GUARDIA DE SEGURIDAD la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
@@ -39,7 +39,7 @@ const responses = {
     'rule_36': { keywords: ["59"], response: '*Resol. 59*. https://www.zosepcar.cl/content/OS10/resolucion_59.pdf' },
     'rule_37': { keywords: ["32"], response: '*Decreto. 32 DECRETO 32 EXENTO MODIFICA EN TÉRMINOS QUE INDICA DECRETO N°261 EXENTO, DE 2020, DEL MINISTERIO DEL INTERIOR Y SEGURIDAD PÚBLICA, QUE APRUEBA MANUAL OPERATIVO EN MATERIAS DE SEGURIDAD PRIVADA Y FIJA SU TEXTO ACTUALIZADO*. https://www.bcn.cl/leychile/navegar?idNorma=1200633' },
     'rule_38': { keywords: ["80"], response: '*Resol. 80*. https://www.zosepcar.cl/content/OS10/resolucion_80.pdf' },
-    'rule_39': { keywords: ["*21659*", "*nueva ley de seguridad*"], response: 'Entra en vigencia el 28-NOV-2025 *LEY 21659*. https://dal5.short.gy/LeySeg, ' },
+    'rule_39': { keywords: ["*21659*", "*nueva ley de seguridad*"], response: '🤖📚 **LEY 21.659 VIGENTE**\nLa Ley de Seguridad Privada y sus reglamentos (Decreto 209 y 208) están vigentes. Establece nuevas categorías de riesgo, infracciones y procedimientos.\nVer ley: https://dal5.short.gy/LeySeg' },
     'rule_65': { keywords: ["*fono*", "*telefono*","*numero*","*ubicados*","*dirección*","*atención*","*horario*","*horarios*","*ubicación*","*direccion oficina*","*cual es la dirección del os10*","*horario atención publico*", "*donde estan ubicados*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*"], response: '🤖 👉🏼 *O.S.10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas. Dirección en calle Cienfuegos 180, La Serena.\nFonos: 512651024-512651022-512651023\n https://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
     'rule_66': { keywords: ["Otro Menú"], response: '**ESCRIBA LO QUE ESTA CON NEGRILLAS:**\n **registro: **Consultar guardia \n**OS10:** menú OS10 \n**comisaria:** Comisaria cuadrantes\n**ciberseguridad:** Ciberseguridad \n**Dgac: **DGAC Seg. Priv. \n**32:** Modifica 261 \n**Directiva:** Directiva\n**Bots:** Seguridad privada, Ciberseguridad, tránsito, Ley Karyn' },
     'rule_68': { keywords: ["imc"], response: '*CALCULAR IMC*\nhttps://nutricionistavirtual.cl/calculadora/' },
@@ -178,9 +178,9 @@ const responses = {
 
 // El bot analiza las consultas y extrae respuestas de la base de conocimiento de la Nueva Ley de Seguridad Privada 2
 
-'rule_286': { keywords: ["guardia sin curso","vigilante sin capacitación","sin formación","no tengo curso","no tiene curso","falta curso","sin curso","no hice curso","no ha hecho curso","capacitación pendiente","curso vencido","certificado vencido"], response: '🤖⚠️ Un guardia sin curso de capacitación NO puede ejercer funciones art. 13° del decreto suupremo 93 y DL 3607, es OBLIGATORIO contar con curso básico de formación vigente (3 años). Sin curso = INFRACCIÓN GRAVE. Multa: 25 a 125 ingresos mínimos mensuales (primera vez), hasta 250 en reincidencia.' },
-'rule_287': { keywords: ["guardia sin credencial","vigilante sin autorización","sin credencial","no tengo credencial","no tiene credencial","falta credencial","credencial vencida","sin licencia","no tengo licencia","no tiene licencia","autorización vencida","permiso vencido"], response: '🤖❌ Un guardia sin credencial vigente NO puede trabajar. Según Decreto 93 art. 93° la credencial es requisito ESENCIAL para ejercer. Sin credencial = EJERCICIO ILEGAL. Multa: 25 a 125 ingresos mínimos mensuales, duplicándose en reincidencia + posible clausura.' },
-'rule_288': { keywords: ["sin directiva funcionamiento","empresa sin directiva","falta directiva","no tengo directiva","no tiene directiva","directiva vencida","sin autorización empresa","empresa no autorizada","sin resolución","no tenemos directiva"], response: '🤖📋 Una empresa NO puede operar sin Directiva de Funcionamiento aprobada. Según Decreto 93 art. 15°, es OBLIGATORIA y tiene vigencia de 3 años. Sin directiva = OPERACIÓN ILEGAL. Debe solicitarse con 15 días hábiles de anticipación. Sanción: clausura inmediata + multa.' },
+'rule_286': { keywords: ["guardia sin curso","vigilante sin capacitación","sin formación","no tengo curso","no tiene curso","falta curso","sin curso","no hice curso","no ha hecho curso","capacitación pendiente","curso vencido","certificado vencido"], response: '🤖⚠️ **GUARDIA SIN CURSO (Ley 21.659)**\nUn guardia sin curso de capacitación vigente comete una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nSanción: Multa de 3 a 20 UTM y posible inhabilitación. La empresa contratante también es sancionada.' },
+'rule_287': { keywords: ["guardia sin credencial","vigilante sin autorización","sin credencial","no tengo credencial","no tiene credencial","falta credencial","credencial vencida","sin licencia","no tengo licencia","no tiene licencia","autorización vencida","permiso vencido"], response: '🤖❌ **GUARDIA SIN CREDENCIAL (Ley 21.659)**\nTrabajar sin credencial vigente es una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nSanción: Multa de 3 a 20 UTM. La credencial es intransferible y obligatoria durante el servicio.' },
+'rule_288': { keywords: ["sin directiva funcionamiento","empresa sin directiva","falta directiva","no tengo directiva","no tiene directiva","directiva vencida","sin autorización empresa","empresa no autorizada","sin resolución","no tenemos directiva"], response: '🤖📋 **SIN DIRECTIVA (Ley 21.659)**\nOperar sin Directiva de Funcionamiento aprobada es una **INFRACCIÓN GRAVÍSIMA** para la empresa (Art. 100). \nSanción: Multa de 650 a 13.500 UTM (Entidades Obligadas) o 50 a 650 UTM (Empresas Seguridad), más medidas administrativas.' },
 'rule_289': { keywords: ["guardia sin uniforme","vigilante sin uniforme","uniforme obligatorio"], response: '🤖👕 Los vigilantes DEBEN usar uniforme reglamentario según DL 3607 art. 1°. El uniforme debe ser diferente al de FF.AA. y Carabineros, y de uso exclusivo para vigilantes autorizados. No usarlo constituye infracción.' },
 'rule_290': { keywords: ["vigilante sin arma","guardia desarmado","arma obligatoria"], response: '🤖🔫 Los vigilantes DEBEN portar armas según DL 3607 art. 1°. El porte y control de armas se rige por Ley 17.798. Solo pueden portar armas autorizadas y registradas según normativa vigente.' },
 'rule_291': { keywords: ["empresa sin registro","compañía no autorizada","registro empresa"], response: '🤖🏢 Las empresas de seguridad DEBEN estar registradas y autorizadas. Operar sin registro constituye ejercicio ilegal de actividad regulada. Sanción: multa de 25 a 125 ingresos mínimos mensuales, más clausura.' },
@@ -213,15 +213,15 @@ const responses = {
 'rule_318': { keywords: ["porte armas","licencia armas","autorización armamento"], response: '🤖🔫 El porte de armas requiere: licencia individual vigente, inscripción en Registro Nacional de Armas, capacitación específica y autorización del empleador según Ley 17.798.' },
 'rule_319': { keywords: ["subcontratación","tercerización","empresa contratista"], response: '🤖🤝 La subcontratación de servicios de seguridad está permitida pero la empresa principal mantiene responsabilidad solidaria según normativa laboral y de seguridad privada.' },
 'rule_320': { keywords: ["reclutamiento","selección personal","contratación vigilantes"], response: '🤖👥 El reclutamiento DEBE verificar: antecedentes, aptitud física/mental, capacitación previa, referencias laborales y cumplimiento de todos los requisitos legales vigentes.' },
-'rule_321': { keywords: ["puedo trabajar sin curso","trabajo sin capacitación","me contratan sin curso","contrato sin formación","empiezo sin curso","inicio sin capacitación"], response: '🤖🚫 NO puedes trabajar sin curso. Es ILEGAL según Decreto 93 art. 13°. Primero debes: 1) Hacer curso básico (40 horas mínimo) 2) Aprobar examen 3) Obtener certificado 4) Solicitar credencial. Trabajar sin curso = multa para ti y tu empleador.' },
+'rule_321': { keywords: ["puedo trabajar sin curso","trabajo sin capacitación","me contratan sin curso","contrato sin formación","empiezo sin curso","inicio sin capacitación"], response: '🤖🚫 **TRABAJAR SIN CURSO (Ley 21.659)**\nNO puedes trabajar sin curso. Es una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nProceso: 1) Curso formación (90 hrs) 2) Aprobar examen 3) Obtener certificación 4) Solicitar credencial. Trabajar sin esto conlleva multas en UTM.' },
 'rule_322': { keywords: ["él trabaja sin curso","ella trabaja sin curso","trabaja sin capacitación","empleado sin curso","personal sin formación","guardia nuevo sin curso"], response: '🤖⚠️ Esa persona NO puede trabajar sin curso. Según Decreto 93 art. 13° es obligatorio tener capacitación vigente. Si detectas esta situación, repórtala a Carabineros. La empresa también será sancionada por contratar personal no calificado.' },
-'rule_323': { keywords: ["puedo trabajar sin credencial","trabajo sin licencia","me contratan sin credencial","empiezo sin autorización","inicio sin permiso","trabajo sin papeles"], response: '🤖❌ NO puedes trabajar sin credencial. Es ILEGAL según Decreto 93. La credencial es tu "licencia de conducir" para seguridad privada. Sin ella cometes delito. Proceso: 1) Curso aprobado 2) Solicitar credencial 3) Esperar autorización 4) Recién ahí trabajar.' },
+'rule_323': { keywords: ["puedo trabajar sin credencial","trabajo sin licencia","me contratan sin credencial","empiezo sin autorización","inicio sin permiso","trabajo sin papeles"], response: '🤖❌ **TRABAJAR SIN CREDENCIAL (Ley 21.659)**\nNO puedes trabajar sin credencial. Es una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nLa credencial es tu autorización oficial. Sin ella, te expones a multas de 3 a 20 UTM e inhabilitación.' },
 'rule_324': { keywords: ["él trabaja sin credencial","ella trabaja sin credencial","trabaja sin licencia","guardia sin papeles","empleado sin autorización","personal sin credencial"], response: '🤖🚨 Esa persona comete INFRACCIÓN GRAVE trabajando sin credencial. Según Decreto 93, solo pueden ejercer quienes tengan autorización vigente. Denuncia inmediatamente a Carabineros. Multa para guardia Y empresa.' },
-'rule_325': { keywords: ["empresa puede operar sin directiva","trabajamos sin directiva","operamos sin autorización","empresa nueva sin papeles","negocio sin permisos","compañía sin resolución"], response: '🤖🛑 NO pueden operar sin Directiva de Funcionamiento. Según Decreto 93 art. 15° es OBLIGATORIA. Vigencia: 3 años. Sin directiva = CLAUSURA INMEDIATA. Deben solicitarla 15 días hábiles antes de operar. Es delito ejercer sin autorización.' },
+'rule_325': { keywords: ["empresa puede operar sin directiva","trabajamos sin directiva","operamos sin autorización","empresa nueva sin papeles","negocio sin permisos","compañía sin resolución"], response: '🤖🛑 **EMPRESA SIN DIRECTIVA (Ley 21.659)**\nNO pueden operar sin Directiva de Funcionamiento. Es una **INFRACCIÓN GRAVÍSIMA** (Art. 100). \nSanción: Multas altas en UTM y posible revocación de autorización. Deben solicitarla con anticipación a la autoridad fiscalizadora.' },
 'rule_326': { keywords: ["esa empresa opera sin directiva","empresa sin autorización","compañía ilegal","negocio sin permisos","operan sin papeles","funcionan sin directiva"], response: '🤖📢 Esa empresa opera ILEGALMENTE sin Directiva de Funcionamiento. Según Decreto 93 art. 15°, todas las empresas de seguridad DEBEN tener autorización vigente. Denuncia inmediatamente: pueden clausurarla y multar a directivos.' },
-'rule_327': { keywords: ["si no tengo curso os10", "qué pasa si no tengo curso","qué pasa si trabajo sin curso","consecuencias sin capacitación","multa por no tener curso","sanción trabajar sin formación"], response: '🤖⚖️ Consecuencias trabajar sin curso: 1) Multa personal: 25-125 ingresos mínimos 2) Multa empresa: 25-250 ingresos mínimos 3) Prohibición ejercer 4) Antecedentes laborales negativos 5) Posible denuncia penal por ejercicio ilegal de profesión.' },
-'rule_328': { keywords: ["qué pasa si trabajo sin credencial","consecuencias sin licencia","multa por no tener credencial","sanción trabajar sin autorización"], response: '🤖⚖️ Consecuencias trabajar sin credencial: 1) Multa personal: 25-125 ingresos mínimos 2) Multa empresa: hasta 250 ingresos mínimos 3) Inhabilitación temporal 4) Antecedentes penales posibles 5) Clausura del servicio de seguridad.' },
-'rule_329': { keywords: ["qué pasa empresa sin directiva","consecuencias operar sin autorización","multa empresa sin directiva","sanción compañía ilegal"], response: '🤖⚖️ Consecuencias empresa sin directiva: 1) Clausura INMEDIATA 2) Multa directivos: 25-250 ingresos mínimos 3) Inhabilitación directivos 4) Pérdida inversión 5) Responsabilidad civil por daños 6) Posible querella criminal por ejercicio ilegal.' },
+'rule_327': { keywords: ["si no tengo curso os10", "qué pasa si no tengo curso","qué pasa si trabajo sin curso","consecuencias sin capacitación","multa por no tener curso","sanción trabajar sin formación"], response: '🤖⚖️ **CONSECUENCIAS SIN CURSO (Ley 21.659)**\n1) Multa personal: 3-20 UTM (Gravísima)\n2) Multa empresa: 50-650 UTM (Grave/Gravísima)\n3) Inhabilitación temporal o definitiva\n4) Registro de sanción en sistema nacional.' },
+'rule_328': { keywords: ["qué pasa si trabajo sin credencial","consecuencias sin licencia","multa por no tener credencial","sanción trabajar sin autorización"], response: '🤖⚖️ **CONSECUENCIAS SIN CREDENCIAL (Ley 21.659)**\n1) Multa personal: 3-20 UTM (Gravísima)\n2) Multa empresa: Sanciones graves en UTM\n3) Inhabilitación para ejercer seguridad privada\n4) Registro de infracción.' },
+'rule_329': { keywords: ["qué pasa empresa sin directiva","consecuencias operar sin autorización","multa empresa sin directiva","sanción compañía ilegal"], response: '🤖⚖️ **CONSECUENCIAS EMPRESA SIN DIRECTIVA (Ley 21.659)**\n1) Multa: 50-650 UTM (Empresas Seguridad) o 650-13.500 UTM (Entidades Obligadas)\n2) Suspensión o revocación de autorización\n3) Clausura de servicios\n4) Responsabilidad civil y administrativa.' },
 
 // Reglas conversacionales para el chatbot OS10 Coquimbo solo region de Coquimbo.
     
@@ -232,7 +232,7 @@ const responses = {
 'rule_400': { keywords: ["infracciones gravísimas guardias", "infracciones graves guardias", "sanciones graves guardias"], response: '🤖⚖️ **INFRACCIONES GRAVÍSIMAS GUARDIAS DE SEGURIDAD** (Art. 94-95 Ley 21.659):\n**1.** Usar armas de fuego en ejercicio de funciones - **PROHIBIDO TOTALMENTE**\n**2.** No adoptar medidas de seguridad según plan aprobado\n**3.** Trabajar sin credencial vigente\n**4.** Trabajar sin curso de capacitación aprobado\n**5.** Proporcionar información falsa a autoridades\n**SANCIONES:** Multa 3-20 UTM + posible inhabilitación' },
 'rule_401': { keywords: ["infracciones gravísimas vigilantes", "infracciones graves vigilantes", "sanciones graves vigilantes"], response: '🤖⚖️ **INFRACCIONES GRAVÍSIMAS VIGILANTES PRIVADOS** (Art. 94-95 Ley 21.659):\n**1.** Ejercer sin autorización vigente\n**2.** No portar armas cuando es obligatorio\n**3.** Usar armas fuera del recinto autorizado\n**4.** No usar sistemas de registro audiovisual obligatorios\n**5.** Trabajar sin curso vigente (cada 2 años)\n**SANCIONES:** Multa 3-20 UTM + inhabilitación temporal o definitiva' },
 // NUEVA LEY 21.659 - ASPECTOS GENERALES
-'rule_402': { keywords: ["nueva ley seguridad privada", "ley 21659", "que cambió nueva ley"], response: '🤖📚 **NUEVA LEY 21.659 SEGURIDAD PRIVADA** (Vigencia: 28-NOV-2025):\n**PRINCIPALES CAMBIOS:**\n**1.** Órgano rector: Subsecretaría Prevención Delito\n**2.** Clasificación entidades por RIESGO (Alto/Medio/Bajo)\n**3.** Estudios seguridad vigencia 4 años (2 años vigilancia privada)\n**4.** Cursos obligatorios diferenciados\n**5.** Nuevas figuras: Jefe seguridad, Encargado seguridad\n**6.** Registro Nacional digitalizado\n**7.** Regulación eventos masivos\n**DEROGA:** Decreto Ley 3.607 y Ley 19.303' },
+'rule_402': { keywords: ["nueva ley seguridad privada", "ley 21659", "que cambió nueva ley"], response: '🤖📚 **NUEVA LEY 21.659 SEGURIDAD PRIVADA** (VIGENTE):\n**PRINCIPALES CAMBIOS:**\n**1.** Órgano rector: Subsecretaría Prevención Delito\n**2.** Clasificación entidades por RIESGO (Alto/Medio/Bajo)\n**3.** Estudios seguridad vigencia 4 años\n**4.** Cursos obligatorios diferenciados\n**5.** Nuevas figuras: Jefe seguridad, Encargado seguridad\n**6.** Registro Nacional digitalizado\n**7.** Regulación eventos masivos (Decreto 208)\n**DEROGA:** Decreto Ley 3.607 y Ley 19.303' },
 // ENTIDADES OBLIGADAS - CLASIFICACIÓN POR RIESGO
 'rule_403': { keywords: ["entidades obligadas", "clasificación riesgo", "riesgo alto medio bajo"], response: '🤖🏢 **ENTIDADES OBLIGADAS - CLASIFICACIÓN RIESGO** (Art. 7-9 Ley 21.659):\n**RIESGO ALTO:** Sistema vigilancia privada obligatorio\n- Bancos y financieras\n- Transporte valores\n- Apoyo giro bancario\n**RIESGO MEDIO:** Medidas seguridad adaptadas\n**RIESGO BAJO:** Medidas básicas\n**SIEMPRE OBLIGADAS:** Empresas venta combustible\n**CRITERIOS:** Actividad, localización, concurrencia público, valores, horarios, delitos previos' },
 // VIGILANTES PRIVADOS - REQUISITOS NUEVOS
@@ -255,6 +255,7 @@ const responses = {
 'rule_412': { keywords: ["seguridad electrónica", "empresas alarmas", "cctv"], response: '🤖📹 **SEGURIDAD ELECTRÓNICA** (Art. 76-81 Reglamento):\n**SERVICIOS:**\n- Instalación/mantenimiento sistemas\n- Operación centrales alarmas/CCTV\n- Certificación dispositivos\n**OBLIGACIONES:**\n- Verificar activaciones alarmas\n- Informar usuarios funcionamiento\n- Personal calificado\n- Certificados organismos sectoriales\n**RESPONSABILIDAD:** Falsas alarmas = infracción leve' },
 // EVENTOS MASIVOS
 'rule_413': { keywords: ["eventos masivos", "seguridad eventos"], response: '🤖🎪 **EVENTOS MASIVOS** (Título IV Ley 21.659):\n**DEFINICIÓN:** Más 3.000 personas o características especiales\n**OBLIGACIONES ORGANIZADOR:**\n- Plan seguridad\n- Autorización Delegación Presidencial\n- Seguro responsabilidad civil\n- Personal seguridad privada\n- Recursos tecnológicos\n- Responsable seguridad designado\n**SANCIONES:** Multa 501-1.000 UTM infracciones gravísimas' },
+'rule_413a': { keywords: ["decreto 208", "reglamento eventos masivos", "seguridad eventos"], response: '🤖🏟️ **DECRETO 208 (EVENTOS MASIVOS)**:\nReglamento vigente que regula la seguridad en eventos de más de 3000 personas. Exige:\n- Directiva de Funcionamiento específica\n- Organizador responsable\n- Encargado de Seguridad de Eventos\n- Guardias capacitados\n- Medios tecnológicos (CCTV, control acceso)\n- Coordinación con Carabineros' },
 // UNIFORMES REGLAMENTARIOS
 'rule_414': { keywords: ["uniforme vigilante", "uniforme guardia", "colores uniformes"], response: '🤖👕 **UNIFORMES REGLAMENTARIOS** (Art. 33, 90 Reglamento):\n**VIGILANTES PRIVADOS:**\n- Gris perla azulado (camisa/pantalón)\n- Gorra militar gris perla azulado\n- Corbata negra\n- Calzado negro\n- Cinturón negro con cartuchera\n**GUARDIAS SEGURIDAD:**\n- Negro (camisa/pantalón/gorra)\n- Chaleco alta visibilidad rojo\n- "SEGURIDAD PRIVADA" en espalda\n- Chaquetón rojo impermeable\n**OBLIGATORIO:** Uso solo durante servicio' },
 // SANCIONES ESPECÍFICAS
@@ -850,6 +851,144 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
 'rule_570': { 
     keywords: ["*prefectura coquimbo armas*","*oficinas armas coquimbo*","*donde tramitar arma region coquimbo*"], 
     response: '🤖🏛️ *PREFECTURA COQUIMBO - OFICINAS OS11*\n\n**A.F. 15 - LA SERENA:** 512651101\n**A.F. 16 - COQUIMBO:** 512651125\n**A.F. 17 - VICUÑA:** 512651170\n**A.F. 18 - OVALLE:** 532453016\n**A.F. 19 - COMBARBALÁ:** 532453072\n**A.F. 20 - ILLAPEL:** 532453134\n\n📋 Para más detalles escriba el nombre de la comuna' 
+},
+
+// PREGUNTAS FRECUENTES PLATAFORMA SPD Y LEY 21.659
+'rule_600': {
+    keywords: ["plataforma spd", "link spd", "pagina spd", "sitio spd", "web spd", "donde ingreso spd"],
+    response: '🤖💻 **PLATAFORMA SPD**\nLa plataforma oficial de la Subsecretaría de Prevención del Delito para trámites de seguridad privada es:\n👉 https://segprivada.minsegpublica.gob.cl/'
+},
+'rule_601': {
+    keywords: ["ingreso representante legal", "entrar representante", "clave única empresa", "como ingreso empresa"],
+    response: '🤖🔑 **INGRESO REPRESENTANTE LEGAL**\nSi usted es el representante legal de una empresa, podrá ingresar al sistema utilizando su **Clave Única**. Una vez dentro de la plataforma, deberá adjuntar una declaración jurada que acredite su calidad de representante legal.'
+},
+'rule_602': {
+    keywords: ["pagar en línea", "pago credenciales", "pagar credencial online", "pago online"],
+    response: '🤖💳 **PAGO EN LÍNEA**\nSí. Las credenciales podrán pagarse en línea a través de la plataforma. El sistema permitirá realizar el pago de manera directa y segura.'
+},
+'rule_603': {
+    keywords: ["error plataforma", "plataforma no funciona", "problemas tramite online", "soporte electrónico"],
+    response: '🤖⚠️ **ERRORES EN PLATAFORMA**\nEn caso de que la plataforma presente errores o no permite completar un trámite, deberá contactar al soporte electrónico para reportar la situación y recibir asistencia técnica.'
+},
+'rule_604': {
+    keywords: ["validez acreditaciones", "vigencia acreditaciones 2025", "acreditaciones después noviembre 2025"],
+    response: '🤖📅 **VIGENCIA ACREDITACIONES**\nLas autorizaciones otorgadas a personas naturales y jurídicas para ejercer actividades de seguridad privada y que se encuentren vigentes al 28 de noviembre de 2025, seguirán siendo válidas hasta la fecha de su vencimiento conforme con la legislación vigente a la época de su otorgamiento.'
+},
+'rule_605': {
+    keywords: ["que es seguridad privada", "definición seguridad privada"],
+    response: '🤖🛡️ **SEGURIDAD PRIVADA**\nEs el conjunto de actividades o medidas de carácter preventivas, coadyuvantes y complementarias de la seguridad pública, destinadas a la protección de personas, bienes y procesos productivos, desarrolladas en un área determinada y realizadas por personas naturales o jurídicas de derecho privado, debidamente autorizadas en la forma y condiciones que establece la ley N°21.659.'
+},
+'rule_606': {
+    keywords: ["a quien regula ley 21659", "alcance ley 21659", "quienes regula ley seguridad"],
+    response: '🤖📜 **ALCANCE LEY 21.659**\nRegula a las empresas y personas que prestan servicios de seguridad privada, así como a aquellas entidades que se encuentran obligadas a tener medidas de seguridad privada. Además, regula la realización de eventos masivos.'
+},
+'rule_607': {
+    keywords: ["autoridades fiscalizadoras", "quien fiscaliza", "autoridad fiscalizadora"],
+    response: '🤖👮 **AUTORIDADES FISCALIZADORAS**\n**Carabineros de Chile** es la autoridad fiscalizadora principal.\n\nEn recintos específicos:\n- **DIRECTEMAR:** Recintos portuarios/marítimos.\n- **DGAC:** Aeropuertos.\n- **Autoridad Militar:** Recintos bajo su control.'
+},
+'rule_608': {
+    keywords: ["función subsecretaría prevención delito", "rol spd", "spd ley 21659"],
+    response: '🤖🏛️ **ROL SUBSECRETARÍA (SPD)**\nLe corresponde autorizar, regular, supervigilar, controlar y ejercer las demás atribuciones legales en materia de seguridad privada. Actúa como órgano rector y vela por el cumplimiento del rol preventivo y coadyuvante de la seguridad pública.'
+},
+'rule_609': {
+    keywords: ["tipos de registros", "registros seguridad privada", "que registros existen"],
+    response: '🤖📂 **REGISTROS EXISTENTES**\n1. Entidades obligadas a tener medidas de seguridad.\n2. Entidades que voluntariamente adoptan medidas.\n3. Personas que ejercen funciones (guardias, vigilantes, etc.).\n4. Empresas de seguridad privada.\n5. Registro de sanciones.\n6. Registro de eventos masivos.\n*El registro es secreto, salvo excepciones legales.*'
+},
+'rule_610': {
+    keywords: ["sanciones ley 21659", "castigos ley 21659", "multas ley 21659"],
+    response: '🤖⚖️ **SANCIONES LEY 21.659**\nLas infracciones se sancionan con:\n- Multas.\n- Suspensión o revocación de autorización.\n- Clausura de la sucursal, agencia u oficina donde se cometió la infracción.'
+},
+'rule_611': {
+    keywords: ["quien sanciona", "competencia sanciones", "juzgado policía local seguridad privada"],
+    response: '🤖👨‍⚖️ **COMPETENCIA SANCIONES**\n- **Multas:** Juzgado de Policía Local (Ley 18.287).\n- **Suspensión/Revocación/Clausura:** Subsecretaría de Prevención del Delito.'
+},
+'rule_612': {
+    keywords: ["que es entidad obligada", "definición entidad obligada"],
+    response: '🤖🏢 **ENTIDAD OBLIGADA**\nSon entidades públicas o privadas obligadas a mantener medidas de seguridad privada porque su actividad genera un riesgo para la seguridad pública (alto, medio o bajo).'
+},
+'rule_613': {
+    keywords: ["medidas de seguridad privada", "que son medidas seguridad"],
+    response: '🤖🔒 **MEDIDAS DE SEGURIDAD**\nEs toda acción que involucre la implementación de recursos humanos, materiales, tecnológicos o procedimientos destinados a otorgar protección a personas y bienes dentro de un recinto o área determinada.'
+},
+'rule_614': {
+    keywords: ["cuales son entidades obligadas", "entidades obligadas por ley"],
+    response: '🤖📋 **ENTIDADES OBLIGADAS POR LEY**\n- Empresas de transporte de valores.\n- Instituciones bancarias y financieras.\n- Empresas de apoyo al giro bancario (con dinero).\n- Empresas de venta de combustible.'
+},
+'rule_615': {
+    keywords: ["quien declara entidad obligada", "organismo declara obligada"],
+    response: '🤖✍️ **DECLARACIÓN ENTIDAD OBLIGADA**\nLa **Subsecretaría de Prevención del Delito** es la autoridad competente para declarar a una entidad como obligada mediante resolución, previo informe de la autoridad fiscalizadora, considerando el nivel de riesgo.'
+},
+'rule_616': {
+    keywords: ["empresas obligadas decreto 3607", "transición entidades obligadas", "ley 19603 transición"],
+    response: '🤖🔄 **TRANSICIÓN ENTIDADES OBLIGADAS**\nSe mantendrán como obligadas por un máximo de **2 años** desde la vigencia de la Ley 21.659. En ese plazo, la SPD deberá determinarlas nuevamente como obligadas según su nivel de riesgo.'
+},
+'rule_617': {
+    keywords: ["que hacer si soy entidad obligada", "declarado entidad obligada"],
+    response: '🤖📝 **SI ES DECLARADO OBLIGADO**\nDebe elaborar un **estudio de seguridad** y presentarlo para aprobación ante la Subsecretaría de Prevención del Delito dentro del plazo legal. Puede contratar asesoría de una empresa de seguridad autorizada.'
+},
+'rule_618': {
+    keywords: ["matriz de factores de riesgo", "matriz riesgo seguridad privada"],
+    response: '🤖📊 **MATRIZ DE RIESGO**\nInstrumento para valorar y clasificar el riesgo (bajo, medio, alto) de una entidad, considerando peligros internos y externos que puedan afectar la seguridad pública.'
+},
+'rule_619': {
+    keywords: ["quien aplica matriz riesgo", "aplicación matriz riesgo"],
+    response: '🤖🔍 **APLICACIÓN MATRIZ**\nLa matriz es aplicada por la **Subsecretaría de Prevención del Delito**, organismo competente para su supervisión técnica e interpretación.'
+},
+'rule_620': {
+    keywords: ["nivel de riesgo medio", "entidad riesgo medio"],
+    response: '🤖🟠 **RIESGO MEDIO**\nLas entidades evaluadas con riesgo medio serán declaradas por la SPD como **entidades obligadas** a mantener medidas de seguridad privada.'
+},
+'rule_621': {
+    keywords: ["nivel de riesgo alto", "entidad riesgo alto", "sistema vigilancia privada obligatorio"],
+    response: '🤖🔴 **RIESGO ALTO**\nDeben incorporar un **Sistema de Vigilancia Privada**. Esto implica:\n- Estudio de seguridad exigente.\n- Organismo de seguridad interno (Jefe, Encargado, Encargado de Armas).\n- Vigilantes Privados y Guardias.\n*Siempre obligadas: Transporte valores, Bancos, Apoyo giro bancario.*'
+},
+'rule_622': {
+    keywords: ["que es estudio de seguridad", "definición estudio seguridad"],
+    response: '🤖📘 **ESTUDIO DE SEGURIDAD**\nInstrumento que identifica vulnerabilidades y establece la política de seguridad a implementar. Debe indicar medidas precisas y concretas. Se presenta ante la SPD para aprobación.'
+},
+'rule_623': {
+    keywords: ["vigencia estudio seguridad", "cuanto dura estudio seguridad"],
+    response: '🤖⏳ **VIGENCIA ESTUDIO SEGURIDAD**\n- **Regla general:** 4 años.\n- **Con sistema vigilancia privada:** 2 años.\n- **Transporte de valores:** 1 año.'
+},
+'rule_624': {
+    keywords: ["plazo implementar estudio seguridad", "tiempo implementar estudio"],
+    response: '🤖⏱️ **PLAZO IMPLEMENTACIÓN**\nLa entidad tiene un plazo de **30 días** para implementar el estudio de seguridad desde la notificación de la resolución que lo aprueba.'
+},
+'rule_625': {
+    keywords: ["entidades comparten infraestructura", "entidades mismo espacio"],
+    response: '🤖🤝 **ENTIDADES COMPARTIDAS**\nSi dos o más entidades obligadas comparten espacios, sus estudios de seguridad deben estar **coordinados**. Deben elaborar un protocolo conjunto con estrategias comunes.'
+},
+'rule_626': {
+    keywords: ["contenido sistema vigilancia privada", "que tiene sistema vigilancia"],
+    response: '🤖👁️ **SISTEMA VIGILANCIA PRIVADA**\nIntegrado por:\n- Organismo de seguridad interno.\n- Recursos tecnológicos y materiales.\n- Estudio de seguridad autorizado por la SPD.'
+},
+'rule_627': {
+    keywords: ["personal sistema vigilancia privada", "composicion sistema vigilancia"],
+    response: '🤖👥 **PERSONAL VIGILANCIA PRIVADA**\nEl organismo interno se compone de:\n- Jefe de Seguridad.\n- Encargado de Seguridad.\n- Encargados de Armas.\n- Vigilantes Privados.\n- Guardias de Seguridad de apoyo.'
+},
+'rule_628': {
+    keywords: ["quien dirige sistema vigilancia", "director sistema vigilancia"],
+    response: '🤖👨‍✈️ **DIRECCIÓN SISTEMA**\nSerá dirigido por el **Jefe de Seguridad**, quien debe estar autorizado por la Subsecretaría de Prevención del Delito.'
+},
+'rule_629': {
+    keywords: ["subcontratar sistema vigilancia", "vigilancia privada subcontratada"],
+    response: '🤖📝 **SUBCONTRATACIÓN**\nSí, puede ser propio o subcontratado. En ambos casos aplican las obligaciones de la Ley 21.659. Los vigilantes son trabajadores dependientes (Código del Trabajo). El armamento siempre es propiedad de la entidad obligada (comodato).'
+},
+'rule_630': {
+    keywords: ["que es empresa seguridad privada", "definición empresa seguridad"],
+    response: '🤖🏢 **EMPRESA SEGURIDAD PRIVADA**\nTienen por objeto suministrar bienes o servicios de protección. Deben disponer de medios materiales, técnicos y humanos, y estar autorizadas por la SPD.'
+},
+'rule_631': {
+    keywords: ["requisitos empresa seguridad privada", "autorizar empresa seguridad"],
+    response: '🤖✅ **REQUISITOS EMPRESA SEGURIDAD**\n- Persona jurídica de derecho privado.\n- Objeto social específico.\n- Medios humanos/técnicos/financieros.\n- Seguros para el personal.\n- Socios/representantes sin condenas (crimen/simple delito) ni acusaciones por leyes específicas (armas, drogas, terrorismo, etc.).\n- No haber dejado FF.AA./Orden por medida disciplinaria (últimos 5 años).'
+},
+'rule_632': {
+    keywords: ["vigencia autorización empresa seguridad", "duración autorización empresa"],
+    response: '🤖📅 **VIGENCIA AUTORIZACIÓN EMPRESA**\nLa autorización para actuar como empresa de seguridad privada tiene una vigencia de **4 años**.'
+},
+'rule_633': {
+    keywords: ["empresa seguridad electrónica", "que es empresa seguridad electrónica"],
+    response: '🤖📹 **EMPRESA SEGURIDAD ELECTRÓNICA**\nObjeto: Instalación/mantenimiento de sistemas de seguridad, alarmas, videovigilancia y operación de centrales. Deben estar autorizadas por la SPD.'
 }
     
 };
@@ -873,4 +1012,3 @@ window.systemPrompt = systemPrompt;
 
 // Verificación
 console.log(`✅ ${Object.keys(responses).length} reglas cargadas correctamente`);
-
