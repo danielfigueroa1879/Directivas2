@@ -1051,6 +1051,54 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
     'rule_nueva_18': { keywords: ["transporte valores", "blindados"], response: '🤖🚛 **TRANSPORTE VALORES:** Solo vigilantes autorizados armados. Mínimo 3 por vehículo. Blindaje certificado, GPS.' },
     'rule_nueva_19': { keywords: ["carga sobredimensionada", "escolta carga"], response: '🤖🚚 **CARGA SOBREDIMENSIONADA:** Ministerio Transportes autoriza servicios seguridad. Email: spd-cargadimensionada@minsegpublica.gob.cl' },
     'rule_nueva_20': { keywords: ["agravante penal", "delito contra guardia"], response: '🤖⚖️ **AGRAVANTE PENAL (Art. 118):** Nuevo Art. 12 N°24 Código Penal. Delito contra personal seguridad en servicio aumenta pena.' }
+    ,
+    
+    // ==================== NUEVAS REGLAS AGREGADAS ====================
+    
+    'rule_directiva_duracion': { 
+        keywords: ["duracion directiva", "vigencia directiva", "cuanto dura directiva", "directiva 3 años"], 
+        response: '🤖📋 **DURACIÓN DIRECTIVA DE FUNCIONAMIENTO (Art. 92 Decreto 209):**\n\n**VIGENCIA:** 3 AÑOS desde notificación de resolución aprobatoria.\n\n**RENOVACIÓN:** Transcurrido el plazo, debe presentar nueva directiva actualizada.\n\n**EXCEPCIÓN:** Servicios temporales (eventos masivos, construcción condominios): vigencia por duración de la actividad.\n\n**PRESENTACIÓN:** 15 días hábiles antes del inicio del servicio ante SPD.' 
+    },
+    
+    'rule_duraciones_componentes': {
+        keywords: ["duracion componentes", "vigencia certificacion", "cuanto tiempo dura", "cada cuanto renovar componentes"],
+        response: '🤖⏳ **DURACIÓN CERTIFICACIONES - COMPONENTES DEL SISTEMA:**\n\n**VIGILANTE PRIVADO:**\n✅ Certificación: 2 AÑOS (Art. 60 Ley 21.659)\n✅ Perfeccionamiento: cada 2 años (40 hrs)\n\n**GUARDIA DE SEGURIDAD:**\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n\n**PORTERO/NOCHERO/RONDÍN:**\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n\n**SUPERVISOR:**\n✅ Curso: 120 hrs (válido 4 años)\n\n**ENCARGADO:**\n✅ Curso: 120 hrs\n\n**JEFE DE SEGURIDAD:**\n✅ Diplomado: 400 hrs\n\n**ASESOR:**\n✅ Diplomado: 400 hrs\n\n**DIRECTIVA FUNCIONAMIENTO:**\n✅ Vigencia: 3 AÑOS\n\n**NO requiere nuevo curso si cambia empleador dentro del plazo.**'
+    },
+    
+    'rule_vigilante_duracion': {
+        keywords: ["cuanto dura vigilante", "vigencia vigilante", "renovacion vigilante"],
+        response: '🤖👮 **VIGILANTE PRIVADO - DURACIÓN:**\n\n✅ Certificación: 2 AÑOS\n✅ Perfeccionamiento: cada 2 años (40 horas)\n✅ NO requiere curso nuevo al cambiar empleador'
+    },
+    
+    'rule_guardia_duracion': {
+        keywords: ["cuanto dura guardia", "vigencia guardia", "renovacion guardia"],
+        response: '🤖🛡️ **GUARDIA DE SEGURIDAD - DURACIÓN:**\n\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n✅ NO requiere curso nuevo al cambiar empleador'
+    },
+    
+    'rule_supervisor_duracion': {
+        keywords: ["cuanto dura supervisor", "vigencia supervisor"],
+        response: '🤖👀 **SUPERVISOR - DURACIÓN:**\n\n✅ Curso: 120 horas (mínimo)\n✅ Si tiene curso guardia: +30 hrs supervisión\n✅ Si tiene curso vigilante: +20 hrs supervisión\n✅ Cursos válidos 4 años antes de postulación'
+    },
+    
+    'rule_jefe_duracion': {
+        keywords: ["cuanto dura jefe", "vigencia jefe seguridad"],
+        response: '🤖👨‍✈️ **JEFE DE SEGURIDAD - DURACIÓN:**\n\n✅ Diplomado: 400 horas académicas\n✅ Si requiere vigilante privado: certificación 2 años'
+    },
+    
+    'rule_asesor_duracion': {
+        keywords: ["cuanto dura asesor", "vigencia asesor"],
+        response: '🤖💼 **ASESOR DE SEGURIDAD - DURACIÓN:**\n\n✅ Diplomado: 400 horas académicas\n✅ Título profesional área seguridad\n✅ Autorización SPD'
+    },
+    
+    'rule_encargado_duracion': {
+        keywords: ["cuanto dura encargado", "vigencia encargado"],
+        response: '🤖🔧 **ENCARGADO DE SEGURIDAD - DURACIÓN:**\n\n✅ Curso: 120 horas académicas mínimo\n✅ Área seguridad o materias afines'
+    },
+    
+    'rule_portero_duracion': {
+        keywords: ["cuanto dura portero", "vigencia portero", "nochero duracion"],
+        response: '🤖🚪 **PORTERO/NOCHERO/RONDÍN - DURACIÓN:**\n\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n✅ NO requiere curso nuevo al cambiar empleador'
+    }
     
 };
 
