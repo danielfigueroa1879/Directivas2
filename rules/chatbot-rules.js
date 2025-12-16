@@ -60,7 +60,7 @@ const responses = {
     'rule_91': { keywords: ["mantra"], response: '*Mantra*\n\nOm: Om es la sílaba semilla que sintoniza cualquier mantra que se recita en su vibración' },
     'rule_92': { keywords: ["usuario diploma"], response: '*PAGINA DIPLOMADO* https://centropyc.carabineros.cl/acipol/login/index.php Usuario: 982083a Contraseña: Flor9820&' },
     'rule_93': { keywords: ["auditorias empresa de capacitacion","auditorias empresas de capacitacion","auditoria empresa de capacitacion","auditoria empresas de capacitacion"], response: ',👮🏼*AUDITORIAS EMPRESA CAPACITACIÓN 2024*\n\nhttps://dal5.short.gy/AuCap' },
-    'rule_95': { keywords: ["*independiente*","*credencial independiente*","*credencial independientes*"], response: '🤖 *INDEPENDIENTE 2025* \n*Descargar Guía:* \nhttps://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb' },
+    'rule_95': { keywords: ["*independiente*","*credencial independiente*","*credencial independientes*"], response: '🤖🚫 **Credencial Independiente (Eliminada)**\nCon la nueva Ley 21.659, la figura del guardia independiente que tramita su propia credencial ya no existe. Todo el personal de seguridad debe estar contratado y acreditado a través de una empresa de seguridad autorizada o una entidad obligada.' },
     'rule_96': { keywords: ["medidas"], response: '🤖🧙🏻‍♂️ *MEDIDAS DE SEGURIDAD*\n➢ *MED.EDITABLE:* https://dal5.short.gy/M3' },
     'rule_98': { keywords: ["Valores","cuanto cuesta","cual es el valor","valor plan","valores planes","valores plan","*valor*","*cuesta*"], response: '🤖🧙🏻‍♂️ *AQUI ESTAN LOS VALORES SEGUNDO SEMESTRE*\n **1 CREDENCIAL**\n https://dal5.short.gy/val **2 CREDENCIAL EMPRESA**\n https://dal5.short.gy/C.emp  **3 CURSO FORMACIÓN**\n https://dal5.short.gy/Form  **4 CURSO PERFECCIONAMIENTO**\n https://dal5.short.gy/BjzkHI **5 VALOR PLAN**\n https://os10.short.gy/Pl4n' },
     'rule_102': { keywords: ["no hay sistema"], response: '🤖 *NO HAY SISTEMA CENTRAL ACTUALMENTE*\nLa resolución 3632 del 30 de Noviembre de 2023 establece que actualmente no existe un sistema central de registro.' },
@@ -72,7 +72,7 @@ const responses = {
     'rule_109': { keywords: ["decreto 32"], response: '*DECRETO 32/2024*\nModifica decreto 261\nhttps://www.zosepcar.cl/content/OS10/Resol_32.pdf' },
     'rule_110': { keywords: ["*editable*","*documentos word*"], response: '🤖 *DOCUMENTOS EDITABLES EN WORD*\n✅ Estudio\n✅ Plan\n✅ Medidas\n✅ Directiva\n✅ Todos@ ' },
     'rule_111': { keywords: ["nueva ley"], response: '🤖 *NUEVA LEY SEGURIDAD PRIVADA*\nLey 21.659 del 21 de marzo de 2024\nhttps://dal5.short.gy/LeySeg **Decreto 209**\n https://os10.short.gy/J88sfJ **APRUEBA REGLAMENTO DE SEGURIDAD PRIVADA** https://os10.short.gy/209 ' },
-    'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor\n- Independiente' },
+    'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor' },
     'rule_113': { keywords: ["vigilante privado"], response: '🤖 *VIGILANTE PRIVADO*\nSimilar a guardia de seguridad pero con funciones específicas\nhttps://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado.pdf' },
     'rule_149': { keywords: ["empresas recursos humanos"], response: '🤖 *EMPRESAS DE RECURSOS HUMANOS*\nAutorización especial para intermediación laboral\nRequisitos específicos' },
     'rule_150': { keywords: ["*supermercados*","*sobre 500 uf*","*requisitos sobre 500 uf*"], response: '🤖 *REQUISITOS SOBRE 500 UF.*\n\nhttps://dal5.short.gy/S500' },
@@ -109,7 +109,7 @@ const responses = {
     'rule_194': { keywords: ["14 puntos cajeros"], response: '🤖 *14 PUNTOS CAJEROS*\n\nMi XXXXXXX se informa el siguiente procedimiento' },
     'rule_195': { keywords: ["*¿los días de votación serán feriados?"], response: '*¿Los días de votación serán feriados?*\n\nSí. El sábado 26 de octubre será feriado normal, por lo que el comercio podrá abrir. Mientras que el domingo 27 de octubre será feriado irrenunciable.' },
     'rule_197': { keywords: ["colores"], response: '🤖 *Colores votaciones* \nhttps://drive.google.com/file/d/1qAQoR_DRaXl8Cgzfueyx2ggh2LL_caBh/view?usp=drivesdk' },
-    'rule_198': { keywords: ["*para tramitar una credencial de guardia*","tipos de credencial","cuanto tipos de credenciales"], response: '👮🏽‍♂️👉🏼 Existen dos tipos de credenciales para guardia de seguridad, escribe lo que está con negrillas del que necesitas:\n*1. Independiente:* (solo eventos)\n*2. Credencial Empresa* (instalación empresa)' },
+    'rule_198': { keywords: ["*para tramitar una credencial de guardia*","tipos de credencial","cuanto tipos de credenciales"], response: '👮🏽‍♂️👉🏼 Bajo la nueva Ley 21.659, solo existe un tipo de credencial para guardias, la cual se tramita siempre a través de una **Empresa de Seguridad** autorizada. La figura del guardia independiente fue eliminada.' },
     'rule_201': { keywords: ["y tiene los valores","y tiene los valores del plan","credenciales empresa","los valores","valores credencial","valor","cual es el valor","cuanto cuesta","plan"], response: 'Si, claro: 🤖🧙🏻‍♂️ *AQUI ESTAN LOS VALORES 2DO. SEMESTRE 2024*\n\n1.- *CREDENCIAL*\nhttps://bit.ly/3vmqEvz' },
     'rule_202': { keywords: ["registro ingreso biometrico"], response: '🤖👉🏼 *Registro ingreso Biométrico*\n\nhttps://dal5.short.gy/Reg' },
     'rule_203': { keywords: ["sacar cantidad de guardias por evento","guardia por evento","cantidad de guardias","cuantos guardias","guardias por evento"], response: '🤖👮🏼‍♂️👉🏼 *CANTIDAD DE GUARDIA POR EVENTO:* \n \n*Link:*\n*https://dal5.short.gy/GGSS*' },
@@ -124,8 +124,8 @@ const responses = {
     'rule_220': { keywords: ["pagina"], response: '🧙🏼‍♂️ *PAGINA CIBERSEGURIDAD*\n*https://dal5.short.gy/C25*' },
     'rule_223': { keywords: ["cédula","cédula de identidad"], response: '*CÉDULA DE IDENTIDAD 2025*\nhttps://dal5.short.gy/Ce' },
     'rule_238': { keywords: ["pensiones","calculo pensión","jubilación","retiro","pensión","retirarme","retirarse"], response: '🧙🏼‍♂️ *Calculo Pensiones*\ndal5.short.gy/Pens' },
-    'rule_239': { keywords: ["directiva","directiva de funcionamiento","directivas","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🤖 *PAGINA PARA:*\n*1.- PRESENTAR DIRECTIVA.*\n*2.- CREDENCIAL EMPRESA.*\n*3.- CRED. INDEPENDIENTE.*' },
-    'rule_240': { keywords: ["*credencial empresa*","credencial empleador","cred empresa","*credenciales empresas*","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: '🤖 **TIPOS DE CREDENCIALES:**\n- 🏢 **Credencial Empresa:** Para trabajadores vinculados a empresas\n- 👤 **Credencial Independiente:** independientes\n\n📞 Consultas: 512651024' },
+    'rule_239': { keywords: ["directiva","directiva de funcionamiento","directivas","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🤖 *PAGINA PARA:*\n*1.- PRESENTAR DIRECTIVA.*\n*2.- CREDENCIAL EMPRESA.*' },
+    'rule_240': { keywords: ["*credencial empresa*","credencial empleador","cred empresa","*credenciales empresas*","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: '🤖 **ACREDITACIÓN DE PERSONAL**\nBajo la nueva Ley 21.659, toda credencial debe ser tramitada por una **Empresa de Seguridad** autorizada o una entidad obligada. La credencial de "independiente" ya no existe. El personal siempre debe estar vinculado a un empleador.\n\n📞 Consultas: 512651024' },
     'rule_242': { keywords: ["sin directiva funcionamiento","empresa sin directiva","falta directiva"], response: '🤖📋 Una empresa NO puede operar sin Directiva de Funcionamiento aprobada. Es requisito obligatorio según DL 3607 art. 2°. La autorización se otorga por Decreto del Ministerio del Interior previo informe favorable de Carabineros.' },
     'rule_243': { keywords: ["realizaron examen","los que realizaron el examen","enviar el resultado examen","enviar resultado","enviar resultados"], response: '🤖 👮🏼‍♂️\n1.- Los que están con rojo sacaron bajo el 60% y están reprobados' },
     'rule_244': { keywords: ["usuario portal","portal usuario","portal de usuario","usuario"], response: '🧙🏼‍♂️\nhttps://dal5.short.gy/U53' },
@@ -989,6 +989,30 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
 'rule_633': {
     keywords: ["empresa seguridad electrónica", "que es empresa seguridad electrónica"],
     response: '🤖📹 **EMPRESA SEGURIDAD ELECTRÓNICA**\nObjeto: Instalación/mantenimiento de sistemas de seguridad, alarmas, videovigilancia y operación de centrales. Deben estar autorizadas por la SPD.'
+},
+'rule_634': {
+    keywords: ["correo otec", "email otec", "contacto otec", "carga sobredimensionada", "correo carga", "persona natural spd", "persona juridica spd", "spd cargadimensionada"],
+    response: '🤖📋 **CONTACTO OTEC Y CARGA (SPD)**\nSi la plataforma no funciona, contacta por correo a:\n👉 **spd-cargadimensionada@minsegpublica.gob.cl**\n\n**Temas:**\n- Organismos Técnicos de Capacitación (OTEC)\n- Consultas sobre carga sobredimensionada\n- Trámites para personas naturales y jurídicas'
+},
+'rule_635': {
+    keywords: ["correo capacitacion", "email capacitacion", "contacto capacitacion", "planes capacitacion", "programas formacion", "cursos spd", "spd capacitacion"],
+    response: '🤖🎓 **CONTACTO CAPACITACIÓN (SPD)**\nSi la plataforma no funciona, contacta por correo a:\n👉 **spd-capacitacionessp@minsegpublica.gob.cl**\n\n**Temas:**\n- Consultas sobre planes de capacitación\n- Programas de formación en seguridad privada\n- Información sobre cursos disponibles'
+},
+'rule_636': {
+    keywords: ["correos spd", "emails spd", "contactos spd", "a quien escribir spd", "soporte spd", "ayuda correo"],
+    response: '🤖📬 **CONTACTO POR CORREO ELECTRÓNICO SPD**\nSi la plataforma no funciona:\n\n1️⃣ **OTEC y Carga:** spd-cargadimensionada@minsegpublica.gob.cl\n2️⃣ **Capacitación:** spd-capacitacionessp@minsegpublica.gob.cl'
+},
+'rule_637': {
+    keywords: ["plataforma ley 21659", "cuando funciona plataforma", "modulos plataforma", "implementacion plataforma", "plazos plataforma"],
+    response: '🤖💻 **IMPLEMENTACIÓN PLATAFORMA LEY 21.659**\nLa plataforma debe estar operativa máx. 1 año desde vigencia de la ley. \n\n**Al 28 de Noviembre 2025 estarán listos los módulos:**\n1. **Entidades Obligadas:** Estudios y planes.\n2. **Personas Naturales:** Guardias, Vigilantes, Capacitadores (Solicitudes ante SPD).\n3. **Instituciones Capacitación:** Solicitud autorización.\n4. **Eventos Masivos:** Solicitudes organizadores.'
+},
+'rule_638': {
+    keywords: ["tramite presencial", "donde presentar solicitud", "modulos no activos", "tramite carabineros", "donde ir si no hay plataforma"],
+    response: '🤖👮 **TRÁMITE TRANSITORIO (Módulos no activos)**\nMientras no funcionen los módulos en la plataforma, las solicitudes deben presentarse ante la **Prefectura de Carabineros** respectiva.\n\n*Excepción:* En puertos, aeropuertos o recintos militares, ante la autoridad institucional correspondiente (DIRECTEMAR, DGAC, etc.).'
+},
+'rule_639': {
+    keywords: ["tramite transitorio spd", "correo carga sobredimensionada", "correo planes capacitacion", "tramitacion transitoria", "excepcion carabineros"],
+    response: '🤖📧 **TRAMITACIÓN TRANSITORIA SPD (Vía Email)**\nSe exceptúan del trámite en Carabineros y se envían por email (PDF) a la SPD:\n\n1. **Carga Sobredimensionada:**\n📧 spd-cargadimensionada@minsegpublica.gob.cl\n\n2. **Planes y Programas Capacitación (OTEC):**\n📧 spd-capacitacionessp@minsegpublica.gob.cl\n\n*Vigente hasta implementación de módulos electrónicos.*'
 }
     
 };
