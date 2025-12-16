@@ -712,27 +712,18 @@
              <div class="has-submenu">
                 <button class="submenu-parent-btn">Componentes <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
                 <div class="submenu submenu-compact">
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
-                    <!-- Jefe de Seguridad Item -->
-                    <div class="has-submenu jefe-item">
-                        <button id="jefe-trigger-btn" class="submenu-parent-btn" onclick="document.getElementById('jefe-megamenu').classList.add('show'); event.stopPropagation();">
-                            <span>3. Jefe de Seguridad</span>
-                        </button>
-                    </div>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
-                    <div class="has-submenu asesor-item">
-                        <button id="asesor-trigger-btn" class="submenu-parent-btn" onclick="document.getElementById('asesor-megamenu').classList.add('show'); event.stopPropagation();">
-                            <span>6. Asesor</span>
-                        </button>
-                    </div>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf')">10. Instalador Técnico</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf')">11. Operador de CC.TV.</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
+                    <button onclick="mostrarRequisitos('vigilante')">1. Vigilante Privado</button>
+                    <button onclick="mostrarRequisitos('guardia')">2. Guardia de Seguridad</button>
+                    <button onclick="mostrarRequisitos('jefe')">3. Jefe de Seguridad</button>
+                    <button onclick="mostrarRequisitos('encargado')">4. Encargado de Seguridad</button>
+                    <button onclick="mostrarRequisitos('supervisor')">5. Supervisor de Seguridad</button>
+                    <button onclick="mostrarRequisitos('asesor')">6. Asesor de Seguridad</button>
+                    <button onclick="mostrarRequisitos('capacitador')">7. Capacitador</button>
+                    <button onclick="mostrarRequisitos('tecnico')">8. Técnico en Seguridad</button>
+                    <button onclick="mostrarRequisitos('instalador')">9. Instalador Técnico</button>
+                    <button onclick="mostrarRequisitos('operador')">10. Operador de Cámaras</button>
+                    <button onclick="mostrarRequisitos('portero')">11. Portero/Nochero/Rondín</button>
+                    <button onclick="mostrarRequisitos('encargadoArmas')">12. Encargado de Armas</button>
                 </div>
             </div>
             <div class="has-submenu">
