@@ -1,5 +1,5 @@
-// sw.js - Service Worker
-const CACHE_NAME = 'directivas-os10-cache-v1.9'; // Versión incrementada para forzar la actualización
+// sw.js - Service Worker Optimizado
+const CACHE_NAME = 'directivas-os10-cache-v2.0'; // Versión incrementada para forzar la actualización
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
@@ -7,12 +7,21 @@ const urlsToCache = [
   './index.html',
   './manifest.json',
   './assets/css/styles.css?v=25',
+  './assets/css/carousel.css',
   './assets/css/credenciales.css',
-  './assets/js/main.js?v=2',
-  './assets/js/inicio.js?v=5',
+  './assets/css/search.css?v=1',
+  './assets/css/custom-styles.css',
+  './assets/js/main.js',
+  './assets/js/inicio.js?v=4',
+  './assets/js/carousel.js',
   './assets/js/credenciales.js',
-  './assets/js/chatbot.js?v=2',
-  './rules/chatbot-rules.js?v=2',
+  './assets/js/chatbot.js',
+  './assets/js/search.js?v=1',
+  './assets/js/spd-componentes.js?v=2',
+  './assets/js/firebase-counter.js',
+  './assets/js/ui-enhancements.js',
+  './assets/js/pdf-generator.js',
+  './rules/chatbot-rules.js',
   // Iconos y logos
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',
@@ -103,31 +112,63 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Evento 'fetch': Implementa una estrategia "Network first, then cache".
+// Evento 'fetch': Estrategia híbrida optimizada
 self.addEventListener('fetch', (event) => {
   // Ignorar peticiones que no son GET o son de extensiones.
-  if (event.request.method !== 'GET' || event.request.url.startsWith('chrome-extension://') || event.request.url.startsWith('moz-extension://') || event.request.url.includes('netlify/functions/')) {
+  if (event.request.method !== 'GET' ||
+      event.request.url.startsWith('chrome-extension://') ||
+      event.request.url.startsWith('moz-extension://') ||
+      event.request.url.includes('netlify/functions/') ||
+      event.request.url.includes('firebasejs') ||
+      event.request.url.includes('firebase')) {
     return;
   }
 
-  event.respondWith(
-    // 1. Intentar ir a la red primero.
-    fetch(event.request).then(networkResponse => {
-      // Si la petición a la red es exitosa...
-      return caches.open(CACHE_NAME).then(cache => {
-        // ...guardamos una copia en el caché para uso futuro (offline).
-        // Solo cacheamos respuestas 'basic' para evitar errores.
-        if (networkResponse.type === 'basic') {
-          cache.put(event.request, networkResponse.clone());
+  const url = new URL(event.request.url);
+
+  // Estrategia "Cache First" para recursos estáticos (mejor rendimiento)
+  const isStaticAsset = url.pathname.match(/\.(css|js|webp|png|jpg|jpeg|svg|woff2?|ttf)$/i);
+
+  if (isStaticAsset) {
+    event.respondWith(
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          // Devolver del cache y actualizar en background
+          fetch(event.request).then(networkResponse => {
+            if (networkResponse && networkResponse.status === 200) {
+              caches.open(CACHE_NAME).then(cache => {
+                cache.put(event.request, networkResponse.clone());
+              });
+            }
+          }).catch(() => {});
+          return cachedResponse;
         }
-        // Y devolvemos la respuesta de la red al navegador.
-        return networkResponse;
-      });
-    }).catch(() => {
-      // 2. Si la petición a la red falla (ej. sin conexión)...
-      // ...buscamos el recurso en el caché.
-      console.log(`🔌 Sin red, buscando en caché: ${event.request.url}`);
-      return caches.match(event.request);
-    })
-  );
+        // Si no está en cache, ir a la red
+        return fetch(event.request).then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            return caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, networkResponse.clone());
+              return networkResponse;
+            });
+          }
+          return networkResponse;
+        });
+      })
+    );
+  } else {
+    // Estrategia "Network First" para HTML y datos dinámicos
+    event.respondWith(
+      fetch(event.request).then(networkResponse => {
+        return caches.open(CACHE_NAME).then(cache => {
+          if (networkResponse.type === 'basic' && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        });
+      }).catch(() => {
+        console.log(`🔌 Sin red, buscando en caché: ${event.request.url}`);
+        return caches.match(event.request);
+      })
+    );
+  }
 });
