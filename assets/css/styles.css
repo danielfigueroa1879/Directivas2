@@ -382,8 +382,8 @@ body.homepage {
 @media (min-width: 1024px) {
     .asesor-megamenu {
         width: 48rem;
-        left: 50%;
-        margin-left: -24rem;
+        left: 320px; /* Se posiciona justo al lado derecho del menú lateral (que tiene width: 320px) */
+        margin-left: 0; /* Eliminamos el margen negativo para centrarlo */
         right: auto;
         bottom: auto;
         border-radius: 0 0 12px 12px;
