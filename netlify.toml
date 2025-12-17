@@ -1,64 +1,9 @@
-# netlify.toml - Configuración optimizada
+# netlify.toml
 
 # Configuración base de construcción del sitio.
 [build]
   # Le dice a Netlify dónde encontrar las funciones del servidor.
   functions = "netlify/functions/"
-  # Publicar directorio raíz
-  publish = "."
-
-# Headers de optimización de rendimiento
-[[headers]]
-  for = "/*"
-  [headers.values]
-    # Compresión
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Headers para archivos estáticos - Cache agresivo
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Headers para fonts
-[[headers]]
-  for = "/assets/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Access-Control-Allow-Origin = "*"
-
-# Headers para HTML - Cache corto
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# Headers para Service Worker - Sin cache para actualizaciones inmediatas
-[[headers]]
-  for = "/sw.js"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-    Service-Worker-Allowed = "/"
-
-# Headers para manifest
-[[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-    Content-Type = "application/manifest+json"
 
 # Redirección específica y segura para nuestra API.
 [[redirects]]

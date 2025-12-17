@@ -30,16 +30,9 @@
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.gstatic.com">
-    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com">
-    <link rel="dns-prefetch" href="https://firebaseapp.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preload" href="assets/images/foto%20(1).webp" as="image" fetchpriority="high">
     <link rel="preload" href="assets/css/styles.css" as="style">
-    <link rel="preload" href="assets/css/carousel.css" as="style">
-    <link rel="preload" href="assets/css/custom-styles.css" as="style">
-    <link rel="preload" href="assets/js/main.js" as="script">
-    <link rel="preload" href="assets/js/inicio.js" as="script">
     <link rel="stylesheet" href="assets/css/carousel.css">
     <style>
         /* --- OPTIMIZACIÓN DE SCROLL AÑADIDA --- */
@@ -1761,14 +1754,309 @@
     <script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
-    <script type="module" src="assets/js/firebase-counter.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        const firebaseConfig = { apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U", authDomain: "cuenta-946e2.firebaseapp.com", projectId: "cuenta-946e2", storageBucket: "cuenta-946e2.firebasestorage.app", messagingSenderId: "816979648502", appId: "1:816979648502:web:809beffeea8ba7968031d7", measurementId: "G-RX9KZSC0F4" };
+        async function runCounter() {
+            const counterSpan = document.getElementById('visit-counter');
+            try {
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                await signInAnonymously(auth);
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    let count = 1;
+                    if (counterDoc.exists()) { count = counterDoc.data().count + 1; transaction.update(counterRef, { count: count }); } else { transaction.set(counterRef, { count: count }); }
+                    return count;
+                });
+                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+            } catch (error) {
+                console.error("ERROR: Counter process failed.", error);
+                if (counterSpan) counterSpan.textContent = "Error";
+            }
+        }
+        runCounter();
+    </script>
     <script src="./rules/chatbot-rules.js"></script>
     <script src="assets/js/chatbot.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then(reg => console.log('✅ SW registered'), err => console.error('❌ SW registration failed', err));
+            });
+        }
+    </script>
+      <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const suspensionNotice = document.getElementById('suspension-notice');
+    if (suspensionNotice) {
+        setTimeout(() => {
+            suspensionNotice.classList.add('show');
+        }, 500);
+        setTimeout(() => {
+            suspensionNotice.classList.remove('show');
+            suspensionNotice.classList.add('hide');
+            setTimeout(() => {
+                suspensionNotice.style.display = 'none';
+            }, 500);
+        }, 7500);
+    }
+});
+</script>
+<!-- SCRIPT PARA ACORDEÓN (AÑADIDO) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Función reutilizable para configurar cada sección colapsable
+            function setupAccordion(toggleId, contentId, arrowId) {
+                const toggleButton = document.getElementById(toggleId);
+                const contentElement = document.getElementById(contentId);
+                const arrowElement = document.getElementById(arrowId);
+                // Nos aseguramos que todos los elementos existan antes de agregar el evento
+                if (toggleButton && contentElement && arrowElement) {
+                    toggleButton.addEventListener('click', function() {
+                        // Muestra u oculta el contenido
+                        contentElement.classList.toggle('hidden');
+                        // Gira la flecha
+                        arrowElement.classList.toggle('rotate-90');
+                    });
+                }
+            }
+            // Configurar las tres secciones
+            setupAccordion('leyes-toggle', 'leyes-content', 'leyes-arrow');
+            setupAccordion('decretos-toggle', 'decretos-content', 'decretos-arrow');
+            setupAccordion('resoluciones-toggle', 'resoluciones-content', 'resoluciones-arrow');
+            // Similar para la sección de Documentos (si se quisiera)
+            setupAccordion('docs-editables-toggle', 'docs-editables-content', 'docs-editables-arrow');
+            setupAccordion('modelos-solicitud-toggle', 'modelos-solicitud-content', 'modelos-solicitud-arrow');
+            setupAccordion('manuales-toggle', 'manuales-content', 'manuales-arrow');
+        });
+    </script>
+    
+    <!-- ✨ SCRIPT PARA ANIMACIÓN SPD -->
+    <script>
+        (function() {
+            // Función para animar un elemento SPD
+            function animarTextoSPD(elementoId) {
+                const textoElement = document.getElementById(elementoId);
+                if (!textoElement) {
+                    console.error('No se encontró el elemento:', elementoId);
+                    return;
+                }
+                
+                const textos = ['SPD', 'SUBSECRETARÍA PREV. DELITO'];
+                let indiceActual = 0;
+                
+                function alternarTexto() {
+                    // Fade out
+                    textoElement.classList.add('fade-out');
+                    
+                    // Después de 600ms cambiar el texto
+                    setTimeout(function() {
+                        indiceActual = (indiceActual + 1) % textos.length;
+                        textoElement.textContent = textos[indiceActual];
+                        
+                        // Fade in
+                        textoElement.classList.remove('fade-out');
+                    }, 600);
+                }
+                
+                // Alternar cada 3 segundos
+                setInterval(alternarTexto, 3000);
+            }
+            
+            // Iniciar animación cuando el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    animarTextoSPD('texto-spd-mobile');
+                    animarTextoSPD('texto-spd-desktop');
+                });
+            } else {
+                animarTextoSPD('texto-spd-mobile');
+                animarTextoSPD('texto-spd-desktop');
+            }
+        })();
+    </script>
+    
+    <script>
+        // Función para manejar el clic en SPD y redirigir a spd.html
+        function handleSPD() {
+            window.location.href = 'spd.html';
+        }
+    </script>
+    
     <script src="assets/js/search.js?v=1"></script>
     <!-- Biblioteca para generar PDFs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="assets/js/spd-componentes.js?v=2"></script>
-    <script src="assets/js/ui-enhancements.js" defer></script>
-    <script src="assets/js/pdf-generator.js" defer></script>
+    
+    <!-- Función para descargar contenido en PDF con animación -->
+    <script>
+        // Función para descargar el contenido del modal en PDF
+        function descargarModalPDF(tipo) {
+            // Obtener el título del modal
+            const titulo = document.getElementById('modalTitulo').textContent;
+            const contenido = document.getElementById('modalContenido');
+            
+            // Mostrar animación PRIMERO
+            const animacion = document.getElementById('pdfDownloadAnimation');
+            if (animacion) {
+                animacion.classList.add('active');
+                setTimeout(() => {
+                    animacion.classList.remove('active');
+                }, 5500);
+            }
+            
+            // ESPERAR 2 SEGUNDOS antes de generar el PDF
+            // Esto permite que la animación se vea primero
+            setTimeout(() => {
+                // Crear un contenedor temporal con el contenido
+                const contenedorTemp = document.createElement('div');
+                contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
+                
+                // Agregar título
+                const tituloElement = document.createElement('h1');
+                tituloElement.textContent = titulo;
+                tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
+                contenedorTemp.appendChild(tituloElement);
+                
+                // Clonar el contenido del modal
+                const contenidoClone = contenido.cloneNode(true);
+                
+                // Ocultar botón de descarga en el clon
+                const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
+                if (botonPDF) {
+                    botonPDF.remove();
+                }
+                
+                // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
+                contenidoClone.style.cssText = 'margin: 0; padding: 0;';
+                
+                // Aplicar estilos a TODOS los elementos para flujo continuo
+                const todosLosElementos = contenidoClone.querySelectorAll('*');
+                todosLosElementos.forEach(elemento => {
+                    // Eliminar márgenes verticales grandes
+                    if (elemento.style.marginTop) elemento.style.marginTop = '0';
+                    if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
+                    if (elemento.style.paddingTop) elemento.style.paddingTop = '0';
+                    if (elemento.style.paddingBottom) elemento.style.paddingBottom = '0';
+                    
+                    // Aplicar márgenes pequeños a secciones
+                    if (elemento.classList.contains('requisito-section-componentes')) {
+                        elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
+                    }
+                    
+                    // Aplicar estilos a items
+                    if (elemento.classList.contains('requisito-item-componentes')) {
+                        elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
+                    }
+                    
+                    // Reducir espacios en divs con clases de Tailwind
+                    if (elemento.className && typeof elemento.className === 'string') {
+                        if (elemento.className.includes('mt-')) {
+                            elemento.style.marginTop = '5px';
+                        }
+                        if (elemento.className.includes('mb-')) {
+                            elemento.style.marginBottom = '5px';
+                        }
+                        if (elemento.className.includes('space-y-')) {
+                            elemento.style.cssText += 'gap: 5px;';
+                        }
+                    }
+                });
+                
+                contenedorTemp.appendChild(contenidoClone);
+                
+                // Generar nombre de archivo
+                const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
+                
+                // Configuración del PDF optimizada para flujo continuo
+                const opciones = {
+                    margin: [8, 8, 8, 8],
+                    filename: nombreArchivo,
+                    image: { 
+                        type: 'jpeg', 
+                        quality: 0.96 
+                    },
+                    html2canvas: { 
+                        scale: 1.5,
+                        useCORS: true,
+                        logging: false,
+                        letterRendering: true,
+                        backgroundColor: '#ffffff',
+                        scrollY: 0,
+                        scrollX: 0,
+                        windowHeight: document.documentElement.scrollHeight,
+                        onclone: function(clonedDoc) {
+                            const clonedContent = clonedDoc.body.querySelector('div');
+                            if (clonedContent) {
+                                const allElements = clonedContent.querySelectorAll('*');
+                                allElements.forEach(el => {
+                                    el.style.pageBreakInside = 'auto';
+                                    el.style.pageBreakBefore = 'auto';
+                                    el.style.pageBreakAfter = 'auto';
+                                });
+                            }
+                        }
+                    },
+                    jsPDF: { 
+                        unit: 'mm', 
+                        format: 'a4', 
+                        orientation: 'portrait',
+                        compress: true
+                    },
+                    pagebreak: { 
+                        mode: [],
+                        before: [],
+                        after: [],
+                        avoid: []
+                    }
+                };
+                
+                // Generar y descargar PDF
+                html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
+                    console.log('✅ PDF descargado:', nombreArchivo);
+                }).catch(error => {
+                    console.error('❌ Error al generar PDF:', error);
+                    alert('Error al generar el PDF. Por favor, intenta nuevamente.');
+                });
+                
+            }, 3000); // ESPERA 3 SEGUNDOS antes de generar PDF
+        }
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chevronButton = document.getElementById('scroll-up-chevron');
+            let scrollTimeout;
+
+            if (!chevronButton) return;
+            // Mostrar/ocultar chevron según scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    chevronButton.classList.add('visible');
+                    
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        chevronButton.classList.remove('visible');
+                    }, 4000);
+
+                } else {
+                   chevronButton.classList.remove('visible');
+                }
+            });
+            // Click en chevron para subir
+             chevronButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
     </html>
