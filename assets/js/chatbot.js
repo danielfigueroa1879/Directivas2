@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let recognition;
     let availableVoices = [];
     let fallbackMessageShown = false;
+    let audioContextUnlocked = false; // Para Android: rastrear si el audio ha sido desbloqueado
     
     // --- Lógica del Chatbot ---
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -47,29 +48,58 @@ document.addEventListener('DOMContentLoaded', function() {
     function getDeviceType() {
         const userAgent = navigator.userAgent.toLowerCase();
         const platform = navigator.platform.toLowerCase();
-        
+
         // Detectar iOS (iPhone, iPad, iPod)
         if (/iphone|ipad|ipod/.test(userAgent) || /ipad|iphone|ipod/.test(platform)) {
             return 'ios';
         }
-        
+
         // Detectar Android
         if (/android/.test(userAgent)) {
             return 'android';
         }
-        
+
         // Detectar Windows
         if (/win/.test(platform)) {
             return 'windows';
         }
-        
+
         // Detectar macOS
         if (/mac/.test(platform)) {
             return 'macos';
         }
-        
+
         // Por defecto: desktop
         return 'desktop';
+    }
+
+    // Función para desbloquear el audio en Android (y otros dispositivos móviles)
+    function unlockAudioContext() {
+        if (audioContextUnlocked) return; // Ya está desbloqueado
+
+        const deviceType = getDeviceType();
+
+        // Solo para dispositivos móviles (Android e iOS principalmente)
+        if (deviceType === 'android' || deviceType === 'ios') {
+            console.log('🔓 Desbloqueando audio para dispositivo móvil:', deviceType);
+
+            // Crear un utterance silencioso para "activar" el motor de síntesis
+            const utterance = new SpeechSynthesisUtterance(' ');
+            utterance.volume = 0; // Silencioso
+            utterance.rate = 10; // Muy rápido
+            utterance.pitch = 0.1;
+
+            speechSynth.speak(utterance);
+
+            // Marcar como desbloqueado
+            setTimeout(() => {
+                audioContextUnlocked = true;
+                console.log('✅ Audio desbloqueado exitosamente');
+            }, 100);
+        } else {
+            // Para desktop, marcar como desbloqueado directamente
+            audioContextUnlocked = true;
+        }
     }
 
     // Función específica para iOS que evita el chicharreo
@@ -259,9 +289,18 @@ document.addEventListener('DOMContentLoaded', function() {
             isBotSpeaking = false; // Asegura que la bandera se libere si no hay nada que decir
             return null; // Devuelve null si no hay nada que hablar
         }
-        
+
         const deviceType = getDeviceType();
-        
+
+        // IMPORTANTE: Para Android, asegurarse de que el audio esté desbloqueado
+        if (deviceType === 'android' && !audioContextUnlocked) {
+            console.warn('⚠️ Audio no desbloqueado en Android. Intentando desbloquear...');
+            unlockAudioContext();
+            // Esperar un poco antes de continuar
+            setTimeout(() => speakWithEnhancedBrowser(text), 200);
+            return null;
+        }
+
         // Para iOS, usar la función optimizada específica
         if (deviceType === 'ios') {
             speakWithIOSOptimization(text);
@@ -273,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, estimatedTime);
             return null; // No podemos devolver una 'utterance' única
         }
-        
+
         // Cancelar cualquier síntesis anterior
         speechSynth.cancel();
         
@@ -290,10 +329,10 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (deviceType) {
             case 'android':
                 utterance.lang = 'es-ES';
-                utterance.rate = 1.3;
-                utterance.pitch = 0.6;
-                utterance.volume = 1.0;
-                console.log('Configuración Android aplicada: rate=0.75, pitch=0.45 (adaptación masculina)');
+                utterance.rate = 0.9; // Velocidad más lenta para Android
+                utterance.pitch = 0.8; // Pitch más natural
+                utterance.volume = 1.0; // Volumen máximo
+                console.log('Configuración Android aplicada: rate=0.9, pitch=0.8, volume=1.0 (optimizado para Chrome móvil)');
                 break;
                 
             case 'windows':
@@ -374,7 +413,7 @@ async function speakWithElevenLabs(text) {
             if (!response.ok) {
                 if (response.status === 401 || response.status === 403) {
                     console.error('ElevenLabs API key expirada o inválida, deshabilitando para esta sesión');
-                    elevenLabsApiKey = null; 
+                    elevenLabsApiKey = null;
                     throw new Error('API key expirada');
                 }
                 if (response.status === 429) {
@@ -389,7 +428,10 @@ async function speakWithElevenLabs(text) {
             const audioBlob = await response.blob();
             const audioUrl = URL.createObjectURL(audioBlob);
             const audio = new Audio(audioUrl);
-            
+
+            // IMPORTANTE: Para Android, necesitamos asegurarnos de que el audio tenga volumen
+            audio.volume = 1.0;
+
             // --- MODIFICACIÓN: Envolver la reproducción en una Promise ---
             await new Promise((resolve, reject) => {
                 const cleanup = () => {
@@ -397,23 +439,38 @@ async function speakWithElevenLabs(text) {
                     audio.onended = null;
                     audio.onerror = null;
                 };
-                
+
                 audio.onended = () => {
                     cleanup();
                     resolve(); // Resuelve la Promise cuando el audio termina
                 };
-                
+
                 audio.onerror = (err) => {
                     cleanup();
+                    console.error('Error al reproducir audio de ElevenLabs:', err);
                     reject(err); // Rechaza la Promise si hay un error
                 };
-                
-                audio.play();
+
+                // Intentar reproducir el audio
+                const playPromise = audio.play();
+
+                // Manejar la promesa de reproducción (importante para Android)
+                if (playPromise !== undefined) {
+                    playPromise
+                        .then(() => {
+                            console.log('✅ ElevenLabs: Audio iniciado correctamente');
+                        })
+                        .catch((playError) => {
+                            console.error('❌ Error al iniciar reproducción:', playError);
+                            cleanup();
+                            reject(playError);
+                        });
+                }
             });
             // --- FIN DE LA MODIFICACIÓN ---
-            
+
             console.log('ElevenLabs: reproducción exitosa');
-            
+
         } catch (error) {
             console.warn('ElevenLabs falló:', error.message);
             throw error; // Re-lanzar para activar fallback
@@ -639,22 +696,26 @@ async function speakWithElevenLabs(text) {
 
     function toggleChat() {
         console.log('🔄 toggleChat() llamado');
+
+        // CRÍTICO: Desbloquear audio cuando el usuario abre el chat (Android)
+        unlockAudioContext();
+
         const popup = document.getElementById('chat-popup');
         const backdrop = document.getElementById('chat-backdrop');
         const button = document.getElementById('chat-toggle-button');
-        
+
         console.log('Popup:', popup ? '✅' : '❌');
         console.log('Backdrop:', backdrop ? '✅' : '❌');
         console.log('Button:', button ? '✅' : '❌');
-        
+
         if (!popup || !backdrop || !button) {
             console.error('❌ Error: No se encontraron los elementos del chatbot');
             return;
         }
-        
+
         const isHidden = popup.classList.contains('chat-popup-hidden');
         console.log('Estado actual - isHidden:', isHidden);
-        
+
         if (isHidden) {
             // Abrir el chat
             popup.classList.remove('chat-popup-hidden');
@@ -752,9 +813,12 @@ async function speakWithElevenLabs(text) {
     async function handleMessage() {
         const input = document.getElementById('user-input');
         const text = input.value.trim();
-        
+
         if (!text) return;
-        
+
+        // CRÍTICO: Desbloquear audio en la primera interacción del usuario (Android)
+        unlockAudioContext();
+
         addMessage('user', text);
         input.value = '';
         
@@ -832,6 +896,10 @@ async function speakWithElevenLabs(text) {
 
     function startVoiceInput() {
         if (!recognition) return;
+
+        // CRÍTICO: Desbloquear audio cuando el usuario usa el micrófono (Android)
+        unlockAudioContext();
+
         const voiceBtn = document.getElementById('voice-btn');
         if (isListening) {
             recognition.stop();
@@ -852,6 +920,9 @@ async function speakWithElevenLabs(text) {
     }
 
     function readLastMessage() {
+        // CRÍTICO: Desbloquear audio cuando el usuario solicita leer un mensaje (Android)
+        unlockAudioContext();
+
         const messages = document.querySelectorAll('#chat-messages .text-gray-800');
         if (messages.length > 0) speakText(messages[messages.length - 1].innerText);
     }
@@ -894,6 +965,9 @@ async function speakWithElevenLabs(text) {
     const speakerOffIcon = document.getElementById('speaker-off-icon');
 
     toggleSpeakBtn.addEventListener('click', () => {
+        // CRÍTICO: Desbloquear audio cuando el usuario activa/desactiva el audio (Android)
+        unlockAudioContext();
+
         isAutoReadEnabled = !isAutoReadEnabled;
         speakerOnIcon.classList.toggle('hidden', !isAutoReadEnabled);
         speakerOffIcon.classList.toggle('hidden', isAutoReadEnabled);
