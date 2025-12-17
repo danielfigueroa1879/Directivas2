@@ -429,111 +429,90 @@ class GlobalSearch {
                 keywords: ['resolución', '2522', '2.522', 'regulariza', 'tramitación', 'credenciales', '2024']
             },
 
-            // SECCIÓN: Componentes del Sistema
+            // SECCIÓN: Componentes del Sistema (ACTUALIZADO SEGÚN LEY 21.659 Y DECRETO 209)
             {
-                title: 'Vigilante Privado',
-                content: 'Documentación y requisitos para la acreditación de vigilantes privados. Credencial para vigilancia en propiedades.',
+                title: 'Asesor en Seguridad Privada',
+                content: 'Títulos afines para asesores. Resolución 4070/2021 y 2660/2023. Ingeniería en Gestión de Seguridad, con o sin diplomado.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf', '_blank'),
-                keywords: ['vigilante', 'privado', 'acreditación', 'requisitos', 'propiedad']
-            },
-            {
-                title: 'Guardia de Seguridad',
-                content: 'Guía completa del trámite y requisitos para guardias de seguridad. Curso de formación OS10 obligatorio.',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf', '_blank'),
-                keywords: ['guardia', 'seguridad', 'trámite', 'requisitos', 'curso', 'formación']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('asesor'),
+                keywords: ['asesor', 'títulos', 'requisitos', 'resolución', '4070', '2660', 'diplomado', 'ingeniero', 'gestión']
             },
             {
                 title: 'Jefe de Seguridad',
-                content: 'Actas, credenciales y requisitos para jefes de seguridad civil y ex fuerzas armadas. Certificación de experiencia.',
+                content: 'Actas, credenciales y requisitos para jefes de seguridad civil y ex fuerzas armadas. Certificación de experiencia laboral.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf', '_blank'),
-                keywords: ['jefe', 'seguridad', 'actas', 'credenciales', 'ffaa', 'civil', 'experiencia']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('jefe'),
+                keywords: ['jefe', 'seguridad', 'actas', 'credenciales', 'ffaa', 'civil', 'experiencia', 'oficial']
             },
             {
                 title: 'Encargado de Seguridad',
-                content: 'Requisitos y documentación necesaria para encargados de seguridad. Supervisión de operaciones.',
+                content: 'Requisitos para encargados de seguridad. Supervisión directa de operaciones de seguridad privada.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf', '_blank'),
-                keywords: ['encargado', 'seguridad', 'documentación', 'supervisión']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('encargado'),
+                keywords: ['encargado', 'seguridad', 'documentación', 'supervisión', 'operaciones']
             },
             {
                 title: 'Supervisor de Seguridad',
-                content: 'Documentación necesaria para supervisores de seguridad. Coordinación de equipos y operaciones.',
+                content: 'Documentación para supervisores. Coordinación de equipos y control operacional de seguridad.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf', '_blank'),
-                keywords: ['supervisor', 'seguridad', 'coordinación', 'equipos']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('supervisor'),
+                keywords: ['supervisor', 'seguridad', 'coordinación', 'equipos', 'control', 'operacional']
             },
             {
-                title: 'Asesor en Seguridad Privada',
-                content: 'Títulos afines y requisitos para asesores de seguridad. Resolución 4070/2021 y 2660/2023. Diplomado en seguridad privada.',
+                title: 'Vigilante Privado',
+                content: 'Acreditación de vigilantes privados. Curso OS10 y requisitos para vigilancia en propiedades privadas.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf', '_blank'),
-                keywords: ['asesor', 'títulos', 'requisitos', 'resolución', '4070', '2660', 'diplomado', 'ingeniero']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('vigilante'),
+                keywords: ['vigilante', 'privado', 'acreditación', 'requisitos', 'propiedad', 'curso', 'os10']
             },
             {
-                title: 'Capacitador de Seguridad',
-                content: 'Acreditación y requisitos para capacitadores en seguridad privada. Formación de personal.',
+                title: 'Guardia de Seguridad',
+                content: 'Guardia de seguridad privada. Curso de formación OS10 obligatorio. Protección de personas y bienes.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf', '_blank'),
-                keywords: ['capacitador', 'acreditación', 'formación', 'instructor', 'curso']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('guardia'),
+                keywords: ['guardia', 'seguridad', 'trámite', 'requisitos', 'curso', 'formación', 'protección']
+            },
+            {
+                title: 'Portero / Nochero / Rondín',
+                content: 'Requisitos para porteros, nocheros y rondines. Vigilancia en edificios, condominios y conjuntos habitacionales.',
+                section: 'Componentes del Sistema',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('portero'),
+                keywords: ['portero', 'nochero', 'rondín', 'rondin', 'edificio', 'condominio', 'vigilancia', 'nocturna', 'conserje']
+            },
+            {
+                title: 'Encargado de Armas y Municiones',
+                content: 'Requisitos para encargados de custodia de armas y municiones. Control de armería en empresas de seguridad.',
+                section: 'Componentes del Sistema',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('encargadoArmas'),
+                keywords: ['encargado', 'armas', 'municiones', 'custodia', 'armería', 'control', 'arsenal']
+            },
+            {
+                title: 'Operador de Cámaras / CCTV',
+                content: 'Operador de sistemas de circuito cerrado de televisión. Monitoreo y vigilancia electrónica con cámaras de seguridad.',
+                section: 'Componentes del Sistema',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('operador'),
+                keywords: ['operador', 'cámaras', 'cctv', 'circuito', 'cerrado', 'monitoreo', 'vigilancia', 'video', 'electrónica']
             },
             {
                 title: 'Técnico en Seguridad',
-                content: 'Requisitos técnicos para técnicos de seguridad. Mantenimiento de sistemas de seguridad.',
+                content: 'Técnico en seguridad electrónica. Mantenimiento, reparación y operación de sistemas de seguridad.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf', '_blank'),
-                keywords: ['técnico', 'seguridad', 'requisitos', 'mantenimiento', 'sistemas']
-            },
-            {
-                title: 'Operador de Cajeros Automáticos (ATM)',
-                content: 'Documentación específica para operadores de cajeros automáticos. Custodia y carga de valores.',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf', '_blank'),
-                keywords: ['operador', 'cajero', 'atm', 'automático', 'valores', 'custodia']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('tecnico'),
+                keywords: ['técnico', 'seguridad', 'requisitos', 'mantenimiento', 'sistemas', 'electrónica', 'reparación']
             },
             {
                 title: 'Instalador Técnico',
-                content: 'Certificación de instaladores técnicos de sistemas de seguridad electrónica.',
+                content: 'Certificación de instaladores técnicos. Instalación de sistemas electrónicos de seguridad y alarmas.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf', '_blank'),
-                keywords: ['instalador', 'técnico', 'certificación', 'sistemas', 'electrónica']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('instalador'),
+                keywords: ['instalador', 'técnico', 'certificación', 'sistemas', 'electrónica', 'alarmas', 'instalación']
             },
             {
-                title: 'Operador de Circuito Cerrado TV (CCTV)',
-                content: 'Control y monitoreo de sistemas CCTV. Operación de cámaras de seguridad y vigilancia.',
+                title: 'Capacitador en Seguridad Privada',
+                content: 'Acreditación de capacitadores. Formación e instrucción de personal en seguridad privada. Requisitos docentes.',
                 section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf', '_blank'),
-                keywords: ['operador', 'cctv', 'cámaras', 'monitoreo', 'vigilancia', 'video', 'circuito', 'cerrado']
-            },
-            {
-                title: 'Empresas Prestadoras de Servicios',
-                content: 'Requisitos y documentación para empresas prestadoras de seguridad privada. Autorización de funcionamiento.',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf', '_blank'),
-                keywords: ['empresa', 'prestadora', 'seguridad', 'documentación', 'autorización', 'funcionamiento']
-            },
-            {
-                title: 'Nochero / Conserje',
-                content: 'Requisitos para nocheros y conserjes en edificios y condominios. Vigilancia nocturna.',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_nochero.pdf', '_blank'),
-                keywords: ['nochero', 'conserje', 'edificio', 'condominio', 'vigilancia', 'nocturna']
-            },
-            {
-                title: 'Escolta Privado',
-                content: 'Credencial y requisitos para escoltas privados. Protección de personas.',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_escolta.pdf', '_blank'),
-                keywords: ['escolta', 'privado', 'protección', 'personas', 'guardaespaldas']
-            },
-            {
-                title: 'Transportador de Valores',
-                content: 'Acreditación para transportadores de valores y efectivo. Custodia de dinero.',
-                section: 'Componentes del Sistema',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_transportador_valores.pdf', '_blank'),
-                keywords: ['transportador', 'valores', 'efectivo', 'dinero', 'custodia', 'blindado']
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('capacitador'),
+                keywords: ['capacitador', 'acreditación', 'formación', 'instructor', 'curso', 'docente', 'enseñanza']
             },
 
             // SECCIÓN: Documentos Editables
