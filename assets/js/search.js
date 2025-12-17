@@ -81,12 +81,14 @@ class GlobalSearch {
                         <div class="search-suggestions">
                             <button class="suggestion-pill" data-search="directiva">Directivas</button>
                             <button class="suggestion-pill" data-search="credencial">Credenciales</button>
-                            <button class="suggestion-pill" data-search="18961">Ley 18.961</button>
                             <button class="suggestion-pill" data-search="21659">Ley 21.659</button>
-                            <button class="suggestion-pill" data-search="1814">Decreto 1814</button>
+                            <button class="suggestion-pill" data-search="209">Decreto 209</button>
+                            <button class="suggestion-pill" data-search="208">Decreto 208</button>
                             <button class="suggestion-pill" data-search="guardia">Guardias</button>
+                            <button class="suggestion-pill" data-search="vigilante">Vigilante</button>
+                            <button class="suggestion-pill" data-search="jefe">Jefe Seguridad</button>
+                            <button class="suggestion-pill" data-search="asesor">Asesor</button>
                             <button class="suggestion-pill" data-search="capacitación">Capacitación</button>
-                            <button class="suggestion-pill" data-search="valores">Valores</button>
                         </div>
                     </div>
                 </div>
@@ -136,8 +138,8 @@ class GlobalSearch {
                 keywords: ['constitución', 'política', 'fundamento', 'ley']
             },
             {
-                title: 'Ley 18.961',
-                content: 'Ley Orgánica Constitucional de Carabineros',
+                title: 'Ley 18.961 - Org. Constitucional',
+                content: 'Ley Orgánica Constitucional de Carabineros de Chile',
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=30329', '_blank'),
                 keywords: ['ley', '18961', '18.961', 'orgánica', 'constitucional', 'carabineros']
@@ -157,18 +159,25 @@ class GlobalSearch {
                 keywords: ['decreto', 'ley', '3607', '3.607', 'dl', 'd.l.', '1981', 'histórico']
             },
             {
-                title: 'Ley 21.659',
-                content: 'Ley de Seguridad Privada actualizada',
+                title: 'Ley 21.659 - Seguridad Privada (VIGENTE)',
+                content: 'Nueva Ley de Seguridad Privada vigente desde 2024. Marco legal actualizado para servicios de seguridad privada en Chile',
                 section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067', '_blank'),
-                keywords: ['ley', '21659', '21.659', 'seguridad', 'privada', 'actualizada']
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0', '_blank'),
+                keywords: ['ley', '21659', '21.659', 'seguridad', 'privada', 'actualizada', 'vigente', 'nueva', '2024']
             },
             {
-                title: 'Reglamento 209',
-                content: 'Reglamentación vigente de seguridad privada',
+                title: 'Decreto 209 - Reglamento Ley 21.659',
+                content: 'Reglamento de la Ley 21.659 sobre Seguridad Privada. Normativa reglamentaria vigente 2024',
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1213672', '_blank'),
-                keywords: ['reglamento', '209', 'vigente']
+                keywords: ['decreto', 'reglamento', '209', 'vigente', 'ley', '21659', '21.659', '2024']
+            },
+            {
+                title: 'Decreto 208 - Reglamento Complementario',
+                content: 'Decreto 208 - Reglamento complementario de la Ley 21.659 de Seguridad Privada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1211115', '_blank'),
+                keywords: ['decreto', 'reglamento', '208', 'complementario', 'ley', '21659', '21.659', '2024']
             },
 
             // SECCIÓN: Decretos (CORREGIDOS)
@@ -423,87 +432,108 @@ class GlobalSearch {
             // SECCIÓN: Componentes del Sistema
             {
                 title: 'Vigilante Privado',
-                content: 'Documentación y requisitos para la acreditación de vigilantes privados',
+                content: 'Documentación y requisitos para la acreditación de vigilantes privados. Credencial para vigilancia en propiedades.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf', '_blank'),
-                keywords: ['vigilante', 'privado', 'acreditación', 'requisitos']
+                keywords: ['vigilante', 'privado', 'acreditación', 'requisitos', 'propiedad']
             },
             {
                 title: 'Guardia de Seguridad',
-                content: 'Guía completa del trámite y requisitos para guardias de seguridad',
+                content: 'Guía completa del trámite y requisitos para guardias de seguridad. Curso de formación OS10 obligatorio.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf', '_blank'),
-                keywords: ['guardia', 'seguridad', 'trámite', 'requisitos']
+                keywords: ['guardia', 'seguridad', 'trámite', 'requisitos', 'curso', 'formación']
             },
             {
                 title: 'Jefe de Seguridad',
-                content: 'Actas, credenciales y requisitos para jefes de seguridad civil y ex fuerzas armadas',
+                content: 'Actas, credenciales y requisitos para jefes de seguridad civil y ex fuerzas armadas. Certificación de experiencia.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf', '_blank'),
-                keywords: ['jefe', 'seguridad', 'actas', 'credenciales', 'ffaa', 'civil']
+                keywords: ['jefe', 'seguridad', 'actas', 'credenciales', 'ffaa', 'civil', 'experiencia']
             },
             {
                 title: 'Encargado de Seguridad',
-                content: 'Requisitos y documentación necesaria para encargados de seguridad',
+                content: 'Requisitos y documentación necesaria para encargados de seguridad. Supervisión de operaciones.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf', '_blank'),
-                keywords: ['encargado', 'seguridad', 'documentación']
+                keywords: ['encargado', 'seguridad', 'documentación', 'supervisión']
             },
             {
                 title: 'Supervisor de Seguridad',
-                content: 'Documentación necesaria para supervisores de seguridad',
+                content: 'Documentación necesaria para supervisores de seguridad. Coordinación de equipos y operaciones.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf', '_blank'),
-                keywords: ['supervisor', 'seguridad']
+                keywords: ['supervisor', 'seguridad', 'coordinación', 'equipos']
             },
             {
-                title: 'Asesor',
-                content: 'Títulos afines y requisitos para asesores de seguridad. Resol. 4070 y 2660',
+                title: 'Asesor en Seguridad Privada',
+                content: 'Títulos afines y requisitos para asesores de seguridad. Resolución 4070/2021 y 2660/2023. Diplomado en seguridad privada.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf', '_blank'),
-                keywords: ['asesor', 'títulos', 'requisitos', 'resolución', '4070', '2660']
+                keywords: ['asesor', 'títulos', 'requisitos', 'resolución', '4070', '2660', 'diplomado', 'ingeniero']
             },
             {
                 title: 'Capacitador de Seguridad',
-                content: 'Acreditación y requisitos para capacitadores',
+                content: 'Acreditación y requisitos para capacitadores en seguridad privada. Formación de personal.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf', '_blank'),
-                keywords: ['capacitador', 'acreditación', 'formación']
+                keywords: ['capacitador', 'acreditación', 'formación', 'instructor', 'curso']
             },
             {
                 title: 'Técnico en Seguridad',
-                content: 'Requisitos técnicos para técnicos de seguridad',
+                content: 'Requisitos técnicos para técnicos de seguridad. Mantenimiento de sistemas de seguridad.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf', '_blank'),
-                keywords: ['técnico', 'seguridad', 'requisitos']
+                keywords: ['técnico', 'seguridad', 'requisitos', 'mantenimiento', 'sistemas']
             },
             {
-                title: 'Operador de Cajeros (ATM)',
-                content: 'Documentación específica para operadores de cajeros automáticos',
+                title: 'Operador de Cajeros Automáticos (ATM)',
+                content: 'Documentación específica para operadores de cajeros automáticos. Custodia y carga de valores.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf', '_blank'),
-                keywords: ['operador', 'cajero', 'atm', 'automático']
+                keywords: ['operador', 'cajero', 'atm', 'automático', 'valores', 'custodia']
             },
             {
                 title: 'Instalador Técnico',
-                content: 'Certificación de instaladores técnicos',
+                content: 'Certificación de instaladores técnicos de sistemas de seguridad electrónica.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf', '_blank'),
-                keywords: ['instalador', 'técnico', 'certificación']
+                keywords: ['instalador', 'técnico', 'certificación', 'sistemas', 'electrónica']
             },
             {
-                title: 'Operador de CC.TV.',
-                content: 'Control y monitoreo de sistemas CCTV',
+                title: 'Operador de Circuito Cerrado TV (CCTV)',
+                content: 'Control y monitoreo de sistemas CCTV. Operación de cámaras de seguridad y vigilancia.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf', '_blank'),
-                keywords: ['operador', 'cctv', 'cámaras', 'monitoreo', 'vigilancia']
+                keywords: ['operador', 'cctv', 'cámaras', 'monitoreo', 'vigilancia', 'video', 'circuito', 'cerrado']
             },
             {
-                title: 'Empresas Prestadoras',
-                content: 'Requisitos y documentación para empresas prestadoras de seguridad',
+                title: 'Empresas Prestadoras de Servicios',
+                content: 'Requisitos y documentación para empresas prestadoras de seguridad privada. Autorización de funcionamiento.',
                 section: 'Componentes del Sistema',
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf', '_blank'),
-                keywords: ['empresa', 'prestadora', 'seguridad', 'documentación']
+                keywords: ['empresa', 'prestadora', 'seguridad', 'documentación', 'autorización', 'funcionamiento']
+            },
+            {
+                title: 'Nochero / Conserje',
+                content: 'Requisitos para nocheros y conserjes en edificios y condominios. Vigilancia nocturna.',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_nochero.pdf', '_blank'),
+                keywords: ['nochero', 'conserje', 'edificio', 'condominio', 'vigilancia', 'nocturna']
+            },
+            {
+                title: 'Escolta Privado',
+                content: 'Credencial y requisitos para escoltas privados. Protección de personas.',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_escolta.pdf', '_blank'),
+                keywords: ['escolta', 'privado', 'protección', 'personas', 'guardaespaldas']
+            },
+            {
+                title: 'Transportador de Valores',
+                content: 'Acreditación para transportadores de valores y efectivo. Custodia de dinero.',
+                section: 'Componentes del Sistema',
+                action: () => window.open('https://www.zosepcar.cl/content/OS10/TRAM_transportador_valores.pdf', '_blank'),
+                keywords: ['transportador', 'valores', 'efectivo', 'dinero', 'custodia', 'blindado']
             },
 
             // SECCIÓN: Documentos Editables
