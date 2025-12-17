@@ -550,45 +550,16 @@ class GlobalSearch {
                 title: 'Declaración Jurada Persona Natural',
                 content: 'Modelo de declaración jurada para personas naturales',
                 section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf', '_blank'),
+                action: () => window.open('https://drive.google.com/file/d/1ObrdQqk_PPVTTRUKOzVmVDIxxlcZXRY6/view?usp=sharing', '_blank'),
                 keywords: ['declaración', 'jurada', 'persona', 'natural', 'modelo']
             },
             {
                 title: 'Declaración Jurada Empresas',
                 content: 'Modelo de declaración jurada para empresas',
                 section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf', '_blank'),
+                action: () => window.open('https://drive.google.com/file/d/1X32qrNC0KeyR9bW2AVZ7VzZW6JZTSjl0/view?usp=sharing', '_blank'),
                 keywords: ['declaración', 'jurada', 'empresa', 'modelo']
             },
-            {
-                title: 'Acreditación de Empresa',
-                content: 'Solicitud simple de acreditación de empresa prestadora de servicios',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf', '_blank'),
-                keywords: ['acreditación', 'empresa', 'solicitud', 'prestadora', 'modelo']
-            },
-            {
-                title: 'Acreditación Asesor',
-                content: 'Modelo de solicitud de acreditación para asesor en seguridad privada',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf', '_blank'),
-                keywords: ['acreditación', 'asesor', 'modelo', 'solicitud']
-            },
-            {
-                title: 'Solicitud Persona Natural Dependiente',
-                content: 'Modelo de solicitud para persona natural dependiente - Acreditación de personal',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_solicitud_pers_natural_dependiente.pdf', '_blank'),
-                keywords: ['solicitud', 'persona', 'natural', 'dependiente', 'modelo', 'acreditación', 'personal']
-            },
-            {
-                title: 'Acreditación Capacitador',
-                content: 'Modelo de acreditación para capacitadores en seguridad privada',
-                section: 'Modelos de Solicitud',
-                action: () => window.open('https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf', '_blank'),
-                keywords: ['acreditación', 'capacitador', 'modelo', 'instructor', 'formación']
-            },
-
             // SECCIÓN: Manuales
             {
                 title: 'Manual de Funcionamiento',
