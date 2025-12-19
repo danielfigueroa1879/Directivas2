@@ -18,19 +18,84 @@ const responses = {
     '<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">📹 Operador de Cámaras</button>' +
     '<button onclick="mostrarRequisitos(\'portero\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🚪 Portero/Nochero/Rondín</button>' +
     '<button onclick="mostrarRequisitos(\'encargadoArmas\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔫 Encargado de Armas</button>' },
-    'rule_5': { keywords: ["la guia de guardia","guardia de segurridad", "guardia"],  requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"], response: '🤖🛡️ **GUARDIA DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'guardia\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛡️ Ver Requisitos Guardia</button>' },
-    'rule_5a': { keywords: ["el guardia debe usar chaleco anticorte","uso de chaleco anticorte", "chaleco anticorte",], response: '🤖🛡️ **GUARDIA DE SEGURIDAD Decreto 209 Art. 93 Inc. 2do.**\nDecreto 209 Art. 93 Inc. 2do. Los guardias de seguridad deberan contar como elemento minimo con un chaleco anticorte:\n<button>'},
-    'rule_5b': { keywords: ["vigilante privado", "vigilante", "requisitos vigilante"], response: '🤖👮 **VIGILANTE PRIVADO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👮 Ver Requisitos Vigilante</button>' },
-    'rule_6': { keywords: ["jefe de seguridad", "jefe seguridad"], response: '🤖👨‍✈️ **JEFE DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'jefe\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍✈️ Ver Requisitos Jefe</button>' },
-    'rule_7': { keywords: ["supervisor","acreditación supervisor","supervisor seguridad"], response: '🤖👀 **SUPERVISOR DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'supervisor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👀 Ver Requisitos Supervisor</button>' },
-    'rule_8': { keywords: ["*encargado de seguridad*","*encargado*"], response: '🤖🔧 **ENCARGADO DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔧 Ver Requisitos Encargado</button>' },
-    'rule_9': { keywords: ["capacitador"], response: '🤖👨‍🏫 **CAPACITADOR**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Ver Requisitos Capacitador</button>' },
-    'rule_10': { keywords: ["tecnico", "tecnico seguridad"], response: '🤖🛠️ **TÉCNICO EN SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛠️ Ver Requisitos Técnico</button>' },
-    'rule_11': { keywords: ["la guia de asesor", "asesor", "asesor de seguridad"], response: '🤖💼 **ASESOR DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">💼 Ver Requisitos Asesor</button>' },
-    'rule_12': { keywords: ["*instalador tecnico","instalador*"], response: '🤖🔌 **INSTALADOR TÉCNICO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔌 Ver Requisitos Instalador</button>' },
-    'rule_13': { keywords: ["empresa de seguridad", "empresas de seguridad", "crear empresa seguridad"], response: '🤖🏢 **EMPRESAS DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'empresa\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Empresa</button>' },
-    'rule_14': { keywords: ["*operador cctv","cctv*", "operador de camaras", "operador camaras"], response: '🤖📹 **OPERADOR DE CÁMARAS (CCTV)**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">📹 Ver Requisitos Operador</button>' },
-    'rule_15': { keywords: ["manuales"], response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*1M.-* MANUAL DE FUNCIONAMIENTO\n*2M.-* MANUAL DE CAPACITACIÓN \n*3M.-* MANUAL DE ORGANIZACIÓN' },
+    'rule_5': { 
+        keywords: ["guardia de seguridad", "guardia"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🛡️ **GUARDIA DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'guardia\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛡️ Ver Requisitos Guardia</button>' 
+    },
+    
+    'rule_5a': { 
+        keywords: ["el guardia debe usar chaleco anticorte","uso de chaleco anticorte", "chaleco anticorte"],
+        response: '🤖🛡️ **GUARDIA DE SEGURIDAD Decreto 209 Art. 93 Inc. 2do.**\nDecreto 209 Art. 93 Inc. 2do. Los guardias de seguridad deberan contar como elemento minimo con un chaleco anticorte:\n<button>'
+    },
+    
+    'rule_5b': { 
+        keywords: ["vigilante privado", "vigilante"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👮 **VIGILANTE PRIVADO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👮 Ver Requisitos Vigilante</button>' 
+    },
+    
+    'rule_6': { 
+        keywords: ["jefe de seguridad", "jefe seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👨‍✈️ **JEFE DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'jefe\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍✈️ Ver Requisitos Jefe</button>' 
+    },
+    
+    'rule_7': { 
+        keywords: ["supervisor", "supervisor seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👀 **SUPERVISOR DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'supervisor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👀 Ver Requisitos Supervisor</button>' 
+    },
+    
+    'rule_8': { 
+        keywords: ["encargado de seguridad", "encargado"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🔧 **ENCARGADO DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔧 Ver Requisitos Encargado</button>' 
+    },
+    
+    'rule_9': { 
+        keywords: ["capacitador"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👨‍🏫 **CAPACITADOR**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Ver Requisitos Capacitador</button>' 
+    },
+    
+    'rule_10': { 
+        keywords: ["tecnico", "tecnico seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🛠️ **TÉCNICO EN SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛠️ Ver Requisitos Técnico</button>' 
+    },
+    
+    'rule_11': { 
+        keywords: ["asesor", "asesor de seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖💼 **ASESOR DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">💼 Ver Requisitos Asesor</button>' 
+    },
+    
+    'rule_12': { 
+        keywords: ["instalador tecnico", "instalador"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🔌 **INSTALADOR TÉCNICO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔌 Ver Requisitos Instalador</button>' 
+    },
+    
+    'rule_13': { 
+        keywords: ["empresa de seguridad", "empresas de seguridad", "crear empresa seguridad"], 
+        response: '🤖🏢 **EMPRESAS DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'empresa\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Empresa</button>' 
+    },
+    
+    'rule_14': { 
+        keywords: ["operador cctv", "cctv", "operador de camaras", "operador camaras"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖📹 **OPERADOR DE CÁMARAS (CCTV)**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">📹 Ver Requisitos Operador</button>' 
+    },
+    
+    'rule_15': { 
+        keywords: ["manuales"], 
+        response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*1M.-* MANUAL DE FUNCIONAMIENTO\n*2M.-* MANUAL DE CAPACITACIÓN \n*3M.-* MANUAL DE ORGANIZACIÓN' 
+    },
+
+
+
+
     'rule_17': { keywords: ["1m"], response: '*MANUAL DE FUNCIONAMIENTO* https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf' },
     'rule_18': { keywords: ["3m"], response: '*MANUAL DE ORGANIZACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_organizacion.pdf' },
     'rule_19': { keywords: ["2m"], response: '*MANUAL DE CAPACITACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf' },
@@ -1120,5 +1185,57 @@ Genera respuestas usando Markdown para formato, como **negrita** para énfasis y
 window.responses = responses;
 window.systemPrompt = systemPrompt;
 
+// ========== FUNCIÓN DE VALIDACIÓN MEJORADA ==========
+/**
+ * Procesa un mensaje y valida si debe responder con una regla
+ * @param {string} userMessage - El mensaje del usuario
+ * @param {object} rules - El objeto de reglas
+ * @returns {string|null} - La respuesta o null si no hay coincidencia
+ */
+function procesarMensajeConValidacion(userMessage, rules) {
+    const messageLower = userMessage
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    
+    for (let ruleKey in rules) {
+        const rule = rules[ruleKey];
+        
+        // Verificar si coincide con alguna palabra clave
+        const tieneKeyword = rule.keywords.some(keyword => 
+            messageLower.includes(
+                keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            )
+        );
+        
+        if (!tieneKeyword) continue;
+        
+        // Si la regla requiere palabras específicas, validar que estén presentes
+        if (rule.requiresKeywords && rule.requiresKeywords.length > 0) {
+            const tieneRequiredKeyword = rule.requiresKeywords.some(reqKeyword =>
+                messageLower.includes(
+                    reqKeyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                )
+            );
+            
+            // Si no tiene las palabras requeridas, NO responder
+            if (!tieneRequiredKeyword) {
+                return null;
+            }
+        }
+        
+        // Si llegamos aquí, la regla es válida
+        return rule.response;
+    }
+    
+    return null;
+}
+
+// Hacer variables globalmente accesibles
+window.responses = responses;
+window.procesarMensajeConValidacion = procesarMensajeConValidacion;
+
 // Verificación
-console.log(`✅ ${Object.keys(responses).length} reglas cargadas correctamente`);
+console.log(`✅ ${Object.keys(responses).length} reglas cargadas correctamente con validación mejorada`);
+
+
