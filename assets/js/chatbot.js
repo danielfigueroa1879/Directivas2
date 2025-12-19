@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (deviceType) {
             case 'android':
                 utterance.lang = 'es-ES';
-                utterance.rate = 0.9; // Velocidad más lenta para Android
+                utterance.rate = 1.2; // Velocidad más lenta para Android
                 utterance.pitch = 0.8; // Pitch más natural
                 utterance.volume = 1.0; // Volumen máximo
                 console.log('Configuración Android aplicada: rate=0.9, pitch=0.8, volume=1.0 (optimizado para Chrome móvil)');
