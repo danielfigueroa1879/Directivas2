@@ -655,6 +655,18 @@ async function speakWithElevenLabs(text) {
 
     // FUNCIÓN MEJORADA PARA ENCONTRAR COINCIDENCIAS EXACTAS
     function findExactMatch(userText, allRules) {
+        // ✅ UTILIZAR LA NUEVA FUNCIÓN CON VALIDACIÓN INTELIGENTE
+        // Si existe procesarMensajeConValidacion (del archivo mejorado chatbot-rules.js),
+        // la usamos. Si no, usamos la versión antigua.
+        
+        if (typeof window.procesarMensajeConValidacion === 'function' && window.responses) {
+            console.log('✅ Usando procesarMensajeConValidacion con validación inteligente');
+            return window.procesarMensajeConValidacion(userText, window.responses);
+        }
+        
+        // FALLBACK: Si no está disponible la función mejorada, usar la búsqueda antigua
+        console.log('⚠️ procesarMensajeConValidacion no disponible, usando búsqueda antigua');
+        
         const normalizedUserText = userText.toLowerCase().trim();
         
         // 1. Buscar coincidencia exacta primero
