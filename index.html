@@ -86,34 +86,96 @@
         }
     }
     
-    /* ===== ADORNOS NAVIDEÑOS ===== */
+    /* ===== ADORNOS NAVIDEÑOS MEJORADOS ===== */
     .christmas-banner {
-        background: linear-gradient(135deg, #065f46 0%, #047857 50%, #065f46 100%);
-        border-bottom: 3px solid #dc2626;
-        padding: 8px 0;
+        background: linear-gradient(90deg, #1a472a 0%, #2d5a3d 25%, #065f46 50%, #2d5a3d 75%, #1a472a 100%);
+        background-size: 200% 100%;
+        animation: gradientShift 6s ease infinite;
+        padding: 16px 20px;
         text-align: center;
-        font-size: 14px;
-        color: white;
-        font-weight: 500;
-        letter-spacing: 1px;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+        border-bottom: 4px solid #dc2626;
     }
     
-    .christmas-banner::before {
-        content: '🎄 ';
-        margin-right: 8px;
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% center; }
+        50% { background-position: 100% center; }
     }
     
-    .christmas-banner::after {
-        content: ' 🎄';
-        margin-left: 8px;
+    .christmas-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
     }
+    
+    .christmas-emoji {
+        font-size: 24px;
+        animation: bounce 2s ease-in-out infinite;
+        display: inline-block;
+    }
+    
+    .christmas-emoji:nth-child(1) { animation-delay: 0s; }
+    .christmas-emoji:nth-child(3) { animation-delay: 0.2s; }
+    .christmas-emoji:nth-child(5) { animation-delay: 0.4s; }
+    .christmas-emoji:nth-child(7) { animation-delay: 0.6s; }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+    }
+    
+    .christmas-text {
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(220, 38, 38, 0.2);
+        animation: glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes glow {
+        0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(220, 38, 38, 0.2); }
+        50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 20px rgba(220, 38, 38, 0.4), 0 0 30px rgba(34, 197, 94, 0.2); }
+    }
+    
+    .snowflake {
+        position: absolute;
+        color: white;
+        font-size: 12px;
+        opacity: 0.7;
+        animation: fall linear infinite;
+        user-select: none;
+        pointer-events: none;
+    }
+    
+    @keyframes fall {
+        from { top: -10px; opacity: 0; }
+        to { top: 100%; opacity: 0; }
+    }
+    
+    .snowflake:nth-child(1) { left: 10%; animation-duration: 4s; animation-delay: 0s; }
+    .snowflake:nth-child(2) { left: 20%; animation-duration: 5s; animation-delay: 1s; }
+    .snowflake:nth-child(3) { left: 30%; animation-duration: 4.5s; animation-delay: 2s; }
+    .snowflake:nth-child(4) { left: 40%; animation-duration: 5.5s; animation-delay: 0.5s; }
+    .snowflake:nth-child(5) { left: 50%; animation-duration: 4.2s; animation-delay: 1.5s; }
+    .snowflake:nth-child(6) { left: 60%; animation-duration: 5s; animation-delay: 0s; }
+    .snowflake:nth-child(7) { left: 70%; animation-duration: 4.8s; animation-delay: 2.5s; }
+    .snowflake:nth-child(8) { left: 80%; animation-duration: 5.2s; animation-delay: 1s; }
+    .snowflake:nth-child(9) { left: 90%; animation-duration: 4.6s; animation-delay: 1.8s; }
     
     @media (max-width: 768px) {
+        .christmas-text {
+            font-size: 14px;
+        }
+        .christmas-emoji {
+            font-size: 18px;
+        }
         .christmas-banner {
-            font-size: 12px;
-            padding: 6px 0;
+            padding: 12px 15px;
         }
     }
     /* ===== FIN ADORNOS NAVIDEÑOS ===== */
@@ -650,7 +712,24 @@
 </head>
 <body class="homepage background-transition">
     <!-- Banner Navideño -->
-    <div class="christmas-banner">¡Felices Fiestas! Bienvenido a OS10 Coquimbo</div>
+    <div class="christmas-banner">
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="christmas-content">
+            <span class="christmas-emoji">🎄</span>
+            <span class="christmas-text">¡Felices Fiestas de Navidad!</span>
+            <span class="christmas-emoji">⛄</span>
+            <span class="christmas-text">OS10 Coquimbo te desea un excelente fin de año</span>
+            <span class="christmas-emoji">🎅</span>
+        </div>
+    </div>
     <!-- Notificación de recepción de documentos -->
  <!--<div id="suspension-notice">
     ✅👍 <strong>REAPERTURA DE SOLICITUDES DE CREDENCIALES:</strong> Desde el lunes 27 del presente mes, se reabrirá la recepción de nuevas solicitudes de credenciales.
