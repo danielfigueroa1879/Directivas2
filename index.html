@@ -90,14 +90,15 @@
     .christmas-banner {
         background: linear-gradient(90deg, #b91c1c 0%, #dc2626 25%, #ef4444 50%, #dc2626 75%, #b91c1c 100%);
         background-size: 200% 100%;
-        animation: gradientShift 6s ease infinite;
-        padding: 20px;
+        animation: gradientShift 6s ease infinite, fadeOut 0.5s ease 5s forwards;
+        padding: 8px 20px;
         text-align: center;
         position: relative;
         overflow: visible;
-        box-shadow: 0 8px 24px rgba(220, 38, 38, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
-        border-bottom: 4px solid #7f1d1d;
-        border-top: 4px solid #fca5a5;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        border-bottom: 2px solid #7f1d1d;
+        border-top: 2px solid #fca5a5;
+        height: fit-content;
     }
     
     @keyframes gradientShift {
@@ -105,24 +106,39 @@
         50% { background-position: 100% center; }
     }
     
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            visibility: visible;
+            max-height: 100px;
+        }
+        to {
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            padding: 0;
+            border: none;
+        }
+    }
+    
     /* Adornos en esquinas */
     .christmas-banner::before,
     .christmas-banner::after {
         content: '🎀';
         position: absolute;
-        font-size: 32px;
-        animation: swing 3s ease-in-out infinite;
+        font-size: 24px;
+        animation: swing 3s ease-in-out infinite, fadeOut 0.5s ease 5s forwards;
     }
     
     .christmas-banner::before {
-        left: 15px;
+        left: 10px;
         top: 50%;
         transform: translateY(-50%);
         animation-delay: 0s;
     }
     
     .christmas-banner::after {
-        right: 15px;
+        right: 10px;
         top: 50%;
         transform: translateY(-50%) scaleX(-1);
         animation-delay: 1.5s;
@@ -139,31 +155,31 @@
     
     .corner-ornament {
         position: absolute;
-        font-size: 28px;
-        animation: twinkle 2s ease-in-out infinite;
+        font-size: 20px;
+        animation: twinkle 2s ease-in-out infinite, fadeOut 0.5s ease 5s forwards;
     }
     
     .corner-ornament.top-left {
-        top: 8px;
-        left: 8px;
+        top: 4px;
+        left: 5px;
         animation-delay: 0s;
     }
     
     .corner-ornament.top-right {
-        top: 8px;
-        right: 8px;
+        top: 4px;
+        right: 5px;
         animation-delay: 0.5s;
     }
     
     .corner-ornament.bottom-left {
-        bottom: 8px;
-        left: 8px;
+        bottom: 4px;
+        left: 5px;
         animation-delay: 1s;
     }
     
     .corner-ornament.bottom-right {
-        bottom: 8px;
-        right: 8px;
+        bottom: 4px;
+        right: 5px;
         animation-delay: 1.5s;
     }
     
@@ -176,14 +192,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 8px;
         flex-wrap: wrap;
         position: relative;
         z-index: 1;
+        animation: fadeOut 0.5s ease 5s forwards;
     }
     
     .christmas-emoji {
-        font-size: 24px;
+        font-size: 18px;
         animation: bounce 2s ease-in-out infinite;
         display: inline-block;
         filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
@@ -195,29 +212,30 @@
     
     @keyframes bounce {
         0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-8px); }
+        50% { transform: translateY(-6px); }
     }
     
     .christmas-text {
         color: white;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 700;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.3);
         animation: glow 2s ease-in-out infinite;
+        white-space: nowrap;
     }
     
     @keyframes glow {
         0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.2); }
-        50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(34, 197, 94, 0.2); }
+        50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.4); }
     }
     
     .snowflake {
         position: absolute;
         color: white;
-        font-size: 12px;
-        opacity: 0.7;
-        animation: fall linear infinite;
+        font-size: 10px;
+        opacity: 0.6;
+        animation: fall linear infinite, fadeOut 0.5s ease 5s forwards;
         user-select: none;
         pointer-events: none;
     }
@@ -238,17 +256,26 @@
     .snowflake:nth-child(9) { left: 90%; animation-duration: 4.6s; animation-delay: 1.8s; }
     
     @media (max-width: 768px) {
+        .christmas-banner {
+            padding: 6px 15px;
+        }
+        
         .christmas-text {
+            font-size: 11px;
+            white-space: normal;
+        }
+        
+        .christmas-emoji {
             font-size: 14px;
         }
-        .christmas-emoji {
-            font-size: 18px;
-        }
-        .christmas-banner {
-            padding: 15px 40px;
-        }
+        
         .corner-ornament {
-            font-size: 20px;
+            font-size: 16px;
+        }
+        
+        .christmas-banner::before,
+        .christmas-banner::after {
+            font-size: 18px;
         }
     }
     /* ===== FIN ADORNOS NAVIDEÑOS ===== */
@@ -2234,7 +2261,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-
+                    
                 } else {
                    chevronButton.classList.remove('visible');
                 }
