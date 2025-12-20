@@ -85,6 +85,39 @@
             border-radius: 0 !important;
         }
     }
+    
+    /* ===== ADORNOS NAVIDEÑOS ===== */
+    .christmas-banner {
+        background: linear-gradient(135deg, #065f46 0%, #047857 50%, #065f46 100%);
+        border-bottom: 3px solid #dc2626;
+        padding: 8px 0;
+        text-align: center;
+        font-size: 14px;
+        color: white;
+        font-weight: 500;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .christmas-banner::before {
+        content: '🎄 ';
+        margin-right: 8px;
+    }
+    
+    .christmas-banner::after {
+        content: ' 🎄';
+        margin-left: 8px;
+    }
+    
+    @media (max-width: 768px) {
+        .christmas-banner {
+            font-size: 12px;
+            padding: 6px 0;
+        }
+    }
+    /* ===== FIN ADORNOS NAVIDEÑOS ===== */
+    
     .megamenu-header {
         display: flex;
         align-items: center;
@@ -616,6 +649,8 @@
     <link rel="stylesheet" href="assets/css/custom-styles.css">
 </head>
 <body class="homepage background-transition">
+    <!-- Banner Navideño -->
+    <div class="christmas-banner">¡Felices Fiestas! Bienvenido a OS10 Coquimbo</div>
     <!-- Notificación de recepción de documentos -->
  <!--<div id="suspension-notice">
     ✅👍 <strong>REAPERTURA DE SOLICITUDES DE CREDENCIALES:</strong> Desde el lunes 27 del presente mes, se reabrirá la recepción de nuevas solicitudes de credenciales.
@@ -1704,7 +1739,7 @@
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#6d021e5c5d430e021c1804000f022d0e0c1f0c0f0403081f021e430e01" class="hover:text-white"><span class="__cf_email__" data-cfemail="305f4301001e535f4145595d525f705351425152595e55425f431e535c">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#6d021e5c5d0e021c1804000f022d0a000c0401430e0200" class="hover:text-white"><span class="__cf_email__" data-cfemail="19766a28297a76686c70747b76597e74787075377a7674">[email&#160;protected]</span></a></li></ul></div>
                 <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
@@ -1751,7 +1786,7 @@
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
