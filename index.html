@@ -41,6 +41,16 @@
         }
         /* --- FIN DE LA OPTIMIZACIÓN --- */
         .homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center 40%; transition: background-image 5.5s ease-in-out; }
+        
+        @media (max-width: 768px) {
+            .homepage-section {
+                background-image: url('assets/images/foto%20(10).webp') !important;
+                background-size: cover;
+                background-position: center center;
+                background-attachment: fixed;
+            }
+        }
+        
         body.homepage { background-color: white; background-image: none; }
         .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; }
         .pwa-install-banner.show { transform: translateY(0); opacity: 1; }
@@ -1922,7 +1932,7 @@
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#5f302c6e6f713c302e2a36323d301f3c3e2d3e3d36313a2d302c713c33" class="hover:text-white"><span class="__cf_email__" data-cfemail="315e4200011f525e4044585c535e715250435053585f54435e421f525d">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#82edf1b3b2e1edf3f7ebefe0edc2e5efe3ebeeace1edef" class="hover:text-white"><span class="__cf_email__" data-cfemail="432c307273202c32362a2e212c03242e222a2f6d202c2e">[email&#160;protected]</span></a></li></ul></div>
                 <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
@@ -1969,7 +1979,7 @@
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
@@ -2261,7 +2271,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-                    
+                                        
                 } else {
                    chevronButton.classList.remove('visible');
                 }
