@@ -88,20 +88,88 @@
     
     /* ===== ADORNOS NAVIDEÑOS MEJORADOS ===== */
     .christmas-banner {
-        background: linear-gradient(90deg, #1a472a 0%, #2d5a3d 25%, #065f46 50%, #2d5a3d 75%, #1a472a 100%);
+        background: linear-gradient(90deg, #b91c1c 0%, #dc2626 25%, #ef4444 50%, #dc2626 75%, #b91c1c 100%);
         background-size: 200% 100%;
         animation: gradientShift 6s ease infinite;
-        padding: 16px 20px;
+        padding: 20px;
         text-align: center;
         position: relative;
-        overflow: hidden;
-        box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-        border-bottom: 4px solid #dc2626;
+        overflow: visible;
+        box-shadow: 0 8px 24px rgba(220, 38, 38, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        border-bottom: 4px solid #7f1d1d;
+        border-top: 4px solid #fca5a5;
     }
     
     @keyframes gradientShift {
         0%, 100% { background-position: 0% center; }
         50% { background-position: 100% center; }
+    }
+    
+    /* Adornos en esquinas */
+    .christmas-banner::before,
+    .christmas-banner::after {
+        content: '🎀';
+        position: absolute;
+        font-size: 32px;
+        animation: swing 3s ease-in-out infinite;
+    }
+    
+    .christmas-banner::before {
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        animation-delay: 0s;
+    }
+    
+    .christmas-banner::after {
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%) scaleX(-1);
+        animation-delay: 1.5s;
+    }
+    
+    @keyframes swing {
+        0%, 100% { transform: translateY(-50%) rotate(0deg); }
+        25% { transform: translateY(-50%) rotate(-15deg); }
+        75% { transform: translateY(-50%) rotate(15deg); }
+    }
+    
+    .christmas-banner::before { animation-direction: normal; }
+    .christmas-banner::after { animation-direction: reverse; }
+    
+    .corner-ornament {
+        position: absolute;
+        font-size: 28px;
+        animation: twinkle 2s ease-in-out infinite;
+    }
+    
+    .corner-ornament.top-left {
+        top: 8px;
+        left: 8px;
+        animation-delay: 0s;
+    }
+    
+    .corner-ornament.top-right {
+        top: 8px;
+        right: 8px;
+        animation-delay: 0.5s;
+    }
+    
+    .corner-ornament.bottom-left {
+        bottom: 8px;
+        left: 8px;
+        animation-delay: 1s;
+    }
+    
+    .corner-ornament.bottom-right {
+        bottom: 8px;
+        right: 8px;
+        animation-delay: 1.5s;
+    }
+    
+    @keyframes twinkle {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.2); }
     }
     
     .christmas-content {
@@ -110,18 +178,20 @@
         justify-content: center;
         gap: 12px;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
     }
     
     .christmas-emoji {
         font-size: 24px;
         animation: bounce 2s ease-in-out infinite;
         display: inline-block;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
     
     .christmas-emoji:nth-child(1) { animation-delay: 0s; }
     .christmas-emoji:nth-child(3) { animation-delay: 0.2s; }
     .christmas-emoji:nth-child(5) { animation-delay: 0.4s; }
-    .christmas-emoji:nth-child(7) { animation-delay: 0.6s; }
     
     @keyframes bounce {
         0%, 100% { transform: translateY(0px); }
@@ -133,13 +203,13 @@
         font-size: 18px;
         font-weight: 700;
         letter-spacing: 0.5px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(220, 38, 38, 0.2);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.3);
         animation: glow 2s ease-in-out infinite;
     }
     
     @keyframes glow {
-        0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(220, 38, 38, 0.2); }
-        50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 20px rgba(220, 38, 38, 0.4), 0 0 30px rgba(34, 197, 94, 0.2); }
+        0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.2); }
+        50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(34, 197, 94, 0.2); }
     }
     
     .snowflake {
@@ -175,7 +245,10 @@
             font-size: 18px;
         }
         .christmas-banner {
-            padding: 12px 15px;
+            padding: 15px 40px;
+        }
+        .corner-ornament {
+            font-size: 20px;
         }
     }
     /* ===== FIN ADORNOS NAVIDEÑOS ===== */
@@ -713,6 +786,10 @@
 <body class="homepage background-transition">
     <!-- Banner Navideño -->
     <div class="christmas-banner">
+        <div class="corner-ornament top-left">🎄</div>
+        <div class="corner-ornament top-right">🎄</div>
+        <div class="corner-ornament bottom-left">🔴</div>
+        <div class="corner-ornament bottom-right">🔴</div>
         <div class="snowflake">❅</div>
         <div class="snowflake">❅</div>
         <div class="snowflake">❅</div>
@@ -727,6 +804,7 @@
             <span class="christmas-text">¡Felices Fiestas de Navidad!</span>
             <span class="christmas-emoji">⛄</span>
             <span class="christmas-text">OS10 Coquimbo te desea un excelente fin de año</span>
+            <span class="christmas-emoji">🎅</span>
         </div>
     </div>
     <!-- Notificación de recepción de documentos -->
