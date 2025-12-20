@@ -90,7 +90,7 @@
     .christmas-banner {
         background: linear-gradient(90deg, #b91c1c 0%, #dc2626 25%, #ef4444 50%, #dc2626 75%, #b91c1c 100%);
         background-size: 200% 100%;
-        animation: gradientShift 6s ease infinite, fadeOut 0.5s ease 45s forwards;
+        animation: gradientShift 6s ease infinite;
         padding: 8px 20px;
         text-align: center;
         position: relative;
@@ -127,7 +127,7 @@
         content: '🎀';
         position: absolute;
         font-size: 24px;
-        animation: swing 3s ease-in-out infinite, fadeOut 0.5s ease 45s forwards;
+        animation: swing 3s ease-in-out infinite;
     }
     
     .christmas-banner::before {
@@ -156,7 +156,7 @@
     .corner-ornament {
         position: absolute;
         font-size: 20px;
-        animation: twinkle 2s ease-in-out infinite, fadeOut 0.5s ease 5s forwards;
+        animation: swing 3s ease-in-out infinite;
     }
     
     .corner-ornament.top-left {
@@ -196,7 +196,7 @@
         flex-wrap: wrap;
         position: relative;
         z-index: 1;
-        animation: fadeOut 0.5s ease 45s forwards;
+        animation: gradientShift 6s ease infinite;
     }
     
     .christmas-emoji {
@@ -235,7 +235,7 @@
         color: white;
         font-size: 10px;
         opacity: 0.6;
-        animation: fall linear infinite, fadeOut 0.5s ease 45s forwards;
+        animation: gradientShift 6s ease infinite;
         user-select: none;
         pointer-events: none;
     }
