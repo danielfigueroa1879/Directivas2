@@ -1449,6 +1449,39 @@ function generarContenidoEmpresa() {
                 </p>
             </div>
 
+            <div class="requisito-section-componentes bg-orange-50 border-l-4 border-orange-500">
+                <h3 class="font-bold text-orange-900 mb-3">📝 SOLICITUD SIMPLE (Normativa de Transición):</h3>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    <strong>Referencia:</strong> Art. Duodécimo del Reglamento D/S 867 y Decreto Exento N° 32 del 2024.
+                </p>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    El interesado debe presentar una solicitud simple indicando:
+                </p>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Si se trata de <strong>iniciación, renovación o ampliación</strong>
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Razón social de la empresa según escritura (Natural; Jurídica; EIRL; etc.)
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Nombre de fantasía (solo jurídicas)
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • RUT, domicilio comercial, comuna, ciudad
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Correo electrónico y teléfono comercial
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Representante legal y sus datos personales
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • <strong>Para Empresas de Recursos Técnicos:</strong> Indicar si es con o sin monitoreo de alarmas y vigilancia remota
+                    </li>
+                </ul>
+            </div>
+
             <div class="requisito-section-componentes bg-green-50 border-l-4 border-green-500">
                 <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS (Art. 53 Decreto 209):</h3>
                 <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
@@ -1474,6 +1507,41 @@ function generarContenidoEmpresa() {
                         6. Póliza de seguros contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
                     </li>
                 </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-cyan-50 border-l-4 border-cyan-500">
+                <h3 class="font-bold text-cyan-900 mb-3">🔧 EMPRESAS DE RECURSOS TÉCNICOS (Normativa de Transición):</h3>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    <strong>Referencia:</strong> Art. 3° inciso 1° D/S 93 y Decreto Exento N° 32 del 2024.
+                </p>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    <strong>a) Al momento de Iniciación, Renovación o Ampliación:</strong>
+                </p>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Remitir una relación detallada de los equipos, materiales y elementos que pretenda proporcionar: mantención, instalación o venta de insumos.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • <strong>Para empresas que administran servicios de CCTV y Alarmas:</strong> Deberán adjuntar los protocolos de monitoreo del referido sistema, verificación en terreno y sistema de comunicaciones de alarmas, ante activación de las mismas.
+                    </li>
+                </ul>
+                <p class="text-gray-700 mb-2 mt-3 text-sm" style="text-align: justify;">
+                    <strong>b) Una vez autorizada la empresa:</strong>
+                </p>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Debe presentar un listado de los Técnicos.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Sus respectivas fotocopias de autorizaciones vigentes.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        • Contratos de Trabajo legalizados ante Notario, posterior a su autorización.
+                    </li>
+                </ul>
+                <p class="text-gray-700 mt-2 text-sm" style="text-align: justify;">
+                    <strong>Nota:</strong> Al momento de tramitar renovación y/o ampliación deberá presentar los mismos antecedentes indicados anteriormente.
+                </p>
             </div>
 
             <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
