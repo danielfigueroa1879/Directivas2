@@ -1399,7 +1399,7 @@ function generarContenidoEmpresa() {
             <div class="mb-4">
                 <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
                 <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Se entenderá por Empresa de Seguridad Privada aquellas que tenga por objeto suministrar bienes o prestar servicios destinados a la protección de personas, bienes y procesos productivos, de las actividades descritas en el articulo 2 dispongan de medios materiales, técnicos y humanos para ello. (Art. 33 Ley 21.659)
+                    Empresa de Seguridad Privada es aquella persona jurídica de derecho privado que tiene por objeto suministrar bienes o prestar servicios destinados a la protección de personas, bienes y procesos productivos, disponiendo de medios materiales, técnicos y humanos para ello.
                 </p>
             </div>
             
@@ -1450,7 +1450,7 @@ function generarContenidoEmpresa() {
             </div>
 
             <div class="requisito-section-componentes bg-green-50 border-l-4 border-green-500">
-                <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS (Art. 53 Dcereto 209):</h3>
+                <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS:</h3>
                 <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
                     Para acreditar el cumplimiento de los requisitos, las empresas deberán adjuntar los siguientes documentos:
                 </p>
@@ -1481,7 +1481,7 @@ function generarContenidoEmpresa() {
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">7</span>
-                        Póliza de seguro de vida contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
+                        Póliza de seguros contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">8</span>
@@ -1525,18 +1525,22 @@ function generarContenidoEmpresa() {
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">18</span>
-                        Empresas de Recursos Humanos: Cuando tramite la renovación, debe presentar una relación nominal actualizada de la totalidad de los Guardias de Seguridad que a la fecha mantenga como dotación y demás personas que desempeñen labores de seguridad privada bajo sus dependencias; como asimismo, el listado actualizado de los lugares donde se desempeñan. Seguro de Vida (debe señalar expresamente este concepto "SEGURO DE VIDA" y NO "PÓLIZA DE ACCIDENTES PERSONALES"), además en las coberturas debe indicar "VIDA" y a continuación las demás coberturas, cuyo monto no podrá ser inferior al equivalente de 75 UTM; conforme al art. 13, del Decreto Supremo N° 93. Solo renovación.
+                        Póliza de Seguro de Responsabilidad Civil: Seguro de responsabilidad civil bajo las condiciones y términos que señala el inciso segundo del Art. 16 del D/S 1773, que aprueba el Reglamento D/L 3.607. Cuyo monto no podrá ser inferior a 250 UF. Para Iniciación, Renovación y ampliación.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">19</span>
-                        Empresas Capacitadoras: Una vez autorizada la empresa Capacitadora, debe presentar un listado de los Capacitadores, en las áreas respectivas y las fotocopias de autorizaciones vigentes; además de los respectivos Contratos de Trabajo, legalizados ante Notario, posterior a su autorización. Deberá acreditarse en caso que proceda la correspondiente calidad de O.T.E.C. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes. <strong>Nota:</strong> Para el caso de las Empresas Capacitadoras, cuando tengan sucursales, siempre corresponde pedir patente municipal.
+                        Empresas de Recursos Humanos: Cuando tramite la renovación, debe presentar una relación nominal actualizada de la totalidad de los Guardias de Seguridad que a la fecha mantenga como dotación y demás personas que desempeñen labores de seguridad privada bajo sus dependencias; como asimismo, el listado actualizado de los lugares donde se desempeñan. Seguro de Vida (debe señalar expresamente este concepto "SEGURO DE VIDA" y NO "PÓLIZA DE ACCIDENTES PERSONALES"), además en las coberturas debe indicar "VIDA" y a continuación las demás coberturas, cuyo monto no podrá ser inferior al equivalente de 75 UTM; conforme al art. 13, del Decreto Supremo N° 93. Solo renovación.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">20</span>
-                        Empresas Asesoras: Debe presentar fotocopia de la Autorización vigente, de la totalidad de los Asesores en materias inherente a la seguridad privada; además el Contrato de Trabajo legalizado ante notario. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes.
+                        Empresas Capacitadoras: Una vez autorizada la empresa Capacitadora, debe presentar un listado de los Capacitadores, en las áreas respectivas y las fotocopias de autorizaciones vigentes; además de los respectivos Contratos de Trabajo, legalizados ante Notario, posterior a su autorización. Deberá acreditarse en caso que proceda la correspondiente calidad de O.T.E.C. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes. <strong>Nota:</strong> Para el caso de las Empresas Capacitadoras, cuando tengan sucursales, siempre corresponde pedir patente municipal.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">21</span>
+                        Empresas Asesoras: Debe presentar fotocopia de la Autorización vigente, de la totalidad de los Asesores en materias inherente a la seguridad privada; además el Contrato de Trabajo legalizado ante notario. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">22</span>
                         Empresas de Recursos Técnicos: a) Remitir una relación detallada de los equipos, materiales y elementos que pretenda proporcionar: mantención, instalación o venta de insumos, lo que debe ser presentado al momento de Iniciación, Renovación o Ampliación. Para las empresas que administran servicios de CCTV y Alarmas, deberán adjuntar los protocolos de monitoreo del referido sistema, verificación en terreno y sistema de comunicaciones de alarmas, ante activación de las mismas. b) Una vez autorizada la empresa de Recursos Técnicos, debe presentar un listado de los Técnicos; sus respectivas fotocopias de autorizaciones vigentes y Contratos de Trabajo legalizados ante Notario, posterior a su autorización. Al momento de tramitar la Iniciación, renovación y/o ampliación deberá presentar los mismos antecedentes.
                     </li>
                 </ul>
