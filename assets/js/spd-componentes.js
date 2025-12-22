@@ -1450,7 +1450,7 @@ function generarContenidoEmpresa() {
             </div>
 
             <div class="requisito-section-componentes bg-green-50 border-l-4 border-green-500">
-                <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS (del 2 al 7 Art. 53 Decreto 209):</h3>
+                <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS (Art. 53 Decreto 209):</h3>
                 <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
                     Para acreditar el cumplimiento de los requisitos, las empresas deberán adjuntar los siguientes documentos:
                 </p>
