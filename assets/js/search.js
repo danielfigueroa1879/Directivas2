@@ -88,6 +88,7 @@ class GlobalSearch {
                             <button class="suggestion-pill" data-search="vigilante">Vigilante</button>
                             <button class="suggestion-pill" data-search="jefe">Jefe Seguridad</button>
                             <button class="suggestion-pill" data-search="asesor">Asesor</button>
+                            <button class="suggestion-pill" data-search="empresa">Empresas</button>
                             <button class="suggestion-pill" data-search="capacitación">Capacitación</button>
                         </div>
                     </div>
@@ -513,6 +514,13 @@ class GlobalSearch {
                 section: 'Componentes del Sistema',
                 action: () => window.mostrarRequisitos && window.mostrarRequisitos('capacitador'),
                 keywords: ['capacitador', 'acreditación', 'formación', 'instructor', 'curso', 'docente', 'enseñanza']
+            },
+            {
+                title: 'Empresas de Seguridad Privada',
+                content: 'Requisitos para empresas de seguridad privada. Recursos Humanos, Capacitadoras, Asesoras y Recursos Técnicos. Ley 21.659 y Decreto 209.',
+                section: 'Componentes del Sistema',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresa'),
+                keywords: ['empresa', 'empresas', 'seguridad', 'privada', 'recursos', 'humanos', 'capacitadora', 'asesora', 'técnicos', 'ley', '21659', 'decreto', '209']
             },
 
             // SECCIÓN: Documentos Editables
