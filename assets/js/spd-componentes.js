@@ -1399,7 +1399,7 @@ function generarContenidoEmpresa() {
             <div class="mb-4">
                 <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
                 <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Empresa de Seguridad Privada es aquella persona jurídica de derecho privado que tiene por objeto suministrar bienes o prestar servicios destinados a la protección de personas, bienes y procesos productivos, disponiendo de medios materiales, técnicos y humanos para ello.
+                    Se entenderá por Empresa de Seguridad Privada aquellas que tenga por objeto suministrar bienes o prestar servicios destinados a la protección de personas, bienes y procesos productivos, de las actividades descritas en el articulo 2 dispongan de medios materiales, técnicos y humanos para ello. (Art. 33 Ley 21.659)
                 </p>
             </div>
             
