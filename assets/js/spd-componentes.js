@@ -1481,7 +1481,7 @@ function generarContenidoEmpresa() {
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">7</span>
-                        Póliza de seguros contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
+                        Póliza de seguro de vida contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">8</span>
@@ -1525,22 +1525,18 @@ function generarContenidoEmpresa() {
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
                         <span class="requisito-numero-componentes">18</span>
-                        Póliza de Seguro de Responsabilidad Civil: Seguro de responsabilidad civil bajo las condiciones y términos que señala el inciso segundo del Art. 16 del D/S 1773, que aprueba el Reglamento D/L 3.607. Cuyo monto no podrá ser inferior a 250 UF. Para Iniciación, Renovación y ampliación.
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        <span class="requisito-numero-componentes">19</span>
                         Empresas de Recursos Humanos: Cuando tramite la renovación, debe presentar una relación nominal actualizada de la totalidad de los Guardias de Seguridad que a la fecha mantenga como dotación y demás personas que desempeñen labores de seguridad privada bajo sus dependencias; como asimismo, el listado actualizado de los lugares donde se desempeñan. Seguro de Vida (debe señalar expresamente este concepto "SEGURO DE VIDA" y NO "PÓLIZA DE ACCIDENTES PERSONALES"), además en las coberturas debe indicar "VIDA" y a continuación las demás coberturas, cuyo monto no podrá ser inferior al equivalente de 75 UTM; conforme al art. 13, del Decreto Supremo N° 93. Solo renovación.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        <span class="requisito-numero-componentes">20</span>
+                        <span class="requisito-numero-componentes">19</span>
                         Empresas Capacitadoras: Una vez autorizada la empresa Capacitadora, debe presentar un listado de los Capacitadores, en las áreas respectivas y las fotocopias de autorizaciones vigentes; además de los respectivos Contratos de Trabajo, legalizados ante Notario, posterior a su autorización. Deberá acreditarse en caso que proceda la correspondiente calidad de O.T.E.C. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes. <strong>Nota:</strong> Para el caso de las Empresas Capacitadoras, cuando tengan sucursales, siempre corresponde pedir patente municipal.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        <span class="requisito-numero-componentes">21</span>
+                        <span class="requisito-numero-componentes">20</span>
                         Empresas Asesoras: Debe presentar fotocopia de la Autorización vigente, de la totalidad de los Asesores en materias inherente a la seguridad privada; además el Contrato de Trabajo legalizado ante notario. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        <span class="requisito-numero-componentes">22</span>
+                        <span class="requisito-numero-componentes">21</span>
                         Empresas de Recursos Técnicos: a) Remitir una relación detallada de los equipos, materiales y elementos que pretenda proporcionar: mantención, instalación o venta de insumos, lo que debe ser presentado al momento de Iniciación, Renovación o Ampliación. Para las empresas que administran servicios de CCTV y Alarmas, deberán adjuntar los protocolos de monitoreo del referido sistema, verificación en terreno y sistema de comunicaciones de alarmas, ante activación de las mismas. b) Una vez autorizada la empresa de Recursos Técnicos, debe presentar un listado de los Técnicos; sus respectivas fotocopias de autorizaciones vigentes y Contratos de Trabajo legalizados ante Notario, posterior a su autorización. Al momento de tramitar la Iniciación, renovación y/o ampliación deberá presentar los mismos antecedentes.
                     </li>
                 </ul>
