@@ -1449,99 +1449,101 @@ function generarContenidoEmpresa() {
                 </p>
             </div>
 
-            <div class="requisito-section-componentes bg-orange-50 border-l-4 border-orange-500">
-                <h3 class="font-bold text-orange-900 mb-3">📝 SOLICITUD SIMPLE (Normativa de Transición):</h3>
-                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
-                    <strong>Referencia:</strong> Art. Duodécimo del Reglamento D/S 867 y Decreto Exento N° 32 del 2024.
-                </p>
-                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
-                    El interesado debe presentar una solicitud simple indicando:
-                </p>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Si se trata de <strong>iniciación, renovación o ampliación</strong>
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Razón social de la empresa según escritura (Natural; Jurídica; EIRL; etc.)
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Nombre de fantasía (solo jurídicas)
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • RUT, domicilio comercial, comuna, ciudad
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Correo electrónico y teléfono comercial
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Representante legal y sus datos personales
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • <strong>Para Empresas de Recursos Técnicos:</strong> Indicar si es con o sin monitoreo de alarmas y vigilancia remota
-                    </li>
-                </ul>
-            </div>
-
             <div class="requisito-section-componentes bg-green-50 border-l-4 border-green-500">
-                <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS (Art. 53 Decreto 209):</h3>
+                <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS:</h3>
                 <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
-                    Para acreditar el cumplimiento de los requisitos, las empresas deberán adjuntar en el informe bianual los siguientes documentos:
+                    Para acreditar el cumplimiento de los requisitos, las empresas deberán adjuntar los siguientes documentos:
                 </p>
                 <ul class="space-y-2">
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        1. Copia de la cédula de identidad por ambos lados, de los socios, administradores y representantes legales.
+                        <span class="requisito-numero-componentes">1</span>
+                        Solicitud Simple: El interesado debe presentar una solicitud simple indicando si se trata de iniciación, renovación o ampliación, señalando razón social de la empresa según escritura (Natural; Jurídica; EIRL; etc.), nombre de fantasía (solo jurídicas), RUT, domicilio comercial, comuna, ciudad, correo electrónico, teléfono comercial, representante legal y sus datos personales. En caso de las Empresas de Recursos Técnicos, indicar en la solicitud si es con o sin monitoreo de alarmas y vigilancia remota.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        2. Certificado de antecedentes para fines especiales de los socios, administradores y representantes legales con una vigencia no superior a treinta días.
+                        <span class="requisito-numero-componentes">2</span>
+                        Copia de la cédula de identidad por ambos lados, de los socios, administradores y representantes legales.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        3. Declaración jurada simple de no encontrarse acusado por algunos de los delitos establecidos en el numeral 5 del artículo 34 de la ley N° 21.659.
+                        <span class="requisito-numero-componentes">3</span>
+                        Certificado de antecedentes para fines especiales de los socios, administradores y representantes legales con una vigencia no superior a treinta días.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        4. Certificado de no haber dejado de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de la aplicación de una medida disciplinaria.
+                        <span class="requisito-numero-componentes">4</span>
+                        Declaración jurada simple de no encontrarse acusado por algunos de los delitos establecidos en el numeral 5 del artículo 34 de la ley N° 21.659.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        5. Declaración jurada simple del representante legal de la empresa, de no haber sido condenada la persona jurídica mediante sentencia firme por delitos contemplados en la ley N° 20.393.
+                        <span class="requisito-numero-componentes">5</span>
+                        Certificado de no haber dejado de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de la aplicación de una medida disciplinaria.
                     </li>
                     <li class="requisito-item-componentes" style="text-align: justify;">
-                        6. Póliza de seguros contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
+                        <span class="requisito-numero-componentes">6</span>
+                        Declaración jurada simple del representante legal de la empresa, de no haber sido condenada la persona jurídica mediante sentencia firme por delitos contemplados en la ley N° 20.393.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">7</span>
+                        Póliza de seguros contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">8</span>
+                        Certificado de Antecedentes Comerciales: De los socios, administradores y representantes legales, con código verificador, con una vigencia no superior a treinta (30) días. En caso de presentar antecedentes comerciales, se extenderá una autorización excepcional y por 1 año, con el objeto de contar con un plazo prudente para solucionar la deuda siempre y cuando acredite ante la Autoridad Fiscalizadora que se encuentra desarrollando acciones o gestiones para aquello. Los certificados de la CMF y SBIF no corresponden al certificado de antecedentes comerciales, debido a que no registran morosidades de casas comerciales.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">9</span>
+                        Curriculum Vitae: De los socios, administradores y representantes legales, el que debe contener nombres y apellidos, número de la cédula de identidad, domicilio, teléfonos particulares (fijo y celular) y correo electrónico.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">10</span>
+                        Antecedentes Académicos: De los socios y/o Representantes Legales, presentar un Certificado que acredite haber aprobado un Diplomado en materias inherentes a la seguridad privada, con una carga horaria igual o superior a 400 horas. En caso contrario, presentar el contrato de trabajo legalizado ante notario de un Asesor en seguridad privada y fotocopia de su acreditación vigente.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">11</span>
+                        Antecedentes Comerciales de la Empresa: Certificado con código verificador, con una vigencia no superior a treinta (30) días. En caso de presentar antecedentes comerciales, se extenderá una autorización excepcional y por 1 año, con el objeto de contar con un plazo prudente para solucionar la deuda siempre y cuando acredite ante la Autoridad Fiscalizadora que se encuentra desarrollando acciones o gestiones para aquello. Los certificados de la CMF y SBIF no corresponden.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">12</span>
+                        Certificado de Antecedentes Laborales y Previsionales de la Empresa: Certificado emitido por la Dirección del Trabajo vigente, con código verificador, a nombre de la empresa y representante legal. El código de actividad económica debe corresponder a "Servicios Integrales de Seguridad", "Servicios de Seguridad Privada Prestados por Empresas" u otros relacionados con la actividad de seguridad privada. Se exigirá que no registre deudas laborales ni previsionales, no otorgándose excepción por este concepto.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">13</span>
+                        Escritura de Constitución de Sociedad: Se debe presentar la Escritura de constitución de la sociedad inscrita en el Conservador de Bienes Raíces; Certificado de Vigencia y Extracto de la publicación en el Diario Oficial; debiendo considerar expresamente en el objeto de la constitución de la sociedad "Desarrollar actividades en materias inherentes a Seguridad Privada". En caso de Ley N° 20.659 (Empresa por un Día): a) Certificado de Estatuto actualizado, b) Certificado de vigencia, c) Certificado de anotaciones vigentes.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">14</span>
+                        Iniciación de Actividades: Su giro debe corresponder a "Servicios Integrales de Seguridad", "Servicios de Seguridad Privada Prestados por Empresas" u otros relacionados con la actividad de seguridad privada (Código 801.001). Debe contener la identificación de los socios y representante legal. Debe coincidir con el domicilio comercial, con el que figura en el certificado laboral; contrato de arriendo o comodato o contrato de subarriendo o escritura de la propiedad en caso de ser propietario y finalmente la patente comercial.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">15</span>
+                        Escritura de propiedad y/o contrato de arrendamiento o comodato del inmueble: Documento que acredite el título por el que ocupa el domicilio, por ejemplo: Certificado de dominio vigente; Contrato de Arrendamiento; Contrato de Comodato. En caso de Subarrendamiento, debe presentar el Contrato de Arriendo donde conste que se puede subarrendar. En caso de tener salas de clases en lugar distinto al del domicilio comercial, debe remitir los mismos antecedentes.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">16</span>
+                        Set fotográfico: Del frontis de la edificación donde funciona la empresa, indicando la numeración del domicilio y de todas las dependencias interiores conforme al giro de negocios. Cada fotografía debe ser a color en hoja papel oficio e indicar a qué dependencia corresponde. En caso de tener salas de clases en lugar distinto al del domicilio comercial, debe remitir las fotografías de estas dependencias.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">17</span>
+                        Patente Municipal: Del domicilio social y de las oficinas sucursales cuando corresponda. En original o fotocopia legalizada ante Notario, del semestre que corresponda al momento de tramitar la autorización. Su giro debe corresponder a "Servicios Integrales de Seguridad" o "Servicios Personales".
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">18</span>
+                        Póliza de Seguro de Responsabilidad Civil: Seguro de responsabilidad civil bajo las condiciones y términos que señala el inciso segundo del Art. 16 del D/S 1773, que aprueba el Reglamento D/L 3.607. Cuyo monto no podrá ser inferior a 250 UF. Para Iniciación, Renovación y ampliación.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">19</span>
+                        Empresas de Recursos Humanos: Cuando tramite la renovación, debe presentar una relación nominal actualizada de la totalidad de los Guardias de Seguridad que a la fecha mantenga como dotación y demás personas que desempeñen labores de seguridad privada bajo sus dependencias; como asimismo, el listado actualizado de los lugares donde se desempeñan. Seguro de Vida (debe señalar expresamente este concepto "SEGURO DE VIDA" y NO "PÓLIZA DE ACCIDENTES PERSONALES"), además en las coberturas debe indicar "VIDA" y a continuación las demás coberturas, cuyo monto no podrá ser inferior al equivalente de 75 UTM; conforme al art. 13, del Decreto Supremo N° 93. Solo renovación.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">20</span>
+                        Empresas Capacitadoras: Una vez autorizada la empresa Capacitadora, debe presentar un listado de los Capacitadores, en las áreas respectivas y las fotocopias de autorizaciones vigentes; además de los respectivos Contratos de Trabajo, legalizados ante Notario, posterior a su autorización. Deberá acreditarse en caso que proceda la correspondiente calidad de O.T.E.C. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes. <strong>Nota:</strong> Para el caso de las Empresas Capacitadoras, cuando tengan sucursales, siempre corresponde pedir patente municipal.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">21</span>
+                        Empresas Asesoras: Debe presentar fotocopia de la Autorización vigente, de la totalidad de los Asesores en materias inherente a la seguridad privada; además el Contrato de Trabajo legalizado ante notario. Al momento de tramitar la renovación y/o ampliación deberá presentar los mismos antecedentes.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">22</span>
+                        Empresas de Recursos Técnicos: a) Remitir una relación detallada de los equipos, materiales y elementos que pretenda proporcionar: mantención, instalación o venta de insumos, lo que debe ser presentado al momento de Iniciación, Renovación o Ampliación. Para las empresas que administran servicios de CCTV y Alarmas, deberán adjuntar los protocolos de monitoreo del referido sistema, verificación en terreno y sistema de comunicaciones de alarmas, ante activación de las mismas. b) Una vez autorizada la empresa de Recursos Técnicos, debe presentar un listado de los Técnicos; sus respectivas fotocopias de autorizaciones vigentes y Contratos de Trabajo legalizados ante Notario, posterior a su autorización. Al momento de tramitar la Iniciación, renovación y/o ampliación deberá presentar los mismos antecedentes.
                     </li>
                 </ul>
-            </div>
-
-            <div class="requisito-section-componentes bg-cyan-50 border-l-4 border-cyan-500">
-                <h3 class="font-bold text-cyan-900 mb-3">🔧 EMPRESAS DE RECURSOS TÉCNICOS (Normativa de Transición):</h3>
-                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
-                    <strong>Referencia:</strong> Art. 3° inciso 1° D/S 93 y Decreto Exento N° 32 del 2024.
-                </p>
-                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
-                    <strong>a) Al momento de Iniciación, Renovación o Ampliación:</strong>
-                </p>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Remitir una relación detallada de los equipos, materiales y elementos que pretenda proporcionar: mantención, instalación o venta de insumos.
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • <strong>Para empresas que administran servicios de CCTV y Alarmas:</strong> Deberán adjuntar los protocolos de monitoreo del referido sistema, verificación en terreno y sistema de comunicaciones de alarmas, ante activación de las mismas.
-                    </li>
-                </ul>
-                <p class="text-gray-700 mb-2 mt-3 text-sm" style="text-align: justify;">
-                    <strong>b) Una vez autorizada la empresa:</strong>
-                </p>
-                <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Debe presentar un listado de los Técnicos.
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Sus respectivas fotocopias de autorizaciones vigentes.
-                    </li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">
-                        • Contratos de Trabajo legalizados ante Notario, posterior a su autorización.
-                    </li>
-                </ul>
-                <p class="text-gray-700 mt-2 text-sm" style="text-align: justify;">
-                    <strong>Nota:</strong> Al momento de tramitar renovación y/o ampliación deberá presentar los mismos antecedentes indicados anteriormente.
-                </p>
             </div>
 
             <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
