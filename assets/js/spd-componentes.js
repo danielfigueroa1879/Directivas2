@@ -1399,47 +1399,152 @@ function generarContenidoEmpresa() {
             <div class="mb-4">
                 <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
                 <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
-                    Persona jurídica que presta servicios de seguridad privada, debiendo cumplir requisitos específicos para su autorización y funcionamiento.
+                    Empresa de Seguridad Privada es aquella persona jurídica de derecho privado que tiene por objeto suministrar bienes o prestar servicios destinados a la protección de personas, bienes y procesos productivos, disponiendo de medios materiales, técnicos y humanos para ello.
                 </p>
             </div>
             
             <div class="mb-4 flex flex-wrap gap-2">
-                <span class="badge-componentes badge-ley-componentes">Arts. 63 y siguientes Ley 21.659</span>
-                <span class="badge-componentes badge-decreto-componentes">Arts. 113 y siguientes Decreto 209</span>
+                <span class="badge-componentes badge-ley-componentes">Arts. 33, 34 y 35 Ley 21.659</span>
+                <span class="badge-componentes badge-decreto-componentes">Arts. 47, 49, 50, 51 y 53 Decreto 209</span>
             </div>
 
             <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
+                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS PARA SER AUTORIZADA (Art. 34 Ley 21.659 y Art. 49 Decreto 209):</h3>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">✓ En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">1</span>
+                        Estar legalmente constituida como persona jurídica de derecho privado y tener por objeto social alguna o algunas de las actividades de seguridad privada establecidas en el artículo 2° del Decreto 209. Las OTEC quedan exceptuadas del requisito de objeto social único.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">2</span>
+                        Contar con los medios humanos, de formación, financieros, materiales y técnicos en función de la naturaleza de las actividades para las que soliciten autorización y las características de los servicios que se prestan.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">3</span>
+                        Suscribir los contratos de seguro en favor del personal que corresponda, de acuerdo a lo establecido en la ley N° 21.659 y el Decreto 209.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">4</span>
+                        Que los socios, administradores y representantes legales no hayan sido condenados por crimen o simple delito.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">5</span>
+                        Que los socios, administradores y representantes legales no se encuentren acusados por alguna de las conductas punibles establecidas en las leyes: N° 17.798 (Control de Armas), N° 20.000 (Tráfico Ilícito de Estupefacientes), N° 18.314 (Conductas Terroristas), N° 19.913 (Lavado y Blanqueo de Activos), N° 12.927 (Seguridad del Estado), N° 20.066 (Violencia Intrafamiliar), artículos 141, 142, 150 A, 150 B, 361, 362, 363, 365 bis, 366, 366 bis, 372 bis, 390, 390 bis, 390 ter, 391 y 411 quáter del Código Penal, u otras asociadas al crimen organizado.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">6</span>
+                        Que los socios, administradores y representantes legales no hubiesen dejado de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública o a Gendarmería de Chile, como consecuencia de la aplicación de una medida disciplinaria en los últimos cinco años, salvo que los hechos sean posteriormente desestimados mediante sentencia judicial firme o ejecutoriada.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        <span class="requisito-numero-componentes">7</span>
+                        No haber sido condenada la persona jurídica por delitos contemplados en la ley N° 20.393, que establece la responsabilidad penal de las personas jurídicas.
+                    </li>
                 </ul>
             </div>
 
-            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
-                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
+            <div class="requisito-section-componentes bg-purple-50 border-l-4 border-purple-500">
+                <h3 class="font-bold text-purple-900 mb-3">🎯 PROHIBICIÓN DE NOMBRE O RAZÓN SOCIAL (Art. 34 Ley 21.659):</h3>
+                <p class="text-gray-700 p-2 text-sm" style="text-align: justify;">
+                    Se prohíbe a las empresas de seguridad privada utilizar un nombre o razón social igual o similar al de los órganos públicos, especialmente el del Ministerio encargado de la Seguridad Pública, el de las Fuerzas Armadas y Fuerzas de Orden y Seguridad Pública, el del Ministerio Público o cualquier otro que induzca a error respecto de su naturaleza privada.
+                </p>
+            </div>
+
+            <div class="requisito-section-componentes bg-green-50 border-l-4 border-green-500">
+                <h3 class="font-bold text-green-900 mb-3">📋 DOCUMENTOS PARA ACREDITAR REQUISITOS (Art. 53 Decreto 209):</h3>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    Para acreditar el cumplimiento de los requisitos, las empresas deberán adjuntar en el informe bianual los siguientes documentos:
+                </p>
                 <ul class="space-y-2">
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe contar con jefe de seguridad autorizado</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Debe mantener registro actualizado de personal</li>
-                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Sujeta a fiscalización permanente de la SPD</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        1. Copia de la cédula de identidad por ambos lados, de los socios, administradores y representantes legales.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        2. Certificado de antecedentes para fines especiales de los socios, administradores y representantes legales con una vigencia no superior a treinta días.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        3. Declaración jurada simple de no encontrarse acusado por algunos de los delitos establecidos en el numeral 5 del artículo 34 de la ley N° 21.659.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        4. Certificado de no haber dejado de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de la aplicación de una medida disciplinaria.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        5. Declaración jurada simple del representante legal de la empresa, de no haber sido condenada la persona jurídica mediante sentencia firme por delitos contemplados en la ley N° 20.393.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        6. Póliza de seguros contratados en favor del personal que corresponda, de acuerdo con lo establecido en la ley N° 21.659 y el Decreto 209.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
+                <h3 class="font-bold text-yellow-900 mb-3">📝 PROCEDIMIENTO DE AUTORIZACIÓN (Art. 51 Decreto 209):</h3>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    <strong>Vigencia:</strong> 4 años contados desde la notificación de la resolución que autoriza.
+                </p>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    <strong>La solicitud debe contener:</strong>
+                </p>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        1. Razón social, RUT, actividad de seguridad privada acreditada en el giro, domicilio de la entidad, nombre completo del representante legal y su cédula de identidad, correo electrónico y teléfono de contacto.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        2. Número de trabajadores, sus perfiles, formación y plan de capacitación continua.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        3. Ubicación exacta de los recintos, plantas, instalaciones, equipos y bienes que dispone para el servicio que presta.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        4. Todos los antecedentes que permitan acreditar el cumplimiento de los requisitos para funcionar como empresa de seguridad privada.
+                    </li>
+                </ul>
+                <p class="text-gray-700 mt-2 text-sm" style="text-align: justify;">
+                    <strong>Renovación:</strong> Debe solicitarse con a lo menos 30 días de anticipación a la fecha de vencimiento, acreditando nuevamente el cumplimiento de los requisitos señalados en los numerales 2 a 7 del artículo 49 del Decreto 209.
+                </p>
+            </div>
+
+            <div class="requisito-section-componentes bg-red-50 border-l-4 border-red-500">
+                <h3 class="font-bold text-red-900 mb-3">📊 INFORME BIANUAL (Art. 52 Decreto 209):</h3>
+                <p class="text-gray-700 mb-2 text-sm" style="text-align: justify;">
+                    Las empresas deben elaborar y remitir un informe cada dos años a la SPD, que dé cuenta de:
+                </p>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        1. El cumplimiento de todos los requisitos de la ley N° 21.659 para actuar como empresa de seguridad privada.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        2. La nómina del personal durante el período y el cumplimiento de los requisitos para desempeñar actividades de seguridad privada.
+                    </li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">
+                        3. Informe sobre eventuales eventos graves que hayan tenido lugar en el respectivo período, alertando de posibles transgresiones al orden público, seguridad o salud de las personas.
+                    </li>
+                </ul>
+                <p class="text-gray-700 mt-2 text-sm" style="text-align: justify;">
+                    <strong>Importante:</strong> Si la SPD verifica la pérdida de algún requisito, podrá revocar la autorización. Si se trata de requisitos subsanables, fijará un plazo no inferior a 30 días para acreditar su cumplimiento.
+                </p>
+            </div>
+
+            <div class="requisito-section-componentes" style="background:#e0f2fe; border-left-color:#0284c7;">
+                <h3 class="font-bold text-gray-900 mb-3">🏢 TIPOS DE EMPRESAS DE SEGURIDAD PRIVADA:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="background:#f0f9ff; text-align: justify;">
+                        <strong>1. Recursos Humanos:</strong> Empresas especializadas que proveen personal de seguridad (Art. 50 N°1 Decreto 209).
+                    </li>
+                    <li class="requisito-item-componentes" style="background:#f0f9ff; text-align: justify;">
+                        <strong>2. Instituciones de Capacitación:</strong> Empresas que imparten formación y perfeccionamiento en seguridad privada (Art. 50 N°2 Decreto 209).
+                    </li>
+                    <li class="requisito-item-componentes" style="background:#f0f9ff; text-align: justify;">
+                        <strong>3. Seguridad Electrónica:</strong> Empresas que instalan, mantienen y operan sistemas tecnológicos de seguridad (Art. 50 N°3 Decreto 209).
+                    </li>
+                    <li class="requisito-item-componentes" style="background:#f0f9ff; text-align: justify;">
+                        <strong>4. Asesoría:</strong> Empresas que otorgan servicios de asesoría en materias de seguridad privada (Art. 50 N°4 Decreto 209).
+                    </li>
                 </ul>
             </div>
 
             <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
                 <p class="text-sm text-gray-700" style="text-align: justify;">
-                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
+                    <strong>✓ Autorización:</strong> Todas las empresas requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> y están sujetas a fiscalización permanente.
                 </p>
             </div>
 
