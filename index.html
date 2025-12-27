@@ -79,202 +79,188 @@
     }
     
     /* ===== ADORNOS NAVIDEÑOS MEJORADOS ===== */
+/* ===== ADORNOS NAVIDEÑOS ===== */
+.christmas-banner {
+    background: linear-gradient(90deg, #b91c1c 0%, #dc2626 25%, #ef4444 50%, #dc2626 75%, #b91c1c 100%);
+    background-size: 200% 100%;
+    animation: gradientShift 6s ease infinite;
+    padding: 8px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+    border-bottom: 2px solid #7f1d1d;
+    border-top: 2px solid #fca5a5;
+    height: fit-content;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+}
+
+.christmas-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 1;
+    animation: gradientShift 6s ease infinite;
+}
+
+/* ⭐ LINE-BREAK - OCULTO EN PC, VISIBLE EN CELULAR */
+.line-break {
+    flex-basis: 100%;
+    height: 0;
+    display: none;
+}
+
+.christmas-emoji {
+    font-size: 18px;
+    animation: bounce 2s ease-in-out infinite;
+    display: inline-block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.christmas-emoji:nth-child(1) { animation-delay: 0s; }
+.christmas-emoji:nth-child(3) { animation-delay: 0.2s; }
+.christmas-emoji:nth-child(5) { animation-delay: 0.4s; }
+.christmas-emoji:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+.christmas-text {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: glow 2s ease-in-out infinite;
+    white-space: nowrap;
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.2); }
+    50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.4); }
+}
+
+.christmas-banner::before,
+.christmas-banner::after {
+    content: '🎀';
+    position: absolute;
+    font-size: 24px;
+    animation: swing 3s ease-in-out infinite;
+}
+
+.christmas-banner::before {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-delay: 0s;
+}
+
+.christmas-banner::after {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+    animation-delay: 1.5s;
+}
+
+@keyframes swing {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    25% { transform: translateY(-50%) rotate(-15deg); }
+    75% { transform: translateY(-50%) rotate(15deg); }
+}
+
+.corner-ornament {
+    position: absolute;
+    font-size: 20px;
+    animation: swing 3s ease-in-out infinite;
+}
+
+.corner-ornament.top-left {
+    top: 4px;
+    left: 5px;
+    animation-delay: 0s;
+}
+
+.corner-ornament.top-right {
+    top: 4px;
+    right: 5px;
+    animation-delay: 0.5s;
+}
+
+.corner-ornament.bottom-left {
+    bottom: 4px;
+    left: 5px;
+    animation-delay: 1s;
+}
+
+.corner-ornament.bottom-right {
+    bottom: 4px;
+    right: 5px;
+    animation-delay: 1.5s;
+}
+
+.snowflake {
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    opacity: 0.6;
+    animation: gradientShift 6s ease infinite;
+    user-select: none;
+    pointer-events: none;
+}
+
+.snowflake:nth-child(1) { left: 10%; animation-duration: 4s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 20%; animation-duration: 5s; animation-delay: 1s; }
+.snowflake:nth-child(3) { left: 30%; animation-duration: 4.5s; animation-delay: 2s; }
+.snowflake:nth-child(4) { left: 40%; animation-duration: 5.5s; animation-delay: 0.5s; }
+.snowflake:nth-child(5) { left: 50%; animation-duration: 4.2s; animation-delay: 1.5s; }
+.snowflake:nth-child(6) { left: 60%; animation-duration: 5s; animation-delay: 0s; }
+.snowflake:nth-child(7) { left: 70%; animation-duration: 4.8s; animation-delay: 2.5s; }
+.snowflake:nth-child(8) { left: 80%; animation-duration: 5.2s; animation-delay: 1s; }
+.snowflake:nth-child(9) { left: 90%; animation-duration: 4.6s; animation-delay: 1.8s; }
+
+/* ⭐ CELULAR - DOS LÍNEAS */
+@media (max-width: 768px) {
     .christmas-banner {
-        background: linear-gradient(90deg, #b91c1c 0%, #dc2626 25%, #ef4444 50%, #dc2626 75%, #b91c1c 100%);
-        background-size: 200% 100%;
-        animation: gradientShift 6s ease infinite;
-        padding: 8px 20px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
-        border-bottom: 2px solid #7f1d1d;
-        border-top: 2px solid #fca5a5;
-        height: fit-content;
-        max-height: 85px;
-    }
-    
-    @keyframes gradientShift {
-        0%, 100% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-    }
-    
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-            visibility: visible;
-            max-height: 100px;
-        }
-        to {
-            opacity: 0;
-            visibility: hidden;
-            max-height: 0;
-            padding: 0;
-            border: none;
-        }
-    }
-    
-    .christmas-banner::before,
-    .christmas-banner::after {
-        content: '🎀';
-        position: absolute;
-        font-size: 24px;
-        animation: swing 3s ease-in-out infinite;
-    }
-    
-    .christmas-banner::before {
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        animation-delay: 0s;
-    }
-    
-    .christmas-banner::after {
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%) scaleX(-1);
-        animation-delay: 1.5s;
-    }
-    
-    @keyframes swing {
-        0%, 100% { transform: translateY(-50%) rotate(0deg); }
-        25% { transform: translateY(-50%) rotate(-15deg); }
-        75% { transform: translateY(-50%) rotate(15deg); }
-    }
-    
-    .corner-ornament {
-        position: absolute;
-        font-size: 20px;
-        animation: swing 3s ease-in-out infinite;
-    }
-    
-    .corner-ornament.top-left {
-        top: 4px;
-        left: 5px;
-        animation-delay: 0s;
-    }
-    
-    .corner-ornament.top-right {
-        top: 4px;
-        right: 5px;
-        animation-delay: 0.5s;
-    }
-    
-    .corner-ornament.bottom-left {
-        bottom: 4px;
-        left: 5px;
-        animation-delay: 1s;
-    }
-    
-    .corner-ornament.bottom-right {
-        bottom: 4px;
-        right: 5px;
-        animation-delay: 1.5s;
-    }
-    
-    @keyframes twinkle {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(1.2); }
-    }
-    
-    .christmas-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        position: relative;
-        z-index: 1;
-        animation: gradientShift 6s ease infinite;
+        padding: 6px 15px;
+        max-height: 110px;
     }
 
-    /* ⭐ ELEMENTO SEPARADOR INVISIBLE PARA SALTO DE LÍNEA */
+    .christmas-content {
+        flex-wrap: wrap;
+    }
+
     .line-break {
-        flex-basis: 100%;
-        height: 0;
-        order: 5;
+        display: block;
     }
-    
-    .christmas-emoji {
-        font-size: 18px;
-        animation: bounce 2s ease-in-out infinite;
-        display: inline-block;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-    }
-    
-    .christmas-emoji:nth-child(1) { animation-delay: 0s; }
-    .christmas-emoji:nth-child(3) { animation-delay: 0.2s; }
-    .christmas-emoji:nth-child(5) { animation-delay: 0.4s; }
-    
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-6px); }
-    }
-    
+
     .christmas-text {
-        color: white;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.3);
-        animation: glow 2s ease-in-out infinite;
-        white-space: nowrap;
+        font-size: 13px;
+        white-space: normal;
     }
-    
-    @keyframes glow {
-        0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.2); }
-        50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.4); }
+
+    .christmas-emoji {
+        font-size: 15px;
     }
-    
-    .snowflake {
-        position: absolute;
-        color: white;
-        font-size: 10px;
-        opacity: 0.6;
-        animation: gradientShift 6s ease infinite;
-        user-select: none;
-        pointer-events: none;
+
+    .corner-ornament {
+        font-size: 16px;
     }
-    
-    @keyframes fall {
-        from { top: -10px; opacity: 0; }
-        to { top: 100%; opacity: 0; }
+
+    .christmas-banner::before,
+    .christmas-banner::after {
+        font-size: 18px;
     }
-    
-    .snowflake:nth-child(1) { left: 10%; animation-duration: 4s; animation-delay: 0s; }
-    .snowflake:nth-child(2) { left: 20%; animation-duration: 5s; animation-delay: 1s; }
-    .snowflake:nth-child(3) { left: 30%; animation-duration: 4.5s; animation-delay: 2s; }
-    .snowflake:nth-child(4) { left: 40%; animation-duration: 5.5s; animation-delay: 0.5s; }
-    .snowflake:nth-child(5) { left: 50%; animation-duration: 4.2s; animation-delay: 1.5s; }
-    .snowflake:nth-child(6) { left: 60%; animation-duration: 5s; animation-delay: 0s; }
-    .snowflake:nth-child(7) { left: 70%; animation-duration: 4.8s; animation-delay: 2.5s; }
-    .snowflake:nth-child(8) { left: 80%; animation-duration: 5.2s; animation-delay: 1s; }
-    .snowflake:nth-child(9) { left: 90%; animation-duration: 4.6s; animation-delay: 1.8s; }
-    
-    @media (max-width: 768px) {
-        .christmas-banner {
-            padding: 6px 15px;
-            max-height: 90px;
-        }
-        
-        .christmas-text {
-            font-size: 13px;
-            white-space: normal;
-        }
-        
-        .christmas-emoji {
-            font-size: 15px;
-        }
-        
-        .corner-ornament {
-            font-size: 16px;
-        }
-        
-        .christmas-banner::before,
-        .christmas-banner::after {
-            font-size: 18px;
-        }
-    }
+}
+/* ===== FIN ADORNOS NAVIDEÑOS ===== */
     /* ===== FIN ADORNOS NAVIDEÑOS ===== */
     
     .megamenu-header {
@@ -786,33 +772,34 @@
 </head>
 <body class="homepage background-transition">
     <!-- Banner Navideño ⭐ MODIFICADO -->
-    <div class="christmas-banner">
-        <div class="corner-ornament top-left">🎄</div>
-        <div class="corner-ornament top-right">🎄</div>
-        <div class="corner-ornament bottom-left">🔴</div>
-        <div class="corner-ornament bottom-right">🔴</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="christmas-content">
-            <span class="christmas-emoji">🥂✨</span>
-            <span class="christmas-text">¡FELICES FIESTAS DE FIN DE AÑO!</span>
-            <span class="christmas-emoji">🍾✨</span>
-            
-            <!-- ⭐ SALTO DE LÍNEA SIN AGRANDAR ALTURA -->
-            <div class="line-break"></div>
-            
-            <span class="christmas-emoji">🥂✨</span>
-            <span class="christmas-text">¡LES DESEA O.S.10 COQUIMBO!</span>
-            <span class="christmas-emoji">💥✨</span>
-        </div>
+    <!-- Banner Navideño -->
+<div class="christmas-banner">
+    <div class="corner-ornament top-left">🎄</div>
+    <div class="corner-ornament top-right">🎄</div>
+    <div class="corner-ornament bottom-left">🔴</div>
+    <div class="corner-ornament bottom-right">🔴</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="christmas-content">
+        <span class="christmas-emoji">🥂✨</span>
+        <span class="christmas-text">¡FELICES FIESTAS DE FIN DE AÑO!</span>
+        <span class="christmas-emoji">🍾✨</span>
+        
+        <!-- ⭐ SALTO DE LÍNEA SOLO EN CELULAR -->
+        <div class="line-break"></div>
+        
+        <span class="christmas-emoji">🥂✨</span>
+        <span class="christmas-text">¡LES DESEA O.S.10 COQUIMBO!</span>
+        <span class="christmas-emoji">💥✨</span>
     </div>
+</div>
     <!-- Notificación de recepción de documentos -->
  <!--<div id="suspension-notice">
     ✅👍 <strong>REAPERTURA DE SOLICITUDES DE CREDENCIALES:</strong> Desde el lunes 27 del presente mes, se reabrirá la recepción de nuevas solicitudes de credenciales.
