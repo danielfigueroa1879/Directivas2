@@ -189,15 +189,16 @@
     }
     
     .christmas-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        position: relative;
-        z-index: 1;
-        animation: gradientShift 6s ease infinite;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;       /* Permite que los elementos pasen a la línea de abajo */
+    flex-direction: column; /* Alinea los elementos en vertical */
+    position: relative;
+    z-index: 1;
+    animation: gradientShift 6s ease infinite;
+}
     
     .christmas-emoji {
         font-size: 18px;
