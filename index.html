@@ -79,7 +79,6 @@
     }
     
     /* ===== ADORNOS NAVIDEÑOS MEJORADOS ===== */
-/* ===== ADORNOS NAVIDEÑOS ===== */
 .christmas-banner {
     background: linear-gradient(90deg, #b91c1c 0%, #dc2626 25%, #ef4444 50%, #dc2626 75%, #b91c1c 100%);
     background-size: 200% 100%;
@@ -230,37 +229,39 @@
 /* ⭐ CELULAR - DOS LÍNEAS */
 @media (max-width: 768px) {
     .christmas-banner {
-        padding: 6px 15px;
-        max-height: 110px;
+        padding: 4px 10px;
+        max-height: 75px;
     }
 
     .christmas-content {
         flex-wrap: wrap;
+        gap: 4px;
     }
 
     .line-break {
         display: block;
+        margin: 0;
+        padding: 0;
     }
 
     .christmas-text {
-        font-size: 13px;
+        font-size: 12px;
         white-space: normal;
     }
 
     .christmas-emoji {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .corner-ornament {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .christmas-banner::before,
     .christmas-banner::after {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
-/* ===== FIN ADORNOS NAVIDEÑOS ===== */
     /* ===== FIN ADORNOS NAVIDEÑOS ===== */
     
     .megamenu-header {
@@ -772,8 +773,7 @@
 </head>
 <body class="homepage background-transition">
     <!-- Banner Navideño ⭐ MODIFICADO -->
-    <!-- Banner Navideño -->
-<div class="christmas-banner">
+  <div class="christmas-banner">
     <div class="corner-ornament top-left">🎄</div>
     <div class="corner-ornament top-right">🎄</div>
     <div class="corner-ornament bottom-left">🔴</div>
