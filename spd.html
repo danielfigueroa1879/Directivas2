@@ -397,12 +397,31 @@
             background: white;
             border-radius: 1rem;
             width: 100%; 
-            max-width: 1400px;
+            max-width: 1250px !important;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideDown 0.3s ease-out;
             margin: 0 auto;
+        }
+        
+        /* ANCHO ESPECÍFICO PARA MODAL DE REQUISITOS */
+        .modal-requisitos .modal-requisitos-ancho {
+            max-width: 1250px !important;
+            width: 100% !important;
+        }
+        
+        @media (min-width: 1024px) {
+            .modal-requisitos .modal-requisitos-ancho {
+                max-width: 1250px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .modal-requisitos .modal-requisitos-ancho {
+                max-width: 99% !important;
+                width: 99% !important;
+            }
         }
         
         @keyframes slideDown {
@@ -545,8 +564,8 @@
             }
             
             .modal-content {
-                width: 99% !important;
-                max-width: 99% !important;
+                width: 99%;
+                max-width: 99%;
                 margin: 0 auto;
             }
             
@@ -668,7 +687,7 @@
             }
             
             .modal-content {
-                width: 99% !important;
+                width: 99%;
             }
             
             .section-spd {
@@ -716,6 +735,11 @@
             
             #vistaPrincipal .text-center.mb-8 {
                 padding-top: 2rem !important;
+            }
+            
+            /* MODAL MÁS ANCHO QUE CONTAINER PRINCIPAL EN ESCRITORIO */
+            .modal-content {
+                max-width: 1250px !important;
             }
         }
         
@@ -1376,7 +1400,7 @@
     
     <!-- MODAL DE REQUISITOS -->
     <div id="modalRequisitos" class="modal-requisitos">
-        <div class="modal-content">
+        <div class="modal-content modal-requisitos-ancho" style="max-width: 1250px !important;">
             <div class="modal-header">
                 <h2 id="modalTitulo" class="text-xl sm:text-2xl font-bold pr-12"></h2>
                 <button onclick="cerrarModal()" class="close-modal">
@@ -1417,6 +1441,51 @@
                 }
             }, 300);
         }
+
+        // FORZAR ANCHO DEL MODAL
+        function ajustarAnchoModal() {
+            const modalContent = document.querySelector('.modal-requisitos .modal-content');
+            if (modalContent) {
+                if (window.innerWidth >= 1024) {
+                    modalContent.style.maxWidth = '1250px';
+                    modalContent.style.width = '100%';
+                } else if (window.innerWidth >= 769) {
+                    modalContent.style.maxWidth = '1250px';
+                    modalContent.style.width = '100%';
+                } else {
+                    modalContent.style.maxWidth = '99%';
+                    modalContent.style.width = '99%';
+                }
+            }
+        }
+
+        // Ejecutar al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            ajustarAnchoModal();
+            
+            // Observar cambios en el modal para aplicar ancho cuando se abra
+            const modal = document.getElementById('modalRequisitos');
+            if (modal) {
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.attributeName === 'class') {
+                            if (modal.classList.contains('active')) {
+                                // Modal se abrió, aplicar ancho
+                                setTimeout(ajustarAnchoModal, 50);
+                            }
+                        }
+                    });
+                });
+                
+                observer.observe(modal, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            }
+        });
+        
+        // Ejecutar al cambiar tamaño de ventana
+        window.addEventListener('resize', ajustarAnchoModal);
 
         // Función para descargar el contenido del modal en PDF
 function descargarModalPDF(tipo) {
@@ -1714,6 +1783,9 @@ function descargarModalPDF(tipo) {
             contenido.innerHTML = html;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // FORZAR ANCHO DEL MODAL
+            ajustarAnchoModal();
         }
 
         // Alternar texto del botón SPD cada 3 segundos
