@@ -167,6 +167,8 @@ function mostrarAsignaturas() {
     
     contenido.innerHTML = html;
     
+    // QUITAR clase de ancho especial (este modal debe tener ancho normal)
+    modal.classList.remove('modal-componentes-ancho');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
@@ -298,7 +300,8 @@ function mostrarRequisitos(tipo) {
     contenido.innerHTML = html;
     console.log('✅ HTML insertado en el contenedor');
     
-    // PASO 6: Mostrar modal (usar solo clases, no estilos inline)
+    // PASO 6: Mostrar modal con ancho especial para componentes
+    modal.classList.add('modal-componentes-ancho'); // AGREGAR clase para ancho mayor
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     console.log('✅ Clase active añadida al modal');
@@ -1806,8 +1809,9 @@ function cerrarModal() {
         return;
     }
     
-    // PASO 1: Remover clase active
+    // PASO 1: Remover clase active y clase de ancho especial
     modal.classList.remove('active');
+    modal.classList.remove('modal-componentes-ancho');
     
     // PASO 2: Restaurar scroll del body INMEDIATAMENTE
     document.body.style.overflow = '';
