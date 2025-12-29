@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,7 +29,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 2.3rem;
             margin: 1rem auto 2.3rem auto;
-            max-width: 950px; 
+            max-width: 1100px; 
             position: relative;
         }
         
@@ -397,31 +398,12 @@
             background: white;
             border-radius: 1rem;
             width: 100%; 
-            max-width: 1250px !important;
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideDown 0.3s ease-out;
             margin: 0 auto;
-        }
-        
-        /* ANCHO ESPECÍFICO PARA MODAL DE REQUISITOS */
-        .modal-requisitos .modal-requisitos-ancho {
-            max-width: 1250px !important;
-            width: 100% !important;
-        }
-        
-        @media (min-width: 1024px) {
-            .modal-requisitos .modal-requisitos-ancho {
-                max-width: 1250px !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .modal-requisitos .modal-requisitos-ancho {
-                max-width: 99% !important;
-                width: 99% !important;
-            }
         }
         
         @keyframes slideDown {
@@ -564,8 +546,8 @@
             }
             
             .modal-content {
-                width: 99%;
-                max-width: 99%;
+                width: 99% !important;
+                max-width: 99% !important;
                 margin: 0 auto;
             }
             
@@ -687,7 +669,7 @@
             }
             
             .modal-content {
-                width: 99%;
+                width: 99% !important;
             }
             
             .section-spd {
@@ -735,11 +717,6 @@
             
             #vistaPrincipal .text-center.mb-8 {
                 padding-top: 2rem !important;
-            }
-            
-            /* MODAL MÁS ANCHO QUE CONTAINER PRINCIPAL EN ESCRITORIO */
-            .modal-content {
-                max-width: 1250px !important;
             }
         }
         
@@ -1105,8 +1082,8 @@
                             📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
                         </h3>
                         <div class="email-box">
-                            <a href="/cdn-cgi/l/email-protection#ef9c9f8bc28c8e9d888e8b86828a819c8680818e8b8eaf8286819c8a889f9a8d83868c8ec188808dc18c83" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                <span class="__cf_email__" data-cfemail="bccfccd891dfddcedbddd8d5d1d9d2cfd5d3d2ddd8ddfcd1d5d2cfd9dbccc9ded0d5dfdd92dbd3de92dfd0">[email&#160;protected]</span>
+                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                spd-cargadimensionada@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1121,8 +1098,8 @@
                             🎓 Planes, Programas y Cursos de Capacitación
                         </h3>
                         <div class="email-box">
-                            <a href="/cdn-cgi/l/email-protection#8efdfeeaa3edeffeefede7faefede7e1e0ebfdfdfecee3e7e0fdebe9fefbece2e7edefa0e9e1eca0ede2" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                <span class="__cf_email__" data-cfemail="89faf9eda4eae8f9e8eae0fde8eae0e6e7ecfafaf9c9e4e0e7faeceef9fcebe5e0eae8a7eee6eba7eae5">[email&#160;protected]</span>
+                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                spd-capacitacionessp@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1400,7 +1377,7 @@
     
     <!-- MODAL DE REQUISITOS -->
     <div id="modalRequisitos" class="modal-requisitos">
-        <div class="modal-content modal-requisitos-ancho" style="max-width: 1250px !important;">
+        <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modalTitulo" class="text-xl sm:text-2xl font-bold pr-12"></h2>
                 <button onclick="cerrarModal()" class="close-modal">
@@ -1424,7 +1401,7 @@
     </div>
     
     <!-- JAVASCRIPT PARA MODALES Y PDF -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
 // Función para cerrar el modal
         function cerrarModal() {
             const modal = document.getElementById('modalRequisitos');
@@ -1441,51 +1418,6 @@
                 }
             }, 300);
         }
-
-        // FORZAR ANCHO DEL MODAL
-        function ajustarAnchoModal() {
-            const modalContent = document.querySelector('.modal-requisitos .modal-content');
-            if (modalContent) {
-                if (window.innerWidth >= 1024) {
-                    modalContent.style.maxWidth = '1250px';
-                    modalContent.style.width = '100%';
-                } else if (window.innerWidth >= 769) {
-                    modalContent.style.maxWidth = '1250px';
-                    modalContent.style.width = '100%';
-                } else {
-                    modalContent.style.maxWidth = '99%';
-                    modalContent.style.width = '99%';
-                }
-            }
-        }
-
-        // Ejecutar al cargar la página
-        window.addEventListener('DOMContentLoaded', function() {
-            ajustarAnchoModal();
-            
-            // Observar cambios en el modal para aplicar ancho cuando se abra
-            const modal = document.getElementById('modalRequisitos');
-            if (modal) {
-                const observer = new MutationObserver(function(mutations) {
-                    mutations.forEach(function(mutation) {
-                        if (mutation.attributeName === 'class') {
-                            if (modal.classList.contains('active')) {
-                                // Modal se abrió, aplicar ancho
-                                setTimeout(ajustarAnchoModal, 50);
-                            }
-                        }
-                    });
-                });
-                
-                observer.observe(modal, {
-                    attributes: true,
-                    attributeFilter: ['class']
-                });
-            }
-        });
-        
-        // Ejecutar al cambiar tamaño de ventana
-        window.addEventListener('resize', ajustarAnchoModal);
 
         // Función para descargar el contenido del modal en PDF
 function descargarModalPDF(tipo) {
@@ -1759,7 +1691,15 @@ function descargarModalPDF(tipo) {
                         <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">5. Primeros auxilios</li>
                         <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">6. Prevención de riesgos</li>
                         <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">7. Seguridad de las instalaciones</li>
-                        <li class="requisito-item-compras de <strong>arma y tiro, técnicas de reducción y primeros auxilios</strong> deben ser <strong>siempre presenciales</strong>. Las demás pueden ser telemáticas o presenciales.
+                        <li class="requisito-item-componentes" style="text-align: justify; background:#ffffff;">8. Probidad, no discriminación y perspectiva de género</li>
+                    </ul>
+                </div>
+            `;
+            
+            html += `
+                <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                    <p class="text-sm text-gray-700" style="text-align: justify;">
+                        <strong>⚠️ Nota Importante:</strong> Las asignaturas de <strong>arma y tiro, técnicas de reducción y primeros auxilios</strong> deben ser <strong>siempre presenciales</strong>. Las demás pueden ser telemáticas o presenciales.
                     </p>
                 </div>
                 
@@ -1783,9 +1723,6 @@ function descargarModalPDF(tipo) {
             contenido.innerHTML = html;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // FORZAR ANCHO DEL MODAL
-            ajustarAnchoModal();
         }
 
         // Alternar texto del botón SPD cada 3 segundos
