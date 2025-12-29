@@ -397,29 +397,12 @@
             background: white;
             border-radius: 1rem;
             width: 100%; 
-            max-width: 1100px;
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideDown 0.3s ease-out;
             margin: 0 auto;
-        }
-        
-        /* Modal más ancho SOLO para botón verde "Requisitos por Componente" */
-        .modal-requisitos.modal-componentes-ancho .modal-content {
-            max-width: 1250px !important;
-        }
-        
-        @media (min-width: 1024px) {
-            .modal-requisitos.modal-componentes-ancho .modal-content {
-                max-width: 1250px !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .modal-content {
-                max-width: 99% !important;
-            }
         }
         
         @keyframes slideDown {
@@ -1098,8 +1081,8 @@
                             📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
                         </h3>
                         <div class="email-box">
-                            <a href="/cdn-cgi/l/email-protection#fe8d8e9ad39d9f8c999f9a97939b908d9791909f9a9fbe9397908d9b998e8b9c92979d9fd099919cd09d92" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                <span class="__cf_email__" data-cfemail="dcafacb8f1bfbdaebbbdb8b5b1b9b2afb5b3b2bdb8bd9cb1b5b2afb9bbaca9beb0b5bfbdf2bbb3bef2bfb0">[email&#160;protected]</span>
+                            <a href="mailto:spd-cargadimensionada@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                spd-cargadimensionada@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1114,8 +1097,8 @@
                             🎓 Planes, Programas y Cursos de Capacitación
                         </h3>
                         <div class="email-box">
-                            <a href="/cdn-cgi/l/email-protection#186b687c357b7968797b716c797b7177767d6b6b68587571766b7d7f686d7a74717b79367f777a367b74" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                <span class="__cf_email__" data-cfemail="a7d4d7c38ac4c6d7c6c4ced3c6c4cec8c9c2d4d4d7e7cacec9d4c2c0d7d2c5cbcec4c689c0c8c589c4cb">[email&#160;protected]</span>
+                            <a href="mailto:spd-capacitacionessp@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                spd-capacitacionessp@minsegpublica.gob.cl
                             </a>
                         </div>
                         <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
@@ -1417,12 +1400,11 @@
     </div>
     
     <!-- JAVASCRIPT PARA MODALES Y PDF -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
 // Función para cerrar el modal
         function cerrarModal() {
             const modal = document.getElementById('modalRequisitos');
             modal.classList.remove('active');
-            modal.classList.remove('modal-componentes-ancho'); // Quitar clase de ancho especial
             
             // Restaurar scroll del body inmediatamente
             document.body.style.overflow = '';
@@ -1738,10 +1720,6 @@ function descargarModalPDF(tipo) {
             `;
             
             contenido.innerHTML = html;
-            
-            // QUITAR clase de ancho especial (este modal debe tener ancho normal 1100px)
-            modal.classList.remove('modal-componentes-ancho');
-            
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
