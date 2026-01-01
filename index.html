@@ -78,6 +78,207 @@
         }
     }
     
+    /* ===== BARRA DE NAVEGACIÓN VERDE (SOLO PC) ===== */
+    .desktop-navbar {
+        display: none;
+        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        border-bottom: 2px solid #166534;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        font-family: 'Roboto', sans-serif;
+        max-height: 50px;
+    }
+    
+    @media (min-width: 1024px) {
+        .desktop-navbar {
+            display: block;
+        }
+        #mobile-menu-btn {
+            display: none !important;
+        }
+        .homepage-section {
+            margin-top: 118px !important;
+        }
+    }
+    
+    .desktop-navbar-container {
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.5rem;
+        height: 50px;
+        max-height: 50px;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+    
+    .desktop-navbar-container::-webkit-scrollbar {
+        height: 3px;
+    }
+    
+    .desktop-navbar-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .desktop-navbar-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+    }
+    
+    .desktop-nav-items {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+    }
+    
+    .desktop-nav-item {
+        position: relative;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        padding: 8px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+        background: transparent;
+        border: none;
+        flex-shrink: 0;
+        max-height: 30px;
+    }
+    
+    .desktop-nav-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .desktop-chevron {
+        width: 11px;
+        height: 11px;
+        stroke-width: 2.5;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+    
+    .desktop-nav-item:hover .desktop-chevron {
+        transform: rotate(90deg);
+    }
+    
+    .desktop-submenu {
+        position: fixed;
+        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        border-radius: 3px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        padding: 0.4rem;
+        min-width: 220px;
+        max-width: 320px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 10001;
+        border: 2px solid #15803d;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .desktop-nav-item:hover .desktop-submenu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    
+    .desktop-submenu::before {
+        content: '';
+        position: absolute;
+        top: -7px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #16a34a;
+    }
+    
+    .desktop-submenu-item {
+        display: block;
+        width: 100%;
+        padding: 6px 8px;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: left;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 3px;
+        max-height: 28px;
+    }
+    
+    .desktop-submenu-item:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateX(3px);
+    }
+    
+    .desktop-submenu-title {
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 15px;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 4px 8px;
+        margin-bottom: 3px;
+        opacity: 0.95;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .desktop-submenu-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.3);
+        margin: 4px 0;
+    }
+    
+    .desktop-submenu.mega {
+        min-width: 360px;
+        max-width: 380px;
+        max-height: 420px;
+        overflow-y: auto;
+        padding-left: 0px;
+    }
+    
+    .desktop-submenu.mega::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    .desktop-submenu.mega::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    
+    .desktop-submenu.mega::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+    }
+    
     .megamenu-header {
         display: flex;
         align-items: center;
@@ -574,211 +775,13 @@
             height: 40px;
         }
     }
-    
-    /* ===== NUEVA BARRA DE NAVEGACIÓN HORIZONTAL VERDE (SOLO PC) ===== */
-    .desktop-navbar {
-        display: none;
-        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-        box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
-        border-bottom: 2px solid #166534;
-        position: relative;
-        z-index: 1100;
-    }
-    
-    @media (min-width: 1024px) {
-        .desktop-navbar {
-            display: block;
-        }
-        /* Ocultar menú hamburguesa en PC cuando hay barra verde */
-        #mobile-menu-btn {
-            display: none !important;
-        }
-    }
-    
-    .desktop-navbar-container {
-        max-width: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 0.5rem;
-        height: 50px;
-        overflow-x: auto;
-        overflow-y: visible;
-    }
-    
-    .desktop-navbar-container::-webkit-scrollbar {
-        height: 3px;
-    }
-    
-    .desktop-navbar-container::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    
-    .desktop-navbar-container::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
-    }
-    
-    .desktop-nav-items {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        flex-wrap: nowrap;
-        justify-content: center;
-        white-space: nowrap;
-    }
-    
-    .desktop-nav-item {
-        position: relative;
-        color: white;
-        font-weight: 600;
-        font-size: 12px;
-        padding: 8px 10px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        white-space: nowrap;
-        background: transparent;
-        border: none;
-        flex-shrink: 0;
-    }
-    
-    .desktop-nav-item:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: translateY(-2px);
-    }
-    
-    .desktop-nav-item.active {
-        background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .desktop-chevron {
-        width: 12px;
-        height: 12px;
-        stroke-width: 2.5;
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-    }
-    
-    .desktop-nav-item:hover .desktop-chevron {
-        transform: rotate(90deg);
-    }
-    
-    /* Submenú desplegable profesional CON FONDO VERDE */
-    .desktop-submenu {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        padding: 0.5rem;
-        min-width: 220px;
-        max-width: 320px;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: all 0.3s ease;
-        z-index: 9999;
-        border: 2px solid #15803d;
-    }
-    
-    .desktop-nav-item:hover .desktop-submenu {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        top: calc(100% + 5px);
-    }
-    
-    .desktop-submenu::before {
-        content: '';
-        position: absolute;
-        top: -7px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-bottom: 7px solid #16a34a;
-    }
-    
-    .desktop-submenu-item {
-        display: block;
-        width: 100%;
-        padding: 7px 10px;
-        color: white;
-        font-weight: 500;
-        font-size: 11px;
-        text-align: left;
-        border-radius: 5px;
-        transition: all 0.2s ease;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        margin: 2px 0;
-    }
-    
-    .desktop-submenu-item:hover {
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateX(3px);
-    }
-    
-    .desktop-submenu-title {
-        font-size: 10px;
-        font-weight: 700;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        padding: 5px 10px;
-        margin-bottom: 3px;
-        opacity: 0.95;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .desktop-submenu-divider {
-        height: 1px;
-        background: rgba(255, 255, 255, 0.3);
-        margin: 5px 0;
-    }
-    
-    /* Mega Submenu para normativa (más ancho) */
-    .desktop-submenu.mega {
-        min-width: 360px;
-        max-width: 380px;
-        max-height: 420px;
-        overflow-y: auto;
-    }
-    
-    .desktop-submenu.mega::-webkit-scrollbar {
-        width: 5px;
-    }
-    
-    .desktop-submenu.mega::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-    }
-    
-    .desktop-submenu.mega::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.4);
-        border-radius: 10px;
-    }
-    
-    .desktop-submenu.mega::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.6);
-    }
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.webp">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css?v=25">
     <link rel="stylesheet" href="assets/css/search.css?v=1">
     <link rel="stylesheet" href="assets/css/custom-styles.css">
@@ -817,12 +820,11 @@
     </div>
 </div>
     
-    <!-- NUEVA BARRA DE NAVEGACIÓN HORIZONTAL VERDE (SOLO PC) -->
-    <nav class="desktop-navbar" style="margin-top: 64px;">
+    <!-- BARRA DE NAVEGACIÓN VERDE (SOLO PC) -->
+    <nav class="desktop-navbar">
         <div class="desktop-navbar-container">
             <div class="desktop-nav-items">
                 
-                <!-- NORMATIVA -->
                 <div class="desktop-nav-item">
                     Normativa
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -831,29 +833,25 @@
                         <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1177766')">Ley 21.659 - Normativa vigente</button>
                         <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=5064')">Decreto Ley 3.607</button>
                         <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=235496')">Decreto 93</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1157751')">Decreto 1.773</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=173601')">Decreto 1.773 (año 2000)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1148613')">Decreto 1.775</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf')">Res. Exenta 4070 (20-10-2021)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf')">Res. Exenta 2660 (20-07-2023)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1064.pdf')">Res. N° 1064 (09-04-2024)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_833.pdf')">Res. N° 833 (09-04-2021)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_3346.pdf')">Res. N° 3346 (07-12-2021)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_371.pdf')">Res. N° 371 (02-02-2022)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_123.pdf')">Res. Exenta N° 123 (09-08-2022)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resol_4651.pdf')">Res. Exenta N° 4651 (27-12-2022)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf')">Res. N° 2095 (01-08-2023)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf')">Res. N° 2114 (03-08-2023)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf')">Res. N° 2340 (22-08-2023)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf')">Res. N° 1763 (10-06-2023)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Resol_3632.pdf')">Res. N° 3632 (21-12-2022)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_370.pdf')">Res. N° 370 (13-02-2024)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_80.pdf')">Res. Exenta N° 80 (20-03-2024)</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf')">Res. N° 2522 (26-08-2024)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf')">Res. Exenta 4070</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf')">Res. Exenta 2660</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1064.pdf')">Res. N° 1064</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_833.pdf')">Res. N° 833</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_3346.pdf')">Res. N° 3346</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_371.pdf')">Res. N° 371</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_123.pdf')">Res. Exenta N° 123</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resol_4651.pdf')">Res. Exenta N° 4651</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf')">Res. N° 2095</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf')">Res. N° 2114</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf')">Res. N° 2340</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf')">Res. N° 1763</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Resol_3632.pdf')">Res. N° 3632</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_370.pdf')">Res. N° 370</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_80.pdf')">Res. Exenta N° 80</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf')">Res. N° 2522</button>
                     </div>
                 </div>
                 
-                <!-- COMPONENTES -->
                 <div class="desktop-nav-item">
                     Componentes
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -876,7 +874,6 @@
                     </div>
                 </div>
                 
-                <!-- DOC. EDITABLES -->
                 <div class="desktop-nav-item">
                     Doc. Editables
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -890,7 +887,6 @@
                     </div>
                 </div>
                 
-                <!-- MOD. DECL. JURADA -->
                 <div class="desktop-nav-item">
                     Mod. Decl. Jurada
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -901,7 +897,6 @@
                     </div>
                 </div>
                 
-                <!-- MANUALES -->
                 <div class="desktop-nav-item">
                     Manuales
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -913,7 +908,6 @@
                     </div>
                 </div>
                 
-                <!-- CAPACITACIÓN -->
                 <div class="desktop-nav-item">
                     Capacitación
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -927,7 +921,6 @@
                     </div>
                 </div>
                 
-                <!-- CREDENCIALES -->
                 <div class="desktop-nav-item">
                     Credenciales
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -938,7 +931,6 @@
                     </div>
                 </div>
                 
-                <!-- OPCIONES SIN SUBMENÚ -->
                 <button class="desktop-nav-item" onclick="handleCerofilas()">Cerofilas</button>
                 <button class="desktop-nav-item" onclick="handleDirectiva()">Directiva</button>
                 <button class="desktop-nav-item" onclick="handleSPD()">SPD</button>
@@ -949,6 +941,27 @@
             </div>
         </div>
     </nav>
+    
+    <script>
+    // Posicionar submenús dinámicamente
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.desktop-nav-item');
+        
+        navItems.forEach(item => {
+            const submenu = item.querySelector('.desktop-submenu');
+            if (!submenu) return;
+            
+            item.addEventListener('mouseenter', function() {
+                const rect = item.getBoundingClientRect();
+                const submenuWidth = submenu.offsetWidth;
+                const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
+                
+                submenu.style.left = left + 'px';
+                submenu.style.top = '114px';
+            });
+        });
+    });
+    </script>
     
     <!-- Menú desplegable para móvil y ahora también para PC -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
@@ -2055,7 +2068,7 @@
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#1a75692b2a3479756b6f737778755a797b687b7873747f687569347976" class="hover:text-white"><span class="__cf_email__" data-cfemail="f59a86c4c5db969a84809c98979ab596948794979c9b90879a86db9699">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#c0afb3f1f0a3afb1b5a9ada2af80a7ada1a9aceea3afad" class="hover:text-white"><span class="__cf_email__" data-cfemail="d3bca0e2e3b0bca2a6babeb1bc93b4beb2babffdb0bcbe">[email&#160;protected]</span></a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#b4dbc785849ad7dbc5c1ddd9d6dbf4d7d5c6d5d6dddad1c6dbc79ad7d8" class="hover:text-white"><span class="__cf_email__" data-cfemail="83ecf0b2b3ade0ecf2f6eaeee1ecc3e0e2f1e2e1eaede6f1ecf0ade0ef">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#3b54480a0b58544a4e525659547b5c565a525715585456" class="hover:text-white"><span class="__cf_email__" data-cfemail="93fce0a2a3f0fce2e6fafef1fcd3f4fef2faffbdf0fcfe">[email&#160;protected]</span></a></li></ul></div>
                 <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
@@ -2394,7 +2407,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-                    
+                                        
                 } else {
                    chevronButton.classList.remove('visible');
                 }
