@@ -760,6 +760,200 @@
             height: 40px;
         }
     }
+    
+    /* ===== NUEVA BARRA DE NAVEGACIÓN HORIZONTAL VERDE (SOLO PC) ===== */
+    .desktop-navbar {
+        display: none;
+        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        border-bottom: 2px solid #166534;
+        position: relative;
+        z-index: 1100;
+    }
+    
+    @media (min-width: 1024px) {
+        .desktop-navbar {
+            display: block;
+        }
+        /* Ocultar menú hamburguesa en PC cuando hay barra verde */
+        #mobile-menu-btn {
+            display: none !important;
+        }
+    }
+    
+    .desktop-navbar-container {
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.5rem;
+        height: 50px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .desktop-navbar-container::-webkit-scrollbar {
+        height: 3px;
+    }
+    
+    .desktop-navbar-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .desktop-navbar-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+    }
+    
+    .desktop-nav-items {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+    }
+    
+    .desktop-nav-item {
+        position: relative;
+        color: white;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 8px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+        background: transparent;
+        border: none;
+        flex-shrink: 0;
+    }
+    
+    .desktop-nav-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
+    
+    .desktop-nav-item.active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .desktop-chevron {
+        width: 12px;
+        height: 12px;
+        stroke-width: 2.5;
+        transition: transform 0.3s ease;
+    }
+    
+    .desktop-nav-item:hover .desktop-chevron {
+        transform: rotate(90deg);
+    }
+    
+    /* Submenú desplegable profesional CON FONDO VERDE */
+    .desktop-submenu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        padding: 0.75rem;
+        min-width: 240px;
+        max-width: 350px;
+        margin-top: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 2000;
+        border: 2px solid #15803d;
+    }
+    
+    .desktop-nav-item:hover .desktop-submenu {
+        opacity: 1;
+        visibility: visible;
+        margin-top: 12px;
+    }
+    
+    .desktop-submenu::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #16a34a;
+    }
+    
+    .desktop-submenu-item {
+        display: block;
+        width: 100%;
+        padding: 8px 12px;
+        color: white;
+        font-weight: 500;
+        font-size: 12px;
+        text-align: left;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .desktop-submenu-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(4px);
+    }
+    
+    .desktop-submenu-title {
+        font-size: 11px;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 6px 12px;
+        margin-bottom: 4px;
+        opacity: 0.9;
+    }
+    
+    .desktop-submenu-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.3);
+        margin: 6px 0;
+    }
+    
+    /* Mega Submenu para normativa (más ancho) */
+    .desktop-submenu.mega {
+        min-width: 380px;
+        max-width: 420px;
+        max-height: 450px;
+        overflow-y: auto;
+    }
+    
+    .desktop-submenu.mega::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .desktop-submenu.mega::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    
+    .desktop-submenu.mega::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+    }
+    
+    .desktop-submenu.mega::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.6);
+    }
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -832,6 +1026,140 @@
         </div>
     </div>
 </div>
+    
+    <!-- NUEVA BARRA DE NAVEGACIÓN HORIZONTAL VERDE (SOLO PC) -->
+    <nav class="desktop-navbar" style="margin-top: 64px;">
+        <div class="desktop-navbar-container">
+            <div class="desktop-nav-items">
+                
+                <!-- NORMATIVA -->
+                <div class="desktop-nav-item">
+                    Normativa
+                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="desktop-submenu mega">
+                        <div class="desktop-submenu-title">📋 Documentos Oficiales</div>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1177766')">Ley 21.659 - Normativa vigente</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=5064')">Decreto Ley 3.607</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=235496')">Decreto 93</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1157751')">Decreto 1.773</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=173601')">Decreto 1.773 (año 2000)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1148613')">Decreto 1.775</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf')">Res. Exenta 4070 (20-10-2021)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf')">Res. Exenta 2660 (20-07-2023)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1064.pdf')">Res. N° 1064 (09-04-2024)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_833.pdf')">Res. N° 833 (09-04-2021)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_3346.pdf')">Res. N° 3346 (07-12-2021)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_371.pdf')">Res. N° 371 (02-02-2022)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_123.pdf')">Res. Exenta N° 123 (09-08-2022)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resol_4651.pdf')">Res. Exenta N° 4651 (27-12-2022)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf')">Res. N° 2095 (01-08-2023)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf')">Res. N° 2114 (03-08-2023)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf')">Res. N° 2340 (22-08-2023)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf')">Res. N° 1763 (10-06-2023)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Resol_3632.pdf')">Res. N° 3632 (21-12-2022)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_370.pdf')">Res. N° 370 (13-02-2024)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_80.pdf')">Res. Exenta N° 80 (20-03-2024)</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf')">Res. N° 2522 (26-08-2024)</button>
+                    </div>
+                </div>
+                
+                <!-- COMPONENTES -->
+                <div class="desktop-nav-item">
+                    Componentes
+                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="desktop-submenu">
+                        <div class="desktop-submenu-title">👥 Tipos de Personal</div>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('vigilante')">Vigilante Privado</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('guardia')">Guardia de Seguridad</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('jefe')">Jefe de Seguridad</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('encargado')">Encargado de Seguridad</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('supervisor')">Supervisor de Seguridad</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('asesor')">Asesor de Seguridad</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('capacitador')">Capacitador</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('tecnico')">Técnico en Seguridad</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('instalador')">Instalador Técnico</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('operador')">Operador de Cámaras</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('portero')">Portero/Nochero/Rondín</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('encargadoArmas')">Encargado de Armas</button>
+                        <div class="desktop-submenu-divider"></div>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('empresa')">Empresas de Seguridad</button>
+                    </div>
+                </div>
+                
+                <!-- DOC. EDITABLES -->
+                <div class="desktop-nav-item">
+                    Doc. Editables
+                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="desktop-submenu">
+                        <div class="desktop-submenu-title">📄 Documentos</div>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://dal5.short.gy/3st')">Estudio de seguridad</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://dal5.short.gy/M3')">Medidas de seguridad</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://docs.google.com/document/d/1MgInvryuu2EaxHMG_Zuy_1ZiuOTHr6jA/edit')">Directiva de funcionamiento</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://dal5.short.gy/H23wIF')">Solicitud simple</button>
+                    </div>
+                </div>
+                
+                <!-- MOD. DECL. JURADA -->
+                <div class="desktop-nav-item">
+                    Mod. Decl. Jurada
+                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="desktop-submenu">
+                        <div class="desktop-submenu-title">✍️ Declaraciones</div>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://drive.google.com/file/d/1ObrdQqk_PPVTTRUKOzVmVDIxxlcZXRY6/view?usp=sharing')">Mod. Decl. jurada Pers. Nat.</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://drive.google.com/file/d/1X32qrNC0KeyR9bW2AVZ7VzZW6JZTSjl0/view?usp=sharing')">Mod. Decl. jurada para emp.</button>
+                    </div>
+                </div>
+                
+                <!-- MANUALES -->
+                <div class="desktop-nav-item">
+                    Manuales
+                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="desktop-submenu">
+                        <div class="desktop-submenu-title">📚 Guías Oficiales</div>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">Manual de Funcionamiento</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">Manual de Capacitación</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">Manual de Organización</button>
+                    </div>
+                </div>
+                
+                <!-- CAPACITACIÓN -->
+                <div class="desktop-nav-item">
+                    Capacitación
+                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="desktop-submenu">
+                        <div class="desktop-submenu-title">🎓 Información</div>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://dal5.short.gy/4S3')">Asesores</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
+                        <button class="desktop-submenu-item" onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
+                    </div>
+                </div>
+                
+                <!-- CREDENCIALES -->
+                <div class="desktop-nav-item">
+                    Credenciales
+                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="desktop-submenu">
+                        <div class="desktop-submenu-title">🪪 Tipos</div>
+                        <button class="desktop-submenu-item" onclick="handleCredenciales()">Empresa</button>
+                        <button class="desktop-submenu-item" onclick="handleCredencialIndependiente()">Independiente</button>
+                    </div>
+                </div>
+                
+                <!-- OPCIONES SIN SUBMENÚ -->
+                <button class="desktop-nav-item" onclick="handleCerofilas()">Cerofilas</button>
+                <button class="desktop-nav-item" onclick="handleDirectiva()">Directiva</button>
+                <button class="desktop-nav-item" onclick="handleSPD()">SPD</button>
+                <button class="desktop-nav-item" onclick="handleValores()">Valores</button>
+                <button class="desktop-nav-item" onclick="handleValorPlan()">Valor Plan</button>
+                <button class="desktop-nav-item" onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
+                <button class="desktop-nav-item" onclick="openNewLink('https://dal5.short.gy/R3')">Reclamo</button>
+            </div>
+        </div>
+    </nav>
+    
     <!-- Menú desplegable para móvil y ahora también para PC -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
         <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
@@ -1937,7 +2265,7 @@
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#1a75692b2a3479756b6f737778755a797b687b7873747f687569347976" class="hover:text-white"><span class="__cf_email__" data-cfemail="f59a86c4c5db969a84809c98979ab596948794979c9b90879a86db9699">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#c0afb3f1f0a3afb1b5a9ada2af80a7ada1a9aceea3afad" class="hover:text-white"><span class="__cf_email__" data-cfemail="d3bca0e2e3b0bca2a6babeb1bc93b4beb2babffdb0bcbe">[email&#160;protected]</span></a></li></ul></div>
                 <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
@@ -1984,7 +2312,7 @@
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
