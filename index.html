@@ -105,15 +105,49 @@
         .homepage-section {
             margin-top: 99px !important;
             padding-top: 0 !important;
+            padding-bottom: 0 !important;
         }
         .homepage-section > div.relative.z-10 {
             padding-top: 0 !important;
+        }
+        #homepage-content-wrapper {
+            padding-top: 0 !important;
+            margin-top: 0 !important;
         }
         .carousel-container.mt-16 {
             margin-top: 0 !important;
         }
         #tramites-principales {
             padding-top: 0 !important;
+            margin-top: 0 !important;
+        }
+        #tramites-principales.py-16,
+        #tramites-principales.py-24,
+        #tramites-principales.md\:py-24 {
+            padding-top: 0 !important;
+            padding-bottom: 4rem !important;
+        }
+        #tramites-principales > div {
+            padding-top: 0 !important;
+        }
+        #tramites-principales .text-center {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        #tramites-principales .text-center > div {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+        #tramites-principales .text-center p {
+            margin-top: 0.5rem !important;
+        }
+        /* Regla agresiva para eliminar TODO padding-top de tramites-principales */
+        #tramites-principales * {
+            padding-top: 0 !important;
+        }
+        /* Mantener solo el padding del carrusel */
+        #tramites-principales .carousel-card {
+            padding: 1rem !important;
         }
     }
     
