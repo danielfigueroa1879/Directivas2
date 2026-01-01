@@ -86,7 +86,7 @@
         box-shadow: 0 4px 12px rgba(21, 129, 62, 0.3);
         border-bottom: none;
         position: fixed;
-        top: 64px;
+        top: 63px;
         left: 0;
         right: 0;
         z-index: 1000;
@@ -103,7 +103,7 @@
             display: none !important;
         }
         .homepage-section {
-            margin-top: 64px !important;
+            margin-top: 63px !important;
             padding-top: 0 !important;
             padding-bottom: 0 !important;
         }
@@ -112,19 +112,19 @@
         }
         #homepage-content-wrapper {
             padding-top: 0 !important;
-            margin-top: -70px !important;
+            margin-top: -50px !important;
         }
         .carousel-container.mt-16 {
             margin-top: 0 !important;
         }
         #tramites-principales {
-            padding-top: 0 !important;
+            padding-top: 2rem !important;
             margin-top: 0 !important;
         }
         #tramites-principales.py-16,
         #tramites-principales.py-24,
         #tramites-principales.md\:py-24 {
-            padding-top: 0 !important;
+            padding-top: 2rem !important;
             padding-bottom: 4rem !important;
         }
         #tramites-principales > div {
@@ -132,22 +132,22 @@
         }
         #tramites-principales .text-center {
             margin-top: 0 !important;
-            padding-top: 0 !important;
+            padding-top: 1.5rem !important;
         }
         #tramites-principales .text-center > div {
             margin-top: 0 !important;
-            margin-bottom: 0 !important;
+            margin-bottom: 0.5rem !important;
         }
         #tramites-principales .text-center p {
             margin-top: 0.5rem !important;
         }
-        /* Regla agresiva para eliminar TODO padding-top de tramites-principales */
-        #tramites-principales * {
-            padding-top: 0 !important;
-        }
-        /* Mantener solo el padding del carrusel */
+        /* Mantener padding del carrusel */
         #tramites-principales .carousel-card {
             padding: 1rem !important;
+        }
+        /* Agregar margen superior al carrusel */
+        #tramites-principales .carousel-container {
+            margin-top: 1.5rem !important;
         }
     }
     
@@ -1096,7 +1096,7 @@
                 const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
                 
                 submenu.style.left = left + 'px';
-                submenu.style.top = '99px';
+                submenu.style.top = '98px';
             }
             
             // Abrir submenú
