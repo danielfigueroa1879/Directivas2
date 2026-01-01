@@ -81,9 +81,9 @@
     /* ===== BARRA DE NAVEGACIÓN VERDE (SOLO PC) ===== */
     .desktop-navbar {
         display: none;
-        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-        box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
-        border-bottom: 2px solid #166534;
+        background: #15813e;
+        box-shadow: 0 4px 12px rgba(21, 129, 62, 0.3);
+        border-bottom: 2px solid #0d5a2b;
         position: fixed;
         top: 64px;
         left: 0;
@@ -179,7 +179,7 @@
     
     .desktop-submenu {
         position: fixed;
-        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        background: #15813e;
         border-radius: 3px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         padding: 0.4rem;
@@ -188,9 +188,9 @@
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.2s ease, visibility 0.2s ease;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
         z-index: 10001;
-        border: 2px solid #15803d;
+        border: 2px solid #0d5a2b;
         font-family: 'Roboto', sans-serif;
     }
     
@@ -204,7 +204,7 @@
         height: 0;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-bottom: 7px solid #16a34a;
+        border-bottom: 7px solid #15813e;
         z-index: 1;
     }
     
@@ -942,6 +942,20 @@
     document.addEventListener('DOMContentLoaded', function() {
         const navItems = document.querySelectorAll('.desktop-nav-item');
         let closeTimeout;
+        let currentOpenSubmenu = null;
+        
+        // Función para cerrar todos los submenús
+        function closeAllSubmenus() {
+            navItems.forEach(item => {
+                const submenu = item.querySelector('.desktop-submenu');
+                if (submenu) {
+                    submenu.style.opacity = '0';
+                    submenu.style.visibility = 'hidden';
+                    submenu.style.pointerEvents = 'none';
+                }
+            });
+            currentOpenSubmenu = null;
+        }
         
         navItems.forEach(item => {
             const submenu = item.querySelector('.desktop-submenu');
@@ -960,19 +974,29 @@
             // Abrir submenú
             function openSubmenu() {
                 clearTimeout(closeTimeout);
+                // Cerrar otros submenús primero
+                if (currentOpenSubmenu && currentOpenSubmenu !== submenu) {
+                    currentOpenSubmenu.style.opacity = '0';
+                    currentOpenSubmenu.style.visibility = 'hidden';
+                    currentOpenSubmenu.style.pointerEvents = 'none';
+                }
                 positionSubmenu();
                 submenu.style.opacity = '1';
                 submenu.style.visibility = 'visible';
                 submenu.style.pointerEvents = 'auto';
+                currentOpenSubmenu = submenu;
             }
             
-            // Cerrar submenú con retraso
+            // Cerrar submenú con retraso mínimo
             function closeSubmenu() {
                 closeTimeout = setTimeout(() => {
                     submenu.style.opacity = '0';
                     submenu.style.visibility = 'hidden';
                     submenu.style.pointerEvents = 'none';
-                }, 200);
+                    if (currentOpenSubmenu === submenu) {
+                        currentOpenSubmenu = null;
+                    }
+                }, 100);
             }
             
             // Eventos para el item del menú
@@ -985,6 +1009,15 @@
             });
             submenu.addEventListener('mouseleave', closeSubmenu);
         });
+        
+        // Cerrar todos los submenús si el mouse sale de la barra de navegación
+        const navbar = document.querySelector('.desktop-navbar');
+        if (navbar) {
+            navbar.addEventListener('mouseleave', () => {
+                clearTimeout(closeTimeout);
+                closeTimeout = setTimeout(closeAllSubmenus, 100);
+            });
+        }
     });
     </script>
     
