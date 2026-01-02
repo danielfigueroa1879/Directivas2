@@ -120,13 +120,19 @@ body.homepage { background-color: white; background-image: none; }
     backdrop-filter: blur(4px);
     margin: 0;
     padding: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.search-modal-overlay.show {
+    opacity: 1;
 }
 
 .search-modal-content {
     position: fixed;
     top: 5rem;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(100vh);
     background: white;
     border-radius: 1rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -134,6 +140,11 @@ body.homepage { background-color: white; background-image: none; }
     max-width: 600px;
     max-height: 80vh;
     overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-modal-content.show {
+    transform: translateX(-50%) translateY(0);
 }
 
 /* Ajustes específicos para móvil */
@@ -143,7 +154,6 @@ body.homepage { background-color: white; background-image: none; }
         max-width: 95%;
         top: 4rem;
         left: 50%;
-        transform: translateX(-50%);
         margin: 0;
         border-radius: 0.75rem;
     }
@@ -157,7 +167,6 @@ body.homepage { background-color: white; background-image: none; }
         left: 50%;
         right: auto;
         bottom: auto;
-        transform: translateX(-50%);
         margin: 0;
     }
 }
@@ -300,6 +309,35 @@ mark {
     background: #fef08a;
     padding: 0.1rem 0.2rem;
     border-radius: 0.2rem;
+}
+
+/* ===== BOTÓN CERRAR MENÚ MÓVIL ===== */
+.dropdown-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.close-mobile-menu-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.close-mobile-menu-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.close-mobile-menu-btn svg {
+    stroke: #374151;
 }
 
 
@@ -1405,7 +1443,14 @@ mark {
     
     <!-- Menú desplegable para móvil y ahora también para PC -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
-        <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
+        <div class="dropdown-menu-header">
+            <h3>Menú Principal</h3>
+            <button id="close-mobile-menu" class="close-mobile-menu-btn" aria-label="Cerrar menú">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
         <div class="dropdown-menu-content">
             <div class="has-submenu">
                 <button class="submenu-parent-btn">Leyes y Normativa <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
@@ -2699,6 +2744,17 @@ mark {
             closeMobileMenu();
         });
         
+        // Evento para el botón de cerrar menú (X)
+        const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+        if (closeMobileMenuBtn) {
+            closeMobileMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('❌ Cerrando menú desde botón X');
+                closeMobileMenu();
+            });
+        }
+        
         // Manejar submenús (acordeones)
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
         console.log('Botones de submenú encontrados:', submenuButtons.length);
@@ -2737,6 +2793,101 @@ mark {
         
         console.log('✅ Menú hamburguesa inicializado correctamente');
         
+        // ===== SOBRESCRIBIR FUNCIONES PARA EVITAR CIERRE AUTOMÁTICO EN MÓVIL =====
+        // Guardar las funciones originales
+        const originalOpenNewLink = window.openNewLink;
+        const originalHandleDirectiva = window.handleDirectiva;
+        const originalHandleCredenciales = window.handleCredenciales;
+        const originalHandleCerofilas = window.handleCerofilas;
+        const originalHandleSPD = window.handleSPD;
+        const originalHandleValores = window.handleValores;
+        const originalHandleValorPlan = window.handleValorPlan;
+        
+        // Función para detectar si estamos en móvil
+        function isMobileView() {
+            return window.innerWidth < 1024;
+        }
+        
+        // Sobrescribir openNewLink para NO cerrar menú en móvil
+        window.openNewLink = function(url) {
+            window.open(url, '_blank');
+            // NO cerrar el menú en móvil para que el usuario pueda seguir navegando
+            if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        // Sobrescribir otras funciones handle para NO cerrar menú en móvil
+        window.handleDirectiva = function() {
+            if (typeof showDirectiva === 'function') showDirectiva();
+            if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        window.handleCredenciales = function() {
+            if (typeof showCredenciales === 'function') showCredenciales();
+            if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        window.handleCerofilas = function() {
+            window.open('https://dal5.short.gy/CFil', '_blank');
+            if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        window.handleSPD = function() {
+            window.location.href = 'spd.html';
+            // En este caso sí cerramos porque estamos cambiando de página
+            if (typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        window.handleValores = function() {
+            window.open('https://dal5.short.gy/val', '_blank');
+            if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        window.handleValorPlan = function() {
+            window.open('https://os10.short.gy/Pl4n', '_blank');
+            if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        window.handleCredencialIndependiente = function() {
+            window.open('https://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb', '_blank');
+            if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                closeActiveMenu();
+            }
+        };
+        
+        // Guardar la función original mostrarRequisitos si existe
+        setTimeout(function() {
+            if (typeof window.mostrarRequisitos === 'function') {
+                const originalMostrarRequisitos = window.mostrarRequisitos;
+                
+                window.mostrarRequisitos = function(tipo) {
+                    // Llamar a la función original
+                    originalMostrarRequisitos(tipo);
+                    // NO cerrar el menú en móvil
+                    if (!isMobileView() && typeof closeActiveMenu === 'function') {
+                        closeActiveMenu();
+                    }
+                };
+                
+                console.log('✅ mostrarRequisitos sobrescrita');
+            }
+        }, 1000);
+        
+        console.log('✅ Funciones globales sobrescritas para mantener menú abierto en móvil');
+        
         // ===== PREVENIR CONFLICTOS CON SEARCH.JS Y CENTRAR MODAL =====
         // Esperar a que search.js agregue el botón de búsqueda
         setTimeout(function() {
@@ -2752,6 +2903,7 @@ mark {
             function centerSearchModal() {
                 const searchModal = document.getElementById('global-search-modal');
                 const searchContent = document.querySelector('.search-modal-content');
+                const searchOverlay = document.querySelector('.search-modal-overlay');
                 
                 if (searchModal && searchContent) {
                     console.log('🎯 Ajustando posición del modal de búsqueda (arriba y centrado)');
@@ -2774,9 +2926,41 @@ mark {
                     searchContent.style.left = '50%';
                     searchContent.style.right = 'auto';
                     searchContent.style.bottom = 'auto';
-                    searchContent.style.transform = 'translateX(-50%)';
                     searchContent.style.margin = '0';
                     searchContent.style.padding = '0';
+                    
+                    // Aplicar animación de slide-up
+                    if (searchModal.style.display !== 'none' && !searchContent.classList.contains('show')) {
+                        // Iniciar desde abajo
+                        searchContent.style.transform = 'translateX(-50%) translateY(100vh)';
+                        if (searchOverlay) {
+                            searchOverlay.classList.remove('show');
+                        }
+                        
+                        // Animar hacia arriba después de un pequeño delay
+                        setTimeout(function() {
+                            searchContent.classList.add('show');
+                            if (searchOverlay) {
+                                searchOverlay.classList.add('show');
+                            }
+                        }, 10);
+                    }
+                }
+            }
+            
+            // Interceptar el cierre del modal para remover las clases
+            function handleModalClose() {
+                const searchContent = document.querySelector('.search-modal-content');
+                const searchOverlay = document.querySelector('.search-modal-overlay');
+                const searchModal = document.getElementById('global-search-modal');
+                
+                if (searchModal && searchModal.style.display === 'none') {
+                    if (searchContent) {
+                        searchContent.classList.remove('show');
+                    }
+                    if (searchOverlay) {
+                        searchOverlay.classList.remove('show');
+                    }
                 }
             }
             
@@ -2787,6 +2971,8 @@ mark {
                         const searchModal = document.getElementById('global-search-modal');
                         if (searchModal && searchModal.style.display !== 'none') {
                             centerSearchModal();
+                        } else {
+                            handleModalClose();
                         }
                     }
                 });
