@@ -2284,7 +2284,7 @@ body.homepage { background-color: white; background-image: none; }
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#fd928ecccdd39e928c8894909f92bd9e9c8f9c9f9493988f928ed39e91" class="hover:text-white"><span class="__cf_email__" data-cfemail="3e514d0f0e105d514f4b57535c517e5d5f4c5f5c57505b4c514d105d52">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#442b377574272b35312d29262b042329252d286a272b29" class="hover:text-white"><span class="__cf_email__" data-cfemail="650a165455060a14100c08070a250208040c094b060a08">[email&#160;protected]</span></a></li></ul></div>
                 <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
@@ -2331,7 +2331,7 @@ body.homepage { background-color: white; background-image: none; }
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
@@ -2370,6 +2370,106 @@ body.homepage { background-color: white; background-image: none; }
             });
         }
     </script>
+    
+    <!-- Script para menú hamburguesa móvil -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🍔 Inicializando menú hamburguesa...');
+        
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        
+        console.log('Botón hamburguesa:', mobileMenuBtn ? '✅' : '❌');
+        console.log('Dropdown móvil:', mobileDropdown ? '✅' : '❌');
+        console.log('Overlay:', mobileMenuOverlay ? '✅' : '❌');
+        
+        if (!mobileMenuBtn || !mobileDropdown || !mobileMenuOverlay) {
+            console.error('❌ Elementos del menú no encontrados');
+            return;
+        }
+        
+        // Función para abrir el menú
+        function openMobileMenu() {
+            console.log('📱 Abriendo menú móvil');
+            mobileDropdown.classList.remove('hidden');
+            mobileMenuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                mobileDropdown.classList.add('show');
+            }, 10);
+        }
+        
+        // Función para cerrar el menú
+        function closeMobileMenu() {
+            console.log('📱 Cerrando menú móvil');
+            mobileDropdown.classList.remove('show');
+            setTimeout(() => {
+                mobileDropdown.classList.add('hidden');
+                mobileMenuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+        
+        // Evento del botón hamburguesa
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🍔 Click en botón hamburguesa');
+            
+            const isOpen = !mobileDropdown.classList.contains('hidden');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+        
+        // Evento del overlay (cerrar al hacer click fuera)
+        mobileMenuOverlay.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+        
+        // Manejar submenús (acordeones)
+        const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
+        console.log('Botones de submenú encontrados:', submenuButtons.length);
+        
+        submenuButtons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const parent = this.closest('.has-submenu');
+                const submenu = parent.querySelector('.submenu');
+                const arrow = this.querySelector('.submenu-arrow');
+                
+                // Cerrar otros submenús
+                document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(function(other) {
+                    if (other !== parent) {
+                        other.classList.remove('submenu-open');
+                        const otherSubmenu = other.querySelector('.submenu');
+                        const otherArrow = other.querySelector('.submenu-arrow');
+                        if (otherSubmenu) otherSubmenu.classList.remove('show');
+                        if (otherArrow) otherArrow.style.transform = '';
+                    }
+                });
+                
+                // Toggle este submenú
+                const isOpen = parent.classList.contains('submenu-open');
+                if (isOpen) {
+                    parent.classList.remove('submenu-open');
+                    if (submenu) submenu.classList.remove('show');
+                    if (arrow) arrow.style.transform = '';
+                } else {
+                    parent.classList.add('submenu-open');
+                    if (submenu) submenu.classList.add('show');
+                    if (arrow) arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        });
+        
+        console.log('✅ Menú hamburguesa inicializado correctamente');
+    });
+    </script>
+    
       <script>
 document.addEventListener('DOMContentLoaded', function() {
     const suspensionNotice = document.getElementById('suspension-notice');
