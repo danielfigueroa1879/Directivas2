@@ -109,6 +109,8 @@ body.homepage { background-color: white; background-image: none; }
     position: fixed;
     inset: 0;
     z-index: 9999;
+    margin: 0;
+    padding: 0;
 }
 
 .search-modal-overlay {
@@ -116,13 +118,15 @@ body.homepage { background-color: white; background-image: none; }
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
+    margin: 0;
+    padding: 0;
 }
 
 .search-modal-content {
     position: fixed;
-    top: 50%;
+    top: 5rem;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     background: white;
     border-radius: 1rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -130,6 +134,32 @@ body.homepage { background-color: white; background-image: none; }
     max-width: 600px;
     max-height: 80vh;
     overflow: hidden;
+}
+
+/* Ajustes específicos para móvil */
+@media (max-width: 768px) {
+    .search-modal-content {
+        width: 95%;
+        max-width: 95%;
+        top: 4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        border-radius: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-modal-content {
+        width: 96%;
+        max-width: 96%;
+        top: 3rem;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        transform: translateX(-50%);
+        margin: 0;
+    }
 }
 
 .search-header {
@@ -2707,7 +2737,7 @@ mark {
         
         console.log('✅ Menú hamburguesa inicializado correctamente');
         
-        // ===== PREVENIR CONFLICTOS CON SEARCH.JS =====
+        // ===== PREVENIR CONFLICTOS CON SEARCH.JS Y CENTRAR MODAL =====
         // Esperar a que search.js agregue el botón de búsqueda
         setTimeout(function() {
             const searchButton = document.getElementById('global-search-button');
@@ -2716,6 +2746,69 @@ mark {
                 // Asegurarse de que el botón de búsqueda funcione
                 searchButton.style.zIndex = '200';
                 searchButton.style.position = 'relative';
+            }
+            
+            // Función para centrar el modal de búsqueda horizontalmente (arriba verticalmente)
+            function centerSearchModal() {
+                const searchModal = document.getElementById('global-search-modal');
+                const searchContent = document.querySelector('.search-modal-content');
+                
+                if (searchModal && searchContent) {
+                    console.log('🎯 Ajustando posición del modal de búsqueda (arriba y centrado)');
+                    
+                    // Forzar posicionamiento: arriba verticalmente, centrado horizontalmente
+                    searchContent.style.position = 'fixed';
+                    
+                    // Detectar si es móvil
+                    const isMobile = window.innerWidth <= 480;
+                    const isTablet = window.innerWidth <= 768;
+                    
+                    if (isMobile) {
+                        searchContent.style.top = '3rem';
+                    } else if (isTablet) {
+                        searchContent.style.top = '4rem';
+                    } else {
+                        searchContent.style.top = '5rem';
+                    }
+                    
+                    searchContent.style.left = '50%';
+                    searchContent.style.right = 'auto';
+                    searchContent.style.bottom = 'auto';
+                    searchContent.style.transform = 'translateX(-50%)';
+                    searchContent.style.margin = '0';
+                    searchContent.style.padding = '0';
+                }
+            }
+            
+            // Observar cuando se muestre el modal
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                        const searchModal = document.getElementById('global-search-modal');
+                        if (searchModal && searchModal.style.display !== 'none') {
+                            centerSearchModal();
+                        }
+                    }
+                });
+            });
+            
+            // Observar cambios en el modal
+            const searchModal = document.getElementById('global-search-modal');
+            if (searchModal) {
+                observer.observe(searchModal, {
+                    attributes: true,
+                    attributeFilter: ['style', 'class']
+                });
+                
+                // Centrar inmediatamente si está visible
+                centerSearchModal();
+                
+                // Re-centrar al cambiar tamaño de ventana
+                window.addEventListener('resize', function() {
+                    if (searchModal.style.display !== 'none') {
+                        centerSearchModal();
+                    }
+                });
             }
         }, 500);
     });
