@@ -32,7 +32,7 @@
     <link rel="preload" href="assets/css/styles.css" as="style">
     <link rel="stylesheet" href="assets/css/carousel.css">
         <style>
-    html {
+html {
     scroll-behavior: smooth;
 }
 .homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center top; min-height: 100vh; transition: background-image 5.5s ease-in-out; }
@@ -95,7 +95,7 @@ body.homepage { background-color: white; background-image: none; }
     max-height: 35px;
 }
 
-/* ===== SOLUCIÓN DEFINITIVA - BOTONES VISIBLES (SOLO DESKTOP) ===== */
+/* ===== SOLUCIÓN BALANCEADA - BOTONES VISIBLES Y EN BUENA POSICIÓN ===== */
 @media (min-width: 1024px) {
     .desktop-navbar {
         display: block;
@@ -104,12 +104,12 @@ body.homepage { background-color: white; background-image: none; }
         display: none !important;
     }
     
-    /* Foto MUY grande para asegurar espacio para botones */
+    /* Foto pantalla completa */
     .homepage-section {
         margin-top: 33px !important;
         padding-top: 115px !important;
         padding-bottom: 0 !important;
-        min-height: 100vh !important;       /* MUY GRANDE - espacio garantizado para botones */
+        min-height: 100vh !important;
         height: 100vh !important;
     }
     
@@ -118,10 +118,10 @@ body.homepage { background-color: white; background-image: none; }
         padding-bottom: 0 !important;
     }
     
-    /* Margen negativo MUY PEQUEÑO - solo para reducir un poco el espacio */
+    /* Margen negativo BALANCEADO - sube botones sin ocultarlos */
     #homepage-content-wrapper {
         padding-top: 0 !important;
-        margin-top: -280px !important;      /* MUY PEQUEÑO - prioriza botones visibles */
+        margin-top: -120px !important;     /* ← Sube los botones sin ocultarlos */
         position: relative;
         z-index: 10;
     }
@@ -861,20 +861,6 @@ body.homepage { background-color: white; background-image: none; }
     .pdf-icon-animated svg {
         width: 40px;
         height: 40px;
-    }
-}
-
-    @media (min-width: 1024px) {
-    .homepage-section {
-        margin-top: 33px !important;
-        padding-top: 115px !important;
-        padding-bottom: 0 !important;
-        min-height: 100vh !important;
-        height: 100vh !important;
-    }
-    
-    #homepage-content-wrapper {
-        margin-top: 0px !important;  /* ← SIN margen negativo */
     }
 }
     </style>
