@@ -32,7 +32,7 @@
     <link rel="preload" href="assets/css/styles.css" as="style">
     <link rel="stylesheet" href="assets/css/carousel.css">
         <style>
-html {
+    html {
     scroll-behavior: smooth;
 }
 .homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center top; min-height: 100vh; transition: background-image 5.5s ease-in-out; }
@@ -95,7 +95,7 @@ body.homepage { background-color: white; background-image: none; }
     max-height: 35px;
 }
 
-/* ===== AJUSTES CON BOTONES VISIBLES (SOLO DESKTOP) ===== */
+/* ===== SOLUCIÓN DEFINITIVA - BOTONES VISIBLES (SOLO DESKTOP) ===== */
 @media (min-width: 1024px) {
     .desktop-navbar {
         display: block;
@@ -104,13 +104,13 @@ body.homepage { background-color: white; background-image: none; }
         display: none !important;
     }
     
-    /* Foto suficientemente grande para mostrar botones */
+    /* Foto MUY grande para asegurar espacio para botones */
     .homepage-section {
         margin-top: 33px !important;
         padding-top: 115px !important;
         padding-bottom: 0 !important;
-        min-height: 90vh !important;        /* AUMENTADO para espacio de botones */
-        height: 90vh !important;
+        min-height: 100vh !important;       /* MUY GRANDE - espacio garantizado para botones */
+        height: 100vh !important;
     }
     
     .homepage-section > div.relative.z-10 {
@@ -118,10 +118,10 @@ body.homepage { background-color: white; background-image: none; }
         padding-bottom: 0 !important;
     }
     
-    /* Margen negativo SUAVE para reducir espacio sin ocultar botones */
+    /* Margen negativo MUY PEQUEÑO - solo para reducir un poco el espacio */
     #homepage-content-wrapper {
         padding-top: 0 !important;
-        margin-top: -180px !important;      /* SUAVE para no ocultar botones */
+        margin-top: -100px !important;      /* MUY PEQUEÑO - prioriza botones visibles */
         position: relative;
         z-index: 10;
     }
