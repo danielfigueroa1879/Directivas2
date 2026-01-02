@@ -37,8 +37,8 @@ html {
 }
 .homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center top; min-height: 100vh; transition: background-image 5.5s ease-in-out; }
 body.homepage { background-color: white; background-image: none; }
-.pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; }
-.pwa-install-banner.show { transform: translateY(0); opacity: 1; }
+.pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; pointer-events: none; }
+.pwa-install-banner.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
 .submenu-arrow { transition: transform 0.3s ease; }
 .has-submenu.submenu-open .submenu-arrow { transform: rotate(90deg); }
 #suspension-notice {
@@ -78,6 +78,200 @@ body.homepage { background-color: white; background-image: none; }
         border-radius: 0 !important;
     }
 }
+
+/* ===== ESTILOS PARA BÚSQUEDA ===== */
+.banner-search-button {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #374151;
+}
+
+.banner-search-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.search-modal-hidden {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.search-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.search-modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.search-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+#global-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#global-search-input:focus {
+    border-color: #3b82f6;
+}
+
+.search-shortcuts {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.shortcut-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: #f3f4f6;
+    border-radius: 0.25rem;
+    color: #6b7280;
+}
+
+.search-results-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.search-result-item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.search-result-item:hover,
+.search-result-item.selected {
+    background: #f3f4f6;
+}
+
+.result-section-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.result-content {
+    flex: 1;
+}
+
+.result-title {
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+
+.result-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.result-arrow {
+    flex-shrink: 0;
+    color: #9ca3af;
+}
+
+.search-help {
+    padding: 1rem;
+}
+
+.search-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggestion-pill {
+    padding: 0.5rem 1rem;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.875rem;
+}
+
+.suggestion-pill:hover {
+    background: #e5e7eb;
+    border-color: #d1d5db;
+}
+
+#search-no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #6b7280;
+}
+
+#search-no-results.hidden {
+    display: none;
+}
+
+mark {
+    background: #fef08a;
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.2rem;
+}
+
 
 /* ===== BARRA DE NAVEGACIÓN VERDE (SOLO PC) ===== */
 .desktop-navbar {
@@ -904,7 +1098,7 @@ body.homepage { background-color: white; background-image: none; }
             <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
     </div>
-    <div id="banner" class="fixed top-0 left-0 right-0 z-[100] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
+    <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
     <div class="w-full max-w-6xl mx-auto h-full flex items-center justify-between pl-3 pr-3 lg:px-4">
         
         <div class="flex items-center space-x-2">
@@ -2371,11 +2565,56 @@ body.homepage { background-color: white; background-image: none; }
         }
     </script>
     
-    <!-- Script para menú hamburguesa móvil -->
+    <!-- Script para menú hamburguesa móvil y manejo de banner PWA -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🍔 Inicializando menú hamburguesa...');
         
+        // ===== MANEJO DEL BANNER PWA =====
+        const pwaBanner = document.getElementById('pwa-install-banner');
+        const closeInstallBtn = document.getElementById('close-install-banner');
+        const installBtn = document.getElementById('install-button');
+        
+        // Función para ocultar completamente el banner PWA
+        function hidePWABanner() {
+            if (pwaBanner) {
+                console.log('🚫 Ocultando banner PWA completamente');
+                pwaBanner.classList.remove('show');
+                pwaBanner.style.display = 'none'; // Ocultar completamente del DOM
+                pwaBanner.style.pointerEvents = 'none';
+            }
+        }
+        
+        // Evento para cerrar el banner PWA
+        if (closeInstallBtn) {
+            closeInstallBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                hidePWABanner();
+            });
+        }
+        
+        // Evento para instalar PWA
+        if (installBtn) {
+            installBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                // main.js maneja la instalación
+                if (typeof installPWA === 'function') {
+                    installPWA();
+                }
+                hidePWABanner();
+            });
+        }
+        
+        // Auto-ocultar el banner PWA después de 10 segundos
+        setTimeout(function() {
+            if (pwaBanner && pwaBanner.classList.contains('show')) {
+                hidePWABanner();
+            }
+        }, 10000);
+        
+        // ===== MANEJO DEL MENÚ HAMBURGUESA =====
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileDropdown = document.getElementById('mobile-dropdown');
         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
@@ -2467,6 +2706,18 @@ body.homepage { background-color: white; background-image: none; }
         });
         
         console.log('✅ Menú hamburguesa inicializado correctamente');
+        
+        // ===== PREVENIR CONFLICTOS CON SEARCH.JS =====
+        // Esperar a que search.js agregue el botón de búsqueda
+        setTimeout(function() {
+            const searchButton = document.getElementById('global-search-button');
+            if (searchButton) {
+                console.log('🔍 Botón de búsqueda encontrado');
+                // Asegurarse de que el botón de búsqueda funcione
+                searchButton.style.zIndex = '200';
+                searchButton.style.position = 'relative';
+            }
+        }, 500);
     });
     </script>
     
