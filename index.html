@@ -95,7 +95,7 @@ body.homepage { background-color: white; background-image: none; }
     max-height: 35px;
 }
 
-/* ===== SOLUCIÓN BALANCEADA - BOTONES VISIBLES Y EN BUENA POSICIÓN ===== */
+/* ===== MARGEN ULTRA CONSERVADOR - BOTONES GARANTIZADOS ===== */
 @media (min-width: 1024px) {
     .desktop-navbar {
         display: block;
@@ -118,10 +118,10 @@ body.homepage { background-color: white; background-image: none; }
         padding-bottom: 0 !important;
     }
     
-    /* Margen negativo BALANCEADO - sube botones sin ocultarlos */
+    /* Margen negativo MUY PEQUEÑO - solo 50px */
     #homepage-content-wrapper {
         padding-top: 0 !important;
-        margin-top: -120px !important;     /* ← Sube los botones sin ocultarlos */
+        margin-top: -50px !important;      /* ← MUY PEQUEÑO - botones DEBEN verse */
         position: relative;
         z-index: 10;
     }
