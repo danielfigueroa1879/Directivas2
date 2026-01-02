@@ -140,48 +140,32 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- ASIGNACIÓN DE EVENTOS ---
+    // NOTA: El menú hamburguesa y móvil es manejado exclusivamente por 
+    // el script en index.html (líneas 2412-2596) para evitar conflictos.
+    // main.js solo maneja el panel de submenús de escritorio.
 
     if (window.innerWidth >= 1024) {
-        // Eventos para el menú principal y el panel lateral
-        mobileMenuBtn.addEventListener('mouseenter', openMenu);
-        mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
-        
-        mobileMenuBtn.addEventListener('mouseleave', () => closeEverything());
-        mobileDropdown.addEventListener('mouseleave', () => closeEverything());
-        
+        // Solo eventos para el panel lateral de escritorio (NO el botón hamburguesa)
         if (desktopSubmenuPanel) {
             desktopSubmenuPanel.addEventListener('mouseenter', () => {
                 clearTimeout(menuTimeout);
                 clearTimeout(panelTimeout);
             });
-            desktopSubmenuPanel.addEventListener('mouseleave', () => closeEverything());
+            desktopSubmenuPanel.addEventListener('mouseleave', () => closePanel(true));
         }
 
+        // Hover en items del dropdown abre el panel lateral
         const menuItemsWithSubmenu = document.querySelectorAll('#mobile-dropdown .has-submenu');
         menuItemsWithSubmenu.forEach(item => {
             item.addEventListener('mouseenter', () => openPanel(item));
         });
 
-    } else {
-        // Lógica para móvil
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = !mobileDropdown.classList.contains('hidden');
-            if (isOpen) {
-                closeMenu(true);
-                mobileMenuOverlay.classList.add('hidden');
-            } else {
-                openMenu();
-                mobileMenuOverlay.classList.remove('hidden');
-            }
-        });
-        mobileMenuOverlay.addEventListener('click', () => {
-            closeMenu(true);
-            mobileMenuOverlay.classList.add('hidden');
-        });
-    }
+    } 
+    // El bloque else para móvil está deshabilitado - manejado por index.html
 
     // --- LÓGICA DE SUBMENÚS (ACORDEÓN EN MÓVIL) ---
+    // DESHABILITADO: Manejado por index.html (líneas 2530-2559) para evitar conflictos
+    /* CÓDIGO ORIGINAL COMENTADO:
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
@@ -202,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    */
 
     // --- LÓGICA PARA MEGAMENÚS (Asesor, Jefe, etc.) ---
     const setupMegamenu = (config) => {
@@ -213,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const openMegamenu = () => {
             if (!item || !megamenu) return;
             closeAllMegamenus(config.megamenuId);
-            if (window.innerWidth < 1024) closeMenu(true);
+            // En móvil NO cerramos el menú principal para permitir navegación
             item.classList.add('megamenu-open');
             megamenu.classList.add('show');
         };
@@ -282,21 +267,29 @@ window.addEventListener('appinstalled', () => {
 });
 
 function closeActiveMenu() {
-    // Cierra menú móvil
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    if (mobileDropdown && mobileDropdown.classList.contains('show')) {
-        mobileDropdown.classList.remove('show');
-        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-        if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
-    }
-    // Cierra megamenús
+    // NOTA: En móvil (< 1024px), el menú hamburguesa es controlado por index.html
+    // Solo cerramos megamenús y panel de escritorio aquí
+    
+    // Cierra megamenús (tanto en móvil como escritorio)
     document.querySelectorAll('.asesor-megamenu').forEach(menu => menu.classList.remove('show'));
     document.querySelectorAll('.has-submenu').forEach(item => item.classList.remove('megamenu-open'));
+    
     // Cierra panel lateral de escritorio
     const desktopPanel = document.getElementById('desktop-submenu-panel');
     if (desktopPanel && desktopPanel.classList.contains('is-open')) {
         desktopPanel.classList.remove('is-open');
+    }
+    
+    // Solo cerrar menú móvil en escritorio (>= 1024px)
+    // En móvil, el script de index.html maneja esto
+    if (window.innerWidth >= 1024) {
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        if (mobileDropdown && mobileDropdown.classList.contains('show')) {
+            mobileDropdown.classList.remove('show');
+            setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
+            if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
+        }
     }
 }
 
@@ -310,4 +303,4 @@ window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); };
 window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); };
 window.handleBuscarCurso = function(url) { openNewLink(url); };
 // NUEVA FUNCIÓN PARA SPD
-window.handleSPD = function() { window.location.href = 'spd.html'; closeActiveMenu(); };
+window.handleSPD = function() { window.location.href = 'spd.html'; closeActiveMenu(); };V
