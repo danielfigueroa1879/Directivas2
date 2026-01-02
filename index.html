@@ -112,15 +112,15 @@ body.homepage { background-color: white; background-image: none; }
 /* ===== BARRA DE NAVEGACIÓN VERDE (SOLO PC) ===== */
 .desktop-navbar {
     display: none;
-    background: #15813e;
-    box-shadow: 0 4px 12px rgba(21, 129, 62, 0.3);
+    background: #237c4e;
+    box-shadow: 0 4px 12px rgba(35, 124, 78, 0.3);
     border-bottom: none;
     position: fixed;
     top: 63px;
     left: 0;
     right: 0;
     z-index: 90;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     height: 35px;
     max-height: 35px;
 }
@@ -249,12 +249,12 @@ body.homepage { background-color: white; background-image: none; }
 .desktop-nav-item {
     position: relative;
     color: white;
-    font-family: Arial, sans-serif;
-    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     font-size: 13px;
     line-height: 14px;
     padding: 1px 10px 6px 10px;
-    border-radius: 6px;
+    border-radius: 0;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -285,8 +285,8 @@ body.homepage { background-color: white; background-image: none; }
 
 .desktop-submenu {
     position: fixed;
-    background: #15813e;
-    border-radius: 3px;
+    background: #237c4e;
+    border-radius: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     padding: 0.4rem;
     min-width: 220px;
@@ -297,7 +297,7 @@ body.homepage { background-color: white; background-image: none; }
     transition: opacity 0.15s ease, visibility 0.15s ease;
     z-index: 1001;
     border: none;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .desktop-submenu::before {
@@ -310,7 +310,7 @@ body.homepage { background-color: white; background-image: none; }
     height: 0;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 7px solid #15813e;
+    border-bottom: 7px solid #237c4e;
     z-index: 1;
 }
 
@@ -319,12 +319,12 @@ body.homepage { background-color: white; background-image: none; }
     width: 100%;
     padding: 6px 8px;
     color: white;
-    font-family: Arial, sans-serif;
-    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     font-size: 12px;
     line-height: 15px;
     text-align: left;
-    border-radius: 3px;
+    border-radius: 0;
     transition: all 0.2s ease;
     background: transparent;
     border: none;
@@ -339,9 +339,9 @@ body.homepage { background-color: white; background-image: none; }
 }
 
 .desktop-submenu-title {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 15px;
     color: white;
     text-transform: uppercase;
@@ -2321,8 +2321,7 @@ body.homepage { background-color: white; background-image: none; }
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#39564a0809175a56484c50545b56795a584b585b50575c4b564a175a55" class="hover:text-white"><span class="__cf_email__" data-cfemail="751a0644455b161a04001c18171a3516140714171c1b10071a065b1619">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#95fae6a4a5f6fae4e0fcf8f7fad5f2f8f4fcf9bbf6faf8" class="hover:text-white"><span class="__cf_email__" data-cfemail="a3ccd09293c0ccd2d6cacec1cce3c4cec2cacf8dc0ccce">[email&#160;protected]</span></a></li></ul></div>
-                <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
+                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
                 <p>© 2025 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
@@ -2896,7 +2895,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-
+                    
                 } else {
                    chevronButton.classList.remove('visible');
                 }
