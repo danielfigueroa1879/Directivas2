@@ -35,7 +35,7 @@
 html {
     scroll-behavior: smooth;
 }
-.homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center top; min-height: 100vh; transition: background-image 5.5s ease-in-out; }
+.homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center center; min-height: 100vh; transition: background-image 5.5s ease-in-out; }
 body.homepage { background-color: white; background-image: none; }
 .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; pointer-events: none; }
 .pwa-install-banner.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
@@ -2321,7 +2321,7 @@ body.homepage { background-color: white; background-image: none; }
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#39564a0809175a56484c50545b56795a584b585b50575c4b564a175a55" class="hover:text-white"><span class="__cf_email__" data-cfemail="751a0644455b161a04001c18171a3516140714171c1b10071a065b1619">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#95fae6a4a5f6fae4e0fcf8f7fad5f2f8f4fcf9bbf6faf8" class="hover:text-white"><span class="__cf_email__" data-cfemail="a3ccd09293c0ccd2d6cacec1cce3c4cec2cacf8dc0ccce">[email&#160;protected]</span></a></li></ul></div>
                 <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
@@ -2368,7 +2368,7 @@ body.homepage { background-color: white; background-image: none; }
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
@@ -2697,6 +2697,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="assets/js/search.js?v=1"></script>
     
     <!-- Funciones para menú hamburguesa y búsqueda móvil -->
+    <!-- NOTA: Código de menú móvil movido a main.js para evitar duplicación y conflictos -->
+    <!--
     <script>
         // Función para toggle del menú móvil
         document.addEventListener('DOMContentLoaded', function() {
@@ -2738,6 +2740,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     </script>
+    -->
     
     <!-- Biblioteca para generar PDFs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -2893,7 +2896,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-                    
+
                 } else {
                    chevronButton.classList.remove('visible');
                 }
