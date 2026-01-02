@@ -301,7 +301,14 @@ function mostrarRequisitos(tipo) {
     // PASO 6: Mostrar modal (usar solo clases, no estilos inline)
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    console.log('✅ Clase active añadida al modal');
+    
+    // OCULTAR BANNERS PARA EVITAR OBSTRUCCIÓN
+    const bannerBlanco = document.getElementById('banner');
+    const bannerVerde = document.querySelector('.desktop-navbar');
+    if (bannerBlanco) bannerBlanco.style.display = 'none';
+    if (bannerVerde) bannerVerde.style.display = 'none';
+    
+    console.log('✅ Clase active añadida al modal y banners ocultos');
     
     // PASO 7: Scroll al inicio
     requestAnimationFrame(() => {
@@ -1811,6 +1818,12 @@ function cerrarModal() {
     
     // PASO 2: Restaurar scroll del body INMEDIATAMENTE
     document.body.style.overflow = '';
+    
+    // MOSTRAR BANNERS NUEVAMENTE
+    const bannerBlanco = document.getElementById('banner');
+    const bannerVerde = document.querySelector('.desktop-navbar');
+    if (bannerBlanco) bannerBlanco.style.display = 'flex';
+    if (bannerVerde && window.innerWidth >= 1024) bannerVerde.style.display = 'block';
     
     // PASO 3: Limpiar contenido
     if (contenido) {
