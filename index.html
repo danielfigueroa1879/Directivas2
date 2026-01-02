@@ -107,21 +107,29 @@ body.homepage { background-color: white; background-image: none; }
     /* Foto pantalla completa */
     .homepage-section {
         margin-top: 33px !important;
-        padding-top: 115px !important;
+        padding-top: 0 !important;
         padding-bottom: 0 !important;
         min-height: 100vh !important;
         height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* Centra los botones */
+        position: relative !important;
     }
     
-    .homepage-section > div.relative.z-10 {
-        padding-top: 30px !important;
-        padding-bottom: 0 !important;
+    .homepage-section > div.relative.z-10:first-of-type {
+        position: absolute !important;
+        top: 50px !important; /* Subido aún más en PC */
+        left: 0 !important;
+        right: 0 !important;
+        padding: 0 1rem !important;
+        z-index: 20 !important;
     }
     
-    /* Margen negativo MUY PEQUEÑO - solo 50px */
+    /* Margen negativo ajustado para eliminar espacio en blanco */
     #homepage-content-wrapper {
         padding-top: 0 !important;
-        margin-top: -50px !important;      /* ← MUY PEQUEÑO - botones DEBEN verse */
+        margin-top: -120px !important;     /* Aumentado para subir la sección y eliminar el blanco */
         position: relative;
         z-index: 10;
     }
@@ -138,8 +146,8 @@ body.homepage { background-color: white; background-image: none; }
     #tramites-principales.py-16,
     #tramites-principales.py-24,
     #tramites-principales.md\:py-24 {
-        padding-top: 2rem !important;
-        padding-bottom: 4rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 2rem !important;
     }
     #tramites-principales > div {
         padding-top: 0 !important;
