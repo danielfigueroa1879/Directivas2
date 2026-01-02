@@ -95,7 +95,7 @@ body.homepage { background-color: white; background-image: none; }
     max-height: 35px;
 }
 
-/* ===== AJUSTES BALANCEADOS (SOLO DESKTOP) ===== */
+/* ===== AJUSTES CON BOTONES VISIBLES (SOLO DESKTOP) ===== */
 @media (min-width: 1024px) {
     .desktop-navbar {
         display: block;
@@ -104,13 +104,13 @@ body.homepage { background-color: white; background-image: none; }
         display: none !important;
     }
     
-    /* Foto completa sin cortar */
+    /* Foto suficientemente grande para mostrar botones */
     .homepage-section {
         margin-top: 33px !important;
         padding-top: 115px !important;
         padding-bottom: 0 !important;
-        min-height: 75vh !important;        /* Ajustado para balance */
-        height: 75vh !important;
+        min-height: 90vh !important;        /* AUMENTADO para espacio de botones */
+        height: 90vh !important;
     }
     
     .homepage-section > div.relative.z-10 {
@@ -118,10 +118,10 @@ body.homepage { background-color: white; background-image: none; }
         padding-bottom: 0 !important;
     }
     
-    /* Margen negativo MODERADO para no ocultar Trámites Principales */
+    /* Margen negativo SUAVE para reducir espacio sin ocultar botones */
     #homepage-content-wrapper {
         padding-top: 0 !important;
-        margin-top: -100px !important;      /* REDUCIDO (era -300px) para no sobrepasar */
+        margin-top: -180px !important;      /* SUAVE para no ocultar botones */
         position: relative;
         z-index: 10;
     }
