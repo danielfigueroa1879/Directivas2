@@ -32,7 +32,7 @@
     <link rel="preload" href="assets/css/styles.css" as="style">
     <link rel="stylesheet" href="assets/css/carousel.css">
     <style>
-    html {
+html {
     scroll-behavior: smooth;
 }
 .homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center top; min-height: 100vh; transition: background-image 5.5s ease-in-out; }
@@ -104,24 +104,24 @@ body.homepage { background-color: white; background-image: none; }
         display: none !important;
     }
     
-    /* AJUSTE 1: Aumentar altura de la imagen de fondo y eliminar padding-bottom */
+    /* AJUSTE 1: Imagen de fondo - bajar título */
     .homepage-section {
         margin-top: 63px !important;
-        padding-top: 0 !important;
+        padding-top: 150px !important; /* Espacio para bajar el título */
         padding-bottom: 0 !important;
-        min-height: 120vh !important;
-        height: 120vh !important;
+        min-height: 85vh !important; /* Reducir altura */
+        height: 85vh !important;
     }
     
     .homepage-section > div.relative.z-10 {
-        padding-top: 0 !important;
+        padding-top: 80px !important; /* Bajar más el título */
         padding-bottom: 0 !important;
     }
     
-    /* AJUSTE 2: Margen negativo más agresivo al contenedor del carrusel */
+    /* AJUSTE 2: SUBIR CARRUSEL CON MARGEN NEGATIVO MUY AGRESIVO */
     #homepage-content-wrapper {
         padding-top: 0 !important;
-        margin-top: -200px !important;
+        margin-top: -350px !important; /* Margen super negativo para eliminar espacio */
         position: relative;
         z-index: 10;
     }
