@@ -378,11 +378,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.75);
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 9999 !important;
             overflow-y: auto;
             padding: 1rem;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
         }
         
         .modal-requisitos.active {
@@ -1589,6 +1589,21 @@ function descargarModalPDF(tipo) {
             }
         }
 
+        // Función para cerrar modal y restaurar banners
+        function cerrarModal() {
+            const modal = document.getElementById('modalRequisitos');
+            if (!modal) return;
+            
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // MOSTRAR BANNERS NUEVAMENTE
+            const bannerBlanco = document.getElementById('banner');
+            const bannerVerde = document.querySelector('.desktop-navbar');
+            if (bannerBlanco) bannerBlanco.style.display = 'flex';
+            if (bannerVerde && window.innerWidth >= 1024) bannerVerde.style.display = 'block';
+        }
+
         // Mostrar asignaturas de capacitación
         function mostrarAsignaturas() {
             const modal = document.getElementById('modalRequisitos');
@@ -1722,6 +1737,12 @@ function descargarModalPDF(tipo) {
             contenido.innerHTML = html;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // OCULTAR BANNERS PARA EVITAR OBSTRUCCIÓN
+            const bannerBlanco = document.getElementById('banner');
+            const bannerVerde = document.querySelector('.desktop-navbar');
+            if (bannerBlanco) bannerBlanco.style.display = 'none';
+            if (bannerVerde) bannerVerde.style.display = 'none';
         }
 
         // Alternar texto del botón SPD cada 3 segundos
