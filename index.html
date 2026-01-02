@@ -95,7 +95,7 @@ body.homepage { background-color: white; background-image: none; }
     max-height: 35px;
 }
 
-/* ===== AJUSTES CORREGIDOS (SOLO DESKTOP) ===== */
+/* ===== AJUSTES BALANCEADOS (SOLO DESKTOP) ===== */
 @media (min-width: 1024px) {
     .desktop-navbar {
         display: block;
@@ -104,13 +104,13 @@ body.homepage { background-color: white; background-image: none; }
         display: none !important;
     }
     
-    /* CORREGIDO: Foto más grande y sin cortar */
+    /* Foto completa sin cortar */
     .homepage-section {
         margin-top: 33px !important;
-        padding-top: 115px !important;      /* ← Corregido: agregado px */
+        padding-top: 115px !important;
         padding-bottom: 0 !important;
-        min-height: 95vh !important;        /* ← AUMENTADO (era 70vh) */
-        height: 95vh !important;            /* ← AUMENTADO (era 70vh) */
+        min-height: 75vh !important;        /* Ajustado para balance */
+        height: 75vh !important;
     }
     
     .homepage-section > div.relative.z-10 {
@@ -118,10 +118,10 @@ body.homepage { background-color: white; background-image: none; }
         padding-bottom: 0 !important;
     }
     
-    /* CRÍTICO: Margen NEGATIVO para eliminar muro blanco */
+    /* Margen negativo MODERADO para no ocultar Trámites Principales */
     #homepage-content-wrapper {
         padding-top: 0 !important;
-        margin-top: -300px !important;      /* ← NEGATIVO (era +300px) */
+        margin-top: -150px !important;      /* REDUCIDO (era -300px) para no sobrepasar */
         position: relative;
         z-index: 10;
     }
