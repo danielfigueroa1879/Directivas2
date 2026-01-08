@@ -557,7 +557,7 @@ body.homepage { background-color: white; background-image: none; }
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: 120px; /* Aumenta este valor para bajar más el modal */
+    padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
@@ -2321,7 +2321,7 @@ body.homepage { background-color: white; background-image: none; }
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#e58a96d4d5cb868a94908c88878aa586849784878c8b80978a96cb8689" class="hover:text-white"><span class="__cf_email__" data-cfemail="69061a5859470a06181c00040b06290a081b080b00070c1b061a470a05">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#0c637f3d3c6f637d7965616e634c6b616d6560226f6361" class="hover:text-white"><span class="__cf_email__" data-cfemail="ee819ddfde8d819f9b87838c81ae89838f8782c08d8183">[email&#160;protected]</span></a></li></ul></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
                 <p>© 2025 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
@@ -2367,7 +2367,7 @@ body.homepage { background-color: white; background-image: none; }
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script type="module">
@@ -2878,6 +2878,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             }, 3000); // ESPERA 3 SEGUNDOS antes de generar PDF
         }
+    </script>
+    
+    <!-- Script para ocultar el banner verde cuando el modal está activo -->
+    <script>
+        // Observar cambios en el modal para ocultar/mostrar el banner verde
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modalRequisitos');
+            const desktopNavbar = document.querySelector('.desktop-navbar');
+            
+            if (modal && desktopNavbar) {
+                // Crear un observador para detectar cuando el modal se activa
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.attributeName === 'class') {
+                            const isActive = modal.classList.contains('active');
+                            
+                            // Ocultar o mostrar el banner según el estado del modal
+                            if (isActive) {
+                                desktopNavbar.style.display = 'none';
+                            } else {
+                                desktopNavbar.style.display = 'block';
+                            }
+                        }
+                    });
+                });
+                
+                // Configurar el observador para monitorear cambios en la clase
+                observer.observe(modal, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+                
+                console.log('✅ Sistema de ocultación de banner verde activado');
+            }
+        });
     </script>
     
     <script>
