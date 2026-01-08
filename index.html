@@ -561,6 +561,20 @@ body.homepage { background-color: white; background-image: none; }
     padding-bottom: 2rem;
 }
 
+/* ===== OCULTAR BANNER VERDE CUANDO EL MODAL ESTÁ ACTIVO ===== */
+body:has(.modal-requisitos-componentes.active) .desktop-navbar {
+    display: none !important;
+}
+
+/* Alternativa para navegadores sin soporte de :has() */
+.modal-requisitos-componentes.active ~ * .desktop-navbar,
+.desktop-navbar.hide-on-modal {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
 .modal-content-componentes {
     background: white;
     border-radius: 1rem;
@@ -2880,39 +2894,71 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     </script>
     
-    <!-- Script para ocultar el banner verde cuando el modal está activo -->
+    <!-- Script mejorado para ocultar el banner verde cuando el modal está activo -->
     <script>
-        // Observar cambios en el modal para ocultar/mostrar el banner verde
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('modalRequisitos');
-            const desktopNavbar = document.querySelector('.desktop-navbar');
+        (function() {
+            'use strict';
             
-            if (modal && desktopNavbar) {
-                // Crear un observador para detectar cuando el modal se activa
+            // Función para ocultar/mostrar el banner
+            function toggleBanner() {
+                const modal = document.getElementById('modalRequisitos');
+                const desktopNavbar = document.querySelector('.desktop-navbar');
+                
+                if (!modal || !desktopNavbar) {
+                    console.warn('⚠️ No se encontró el modal o el banner');
+                    return;
+                }
+                
+                const isActive = modal.classList.contains('active');
+                
+                if (isActive) {
+                    // Ocultar banner cuando modal está activo
+                    desktopNavbar.classList.add('hide-on-modal');
+                    desktopNavbar.style.display = 'none';
+                    desktopNavbar.style.visibility = 'hidden';
+                    desktopNavbar.style.opacity = '0';
+                    console.log('🟢 Banner verde oculto');
+                } else {
+                    // Mostrar banner cuando modal está cerrado
+                    desktopNavbar.classList.remove('hide-on-modal');
+                    desktopNavbar.style.display = 'block';
+                    desktopNavbar.style.visibility = 'visible';
+                    desktopNavbar.style.opacity = '1';
+                    console.log('🟢 Banner verde visible');
+                }
+            }
+            
+            // Ejecutar cuando el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+            
+            function init() {
+                const modal = document.getElementById('modalRequisitos');
+                
+                if (!modal) {
+                    console.warn('⚠️ Modal no encontrado');
+                    return;
+                }
+                
+                // Método 1: Observador de mutaciones
                 const observer = new MutationObserver(function(mutations) {
-                    mutations.forEach(function(mutation) {
-                        if (mutation.attributeName === 'class') {
-                            const isActive = modal.classList.contains('active');
-                            
-                            // Ocultar o mostrar el banner según el estado del modal
-                            if (isActive) {
-                                desktopNavbar.style.display = 'none';
-                            } else {
-                                desktopNavbar.style.display = 'block';
-                            }
-                        }
-                    });
+                    toggleBanner();
                 });
                 
-                // Configurar el observador para monitorear cambios en la clase
                 observer.observe(modal, {
                     attributes: true,
                     attributeFilter: ['class']
                 });
                 
-                console.log('✅ Sistema de ocultación de banner verde activado');
+                // Método 2: Verificación periódica (fallback)
+                setInterval(toggleBanner, 100);
+                
+                console.log('✅ Sistema de ocultación de banner activado (con fallback)');
             }
-        });
+        })();
     </script>
     
     <script>
