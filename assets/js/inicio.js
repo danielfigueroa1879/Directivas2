@@ -66,7 +66,8 @@ function showDirectiva() {
     document.getElementById('contenido').style.display = 'block';
     document.getElementById('main-section').style.display = 'block';
     document.getElementById('credenciales-section')?.classList.remove('active');
-    document.body.className = '';
+    // CORREGIDO: Agregar clase show-directiva para que el CSS oculte el homepage
+    document.body.className = 'show-directiva background-transition';
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
 }
@@ -78,7 +79,8 @@ function showCredenciales() {
     document.getElementById('contenido').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
     document.getElementById('credenciales-section')?.classList.add('active');
-    document.body.className = '';
+    // CORREGIDO: Agregar clase show-credenciales para que el CSS oculte el homepage
+    document.body.className = 'show-credenciales background-transition';
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
 }
