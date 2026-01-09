@@ -974,96 +974,6 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
     <link rel="stylesheet" href="assets/css/custom-styles.css">
 </head>
 <body class="homepage background-transition">
-    
-    <!-- Script crítico para asegurar que el homepage se oculta correctamente -->
-    <script>
-    (function() {
-        'use strict';
-        console.log('🔧 Iniciando script de control de visibilidad');
-        
-        // Función para verificar y aplicar visibilidad
-        function aplicarVisibilidad() {
-            const body = document.body;
-            const homepage = document.getElementById('homepage-section');
-            const homepageWrapper = document.getElementById('homepage-content-wrapper');
-            const contenido = document.getElementById('contenido');
-            
-            if (!homepage || !homepageWrapper) {
-                console.warn('⚠️ Elementos homepage no encontrados todavía');
-                return;
-            }
-            
-            const esDirectiva = body.classList.contains('show-directiva');
-            const esCredenciales = body.classList.contains('show-credenciales');
-            
-            if (esDirectiva || esCredenciales) {
-                // Ocultar homepage AGRESIVAMENTE
-                homepage.style.display = 'none';
-                homepage.style.visibility = 'hidden';
-                homepage.style.opacity = '0';
-                homepage.style.position = 'absolute';
-                homepage.style.left = '-9999px';
-                
-                homepageWrapper.style.display = 'none';
-                homepageWrapper.style.visibility = 'hidden';
-                homepageWrapper.style.opacity = '0';
-                homepageWrapper.style.position = 'absolute';
-                homepageWrapper.style.left = '-9999px';
-                
-                // Mostrar contenido
-                if (contenido) {
-                    contenido.style.display = 'block';
-                    contenido.style.visibility = 'visible';
-                    contenido.style.opacity = '1';
-                    contenido.style.position = 'relative';
-                    contenido.style.left = 'auto';
-                }
-                
-                console.log('✅ Homepage oculto, contenido visible');
-            } else {
-                // Mostrar homepage
-                homepage.style.display = '';
-                homepage.style.visibility = '';
-                homepage.style.opacity = '';
-                homepage.style.position = '';
-                homepage.style.left = '';
-                
-                homepageWrapper.style.display = '';
-                homepageWrapper.style.visibility = '';
-                homepageWrapper.style.opacity = '';
-                homepageWrapper.style.position = '';
-                homepageWrapper.style.left = '';
-                
-                // Ocultar contenido
-                if (contenido) {
-                    contenido.style.display = 'none';
-                }
-                
-                console.log('✅ Homepage visible, contenido oculto');
-            }
-        }
-        
-        // Ejecutar cuando DOM esté listo
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', aplicarVisibilidad);
-        } else {
-            aplicarVisibilidad();
-        }
-        
-        // Observador de cambios en body
-        const observer = new MutationObserver(aplicarVisibilidad);
-        observer.observe(document.body, {
-            attributes: true,
-            attributeFilter: ['class']
-        });
-        
-        // Verificación periódica de seguridad
-        setInterval(aplicarVisibilidad, 200);
-        
-        console.log('✅ Sistema de control de visibilidad activo');
-    })();
-    </script>
-    
     <!-- Notificación de recepción de documentos -->
  <!--<div id="suspension-notice">
     ✅👍 <strong>REAPERTURA DE SOLICITUDES DE CREDENCIALES:</strong> Desde el lunes 27 del presente mes, se reabrirá la recepción de nuevas solicitudes de credenciales.
@@ -3103,7 +3013,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-                    
                                         
                 } else {
                    chevronButton.classList.remove('visible');
