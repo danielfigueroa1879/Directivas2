@@ -174,7 +174,9 @@ body.homepage { background-color: white; background-image: none; }
         z-index: 10;
     }
     
-    /* Ocultar homepage-content-wrapper cuando se muestran otras vistas */
+    /* Ocultar homepage-section y homepage-content-wrapper cuando se muestran otras vistas */
+    body.show-directiva #homepage-section,
+    body.show-credenciales #homepage-section,
     body.show-directiva #homepage-content-wrapper,
     body.show-credenciales #homepage-content-wrapper {
         display: none !important;
@@ -2342,7 +2344,6 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
                 <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
-            </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
                 <p>© 2025 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
                 <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Chacama - Ingeniero en Informática - Est. Ingeniería en Ciberseguridad</p>
@@ -2982,7 +2983,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-                    
+                                        
                 } else {
                    chevronButton.classList.remove('visible');
                 }
