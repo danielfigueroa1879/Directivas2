@@ -2425,6 +2425,150 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
+    
+    <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Esperar a que TODO esté completamente cargado
+            window.addEventListener('load', function() {
+                setTimeout(initComponentesCarousel, 1000);
+            });
+            
+            function initComponentesCarousel() {
+                const carousel = document.querySelector('#componentes-seguridad .carousel-container');
+                
+                if (!carousel) {
+                    console.error('❌ No se encontró el carousel de componentes');
+                    return;
+                }
+                
+                const cards = carousel.querySelectorAll('.carousel-card');
+                const dotsContainer = document.querySelector('#componentes-seguridad .pagination-dots');
+                
+                if (cards.length === 0) {
+                    console.error('❌ No hay tarjetas en el carousel');
+                    return;
+                }
+                
+                console.log('✅ Carousel inicializado con', cards.length, 'tarjetas');
+                
+                let currentIndex = 0;
+                let isHovering = false;
+                let isTouching = false;
+                
+                // Crear indicadores de paginación
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    for (let i = 0; i < cards.length; i++) {
+                        const dot = document.createElement('button');
+                        dot.className = 'pagination-dot' + (i === 0 ? ' active' : '');
+                        dot.setAttribute('aria-label', 'Componente ' + (i + 1));
+                        dot.dataset.index = i;
+                        
+                        dot.addEventListener('click', function() {
+                            goToSlide(parseInt(this.dataset.index));
+                        });
+                        
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+                
+                // Función para ir a un slide específico
+                function goToSlide(index) {
+                    currentIndex = index;
+                    const cardWidth = cards[0].offsetWidth;
+                    const gap = window.innerWidth >= 769 ? 32 : 16;
+                    const scrollPos = index * (cardWidth + gap);
+                    
+                    carousel.scrollTo({
+                        left: scrollPos,
+                        behavior: 'smooth'
+                    });
+                    
+                    updateDots();
+                    console.log('📍 Navegando a slide:', index + 1);
+                }
+                
+                // Actualizar indicadores
+                function updateDots() {
+                    if (!dotsContainer) return;
+                    
+                    const dots = dotsContainer.querySelectorAll('.pagination-dot');
+                    dots.forEach((dot, idx) => {
+                        if (idx === currentIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Función de auto-avance
+                function autoAdvance() {
+                    // NO avanzar si el usuario está interactuando
+                    if (isHovering || isTouching) {
+                        console.log('⏸️ Pausado - usuario interactuando');
+                        return;
+                    }
+                    
+                    currentIndex++;
+                    if (currentIndex >= cards.length) {
+                        currentIndex = 0;
+                    }
+                    
+                    goToSlide(currentIndex);
+                    console.log('▶️ Auto-avance a:', currentIndex + 1, '/', cards.length);
+                }
+                
+                // Pausar con hover (solo PC)
+                carousel.addEventListener('mouseenter', function() {
+                    isHovering = true;
+                    console.log('🖱️ Mouse sobre carousel');
+                });
+                
+                carousel.addEventListener('mouseleave', function() {
+                    isHovering = false;
+                    console.log('🖱️ Mouse fuera del carousel');
+                });
+                
+                // Pausar con touch (móvil)
+                carousel.addEventListener('touchstart', function() {
+                    isTouching = true;
+                    console.log('📱 Touch iniciado');
+                }, { passive: true });
+                
+                carousel.addEventListener('touchend', function() {
+                    setTimeout(function() {
+                        isTouching = false;
+                        console.log('📱 Touch finalizado');
+                    }, 3000);
+                }, { passive: true });
+                
+                // Detectar scroll manual para actualizar dots
+                carousel.addEventListener('scroll', function() {
+                    const scrollLeft = carousel.scrollLeft;
+                    const cardWidth = cards[0].offsetWidth;
+                    const gap = window.innerWidth >= 769 ? 32 : 16;
+                    const newIndex = Math.round(scrollLeft / (cardWidth + gap));
+                    
+                    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < cards.length) {
+                        currentIndex = newIndex;
+                        updateDots();
+                    }
+                }, { passive: true });
+                
+                // ⚡ INICIAR AUTO-SCROLL CADA 7 SEGUNDOS ⚡
+                console.log('🚀 AUTO-SCROLL ACTIVADO - Intervalo: 7 segundos');
+                setInterval(autoAdvance, 7000);
+                
+                // Primera actualización de dots
+                updateDots();
+            }
+        })();
+    </script>
+    
     <script src="assets/js/main.js" defer></script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
