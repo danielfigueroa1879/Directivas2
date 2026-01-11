@@ -984,6 +984,86 @@ body.homepage {
     margin-left: 0.25rem;
 }
 
+/* ===== ESTILOS PARA SCROLL HORIZONTAL EN COMPONENTES DEL SISTEMA ===== */
+/* Forzar scroll horizontal en TODAS las pantallas (incluyendo PC) */
+#componentes-seguridad .carousel-container {
+    display: flex !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 1.5rem !important;
+    padding: 0 1.5rem 2rem 1.5rem !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    
+    /* Scrollbar personalizada */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+#componentes-seguridad .carousel-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+#componentes-seguridad .carousel-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+#componentes-seguridad .carousel-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+#componentes-seguridad .carousel-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Tarjetas del carousel en componentes */
+#componentes-seguridad .carousel-card {
+    flex: 0 0 auto !important;
+    scroll-snap-align: start !important;
+    min-width: 280px !important;
+    max-width: 450px !important;
+    width: 90% !important;
+}
+
+/* En móvil - más ancho */
+@media (max-width: 768px) {
+    #componentes-seguridad .carousel-container {
+        padding: 0 1rem 1.5rem 1rem !important;
+        gap: 1rem !important;
+    }
+    
+    #componentes-seguridad .carousel-card {
+        width: 95% !important;
+        flex-basis: 95% !important;
+        padding: 1.5rem !important;
+        min-height: 270px !important;
+    }
+
+    #componentes-seguridad .carousel-card h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* En PC - mostrar "peek" de la siguiente tarjeta */
+@media (min-width: 769px) {
+    #componentes-seguridad .carousel-container {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        gap: 2rem !important;
+    }
+    
+    #componentes-seguridad .carousel-card {
+        flex: 0 0 400px !important;
+        min-width: 400px !important;
+        max-width: 400px !important;
+    }
+}
+
+/* ===== FIN ESTILOS SCROLL HORIZONTAL COMPONENTES ===== */
+
 /* ===== INICIO: Estilos Scroll Trámites Principales ===== */
 
 .tramites-scroll-container {
