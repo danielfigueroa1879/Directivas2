@@ -2457,14 +2457,41 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
                 let currentIndex = 0;
                 let isHovering = false;
                 let isTouching = false;
+                let maxScrollableSlides = cards.length; // Por defecto todas las tarjetas
                 
-                // Crear indicadores de paginación
-                if (dotsContainer) {
+                // Calcular cuántos slides son realmente necesarios
+                function calculateMaxSlides() {
+                    const carouselWidth = carousel.offsetWidth;
+                    const scrollWidth = carousel.scrollWidth;
+                    const cardWidth = cards[0].offsetWidth;
+                    const gap = window.innerWidth >= 769 ? 32 : 16;
+                    
+                    // Calcular cuántas posiciones reales necesitamos
+                    const totalScrollableWidth = scrollWidth - carouselWidth;
+                    const slidesNeeded = Math.ceil(totalScrollableWidth / (cardWidth + gap)) + 1;
+                    
+                    console.log('📊 Ancho carousel:', carouselWidth, 'Ancho total scroll:', scrollWidth);
+                    console.log('📊 Slides necesarios:', slidesNeeded, 'de', cards.length, 'tarjetas');
+                    
+                    return Math.min(slidesNeeded, cards.length);
+                }
+                
+                // Calcular slides máximos después de que todo esté renderizado
+                setTimeout(function() {
+                    maxScrollableSlides = calculateMaxSlides();
+                    createDots();
+                }, 100);
+                
+                // Crear indicadores de paginación (solo los necesarios)
+                function createDots() {
+                    if (!dotsContainer) return;
+                    
                     dotsContainer.innerHTML = '';
-                    for (let i = 0; i < cards.length; i++) {
+                    
+                    for (let i = 0; i < maxScrollableSlides; i++) {
                         const dot = document.createElement('button');
                         dot.className = 'pagination-dot' + (i === 0 ? ' active' : '');
-                        dot.setAttribute('aria-label', 'Componente ' + (i + 1));
+                        dot.setAttribute('aria-label', 'Posición ' + (i + 1));
                         dot.dataset.index = i;
                         
                         dot.addEventListener('click', function() {
@@ -2473,6 +2500,8 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
                         
                         dotsContainer.appendChild(dot);
                     }
+                    
+                    console.log('✅ Creados', maxScrollableSlides, 'dots de navegación');
                 }
                 
                 // Función para ir a un slide específico
@@ -2488,7 +2517,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
                     });
                     
                     updateDots();
-                    console.log('📍 Navegando a slide:', index + 1);
+                    console.log('📍 Navegando a posición:', index + 1, 'de', maxScrollableSlides);
                 }
                 
                 // Actualizar indicadores
@@ -2514,12 +2543,15 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
                     }
                     
                     currentIndex++;
-                    if (currentIndex >= cards.length) {
+                    
+                    // Volver al inicio cuando llegamos al máximo REAL
+                    if (currentIndex >= maxScrollableSlides) {
                         currentIndex = 0;
+                        console.log('🔄 Volviendo al inicio');
                     }
                     
                     goToSlide(currentIndex);
-                    console.log('▶️ Auto-avance a:', currentIndex + 1, '/', cards.length);
+                    console.log('▶️ Auto-avance a:', (currentIndex + 1), '/', maxScrollableSlides);
                 }
                 
                 // Pausar con hover (solo PC)
@@ -2553,18 +2585,29 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
                     const gap = window.innerWidth >= 769 ? 32 : 16;
                     const newIndex = Math.round(scrollLeft / (cardWidth + gap));
                     
-                    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < cards.length) {
-                        currentIndex = newIndex;
+                    // Limitar el índice al máximo real
+                    const limitedIndex = Math.min(newIndex, maxScrollableSlides - 1);
+                    
+                    if (limitedIndex !== currentIndex && limitedIndex >= 0) {
+                        currentIndex = limitedIndex;
                         updateDots();
                     }
                 }, { passive: true });
                 
+                // Recalcular al cambiar tamaño de ventana
+                window.addEventListener('resize', function() {
+                    clearTimeout(this.resizeTimeout);
+                    this.resizeTimeout = setTimeout(function() {
+                        maxScrollableSlides = calculateMaxSlides();
+                        createDots();
+                        currentIndex = Math.min(currentIndex, maxScrollableSlides - 1);
+                        updateDots();
+                    }, 250);
+                });
+                
                 // ⚡ INICIAR AUTO-SCROLL CADA 7 SEGUNDOS ⚡
                 console.log('🚀 AUTO-SCROLL ACTIVADO - Intervalo: 7 segundos');
                 setInterval(autoAdvance, 7000);
-                
-                // Primera actualización de dots
-                updateDots();
             }
         })();
     </script>
