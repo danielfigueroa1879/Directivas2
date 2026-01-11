@@ -151,78 +151,30 @@ body.homepage {
         width: 97%;
         height: 500px;
     }
-
-/* ===== CHEVRON DE SCROLL HACIA ARRIBA - MÓVIL Y PC ===== */
-
-/* Estilos base del chevron */
-#scroll-up-chevron {
-    animation: none;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    padding: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 2px solid rgba(22, 163, 74, 0.3);
-}
-
-#scroll-up-chevron.visible {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    animation: chevronBounce 2.4s ease-in-out infinite;
-}
-
-#scroll-up-chevron:hover {
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    transform: scale(1.05);
-}
-
-#scroll-up-chevron:hover svg {
-    color: #146314;
-    transform: scale(1.1);
-}
-
-@keyframes chevronBounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-/* Estilos específicos para MÓVIL */
-@media (max-width: 767px) {
+    /* Chevron para móvil */
     #scroll-up-chevron {
-        bottom: 8rem !important;
-        right: 1rem !important;
-    }
-}
-
-/* Estilos específicos para PC */
-@media (min-width: 768px) {
-    #scroll-up-chevron {
-        bottom: 2rem !important;
-        right: 2rem !important;
-        padding: 0.75rem;
+        animation: none;
     }
     
-    #scroll-up-chevron svg {
-        width: 2rem;
-        height: 2rem;
+    #scroll-up-chevron.visible {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        animation: chevronBounce 2.4s ease-in-out infinite;
+    }    #scroll-up-chevron:hover svg {
+        color: #146314; /* Darker green */
+        transform: scale(1.1);
     }
-}
-
-@media (min-width: 1024px) {
-    #scroll-up-chevron {
-        bottom: 2.5rem !important;
-        right: 2.5rem !important;
-    }
-}
-
-
-
     
+    @keyframes chevronBounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+}
+
 /* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
 
 #desktop-menu {
@@ -1124,4 +1076,3 @@ body.homepage {
         font-size: 1.1rem;
     }
 }
-
