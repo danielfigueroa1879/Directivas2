@@ -1028,6 +1028,38 @@ body.homepage {
     width: 90% !important;
 }
 
+/* Pagination dots para componentes */
+#componentes-seguridad .pagination-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+}
+
+#componentes-seguridad .pagination-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+#componentes-seguridad .pagination-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.2);
+}
+
+#componentes-seguridad .pagination-dot.active {
+    background: white;
+    width: 24px;
+    border-radius: 5px;
+}
+
 /* En móvil - más ancho */
 @media (max-width: 768px) {
     #componentes-seguridad .carousel-container {
@@ -1044,6 +1076,15 @@ body.homepage {
 
     #componentes-seguridad .carousel-card h3 {
         font-size: 1.1rem;
+    }
+    
+    #componentes-seguridad .pagination-dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    #componentes-seguridad .pagination-dot.active {
+        width: 20px;
     }
 }
 
