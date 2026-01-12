@@ -1160,7 +1160,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
             </div>
         </div>
     </nav>
-<script>
+    <script>
 // Manejar submenús de la barra verde
 document.addEventListener('DOMContentLoaded', function() {
     const navItems = document.querySelectorAll('.desktop-nav-item');
@@ -1210,7 +1210,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentOpenSubmenu = submenu;
         }
         
-        // Cerrar submenú con delay más largo
+        // Cerrar submenú con delay MUCHO más largo
         function closeSubmenu() {
             closeTimeout = setTimeout(() => {
                 submenu.style.opacity = '0';
@@ -1219,31 +1219,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentOpenSubmenu === submenu) {
                     currentOpenSubmenu = null;
                 }
-            }, 800); // ⬅️ Aumentado de 100ms a 400ms
+            }, 800); // ⬅️ Aumentado a 800ms
+        }
+        
+        // Cancelar cierre - función clave
+        function keepOpen() {
+            clearTimeout(closeTimeout);
         }
         
         // Eventos para el item del menú
         item.addEventListener('mouseenter', openSubmenu);
         item.addEventListener('mouseleave', closeSubmenu);
         
-        // Eventos para el submenú - CRÍTICO para evitar cierre
-        submenu.addEventListener('mouseenter', () => {
-            clearTimeout(closeTimeout);
-        });
+        // Eventos para el submenú - mantener abierto
+        submenu.addEventListener('mouseenter', keepOpen);
         submenu.addEventListener('mouseleave', closeSubmenu);
         
-        // Eventos para items dentro del submenú (navegación lateral)
-        const submenuItems = submenu.querySelectorAll('.desktop-submenu-item-with-side');
-        submenuItems.forEach(subItem => {
+        // Eventos para TODOS los items dentro del submenú
+        const allSubmenuItems = submenu.querySelectorAll('.desktop-submenu-item, .desktop-submenu-item-with-side, .desktop-submenu-title, .desktop-submenu-divider');
+        allSubmenuItems.forEach(subItem => {
+            subItem.addEventListener('mouseenter', keepOpen);
+        });
+        
+        // Eventos específicos para items con submenú lateral
+        const submenuItemsWithSide = submenu.querySelectorAll('.desktop-submenu-item-with-side');
+        submenuItemsWithSide.forEach(subItem => {
             const sideMenu = subItem.querySelector('.desktop-submenu-side');
             if (sideMenu) {
-                subItem.addEventListener('mouseenter', () => {
-                    clearTimeout(closeTimeout);
-                });
-                sideMenu.addEventListener('mouseenter', () => {
-                    clearTimeout(closeTimeout);
-                });
+                // Mantener abierto cuando entras al item padre
+                subItem.addEventListener('mouseenter', keepOpen);
+                
+                // Mantener abierto cuando entras al menú lateral
+                sideMenu.addEventListener('mouseenter', keepOpen);
+                
+                // Solo cerrar cuando sales del menú lateral
                 sideMenu.addEventListener('mouseleave', closeSubmenu);
+                
+                // Eventos para items dentro del menú lateral
+                const sideMenuItems = sideMenu.querySelectorAll('.desktop-submenu-item');
+                sideMenuItems.forEach(sideItem => {
+                    sideItem.addEventListener('mouseenter', keepOpen);
+                });
             }
         });
     });
@@ -1253,11 +1269,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navbar) {
         navbar.addEventListener('mouseleave', () => {
             clearTimeout(closeTimeout);
-            closeTimeout = setTimeout(closeAllSubmenus, 800); // ⬅️ Aumentado de 100ms a 300ms
+            closeTimeout = setTimeout(closeAllSubmenus, 600); // ⬅️ Aumentado a 600ms
+        });
+        
+        // Cancelar cierre si vuelves al navbar
+        navbar.addEventListener('mouseenter', () => {
+            clearTimeout(closeTimeout);
         });
     }
 });
-</script>   
+</script>
     <!-- Menú desplegable para móvil y ahora también para PC -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
         <div class="dropdown-menu-header">
