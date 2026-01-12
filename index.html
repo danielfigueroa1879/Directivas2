@@ -422,7 +422,7 @@ body.homepage { background-color: white; background-image: none; }
     pointer-events: none;
     transition: none;
     z-index: 1002;
-    margin-left: 2px;
+    margin-left: -2px;
 }
 
 .desktop-submenu-item-with-side:hover > .desktop-submenu-side {
@@ -435,6 +435,19 @@ body.homepage { background-color: white; background-image: none; }
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+}
+
+/* Zona invisible que conecta el item con el submenú lateral */
+.desktop-submenu-item-with-side::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -4px; /* Se extiende 4px a la derecha */
+    bottom: 0;
+    width: 4px;
+    background: transparent;
+    z-index: 1003;
 }
 
 .megamenu-header {
