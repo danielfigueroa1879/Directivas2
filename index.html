@@ -304,6 +304,19 @@ body.homepage { background-color: white; background-image: none; }
     max-height: 30px;
 }
 
+/* PUENTE INVISIBLE VERTICAL - Conecta el item del banner con el submenú */
+.desktop-nav-item::before {
+    content: '';
+    position: absolute;
+    bottom: -8px; /* Se extiende 8px hacia abajo */
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: transparent;
+    pointer-events: auto;
+    z-index: 1000;
+}
+
 .desktop-nav-item:hover {
     background: rgba(255, 255, 255, 0.15);
 }
@@ -422,7 +435,7 @@ body.homepage { background-color: white; background-image: none; }
     pointer-events: none;
     transition: none;
     z-index: 1002;
-    margin-left: -2px;
+    margin-left: -8px; /* AMPLIADO: Se superpone 8px con el menú padre */
 }
 
 .desktop-submenu-item-with-side:hover > .desktop-submenu-side {
@@ -443,9 +456,9 @@ body.homepage { background-color: white; background-image: none; }
     content: '';
     position: absolute;
     top: 0;
-    right: -4px; /* Se extiende 4px a la derecha */
+    right: -10px; /* AMPLIADO: Se extiende 10px a la derecha */
     bottom: 0;
-    width: 4px;
+    width: 10px;
     background: transparent;
     z-index: 1003;
 }
@@ -1204,7 +1217,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
             
             submenu.style.left = left + 'px';
-            submenu.style.top = '93px';
+            submenu.style.top = '85px'; // AJUSTADO: Más cerca del banner (antes 93px)
         }
         
         // Abrir submenú
@@ -1223,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentOpenSubmenu = submenu;
         }
         
-        // Cerrar submenú con delay MUCHO más largo
+        // Cerrar submenú con delay EXTENDIDO
         function closeSubmenu() {
             closeTimeout = setTimeout(() => {
                 submenu.style.opacity = '0';
@@ -1232,7 +1245,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentOpenSubmenu === submenu) {
                     currentOpenSubmenu = null;
                 }
-            }, 800); // ⬅️ Aumentado a 800ms
+            }, 1200); // AMPLIADO: 1.2 segundos (antes 800ms)
         }
         
         // Cancelar cierre - función clave
@@ -1282,7 +1295,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navbar) {
         navbar.addEventListener('mouseleave', () => {
             clearTimeout(closeTimeout);
-            closeTimeout = setTimeout(closeAllSubmenus, 800); // ⬅️ Aumentado a 800ms
+            closeTimeout = setTimeout(closeAllSubmenus, 1000); // AMPLIADO: 1 segundo (antes 800ms)
         });
         
         // Cancelar cierre si vuelves al navbar
@@ -2409,7 +2422,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#94fbe7a5a4baf7fbe5e1fdf9f6fbd4f7f5e6f5f6fdfaf1e6fbe7baf7f8" class="hover:text-white"><span class="__cf_email__" data-cfemail="127d6123223c717d63677b7f707d5271736073707b7c77607d613c717e">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#d5baa6e4e5b6baa4a0bcb8b7ba95b2b8b4bcb9fbb6bab8" class="hover:text-white"><span class="__cf_email__" data-cfemail="97f8e4a6a7f4f8e6e2fefaf5f8d7f0faf6fefbb9f4f8fa">[email&#160;protected]</span></a></li></ul></div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
                 <p>© 2026 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
@@ -2455,7 +2468,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
     <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
@@ -3239,4 +3252,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 4000);
                                         
                 } else {
-                   chev
+                   chevronButton.classList.remove('visible');
+                }
+            });
+            // Click en chevron para subir
+             chevronButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+    </html>
