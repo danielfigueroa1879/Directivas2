@@ -1160,91 +1160,104 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
             </div>
         </div>
     </nav>
+<script>
+// Manejar submenús de la barra verde
+document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('.desktop-nav-item');
+    let closeTimeout;
+    let currentOpenSubmenu = null;
     
-    <script>
-    // Manejar submenús de la barra verde
-    document.addEventListener('DOMContentLoaded', function() {
-        const navItems = document.querySelectorAll('.desktop-nav-item');
-        let closeTimeout;
-        let currentOpenSubmenu = null;
-        
-        // Función para cerrar todos los submenús
-        function closeAllSubmenus() {
-            navItems.forEach(item => {
-                const submenu = item.querySelector('.desktop-submenu');
-                if (submenu) {
-                    submenu.style.opacity = '0';
-                    submenu.style.visibility = 'hidden';
-                    submenu.style.pointerEvents = 'none';
-                }
-            });
-            currentOpenSubmenu = null;
-        }
-        
+    // Función para cerrar todos los submenús
+    function closeAllSubmenus() {
         navItems.forEach(item => {
             const submenu = item.querySelector('.desktop-submenu');
-            if (!submenu) return;
-            
-            // Posicionar el submenú
-            function positionSubmenu() {
-                const rect = item.getBoundingClientRect();
-                const submenuWidth = submenu.offsetWidth;
-                const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
-                
-                submenu.style.left = left + 'px';
-                submenu.style.top = '98px';
+            if (submenu) {
+                submenu.style.opacity = '0';
+                submenu.style.visibility = 'hidden';
+                submenu.style.pointerEvents = 'none';
             }
-            
-            // Abrir submenú
-            function openSubmenu() {
-                clearTimeout(closeTimeout);
-                // Cerrar otros submenús primero
-                if (currentOpenSubmenu && currentOpenSubmenu !== submenu) {
-                    currentOpenSubmenu.style.opacity = '0';
-                    currentOpenSubmenu.style.visibility = 'hidden';
-                    currentOpenSubmenu.style.pointerEvents = 'none';
-                }
-                positionSubmenu();
-                submenu.style.opacity = '1';
-                submenu.style.visibility = 'visible';
-                submenu.style.pointerEvents = 'auto';
-                currentOpenSubmenu = submenu;
-            }
-            
-            // Cerrar submenú con retraso mínimo
-            function closeSubmenu() {
-                closeTimeout = setTimeout(() => {
-                    submenu.style.opacity = '0';
-                    submenu.style.visibility = 'hidden';
-                    submenu.style.pointerEvents = 'none';
-                    if (currentOpenSubmenu === submenu) {
-                        currentOpenSubmenu = null;
-                    }
-                }, 100);
-            }
-            
-            // Eventos para el item del menú
-            item.addEventListener('mouseenter', openSubmenu);
-            item.addEventListener('mouseleave', closeSubmenu);
-            
-            // Eventos para el submenú
-            submenu.addEventListener('mouseenter', () => {
-                clearTimeout(closeTimeout);
-            });
-            submenu.addEventListener('mouseleave', closeSubmenu);
         });
-        
-        // Cerrar todos los submenús si el mouse sale de la barra de navegación
-        const navbar = document.querySelector('.desktop-navbar');
-        if (navbar) {
-            navbar.addEventListener('mouseleave', () => {
-                clearTimeout(closeTimeout);
-                closeTimeout = setTimeout(closeAllSubmenus, 100);
-            });
-        }
-    });
-    </script>
+        currentOpenSubmenu = null;
+    }
     
+    navItems.forEach(item => {
+        const submenu = item.querySelector('.desktop-submenu');
+        if (!submenu) return;
+        
+        // Posicionar el submenú
+        function positionSubmenu() {
+            const rect = item.getBoundingClientRect();
+            const submenuWidth = submenu.offsetWidth;
+            const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
+            
+            submenu.style.left = left + 'px';
+            submenu.style.top = '98px';
+        }
+        
+        // Abrir submenú
+        function openSubmenu() {
+            clearTimeout(closeTimeout);
+            // Cerrar otros submenús primero
+            if (currentOpenSubmenu && currentOpenSubmenu !== submenu) {
+                currentOpenSubmenu.style.opacity = '0';
+                currentOpenSubmenu.style.visibility = 'hidden';
+                currentOpenSubmenu.style.pointerEvents = 'none';
+            }
+            positionSubmenu();
+            submenu.style.opacity = '1';
+            submenu.style.visibility = 'visible';
+            submenu.style.pointerEvents = 'auto';
+            currentOpenSubmenu = submenu;
+        }
+        
+        // Cerrar submenú con delay más largo
+        function closeSubmenu() {
+            closeTimeout = setTimeout(() => {
+                submenu.style.opacity = '0';
+                submenu.style.visibility = 'hidden';
+                submenu.style.pointerEvents = 'none';
+                if (currentOpenSubmenu === submenu) {
+                    currentOpenSubmenu = null;
+                }
+            }, 400); // ⬅️ Aumentado de 100ms a 400ms
+        }
+        
+        // Eventos para el item del menú
+        item.addEventListener('mouseenter', openSubmenu);
+        item.addEventListener('mouseleave', closeSubmenu);
+        
+        // Eventos para el submenú - CRÍTICO para evitar cierre
+        submenu.addEventListener('mouseenter', () => {
+            clearTimeout(closeTimeout);
+        });
+        submenu.addEventListener('mouseleave', closeSubmenu);
+        
+        // Eventos para items dentro del submenú (navegación lateral)
+        const submenuItems = submenu.querySelectorAll('.desktop-submenu-item-with-side');
+        submenuItems.forEach(subItem => {
+            const sideMenu = subItem.querySelector('.desktop-submenu-side');
+            if (sideMenu) {
+                subItem.addEventListener('mouseenter', () => {
+                    clearTimeout(closeTimeout);
+                });
+                sideMenu.addEventListener('mouseenter', () => {
+                    clearTimeout(closeTimeout);
+                });
+                sideMenu.addEventListener('mouseleave', closeSubmenu);
+            }
+        });
+    });
+    
+    // Cerrar todos los submenús si el mouse sale de la barra de navegación
+    const navbar = document.querySelector('.desktop-navbar');
+    if (navbar) {
+        navbar.addEventListener('mouseleave', () => {
+            clearTimeout(closeTimeout);
+            closeTimeout = setTimeout(closeAllSubmenus, 300); // ⬅️ Aumentado de 100ms a 300ms
+        });
+    }
+});
+</script>   
     <!-- Menú desplegable para móvil y ahora también para PC -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
         <div class="dropdown-menu-header">
