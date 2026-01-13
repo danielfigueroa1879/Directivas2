@@ -1773,68 +1773,183 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <!-- SECCIÓN SPD -->
         <section id="spd-section" class="main-content" style="display: none;">
-            <header class="text-center pt-8">
-                <h1 class="text-2xl font-bold text-gray-800">SPD - SERVICIO DE PROTECCIÓN DE DIGNATARIOS</h1>
-                <h2 class="text-lg font-semibold text-gray-600">Requisitos y Procedimientos</h2>
-            </header>
-            <main class="space-y-4">
-                <section class="section-card border-blue-500 bg-blue-100/80">
-                    <h3 class="font-bold text-blue-800">1. Requisitos Generales</h3>
-                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-                        <li>Curso de Formación SPD aprobado y vigente</li>
-                        <li>Credencial de Guardia de Seguridad vigente</li>
-                        <li>Certificado de Antecedentes para Fines Especiales</li>
-                        <li>Examen psicológico actualizado</li>
-                        <li>Experiencia mínima de 2 años como Guardia de Seguridad</li>
-                    </ul>
-                </section>
+            <!-- Encabezado -->
+            <div class="text-center mb-8 pt-12 sm:pt-4">
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
+                    PORTAL DE INFORMACIÓN A LA SUBSECRETARÍA DE PREVENCIÓN DEL DELITO
+                </h1>
+                <p class="text-sm sm:text-base text-gray-600 mb-4">
+                    Accede a la plataforma de Seguridad Privada y consulta información relevante
+                </p>
+                <div class="flex justify-center">
+                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                        Acceder a la Plataforma SPD
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Informativo -->
+            <div class="section-card border-blue-500 bg-blue-50">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Información y Trámites</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    Consulta el informativo oficial y realiza consultas sobre trámites:
+                </p>
+                <div class="flex flex-col gap-3 w-full">
+                    <a href="https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf" target="_blank" class="inline-flex items-center justify-start px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors text-sm">
+                        📄 ¿Dónde hacer los trámites?
+                    </a>
+                    <a href="https://siac-msp.interior.gob.cl/ingreso" target="_blank" class="inline-flex items-center justify-start px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors text-sm">
+                        💬 Dudas y consultas 
+                    </a>
+                </div>
+            </div>
+
+            <!-- Preguntas Frecuentes -->
+            <div class="section-card border-purple-500 bg-purple-50">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Preguntas Frecuentes</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    Encuentra respuestas a las consultas más comunes sobre seguridad privada:
+                </p>
+                <div>
+                    <a href="https://segprivada.minsegpublica.gob.cl/preguntas-frecuentes" target="_blank" class="inline-flex items-center justify-start px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors text-sm">
+                        Ver Preguntas Frecuentes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Componentes de Seguridad Privada -->
+            <div class="section-card border-green-500 bg-green-50">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Requisitos por Componente</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                    Consulta los requisitos completos según <strong>Ley 21.659</strong> y <strong>Decreto 209</strong>:
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block px-3 py-1 bg-white text-green-700 text-xs font-semibold rounded-full border border-green-300">✓ Vigilantes Privados</span>
+                    <span class="inline-block px-3 py-1 bg-white text-green-700 text-xs font-semibold rounded-full border border-green-300">✓ Jefes de Seguridad</span>
+                    <span class="inline-block px-3 py-1 bg-white text-green-700 text-xs font-semibold rounded-full border border-green-300">✓ Guardias</span>
+                    <span class="inline-block px-3 py-1 bg-white text-green-700 text-xs font-semibold rounded-full border border-green-300">✓ Supervisores</span>
+                    <span class="inline-block px-3 py-1 bg-white text-green-700 text-xs font-semibold rounded-full border border-green-300">✓ Asesores</span>
+                    <span class="inline-block px-3 py-1 bg-white text-green-700 text-xs font-semibold rounded-full border border-green-300">✓ Capacitadores</span>
+                    <span class="inline-block px-3 py-1 bg-white text-green-700 text-xs font-semibold rounded-full border border-green-300">✓ Y más...</span>
+                </div>
+                <div>
+                    <a href="spd.html" target="_blank" class="inline-flex items-center justify-start px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors text-sm">
+                        📋 Ver Requisitos por Componente
+                    </a>
+                </div>
+            </div>
+
+            <!-- Asignaturas de Capacitación -->
+            <div class="section-card border-yellow-500 bg-yellow-50">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Asignaturas de Capacitación</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                    Consulta las <strong>mallas de capacitación completas</strong> según <strong>Decreto 209</strong>:
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block px-3 py-1 bg-white text-yellow-700 text-xs font-semibold rounded-full border border-yellow-400">✓ Vigilantes Privados (13 asignaturas - 100h)</span>
+                    <span class="inline-block px-3 py-1 bg-white text-yellow-700 text-xs font-semibold rounded-full border border-yellow-400">✓ Guardias de Seguridad (12 asignaturas - 90h)</span>
+                    <span class="inline-block px-3 py-1 bg-white text-yellow-700 text-xs font-semibold rounded-full border border-yellow-400">✓ Porteros/Nocheros/Rondines (8 asignaturas - 60h)</span>
+                </div>
+                <div>
+                    <a href="spd.html" target="_blank" class="inline-flex items-center justify-start px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg transition-colors text-sm">
+                        📚 Ver Asignaturas de Capacitación
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contacto por Correo -->
+            <div class="section-card border-indigo-500 bg-indigo-50">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Contacto por Correo Electrónico</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-semibold">
+                    Si la plataforma no funciona, contacta por correo:
+                </p>
                 
-                <section class="section-card border-purple-500 bg-purple-100/80">
-                    <h3 class="font-bold text-purple-800">2. Documentación Requerida</h3>
-                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-                        <li>Solicitud simple dirigida al Jefe OS.10</li>
-                        <li>Fotocopia de cédula de identidad (ambas caras)</li>
-                        <li>Certificado de Curso SPD</li>
-                        <li>Certificado de Antecedentes vigente</li>
-                        <li>2 fotografías tamaño carnet (fondo blanco)</li>
-                        <li>Comprobante de pago de derechos</li>
-                    </ul>
-                </section>
-                
-                <section class="section-card border-green-500 bg-green-100/80">
-                    <h3 class="font-bold text-green-800">3. Capacitación Específica</h3>
-                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-                        <li><strong>Curso de Formación SPD:</strong> 120 horas mínimo</li>
-                        <li><strong>Módulos:</strong> Protección ejecutiva, manejo defensivo, primeros auxilios, protocolos de seguridad</li>
-                        <li><strong>Prácticas:</strong> Simulacros y escenarios reales</li>
-                        <li><strong>Evaluación:</strong> Teórica y práctica (nota mínima 5.0)</li>
-                    </ul>
-                </section>
-                
-                <section class="section-card border-indigo-500 bg-indigo-100/80">
-                    <h3 class="font-bold text-indigo-800">4. Funciones y Responsabilidades</h3>
-                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-                        <li>Protección personal de dignatarios y ejecutivos</li>
-                        <li>Evaluación de riesgos y amenazas</li>
-                        <li>Planificación de rutas y traslados seguros</li>
-                        <li>Coordinación con fuerzas de seguridad</li>
-                        <li>Manejo de situaciones de emergencia</li>
-                        <li>Protocolo y etiqueta profesional</li>
-                    </ul>
-                </section>
-                
-                <section class="section-card border-red-500 bg-red-100/80">
-                    <h3 class="font-bold text-red-800">5. Información Adicional</h3>
-                    <div class="space-y-3 text-sm text-gray-700">
-                        <p><strong>Vigencia de Credencial:</strong> 3 años renovables</p>
-                        <p><strong>Perfeccionamiento:</strong> Curso anual obligatorio de actualización (40 horas)</p>
-                        <p><strong>Contacto OS.10:</strong> Para más información comunicarse al +562512651024</p>
-                        <p class="mt-4 p-3 bg-amber-50 border-l-4 border-amber-500">
-                            <strong>⚠️ Importante:</strong> El personal SPD debe cumplir con los más altos estándares de profesionalismo y discreción. Se requiere evaluación psicológica periódica.
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border border-indigo-200">
+                        <h4 class="text-sm font-bold text-gray-800 mb-2">
+                            📋 OTEC - Carga Sobredimensionada - Persona Natural y Jurídica
+                        </h4>
+                        <div class="bg-indigo-50 p-3 rounded-md border border-indigo-200">
+                            <a href="mailto:segprivada.otec@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold text-sm break-all">
+                                segprivada.otec@minsegpublica.gob.cl
+                            </a>
+                        </div>
+                        <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
+                            <li>Organismos Técnicos de Capacitación (OTEC)</li>
+                            <li>Consultas sobre carga sobredimensionada</li>
+                            <li>Trámites para personas naturales y jurídicas</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg border border-indigo-200">
+                        <h4 class="text-sm font-bold text-gray-800 mb-2">
+                            🎓 Planes, Programas y Cursos de Capacitación
+                        </h4>
+                        <div class="bg-indigo-50 p-3 rounded-md border border-indigo-200">
+                            <a href="mailto:segprivada.capacitacion@minsegpublica.gob.cl" class="text-blue-600 hover:text-blue-800 font-semibold text-sm break-all">
+                                segprivada.capacitacion@minsegpublica.gob.cl
+                            </a>
+                        </div>
+                        <ul class="mt-2 ml-6 text-xs text-gray-600 list-disc space-y-1">
+                            <li>Consultas sobre planes de capacitación</li>
+                            <li>Programas de formación en seguridad privada</li>
+                            <li>Información sobre cursos disponibles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nota Importante -->
+            <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-2">ℹ️ Información Importante</h3>
+                        <p class="text-xs text-gray-700 space-y-1">
+                            <span class="block">➢ Lo que no aparezca en la plataforma de la SPD debe tramitarse en el <strong>O.S.10 Coquimbo</strong>.</span>
+                            <span class="block">➢ En la plataforma SPD <strong>no es necesario el Certificado de Idoneidad Cívica</strong>, ya que mantienen esa información actualizada.</span>
                         </p>
                     </div>
-                </section>
-            </main>
+                </div>
+            </div>
+            
             <footer class="mt-8 border-t border-gray-700 pt-8 text-center text-sm text-gray-600">
                 <p>© 2026 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
                 <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Ch. Ingeniero en Informática & Ciberseguridad.</p>
