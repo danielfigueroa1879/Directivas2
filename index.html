@@ -3378,7 +3378,61 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 };
             
-            console.log('✅ Funciones SPD y showHomepage cargadas');
+            // Función para mostrar Directiva
+            window.showDirectiva = function() {
+                console.log('✅ Directiva: Mostrando sección');
+                
+                const contenido = document.getElementById('contenido');
+                const homepage = document.getElementById('homepage-section');
+                const mainSection = document.getElementById('main-section');
+                const credencialesSection = document.getElementById('credenciales-section');
+                const spdSection = document.getElementById('spd-section');
+                
+                // Ocultar homepage y otras secciones
+                if (homepage) homepage.style.display = 'none';
+                if (credencialesSection) credencialesSection.style.display = 'none';
+                if (spdSection) spdSection.style.display = 'none';
+                
+                // Mostrar contenedor y main-section (Directiva)
+                if (contenido) contenido.style.display = 'block';
+                if (mainSection) mainSection.style.display = 'block';
+                
+                // Mostrar botón de regreso
+                const backBtn = document.getElementById('credenciales-arrow-back-btn');
+                if (backBtn) backBtn.classList.remove('hidden');
+                
+                // Scroll al inicio
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            
+            // Función para mostrar Credenciales
+            window.showCredenciales = function() {
+                console.log('✅ Credenciales: Mostrando sección');
+                
+                const contenido = document.getElementById('contenido');
+                const homepage = document.getElementById('homepage-section');
+                const mainSection = document.getElementById('main-section');
+                const credencialesSection = document.getElementById('credenciales-section');
+                const spdSection = document.getElementById('spd-section');
+                
+                // Ocultar homepage y otras secciones
+                if (homepage) homepage.style.display = 'none';
+                if (mainSection) mainSection.style.display = 'none';
+                if (spdSection) spdSection.style.display = 'none';
+                
+                // Mostrar contenedor pero NO dentro de él (credenciales está fuera)
+                if (contenido) contenido.style.display = 'none';
+                if (credencialesSection) credencialesSection.style.display = 'block';
+                
+                // Mostrar botón de regreso
+                const backBtn = document.getElementById('credenciales-arrow-back-btn');
+                if (backBtn) backBtn.classList.remove('hidden');
+                
+                // Scroll al inicio
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            
+            console.log('✅ Funciones SPD, showHomepage, showDirectiva y showCredenciales cargadas');
             
             // FORZAR re-sobrescritura después de 1 segundo (después de main.js)
             setTimeout(function() {
