@@ -3171,48 +3171,59 @@ document.addEventListener('DOMContentLoaded', function() {
     <script>
         // SOBRESCRIBIR función handleSPD para que NO redirija a spd.html
         document.addEventListener('DOMContentLoaded', function() {
-            // Sobrescribir handleSPD (puede estar definida en main.js)
-            window.handleSPD = function() {
-                console.log('✅ SPD: Mostrando sección interna (NO redirigiendo)');
-                
-                // PRIMERO: Obtener referencia a SPD
-                const spdSection = document.getElementById('spd-section');
-                
-                // SEGUNDO: Ocultar todas las demás secciones
-                document.getElementById('contenido').style.display = 'none';
-                document.getElementById('homepage-section').style.display = 'none';
-                const mainSection = document.getElementById('main-section');
-                if (mainSection) mainSection.style.display = 'none';
-                const credencialesSection = document.getElementById('credenciales-section');
-                if (credencialesSection) credencialesSection.style.display = 'none';
-                
-                // TERCERO: Mostrar SOLO sección SPD
-                if (spdSection) {
-                    spdSection.style.display = 'block';
-                    console.log('✅ SPD: Sección mostrada correctamente');
-                } else {
-                    console.error('❌ SPD: Sección no encontrada en el DOM');
-                }
-                
-                // CUARTO: Mostrar botón de regreso
-                const backBtn = document.getElementById('credenciales-arrow-back-btn');
-                if (backBtn) {
-                    backBtn.classList.remove('hidden');
-                    console.log('✅ SPD: Botón de regreso mostrado');
-                }
-            };
+            console.log('🔧 Iniciando sobrescritura de handleSPD...');
+            
+            // Función completa de handleSPD
+            function crearHandleSPD() {
+                return function() {
+                    console.log('✅✅ SPD CLICK DETECTADO - Mostrando sección interna');
+                    
+                    const spdSection = document.getElementById('spd-section');
+                    console.log('🔍 SPD Section encontrada:', spdSection ? 'SÍ' : 'NO');
+                    
+                    const contenido = document.getElementById('contenido');
+                    const homepage = document.getElementById('homepage-section');
+                    const mainSection = document.getElementById('main-section');
+                    const credencialesSection = document.getElementById('credenciales-section');
+                    
+                    if (contenido) contenido.style.display = 'none';
+                    if (homepage) homepage.style.display = 'none';
+                    if (mainSection) mainSection.style.display = 'none';
+                    if (credencialesSection) credencialesSection.style.display = 'none';
+                    
+                    if (spdSection) {
+                        spdSection.style.display = 'block';
+                        console.log('✅✅ SPD SECTION MOSTRADA CORRECTAMENTE');
+                    } else {
+                        console.error('❌ SPD Section NO encontrada');
+                    }
+                    
+                    const backBtn = document.getElementById('credenciales-arrow-back-btn');
+                    if (backBtn) {
+                        backBtn.classList.remove('hidden');
+                        console.log('✅ Botón regreso mostrado');
+                    }
+                    
+                    return false; // Prevenir redirect
+                };
+            }
+            
+            // Sobrescribir immediatamente
+            window.handleSPD = crearHandleSPD();
             
             // También sobrescribir showHomepage
             window.showHomepage = function() {
                 console.log('✅ Homepage: Mostrando página principal');
                     
                     // Ocultar todas las secciones de contenido
-                    document.getElementById('contenido').style.display = 'none';
+                    const contenido = document.getElementById('contenido');
                     const mainSection = document.getElementById('main-section');
-                    if (mainSection) mainSection.style.display = 'none';
                     const credencialesSection = document.getElementById('credenciales-section');
-                    if (credencialesSection) credencialesSection.style.display = 'none';
                     const spdSection = document.getElementById('spd-section');
+                    
+                    if (contenido) contenido.style.display = 'none';
+                    if (mainSection) mainSection.style.display = 'none';
+                    if (credencialesSection) credencialesSection.style.display = 'none';
                     if (spdSection) spdSection.style.display = 'none';
                     
                     // Mostrar homepage
@@ -3229,6 +3240,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
             
             console.log('✅ Funciones SPD y showHomepage cargadas');
+            
+            // FORZAR re-sobrescritura después de 1 segundo (después de main.js)
+            setTimeout(function() {
+                console.log('🔄 RE-SOBRESCRIBIENDO handleSPD después de main.js...');
+                window.handleSPD = crearHandleSPD();
+                console.log('✅ handleSPD RE-SOBRESCRITA - Versión final lista');
+            }, 1000);
         });
     </script>
     
