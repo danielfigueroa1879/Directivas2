@@ -349,6 +349,7 @@ body.homepage { background-color: white; background-image: none; }
     z-index: 1001;
     border: none;
     font-family: Arial, sans-serif;
+    overflow: visible; /* CRÍTICO: Los items con márgenes negativos aún se consideran dentro */
 }
 .desktop-submenu-item {
     display: block;
@@ -442,6 +443,7 @@ body.homepage { background-color: white; background-image: none; }
     transition: none;
     z-index: 1002;
     margin-left: -4px; /* AJUSTADO: Pequeña superposición para mejor conexión con el puente */
+    overflow: visible; /* CRÍTICO: Los items con márgenes negativos aún se consideran dentro */
 }
 
 .desktop-submenu-item-with-side:hover > .desktop-submenu-side {
@@ -1236,7 +1238,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
             
             submenu.style.left = left + 'px';
-            submenu.style.top = '93px'; // AJUSTADO: Más cerca del banner para mayor zona de conexión
+            submenu.style.top = '93px'; // POSICIÓN FIJA
         }
         
         // Abrir submenú
@@ -1278,12 +1280,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Eventos para el submenú - mantener abierto
         submenu.addEventListener('mouseenter', keepOpen);
-        submenu.addEventListener('mouseleave', closeSubmenu);
+        submenu.addEventListener('mouseleave', (e) => {
+            // Solo cerrar si realmente salimos del submenu y no entramos a un hijo
+            if (!submenu.contains(e.relatedTarget)) {
+                closeSubmenu();
+            }
+        });
         
         // Eventos para TODOS los items dentro del submenú
         const allSubmenuItems = submenu.querySelectorAll('.desktop-submenu-item, .desktop-submenu-item-with-side, .desktop-submenu-title, .desktop-submenu-divider');
         allSubmenuItems.forEach(subItem => {
             subItem.addEventListener('mouseenter', keepOpen);
+            subItem.addEventListener('mouseleave', (e) => {
+                // NO cerrar cuando nos movemos entre items del mismo submenu
+                if (submenu.contains(e.relatedTarget)) {
+                    keepOpen();
+                }
+            });
         });
         
         // Eventos específicos para items con submenú lateral
@@ -1297,13 +1310,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Mantener abierto cuando entras al menú lateral
                 sideMenu.addEventListener('mouseenter', keepOpen);
                 
-                // Solo cerrar cuando sales del menú lateral
-                sideMenu.addEventListener('mouseleave', closeSubmenu);
+                // Solo cerrar cuando realmente sales del menú lateral
+                sideMenu.addEventListener('mouseleave', (e) => {
+                    // Solo cerrar si no vamos al item padre o a otro elemento del sidemenu
+                    if (!sideMenu.contains(e.relatedTarget) && !subItem.contains(e.relatedTarget)) {
+                        closeSubmenu();
+                    }
+                });
                 
                 // Eventos para items dentro del menú lateral
                 const sideMenuItems = sideMenu.querySelectorAll('.desktop-submenu-item');
                 sideMenuItems.forEach(sideItem => {
                     sideItem.addEventListener('mouseenter', keepOpen);
+                    sideItem.addEventListener('mouseleave', (e) => {
+                        // NO cerrar cuando nos movemos entre items del mismo sidemenu
+                        if (sideMenu.contains(e.relatedTarget)) {
+                            keepOpen();
+                        }
+                    });
                 });
             }
         });
