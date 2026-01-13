@@ -309,10 +309,10 @@ body.homepage { background-color: white; background-image: none; }
 .desktop-nav-item::before {
     content: '';
     position: absolute;
-    bottom: -8px; /* Se extiende 8px hacia abajo */
+    bottom: -12px; /* AMPLIADO: Se extiende 12px hacia abajo */
     left: 0;
     right: 0;
-    height: 8px;
+    height: 12px; /* AMPLIADO: 12px de zona segura */
     background: transparent;
     pointer-events: auto;
     z-index: 1000;
@@ -441,7 +441,7 @@ body.homepage { background-color: white; background-image: none; }
     pointer-events: none;
     transition: none;
     z-index: 1002;
-    margin-left: 0px; /* SIN SOLAPAMIENTO - Justo al lado derecho */
+    margin-left: -4px; /* AJUSTADO: Pequeña superposición para mejor conexión con el puente */
 }
 
 .desktop-submenu-item-with-side:hover > .desktop-submenu-side {
@@ -475,9 +475,9 @@ body.homepage { background-color: white; background-image: none; }
     content: '';
     position: absolute;
     top: 0;
-    right: -8px; /* Puente de 8px a la derecha */
+    right: -12px; /* AMPLIADO: Puente de 12px a la derecha */
     bottom: 0;
-    width: 8px;
+    width: 12px; /* AMPLIADO: 12px de zona segura */
     background: transparent;
     z-index: 1003;
 }
@@ -1236,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
             
             submenu.style.left = left + 'px';
-            submenu.style.top = '93px'; // AJUSTADO: Más cerca del banner (antes 93px)
+            submenu.style.top = '81px'; // AJUSTADO: Más cerca del banner para mayor zona de conexión
         }
         
         // Abrir submenú
@@ -1264,7 +1264,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentOpenSubmenu === submenu) {
                     currentOpenSubmenu = null;
                 }
-            }, 1200); // AMPLIADO: 1.2 segundos (antes 800ms)
+            }, 2500); // AUMENTADO: 2.5 segundos para evitar cierre prematuro al navegar
         }
         
         // Cancelar cierre - función clave
@@ -1314,7 +1314,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navbar) {
         navbar.addEventListener('mouseleave', () => {
             clearTimeout(closeTimeout);
-            closeTimeout = setTimeout(closeAllSubmenus, 1000); // AMPLIADO: 1 segundo (antes 800ms)
+            closeTimeout = setTimeout(closeAllSubmenus, 2000); // AUMENTADO: 2 segundos para evitar cierre al navegar
         });
         
         // Cancelar cierre si vuelves al navbar
