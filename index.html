@@ -309,10 +309,10 @@ body.homepage { background-color: white; background-image: none; }
 .desktop-nav-item::before {
     content: '';
     position: absolute;
-    bottom: -12px; /* AMPLIADO: Se extiende 12px hacia abajo */
+    bottom: -16px; /* MUY AMPLIADO: Se extiende 16px hacia abajo */
     left: 0;
     right: 0;
-    height: 12px; /* AMPLIADO: 12px de zona segura */
+    height: 16px; /* MUY AMPLIADO: 16px de zona segura */
     background: transparent;
     pointer-events: auto;
     z-index: 1000;
@@ -442,7 +442,7 @@ body.homepage { background-color: white; background-image: none; }
     pointer-events: none;
     transition: none;
     z-index: 1002;
-    margin-left: -4px; /* AJUSTADO: Pequeña superposición para mejor conexión con el puente */
+    margin-left: -8px; /* AUMENTADO: Mayor superposición para mejor conexión con puente de 16px */
     overflow: visible; /* CRÍTICO: Los items con márgenes negativos aún se consideran dentro */
 }
 
@@ -477,9 +477,9 @@ body.homepage { background-color: white; background-image: none; }
     content: '';
     position: absolute;
     top: 0;
-    right: -12px; /* AMPLIADO: Puente de 12px a la derecha */
+    right: -16px; /* MUY AMPLIADO: Puente de 16px a la derecha */
     bottom: 0;
-    width: 12px; /* AMPLIADO: 12px de zona segura */
+    width: 16px; /* MUY AMPLIADO: 16px de zona segura */
     background: transparent;
     z-index: 1003;
 }
@@ -1257,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentOpenSubmenu = submenu;
         }
         
-        // Cerrar submenú con delay EXTENDIDO
+        // Cerrar submenú con delay MUY EXTENDIDO
         function closeSubmenu() {
             closeTimeout = setTimeout(() => {
                 submenu.style.opacity = '0';
@@ -1266,7 +1266,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentOpenSubmenu === submenu) {
                     currentOpenSubmenu = null;
                 }
-            }, 2500); // AUMENTADO: 2.5 segundos para evitar cierre prematuro al navegar
+            }, 5000); // AUMENTADO: 5 segundos para evitar cierre prematuro al navegar
         }
         
         // Cancelar cierre - función clave
@@ -1278,25 +1278,15 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('mouseenter', openSubmenu);
         item.addEventListener('mouseleave', closeSubmenu);
         
-        // Eventos para el submenú - mantener abierto
+        // Eventos para el submenú - mantener abierto SIEMPRE que estés dentro
         submenu.addEventListener('mouseenter', keepOpen);
-        submenu.addEventListener('mouseleave', (e) => {
-            // Solo cerrar si realmente salimos del submenu y no entramos a un hijo
-            if (!submenu.contains(e.relatedTarget)) {
-                closeSubmenu();
-            }
-        });
+        submenu.addEventListener('mouseleave', closeSubmenu);
         
-        // Eventos para TODOS los items dentro del submenú
+        // Eventos para TODOS los items dentro del submenú - SOLO keepOpen
         const allSubmenuItems = submenu.querySelectorAll('.desktop-submenu-item, .desktop-submenu-item-with-side, .desktop-submenu-title, .desktop-submenu-divider');
         allSubmenuItems.forEach(subItem => {
             subItem.addEventListener('mouseenter', keepOpen);
-            subItem.addEventListener('mouseleave', (e) => {
-                // NO cerrar cuando nos movemos entre items del mismo submenu
-                if (submenu.contains(e.relatedTarget)) {
-                    keepOpen();
-                }
-            });
+            // NO agregar mouseleave aquí - dejamos que el submenu padre lo maneje
         });
         
         // Eventos específicos para items con submenú lateral
@@ -1304,30 +1294,15 @@ document.addEventListener('DOMContentLoaded', function() {
         submenuItemsWithSide.forEach(subItem => {
             const sideMenu = subItem.querySelector('.desktop-submenu-side');
             if (sideMenu) {
-                // Mantener abierto cuando entras al item padre
-                subItem.addEventListener('mouseenter', keepOpen);
-                
                 // Mantener abierto cuando entras al menú lateral
                 sideMenu.addEventListener('mouseenter', keepOpen);
+                sideMenu.addEventListener('mouseleave', closeSubmenu);
                 
-                // Solo cerrar cuando realmente sales del menú lateral
-                sideMenu.addEventListener('mouseleave', (e) => {
-                    // Solo cerrar si no vamos al item padre o a otro elemento del sidemenu
-                    if (!sideMenu.contains(e.relatedTarget) && !subItem.contains(e.relatedTarget)) {
-                        closeSubmenu();
-                    }
-                });
-                
-                // Eventos para items dentro del menú lateral
+                // Eventos para items dentro del menú lateral - SOLO keepOpen
                 const sideMenuItems = sideMenu.querySelectorAll('.desktop-submenu-item');
                 sideMenuItems.forEach(sideItem => {
                     sideItem.addEventListener('mouseenter', keepOpen);
-                    sideItem.addEventListener('mouseleave', (e) => {
-                        // NO cerrar cuando nos movemos entre items del mismo sidemenu
-                        if (sideMenu.contains(e.relatedTarget)) {
-                            keepOpen();
-                        }
-                    });
+                    // NO agregar mouseleave aquí - dejamos que el sideMenu padre lo maneje
                 });
             }
         });
@@ -1338,7 +1313,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navbar) {
         navbar.addEventListener('mouseleave', () => {
             clearTimeout(closeTimeout);
-            closeTimeout = setTimeout(closeAllSubmenus, 2000); // AUMENTADO: 2 segundos para evitar cierre al navegar
+            closeTimeout = setTimeout(closeAllSubmenus, 5000); // AUMENTADO: 5 segundos para evitar cierre prematuro
         });
         
         // Cancelar cierre si vuelves al navbar
