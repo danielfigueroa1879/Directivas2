@@ -1257,8 +1257,10 @@ document.addEventListener('DOMContentLoaded', function() {
             currentOpenSubmenu = submenu;
         }
         
-        // Cerrar submenú con delay MUY EXTENDIDO
+        // Cerrar submenú SOLO si sales completamente
         function closeSubmenu() {
+            // Cancelar cualquier timeout existente primero
+            clearTimeout(closeTimeout);
             closeTimeout = setTimeout(() => {
                 submenu.style.opacity = '0';
                 submenu.style.visibility = 'hidden';
@@ -1266,7 +1268,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentOpenSubmenu === submenu) {
                     currentOpenSubmenu = null;
                 }
-            }, 5000); // AUMENTADO: 5 segundos para evitar cierre prematuro al navegar
+            }, 500); // Delay de seguridad - se cancela inmediatamente si vuelves al menú
         }
         
         // Cancelar cierre - función clave
@@ -1280,7 +1282,37 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Eventos para el submenú - mantener abierto SIEMPRE que estés dentro
         submenu.addEventListener('mouseenter', keepOpen);
-        submenu.addEventListener('mouseleave', closeSubmenu);
+        submenu.addEventListener('mouseleave', (e) => {
+            // CRÍTICO: Solo cerrar si NO vas a:
+            // 1. Un hijo del submenu
+            // 2. Un submenu lateral
+            // 3. El item del menú padre
+            const relatedTarget = e.relatedTarget;
+            
+            // Si vas a un elemento dentro del submenu o sus hijos, NO cerrar
+            if (submenu.contains(relatedTarget)) {
+                keepOpen();
+                return;
+            }
+            
+            // Si vas al item padre del menú, NO cerrar
+            if (item.contains(relatedTarget)) {
+                keepOpen();
+                return;
+            }
+            
+            // Si vas a un submenu lateral, NO cerrar
+            const allSideMenus = submenu.querySelectorAll('.desktop-submenu-side');
+            for (let sideMenu of allSideMenus) {
+                if (sideMenu.contains(relatedTarget)) {
+                    keepOpen();
+                    return;
+                }
+            }
+            
+            // Solo si realmente sales de TODAS las áreas, entonces cerrar
+            closeSubmenu();
+        });
         submenu.addEventListener('scroll', keepOpen);  // Mantener abierto al hacer scroll
         
         // CRÍTICO: Prevenir cierre al hacer click DENTRO del submenu
@@ -1311,7 +1343,28 @@ document.addEventListener('DOMContentLoaded', function() {
             if (sideMenu) {
                 // Mantener abierto cuando entras al menú lateral
                 sideMenu.addEventListener('mouseenter', keepOpen);
-                sideMenu.addEventListener('mouseleave', closeSubmenu);
+                sideMenu.addEventListener('mouseleave', (e) => {
+                    // CRÍTICO: Solo cerrar si NO vas a:
+                    // 1. Un hijo del sideMenu
+                    // 2. El item padre que abre este sideMenu
+                    // 3. El submenu principal
+                    const relatedTarget = e.relatedTarget;
+                    
+                    // Si vas a un elemento dentro del sideMenu, NO cerrar
+                    if (sideMenu.contains(relatedTarget)) {
+                        keepOpen();
+                        return;
+                    }
+                    
+                    // Si vas al item padre o al submenu principal, NO cerrar
+                    if (subItem.contains(relatedTarget) || submenu.contains(relatedTarget)) {
+                        keepOpen();
+                        return;
+                    }
+                    
+                    // Solo si realmente sales, entonces cerrar
+                    closeSubmenu();
+                });
                 
                 // CRÍTICO: Prevenir cierre al hacer click DENTRO del side menu
                 sideMenu.addEventListener('click', (e) => {
@@ -1343,9 +1396,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cerrar todos los submenús si el mouse sale de la barra de navegación
     const navbar = document.querySelector('.desktop-navbar');
     if (navbar) {
-        navbar.addEventListener('mouseleave', () => {
+        navbar.addEventListener('mouseleave', (e) => {
+            const relatedTarget = e.relatedTarget;
+            
+            // CRÍTICO: Si el mouse va a un submenu abierto, NO cerrar
+            if (currentOpenSubmenu) {
+                // Verificar si vas al submenu principal
+                if (currentOpenSubmenu.contains(relatedTarget)) {
+                    clearTimeout(closeTimeout);
+                    return;
+                }
+                
+                // Verificar si vas a algún submenu lateral dentro del submenu abierto
+                const sidemenus = currentOpenSubmenu.querySelectorAll('.desktop-submenu-side');
+                for (let sidemenu of sidemenus) {
+                    if (sidemenu.contains(relatedTarget)) {
+                        clearTimeout(closeTimeout);
+                        return;
+                    }
+                }
+            }
+            
+            // Solo si sales a un área completamente diferente, iniciar timeout
             clearTimeout(closeTimeout);
-            closeTimeout = setTimeout(closeAllSubmenus, 5000); // AUMENTADO: 5 segundos para evitar cierre prematuro
+            closeTimeout = setTimeout(closeAllSubmenus, 500);
         });
         
         // Cancelar cierre si vuelves al navbar
