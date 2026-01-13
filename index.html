@@ -352,8 +352,10 @@ body.homepage { background-color: white; background-image: none; }
 }
 .desktop-submenu-item {
     display: block;
-    width: 100%;
-    padding: 6px 8px;
+    width: calc(100% + 0.8rem); /* Ancho completo */
+    padding: 6px 0.4rem; /* Mismo padding que el submenu padre */
+    margin-left: -0.4rem; /* Compensa el padding del submenu */
+    margin-right: -0.4rem;
     color: white;
     font-family: Arial, sans-serif;
     font-weight: normal;
