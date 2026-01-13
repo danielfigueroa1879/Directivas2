@@ -1281,11 +1281,26 @@ document.addEventListener('DOMContentLoaded', function() {
         // Eventos para el submenú - mantener abierto SIEMPRE que estés dentro
         submenu.addEventListener('mouseenter', keepOpen);
         submenu.addEventListener('mouseleave', closeSubmenu);
+        submenu.addEventListener('scroll', keepOpen);  // Mantener abierto al hacer scroll
+        
+        // CRÍTICO: Prevenir cierre al hacer click DENTRO del submenu
+        submenu.addEventListener('click', (e) => {
+            keepOpen();
+            // No hacer stopPropagation para permitir que los onclick funcionen
+        });
         
         // Eventos para TODOS los items dentro del submenú - SOLO keepOpen
         const allSubmenuItems = submenu.querySelectorAll('.desktop-submenu-item, .desktop-submenu-item-with-side, .desktop-submenu-title, .desktop-submenu-divider');
         allSubmenuItems.forEach(subItem => {
             subItem.addEventListener('mouseenter', keepOpen);
+            
+            // CRÍTICO: Prevenir cierre al hacer click en items
+            if (subItem.classList.contains('desktop-submenu-item')) {
+                subItem.addEventListener('click', (e) => {
+                    keepOpen();  // Cancelar cualquier timeout de cierre
+                    // El menú permanecerá abierto después del click
+                });
+            }
             // NO agregar mouseleave aquí - dejamos que el submenu padre lo maneje
         });
         
@@ -1298,10 +1313,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 sideMenu.addEventListener('mouseenter', keepOpen);
                 sideMenu.addEventListener('mouseleave', closeSubmenu);
                 
-                // Eventos para items dentro del menú lateral - SOLO keepOpen
+                // CRÍTICO: Prevenir cierre al hacer click DENTRO del side menu
+                sideMenu.addEventListener('click', (e) => {
+                    keepOpen();
+                    e.stopPropagation(); // No propagar el click al contenedor padre
+                });
+                
+                // CRÍTICO: Prevenir cierre al hacer scroll en el side menu
+                sideMenu.addEventListener('scroll', keepOpen);
+                
+                // Eventos para items dentro del menú lateral
                 const sideMenuItems = sideMenu.querySelectorAll('.desktop-submenu-item');
                 sideMenuItems.forEach(sideItem => {
+                    // MANTENER ABIERTO al hacer hover
                     sideItem.addEventListener('mouseenter', keepOpen);
+                    
+                    // CRÍTICO: Prevenir cierre al hacer click
+                    sideItem.addEventListener('click', (e) => {
+                        keepOpen();  // Cancelar cualquier timeout de cierre
+                        // El menú se quedará abierto hasta que el mouse salga
+                    });
+                    
                     // NO agregar mouseleave aquí - dejamos que el sideMenu padre lo maneje
                 });
             }
