@@ -3186,10 +3186,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     const mainSection = document.getElementById('main-section');
                     const credencialesSection = document.getElementById('credenciales-section');
                     
-                    if (contenido) contenido.style.display = 'none';
+                    // NO ocultar contenido (es el contenedor padre de SPD)
+                    // Solo ocultar homepage y las otras secciones
                     if (homepage) homepage.style.display = 'none';
                     if (mainSection) mainSection.style.display = 'none';
                     if (credencialesSection) credencialesSection.style.display = 'none';
+                    
+                    // Mostrar el contenedor padre
+                    if (contenido) {
+                        contenido.style.display = 'block';
+                        console.log('✅ Contenedor principal mostrado');
+                    }
                     
                     if (spdSection) {
                         spdSection.style.display = 'block';
@@ -3202,6 +3209,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // DEBUG: Estado de secciones
                         setTimeout(() => {
                             console.log('🔍 DEBUG - Estado después de 100ms:');
+                            console.log('  Contenido display:', contenido ? contenido.style.display : 'N/A');
                             console.log('  Homepage display:', homepage ? homepage.style.display : 'N/A');
                             console.log('  SPD display:', spdSection.style.display);
                             console.log('  SPD visible:', spdSection.offsetHeight > 0);
