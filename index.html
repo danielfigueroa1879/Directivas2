@@ -3169,53 +3169,67 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     
     <script>
-        // Función para manejar el clic en SPD y redirigir a spd.html
-        function handleSPD() {
-            // Ocultar todas las secciones
-            document.getElementById('contenido').style.display = 'none';
-            document.getElementById('homepage-section').style.display = 'none';
-            const mainSection = document.getElementById('main-section');
-            if (mainSection) mainSection.style.display = 'none';
-            const credencialesSection = document.getElementById('credenciales-section');
-            if (credencialesSection) credencialesSection.style.display = 'none';
-            const spdSection = document.getElementById('spd-section');
-            if (spdSection) spdSection.style.display = 'none';
+        // SOBRESCRIBIR función handleSPD para que NO redirija a spd.html
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sobrescribir handleSPD (puede estar definida en main.js)
+            window.handleSPD = function() {
+                console.log('✅ SPD: Mostrando sección interna (NO redirigiendo)');
+                
+                // Ocultar todas las secciones
+                document.getElementById('contenido').style.display = 'none';
+                document.getElementById('homepage-section').style.display = 'none';
+                const mainSection = document.getElementById('main-section');
+                if (mainSection) mainSection.style.display = 'none';
+                const credencialesSection = document.getElementById('credenciales-section');
+                if (credencialesSection) credencialesSection.style.display = 'none';
+                const spdSection = document.getElementById('spd-section');
+                if (spdSection) spdSection.style.display = 'none';
+                
+                // Mostrar sección SPD
+                if (spdSection) {
+                    spdSection.style.display = 'block';
+                    console.log('✅ SPD: Sección mostrada');
+                } else {
+                    console.error('❌ SPD: Sección no encontrada');
+                }
+                
+                // Mostrar botón de regreso
+                const backBtn = document.getElementById('credenciales-arrow-back-btn');
+                if (backBtn) {
+                    backBtn.classList.remove('hidden');
+                }
+            };
             
-            // Mostrar sección SPD
-            if (spdSection) {
-                spdSection.style.display = 'block';
+            // También sobrescribir showHomepage si no existe
+            if (typeof window.showHomepage === 'undefined') {
+                window.showHomepage = function() {
+                    console.log('✅ Homepage: Mostrando página principal');
+                    
+                    // Ocultar todas las secciones de contenido
+                    document.getElementById('contenido').style.display = 'none';
+                    const mainSection = document.getElementById('main-section');
+                    if (mainSection) mainSection.style.display = 'none';
+                    const credencialesSection = document.getElementById('credenciales-section');
+                    if (credencialesSection) credencialesSection.style.display = 'none';
+                    const spdSection = document.getElementById('spd-section');
+                    if (spdSection) spdSection.style.display = 'none';
+                    
+                    // Mostrar homepage
+                    const homepageSection = document.getElementById('homepage-section');
+                    if (homepageSection) {
+                        homepageSection.style.display = 'flex';
+                    }
+                    
+                    // Ocultar botón de regreso
+                    const backBtn = document.getElementById('credenciales-arrow-back-btn');
+                    if (backBtn) {
+                        backBtn.classList.add('hidden');
+                    }
+                };
             }
             
-            // Mostrar botón de regreso
-            const backBtn = document.getElementById('credenciales-arrow-back-btn');
-            if (backBtn) {
-                backBtn.classList.remove('hidden');
-            }
-        }
-        
-        // Función para volver al homepage
-        function showHomepage() {
-            // Ocultar todas las secciones de contenido
-            document.getElementById('contenido').style.display = 'none';
-            const mainSection = document.getElementById('main-section');
-            if (mainSection) mainSection.style.display = 'none';
-            const credencialesSection = document.getElementById('credenciales-section');
-            if (credencialesSection) credencialesSection.style.display = 'none';
-            const spdSection = document.getElementById('spd-section');
-            if (spdSection) spdSection.style.display = 'none';
-            
-            // Mostrar homepage
-            const homepageSection = document.getElementById('homepage-section');
-            if (homepageSection) {
-                homepageSection.style.display = 'flex';
-            }
-            
-            // Ocultar botón de regreso
-            const backBtn = document.getElementById('credenciales-arrow-back-btn');
-            if (backBtn) {
-                backBtn.classList.add('hidden');
-            }
-        }
+            console.log('✅ Funciones SPD y showHomepage cargadas');
+        });
     </script>
     
     <script src="assets/js/search.js?v=1"></script>
