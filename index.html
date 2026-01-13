@@ -3193,7 +3193,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (spdSection) {
                         spdSection.style.display = 'block';
+                        spdSection.style.visibility = 'visible';
+                        spdSection.style.opacity = '1';
+                        spdSection.style.zIndex = '9999';
+                        spdSection.style.position = 'relative';
                         console.log('✅✅ SPD SECTION MOSTRADA CORRECTAMENTE');
+                        
+                        // DEBUG: Estado de secciones
+                        setTimeout(() => {
+                            console.log('🔍 DEBUG - Estado después de 100ms:');
+                            console.log('  Homepage display:', homepage ? homepage.style.display : 'N/A');
+                            console.log('  SPD display:', spdSection.style.display);
+                            console.log('  SPD visible:', spdSection.offsetHeight > 0);
+                        }, 100);
                     } else {
                         console.error('❌ SPD Section NO encontrada');
                     }
@@ -3203,6 +3215,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         backBtn.classList.remove('hidden');
                         console.log('✅ Botón regreso mostrado');
                     }
+                    
+                    // Scroll al inicio de la página
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    console.log('✅ Scroll al inicio realizado');
                     
                     return false; // Prevenir redirect
                 };
