@@ -336,6 +336,7 @@ body.homepage { background-color: white; background-image: none; }
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
+    justify-content: center; /* CENTRADO HORIZONTAL */
     gap: 4px;
     white-space: nowrap;
     background: transparent;
@@ -402,7 +403,7 @@ body.homepage { background-color: white; background-image: none; }
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
-    text-align: left;
+    text-align: center; /* CENTRADO DEL TEXTO */
     border-radius: 0;
     transition: all 0.2s ease;
     background: transparent;
@@ -432,6 +433,7 @@ body.homepage { background-color: white; background-image: none; }
     width: calc(100% + 0.8rem);
     opacity: 0.95;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center; /* CENTRADO DEL TEXTO */
 }
 
 .desktop-submenu-divider {
@@ -2632,7 +2634,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
     <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
@@ -3414,7 +3416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTimeout = setTimeout(() => {
                         chevronButton.classList.remove('visible');
                     }, 4000);
-                                                  
+                    
                 } else {
                    chevronButton.classList.remove('visible');
                 }
