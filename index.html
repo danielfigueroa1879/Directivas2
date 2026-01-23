@@ -2588,7 +2588,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center md:justify-items-start">
                 <div class="text-center md:text-left"><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#9ff0ecaeafb1fcf0eeeaf6f2fdf0dffcfeedfefdf6f1faedf0ecb1fcf3" class="hover:text-white"><span class="__cf_email__" data-cfemail="90ffe3a1a0bef3ffe1e5f9fdf2ffd0f3f1e2f1f2f9fef5e2ffe3bef3fc">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#2c435f1d1c4f435d5945414e436c4b414d4540024f4341" class="hover:text-white"><span class="__cf_email__" data-cfemail="b1dec28081d2dec0c4d8dcd3def1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+
             </div>
         </div>
         <div class="w-full mt-8 border-t border-gray-700 pt-8 pb-8 text-center text-sm px-6">
@@ -3115,52 +3116,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     
     <script src="assets/js/search.js?v=1"></script>
-    
-    <!-- Funciones para menú hamburguesa y búsqueda móvil -->
-    <!-- NOTA: Código de menú móvil movido a main.js para evitar duplicación y conflictos -->
-    <!--
-    <script>
-        // Función para toggle del menú móvil
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileDropdown = document.getElementById('mobile-dropdown');
-            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileDropdown.classList.toggle('hidden');
-                    mobileMenuOverlay.classList.toggle('hidden');
-                    document.body.classList.toggle('overflow-hidden');
-                });
-            }
-            
-            if (mobileMenuOverlay) {
-                mobileMenuOverlay.addEventListener('click', function() {
-                    mobileDropdown.classList.add('hidden');
-                    mobileMenuOverlay.classList.add('hidden');
-                    document.body.classList.remove('overflow-hidden');
-                });
-            }
-            
-            // Manejar submenús en móvil
-            const submenuParents = document.querySelectorAll('.has-submenu .submenu-parent-btn');
-            submenuParents.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const parent = this.closest('.has-submenu');
-                    const submenu = parent.querySelector('.submenu');
-                    const arrow = this.querySelector('.submenu-arrow');
-                    
-                    // Toggle submenu
-                    submenu.classList.toggle('hidden');
-                    if (arrow) {
-                        arrow.style.transform = submenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(90deg)';
-                    }
-                });
-            });
-        });
-    </script>
-    -->
     
     <!-- Biblioteca para generar PDFs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
