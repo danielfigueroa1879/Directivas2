@@ -2588,7 +2588,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center md:justify-items-start">
                 <div class="text-center md:text-left"><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
-                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li><li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="/cdn-cgi/l/email-protection#9ff0ecaeafb1fcf0eeeaf6f2fdf0dffcfeedfefdf6f1faedf0ecb1fcf3" class="hover:text-white"><span class="__cf_email__" data-cfemail="90ffe3a1a0bef3ffe1e5f9fdf2ffd0f3f1e2f1f2f9fef5e2ffe3bef3fc">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#2c435f1d1c4f435d5945414e436c4b414d4540024f4341" class="hover:text-white"><span class="__cf_email__" data-cfemail="b1dec28081d2dec0c4d8dcd3def1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></li></ul></div>
             </div>
         </div>
         <div class="w-full mt-8 border-t border-gray-700 pt-8 pb-8 text-center text-sm px-6">
@@ -2634,7 +2634,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
     <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
@@ -2651,7 +2651,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const carousel = document.querySelector('#componentes-seguridad .carousel-container');
                 
                 if (!carousel) {
-                    console.error('❌ No se encontró el carousel de componentes');
                     return;
                 }
                 
@@ -2659,11 +2658,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const dotsContainer = document.querySelector('#componentes-seguridad .pagination-dots');
                 
                 if (cards.length === 0) {
-                    console.error('❌ No hay tarjetas en el carousel');
                     return;
                 }
                 
-                console.log('✅ Carousel inicializado con', cards.length, 'tarjetas');
                 
                 let currentIndex = 0;
                 let isHovering = false;
@@ -2681,8 +2678,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const totalScrollableWidth = scrollWidth - carouselWidth;
                     const slidesNeeded = Math.ceil(totalScrollableWidth / (cardWidth + gap)) + 1;
                     
-                    console.log('📊 Ancho carousel:', carouselWidth, 'Ancho total scroll:', scrollWidth);
-                    console.log('📊 Slides necesarios:', slidesNeeded, 'de', cards.length, 'tarjetas');
                     
                     return Math.min(slidesNeeded, cards.length);
                 }
@@ -2712,7 +2707,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         dotsContainer.appendChild(dot);
                     }
                     
-                    console.log('✅ Creados', maxScrollableSlides, 'dots de navegación');
                 }
                 
                 // Función para ir a un slide específico
@@ -2728,7 +2722,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     
                     updateDots();
-                    console.log('📍 Navegando a posición:', index + 1, 'de', maxScrollableSlides);
                 }
                 
                 // Actualizar indicadores
@@ -2749,7 +2742,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 function autoAdvance() {
                     // NO avanzar si el usuario está interactuando
                     if (isHovering || isTouching) {
-                        console.log('⏸️ Pausado - usuario interactuando');
                         return;
                     }
                     
@@ -2758,34 +2750,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Volver al inicio cuando llegamos al máximo REAL
                     if (currentIndex >= maxScrollableSlides) {
                         currentIndex = 0;
-                        console.log('🔄 Volviendo al inicio');
                     }
                     
                     goToSlide(currentIndex);
-                    console.log('▶️ Auto-avance a:', (currentIndex + 1), '/', maxScrollableSlides);
                 }
                 
                 // Pausar con hover (solo PC)
                 carousel.addEventListener('mouseenter', function() {
                     isHovering = true;
-                    console.log('🖱️ Mouse sobre carousel');
                 });
                 
                 carousel.addEventListener('mouseleave', function() {
                     isHovering = false;
-                    console.log('🖱️ Mouse fuera del carousel');
                 });
                 
                 // Pausar con touch (móvil)
                 carousel.addEventListener('touchstart', function() {
                     isTouching = true;
-                    console.log('📱 Touch iniciado');
                 }, { passive: true });
                 
                 carousel.addEventListener('touchend', function() {
                     setTimeout(function() {
                         isTouching = false;
-                        console.log('📱 Touch finalizado');
                     }, 3000);
                 }, { passive: true });
                 
@@ -2817,7 +2803,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // ⚡ INICIAR AUTO-SCROLL CADA 7 SEGUNDOS ⚡
-                console.log('🚀 AUTO-SCROLL ACTIVADO - Intervalo: 7 segundos');
                 setInterval(autoAdvance, 7000);
             }
         })();
@@ -2845,7 +2830,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
             } catch (error) {
-                console.error("ERROR: Counter process failed.", error);
                 if (counterSpan) counterSpan.textContent = "Error";
             }
         }
@@ -2856,7 +2840,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').then(reg => console.log('✅ SW registered'), err => console.error('❌ SW registration failed', err));
             });
         }
     </script>
@@ -2864,7 +2847,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Script para menú hamburguesa móvil y manejo de banner PWA -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🍔 Inicializando menú hamburguesa...');
         
         // ===== MANEJO DEL BANNER PWA =====
         const pwaBanner = document.getElementById('pwa-install-banner');
@@ -2874,7 +2856,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Función para ocultar completamente el banner PWA
         function hidePWABanner() {
             if (pwaBanner) {
-                console.log('🚫 Ocultando banner PWA completamente');
                 pwaBanner.classList.remove('show');
                 pwaBanner.style.display = 'none'; // Ocultar completamente del DOM
                 pwaBanner.style.pointerEvents = 'none';
@@ -2915,18 +2896,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileDropdown = document.getElementById('mobile-dropdown');
         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
         
-        console.log('Botón hamburguesa:', mobileMenuBtn ? '✅' : '❌');
-        console.log('Dropdown móvil:', mobileDropdown ? '✅' : '❌');
-        console.log('Overlay:', mobileMenuOverlay ? '✅' : '❌');
         
         if (!mobileMenuBtn || !mobileDropdown || !mobileMenuOverlay) {
-            console.error('❌ Elementos del menú no encontrados');
             return;
         }
         
         // Función para abrir el menú
         function openMobileMenu() {
-            console.log('📱 Abriendo menú móvil');
             mobileDropdown.classList.remove('hidden');
             mobileMenuOverlay.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -2937,7 +2913,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Función para cerrar el menú
         function closeMobileMenu() {
-            console.log('📱 Cerrando menú móvil');
             mobileDropdown.classList.remove('show');
             setTimeout(() => {
                 mobileDropdown.classList.add('hidden');
@@ -2950,7 +2925,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('🍔 Click en botón hamburguesa');
             
             const isOpen = !mobileDropdown.classList.contains('hidden');
             if (isOpen) {
@@ -2971,14 +2945,12 @@ document.addEventListener('DOMContentLoaded', function() {
             closeMobileMenuBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('❌ Cerrando menú desde botón X');
                 closeMobileMenu();
             });
         }
         
         // Manejar submenús (acordeones)
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
-        console.log('Botones de submenú encontrados:', submenuButtons.length);
         
         submenuButtons.forEach(function(btn) {
             btn.addEventListener('click', function(e) {
@@ -3012,7 +2984,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        console.log('✅ Menú hamburguesa inicializado correctamente');
         
         // ===== EVITAR CIERRE AUTOMÁTICO DEL MENÚ EN MÓVIL =====
         setTimeout(function() {
@@ -3021,7 +2992,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.closeActiveMenu = function() {
                 // Si es móvil (< 1024px), NO cerrar el menú móvil ni sus submenús
                 if (window.innerWidth < 1024) {
-                    console.log('📱 Móvil - NO cerrando menú ni submenús');
                     // SOLO cerrar megamenús de ESCRITORIO (no los del menú móvil)
                     document.querySelectorAll('.desktop-navbar .asesor-megamenu').forEach(m => m.classList.remove('show'));
                     document.querySelectorAll('.desktop-navbar .has-submenu').forEach(i => i.classList.remove('megamenu-open'));
@@ -3035,7 +3005,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     originalClose();
                 }
             };
-            console.log('✅ closeActiveMenu modificada - Submenús móviles protegidos');
         }, 300);
         
         // ===== PREVENIR CONFLICTOS CON SEARCH.JS =====
@@ -3043,7 +3012,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             const searchButton = document.getElementById('global-search-button');
             if (searchButton) {
-                console.log('🔍 Botón de búsqueda encontrado');
             }
         }, 500);
     });
@@ -3102,7 +3070,6 @@ document.addEventListener('DOMContentLoaded', function() {
             function animarTextoSPD(elementoId) {
                 const textoElement = document.getElementById(elementoId);
                 if (!textoElement) {
-                    console.error('No se encontró el elemento:', elementoId);
                     return;
                 }
                 
@@ -3324,9 +3291,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Generar y descargar PDF
                 html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
-                    console.log('✅ PDF descargado:', nombreArchivo);
                 }).catch(error => {
-                    console.error('❌ Error al generar PDF:', error);
                     alert('Error al generar el PDF. Por favor, intenta nuevamente.');
                 });
                 
@@ -3345,7 +3310,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const desktopNavbar = document.querySelector('.desktop-navbar');
                 
                 if (!modal || !desktopNavbar) {
-                    console.warn('⚠️ No se encontró el modal o el banner');
                     return;
                 }
                 
@@ -3357,14 +3321,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     desktopNavbar.style.display = 'none';
                     desktopNavbar.style.visibility = 'hidden';
                     desktopNavbar.style.opacity = '0';
-                    console.log('🟢 Banner verde oculto');
                 } else {
                     // Mostrar banner cuando modal está cerrado
                     desktopNavbar.classList.remove('hide-on-modal');
                     desktopNavbar.style.display = 'block';
                     desktopNavbar.style.visibility = 'visible';
                     desktopNavbar.style.opacity = '1';
-                    console.log('🟢 Banner verde visible');
                 }
             }
             
@@ -3379,7 +3341,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const modal = document.getElementById('modalRequisitos');
                 
                 if (!modal) {
-                    console.warn('⚠️ Modal no encontrado');
                     return;
                 }
                 
@@ -3396,7 +3357,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Método 2: Verificación periódica (fallback)
                 setInterval(toggleBanner, 100);
                 
-                console.log('✅ Sistema de ocultación de banner activado (con fallback)');
             }
         })();
     </script>
