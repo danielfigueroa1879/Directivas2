@@ -84,6 +84,9 @@ class GlobalSearch {
                             <button class="suggestion-pill" data-search="21659">Ley 21.659</button>
                             <button class="suggestion-pill" data-search="209">Decreto 209</button>
                             <button class="suggestion-pill" data-search="208">Decreto 208</button>
+                            <button class="suggestion-pill" data-search="2310">Decreto 2310</button>
+                            <button class="suggestion-pill" data-search="2424">Decreto 2424</button>
+                            <button class="suggestion-pill" data-search="2100">Decreto 2100</button>                           
                             <button class="suggestion-pill" data-search="guardia">Guardias</button>
                             <button class="suggestion-pill" data-search="vigilante">Vigilante</button>
                             <button class="suggestion-pill" data-search="jefe">Jefe Seguridad</button>
@@ -179,6 +182,20 @@ class GlobalSearch {
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1211115', '_blank'),
                 keywords: ['decreto', 'reglamento', '208', 'complementario', 'ley', '21659', '21.659', '2024']
+            },
+             {
+                title: 'Decreto 2310 - Instucciones Generales sobre Transitoriedad',
+                content: 'Decreto 2310- Instucciones Generales sobre Transitoriedad de la Ley 21.659 de Seguridad Privada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1211115', '_blank'),
+                keywords: ['decreto', 'reglamento', '2310', 'complementario', 'ley', '21659', '21.659', '2024']
+            },
+             {
+                title: 'Decreto 2424 - Modifica Resolución 2310 exenta, sobre transitoriedad',
+                content: 'Decreto 2424- Modifica Resolución 2310 exentade la Ley 21.659 de Seguridad Privada',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1211115', '_blank'),
+                keywords: ['decreto', 'reglamento', '2424', 'complementario', 'ley', '21659', '21.659', '2024']
             },
 
             // SECCIÓN: Decretos (CORREGIDOS)
