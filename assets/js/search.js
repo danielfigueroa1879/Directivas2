@@ -187,15 +187,22 @@ class GlobalSearch {
                 title: 'Decreto 2310 - Instucciones Generales sobre Transitoriedad',
                 content: 'Decreto 2310- Instucciones Generales sobre Transitoriedad de la Ley 21.659 de Seguridad Privada',
                 section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1211115', '_blank'),
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1218921', '_blank'),
                 keywords: ['decreto', 'reglamento', '2310', 'complementario', 'ley', '21659', '21.659', '2024']
             },
              {
                 title: 'Decreto 2424 - Modifica Resolución 2310 exenta, sobre transitoriedad',
                 content: 'Decreto 2424- Modifica Resolución 2310 exentade la Ley 21.659 de Seguridad Privada',
                 section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1211115', '_blank'),
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1219417'),
                 keywords: ['decreto', 'reglamento', '2424', 'complementario', 'ley', '21659', '21.659', '2024']
+            },
+            {
+                title: 'Decreto 2100 - Aprueba Formulario de solicitud y Acta Descrptiva',
+                content: 'Decreto 2100- APRUEBA FORMULARIO DE SOLICITUD Y ACTA DESCRIPTIVA PARA LA AUTORIZACIÓN DE EVENTOS MASIVOS EN EL MARCO DE LA LEY N° 21.659',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1218338', '_blank'),
+                keywords: ['decreto', 'reglamento', '2100', 'complementario', 'ley', '21659', '21.659', '2024']
             },
 
             // SECCIÓN: Decretos (CORREGIDOS)
