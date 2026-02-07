@@ -1,7 +1,9 @@
 // Background rotation for homepage
 let backgroundImages = [
     'assets/images/foto (1).webp',
+    'assets/images/foto (1a).webp',
     'assets/images/foto (2).webp',
+    'assets/images/foto (2a).webp',
     'assets/images/foto (3).webp',
     'assets/images/foto (3a).webp',
     'assets/images/foto (4).webp',
