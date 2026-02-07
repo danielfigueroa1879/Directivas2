@@ -3066,14 +3066,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (suspensionNotice) {
         setTimeout(() => {
             suspensionNotice.classList.add('show');
-        }, 500);
+        }, 900);
         setTimeout(() => {
             suspensionNotice.classList.remove('show');
             suspensionNotice.classList.add('hide');
             setTimeout(() => {
                 suspensionNotice.style.display = 'none';
             }, 900);
-        }, 7500);
+        }, 10500);
     }
 });
 </script>
