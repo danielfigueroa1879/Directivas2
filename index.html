@@ -1049,8 +1049,17 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
 </head>
 <body class="homepage background-transition">
     <!-- Notificación de recepción de documentos -->
- <div id="suspension-notice">
-    ✅👍 <strong>Extención de autorizaciones:</strong> La Ley N° 21.806 extendió hasta el 28 de mayo de 2026 las autorizaciones de vigilantes privados, guardias de seguridad, porteros, nocheros y rondines, cuyos permisos vencían entre el 28 de noviembre de 2025 y esa fecha.
+ <!-- Modal de Aviso Profesional -->
+<div id="aviso-modal-overlay" class="modal-overlay">
+    <div id="aviso-modal-content" class="modal-content">
+        <button id="modal-close-button" class="modal-close">&times;</button>
+        <img src="assets/images/logo-os10.png" alt="Logo OS10" class="modal-logo">
+        <h2 class="modal-title">AVISO</h2>
+        <p>✅ <strong>Extención de autorizaciones:<br></strong> La Ley N° 21.806 extendió hasta el 28 de mayo de 2026 las autorizaciones de vigilantes privados, guardias de seguridad, porteros, nocheros y rondines, cuyos permisos vencían entre el 28 de noviembre de 2025 y esa fecha.</p>
+        <hr class="modal-divider">
+        <p><strong> ✅ Credenciales disponibles</strong></p>
+        <button id="modal-accept-button" class="modal-accept-button">Comprendido</button>
+    </div>
 </div>
     <div id="pwa-install-banner" class="pwa-install-banner md:hidden">
         <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
