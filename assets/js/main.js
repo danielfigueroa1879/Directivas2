@@ -250,6 +250,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pwaBanner) pwaBanner.classList.remove('show');
     });
 
+    // --- LÓGICA MODAL DE AVISO ---
+    const avisoModal = document.getElementById('aviso-modal-overlay');
+    const closeModalButton = document.getElementById('modal-close-button');
+    const acceptModalButton = document.getElementById('modal-accept-button');
+
+    const openAvisoModal = () => {
+        if (avisoModal) avisoModal.classList.add('show');
+    };
+
+    const closeAvisoModal = () => {
+        if (avisoModal) avisoModal.classList.remove('show');
+    };
+
+    // Mostrar la modal 2 segundos después de que la página cargue
+    setTimeout(openAvisoModal, 2000);
+
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', closeAvisoModal);
+    }
+
+    if (acceptModalButton) {
+        acceptModalButton.addEventListener('click', closeAvisoModal);
+    }
+    
+    if (avisoModal) {
+        avisoModal.addEventListener('click', (event) => {
+            // Si el clic es en el overlay (el fondo) y no en el contenido
+            if (event.target === avisoModal) {
+                closeAvisoModal();
+            }
+        });
+    }
+
+
     // --- INICIALIZACIÓN DE CARRUSELES ---
     if (typeof initializeCarousel === 'function') {
         initializeCarousel({ containerSelector: '#tramites-principales .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#tramites-principales .pagination-dots', autoScroll: 'mobile' });
