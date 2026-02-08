@@ -5,7 +5,7 @@
 @media (max-width: 480px) {
     /* --- ANUNCIO DE SUSPENSION --- */
     #suspension-notice {
-        width: 98% !important;
+        width: 99% !important;
         left: 1% !important;
         right: 1% !important;
         padding: 10px 15px !important;
@@ -70,7 +70,7 @@
 @media (max-width: 378px) {
     /* --- ANUNCIO DE SUSPENSION --- */
     #suspension-notice {
-        width: 98% !important;
+        width: 99% !important;
         left: 1% !important;
         right: 1% !important;
         padding: 10px 12px !important;
