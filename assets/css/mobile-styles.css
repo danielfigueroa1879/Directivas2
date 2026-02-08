@@ -3,6 +3,14 @@
    ======================================== */
 
 @media (max-width: 480px) {
+    /* --- ANUNCIO DE SUSPENSION --- */
+    #suspension-notice {
+        width: 98%;
+        left: 1%;
+        right: 1%;
+        padding: 10px 15px;
+    }
+
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
         /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
@@ -60,6 +68,15 @@
     }
 }
 @media (max-width: 378px) {
+    /* --- ANUNCIO DE SUSPENSION --- */
+    #suspension-notice {
+        width: 98%;
+        left: 1%;
+        right: 1%;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
         /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
@@ -116,4 +133,3 @@
         color: #374151; /* Dark gray */
     }
 }
-
