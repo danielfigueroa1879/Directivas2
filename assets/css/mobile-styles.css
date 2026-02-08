@@ -2,15 +2,6 @@
    CUSTOM MOBILE STYLES
    ======================================== */
 
-@media (max-width: 480px) {
-    /* --- ANUNCIO DE SUSPENSION --- */
-    #suspension-notice {
-        width: 99% !important;
-        left: 1% !important;
-        right: 1% !important;
-        padding: 10px 15px !important;
-    }
-
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
         /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
@@ -67,15 +58,6 @@
         color: #374151; /* Dark gray */
     }
 }
-@media (max-width: 378px) {
-    /* --- ANUNCIO DE SUSPENSION --- */
-    #suspension-notice {
-        width: 99% !important;
-        left: 1% !important;
-        right: 1% !important;
-        padding: 10px 12px !important;
-        font-size: 10px !important;
-    }
 
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
