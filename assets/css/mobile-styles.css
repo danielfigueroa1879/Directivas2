@@ -9,6 +9,7 @@
         left: 2%;
         right: 2%;
         padding: 10px 15px;
+       border-radius: 8px;
     }
 
     /* --- TRAMITES PRINCIPALES --- */
@@ -75,6 +76,7 @@
         right: 2%;
         padding: 10px 12px;
         font-size: 14px;
+        border-radius: 8px;
     }
 
     /* --- TRAMITES PRINCIPALES --- */
