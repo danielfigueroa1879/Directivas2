@@ -360,3 +360,8 @@ body:not(.homepage) {
 .modal-accept-button:hover {
     background-color: #15803d;
 }
+@media (max-width: 768px) {
+    .modal-content {
+        width: 98%;
+    }
+}
