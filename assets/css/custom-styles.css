@@ -362,6 +362,6 @@ body:not(.homepage) {
 }
 @media (max-width: 768px) {
     .modal-content {
-        width: 98%;
+        width: 97%;
     }
 }
