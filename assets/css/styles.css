@@ -1203,7 +1203,7 @@ body.homepage {
 
 @media (max-width: 480px) {
     #suspension-notice {
-        width: 98% !important;
+        width: 99% !important;
         left: 1% !important;
         right: 1% !important;
         padding: 10px 15px !important;
@@ -1212,10 +1212,10 @@ body.homepage {
 
 @media (max-width: 378px) {
     #suspension-notice {
-        width: 98% !important;
+        width: 99% !important;
         left: 1% !important;
         right: 1% !important;
         padding: 10px 12px !important;
-        font-size: 14px !important;
+        font-size: 10px !important;
     }
 }
