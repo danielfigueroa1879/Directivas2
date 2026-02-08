@@ -6,8 +6,8 @@
     /* --- ANUNCIO DE SUSPENSION --- */
     #suspension-notice {
         width: 99%;
-        left: 1%;
-        right: 1%;
+        left: 0%;
+        right: 0%;
         padding: 10px 15px;
         border-radius: 8px;
     }
@@ -72,8 +72,8 @@
     /* --- ANUNCIO DE SUSPENSION --- */
     #suspension-notice {
         width: 99%;
-        left: 1%;
-        right: 1%;
+        left: 0%;
+        right: 0%;
         padding: 10px 12px;
         font-size: 10px;
         border-radius: 8px;
