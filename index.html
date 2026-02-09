@@ -1645,25 +1645,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
             <!-- LINKS DE INTERÉS -->
-                <div class="desktop-nav-item">
-                    Links de Interés
-                    <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    <div class="desktop-submenu">
-                        <div class="desktop-submenu-title">🔗 Enlaces de Interés</div>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/OS10.php')">Zosepcar</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.directemar.cl/')">DIRECTEMAR</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.dgac.gob.cl/aeropuertos/seguridad-aeroportuaria/acreditacion-dan-1702/')">DGAC</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://www.dgmn.cl/leydearmas/')">DGMN</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/')">SPD</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://carabineros.cerofilas.digital.gob.cl/')">Cerofilas</button>
-                        <button class="desktop-submenu-item" onclick="openNewLink('https://guardiaevento.netlify.app/')">Ggss x evento</button>
-                    </div>
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Links de Interés <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu submenu-compact">
+                    <button onclick="openNewLink('https://www.zosepcar.cl/OS10.php')">Zosepcar</button>
+                    <button onclick="openNewLink('https://www.directemar.cl/')">DIRECTEMAR</button>
+                    <button onclick="openNewLink('https://www.dgac.gob.cl/aeropuertos/seguridad-aeroportuaria/acreditacion-dan-1702/')">DGAC</button>
+                    <button onclick="openNewLink('https://www.dgmn.cl/leydearmas/')">DGMN</button>
+                    <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/')">SPD</button>
+                    <button onclick="openNewLink('https://carabineros.cerofilas.digital.gob.cl/')">Cerofilas</button>
+                    <button onclick="openNewLink('https://guardiaevento.netlify.app/')">Ggss x evento</button>
                 </div>
-                <button class="desktop-nav-item" onclick="handleSPD()">SPD</button>
-                <button class="desktop-nav-item" onclick="handleValores()">Valores</button>
-                <button class="desktop-nav-item" onclick="handleValorPlan()">Valor Plan</button>
-                <button class="desktop-nav-item" onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">G.Map Ubicación</button>
-                <button class="desktop-nav-item" onclick="openNewLink('https://dal5.short.gy/R3')">Reclamo</button>
+            </div>
+                <button class="menu-item-stack" onclick="handleSPD()">SPD</button>
+                <button class="menu-item-stack" onclick="handleValores()">Valores</button>
+                <button class="menu-item-stack" onclick="handleValorPlan()">Valor Plan</button>
+                <button class="menu-item-stack" onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">G. Map Ubicación</button>
+                <button class="menu-item-stack" onclick="openNewLink('https://dal5.short.gy/R3')">Reclamo</button>
          </div>
     </div>
     <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-[1199]"></div>
