@@ -2661,19 +2661,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         </svg>
                         <div>
                             <a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" rel="noopener noreferrer" class="hover:text-white">
-                                Calle Matta N° 451, Coquimbo, Chile
+                                Calle Cienfuegos N° 180, La Serena, Chile.
                             </a>
                         </div>
                     </div>
                     
-                    <!-- Horario de Atención -->
+                   <!-- Horario de Atención -->
                     <div class="flex items-start space-x-3">
                         <svg class="w-5 h-5 text-white mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
                         </svg>
                         <div>
                             <p class="font-semibold text-white">Horario Atención Presencial:</p>
-                            <p class="text-gray-300">Lunes a jueves de 09:00 a 13:00 hrs</p>
+                            <p class="text-gray-300">Lunes a Jueves de 09:00 a 13:00 hrs</p>
+                            <!-- Indicador de estado -->
+                            <div id="office-status" class="mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium">
+                                <span class="status-dot w-2 h-2 rounded-full mr-1.5"></span>
+                                <span class="status-text"></span>
+                            </div>
                         </div>
                     </div>
                     
@@ -3468,5 +3473,80 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     </script>
+    <!-- Script para indicador de estado de oficina -->
+    <script>
+        function updateOfficeStatus() {
+            const statusElement = document.getElementById('office-status');
+            if (!statusElement) return;
+            
+            const now = new Date();
+            
+            // Obtener hora en Chile (UTC-3)
+            const chileTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Santiago' }));
+            const day = chileTime.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+            const hours = chileTime.getHours();
+            const minutes = chileTime.getMinutes();
+            const currentTime = hours * 60 + minutes; // Tiempo en minutos desde medianoche
+            
+            const openTime = 9 * 60; // 09:00 en minutos
+            const closeTime = 13 * 60; // 13:00 en minutos
+            
+            const statusDot = statusElement.querySelector('.status-dot');
+            const statusText = statusElement.querySelector('.status-text');
+            
+            // Lunes a Jueves = 1, 2, 3, 4
+            if (day >= 1 && day <= 4) {
+                if (currentTime >= openTime && currentTime < closeTime) {
+                    // ABIERTO
+                    statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-300 border border-green-500/30';
+                    statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-green-400 animate-pulse';
+                    statusText.textContent = 'Abierto ahora';
+                } else if (currentTime < openTime) {
+                    // ABRE PRONTO (antes de las 09:00)
+                    const minutesUntilOpen = openTime - currentTime;
+                    const hoursUntilOpen = Math.floor(minutesUntilOpen / 60);
+                    const minsUntilOpen = minutesUntilOpen % 60;
+                    
+                    if (minutesUntilOpen <= 60) {
+                        statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-500/20 text-yellow-300 border border-yellow-500/30';
+                        statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-yellow-400';
+                        if (hoursUntilOpen > 0) {
+                            statusText.textContent = `Abre en ${hoursUntilOpen}h ${minsUntilOpen}min`;
+                        } else {
+                            statusText.textContent = `Abre en ${minsUntilOpen} minutos`;
+                        }
+                    } else {
+                        statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30';
+                        statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-red-400';
+                        statusText.textContent = 'Cerrado - Abre 09:00';
+                    }
+                } else {
+                    // CERRADO (después de las 13:00)
+                    statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30';
+                    statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-red-400';
+                    statusText.textContent = 'Cerrado';
+                }
+            } else {
+                // Viernes, Sábado, Domingo
+                statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30';
+                statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-red-400';
+                if (day === 5) {
+                    statusText.textContent = 'Cerrado - Abre el Lunes';
+                } else if (day === 6) {
+                    statusText.textContent = 'Cerrado - Abre el Lunes';
+                } else {
+                    statusText.textContent = 'Cerrado - Abre el Lunes';
+                }
+            }
+        }
+        
+        // Actualizar estado al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateOfficeStatus();
+            // Actualizar cada minuto
+            setInterval(updateOfficeStatus, 60000);
+        });
+    </script>
+    
 </body>
     </html>
