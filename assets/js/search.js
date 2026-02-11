@@ -109,7 +109,7 @@ class GlobalSearch {
                 content: 'Trámite online sistema cerofila',
                 section: 'Trámites Principales',
                 action: () => window.open('https://dal5.short.gy/CFil', '_blank'),
-                keywords: ['cerofila', 'cerofilas', 'pensiones' 'p4']
+                keywords: ['cerofila', 'cerofilas', 'pensiones', 'p4']
             },
             {
                 title: 'Directivas de Funcionamiento',
