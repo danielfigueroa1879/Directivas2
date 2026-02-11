@@ -105,11 +105,11 @@ class GlobalSearch {
         this.searchIndex = [
             // SECCIÓN: Trámites Principales
             {
-                title: 'Certificados O.S.10 Online - Cerofila',
-                content: 'Certificado para Guardias de Seguridad, Conserjes y Vigilantes Privados. Trámite online sistema cerofila',
+                title: 'Cerofila',
+                content: 'Trámite online sistema cerofila',
                 section: 'Trámites Principales',
                 action: () => window.open('https://dal5.short.gy/CFil', '_blank'),
-                keywords: ['certificado', 'os10', 'online', 'cerofila', 'cerofilas', 'guardia', 'seguridad', 'conserje', 'vigilante']
+                keywords: ['cerofila', 'cerofilas', 'pensiones' 'p4']
             },
             {
                 title: 'Directivas de Funcionamiento',
