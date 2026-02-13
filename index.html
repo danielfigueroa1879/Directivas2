@@ -1038,6 +1038,36 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
         height: 40px;
     }
 }
+/* ===== ESTILOS PARA ALTURA FIJA EN PC - LEYES Y NORMATIVA ===== */
+@media (min-width: 768px) {
+    .leyes-normativa-column {
+        min-height: 320px;
+        max-height: 320px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .leyes-normativa-scroll {
+        max-height: 220px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0,0,0,0.1) transparent;
+    }
+    
+    .leyes-normativa-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .leyes-normativa-scroll::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .leyes-normativa-scroll::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 3px;
+    }
+}
+           
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
