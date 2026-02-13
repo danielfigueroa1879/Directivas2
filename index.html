@@ -1047,7 +1047,9 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
         flex-direction: column;
     }
     
+    /* EN PC: Mostrar contenido por defecto */
     .leyes-normativa-scroll {
+        display: block !important;
         max-height: 220px;
         overflow-y: auto;
         scrollbar-width: thin;
@@ -1065,6 +1067,28 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
     .leyes-normativa-scroll::-webkit-scrollbar-thumb {
         background-color: rgba(0,0,0,0.1);
         border-radius: 3px;
+    }
+    
+    /* Deshabilitar el toggle en PC */
+    #leyes-toggle,
+    #decretos-toggle,
+    #resoluciones-toggle {
+        pointer-events: none;
+        cursor: default;
+    }
+    
+    /* Ocultar flecha en PC */
+    #leyes-arrow,
+    #decretos-arrow,
+    #resoluciones-arrow {
+        display: none;
+    }
+}
+
+/* EN MÓVIL: Comportamiento de acordeón */
+@media (max-width: 767px) {
+    .leyes-normativa-scroll.hidden {
+        display: none;
     }
 }
            
