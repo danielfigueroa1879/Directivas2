@@ -1968,269 +1968,226 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <!-- Columna Leyes -->
-            <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue">
-                <button id="leyes-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left">
+            <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue leyes-normativa-column">
+                <button id="leyes-toggle" class="w-full text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center justify-between text-left">
                     <span class="flex items-center">
-                        <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
                         Leyes Principales
                     </span>
                     <svg id="leyes-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
-                <div id="leyes-content" class="space-y-2 hidden">
+                <div id="leyes-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=242302" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Constitución Política</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Fundamento constitucional</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Constitución Política</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=30329" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Ley 18.961</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Ley Orgánica Constitucional</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Ley 18.961</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=30670" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Ley 19.303</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Normativa complementaria</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Ley 19.303</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">D.L. 3.607 (1981)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Decreto Ley histórico</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">D.L. 3.607 (1981)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1202067" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Ley 21.659</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Ley de Seguridad Privada</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Ley 21.659</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1213672" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Reglamento 209</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Reglamentación vigente</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Reglamento 209</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1211115" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Reglamento 208</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Sobre Eventos Masivos</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Reglamento 208</span>
                     </a>
                      <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218921" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Resolución 2310</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Aprueba instrucciones sobre transitoriedad.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2310</span>
                     </a>
                      <a href="https://www.bcn.cl/leychile/navegar?idNorma=1219417" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Resolución 2424</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Modifica Resolución N° 2310 de la SPD sobre transitoriedad de la ley 21.659</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2424</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218338" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1.5 active:bg-blue-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-blue-700 text-xs md:text-sm">Resolución 2100</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Aprueba formulario de solicitud y acta descriptiva para eventos masivos ley 21.659</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2100</span>
                     </a>
                 </div>
             </div>
+            
             <!-- Columna Decretos -->
-            <div class="bg-green-200/30 border border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green">
-                <button id="decretos-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left">
+            <div class="bg-green-200/30 border border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green leyes-normativa-column">
+                <button id="decretos-toggle" class="w-full text-base md:text-lg font-bold text-green-900 mb-4 flex items-center justify-between text-left">
                     <span class="flex items-center">
-                        <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                         Decretos Supremos
                     </span>
                     <svg id="decretos-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
-                <div id="decretos-content" class="space-y-2 scroll-container hidden">
+                <div id="decretos-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
                     <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.E. 261 (2020)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.E. 261 (2020)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.E. 32 (2024)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.E. 32 (2024)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1136545" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D. 298 (2019)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D. 298 (2019)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1130300" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D. 123 (2019)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D. 123 (2019)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1122982" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D. 1045 (2018)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D. 1045 (2018)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1116274" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D. 867 (2017)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D. 867 (2017)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1069299" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D. 1814 (2014)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D. 1814 (2014)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1055580" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.S. 222 (2014)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.S. 222 (2014)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=1072929" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.E. 1122 (1994)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.E. 1122 (1994)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=19870" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.S. 41 (1996)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.S. 41 (1996)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=18592" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.S. 1772 (1995)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.S. 1772 (1995)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=18594" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.S. 1773 (1994)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.S. 1773 (1994)</span>
                     </a>
                     <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1.5 active:bg-green-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-green-700 text-xs md:text-sm">D.S. 93 (1985)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm opacity-0">.</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-green-700">D.S. 93 (1985)</span>
                     </a>
                 </div>
             </div>
+            
             <!-- Columna Resoluciones -->
-            <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow">
-                <button id="resoluciones-toggle" class="w-full text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center justify-between text-left">
+            <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow leyes-normativa-column">
+                <button id="resoluciones-toggle" class="w-full text-base md:text-lg font-bold text-yellow-900 mb-4 flex items-center justify-between text-left">
                     <span class="flex items-center">
-                        <svg class="w-5 h-5 md:w-6 md:h-6 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                         </svg>
                         Resoluciones
                     </span>
                     <svg id="resoluciones-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
-                <div id="resoluciones-content" class="space-y-2 md:space-y-3 scroll-container hidden" style="max-height: 400px;">
+                <div id="resoluciones-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_111.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700 text-xs md:text-sm">1. Res. Exenta N° 111 (18-06-2010)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Conexión sistema Alpha II</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">1. Res. Exenta N° 111</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_112.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700 text-xs md:text-sm">2. Res. Exenta N° 112 (18-06-2010)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Delega conexión Alpha II</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">2. Res. Exenta N° 112</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_253.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700 text-xs md:text-sm">3. Res. Exenta N° 253 (29-10-2013)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Capacitación independientes</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">3. Res. Exenta N° 253</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_59.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700 text-xs md:text-sm">4. Res. Exenta N° 59 (30-09-2014)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Conserjes y mayordomos</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">4. Res. Exenta N° 59</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_281.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700 text-xs md:text-sm">5. Res. Exenta N° 281 (13-11-2015)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Operador cajeros automáticos</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">5. Res. Exenta N° 281</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/RESOLUCION%20EXENTA%20NRO.50.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700 text-xs md:text-sm">6. Res. Exenta N° 50 (22-05-2020)</span>
-                        <span class="text-gray-600 block text-xs mt-1 md:text-sm">Medidas COVID-19</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">6. Res. Exenta N° 50</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_23.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">7. Res. Exenta N° 23 (05-03-2021)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Extiende medidas COVID-19</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">7. Res. Exenta N° 23</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_133.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">8. Res. Exenta N° 133 (26-05-2021)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Amplía medidas COVID-19</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">8. Res. Exenta N° 133</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_2432.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">9. Res. N° 2432 (05-07-2021)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Declaraciones juradas</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">9. Res. N° 2432</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">10. Res. N° 4070 (20-10-2021)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Requisitos Asesores</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">10. Res. N° 4070</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_20.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">11. Res. N° 20 (14-02-2022)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Amplía vigencia credenciales</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">11. Res. N° 20</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">12. Res. N° 2660 (20-07-2022)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Amplía Res. 4070 Asesores</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">12. Res. N° 2660</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_123.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">13. Res. Exenta N° 123 (09-08-2022)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Amplía vigencia credenciales</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">13. Res. Exenta N° 123</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resol_4651.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">14. Res. Exenta N° 4651 (27-12-2022)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Toma de exámenes</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">14. Res. Exenta N° 4651</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">15. Res. N° 2095 (01-08-2023)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Exime autorización vigente</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">15. Res. N° 2095</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">16. Res. N° 2114 (03-08-2023)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Aclara Res. 2095</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">16. Res. N° 2114</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">17. Res. N° 2340 (22-08-2023)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Suspende tramitación credenciales</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">17. Res. N° 2340</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">18. Res. N° 1763 (10-06-2023)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Amplía carrera IPLACEX</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">18. Res. N° 1763</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/Resol_3632.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">19. Res. N° 3632 (21-12-2022)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Certificado acreditación</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">19. Res. N° 3632</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_370.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">20. Res. N° 370 (13-02-2024)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Tarjetas identificación</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">20. Res. N° 370</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_80.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">21. Res. Exenta N° 80 (20-03-2024)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Cursos modalidad telemática</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">21. Res. Exenta N° 80</span>
                     </a>
                     <a href="https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf" target="_blank" 
-                       class="block px-3 md:px-4 py-2 bg-white rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all lg:text-xs lg:px-2 lg:py-1 border border-yellow-300 hover:-translate-y-1.5 active:bg-yellow-200 active:-translate-y-0.5">
-                        <span class="font-semibold text-yellow-700">22. Res. N° 2522 (26-08-2024)</span>
-                        <span class="text-gray-600 block text-xs mt-1 lg:text-[0.6rem]">Regulariza tramitación credenciales</span>
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-yellow-700">22. Res. N° 2522</span>
                     </a>
                 </div>
             </div>
