@@ -157,12 +157,7 @@ body.homepage {
     }
     
     #scroll-up-chevron.visible {
-        opacity: 1 !important;
-        pointer-events: auto !important;
         animation: chevronBounce 2.4s ease-in-out infinite;
-    }    #scroll-up-chevron:hover svg {
-        color: #146314; /* Darker green */
-        transform: scale(1.1);
     }
     
     @keyframes chevronBounce {
@@ -173,6 +168,20 @@ body.homepage {
             transform: translateY(-8px);
         }
     }
+}
+
+/* ===== CHEVRON SCROLL UP (GLOBAL - PC y Móvil) ===== */
+#scroll-up-chevron {
+    transition: opacity 0.4s ease;
+}
+#scroll-up-chevron.visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+#scroll-up-chevron:hover svg {
+    color: #146314;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
 }
 
 /* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
