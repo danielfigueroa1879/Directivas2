@@ -864,7 +864,9 @@ function generarContenidoSupervisorVigilantes() {
                     <li class="requisito-item-componentes" style="text-align: justify;">1. OPCIÓN 1: Curso de supervisión y control de 120 horas</li>
                     <li class="requisito-item-componentes" style="text-align: justify;">2. OPCIÓN 2: Si tiene curso de guardias (90h), requiere 30 horas adicionales de supervisión</li>
                     <li class="requisito-item-componentes" style="text-align: justify;">3. OPCIÓN 3: Si tiene curso de vigilantes (100h), requiere 20 horas adicionales de supervisión</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">4. OPCIÓN 4: Si tiene título técnico (4 semestres mín.) o profesional (8 semestres mín.), requiere 20 horas de supervisión</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">4. OPCIÓN 4: Si la persona posee un título técnico de nivel superior de mínimo 8 semestres o un título profesional de mínimo 8 semestres: curso de 20 propias de la labor de supervisión y control.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">3. OPCIÓN 5: Curso de Formación de Vigilante Privado: mínimo 100 horas pedagógicas.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">3. OPCIÓN 6: Curso de Perfeccionamiento de Vigilante Privado: mínimo 40 horas pedagógicas, y debe aprobarse cada 2 años.</li>
                 </ul>
             </div>
 
