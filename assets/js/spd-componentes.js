@@ -216,6 +216,7 @@ function mostrarRequisitos(tipo) {
         'operador': 'Operador de Cámaras y Alarmas',
         'instalador': 'Instalador Técnico',
         'supervisor': 'Supervisor de Seguridad',
+        'supervisorVigilantes': 'Supervisor de Seguridad de Vigilantes Privados',
         'jefe': 'Jefe de Seguridad',
         'asesor': 'Asesor de Seguridad',
         'encargado': 'Encargado de Seguridad',
