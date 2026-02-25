@@ -269,6 +269,10 @@ function mostrarRequisitos(tipo) {
                 console.log('🎯 Generando contenido Supervisor...');
                 html = generarContenidoSupervisor();
                 break;
+             case 'supervisorVigilantes':
+                console.log('🎯 Generando contenido Supervisor...');
+                html = generarContenidoSupervisorVigilantes();
+                break;
             case 'jefe':
                 console.log('🎯 Generando contenido Jefe...');
                 html = generarContenidoJefe();
