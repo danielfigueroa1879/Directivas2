@@ -762,10 +762,11 @@ function generarContenidoSupervisor() {
                     <li class="requisito-item-componentes" style="text-align: justify;">8.- Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
                     <li class="requisito-item-componentes" style="text-align: justify;">9.- Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
                     <li class="requisito-item-componentes" style="text-align: justify;">10.- Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">11.- Certificado de aprobación de los exámenes de los cursos de capacitación requeridos en la ley N°21.659, emitido por la Subsecretaría de Prevención del Delito, cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">12.- Comprender y comunicarse en idioma castellano.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">13.- Certificado de situación militar al día, emitido por la Dirección General de Movilización Nacional (DGMN), cuando corresponda.</li>
-                    <li class="requisito-item-componentes" style="text-align: justify;">14.- En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">11.- Certificado extendido por la Dirección General de Movilización Nacional (DGMN), que acredite haber cumplido con lo dispuesto en el decreto ley N° 2.306, que dicta normas sobre reclutamiento y movilización de las Fuerzas Armadas, cuando fuera procedente. En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">12.- Certificado de aprobación del examen del curso de capacitación correspondiente para desempeñarse como vigilante privado, en el caso de que se pretenda desempeñar en una entidad obligada que deba incorporar, dentro de sus medidas de seguridad, un sistema de vigilancia privada.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">13.- Certificado de aprobación de un curso de, al menos, ciento veinte horas, relativo a las labores de supervisión y control.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">14.- En caso de contar con el certificado de aprobación del examen del curso de capacitación para desempeñarse como guardia de seguridad o vigilante privado, dentro de los cuatros años anteriores a la fecha de postulación, el certificado de aprobación del curso de supervisión y control podrá ser de treinta o veinte horas, respectivamente.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">15.- En caso de contar con un título técnico de nivel superior de mínimo cuatro semestres o un título profesional de mínimo ocho semestres, el referido curso de supervisión y control podrá ser de, al menos, veinte horas, en cuyo caso, deberá presentar el certificado de título correspondiente.</li>
                 </ul>
             </div>
 
@@ -811,7 +812,89 @@ function generarContenidoSupervisor() {
         </div>
     `;
 }
+// ==========================================================================
+// SUPERVISOR DE SEGURIDAD DE VIGILANTES PRIVADOS 
+// ==========================================================================
+function generarContenidoSupervisorVigilantes() {
+    return `
+        <div class="space-y-4">
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">📖 Definición</h3>
+                <p class="text-gray-700 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500" style="text-align: justify;">
+                    Persona que efectúa labores de supervigilancia y control de recursos humanos, materiales, tecnológicos o procedimientos destinados a la protección de personas y bienes.
+                </p>
+            </div>
+            
+            <div class="mb-4 flex flex-wrap gap-2">
+                <span class="badge-componentes badge-ley-componentes">No tiene artículo específico en Ley 21.659</span>
+                <span class="badge-componentes badge-decreto-componentes">Art. 108 Decreto 209</span>
+            </div>
 
+            <div class="requisito-section-componentes bg-blue-50 border-l-4 border-blue-500">
+                <h3 class="font-bold text-blue-900 mb-3">✅ REQUISITOS GENERALES (Artículo 46 Ley 21.659):</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">1.- Copia de cédula de identidad por ambos lados, que acredite que la persona es mayor de edad.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">2.- Certificado emitido por un médico cirujano inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones físicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">3.- Certificado emitido por un médico psiquiatra o psicólogo inscrito en el Registro Nacional de Prestadores Individuales de Salud, que acredite que la persona tiene condiciones psíquicas compatibles con las labores a desempeñar. El certificado debe consignar el nombre completo y número de cédula de identidad del profesional.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">4.- Certificado de licencia de enseñanza media o su equivalente, emitido por el Ministerio de Educación. Los certificados de estudios de personas extranjeras deberán presentarse debidamente legalizados o apostillados, según corresponda.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">5.- Certificado de antecedentes expedido en los términos del inciso final del artículo 38 de la Ley N°18.216, que acredite no haber sido condenado por crimen, simple delito o actos de violencia intrafamiliar de competencia de los jueces de familia, de acuerdo con la ley N°20.066, de una antigüedad no superior a 30 días contados desde su emisión.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">6.- Declaración jurada simple de no haber sido acusado por alguna de las conductas punibles establecidas en las leyes y disposiciones que se indican en el artículo 46 N°6 de la Ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">7.- Certificado que acredite que la persona no dejó de pertenecer a las Fuerzas Armadas, de Orden y Seguridad Pública y Gendarmería de Chile, producto de una sanción o medida disciplinaria, salvo que los hechos que hayan originado la medida hayan sido desestimados por sentencia judicial, emitido por la institución respectiva. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">8.- Certificado emitido por la Subsecretaría de Prevención del Delito que acredite no haber sido sancionado en los últimos cinco años por alguna de las infracciones gravísimas o graves establecidas en la ley N°21.659.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">9.- Declaración jurada simple de no haber sido sancionado conforme a la ley N°19.327, de derechos y deberes en los espectáculos de fútbol profesional, y su reglamento.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">10.- Certificado emitido por la institución a la que perteneció, Carabineros de Chile, autoridades marítima o aeronáutica o por el Ministerio de Seguridad Pública, que acredite que la persona no ha ejercido funciones de supervisión, control o fiscalización en seguridad privada durante los últimos dos años anteriores a la solicitud de autorización, si procediere. En caso de no haber pertenecido a las referidas instituciones, deberá adjuntar una declaración jurada que señale lo anterior.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">11.- Certificado extendido por la Dirección General de Movilización Nacional (DGMN), que acredite haber cumplido con lo dispuesto en el decreto ley N° 2.306, que dicta normas sobre reclutamiento y movilización de las Fuerzas Armadas, cuando fuera procedente. En caso de ser extranjero, contar con certificado o comprobante de residencia definitiva en Chile emitido por el Servicio Nacional de Migraciones.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">12.- Certificado de aprobación del examen del curso de capacitación correspondiente para desempeñarse como vigilante privado, en el caso de que se pretenda desempeñar en una entidad obligada que deba incorporar, dentro de sus medidas de seguridad, un sistema de vigilancia privada.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">13.- Certificado de aprobación de un curso de, al menos, ciento veinte horas, relativo a las labores de supervisión y control.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">14.- En caso de contar con el certificado de aprobación del examen del curso de capacitación para desempeñarse como guardia de seguridad o vigilante privado, dentro de los cuatros años anteriores a la fecha de postulación, el certificado de aprobación del curso de supervisión y control podrá ser de treinta o veinte horas, respectivamente.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">15.- En caso de contar con un título técnico de nivel superior de mínimo cuatro semestres o un título profesional de mínimo ocho semestres, el referido curso de supervisión y control podrá ser de, al menos, veinte horas, en cuyo caso, deberá presentar el certificado de título correspondiente.</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">16.- Contar con autorización como Vigilante Privado</li>
+                </ul>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes bg-yellow-50 border-l-4 border-yellow-500">
+                <h3 class="font-bold text-yellow-900 mb-3">🎯 REQUISITOS ESPECÍFICOS:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="text-align: justify;">1. OPCIÓN 1: Curso de supervisión y control de 120 horas</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">2. OPCIÓN 2: Si tiene curso de guardias (90h), requiere 30 horas adicionales de supervisión</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">3. OPCIÓN 3: Si tiene curso de vigilantes (100h), requiere 20 horas adicionales de supervisión</li>
+                    <li class="requisito-item-componentes" style="text-align: justify;">4. OPCIÓN 4: Si tiene título técnico (4 semestres mín.) o profesional (8 semestres mín.), requiere 20 horas de supervisión</li>
+                </ul>
+            </div>
+
+            <div class="requisito-section-componentes mt-4" style="background:#fef3c7; border-left-color:#f59e0b;">
+                <h3 class="font-bold text-gray-900 mb-3">ℹ️ INFORMACIÓN ADICIONAL:</h3>
+                <ul class="space-y-2">
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 Periodicidad de acreditación física y psíquica: CADA 4 AÑOS</li>
+                    <li class="requisito-item-componentes" style="background:#fefce8; text-align: justify;">💡 IMPORTANTE: Si trabaja en entidad obligada con sistema vigilancia privada, debe cumplir requisitos de vigilante privado</li>
+                </ul>
+            </div>
+
+            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
+                <p class="text-sm text-gray-700" style="text-align: justify;">
+                    <strong>✓ Autorización:</strong> Todos los componentes requieren autorización de la <strong>Subsecretaría de Prevención del Delito (SPD)</strong> según Art. 85 Decreto 209.
+                </p>
+            </div>
+
+            <div class="requisito-section-componentes bg-gray-50 border-l-4 border-gray-500">
+                <p class="text-sm text-gray-700">
+                    <strong>📌 Más información:</strong> 
+                    <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
+                        https://segprivada.minsegpublica.gob.cl/
+                    </a>
+                </p>
+            </div>
+
+            <button onclick="descargarModalPDF('supervisor')" class="btn-pdf-modal">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Descargar PDF
+            </button>
+        </div>
+    `;
+}
 // ==========================================================================
 // CAPACITADOR
 // ==========================================================================
