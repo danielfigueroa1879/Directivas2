@@ -209,8 +209,8 @@ function mostrarRequisitos(tipo) {
     const titulos = {
         'vigilante': 'Vigilante Privado',
         'guardia': 'Guardia de Seguridad',
-        'nochero': 'Portero / Nochero / Rondín / Conserje',
-        'portero': 'Portero / Nochero / Rondín / Conserje',
+        'nochero': 'Portero / Nochero / Rondín / Conserje (Voluntario)',
+        'portero': 'Portero / Nochero / Rondín / Conserje (Voluntario)',
         'encargado-armas': 'Encargado de Armas y Municiones',
         'tecnico': 'Técnico en Seguridad Privada',
         'operador': 'Operador de Cámaras y Alarmas',
