@@ -336,5 +336,5 @@ window.handleCredencialIndependiente = function() { openNewLink('https://drive.g
 window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); };
 window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); };
 window.handleBuscarCurso = function(url) { openNewLink(url); };
-// NUEVA FUNCIÓN PARA SPD
-window.handleSPD = function() { window.location.href = 'spd.html'; closeActiveMenu(); };
+// FUNCIÓN PARA SPD - Abre portal externo
+window.handleSPD = function() { window.open('https://segprivada.minsegpublica.gob.cl/', '_blank'); closeActiveMenu(); };
