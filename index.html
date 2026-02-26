@@ -121,7 +121,25 @@ body.homepage { background-color: white; background-image: none; }
     }
 }
 
-/* ===== BOTÓN CERRAR MENÚ MÓVIL ===== */
+/* ===== BADGE SPD ===== */
+.spd-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    padding: 1px 5px;
+    background: rgba(251, 191, 36, 0.18);
+    border: 1px solid rgba(251, 191, 36, 0.45);
+    color: rgba(253, 224, 71, 0.9);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+
 .dropdown-menu-header {
     display: flex;
     justify-content: space-between;
@@ -1249,8 +1267,8 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
                           <button class="desktop-submenu-item" 
                                 style="padding-top: 18px; padding-bottom: 18px; display: flex; align-items: center; justify-content: center; text-align: center;" 
                                 onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/01_Documentos_Requeridos_Entidades_Obligadas.pdf')">
-                                Venta de Combustible; Empresa TT.VV.;<br>
-                                Bancos y Financieras, Apoyo Giro Bancario;
+                                <span>Venta de Combustible; Empresa TT.VV.;<br>
+                                Bancos y Financieras, Apoyo Giro Bancario;</span>
                             </button>
                     </div>
                 </div>
@@ -1260,18 +1278,18 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
                     <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
                     <div class="desktop-submenu">
                         <div class="desktop-submenu-title">👥 Tipos de Personal</div>
-                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('vigilante')">Vigilante Privado</button>
-                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('guardia')">Guardia de Seguridad</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('vigilante')">Vigilante Privado <span class="spd-badge">SPD</span></button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('guardia')">Guardia de Seguridad <span class="spd-badge">SPD</span></button>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('jefe')">Jefe de Seguridad</button>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('encargado')">Encargado de Seguridad</button>
-                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('supervisor')">Supervisor de Seguridad</button>
-                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('supervisorVigilantes')">Supervisor Vigilantes Privados</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('supervisor')">Supervisor de Seguridad <span class="spd-badge">SPD</span></button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('supervisorVigilantes')">Supervisor de Seguridad de Vigilantes Privados <span class="spd-badge">SPD</span></button>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('asesor')">Asesor de Seguridad</button>
-                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('capacitador')">Capacitador</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('capacitador')">Capacitador <span class="spd-badge">SPD</span></button>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('tecnico')">Técnico en Seguridad</button>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('instalador')">Instalador Técnico</button>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('operador')">Operador de Cámaras</button>
-                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('portero')">Portero/Nochero/Rondín</button>
+                        <button class="desktop-submenu-item" onclick="mostrarRequisitos('portero')">Portero/Nochero/Rondín <span class="spd-badge">SPD</span></button>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('encargadoArmas')">Encargado de Armas</button>
                         <div class="desktop-submenu-divider"></div>
                         <button class="desktop-submenu-item" onclick="mostrarRequisitos('empresa')">Empresas de Seguridad</button>
