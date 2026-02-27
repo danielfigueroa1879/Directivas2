@@ -214,17 +214,17 @@ function mostrarRequisitos(tipo) {
         'encargado-armas': 'Encargado de Armas y Municiones',
         'tecnico': 'Técnico en Seguridad Privada',
         'operador': 'Operador de Cámaras y Alarmas',
-        'instalador': 'Instalador Técnico - Revisar acta de persona natural para las declaraciones simples',
+        'instalador': 'Instalador Técnico <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
         'supervisor': 'Supervisor de Seguridad',
         'supervisorVigilantes': 'Supervisor de Seguridad de Vigilantes Privados',
-        'jefe': 'Jefe de Seguridad - Revisar acta de persona natural para las declaraciones simples',
-        'asesor': 'Asesor de Seguridad - Revisar acta de persona natural para las declaraciones simples',
-        'encargado': 'Encargado de Seguridad - (Revisar acta de persona natural para las declaraciones simples)',
+        'jefe': 'Jefe de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
+        'asesor': 'Asesor de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
+        'encargado': 'Encargado de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">(Revisar acta de persona natural para las declaraciones simples)</small>',
         'capacitador': 'Capacitador',
         'empresa': 'Empresa de Seguridad'
     };
     
-    titulo.textContent = titulos[tipoNormalizado] || titulos[tipo] || 'Requisitos';
+    titulo.innerHTML = titulos[tipoNormalizado] || titulos[tipo] || 'Requisitos';
     console.log('📋 Título establecido a:', titulo.textContent);
     
     // PASO 4: Generar contenido según el tipo
