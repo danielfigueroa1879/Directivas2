@@ -214,12 +214,12 @@ function mostrarRequisitos(tipo) {
         'encargado-armas': 'Encargado de Armas y Municiones',
         'tecnico': 'Técnico en Seguridad Privada',
         'operador': 'Operador de Cámaras y Alarmas',
-        'instalador': 'Instalador Técnico',
+        'instalador': 'Instalador Técnico - (Revisar acta de persona natural para las declaraciones simples)',
         'supervisor': 'Supervisor de Seguridad',
         'supervisorVigilantes': 'Supervisor de Seguridad de Vigilantes Privados',
-        'jefe': 'Jefe de Seguridad',
-        'asesor': 'Asesor de Seguridad',
-        'encargado': 'Encargado de Seguridad',
+        'jefe': 'Jefe de Seguridad - (Revisar acta de persona natural para las declaraciones simples)',
+        'asesor': 'Asesor de Seguridad - (Revisar acta de persona natural para las declaraciones simples)',
+        'encargado': 'Encargado de Seguridad - (Revisar acta de persona natural para las declaraciones simples)',
         'capacitador': 'Capacitador',
         'empresa': 'Empresa de Seguridad'
     };
