@@ -214,12 +214,12 @@ function mostrarRequisitos(tipo) {
         'encargado-armas': 'Encargado de Armas y Municiones',
         'tecnico': 'Técnico en Seguridad Privada',
         'operador': 'Operador de Cámaras y Alarmas',
-        'instalador': 'Instalador Técnico <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
+        'instalador': 'Instalador Técnico <small style="font-size:0.72em; font-weight:normal; color:#fbbf24; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
         'supervisor': 'Supervisor de Seguridad',
         'supervisorVigilantes': 'Supervisor de Seguridad de Vigilantes Privados',
-        'jefe': 'Jefe de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
-        'asesor': 'Asesor de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
-        'encargado': 'Encargado de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#6b7280; display:block;">(Revisar acta de persona natural para las declaraciones simples)</small>',
+        'jefe': 'Jefe de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#fbbf24; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
+        'asesor': 'Asesor de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#fbbf24; display:block;">- Revisar acta de persona natural para las declaraciones simples</small>',
+        'encargado': 'Encargado de Seguridad <small style="font-size:0.72em; font-weight:normal; color:#fbbf24; display:block;">(Revisar acta de persona natural para las declaraciones simples)</small>',
         'capacitador': 'Capacitador',
         'empresa': 'Empresa de Seguridad'
     };
