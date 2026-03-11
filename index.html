@@ -67,9 +67,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" rel="stylesheet">
-    <link rel="preload" href="assets/css/styles.css?v=25" as="style">
-    <link rel="stylesheet" href="assets/css/carousel.css">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <!-- Google Fonts: no bloqueante -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" rel="stylesheet"></noscript>
+    <!-- carousel.css: no bloqueante -->
+    <link rel="preload" href="assets/css/carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
+    <!-- styles.css: preload + apply -->
+    <link rel="preload" href="assets/css/styles.css?v=25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
         <style>
 html {
     scroll-behavior: smooth;
@@ -1173,11 +1180,13 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.webp">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=25">
-    <link rel="stylesheet" href="assets/css/search.css?v=1">
-    <link rel="stylesheet" href="assets/css/custom-styles.css">
+    <!-- Tailwind CDN: diferido (no bloqueante) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <!-- search.css y custom-styles.css: no bloqueantes -->
+    <link rel="preload" href="assets/css/search.css?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
+    <link rel="preload" href="assets/css/custom-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/custom-styles.css"></noscript>
 </head>
 <body class="homepage background-transition">
     <!-- Notificación de recepción de documentos -->
@@ -3054,8 +3063,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         runCounter();
     </script>
-    <script src="./rules/chatbot-rules.js"></script>
-    <script src="assets/js/chatbot.js"></script>
+    <script src="./rules/chatbot-rules.js" defer></script>
+    <script src="assets/js/chatbot.js" defer></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -3317,11 +3326,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     </script>
     
-    <script src="assets/js/search.js?v=1"></script>
+    <script src="assets/js/search.js?v=1" defer></script>
     
     <!-- Biblioteca para generar PDFs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="assets/js/spd-componentes.js?v=2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+    <script src="assets/js/spd-componentes.js?v=2" defer></script>
     
     <!-- Función para descargar contenido en PDF con animación -->
     <script>
