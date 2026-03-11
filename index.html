@@ -68,6 +68,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <!-- Tailwind CDN primero: genera CSS en runtime, debe bloquearse -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: no bloqueante -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" rel="stylesheet"></noscript>
@@ -1180,8 +1182,6 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.webp">
     
-    <!-- Tailwind CDN: diferido (no bloqueante) -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
     <!-- search.css y custom-styles.css: no bloqueantes -->
     <link rel="preload" href="assets/css/search.css?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
