@@ -75,8 +75,34 @@
 html {
     scroll-behavior: smooth;
 }
-.homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center center; min-height: 100vh; transition: background-image 5.5s ease-in-out; }
+.homepage-section { background-image: none; background-size: cover; background-position: center center; min-height: 100vh; }
 body.homepage { background-color: white; background-image: none; }
+
+/* ===== KEN BURNS - CARRUSEL DE FONDO ===== */
+.kb-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out;
+    will-change: transform, opacity;
+}
+.kb-slide.active {
+    opacity: 1;
+    animation: kenburns-1 12s ease-in-out forwards;
+}
+.kb-slide.active.alt {
+    animation: kenburns-2 12s ease-in-out forwards;
+}
+@keyframes kenburns-1 {
+    0%   { transform: scale(1.0) translate(0%, 0%); }
+    100% { transform: scale(1.12) translate(-2%, -1.5%); }
+}
+@keyframes kenburns-2 {
+    0%   { transform: scale(1.1) translate(-1.5%, -1%); }
+    100% { transform: scale(1.0) translate(1.5%, 0.5%); }
+}
 .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; pointer-events: none; }
 .pwa-install-banner.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
 .submenu-arrow { transition: transform 0.3s ease; }
@@ -92,6 +118,11 @@ body.homepage { background-color: white; background-image: none; }
     border-radius: 0 6px 6px 0;
     margin-top: 1.25rem;
     line-height: 1.6;
+    animation: notice-glow 3.5s ease-in-out infinite;
+}
+@keyframes notice-glow {
+    0%, 100% { border-left-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.06); }
+    50%       { border-left-color: rgba(255, 255, 255, 0.75); background: rgba(255, 255, 255, 0.11); }
 }
 @media (min-width: 1024px) {
     .asesor-megamenu {
@@ -1988,6 +2019,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </section>
     </div>
     <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
+        <!-- Capas Ken Burns -->
+        <div class="kb-slide active" id="kb-0" style="background-image: url('assets/images/foto%20(1).webp');"></div>
+        <div class="kb-slide" id="kb-1" style="background-image: url('assets/images/foto%20(2).webp');"></div>
+        <div class="kb-slide" id="kb-2" style="background-image: url('assets/images/foto%20(3).webp');"></div>
         <div class="absolute inset-0 bg-black/30 z-0"></div>
         
         <!-- Contenedor del Título (FORZADO HACIA ARRIBA) -->
@@ -2746,8 +2781,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3 class="text-lg font-semibold text-white">Contacto</h3>
                 <ul class="mt-4 space-y-2 text-sm">
                     <li><a href="tel:+56512651024" class="hover:text-white">Fonos +56 51 265 1024 (23-22)</a></li>
-                    <li><a href="mailto:contacto@os10coquimbo.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li>
-                    <li><a href="mailto:os10@coquimbo.cl" class="hover:text-white">os10coquimbo@gmail.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#01626e6f756062756e416e723031626e7074686c636e2f626d" class="hover:text-white"><span class="__cf_email__" data-cfemail="b3dcc082839dd0dcc2c6daded1dcf3d0d2c1d2d1daddd6c1dcc09dd0df">[email&#160;protected]</span></a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#b2ddc18382f2d1ddc3c7dbdfd0dd9cd1de" class="hover:text-white"><span class="__cf_email__" data-cfemail="0768743637646876726e6a656847606a666e6b2964686a">[email&#160;protected]</span></a></li>
                     <li><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Map Ubicación</a></li>
                 </ul>
             </div>
@@ -3579,5 +3614,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     </script>
     
+<!-- ===== KEN BURNS CAROUSEL ===== -->
+<script>
+(function() {
+    // Imágenes disponibles — ajusta según las que tengas en assets/images/
+    var images = [
+        'assets/images/foto%20(1).webp',
+        'assets/images/foto%20(2).webp',
+        'assets/images/foto%20(3).webp'
+    ];
+    var slides = document.querySelectorAll('.kb-slide');
+    var current = 0;
+    var total = slides.length;
+    var altToggle = false;
+
+    // Pre-cargar imágenes y eliminar las que no existan
+    function checkImages(callback) {
+        var valid = [];
+        var loaded = 0;
+        images.forEach(function(src, i) {
+            var img = new Image();
+            img.onload  = function() { valid.push(i); check(); };
+            img.onerror = function() { check(); };
+            img.src = src;
+            function check() { if (++loaded === images.length) callback(valid); }
+        });
+    }
+
+    checkImages(function(validIndexes) {
+        // Ocultar slides que no tienen imagen válida
+        slides.forEach(function(s, i) {
+            if (validIndexes.indexOf(i) === -1) s.style.display = 'none';
+        });
+        var activeSlides = validIndexes.map(function(i) { return slides[i]; });
+        if (activeSlides.length <= 1) return; // Solo 1 imagen: Ken Burns queda activo indefinido
+
+        current = 0;
+        function next() {
+            var prev = activeSlides[current];
+            current = (current + 1) % activeSlides.length;
+            var nextSlide = activeSlides[current];
+
+            // Alternar animación
+            altToggle = !altToggle;
+            nextSlide.classList.remove('alt');
+            if (altToggle) nextSlide.classList.add('alt');
+
+            // Activar siguiente
+            nextSlide.classList.add('active');
+
+            // Esperar crossfade y luego desactivar anterior
+            setTimeout(function() {
+                prev.classList.remove('active', 'alt');
+                // Resetear animación reiniciando el nodo
+                prev.style.animation = 'none';
+                prev.offsetHeight; // reflow
+                prev.style.animation = '';
+            }, 1900);
+        }
+
+        setInterval(next, 9000); // Cambio cada 9 segundos
+    });
+})();
+</script>
 </body>
     </html>
