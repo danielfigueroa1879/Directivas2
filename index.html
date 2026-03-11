@@ -82,38 +82,17 @@ body.homepage { background-color: white; background-image: none; }
 .submenu-arrow { transition: transform 0.3s ease; }
 .has-submenu.submenu-open .submenu-arrow { transform: rotate(90deg); }
 #suspension-notice {
-    position: fixed;
-    top: 93px;
-    left: 0;
-    right: 0;
-    background-color: white;
-    color: rgb(2, 48, 14);
-    text-align: center;
-    padding: 12px 25px;
-    font-weight: 600;
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.82);
+    text-align: left;
+    padding: 10px 16px;
+    font-weight: 400;
     font-size: 12px;
-    z-index: 1300;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(-100%);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    backdrop-filter: blur(15px);
-}
-#suspension-notice.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-#suspension-notice.hide {
-    opacity: 0;
-    transform: translateY(-100%);
-}
-@media (max-width: 768px) {
-    #suspension-notice {
-        font-size: 12px;
-        padding: 8px 30px;
-        top: 60px;
-        text-align: justify;
-    }
+    border-radius: 0 6px 6px 0;
+    max-width: 64rem;
+    margin: 0 auto 1.5rem auto;
+    line-height: 1.6;
 }
 @media (min-width: 1024px) {
     .asesor-megamenu {
@@ -1161,10 +1140,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
 </head>
 <body class="homepage background-transition">
     <!-- Notificación de recepción de documentos -->
- <div id="suspension-notice">
-    ✅👍 <strong>Extención de autorizaciones:<br></strong> • La Ley N° 21.806 extendió hasta el 28 de mayo de 2026 las autorizaciones de vigilantes privados, guardias de seguridad, porteros, nocheros y rondines, cuyos permisos vencían entre el 28 de noviembre de 2025 y esa fecha.<br>
-          <strong> • Esta medida entrega continuidad a quienes trabajan en la seguridad privada.</strong>
- </div>
+
     
     <div id="pwa-install-banner" class="pwa-install-banner md:hidden">
         <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
@@ -2054,6 +2030,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <p class="mt-4 text-lg leading-8 text-gray-300">Acceso directo a la información que buscas</p>
                 </div>
+                <!-- Aviso informativo -->
+                <div id="suspension-notice">
+                    ✅ <strong>Extensión de autorizaciones:</strong> La Ley N° 21.806 extendió hasta el 28 de mayo de 2026 las autorizaciones de vigilantes privados, guardias de seguridad, porteros, nocheros y rondines, cuyos permisos vencían entre el 28 de noviembre de 2025 y esa fecha. <strong>Esta medida entrega continuidad a quienes trabajan en la seguridad privada.</strong>
+                </div>
                 <div class="carousel-container carousel-desktop-grid mt-16">
                      <div onclick="showDirectiva()" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
                         <div class="flex items-center">
@@ -2767,8 +2747,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3 class="text-lg font-semibold text-white">Contacto</h3>
                 <ul class="mt-4 space-y-2 text-sm">
                     <li><a href="tel:+56512651024" class="hover:text-white">Fonos +56 51 265 1024 (23-22)</a></li>
-                    <li><a href="mailto:contacto@os10coquimbo.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li>
-                    <li><a href="mailto:os10@coquimbo.cl" class="hover:text-white">os10coquimbo@gmail.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#01626e6f756062756e416e723031626e7074686c636e2f626d" class="hover:text-white"><span class="__cf_email__" data-cfemail="b3dcc082839dd0dcc2c6daded1dcf3d0d2c1d2d1daddd6c1dcc09dd0df">[email&#160;protected]</span></a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#b2ddc18382f2d1ddc3c7dbdfd0dd9cd1de" class="hover:text-white"><span class="__cf_email__" data-cfemail="0768743637646876726e6a656847606a666e6b2964686a">[email&#160;protected]</span></a></li>
                     <li><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Map Ubicación</a></li>
                 </ul>
             </div>
@@ -2830,7 +2810,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
     <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
@@ -3213,23 +3193,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     </script>
     
-      <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const suspensionNotice = document.getElementById('suspension-notice');
-    if (suspensionNotice) {
-        setTimeout(() => {
-            suspensionNotice.classList.add('show');
-        }, 500);
-        setTimeout(() => {
-            suspensionNotice.classList.remove('show');
-            suspensionNotice.classList.add('hide');
-            setTimeout(() => {
-                suspensionNotice.style.display = 'none';
-            }, 500);
-        }, 4500);
-    }
-});
-</script>
+
 <!-- SCRIPT PARA ACORDEÓN (AÑADIDO) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
