@@ -87,21 +87,22 @@ body.homepage { background-color: white; background-image: none; }
     opacity: 0;
     transition: opacity 1.8s ease-in-out;
     will-change: transform, opacity;
+    z-index: 0;
 }
 .kb-slide.active {
     opacity: 1;
-    animation: kenburns-1 12s ease-in-out forwards;
+    animation: kenburns-a 12s ease-in-out forwards;
 }
 .kb-slide.active.alt {
-    animation: kenburns-2 12s ease-in-out forwards;
+    animation: kenburns-b 12s ease-in-out forwards;
 }
-@keyframes kenburns-1 {
-    0%   { transform: scale(1.0) translate(0%, 0%); }
-    100% { transform: scale(1.12) translate(-2%, -1.5%); }
+@keyframes kenburns-a {
+    0%   { transform: scale(1.0)  translate(0%,    0%);    }
+    100% { transform: scale(1.10) translate(-1.5%, -1%);   }
 }
-@keyframes kenburns-2 {
-    0%   { transform: scale(1.1) translate(-1.5%, -1%); }
-    100% { transform: scale(1.0) translate(1.5%, 0.5%); }
+@keyframes kenburns-b {
+    0%   { transform: scale(1.08) translate(-1%, -0.5%);   }
+    100% { transform: scale(1.0)  translate(1%,   0.5%);   }
 }
 .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; pointer-events: none; }
 .pwa-install-banner.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
@@ -121,8 +122,19 @@ body.homepage { background-color: white; background-image: none; }
     animation: notice-glow 3.5s ease-in-out infinite;
 }
 @keyframes notice-glow {
-    0%, 100% { border-left-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.06); }
-    50%       { border-left-color: rgba(255, 255, 255, 0.75); background: rgba(255, 255, 255, 0.11); }
+    0%, 100% { border-left-color: rgba(255,255,255,0.3);  background: rgba(255,255,255,0.06); }
+    50%       { border-left-color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.12); }
+}
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.82);
+    text-align: left;
+    padding: 10px 16px;
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 1.25rem;
+    line-height: 1.6;
 }
 @media (min-width: 1024px) {
     .asesor-megamenu {
@@ -2019,11 +2031,9 @@ document.addEventListener('DOMContentLoaded', function() {
         </section>
     </div>
     <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
-        <!-- Capas Ken Burns -->
-        <div class="kb-slide active" id="kb-0" style="background-image: url('assets/images/foto%20(1).webp');"></div>
-        <div class="kb-slide" id="kb-1" style="background-image: url('assets/images/foto%20(2).webp');"></div>
-        <div class="kb-slide" id="kb-2" style="background-image: url('assets/images/foto%20(3).webp');"></div>
-        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        <!-- Slides Ken Burns inyectadas por JS -->
+        <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;"></div>
+        <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
         
         <!-- Contenedor del Título (FORZADO HACIA ARRIBA) -->
         <div class="relative z-10" style="position: absolute !important; top: 10% !important; left: 0; right: 0; width: 100%;">
@@ -3617,64 +3627,71 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ===== KEN BURNS CAROUSEL ===== -->
 <script>
 (function() {
-    // Imágenes disponibles — ajusta según las que tengas en assets/images/
-    var images = [
-        'assets/images/foto%20(1).webp',
-        'assets/images/foto%20(2).webp',
-        'assets/images/foto%20(3).webp'
-    ];
-    var slides = document.querySelectorAll('.kb-slide');
-    var current = 0;
-    var total = slides.length;
-    var altToggle = false;
+    var container = document.getElementById('kb-container');
+    if (!container) return;
 
-    // Pre-cargar imágenes y eliminar las que no existan
-    function checkImages(callback) {
-        var valid = [];
-        var loaded = 0;
-        images.forEach(function(src, i) {
-            var img = new Image();
-            img.onload  = function() { valid.push(i); check(); };
-            img.onerror = function() { check(); };
-            img.src = src;
-            function check() { if (++loaded === images.length) callback(valid); }
-        });
+    // Prueba fotos numeradas: foto (1).webp hasta foto (20).webp
+    var candidates = [];
+    for (var i = 1; i <= 20; i++) {
+        candidates.push('assets/images/foto%20(' + i + ').webp');
     }
 
-    checkImages(function(validIndexes) {
-        // Ocultar slides que no tienen imagen válida
-        slides.forEach(function(s, i) {
-            if (validIndexes.indexOf(i) === -1) s.style.display = 'none';
+    // Verificar cuáles existen cargándolas realmente
+    var valid = [];
+    var checked = 0;
+
+    candidates.forEach(function(src, idx) {
+        var img = new Image();
+        img.onload = function() {
+            valid.push({ idx: idx, src: src });
+            done();
+        };
+        img.onerror = function() { done(); };
+        img.src = src;
+        function done() {
+            checked++;
+            if (checked === candidates.length) init();
+        }
+    });
+
+    function init() {
+        // Ordenar por índice original
+        valid.sort(function(a, b) { return a.idx - b.idx; });
+        if (valid.length === 0) return;
+
+        // Crear slides solo para imágenes válidas
+        var slides = valid.map(function(item) {
+            var div = document.createElement('div');
+            div.className = 'kb-slide';
+            div.style.backgroundImage = "url('" + item.src + "')";
+            container.appendChild(div);
+            return div;
         });
-        var activeSlides = validIndexes.map(function(i) { return slides[i]; });
-        if (activeSlides.length <= 1) return; // Solo 1 imagen: Ken Burns queda activo indefinido
 
-        current = 0;
-        function next() {
-            var prev = activeSlides[current];
-            current = (current + 1) % activeSlides.length;
-            var nextSlide = activeSlides[current];
+        // Activar la primera de inmediato
+        var current = 0;
+        slides[0].classList.add('active');
+        if (slides.length === 1) return; // Solo 1 foto: Ken Burns solo
 
-            // Alternar animación
+        var altToggle = false;
+        setInterval(function() {
+            var prev = slides[current];
+            current = (current + 1) % slides.length;
+            var next = slides[current];
+
             altToggle = !altToggle;
-            nextSlide.classList.remove('alt');
-            if (altToggle) nextSlide.classList.add('alt');
+            next.classList.toggle('alt', altToggle);
+            next.classList.add('active');
 
-            // Activar siguiente
-            nextSlide.classList.add('active');
-
-            // Esperar crossfade y luego desactivar anterior
             setTimeout(function() {
                 prev.classList.remove('active', 'alt');
-                // Resetear animación reiniciando el nodo
+                // Reset animación
                 prev.style.animation = 'none';
-                prev.offsetHeight; // reflow
+                prev.offsetHeight;
                 prev.style.animation = '';
             }, 1900);
-        }
-
-        setInterval(next, 9000); // Cambio cada 9 segundos
-    });
+        }, 9000);
+    }
 })();
 </script>
 </body>
