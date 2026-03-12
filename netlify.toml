@@ -2,58 +2,16 @@
 
 # Configuración base de construcción del sitio.
 [build]
-  # Regenera el CSS de Tailwind purgado antes de cada deploy
-  command   = "npm run build:css"
   # Le dice a Netlify dónde encontrar las funciones del servidor.
   functions = "netlify/functions/"
 
 # Redirección específica y segura para nuestra API.
 [[redirects]]
+  # Cuando el código del frontend llame a esta ruta "amigable"...
   from = "/api/gemini"
+  # ...Netlify ejecutará internamente la función que está en esta ruta real.
   to = "/.netlify/functions/gemini-proxy"
+  # El status 200 significa que es una reescritura, no una redirección visible.
   status = 200
+  # 'force = true' asegura que esta regla tenga prioridad.
   force = true
-
-# =========================================================
-# HEADERS DE CACHÉ - Mejoran Lighthouse "Uses efficient cache policy"
-# =========================================================
-
-# HTML principal: sin caché (siempre fresco)
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# JS y CSS versionados (tienen ?v= o hash): caché de 1 año
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Imágenes: caché de 1 año
-[[headers]]
-  for = "/assets/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Manifest y SW: corto (pueden cambiar)
-[[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-
-[[headers]]
-  for = "/sw.js"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# Fuentes locales (si existen)
-[[headers]]
-  for = "/assets/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"

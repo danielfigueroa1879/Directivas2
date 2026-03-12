@@ -4,17 +4,11 @@
   "description": "Proyecto con proxy seguro para la API de Gemini",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i tailwind-input.css -o assets/css/tailwind.min.css --minify",
-    "build": "npm run build:css"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.7"
-  },
-  "devDependencies": {
-    "@tailwindcss/cli": "^4.2.1",
-    "tailwindcss": "^3.4.19"
   }
 }
