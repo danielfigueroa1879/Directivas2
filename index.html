@@ -71,16 +71,16 @@
          NUEVOS: Firebase, identitytoolkit, apis.google
          Ahorro estimado: ~920ms en LCP
     ====================================================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Máximo 4 preconnects: solo orígenes de carga temprana crítica -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://i.ytimg.com">
-    <!-- NUEVOS preconnects según informe Lighthouse -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://cuenta-946e2.firebaseapp.com" crossorigin>
-    <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://apis.google.com" crossorigin>
+    <!-- dns-prefetch para el resto (bajo costo, sin bloqueo) -->
     <link rel="dns-prefetch" href="https://www.gstatic.com">
     <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+    <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com">
+    <link rel="dns-prefetch" href="https://apis.google.com">
 
     <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
@@ -111,10 +111,15 @@
          Ahorro estimado: ~750ms en LCP
          noscript fallback garantiza que funcione sin JS.
     ====================================================== -->
-    <link rel="stylesheet" href="assets/css/carousel.css">
-    <link rel="stylesheet" href="assets/css/styles.css?v=25">
-    <link rel="stylesheet" href="assets/css/search.css?v=1">
-    <link rel="stylesheet" href="assets/css/custom-styles.css">
+    <!-- CSS LOCALES - Async (Tailwind bloqueante cubre el layout, estos son seguros en diferido) -->
+    <link rel="stylesheet" href="assets/css/carousel.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
+    <link rel="stylesheet" href="assets/css/styles.css?v=25" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
+    <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
+    <link rel="stylesheet" href="assets/css/custom-styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/custom-styles.css"></noscript>
 
     <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -153,12 +158,21 @@ body.homepage {
 }
 /* Homepage section crítico */
 .homepage-section {
+    background-color: #0d1b2a;
     background-image: none;
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
     position: relative;
     overflow: hidden;
+}
+/* Título y botones invisibles hasta que cargue la primera imagen del carrusel */
+#homepage-section > div.relative.z-10 {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+#homepage-section.kb-ready > div.relative.z-10 {
+    opacity: 1;
 }
 /* KEN BURNS - CARRUSEL DE FONDO */
 .kb-slide {
@@ -2229,8 +2243,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3 class="text-lg font-semibold text-white">Contacto</h3>
                 <ul class="mt-4 space-y-2 text-sm">
                     <li><a href="tel:+56512651024" class="hover:text-white">Fonos +56 51 265 1024 (23-22)</a></li>
-                    <li><a href="mailto:contacto@os10coquimbo.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li>
-                    <li><a href="mailto:os10@coquimbo.cl" class="hover:text-white">os10coquimbo@gmail.com</a></li>                    
+                    <li><a href="/cdn-cgi/l/email-protection#b9dad6d7cdd8dacdd6f9d6ca8889dad6c8ccd0d4dbd697dad5" class="hover:text-white"><span class="__cf_email__" data-cfemail="650a1654554b060a14100c08070a2506041704070c0b00170a164b0609">[email&#160;protected]</span></a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#68071b5958280b07191d01050a07460b04" class="hover:text-white"><span class="__cf_email__" data-cfemail="0a65793b3a69657b7f636768654a6d676b636624696567">[email&#160;protected]</span></a></li>                    
                     <li><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Map Ubicación</a></li>
                 </ul>
             </div>
@@ -2292,7 +2306,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
     <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
@@ -3100,6 +3114,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function startCarousel() {
         if (slides.length < 2 || intervalId) return;
         slides[0].classList.add('active');
+
+        // Revelar título y botones con fade-in una vez que la imagen está lista
+        var section = document.getElementById('homepage-section');
+        if (section) section.classList.add('kb-ready');
 
         intervalId = setInterval(function() {
             var prev = slides[current];
