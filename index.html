@@ -96,7 +96,9 @@
          El bloque <style> inline de abajo cubre el above-the-fold
          para evitar FOUC (flash of unstyled content).
     ====================================================== -->
+    <style>body{visibility:hidden}</style>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>document.body.style.visibility=''</script>
 
     <!-- =====================================================
          GOOGLE FONTS - No bloqueante
