@@ -96,11 +96,34 @@
          El bloque <style> inline de abajo cubre el above-the-fold
          para evitar FOUC (flash of unstyled content).
     ====================================================== -->
+    <style>
+      /* Ocultar body hasta que Tailwind cargue para evitar flash de elementos sin estilo */
+      body { visibility: hidden; }
+      /* Excepción: mostrar el banner inmediatamente con estilos críticos inline */
+      #banner { visibility: visible; }
+      /* Prevenir que SVGs sin clase aplicada se muestren enormes */
+      svg { max-width: 100%; }
+      .w-4 { width: 1rem; height: 1rem; }
+      .w-5 { width: 1.25rem; height: 1.25rem; }
+      .w-7 { width: 1.75rem; height: 1.75rem; }
+      .w-10 { width: 2.5rem; height: 2.5rem; }
+      .h-4 { height: 1rem; }
+      .h-5 { height: 1.25rem; }
+      .h-7 { height: 1.75rem; }
+      .h-10 { height: 2.5rem; }
+    </style>
     <script>
       (function() {
         var tw = document.createElement('script');
         tw.src = 'https://cdn.tailwindcss.com';
         tw.async = true;
+        tw.onload = function() {
+          document.body.style.visibility = 'visible';
+        };
+        // Fallback: mostrar body después de 1.5s aunque Tailwind no cargue
+        setTimeout(function() {
+          document.body.style.visibility = 'visible';
+        }, 1500);
         document.head.appendChild(tw);
       })();
     </script>
@@ -646,7 +669,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
         
         <div class="flex items-center space-x-2">
             <button id="mobile-menu-btn" class="p-2">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <svg class="w-7 h-7" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
             <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center space-x-1 h-10">
                 <img src="assets/images/logo-os10.webp" alt="OS10 Logo" class="h-full" loading="lazy" width="41" height="41">
@@ -657,7 +680,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
         </div>
 
         <div class="flex items-center space-x-2 banner-text-small">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
             <span class="flex items-center"><span id="visit-counter" class="font-bold ml-1">--</span></span>
         </div>
     </div>
@@ -2243,8 +2266,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3 class="text-lg font-semibold text-white">Contacto</h3>
                 <ul class="mt-4 space-y-2 text-sm">
                     <li><a href="tel:+56512651024" class="hover:text-white">Fonos +56 51 265 1024 (23-22)</a></li>
-                    <li><a href="mailto:contacto@os10coquimbo.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li>
-                    <li><a href="mailto:os10@coquimbo.cl" class="hover:text-white">os10coquimbo@gmail.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#73101c1d071210071c331c004243101c02061a1e111c5d101f" class="hover:text-white"><span class="__cf_email__" data-cfemail="fb9488cacbd598948a8e92969994bb989a899a9992959e899488d59897">[email&#160;protected]</span></a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#056a76343545666a74706c68676a2b6669" class="hover:text-white"><span class="__cf_email__" data-cfemail="0669753736656977736f6b646946616b676f6a2865696b">[email&#160;protected]</span></a></li>
                     <li><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Map Ubicación</a></li>
                 </ul>
             </div>
@@ -2306,7 +2329,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script src="assets/js/inicio.js?v=4" defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
     <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
@@ -3180,7 +3203,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })();
 </script>
-
 
 </body>
     </html>
