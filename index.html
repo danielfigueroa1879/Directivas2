@@ -70,15 +70,12 @@
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <!-- Tailwind CDN primero: genera CSS en runtime, debe bloquearse -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: no bloqueante -->
+    <!-- Google Fonts: no bloqueante (externo lento) -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" rel="stylesheet"></noscript>
-    <!-- carousel.css: no bloqueante -->
-    <link rel="preload" href="assets/css/carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
-    <!-- styles.css: preload + apply -->
-    <link rel="preload" href="assets/css/styles.css?v=25" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
+    <!-- CSS locales: síncronos (Netlify los sirve rápido, no causan FOUC) -->
+    <link rel="stylesheet" href="assets/css/carousel.css">
+    <link rel="stylesheet" href="assets/css/styles.css?v=25">
         <style>
 html {
     scroll-behavior: smooth;
@@ -1182,11 +1179,9 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar {
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.webp">
     
-    <!-- search.css y custom-styles.css: no bloqueantes -->
-    <link rel="preload" href="assets/css/search.css?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
-    <link rel="preload" href="assets/css/custom-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/custom-styles.css"></noscript>
+    <!-- CSS locales secundarios: síncronos -->
+    <link rel="stylesheet" href="assets/css/search.css?v=1">
+    <link rel="stylesheet" href="assets/css/custom-styles.css">
 </head>
 <body class="homepage background-transition">
     <!-- Notificación de recepción de documentos -->
