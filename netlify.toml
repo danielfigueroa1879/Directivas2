@@ -2,6 +2,8 @@
 
 # Configuración base de construcción del sitio.
 [build]
+  # Regenera el CSS de Tailwind purgado antes de cada deploy
+  command   = "npm run build:css"
   # Le dice a Netlify dónde encontrar las funciones del servidor.
   functions = "netlify/functions/"
 
