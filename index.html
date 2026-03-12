@@ -97,33 +97,26 @@
          para evitar FOUC (flash of unstyled content).
     ====================================================== -->
     <style>
-      /* Ocultar body hasta que Tailwind cargue para evitar flash de elementos sin estilo */
-      body { visibility: hidden; }
-      /* Excepción: mostrar el banner inmediatamente con estilos críticos inline */
-      #banner { visibility: visible; }
-      /* Prevenir que SVGs sin clase aplicada se muestren enormes */
-      svg { max-width: 100%; }
-      .w-4 { width: 1rem; height: 1rem; }
-      .w-5 { width: 1.25rem; height: 1.25rem; }
-      .w-7 { width: 1.75rem; height: 1.75rem; }
-      .w-10 { width: 2.5rem; height: 2.5rem; }
-      .h-4 { height: 1rem; }
-      .h-5 { height: 1.25rem; }
-      .h-7 { height: 1.75rem; }
-      .h-10 { height: 2.5rem; }
+      /* Ocultar secciones que dependen de Tailwind hasta que cargue,
+         para evitar flash de cuadros/SVGs sin estilo */
+      #homepage-section, #homepage-content-wrapper, #contenido, #credenciales-section {
+        visibility: hidden;
+      }
     </style>
     <script>
       (function() {
+        function showAll() {
+          ['homepage-section','homepage-content-wrapper','contenido','credenciales-section']
+            .forEach(function(id){
+              var el = document.getElementById(id);
+              if (el) el.style.visibility = '';
+            });
+        }
         var tw = document.createElement('script');
         tw.src = 'https://cdn.tailwindcss.com';
         tw.async = true;
-        tw.onload = function() {
-          document.body.style.visibility = 'visible';
-        };
-        // Fallback: mostrar body después de 1.5s aunque Tailwind no cargue
-        setTimeout(function() {
-          document.body.style.visibility = 'visible';
-        }, 1500);
+        tw.onload = showAll;
+        setTimeout(showAll, 2000); // fallback
         document.head.appendChild(tw);
       })();
     </script>
@@ -141,17 +134,10 @@
          Ahorro estimado: ~750ms en LCP
          noscript fallback garantiza que funcione sin JS.
     ====================================================== -->
-    <link rel="stylesheet" href="assets/css/carousel.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
-
-    <link rel="stylesheet" href="assets/css/styles.css?v=25" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
-
-    <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
-
-    <link rel="stylesheet" href="assets/css/custom-styles.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="assets/css/custom-styles.css"></noscript>
+    <link rel="stylesheet" href="assets/css/carousel.css">
+    <link rel="stylesheet" href="assets/css/styles.css?v=25">
+    <link rel="stylesheet" href="assets/css/search.css?v=1">
+    <link rel="stylesheet" href="assets/css/custom-styles.css">
 
     <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -3179,7 +3165,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
+    
     function loadDeferredImages() {
         var loadFn = (typeof requestIdleCallback !== 'undefined')
             ? requestIdleCallback
