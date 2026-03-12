@@ -71,16 +71,17 @@
          NUEVOS: Firebase, identitytoolkit, apis.google
          Ahorro estimado: ~920ms en LCP
     ====================================================== -->
+    <!-- PageSpeed recomienda máximo 4 preconnects: solo los más críticos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://i.ytimg.com">
-    <!-- NUEVOS preconnects según informe Lighthouse -->
-    <link rel="preconnect" href="https://cuenta-946e2.firebaseapp.com" crossorigin>
     <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://apis.google.com" crossorigin>
-    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+    <!-- El resto solo DNS prefetch (más ligero) -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
+    <link rel="dns-prefetch" href="https://cuenta-946e2.firebaseapp.com">
+    <link rel="dns-prefetch" href="https://apis.google.com">
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
 
     <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
@@ -3112,8 +3113,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // El resto se carga de forma diferida
+    // En móvil se limitan a 7 imágenes para ahorrar datos (~1MB en red lenta)
+    var isMobile = window.innerWidth < 768;
+    var maxDeferred = isMobile ? 5 : 20;
     var deferred = [];
-    for (var i = 2; i <= 20; i++) {
+    for (var i = 2; i <= maxDeferred; i++) {
         deferred.push('assets/images/foto%20(' + i + ').webp');
     }
 
