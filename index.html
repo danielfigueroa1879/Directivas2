@@ -79,8 +79,8 @@
     <link rel="preconnect" href="https://cuenta-946e2.firebaseapp.com" crossorigin>
     <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://apis.google.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.gstatic.com">
-    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
 
     <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
@@ -106,15 +106,20 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" rel="stylesheet"></noscript>
 
     <!-- =====================================================
-         CSS LOCALES - No bloqueantes (técnica print trick)
-         Convierte los 4 archivos CSS de render-blocking a async.
-         Ahorro estimado: ~750ms en LCP
-         noscript fallback garantiza que funcione sin JS.
+         CSS LOCALES
+         styles.css: SÍNCRONO (contiene display:none críticos que ocultan
+         secciones al inicio; cargarlo async provoca FOUC/ventanas flotantes).
+         carousel, search, custom: ASYNC (no afectan el render inicial).
     ====================================================== -->
-    <link rel="stylesheet" href="assets/css/carousel.css">
     <link rel="stylesheet" href="assets/css/styles.css?v=25">
-    <link rel="stylesheet" href="assets/css/search.css?v=1">
-    <link rel="stylesheet" href="assets/css/custom-styles.css">
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="assets/css/carousel.css">
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="assets/css/search.css?v=1">
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="assets/css/custom-styles.css">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/carousel.css">
+        <link rel="stylesheet" href="assets/css/search.css?v=1">
+        <link rel="stylesheet" href="assets/css/custom-styles.css">
+    </noscript>
 
     <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -613,6 +618,28 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     #leyes-arrow, #decretos-arrow, #resoluciones-arrow { display: none; }
 }
 @media (max-width: 767px) { .leyes-normativa-scroll.hidden { display: none; } }
+
+/* =====================================================
+   ANTI-FOUC: Secciones ocultas por defecto.
+   Tailwind carga síncrono y cubre sus propias clases.
+   Solo se necesitan aquí las reglas que vienen de
+   los CSS async (carousel, search, custom-styles).
+====================================================== */
+
+/* Secciones de contenido - ocultas hasta que JS las active (de custom-styles.css async) */
+#credenciales-section,
+#directiva-section,
+section[id$="-section"]:not(#homepage-section) {
+    display: none;
+}
+
+/* Modal de búsqueda - oculto por defecto (de search.css async) */
+#global-search-modal.search-modal-hidden { display: none; }
+
+/* Panel submenú desktop en móvil (de custom-styles.css async) */
+@media (max-width: 1023px) {
+    #desktop-submenu-panel { display: none; }
+}
     </style>
 </head>
 
@@ -2493,7 +2520,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (counterSpan) counterSpan.textContent = "Error";
             }
         }
-        runCounter();
+        // Diferir al evento load para no competir con recursos críticos
+        if (document.readyState === 'complete') {
+            runCounter();
+        } else {
+            window.addEventListener('load', runCounter);
+        }
     </script>
     <script src="./rules/chatbot-rules.js" defer></script>
     <script src="assets/js/chatbot.js" defer></script>
@@ -2952,8 +2984,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     attributeFilter: ['class']
                 });
                 
-                // Método 2: Verificación periódica (fallback)
-                setInterval(toggleBanner, 100);
+                // MutationObserver ya cubre todos los casos (fallback eliminado)
                 
             }
         })();
