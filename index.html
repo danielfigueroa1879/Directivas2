@@ -96,30 +96,7 @@
          El bloque <style> inline de abajo cubre el above-the-fold
          para evitar FOUC (flash of unstyled content).
     ====================================================== -->
-    <style>
-      /* Ocultar secciones que dependen de Tailwind hasta que cargue,
-         para evitar flash de cuadros/SVGs sin estilo */
-      #homepage-section, #homepage-content-wrapper, #contenido, #credenciales-section {
-        visibility: hidden;
-      }
-    </style>
-    <script>
-      (function() {
-        function showAll() {
-          ['homepage-section','homepage-content-wrapper','contenido','credenciales-section']
-            .forEach(function(id){
-              var el = document.getElementById(id);
-              if (el) el.style.visibility = '';
-            });
-        }
-        var tw = document.createElement('script');
-        tw.src = 'https://cdn.tailwindcss.com';
-        tw.async = true;
-        tw.onload = showAll;
-        setTimeout(showAll, 2000); // fallback
-        document.head.appendChild(tw);
-      })();
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- =====================================================
          GOOGLE FONTS - No bloqueante
@@ -647,7 +624,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
         <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
         <div class="flex items-center space-x-2">
             <button id="install-button" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-sm">Instalar</button>
-            <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full"><svg class="w-4 h-4" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
     </div>
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
