@@ -162,11 +162,11 @@ body.homepage {
     background-position: center center;
     opacity: 0;
     transition: opacity 1.8s ease-in-out;
-    will-change: transform, opacity;
     z-index: 0;
 }
 .kb-slide.active {
     opacity: 1;
+    will-change: transform, opacity;
     animation: kenburns-a 12s ease-in-out forwards;
 }
 .kb-slide.active.alt {
@@ -2966,18 +2966,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Método 1: Observador de mutaciones
+                // Observador de mutaciones: se dispara solo cuando cambia la clase del modal
                 const observer = new MutationObserver(function(mutations) {
                     toggleBanner();
                 });
-                
+
                 observer.observe(modal, {
                     attributes: true,
                     attributeFilter: ['class']
                 });
-                
-                // Método 2: Verificación periódica (fallback)
-                setInterval(toggleBanner, 100);
                 
             }
         })();
@@ -3138,8 +3135,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(function() {
                 prev.classList.remove('active', 'alt');
+                prev.style.willChange = 'auto';
                 prev.style.animation = 'none';
-                prev.offsetHeight; // reflow
+                void prev.offsetWidth; // reflow mínimo (solo ancho, más liviano)
                 prev.style.animation = '';
             }, 1900);
         }, 9000);
