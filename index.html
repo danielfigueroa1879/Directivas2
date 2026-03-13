@@ -73,7 +73,6 @@
     ====================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://i.ytimg.com">
     <!-- NUEVOS preconnects según informe Lighthouse -->
     <link rel="preconnect" href="https://cuenta-946e2.firebaseapp.com" crossorigin>
@@ -90,13 +89,8 @@
     ====================================================== -->
     <link rel="preload" as="image" href="assets/images/foto%20(1a).webp" fetchpriority="high">
 
-    <!-- =====================================================
-         TAILWIND CDN - Carga asíncrona (no bloqueante)
-         Ahorro estimado: ~770ms en LCP/FCP
-         El bloque <style> inline de abajo cubre el above-the-fold
-         para evitar FOUC (flash of unstyled content).
-    ====================================================== -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS local (reemplaza CDN para evitar re-procesamiento continuo en móvil) -->
+    <link rel="stylesheet" href="assets/css/tailwind.min.css">
 
     <!-- =====================================================
          GOOGLE FONTS - No bloqueante
