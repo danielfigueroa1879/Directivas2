@@ -192,7 +192,7 @@ body.homepage {
 .submenu-arrow { transition: transform 0.3s ease; }
 .has-submenu.submenu-open .submenu-arrow { transform: rotate(90deg); }
 #suspension-notice {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.50);
     border-left: 3px solid rgba(255, 200, 0, 0.6);
     color: #FFE500;
     text-align: left;
@@ -202,17 +202,13 @@ body.homepage {
     border-radius: 0 6px 6px 0;
     margin-top: 1.25rem;
     line-height: 1.6;
-    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
     animation: notice-glow 3.5s ease-in-out infinite, notice-shake 6s ease-in-out infinite;
 }
 #suspension-notice .notice-title {
     color: #FF2222;
     font-weight: 700;
-}
-@media (max-width: 767px) {
-    #suspension-notice {
-        max-width: 92%;
-    }
 }
 @keyframes notice-glow {
     0%, 100% { border-left-color: rgba(255,200,0,0.4);  background: rgba(255,255,255,0.06); }
