@@ -168,11 +168,11 @@ body.homepage {
     background-position: center center;
     opacity: 0;
     transition: opacity 1.8s ease-in-out;
-    will-change: transform, opacity;
     z-index: 0;
 }
 .kb-slide.active {
     opacity: 1;
+    will-change: transform, opacity;
     animation: kenburns-a 12s ease-in-out forwards;
 }
 .kb-slide.active.alt {
@@ -217,8 +217,8 @@ body.homepage {
     text-shadow: 0 0 6px #CC002255;
 }
 @keyframes notice-glow {
-    0%, 100% { border-left-color: rgba(204,0,34,0.7);  background: rgba(255,255,255,0.20); }
-    50%       { border-left-color: rgba(204,0,34,1);    background: rgba(255,255,255,0.28); }
+    0%, 100% { opacity: 0.85; }
+    50%       { opacity: 1; }
 }
 @keyframes notice-slidein {
     0%   { transform: translateX(110%); }
