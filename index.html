@@ -1491,7 +1491,18 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
         <!-- Slides Ken Burns inyectadas por JS -->
-        <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;"></div>
+        <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
+            <!-- Primer slide en HTML para que Lighthouse detecte el LCP correctamente -->
+            <div class="kb-slide active" style="background-image:url('assets/images/foto (1a).webp')">
+                <img src="assets/images/foto (1a).webp"
+                     fetchpriority="high"
+                     loading="eager"
+                     decoding="async"
+                     alt="Fondo principal OS10 Coquimbo"
+                     width="1920" height="1080"
+                     style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;">
+            </div>
+        </div>
         <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
         
         <!-- Contenedor del Título (FORZADO HACIA ARRIBA) -->
@@ -3147,9 +3158,15 @@ document.addEventListener('DOMContentLoaded', function() {
         img.src = src;
     }
 
+    // Recoger el primer slide ya existente en el HTML (para LCP)
+    var existing = container.querySelector('.kb-slide');
+    if (existing) slides.push(existing);
+
     // Cargar primeras 2 imágenes prioritarias
     var priorityLoaded = 0;
-    priority.forEach(function(src) {
+    priority.forEach(function(src, idx) {
+        // La primera imagen ya está en el HTML, no crear duplicado
+        if (idx === 0 && existing) { priorityLoaded++; if (priorityLoaded === priority.length) { startCarousel(); loadDeferredImages(); } return; }
         loadImage(src, function(ok) {
             if (ok) {
                 slides.push(createSlide(src));
