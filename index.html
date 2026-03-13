@@ -2312,7 +2312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
             <span id="chatbot-tooltip" class="absolute hidden bg-white text-gray-800 text-sm font-bold px-3 py-2 rounded-lg shadow-lg">Abrir Chatbot</span>
-            <img src="assets/images/poli.webp" alt="Chatbot Icon" class="h-full w-full object-contain" width="80" height="80" loading="lazy">
+            <img src="assets/images/poli.webp" alt="Chatbot Icon" class="h-full w-full object-contain" width="80" height="80" loading="eager">
         </button>
     </div>
 
@@ -2327,176 +2327,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
-    <!-- Script para auto-scroll del carrusel de Componentes del Sistema -->
-    <script>
-        (function() {
-            'use strict';
-            
-            // Esperar a que TODO esté completamente cargado
-            window.addEventListener('load', function() {
-                setTimeout(initComponentesCarousel, 1000);
-            });
-            
-            function initComponentesCarousel() {
-                const carousel = document.querySelector('#componentes-seguridad .carousel-container');
-                
-                if (!carousel) {
-                    return;
-                }
-                
-                const cards = carousel.querySelectorAll('.carousel-card');
-                const dotsContainer = document.querySelector('#componentes-seguridad .pagination-dots');
-                
-                if (cards.length === 0) {
-                    return;
-                }
-                
-                
-                let currentIndex = 0;
-                let isHovering = false;
-                let isTouching = false;
-                let maxScrollableSlides = cards.length; // Por defecto todas las tarjetas
-                
-                // Calcular cuántos slides son realmente necesarios
-                function calculateMaxSlides() {
-                    const carouselWidth = carousel.offsetWidth;
-                    const scrollWidth = carousel.scrollWidth;
-                    const cardWidth = cards[0].offsetWidth;
-                    const gap = window.innerWidth >= 769 ? 32 : 16;
-                    
-                    // Calcular cuántas posiciones reales necesitamos
-                    const totalScrollableWidth = scrollWidth - carouselWidth;
-                    const slidesNeeded = Math.ceil(totalScrollableWidth / (cardWidth + gap)) + 1;
-                    
-                    
-                    return Math.min(slidesNeeded, cards.length);
-                }
-                
-                // Calcular slides máximos después de que todo esté renderizado
-                setTimeout(function() {
-                    maxScrollableSlides = calculateMaxSlides();
-                    createDots();
-                }, 100);
-                
-                // Crear indicadores de paginación (solo los necesarios)
-                function createDots() {
-                    if (!dotsContainer) return;
-                    
-                    dotsContainer.innerHTML = '';
-                    
-                    for (let i = 0; i < maxScrollableSlides; i++) {
-                        const dot = document.createElement('button');
-                        dot.className = 'pagination-dot' + (i === 0 ? ' active' : '');
-                        dot.setAttribute('aria-label', 'Posición ' + (i + 1));
-                        dot.dataset.index = i;
-                        
-                        dot.addEventListener('click', function() {
-                            goToSlide(parseInt(this.dataset.index));
-                        });
-                        
-                        dotsContainer.appendChild(dot);
-                    }
-                    
-                }
-                
-                // Función para ir a un slide específico
-                function goToSlide(index) {
-                    currentIndex = index;
-                    const cardWidth = cards[0].offsetWidth;
-                    const gap = window.innerWidth >= 769 ? 32 : 16;
-                    const scrollPos = index * (cardWidth + gap);
-                    
-                    carousel.scrollTo({
-                        left: scrollPos,
-                        behavior: 'smooth'
-                    });
-                    
-                    updateDots();
-                }
-                
-                // Actualizar indicadores
-                function updateDots() {
-                    if (!dotsContainer) return;
-                    
-                    const dots = dotsContainer.querySelectorAll('.pagination-dot');
-                    dots.forEach((dot, idx) => {
-                        if (idx === currentIndex) {
-                            dot.classList.add('active');
-                        } else {
-                            dot.classList.remove('active');
-                        }
-                    });
-                }
-                
-                // Función de auto-avance
-                function autoAdvance() {
-                    // NO avanzar si el usuario está interactuando
-                    if (isHovering || isTouching) {
-                        return;
-                    }
-                    
-                    currentIndex++;
-                    
-                    // Volver al inicio cuando llegamos al máximo REAL
-                    if (currentIndex >= maxScrollableSlides) {
-                        currentIndex = 0;
-                    }
-                    
-                    goToSlide(currentIndex);
-                }
-                
-                // Pausar con hover (solo PC)
-                carousel.addEventListener('mouseenter', function() {
-                    isHovering = true;
-                });
-                
-                carousel.addEventListener('mouseleave', function() {
-                    isHovering = false;
-                });
-                
-                // Pausar con touch (móvil)
-                carousel.addEventListener('touchstart', function() {
-                    isTouching = true;
-                }, { passive: true });
-                
-                carousel.addEventListener('touchend', function() {
-                    setTimeout(function() {
-                        isTouching = false;
-                    }, 3000);
-                }, { passive: true });
-                
-                // Detectar scroll manual para actualizar dots
-                carousel.addEventListener('scroll', function() {
-                    const scrollLeft = carousel.scrollLeft;
-                    const cardWidth = cards[0].offsetWidth;
-                    const gap = window.innerWidth >= 769 ? 32 : 16;
-                    const newIndex = Math.round(scrollLeft / (cardWidth + gap));
-                    
-                    // Limitar el índice al máximo real
-                    const limitedIndex = Math.min(newIndex, maxScrollableSlides - 1);
-                    
-                    if (limitedIndex !== currentIndex && limitedIndex >= 0) {
-                        currentIndex = limitedIndex;
-                        updateDots();
-                    }
-                }, { passive: true });
-                
-                // Recalcular al cambiar tamaño de ventana
-                window.addEventListener('resize', function() {
-                    clearTimeout(this.resizeTimeout);
-                    this.resizeTimeout = setTimeout(function() {
-                        maxScrollableSlides = calculateMaxSlides();
-                        createDots();
-                        currentIndex = Math.min(currentIndex, maxScrollableSlides - 1);
-                        updateDots();
-                    }, 250);
-                });
-                
-                // ⚡ INICIAR AUTO-SCROLL CADA 7 SEGUNDOS ⚡
-                setInterval(autoAdvance, 7000);
-            }
-        })();
-    </script>
+    <!-- Carrusel de Componentes manejado por carousel.js (via main.js) -->
     
     <script src="assets/js/main.js" defer></script>
     <script type="module">
@@ -2972,7 +2803,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Método 1: Observador de mutaciones
+                // Observador de mutaciones: detecta cambios de clase en el modal
                 const observer = new MutationObserver(function(mutations) {
                     toggleBanner();
                 });
@@ -2981,9 +2812,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     attributes: true,
                     attributeFilter: ['class']
                 });
-
-                // Método 2: Verificación periódica (fallback)
-                setInterval(toggleBanner, 100);
                 
             }
         })();
