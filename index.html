@@ -198,7 +198,7 @@ body.homepage {
 .submenu-arrow { transition: transform 0.3s ease; }
 .has-submenu.submenu-open .submenu-arrow { transform: rotate(90deg); }
 #suspension-notice {
-    background: rgba(255, 255, 255, 0.20);
+    background: rgba(0, 0, 0, 0.25);
     border-left: 3px solid rgba(204, 0, 34, 0.7);
     color: #FFFFFF;
     text-align: justify;
@@ -2350,7 +2350,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </svg>
                         <div>
                             <p><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024 (23-22)</a></p>
-                            <p class="text-gray-400 text-xs">Atención al Público</p>
+                            <p class="text-gray-300 text-xs">Atención al Público</p>
                         </div>
                     </div>
                    <!-- Horario de Atención -->
@@ -2974,7 +2974,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (day >= 1 && day <= 4) {
                 if (currentTime >= openTime && currentTime < closeTime) {
                     // ABIERTO
-                    statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-300 border border-green-500/30';
+                    statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-500/20 text-white border border-green-500/30';
                     statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-green-400 animate-pulse';
                     statusText.textContent = 'Abierto ahora';
                 } else if (currentTime < openTime) {
@@ -2984,7 +2984,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const minsUntilOpen = minutesUntilOpen % 60;
                     
                     if (minutesUntilOpen <= 60) {
-                        statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-500/20 text-yellow-300 border border-yellow-500/30';
+                        statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-500/20 text-white border border-yellow-500/30';
                         statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-yellow-400';
                         if (hoursUntilOpen > 0) {
                             statusText.textContent = `Abre en ${hoursUntilOpen}h ${minsUntilOpen}min`;
@@ -2992,19 +2992,19 @@ document.addEventListener('DOMContentLoaded', function() {
                             statusText.textContent = `Abre en ${minsUntilOpen} minutos`;
                         }
                     } else {
-                        statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30';
+                        statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-white border border-red-500/30';
                         statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-red-400';
                         statusText.textContent = 'Cerrado - Abre 09:00';
                     }
                 } else {
                     // CERRADO (después de las 13:00)
-                    statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30';
+                    statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-white border border-red-500/30';
                     statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-red-400';
                     statusText.textContent = 'Cerrado';
                 }
             } else {
                 // Viernes, Sábado, Domingo
-                statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30';
+                statusElement.className = 'mt-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/20 text-white border border-red-500/30';
                 statusDot.className = 'status-dot w-2 h-2 rounded-full mr-1.5 bg-red-400';
                 if (day === 5) {
                     statusText.textContent = 'Cerrado - Abre el Lunes';
