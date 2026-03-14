@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     const openPanel = (parentMenuItem) => {
-        if (window.innerWidth < 1024 || !desktopSubmenuPanel) return;
+        if (!window.matchMedia('(min-width: 1024px)').matches || !desktopSubmenuPanel) return;
         if (parentMenuItem.classList.contains('asesor-item') || parentMenuItem.classList.contains('jefe-item')) {
             if (desktopSubmenuPanel.classList.contains('is-open')) {
                 desktopSubmenuPanel.classList.remove('is-open');
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // el script en index.html (líneas 2412-2596) para evitar conflictos.
     // main.js solo maneja el panel de submenús de escritorio.
 
-    if (window.innerWidth >= 1024) {
+    if (window.matchMedia('(min-width: 1024px)').matches) {
         // Solo eventos para el panel lateral de escritorio (NO el botón hamburguesa)
         if (desktopSubmenuPanel) {
             desktopSubmenuPanel.addEventListener('mouseenter', () => {
@@ -316,7 +316,7 @@ function closeActiveMenu() {
     
     // Solo cerrar menú móvil en escritorio (>= 1024px)
     // En móvil, el script de index.html maneja esto
-    if (window.innerWidth >= 1024) {
+    if (window.matchMedia('(min-width: 1024px)').matches) {
         const mobileDropdown = document.getElementById('mobile-dropdown');
         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
         if (mobileDropdown && mobileDropdown.classList.contains('show')) {
