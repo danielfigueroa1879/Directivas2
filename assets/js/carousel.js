@@ -1,6 +1,11 @@
 /**
  * assets/js/carousel.js
  * Contiene la lógica reutilizable para inicializar carruseles horizontales.
+ *
+ * OPTIMIZACIÓN ANTI-REFLOW:
+ * Las propiedades geométricas (offsetWidth, offsetLeft, scrollWidth, clientWidth)
+ * se leen una sola vez en refreshCache() y se actualizan solo en resize.
+ * Esto evita "forced synchronous layouts" en el scroll handler y otras funciones.
  */
 function initializeCarousel({
     containerSelector,
@@ -13,7 +18,6 @@ function initializeCarousel({
     const dotsContainer = document.querySelector(dotsSelector);
 
     if (!scrollContainer) {
-        // console.warn(`Carousel container not found for: ${containerSelector}`);
         return;
     }
 
@@ -22,20 +26,34 @@ function initializeCarousel({
     let autoScrollInterval;
     let currentIndex = 0;
 
-    // Si no hay suficientes tarjetas para hacer scroll, no hacer nada.
-    const isCarouselActive = () => {
-        // El carrusel está inactivo si no hay overflow
-        return scrollContainer.scrollWidth > scrollContainer.clientWidth;
-    };
-    
     if (cardCount <= 1) {
         if (dotsContainer) dotsContainer.style.display = 'none';
         return;
     }
 
-    // 1. Crear los puntos de paginación
+    // --- CACHÉ DE VALORES GEOMÉTRICOS ---
+    // Se leen en bloque una sola vez y se actualizan solo en resize,
+    // evitando reflows forzados en cada evento de scroll.
+    let cachedContainerWidth = 0;
+    let cachedCardRects = [];  // { offsetLeft, offsetWidth } de cada tarjeta
+    let cachedIsActive = false;
+
+    const refreshCache = () => {
+        // Todas las lecturas geométricas agrupadas aquí → un solo reflow
+        cachedContainerWidth = scrollContainer.offsetWidth;
+        cachedIsActive = scrollContainer.scrollWidth > scrollContainer.clientWidth;
+        cachedCardRects = Array.from(cards).map(card => ({
+            offsetLeft: card.offsetLeft,
+            offsetWidth: card.offsetWidth
+        }));
+    };
+
+    // Sin reflow: usa valor cacheado
+    const isCarouselActive = () => cachedIsActive;
+
+    // 1. Crear los puntos de paginación (modifica DOM antes de leer geometría)
     if (dotsContainer) {
-        dotsContainer.innerHTML = ''; // Limpiar puntos existentes
+        dotsContainer.innerHTML = '';
         for (let i = 0; i < cardCount; i++) {
             const dot = document.createElement('span');
             dot.classList.add('dot');
@@ -52,12 +70,15 @@ function initializeCarousel({
         dots[0].classList.add('active');
     }
 
+    // Carga inicial del caché (un único reflow aquí, inevitable pero controlado)
+    refreshCache();
+
     // 2. Función para ir a un slide específico
     function goToSlide(index) {
         if (!isCarouselActive()) return;
         if (index >= 0 && index < cardCount) {
-            const card = cards[index];
-            const scrollLeft = card.offsetLeft - (scrollContainer.offsetWidth - card.offsetWidth) / 2;
+            const cached = cachedCardRects[index]; // sin reflow
+            const scrollLeft = cached.offsetLeft - (cachedContainerWidth - cached.offsetWidth) / 2;
             scrollContainer.scrollTo({
                 left: scrollLeft,
                 behavior: 'smooth'
@@ -83,14 +104,14 @@ function initializeCarousel({
         }
         if (dotsContainer) dotsContainer.style.display = 'flex';
 
-        const scrollLeft = scrollContainer.scrollLeft;
-        const containerWidth = scrollContainer.offsetWidth;
+        const scrollLeft = scrollContainer.scrollLeft;  // scrollLeft no fuerza reflow
+        const containerWidth = cachedContainerWidth;    // sin reflow
 
         let closestCardIndex = 0;
         let minDistance = Infinity;
 
-        cards.forEach((card, i) => {
-            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        cachedCardRects.forEach(({ offsetLeft, offsetWidth }, i) => { // sin reflow
+            const cardCenter = offsetLeft + offsetWidth / 2;
             const scrollCenter = scrollLeft + containerWidth / 2;
             const distance = Math.abs(cardCenter - scrollCenter);
 
@@ -105,13 +126,13 @@ function initializeCarousel({
             updateDots();
         }
     };
-    
+
     scrollContainer.addEventListener('scroll', handleScroll);
 
     // 5. Auto-scroll
     function startAutoScroll() {
         if (autoScrollInterval) clearInterval(autoScrollInterval);
-        
+
         autoScrollInterval = setInterval(() => {
             if (!isCarouselActive()) return;
             let nextIndex = (currentIndex + 1) % cardCount;
@@ -129,8 +150,9 @@ function initializeCarousel({
     }
 
     const manageAutoScroll = () => {
-        const isMobile = window.innerWidth <= 768;
-        
+        // matchMedia no fuerza reflow (usa caché interna del browser)
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
         if (autoScroll === 'always' || (autoScroll === 'mobile' && isMobile)) {
             startAutoScroll();
         } else {
@@ -146,8 +168,9 @@ function initializeCarousel({
 
     // Listener para cambios de tamaño de ventana
     window.addEventListener('resize', () => {
-        handleScroll();
-        manageAutoScroll();
+        refreshCache();     // Actualiza caché primero (un solo reflow en lote)
+        handleScroll();     // Usa valores cacheados
+        manageAutoScroll(); // Usa matchMedia
     });
 
     // Iniciar por primera vez
