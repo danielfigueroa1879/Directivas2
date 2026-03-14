@@ -84,7 +84,7 @@
          Reduce "Retraso de carga de recursos" de 1260ms a ~0ms.
          fetchpriority="high" indica al navegador máxima prioridad.
     ====================================================== -->
-    <link rel="preload" as="image" href="assets/images/foto (1a).webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/foto (1).webp" fetchpriority="high">
 
     <!-- =====================================================
          TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
@@ -2451,8 +2451,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const firebaseConfig = { apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U", authDomain: "cuenta-946e2.firebaseapp.com", projectId: "cuenta-946e2", storageBucket: "cuenta-946e2.firebasestorage.app", messagingSenderId: "816979648502", appId: "1:816979648502:web:809beffeea8ba7968031d7", measurementId: "G-RX9KZSC0F4" };
             const counterSpan = document.getElementById('visit-counter');
             try {
-                const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
-                const { getFirestore, doc, runTransaction } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore-lite.js");
+                // Carga en paralelo: ambos módulos descargan simultáneamente (~100ms ahorrados)
+                const [{ initializeApp }, { getFirestore, doc, runTransaction }] = await Promise.all([
+                    import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"),
+                    import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore-lite.js")
+                ]);
                 // firebase-auth eliminado: evita cargar 40 KiB SDK + 89 KiB iframe de persistencia
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
