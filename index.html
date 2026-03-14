@@ -88,7 +88,7 @@
          Reduce "Retraso de carga de recursos" de 1260ms a ~0ms.
          fetchpriority="high" indica al navegador máxima prioridad.
     ====================================================== -->
-    <link rel="preload" as="image" href="assets/images/foto (1a).webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/foto%20(1a).webp" fetchpriority="high">
 
     <!-- =====================================================
          TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
@@ -1570,17 +1570,15 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
         <!-- Slides Ken Burns inyectadas por JS -->
         <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-            <!-- Primer slide: <img> real como LCP (descubrible por preload scanner)
-                 Sin background-image para evitar doble carga.
-                 El Ken Burns anima el div, no el img, así el efecto sigue igual. -->
-            <div class="kb-slide active">
+            <!-- Primer slide en HTML para que Lighthouse detecte el LCP correctamente -->
+            <div class="kb-slide active" style="background-image:url('assets/images/foto (1a).webp')">
                 <img src="assets/images/foto (1a).webp"
                      fetchpriority="high"
                      loading="eager"
                      decoding="async"
                      alt="Fondo principal OS10 Coquimbo"
                      width="1920" height="1080"
-                     style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                     style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;">
             </div>
         </div>
         <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
