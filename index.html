@@ -73,7 +73,7 @@
     ====================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
     <link rel="preconnect" href="https://i.ytimg.com">
     <!-- NUEVOS preconnects según informe Lighthouse -->
     <link rel="preconnect" href="https://cuenta-946e2.firebaseapp.com" crossorigin>
@@ -91,12 +91,11 @@
     <link rel="preload" as="image" href="assets/images/foto%20(1a).webp" fetchpriority="high">
 
     <!-- =====================================================
-         TAILWIND CDN - Carga asíncrona (no bloqueante)
-         Ahorro estimado: ~770ms en LCP/FCP
-         El bloque <style> inline de abajo cubre el above-the-fold
-         para evitar FOUC (flash of unstyled content).
+         TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
+         Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
+         Sin petición externa, sin bloqueo de parser JS.
     ====================================================== -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/tailwind.min.css">
 
     <!-- =====================================================
          GOOGLE FONTS - No bloqueante
@@ -116,8 +115,9 @@
     <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
     <!-- styles.css: crítico (display:none en homepage-section, menú nav) → bloqueante -->
     <link rel="stylesheet" href="assets/css/styles.css?v=25">
-    <!-- search.css: botón de búsqueda visible en el banner → bloqueante -->
-    <link rel="stylesheet" href="assets/css/search.css?v=1">
+    <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
+    <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
     <!-- custom-styles.css: panel/modales empiezan ocultos → async seguro -->
     <link rel="stylesheet" href="assets/css/custom-styles.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/custom-styles.css"></noscript>
@@ -638,6 +638,78 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     #leyes-arrow, #decretos-arrow, #resoluciones-arrow { display: none; }
 }
 @media (max-width: 767px) { .leyes-normativa-scroll.hidden { display: none; } }
+/* ===== BOTÓN DE BÚSQUEDA EN BANNER (crítico - inline) ===== */
+.banner-search-button,
+#global-search-button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    margin: 0 1rem 0 0;
+    position: relative;
+}
+#global-search-button .search-icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    transition: all 0.2s ease;
+}
+#global-search-button:hover { background: rgba(255,255,255,0.1); transform: scale(1.05); }
+#global-search-button:active { transform: scale(0.95); }
+@media (min-width: 1024px) {
+    #global-search-button {
+        background: transparent;
+        border: 2px solid #dadde2;
+        border-radius: 12px;
+        padding: 4px 28px;
+        min-width: 960px;
+        margin-right: 1.5rem;
+        position: relative;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    #global-search-button .search-icon { display: none; }
+    #global-search-button::before {
+        content: 'Buscar en la pagina';
+        color: #9ca3af;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        opacity: 0.8;
+        transition: opacity 0.3s ease, color 0.3s ease;
+        margin-right: 6px;
+    }
+    #global-search-button::after {
+        content: '';
+        width: 23px;
+        height: 23px;
+        display: block;
+        background-color: #9ca3af;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+        -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+        -webkit-mask-position: center; mask-position: center;
+        -webkit-mask-size: contain; mask-size: contain;
+        opacity: 0.8;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+    }
+    #global-search-button:hover { background: rgba(0,0,0,0.02); border-color: #3d92fb; transform: scale(1.02); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    #global-search-button:hover::before { opacity: 1; color: #a8a4a3; }
+    #global-search-button:hover::after { opacity: 1; background-color: #92ada4; }
+}
+@media (max-width: 1023px) {
+    #global-search-button .search-icon { width: 26px; height: 26px; display: block; }
+    #global-search-button { background: transparent; border: none; padding: 8px; border-radius: 50%; min-width: auto; }
+    #global-search-button::before, #global-search-button::after { display: none; }
+}
     </style>
 </head>
 
