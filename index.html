@@ -113,9 +113,8 @@
     <!-- carousel.css: solo afecta carruseles debajo del fold → async seguro -->
     <link rel="stylesheet" href="assets/css/carousel.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
-    <!-- styles.css: reglas críticas ya inlineadas arriba → async seguro -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=25" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
+    <!-- styles.css: crítico → bloqueante (async causa FOUC) -->
+    <link rel="stylesheet" href="assets/css/styles.css?v=25">
     <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
     <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
