@@ -2439,11 +2439,9 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
                 const { getFirestore, doc, runTransaction } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
-                const { getAuth, signInAnonymously } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
+                // firebase-auth eliminado: evita cargar 40 KiB SDK + 89 KiB iframe de persistencia
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
-                const auth = getAuth(app);
-                await signInAnonymously(auth);
                 const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
                 const newCount = await runTransaction(db, async (transaction) => {
                     const counterDoc = await transaction.get(counterRef);
