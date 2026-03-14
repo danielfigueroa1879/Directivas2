@@ -174,7 +174,12 @@ function initializeCarousel({
         manageAutoScroll(); // Usa matchMedia
     });
 
-    // Iniciar por primera vez
-    handleScroll();
-    manageAutoScroll();
+    // Iniciar por primera vez.
+    // rAF garantiza que las lecturas (scrollLeft, etc.) ocurren DESPUÉS de que el
+    // navegador procesa las escrituras DOM anteriores (creación de dots), evitando
+    // el "forced synchronous layout" reportado por Lighthouse.
+    requestAnimationFrame(() => {
+        handleScroll();
+        manageAutoScroll();
+    });
 }
