@@ -2699,140 +2699,125 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <script src="assets/js/search.js?v=1" defer></script>
     
-    <!-- Biblioteca para generar PDFs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+    <!-- html2pdf se carga lazy (solo al generar PDF) via loadHtml2Pdf() -->
     <script src="assets/js/spd-componentes.js?v=2" defer></script>
     
     <!-- Función para descargar contenido en PDF con animación -->
     <script>
-        // Función para descargar el contenido del modal en PDF
-        function descargarModalPDF(tipo) {
-            // Obtener el título del modal
+        // Carga lazy de html2pdf: se descarga solo cuando el usuario genera un PDF.
+        // Ahorra 16 KiB en cada visita donde no se usa esta función.
+        // Si ya fue cargado antes, resuelve inmediatamente (sin re-descarga).
+        function loadHtml2Pdf() {
+            return new Promise((resolve, reject) => {
+                if (window.html2pdf) { resolve(); return; }
+                const s = document.createElement('script');
+                s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                s.onload = resolve;
+                s.onerror = () => reject(new Error('No se pudo cargar html2pdf'));
+                document.head.appendChild(s);
+            });
+        }
+
+        // Función async: carga html2pdf y espera la animación EN PARALELO
+        // → el usuario no nota demora adicional (html2pdf ~16 KiB carga en <500ms)
+        async function descargarModalPDF(tipo) {
             const titulo = document.getElementById('modalTitulo').textContent;
             const contenido = document.getElementById('modalContenido');
-            
+
             // Mostrar animación PRIMERO
             const animacion = document.getElementById('pdfDownloadAnimation');
             if (animacion) {
                 animacion.classList.add('active');
-                setTimeout(() => {
-                    animacion.classList.remove('active');
-                }, 5500);
+                setTimeout(() => animacion.classList.remove('active'), 5500);
             }
-            
-            // ESPERAR 2 SEGUNDOS antes de generar el PDF
-            // Esto permite que la animación se vea primero
-            setTimeout(() => {
-                // Crear un contenedor temporal con el contenido
-                const contenedorTemp = document.createElement('div');
-                contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
-                
-                // Agregar título
-                const tituloElement = document.createElement('h1');
-                tituloElement.textContent = titulo;
-                tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
-                contenedorTemp.appendChild(tituloElement);
-                
-                // Clonar el contenido del modal
-                const contenidoClone = contenido.cloneNode(true);
-                
-                // Ocultar botón de descarga en el clon
-                const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
-                if (botonPDF) {
-                    botonPDF.remove();
+
+            // Cargar librería + esperar animación EN PARALELO (Promise.all)
+            // Ambas tareas corren al mismo tiempo → tiempo total = 3s (sin demora extra)
+            try {
+                await Promise.all([
+                    loadHtml2Pdf(),
+                    new Promise(resolve => setTimeout(resolve, 3000))
+                ]);
+            } catch (e) {
+                alert('Error al cargar la biblioteca PDF. Por favor, intenta nuevamente.');
+                return;
+            }
+
+            // Crear un contenedor temporal con el contenido
+            const contenedorTemp = document.createElement('div');
+            contenedorTemp.style.cssText = 'padding: 5px; background-color: white; margin: 0; width: 100%;';
+
+            // Agregar título
+            const tituloElement = document.createElement('h1');
+            tituloElement.textContent = titulo;
+            tituloElement.style.cssText = 'font-size: 20px; font-weight: bold; margin: 0 0 10px 0; padding: 0; color: #1f2937;';
+            contenedorTemp.appendChild(tituloElement);
+
+            // Clonar el contenido del modal
+            const contenidoClone = contenido.cloneNode(true);
+
+            // Ocultar botón de descarga en el clon
+            const botonPDF = contenidoClone.querySelector('.btn-pdf-modal');
+            if (botonPDF) botonPDF.remove();
+
+            // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
+            contenidoClone.style.cssText = 'margin: 0; padding: 0;';
+
+            // Aplicar estilos a TODOS los elementos para flujo continuo
+            contenidoClone.querySelectorAll('*').forEach(elemento => {
+                if (elemento.style.marginTop)    elemento.style.marginTop    = '0';
+                if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
+                if (elemento.style.paddingTop)   elemento.style.paddingTop   = '0';
+                if (elemento.style.paddingBottom)elemento.style.paddingBottom= '0';
+
+                if (elemento.classList.contains('requisito-section-componentes')) {
+                    elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
                 }
-                
-                // CRÍTICO: Eliminar TODOS los espacios y márgenes grandes
-                contenidoClone.style.cssText = 'margin: 0; padding: 0;';
-                
-                // Aplicar estilos a TODOS los elementos para flujo continuo
-                const todosLosElementos = contenidoClone.querySelectorAll('*');
-                todosLosElementos.forEach(elemento => {
-                    // Eliminar márgenes verticales grandes
-                    if (elemento.style.marginTop) elemento.style.marginTop = '0';
-                    if (elemento.style.marginBottom) elemento.style.marginBottom = '0';
-                    if (elemento.style.paddingTop) elemento.style.paddingTop = '0';
-                    if (elemento.style.paddingBottom) elemento.style.paddingBottom = '0';
-                    
-                    // Aplicar márgenes pequeños a secciones
-                    if (elemento.classList.contains('requisito-section-componentes')) {
-                        elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
-                    }
-                    
-                    // Aplicar estilos a items
-                    if (elemento.classList.contains('requisito-item-componentes')) {
-                        elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
-                    }
-                    
-                    // Reducir espacios en divs con clases de Tailwind
-                    if (elemento.className && typeof elemento.className === 'string') {
-                        if (elemento.className.includes('mt-')) {
-                            elemento.style.marginTop = '5px';
+                if (elemento.classList.contains('requisito-item-componentes')) {
+                    elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
+                }
+                if (elemento.className && typeof elemento.className === 'string') {
+                    if (elemento.className.includes('mt-'))      elemento.style.marginTop    = '5px';
+                    if (elemento.className.includes('mb-'))      elemento.style.marginBottom = '5px';
+                    if (elemento.className.includes('space-y-')) elemento.style.cssText     += 'gap: 5px;';
+                }
+            });
+
+            contenedorTemp.appendChild(contenidoClone);
+
+            const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
+
+            const opciones = {
+                margin: [8, 8, 8, 8],
+                filename: nombreArchivo,
+                image: { type: 'jpeg', quality: 0.96 },
+                html2canvas: {
+                    scale: 1.5,
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true,
+                    backgroundColor: '#ffffff',
+                    scrollY: 0,
+                    scrollX: 0,
+                    windowHeight: document.documentElement.scrollHeight,
+                    onclone: function(clonedDoc) {
+                        const clonedContent = clonedDoc.body.querySelector('div');
+                        if (clonedContent) {
+                            clonedContent.querySelectorAll('*').forEach(el => {
+                                el.style.pageBreakInside = 'auto';
+                                el.style.pageBreakBefore = 'auto';
+                                el.style.pageBreakAfter  = 'auto';
+                            });
                         }
-                        if (elemento.className.includes('mb-')) {
-                            elemento.style.marginBottom = '5px';
-                        }
-                        if (elemento.className.includes('space-y-')) {
-                            elemento.style.cssText += 'gap: 5px;';
-                        }
                     }
-                });
-                
-                contenedorTemp.appendChild(contenidoClone);
-                
-                // Generar nombre de archivo
-                const nombreArchivo = `OS10-Requisitos-${titulo.replace(/\s+/g, '-')}.pdf`;
-                
-                // Configuración del PDF optimizada para flujo continuo
-                const opciones = {
-                    margin: [8, 8, 8, 8],
-                    filename: nombreArchivo,
-                    image: { 
-                        type: 'jpeg', 
-                        quality: 0.96 
-                    },
-                    html2canvas: { 
-                        scale: 1.5,
-                        useCORS: true,
-                        logging: false,
-                        letterRendering: true,
-                        backgroundColor: '#ffffff',
-                        scrollY: 0,
-                        scrollX: 0,
-                        windowHeight: document.documentElement.scrollHeight,
-                        onclone: function(clonedDoc) {
-                            const clonedContent = clonedDoc.body.querySelector('div');
-                            if (clonedContent) {
-                                const allElements = clonedContent.querySelectorAll('*');
-                                allElements.forEach(el => {
-                                    el.style.pageBreakInside = 'auto';
-                                    el.style.pageBreakBefore = 'auto';
-                                    el.style.pageBreakAfter = 'auto';
-                                });
-                            }
-                        }
-                    },
-                    jsPDF: { 
-                        unit: 'mm', 
-                        format: 'a4', 
-                        orientation: 'portrait',
-                        compress: true
-                    },
-                    pagebreak: { 
-                        mode: [],
-                        before: [],
-                        after: [],
-                        avoid: []
-                    }
-                };
-                
-                // Generar y descargar PDF
-                html2pdf().set(opciones).from(contenedorTemp).save().then(() => {
-                }).catch(error => {
-                    alert('Error al generar el PDF. Por favor, intenta nuevamente.');
-                });
-                
-            }, 3000); // ESPERA 3 SEGUNDOS antes de generar PDF
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
+                pagebreak: { mode: [], before: [], after: [], avoid: [] }
+            };
+
+            html2pdf().set(opciones).from(contenedorTemp).save().catch(() => {
+                alert('Error al generar el PDF. Por favor, intenta nuevamente.');
+            });
         }
     </script>
     
