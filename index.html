@@ -111,10 +111,16 @@
          Ahorro estimado: ~750ms en LCP
          noscript fallback garantiza que funcione sin JS.
     ====================================================== -->
-    <link rel="stylesheet" href="assets/css/carousel.css">
+    <!-- carousel.css: solo afecta carruseles debajo del fold → async seguro -->
+    <link rel="stylesheet" href="assets/css/carousel.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
+    <!-- styles.css: crítico (display:none en homepage-section, menú nav) → bloqueante -->
     <link rel="stylesheet" href="assets/css/styles.css?v=25">
+    <!-- search.css: botón de búsqueda visible en el banner → bloqueante -->
     <link rel="stylesheet" href="assets/css/search.css?v=1">
-    <link rel="stylesheet" href="assets/css/custom-styles.css">
+    <!-- custom-styles.css: panel/modales empiezan ocultos → async seguro -->
+    <link rel="stylesheet" href="assets/css/custom-styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/custom-styles.css"></noscript>
 
     <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
