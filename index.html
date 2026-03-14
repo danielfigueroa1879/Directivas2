@@ -113,8 +113,9 @@
     <!-- carousel.css: solo afecta carruseles debajo del fold → async seguro -->
     <link rel="stylesheet" href="assets/css/carousel.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/carousel.css"></noscript>
-    <!-- styles.css: crítico (display:none en homepage-section, menú nav) → bloqueante -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=25">
+    <!-- styles.css: reglas críticas ya inlineadas arriba → async seguro -->
+    <link rel="stylesheet" href="assets/css/styles.css?v=25" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
     <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
     <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/search.css?v=1"></noscript>
@@ -710,6 +711,12 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     #global-search-button { background: transparent; border: none; padding: 8px; border-radius: 50%; min-width: auto; }
     #global-search-button::before, #global-search-button::after { display: none; }
 }
+/* ===== CRÍTICOS PARA ASYNC styles.css (evitan FOUC) ===== */
+/* homepage-section y credenciales-section empiezan ocultas; JS muestra la correcta */
+.homepage-section { display: none; }
+.credenciales-section { display: none; }
+/* chat-popup tiene class="chat-popup-hidden flex..." → el flex de Tailwind lo haría visible sin esto */
+.chat-popup-hidden { display: none !important; }
     </style>
 </head>
 
