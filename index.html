@@ -711,8 +711,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     #global-search-button::before, #global-search-button::after { display: none; }
 }
 /* ===== CRÍTICOS PARA ASYNC styles.css (evitan FOUC) ===== */
-/* homepage-section y credenciales-section empiezan ocultas; JS muestra la correcta */
-.homepage-section { display: none; }
+/* credenciales-section empieza oculta; JS la muestra cuando el usuario navega a ella */
 .credenciales-section { display: none; }
 /* chat-popup tiene class="chat-popup-hidden flex..." → el flex de Tailwind lo haría visible sin esto */
 .chat-popup-hidden { display: none !important; }
@@ -2274,7 +2273,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                        <div class="text-center">
                         <div class="flex items-center justify-center space-x-2">
-                         <iframe width="560" height="315" src="https://www.youtube.com/embed/M_epPITSCSw?si=W2xBOL_F0pn_sw2j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br><br>
+                         <!-- YouTube facade: carga el iframe solo al hacer click (ahorra ~497 KiB JS) -->
+                         <div class="yt-facade" data-vid="M_epPITSCSw" style="position:relative;width:560px;max-width:100%;aspect-ratio:16/9;cursor:pointer;border-radius:8px;overflow:hidden;background:#000;">
+                             <img src="https://img.youtube.com/vi/M_epPITSCSw/hqdefault.jpg"
+                                  loading="lazy" decoding="async"
+                                  alt="Video YouTube OS10 Coquimbo"
+                                  style="width:100%;height:100%;object-fit:cover;display:block;">
+                             <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+                                 <svg width="68" height="48" viewBox="0 0 68 48"><path fill="#ff0000" d="M66.5 7.7a8.5 8.5 0 0 0-6-6C56.2 0 34 0 34 0S11.8 0 7.5 1.6a8.5 8.5 0 0 0-6 6C0 12 0 24 0 24s0 12 1.5 16.3a8.5 8.5 0 0 0 6 6C11.8 48 34 48 34 48s22.2 0 26.5-1.6a8.5 8.5 0 0 0 6-6C68 36 68 24 68 24s0-12-1.5-16.3z"/><path fill="#fff" d="M45 24 27 36V12z"/></svg>
+                             </div>
+                         </div><br><br>
                         </div>
                     <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div class="elegant-card">
@@ -2419,13 +2427,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <script src="assets/js/main.js" defer></script>
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        const firebaseConfig = { apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U", authDomain: "cuenta-946e2.firebaseapp.com", projectId: "cuenta-946e2", storageBucket: "cuenta-946e2.firebasestorage.app", messagingSenderId: "816979648502", appId: "1:816979648502:web:809beffeea8ba7968031d7", measurementId: "G-RX9KZSC0F4" };
-        async function runCounter() {
+        // Firebase carga diferida: dynamic import tras página interactiva.
+        // Elimina ~174 KiB de JS de la ruta crítica (LCP/FCP).
+        const runWhenIdle = window.requestIdleCallback
+            ? (cb) => requestIdleCallback(cb, { timeout: 4000 })
+            : (cb) => setTimeout(cb, 3500);
+
+        runWhenIdle(async () => {
+            const firebaseConfig = { apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U", authDomain: "cuenta-946e2.firebaseapp.com", projectId: "cuenta-946e2", storageBucket: "cuenta-946e2.firebasestorage.app", messagingSenderId: "816979648502", appId: "1:816979648502:web:809beffeea8ba7968031d7", measurementId: "G-RX9KZSC0F4" };
             const counterSpan = document.getElementById('visit-counter');
             try {
+                const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
+                const { getFirestore, doc, runTransaction } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+                const { getAuth, signInAnonymously } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
                 const auth = getAuth(app);
@@ -2439,10 +2453,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
             } catch (error) {
-                if (counterSpan) counterSpan.textContent = "Error";
+                if (counterSpan) counterSpan.textContent = "—";
             }
-        }
-        runCounter();
+        });
     </script>
     <script src="./rules/chatbot-rules.js" defer></script>
     <script src="assets/js/chatbot.min.js" defer></script>
@@ -3104,6 +3117,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 })();
+</script>
+<!-- YouTube facade: carga iframe solo al hacer click -->
+<script>
+document.querySelectorAll('.yt-facade').forEach(function(el) {
+    el.addEventListener('click', function() {
+        var vid = this.dataset.vid;
+        var iframe = document.createElement('iframe');
+        iframe.width = '560'; iframe.height = '315';
+        iframe.src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1';
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+        this.innerHTML = '';
+        this.appendChild(iframe);
+    });
+});
 </script>
 
 </body>
