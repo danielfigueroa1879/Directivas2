@@ -97,8 +97,9 @@
          GOOGLE FONTS - No bloqueante
          Ya correcto con preload + onload + noscript fallback
     ====================================================== -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=swap" rel="stylesheet"></noscript>
+    <!-- display=optional: usa fuente en caché o fallback del sistema → CLS = 0 (sin swap tardío) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Mate+SC&display=optional" rel="stylesheet"></noscript>
    
     <!-- =====================================================
          CSS LOCALES - No bloqueantes (técnica print trick)
@@ -2452,7 +2453,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const counterSpan = document.getElementById('visit-counter');
             try {
                 // Carga en paralelo: ambos módulos descargan simultáneamente (~100ms ahorrados)
-                const [{ initializeApp }, { getFirestore, doc, runTransaction }] = await Promise.all([
+                const [{ initializeApp }, { getFirestore, doc, updateDoc, setDoc, getDoc, increment }] = await Promise.all([
                     import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"),
                     import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore-lite.js")
                 ]);
@@ -2460,13 +2461,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
                 const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                const newCount = await runTransaction(db, async (transaction) => {
-                    const counterDoc = await transaction.get(counterRef);
-                    let count = 1;
-                    if (counterDoc.exists()) { count = counterDoc.data().count + 1; transaction.update(counterRef, { count: count }); } else { transaction.set(counterRef, { count: count }); }
-                    return count;
-                });
-                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+                // increment() es atómico en el servidor → sin transacción, sin reintentos, sin conflictos.
+                // Antes: runTransaction → hasta 4 requests (2 batchGet + 2 commit si hay reintentos).
+                // Ahora: updateDoc(increment) + getDoc → siempre 2 requests máximo.
+                try {
+                    await updateDoc(counterRef, { count: increment(1) });
+                } catch (notFound) {
+                    // Primera visita absoluta: el documento aún no existe
+                    await setDoc(counterRef, { count: 1 });
+                }
+                const snap = await getDoc(counterRef);
+                if (counterSpan && snap.exists()) counterSpan.textContent = snap.data().count.toLocaleString('es-CL');
             } catch (error) {
                 if (counterSpan) counterSpan.textContent = "—";
             }
