@@ -729,7 +729,7 @@ body.homepage {
 
 @media (max-width: 640px) {
    .homepage-btn { width: 60%; padding: 0.5rem 1.5rem; background-color: rgba(59, 130, 246, 0.7); color: white; }
-   .homepage-btn.bg-[#ffb700] { background-color: rgba(255, 183, 0, 0.7); color: white; }
+   .homepage-btn.bg-\[\#ffb700\]\/80 { background-color: rgba(255, 183, 0, 0.8) !important; color: white; }
 }
 
 /* Credenciales Section Specific Styles */
