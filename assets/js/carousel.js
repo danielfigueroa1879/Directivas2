@@ -51,7 +51,10 @@ function initializeCarousel({
     // Sin reflow: usa valor cacheado
     const isCarouselActive = () => cachedIsActive;
 
-    // 1. Crear los puntos de paginación (modifica DOM antes de leer geometría)
+    // Carga inicial del caché — se lee ANTES de modificar el DOM (evita reflow forzado)
+    refreshCache();
+
+    // 1. Crear los puntos de paginación (DOM modification DESPUÉS de leer geometría)
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         for (let i = 0; i < cardCount; i++) {
@@ -69,9 +72,6 @@ function initializeCarousel({
     if (dots.length > 0) {
         dots[0].classList.add('active');
     }
-
-    // Carga inicial del caché (un único reflow aquí, inevitable pero controlado)
-    refreshCache();
 
     // 2. Función para ir a un slide específico
     function goToSlide(index) {
@@ -98,14 +98,15 @@ function initializeCarousel({
 
     // 4. Detectar el slide actual mientras se hace scroll
     const handleScroll = () => {
+        // Leer propiedades geométricas ANTES de cualquier modificación CSS (evita reflow forzado)
+        const scrollLeft = scrollContainer.scrollLeft;
+        const containerWidth = cachedContainerWidth;
+
         if (!isCarouselActive()) {
             if (dotsContainer) dotsContainer.style.display = 'none';
             return;
         }
         if (dotsContainer) dotsContainer.style.display = 'flex';
-
-        const scrollLeft = scrollContainer.scrollLeft;  // scrollLeft no fuerza reflow
-        const containerWidth = cachedContainerWidth;    // sin reflow
 
         let closestCardIndex = 0;
         let minDistance = Infinity;
