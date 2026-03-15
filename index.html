@@ -74,8 +74,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- i.ytimg.com eliminado: iframe YouTube comentado → preconnect no se usa -->
-    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <!-- gstatic.com eliminado: Firebase SDK reemplazado por REST API fetch() -->
     <link rel="dns-prefetch" href="https://firestore.googleapis.com">
 
     <!-- =====================================================
@@ -2494,45 +2493,46 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Carrusel de Componentes manejado por carousel.js (via main.js) -->
     
     <script src="assets/js/main.js" defer></script>
-    <script type="module">
-        // Firebase carga diferida: dynamic import tras página interactiva.
-        // Elimina ~174 KiB de JS de la ruta crítica (LCP/FCP).
+    <script>
+        // Contador de visitas: REST API directa → elimina 34 KiB de Firebase SDK.
+        // Misma lógica: lee PRE-incremento + incremento atómico en paralelo.
         const runWhenIdle = window.requestIdleCallback
             ? (cb) => requestIdleCallback(cb, { timeout: 4000 })
             : (cb) => setTimeout(cb, 3500);
 
         runWhenIdle(async () => {
-            const firebaseConfig = { apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U", authDomain: "cuenta-946e2.firebaseapp.com", projectId: "cuenta-946e2", storageBucket: "cuenta-946e2.firebasestorage.app", messagingSenderId: "816979648502", appId: "1:816979648502:web:809beffeea8ba7968031d7", measurementId: "G-RX9KZSC0F4" };
             const counterSpan = document.getElementById('visit-counter');
+            const PROJECT = 'cuenta-946e2';
+            const KEY = 'AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U';
+            const BASE = `https://firestore.googleapis.com/v1/projects/${PROJECT}/databases/(default)/documents`;
+            const DOC_PATH = `page-visits/${PROJECT}/visits/counter`;
+            const DOC_NAME = `projects/${PROJECT}/databases/(default)/documents/${DOC_PATH}`;
             try {
-                // Carga en paralelo: ambos módulos descargan simultáneamente (~100ms ahorrados)
-                const [{ initializeApp }, { getFirestore, doc, updateDoc, setDoc, getDoc, increment }] = await Promise.all([
-                    import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"),
-                    import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore-lite.js")
+                // GET (valor actual) + commit increment atómico en paralelo
+                const [getRes] = await Promise.all([
+                    fetch(`${BASE}/${DOC_PATH}?key=${KEY}`),
+                    fetch(`${BASE}:commit?key=${KEY}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            writes: [{
+                                transform: {
+                                    document: DOC_NAME,
+                                    fieldTransforms: [{ fieldPath: 'count', increment: { integerValue: '1' } }]
+                                }
+                            }]
+                        })
+                    })
                 ]);
-                // firebase-auth eliminado: evita cargar 40 KiB SDK + 89 KiB iframe de persistencia
-                const app = initializeApp(firebaseConfig);
-                const db = getFirestore(app);
-                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                // getDoc y updateDoc(increment) en PARALELO → elimina la cadena secuencial.
-                // getDoc lee el valor PRE-incremento; se muestra count+1 (valor real tras incremento).
-                // Si el documento no existe (primera visita), el catch crea el doc y muestra "1".
-                let snap;
-                try {
-                    [snap] = await Promise.all([
-                        getDoc(counterRef),
-                        updateDoc(counterRef, { count: increment(1) })
-                    ]);
-                    if (counterSpan && snap.exists()) {
-                        counterSpan.textContent = (snap.data().count + 1).toLocaleString('es-CL');
-                    }
-                } catch (notFound) {
-                    // Primera visita absoluta: el documento aún no existe
-                    await setDoc(counterRef, { count: 1 });
+                if (getRes.ok) {
+                    const snap = await getRes.json();
+                    const count = parseInt(snap.fields?.count?.integerValue ?? '0') + 1;
+                    if (counterSpan) counterSpan.textContent = count.toLocaleString('es-CL');
+                } else {
                     if (counterSpan) counterSpan.textContent = '1';
                 }
-            } catch (error) {
-                if (counterSpan) counterSpan.textContent = "—";
+            } catch {
+                if (counterSpan) counterSpan.textContent = '—';
             }
         });
     </script>
