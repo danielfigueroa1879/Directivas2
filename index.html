@@ -74,8 +74,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect" href="https://i.ytimg.com">
-    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <!-- i.ytimg.com eliminado: iframe YouTube comentado → preconnect no se usa -->
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://firestore.googleapis.com">
 
     <!-- =====================================================
@@ -2498,17 +2498,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
                 const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                // increment() es atómico en el servidor → sin transacción, sin reintentos, sin conflictos.
-                // Antes: runTransaction → hasta 4 requests (2 batchGet + 2 commit si hay reintentos).
-                // Ahora: updateDoc(increment) + getDoc → siempre 2 requests máximo.
+                // getDoc y updateDoc(increment) en PARALELO → elimina la cadena secuencial.
+                // getDoc lee el valor PRE-incremento; se muestra count+1 (valor real tras incremento).
+                // Si el documento no existe (primera visita), el catch crea el doc y muestra "1".
+                let snap;
                 try {
-                    await updateDoc(counterRef, { count: increment(1) });
+                    [snap] = await Promise.all([
+                        getDoc(counterRef),
+                        updateDoc(counterRef, { count: increment(1) })
+                    ]);
+                    if (counterSpan && snap.exists()) {
+                        counterSpan.textContent = (snap.data().count + 1).toLocaleString('es-CL');
+                    }
                 } catch (notFound) {
                     // Primera visita absoluta: el documento aún no existe
                     await setDoc(counterRef, { count: 1 });
+                    if (counterSpan) counterSpan.textContent = '1';
                 }
-                const snap = await getDoc(counterRef);
-                if (counterSpan && snap.exists()) counterSpan.textContent = snap.data().count.toLocaleString('es-CL');
             } catch (error) {
                 if (counterSpan) counterSpan.textContent = "—";
             }
