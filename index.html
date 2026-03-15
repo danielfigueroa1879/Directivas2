@@ -2801,8 +2801,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <script src="assets/js/search.min.js?v=1" defer></script>
     
-    <!-- html2pdf se carga lazy (solo al generar PDF) via loadHtml2Pdf() -->
-    <script src="assets/js/spd-componentes.js?v=2" defer></script>
+    <!-- spd-componentes (183 KiB): carga diferida via idle para no bloquear LCP paint -->
+    <script>
+        (window.requestIdleCallback || ((cb) => setTimeout(cb, 2000)))(function() {
+            var s = document.createElement('script');
+            s.src = 'assets/js/spd-componentes.js?v=2';
+            document.body.appendChild(s);
+        }, { timeout: 5000 });
+    </script>
     
     <!-- Función para descargar contenido en PDF con animación -->
     <script>
