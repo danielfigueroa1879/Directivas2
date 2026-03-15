@@ -730,6 +730,43 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
 .credenciales-section { display: none; }
 /* chat-popup tiene class="chat-popup-hidden flex..." → el flex de Tailwind lo haría visible sin esto */
 .chat-popup-hidden { display: none !important; }
+/* ===== CRÍTICOS PARA CLS: carousel.css carga async pero las secciones de carrusel
+   son parcialmente visibles en el viewport inicial móvil (hero 70vh + banner 72px = 640px < 812px).
+   Sin estas reglas, cuando carousel.css carga tarde cambia el layout → CLS 0.639 en #homepage-content-wrapper.
+   Con estas reglas el estado inicial = estado post-carga → delta = 0 → CLS = 0. ===== */
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+}
+.carousel-card {
+    flex: 0 0 85%;
+    min-height: 28rem;
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 768px) {
+    .carousel-card {
+        flex-basis: 98%;
+        min-height: 27rem;
+    }
+}
+@media (min-width: 769px) {
+    .carousel-desktop-grid {
+        display: grid;
+        overflow-x: visible;
+    }
+    .carousel-desktop-grid .carousel-card {
+        flex: 1 1 300px;
+        min-height: auto;
+    }
+    #tramites-principales .carousel-card,
+    #capacitacion .carousel-card,
+    #servicios-adicionales .carousel-card {
+        min-height: auto;
+    }
+}
     </style>
 </head>
 
