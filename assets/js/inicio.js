@@ -119,5 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
     }
 
-    showHomepage();
+    // showHomepage() eliminado del load inicial: todas sus mutaciones son redundantes
+    // (el HTML ya tiene el estado correcto), y llamarla en DOMContentLoaded causa
+    // que Chrome retrase el paint del LCP hasta ~2540ms (render delay de ~1980ms).
 });
