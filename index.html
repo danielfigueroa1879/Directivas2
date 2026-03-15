@@ -74,8 +74,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- gstatic.com eliminado: Firebase SDK reemplazado por REST API fetch() -->
-    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+    <!-- preconnect: establece TCP+TLS anticipado → ahorra ~150ms cuando el idle callback hace fetch() -->
+    <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
 
     <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
