@@ -2438,8 +2438,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3 class="text-lg font-semibold text-white">Contacto</h3>
                 <ul class="mt-4 space-y-2 text-sm">
                     <li><a href="tel:+56512651024" class="hover:text-white">Fonos +56 51 265 1024 (23-22)</a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#5734383923363423381738246667343826223e3a353879343b" class="hover:text-white"><span class="__cf_email__" data-cfemail="204f5311100e434f5155494d424f604341524142494e45524f530e434c">[email&#160;protected]</span></a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#e58a96d4d5a5868a94908c88878acb8689" class="hover:text-white"><span class="__cf_email__" data-cfemail="2e415d1f1e4d415f5b47434c416e49434f4742004d4143">[email&#160;protected]</span></a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#4625292832272532290629357776252937332f2b242968252a" class="hover:text-white"><span class="__cf_email__" data-cfemail="2e415d1f1e004d415f5b47434c416e4d4f5c4f4c47404b5c415d004d42">[email&#160;protected]</span></a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#a9c6da9899e9cac6d8dcc0c4cbc687cac5" class="hover:text-white"><span class="__cf_email__" data-cfemail="f09f83c1c0939f8185999d929fb0979d91999cde939f9d">[email&#160;protected]</span></a></li>
                     <li><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Map Ubicación</a></li>
                 </ul>
             </div>
@@ -2893,10 +2893,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (elemento.style.paddingBottom)elemento.style.paddingBottom= '0';
 
                 if (elemento.classList.contains('requisito-section-componentes')) {
-                    elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; page-break-after: auto; page-break-before: auto;';
+                    elemento.style.cssText += 'margin: 5px 0 !important; padding: 8px !important; page-break-inside: avoid; break-inside: avoid;';
                 }
                 if (elemento.classList.contains('requisito-item-componentes')) {
-                    elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid;';
+                    elemento.style.cssText += 'margin: 3px 0 !important; padding: 6px !important; page-break-inside: avoid; break-inside: avoid;';
                 }
                 if (elemento.className && typeof elemento.className === 'string') {
                     if (elemento.className.includes('mt-'))      elemento.style.marginTop    = '5px';
@@ -2923,21 +2923,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollX: 0,
                     windowHeight: document.documentElement.scrollHeight,
                     onclone: function(clonedDoc) {
-                        const clonedContent = clonedDoc.body.querySelector('div');
-                        if (clonedContent) {
-                            clonedContent.querySelectorAll('*').forEach(el => {
-                                el.style.pageBreakInside = 'auto';
-                                el.style.pageBreakBefore = 'auto';
-                                el.style.pageBreakAfter  = 'auto';
-                            });
-                        }
+                        var style = clonedDoc.createElement('style');
+                        style.textContent = [
+                            '.requisito-item-componentes {',
+                            '  page-break-inside: avoid !important;',
+                            '  break-inside: avoid !important;',
+                            '  display: block !important;',
+                            '}',
+                            '.requisito-section-componentes {',
+                            '  page-break-inside: avoid !important;',
+                            '  break-inside: avoid !important;',
+                            '  display: block !important;',
+                            '}'
+                        ].join('\n');
+                        clonedDoc.head.appendChild(style);
+                        clonedDoc.querySelectorAll('.requisito-item-componentes, .requisito-section-componentes').forEach(function(el) {
+                            el.style.pageBreakInside = 'avoid';
+                            el.style.breakInside = 'avoid';
+                        });
                     }
                 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
-                pagebreak: {
-                    mode: ['avoid-all'],
-                    avoid: ['.requisito-item-componentes', '.requisito-section-componentes']
-                }
+                pagebreak: { mode: 'css' }
             };
 
             html2pdf().set(opciones).from(contenedorTemp).save().catch(() => {
