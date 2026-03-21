@@ -850,10 +850,40 @@ body {
 }
 
 /* ===== ANCHO MENÚ DESPLEGABLE ===== */
-.mobile-dropdown { width: 330px !important; top: 0 !important; height: 100vh !important; padding-top: 0 !important; }
+.mobile-dropdown { width: 330px !important; top: 0 !important; height: 100vh !important; padding-top: 0 !important; border-top-right-radius: 18px !important; }
 @media (min-width: 1024px) {
     .mobile-dropdown { width: 430px !important; top: 4rem !important; height: auto !important; }
 }
+
+/* ===== SELECTOR DE IDIOMA (PC) ===== */
+.lang-selector { position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); z-index: 200; }
+.lang-btn {
+    display: flex; align-items: center; gap: 0.3rem;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 6px; color: #fff; font-size: 0.72rem; font-weight: 700;
+    padding: 0.18rem 0.55rem; cursor: pointer; height: 22px;
+    letter-spacing: 0.06em; transition: background 0.2s; white-space: nowrap;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.28); }
+.lang-arrow { transition: transform 0.25s; flex-shrink: 0; }
+.lang-selector.open .lang-arrow { transform: rotate(180deg); }
+.lang-dropdown {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    background: #fff; border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    overflow: hidden; min-width: 155px; z-index: 9999;
+    border: 1px solid #e5e7eb;
+}
+.lang-selector.open .lang-dropdown { display: block; }
+.lang-dropdown button {
+    display: flex; align-items: center; gap: 0.55rem;
+    width: 100%; text-align: left; padding: 0.5rem 1rem;
+    border: none; background: transparent; font-size: 0.8rem;
+    color: #1e293b; cursor: pointer; font-weight: 500; transition: background 0.15s;
+    border-bottom: 1px solid #f1f5f9;
+}
+.lang-dropdown button:last-child { border-bottom: none; }
+.lang-dropdown button:hover { background: #f0fdf4; color: #15803d; }
+.lang-dropdown button.lang-active { background: #dcfce7; color: #15803d; font-weight: 700; }
 
 /* ====================================================
    MENÚ HAMBURGUESA — DISEÑO MODERNO Y LIMPIO
@@ -1299,6 +1329,23 @@ body {
                 <button class="desktop-nav-item" onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Descargables SPD</button>
                 <button class="desktop-nav-item" onclick="openNewLink('https://dal5.short.gy/R3')">Reclamo</button>
             </div>
+     </div>
+     <!-- Selector de idioma -->
+     <div class="lang-selector" id="lang-selector">
+         <button class="lang-btn" id="lang-btn" onclick="toggleLangMenu(event)" aria-label="Cambiar idioma">
+             <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+             <span id="lang-current">ES</span>
+             <svg class="lang-arrow" width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+         </button>
+         <div class="lang-dropdown" id="lang-dropdown">
+             <button class="lang-active" onclick="setLang('es','ES',this)">🇨🇱 Español</button>
+             <button onclick="setLang('en','EN',this)">🇺🇸 English</button>
+             <button onclick="setLang('pt','PT',this)">🇧🇷 Português</button>
+             <button onclick="setLang('fr','FR',this)">🇫🇷 Français</button>
+             <button onclick="setLang('de','DE',this)">🇩🇪 Deutsch</button>
+             <button onclick="setLang('it','IT',this)">🇮🇹 Italiano</button>
+             <button onclick="setLang('zh-CN','中文',this)">🇨🇳 中文</button>
+         </div>
      </div>
     </nav>
  <script>
@@ -3569,5 +3616,56 @@ document.querySelectorAll('.yt-facade').forEach(function(el) {
 });
 </script>
 
+<!-- Google Translate (oculto) -->
+<div id="google_translate_element" style="display:none;visibility:hidden;position:absolute;"></div>
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'en,pt,fr,de,it,zh-CN',
+        autoDisplay: false
+    }, 'google_translate_element');
+}
+function toggleLangMenu(e) {
+    e.stopPropagation();
+    document.getElementById('lang-selector').classList.toggle('open');
+}
+function setLang(langCode, label, btn) {
+    document.getElementById('lang-current').textContent = label;
+    document.querySelectorAll('.lang-dropdown button').forEach(b => b.classList.remove('lang-active'));
+    if (btn) btn.classList.add('lang-active');
+    document.getElementById('lang-selector').classList.remove('open');
+    if (langCode === 'es') {
+        // Restaurar idioma original
+        const iframe = document.querySelector('.goog-te-banner-frame');
+        if (iframe) {
+            try {
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                const restoreBtn = doc.querySelector('[id*="restore"]') || doc.querySelector('a');
+                if (restoreBtn) restoreBtn.click();
+            } catch(e) {}
+        }
+        // Limpiar cookie de Google Translate
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+        setTimeout(() => location.reload(), 100);
+        return;
+    }
+    const select = document.querySelector('.goog-te-combo');
+    if (select) {
+        select.value = langCode;
+        select.dispatchEvent(new Event('change'));
+    } else {
+        // Si el widget aún no cargó, guardar selección y recargar
+        document.cookie = 'googtrans=/es/' + langCode + '; path=/';
+        location.reload();
+    }
+}
+document.addEventListener('click', function(e) {
+    const sel = document.getElementById('lang-selector');
+    if (sel && !sel.contains(e.target)) sel.classList.remove('open');
+});
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </body>
     </html>
