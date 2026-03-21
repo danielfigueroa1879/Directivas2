@@ -841,10 +841,169 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
 .nested-menu button:hover { background: #dcfce7; color: #15803d; }
 
 /* ===== ANCHO MENÚ DESPLEGABLE ===== */
-.mobile-dropdown { width: 360px !important; }
+.mobile-dropdown { width: 330px !important; top: 0 !important; height: 100vh !important; }
 @media (min-width: 1024px) {
-    .mobile-dropdown { width: 430px !important; }
+    .mobile-dropdown { width: 430px !important; top: 4rem !important; height: auto !important; }
 }
+
+/* ====================================================
+   MENÚ HAMBURGUESA — DISEÑO MODERNO Y LIMPIO
+   ==================================================== */
+
+/* Cabecera */
+#mobile-dropdown .dropdown-menu-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 0.45rem 1.2rem !important;
+    min-height: 0 !important;
+}
+#mobile-dropdown .dropdown-menu-header h3 {
+    color: #166534 !important;
+    font-size: 0.82rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.14em !important;
+    font-weight: 700 !important;
+}
+#mobile-dropdown .close-mobile-menu-btn {
+    background: rgba(35,124,78,0.1) !important;
+    border-radius: 7px !important;
+    border: 1px solid rgba(35,124,78,0.25) !important;
+    transition: background 0.2s !important;
+    padding: 0.25rem !important;
+    width: 28px !important;
+    height: 28px !important;
+}
+#mobile-dropdown .close-mobile-menu-btn:hover {
+    background: rgba(35,124,78,0.2) !important;
+}
+#mobile-dropdown .close-mobile-menu-btn svg { stroke: #166534 !important; width: 16px !important; height: 16px !important; }
+
+/* Botones padre (nivel 1) */
+#mobile-dropdown .submenu-parent-btn {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    border-left: 3px solid transparent !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    padding: 0.82rem 1.2rem 0.82rem 1.1rem !important;
+    transition: background 0.15s, border-left-color 0.15s, color 0.15s !important;
+    box-shadow: none !important;
+}
+#mobile-dropdown .submenu-parent-btn:hover {
+    background: #f0fdf4 !important;
+    color: #166534 !important;
+    border-left-color: #86efac !important;
+}
+#mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
+    background: #f0fdf4 !important;
+    color: #166534 !important;
+    border-left: 3px solid #22c55e !important;
+    font-weight: 600 !important;
+}
+
+/* Flechas */
+#mobile-dropdown .submenu-arrow {
+    stroke: #94a3b8 !important;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+#mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn .submenu-arrow {
+    stroke: #22c55e !important;
+}
+
+/* Contenedor submenu */
+#mobile-dropdown .submenu,
+#mobile-dropdown .submenu.submenu-compact,
+#mobile-dropdown .submenu.leyes-compactas {
+    background: #f8fafc !important;
+    border-left: 3px solid #22c55e !important;
+    margin-left: 0 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+/* Items dentro del submenu */
+#mobile-dropdown .submenu button,
+#mobile-dropdown .submenu.submenu-compact button,
+#mobile-dropdown .submenu.leyes-compactas button {
+    background: transparent !important;
+    color: #475569 !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    font-size: 0.78rem !important;
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+    padding-left: 1.8rem !important;
+    transition: background 0.12s, color 0.12s, padding-left 0.12s !important;
+    box-shadow: none !important;
+}
+#mobile-dropdown .submenu button:hover,
+#mobile-dropdown .submenu.submenu-compact button:hover,
+#mobile-dropdown .submenu.leyes-compactas button:hover {
+    background: #dcfce7 !important;
+    color: #166534 !important;
+    padding-left: 2.2rem !important;
+}
+
+/* Títulos de columnas */
+#mobile-dropdown .submenu-title {
+    color: #237c4e !important;
+    background: #e8f5ee !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.1em !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+}
+
+/* Botones de acción al fondo */
+#mobile-dropdown .menu-item-stack {
+    background: #ffffff !important;
+    color: #334155 !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    border-left: 3px solid transparent !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    transition: all 0.15s !important;
+}
+#mobile-dropdown .menu-item-stack:hover {
+    background: #f0fdf4 !important;
+    color: #166534 !important;
+    border-left-color: #22c55e !important;
+}
+
+/* Badges SPD */
+#mobile-dropdown .spd-badge-dark {
+    background: rgba(35,124,78,0.1) !important;
+    border-color: rgba(35,124,78,0.3) !important;
+    color: #166534 !important;
+}
+
+/* Sub-submenús nested */
+#mobile-dropdown .nested-btn {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    font-size: 0.75rem !important;
+}
+#mobile-dropdown .nested-btn:hover {
+    background: #dcfce7 !important;
+    color: #166534 !important;
+}
+#mobile-dropdown .nested-arrow { stroke: #22c55e !important; }
+#mobile-dropdown .nested-menu {
+    background: #f8fafc !important;
+    border-left-color: #86efac !important;
+}
+#mobile-dropdown .nested-menu button {
+    color: #64748b !important;
+    font-size: 0.72rem !important;
+}
+#mobile-dropdown .nested-menu button:hover {
+    background: #dcfce7 !important;
+    color: #166534 !important;
+}
+
     </style>
 </head>
 
@@ -1933,9 +2092,29 @@ document.addEventListener('DOMContentLoaded', function() {
                        class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
                         <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2424</span>
                     </a>
-                    <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218338" target="_blank" 
+                    <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218338" target="_blank"
                        class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
                         <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2100</span>
+                    </a>
+                    <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf" target="_blank"
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2183</span>
+                    </a>
+                    <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf" target="_blank"
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 772</span>
+                    </a>
+                    <a href="https://www.bcn.cl/leychile/navegar?idNorma=1221118" target="_blank"
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Ley 21.806</span>
+                    </a>
+                    <a href="https://os10.short.gy/830" target="_blank"
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 830</span>
+                    </a>
+                    <a href="https://os10.short.gy/831" target="_blank"
+                       class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                        <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 831</span>
                     </a>
                 </div>
             </div>
