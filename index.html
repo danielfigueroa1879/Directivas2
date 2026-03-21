@@ -840,6 +840,15 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
 .nested-menu button:last-child { border-bottom: none; }
 .nested-menu button:hover { background: #dcfce7; color: #15803d; }
 
+/* ===== SCROLL SUAVE Y RÁPIDO ===== */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+}
+
 /* ===== ANCHO MENÚ DESPLEGABLE ===== */
 .mobile-dropdown { width: 330px !important; top: 0 !important; height: 100vh !important; padding-top: 0 !important; }
 @media (min-width: 1024px) {
@@ -854,7 +863,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
 #mobile-dropdown .dropdown-menu-header {
     background: linear-gradient(135deg, #1a5c33 0%, #237c4e 100%) !important;
     border-bottom: none !important;
-    padding: 0.85rem 1.2rem !important;
+    padding: 1.1rem 1.2rem !important;
     min-height: 0 !important;
 }
 #mobile-dropdown .dropdown-menu-header h3 {
