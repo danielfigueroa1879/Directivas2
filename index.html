@@ -788,6 +788,63 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
         min-height: auto;
     }
 }
+
+/* ===== SUB-SUBMENÚS ANIDADOS (MÓVIL) ===== */
+.has-nested {
+    position: relative;
+}
+.nested-btn {
+    width: 100%;
+    text-align: left;
+    padding: 0.45rem 1rem 0.45rem 2.5rem;
+    background: #f0fdf4;
+    border: none;
+    border-bottom: 1px solid rgba(229,231,235,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #374151;
+    cursor: pointer;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+.nested-btn:hover { background: #dcfce7; }
+.nested-arrow {
+    transition: transform 0.3s ease;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    stroke: #237c4e;
+}
+.has-nested.nested-open .nested-arrow { transform: rotate(90deg); }
+.nested-menu {
+    display: none;
+    background: #f9fafb;
+    border-left: 3px solid #237c4e;
+    margin-left: 1rem;
+}
+.nested-menu.show { display: block; }
+.nested-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.35rem 1rem 0.35rem 1.5rem;
+    border: none;
+    border-bottom: 1px solid rgba(229,231,235,0.3);
+    background: transparent;
+    font-size: 0.68rem;
+    color: #374151;
+    cursor: pointer;
+}
+.nested-menu button:last-child { border-bottom: none; }
+.nested-menu button:hover { background: #dcfce7; color: #15803d; }
+
+/* ===== ANCHO MENÚ DESPLEGABLE ===== */
+.mobile-dropdown { width: 360px !important; }
+@media (min-width: 1024px) {
+    .mobile-dropdown { width: 430px !important; }
+}
     </style>
 </head>
 
@@ -1322,8 +1379,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1219417')">9. Resolución 2424</button>
                         <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218338')">10. Resolución 2100</button>
                           <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf')">11. Resolución 2183</button>
-                        <button onclick="openNewLink('https://os10.short.gy/830')">11. Resolución 830</button>
-                        <button onclick="openNewLink('https://os10.short.gy/831')">12. Resolución 831</button>
+                        <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf')">12. Resolución 772</button>
+                        <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1221118')">13. Ley 21.806</button>
+                        <button onclick="openNewLink('https://os10.short.gy/830')">14. Resolución 830</button>
+                        <button onclick="openNewLink('https://os10.short.gy/831')">15. Resolución 831</button>
                     </div>
                     <div class="submenu-column">
                         <div class="submenu-title">Decretos</div>
@@ -1414,6 +1473,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button onclick="openNewLink('https://dal5.short.gy/3st')">Estudio de seguridad</button>
                     <button onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
                     <button onclick="openNewLink('https://os10.short.gy/Nplan')">Nuevo Plan de seguridad<span class="spd-badge-dark">SPD</span></button>
+                    <div class="has-nested">
+                        <button class="nested-btn">Ent. Medidas de Seguridad <span class="spd-badge-dark">SPD</span><svg class="nested-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                        <div class="nested-menu">
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Formato declarar dueños y socios <span class="spd-badge-dark">SPD</span></button>
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Formato Estudio de Seguridad <span class="spd-badge-dark">SPD</span></button>
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Formato Planes de Seguridad (sucursal) <span class="spd-badge-dark">SPD</span></button>
+                        </div>
+                    </div>
+                    <div class="has-nested">
+                        <button class="nested-btn">Ent. Sistema de Vigilancia Privada <span class="spd-badge-dark">SPD</span><svg class="nested-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                        <div class="nested-menu">
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Formato declarar dueños y socios <span class="spd-badge-dark">SPD</span></button>
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Formato Estudio de Seguridad <span class="spd-badge-dark">SPD</span></button>
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Formato Planes de Seguridad (sucursal) <span class="spd-badge-dark">SPD</span></button>
+                        </div>
+                    </div>
                     <button onclick="openNewLink('https://dal5.short.gy/M3')">Medidas de seguridad</button>
                     <button onclick="openNewLink('https://docs.google.com/document/d/1MgInvryuu2EaxHMG_Zuy_1ZiuOTHr6jA/edit')">Directiva de funcionamiento</button>
                     <button onclick="openNewLink('https://dal5.short.gy/H23wIF')">Solicitud simple</button>
@@ -1446,6 +1521,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
                     <button onclick="openNewLink('https://dal5.short.gy/4S3')">Asesores</button>
                     <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
+                    <div class="has-nested">
+                        <button class="nested-btn">Planes y Programas de Capacitación <span class="spd-badge-dark">SPD</span><svg class="nested-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                        <div class="nested-menu">
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar inicio curso <span class="spd-badge-dark">SPD</span></button>
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar término curso <span class="spd-badge-dark">SPD</span></button>
+                            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar servicio custodia <span class="spd-badge-dark">SPD</span></button>
+                        </div>
+                    </div>
                     <button onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
                     <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
                 </div>
@@ -2696,14 +2779,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Manejar submenús (acordeones)
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
-        
+
         submenuButtons.forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const parent = this.closest('.has-submenu');
                 const submenu = parent.querySelector('.submenu');
                 const arrow = this.querySelector('.submenu-arrow');
-                
+
                 // Cerrar otros submenús
                 document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(function(other) {
                     if (other !== parent) {
@@ -2714,7 +2797,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (otherArrow) otherArrow.style.transform = '';
                     }
                 });
-                
+
                 // Toggle este submenú
                 const isOpen = parent.classList.contains('submenu-open');
                 if (isOpen) {
@@ -2724,6 +2807,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     parent.classList.add('submenu-open');
                     if (submenu) submenu.classList.add('show');
+                    if (arrow) arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        });
+
+        // Manejar sub-submenús anidados (nested)
+        document.querySelectorAll('#mobile-dropdown .nested-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const parent = this.closest('.has-nested');
+                const menu = parent.querySelector('.nested-menu');
+                const arrow = this.querySelector('.nested-arrow');
+                const isOpen = parent.classList.contains('nested-open');
+                if (isOpen) {
+                    parent.classList.remove('nested-open');
+                    if (menu) menu.classList.remove('show');
+                    if (arrow) arrow.style.transform = '';
+                } else {
+                    parent.classList.add('nested-open');
+                    if (menu) menu.classList.add('show');
                     if (arrow) arrow.style.transform = 'rotate(90deg)';
                 }
             });
