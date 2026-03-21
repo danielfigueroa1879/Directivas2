@@ -850,7 +850,7 @@ body {
 }
 
 /* ===== ANCHO MENÚ DESPLEGABLE ===== */
-.mobile-dropdown { width: 345px !important; top: 0 !important; height: 100vh !important; padding-top: 0 !important; border-top-right-radius: 18px !important; }
+.mobile-dropdown { width: 345px !important; top: 0 !important; height: 100vh !important; padding-top: 0 !important; }
 @media (min-width: 1024px) {
     .mobile-dropdown { width: 430px !important; top: 4rem !important; height: auto !important; }
 }
@@ -893,8 +893,12 @@ body {
 #mobile-dropdown .dropdown-menu-header {
     background: linear-gradient(135deg, #1a5c33 0%, #237c4e 100%) !important;
     border-bottom: none !important;
-    padding: 1.1rem 1.2rem !important;
+    padding: 0 1.2rem !important;
     min-height: 0 !important;
+    height: 4.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
 }
 #mobile-dropdown .dropdown-menu-header h3 {
     color: #ffffff !important;
@@ -970,7 +974,7 @@ body {
 #mobile-dropdown .submenu.leyes-compactas button {
     background: transparent !important;
     color: #475569 !important;
-    border-bottom: 1px solid #f1f5f9 !important;
+    border-bottom: 1px solid #bbf7d0 !important;
     font-size: 0.78rem !important;
     padding-top: 0.45rem !important;
     padding-bottom: 0.45rem !important;
@@ -1040,6 +1044,7 @@ body {
 #mobile-dropdown .nested-menu button {
     color: #64748b !important;
     font-size: 0.72rem !important;
+    border-bottom: 1px solid #bbf7d0 !important;
 }
 #mobile-dropdown .nested-menu button:hover {
     background: #dcfce7 !important;
