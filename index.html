@@ -1307,6 +1307,152 @@ body {
         #desktop-submenu-panel { top: 64px !important; }
     }
 
+    /* ── DRILL-DOWN MOBILE NAVIGATION ── */
+    @media (max-width: 1023px) {
+        #mobile-dropdown { overflow: hidden !important; }
+
+        #drill-main-panel {
+            transition: transform 0.26s cubic-bezier(0.16,1,0.3,1), opacity 0.20s ease;
+            will-change: transform, opacity;
+        }
+        #drill-main-panel.pushed {
+            transform: translateX(-20%);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        /* Overlay oscuro detrás de la ventana */
+        #drill-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.40);
+            z-index: 2400;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.24s ease;
+        }
+        #drill-overlay.active { opacity: 1; pointer-events: auto; }
+
+        #drill-detail-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.92);
+            width: 88%;
+            max-width: 480px;
+            height: 78vh;
+            background: #f8faf8;
+            border-radius: 20px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 2500;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.26s cubic-bezier(0.16,1,0.3,1),
+                        opacity 0.22s ease;
+            will-change: transform, opacity;
+        }
+        #drill-detail-panel.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #drill-header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            padding: 16px 18px;
+            padding-top: max(16px, env(safe-area-inset-top));
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+            z-index: 10;
+            gap: 10px;
+        }
+        #drill-back-btn {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            background: none;
+            border: none;
+            color: #16a34a;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 6px 10px 6px 2px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #drill-back-btn:active { background: rgba(22,163,74,0.10); }
+        #drill-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #111;
+            flex: 1;
+            text-align: center;
+            padding-right: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #drill-content {
+            padding: 8px 0 48px;
+        }
+        /* Forzar columna única y textos grandes en el panel de detalle */
+        #drill-content .submenu.leyes-compactas {
+            display: flex !important;
+            flex-direction: column !important;
+            column-count: unset !important;
+        }
+        #drill-content .submenu.leyes-compactas .submenu-column {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        #drill-content .submenu button,
+        #drill-content .submenu.submenu-compact button,
+        #drill-content .submenu.leyes-compactas button {
+            font-size: 1rem !important;
+            padding: 15px 20px !important;
+            min-height: 52px !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+        #drill-content .submenu-title {
+            font-size: 0.72rem !important;
+            letter-spacing: 0.08em !important;
+            padding: 14px 20px 6px !important;
+        }
+        #drill-content button.nested-btn {
+            font-size: 0.95rem !important;
+            padding: 14px 20px !important;
+            min-height: 50px !important;
+        }
+        #drill-content .nested-menu button {
+            font-size: 0.88rem !important;
+            padding: 12px 20px 12px 32px !important;
+            min-height: 46px !important;
+        }
+
+        /* Submenu completamente visible dentro del panel de detalle */
+        #drill-content .submenu,
+        #drill-content .submenu.submenu-compact,
+        #drill-content .submenu.leyes-compactas {
+            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
+            background: transparent !important;
+            height: auto !important;
+        }
+        /* Sin glow en drill-down */
+        #drill-content .has-submenu.submenu-open {
+            box-shadow: none !important;
+        }
+    }
+
     /* Los SVG del banner en negro */
     #banner svg { color: #111827; }
     #banner .font-bold { color: #111827; }
@@ -3305,6 +3451,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Función para cerrar el menú
         function closeMobileMenu() {
+            // Resetear drill-down si está abierto
+            const dd = document.getElementById('drill-detail-panel');
+            const dm = document.getElementById('drill-main-panel');
+            if (dd) dd.classList.remove('active');
+            if (dm) dm.classList.remove('pushed');
             mobileDropdown.classList.remove('show');
             setMenuIcon(false);
             if (bannerEl) bannerEl.classList.remove('menu-open');
@@ -3332,48 +3483,109 @@ document.addEventListener('DOMContentLoaded', function() {
             closeMobileMenu();
         });
         
-        // Manejar submenús (acordeones)
+        // ── DRILL-DOWN NAVIGATION (reemplaza acordeones en mobile) ──
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
 
-        submenuButtons.forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const parent = this.closest('.has-submenu');
-                const submenu = parent.querySelector('.submenu');
-                const arrow = this.querySelector('.submenu-arrow');
+        if (window.innerWidth < 1024) {
+            // 1. Envolver contenido existente en panel principal
+            const drillMain = document.createElement('div');
+            drillMain.id = 'drill-main-panel';
+            Array.from(mobileDropdown.children).forEach(c => drillMain.appendChild(c));
+            mobileDropdown.appendChild(drillMain);
 
-                // Cerrar otros submenús
-                document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(function(other) {
-                    if (other !== parent) {
-                        other.classList.remove('submenu-open');
-                        const otherSubmenu = other.querySelector('.submenu');
-                        const otherArrow = other.querySelector('.submenu-arrow');
-                        if (otherSubmenu) otherSubmenu.classList.remove('show');
-                        if (otherArrow) otherArrow.style.transform = '';
+            // 2. Crear panel de detalle — en body para que position:fixed funcione
+            //    (transform en mobileDropdown rompería fixed si estuviera dentro)
+            const drillDetail = document.createElement('div');
+            drillDetail.id = 'drill-detail-panel';
+            drillDetail.innerHTML = `
+                <div id="drill-header">
+                    <button id="drill-back-btn" aria-label="Volver al menú">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/></svg>
+                        Menú
+                    </button>
+                    <span id="drill-title"></span>
+                </div>
+                <div id="drill-content"></div>
+            `;
+            // Overlay oscuro
+            const drillOverlay = document.createElement('div');
+            drillOverlay.id = 'drill-overlay';
+            document.body.appendChild(drillOverlay);
+            document.body.appendChild(drillDetail);
+
+            let activeSubmenu = null;
+            let activeParent = null;
+            const drillContent = document.getElementById('drill-content');
+            const drillTitleEl = document.getElementById('drill-title');
+
+            function openDrillPanel(submenu, title, parentEl) {
+                drillContent.innerHTML = '';
+                drillContent.appendChild(submenu);
+                submenu.classList.add('show');
+                // Forzar visibilidad (override del max-height del acordeón)
+                submenu.style.maxHeight = 'none';
+                submenu.style.overflow = 'visible';
+                submenu.style.height = 'auto';
+                drillTitleEl.textContent = title;
+                activeSubmenu = submenu;
+                activeParent = parentEl;
+                drillMain.classList.add('pushed');
+                drillDetail.classList.add('active');
+                drillOverlay.classList.add('active');
+                drillDetail.scrollTop = 0;
+            }
+
+            function closeDrillPanel() {
+                drillMain.classList.remove('pushed');
+                drillDetail.classList.remove('active');
+                drillOverlay.classList.remove('active');
+                const sub = activeSubmenu;
+                const par = activeParent;
+                activeSubmenu = null;
+                activeParent = null;
+                setTimeout(() => {
+                    if (sub && par) {
+                        sub.style.maxHeight = '';
+                        sub.style.overflow = '';
+                        sub.style.height = '';
+                        par.appendChild(sub);
+                        sub.classList.remove('show');
                     }
+                    drillContent.innerHTML = '';
+                }, 280);
+            }
+
+            window._closeDrillPanel = closeDrillPanel;
+            window._drillIsOpen = () => drillDetail.classList.contains('active');
+
+            // Tap en categoría → abrir panel de detalle
+            submenuButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parent = this.closest('.has-submenu');
+                    const submenu = parent.querySelector('.submenu');
+                    if (!submenu) return;
+                    const title = Array.from(this.childNodes)
+                        .filter(n => n.nodeType === 3)
+                        .map(n => n.textContent.trim())
+                        .filter(Boolean)
+                        .join(' ');
+                    openDrillPanel(submenu, title, parent);
                 });
-
-                // Toggle este submenú
-                const isOpen = parent.classList.contains('submenu-open');
-                if (isOpen) {
-                    parent.classList.remove('submenu-open');
-                    if (submenu) submenu.classList.remove('show');
-                    if (arrow) arrow.style.transform = '';
-                } else {
-                    parent.classList.add('submenu-open');
-                    if (submenu) submenu.classList.add('show');
-                    if (arrow) arrow.style.transform = 'rotate(90deg)';
-                }
             });
-        });
 
-        // Manejar sub-submenús anidados (nested)
-        document.querySelectorAll('#mobile-dropdown .nested-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
+            // Botón volver y tap en overlay
+            document.getElementById('drill-back-btn').addEventListener('click', closeDrillPanel);
+            drillOverlay.addEventListener('click', closeDrillPanel);
+
+            // Nested buttons: delegación de eventos sobre drill-content
+            drillContent.addEventListener('click', function(e) {
+                const btn = e.target.closest('.nested-btn');
+                if (!btn) return;
                 e.stopPropagation();
-                const parent = this.closest('.has-nested');
+                const parent = btn.closest('.has-nested');
                 const menu = parent.querySelector('.nested-menu');
-                const arrow = this.querySelector('.nested-arrow');
+                const arrow = btn.querySelector('.nested-arrow');
                 const isOpen = parent.classList.contains('nested-open');
                 if (isOpen) {
                     parent.classList.remove('nested-open');
@@ -3385,7 +3597,37 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (arrow) arrow.style.transform = 'rotate(90deg)';
                 }
             });
-        });
+
+        } else {
+            // Desktop: mantener acordeón normal
+            submenuButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parent = this.closest('.has-submenu');
+                    const submenu = parent.querySelector('.submenu');
+                    const arrow = this.querySelector('.submenu-arrow');
+                    document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(function(other) {
+                        if (other !== parent) {
+                            other.classList.remove('submenu-open');
+                            const os = other.querySelector('.submenu'); const oa = other.querySelector('.submenu-arrow');
+                            if (os) os.classList.remove('show'); if (oa) oa.style.transform = '';
+                        }
+                    });
+                    const isOpen = parent.classList.contains('submenu-open');
+                    if (isOpen) { parent.classList.remove('submenu-open'); if (submenu) submenu.classList.remove('show'); if (arrow) arrow.style.transform = ''; }
+                    else { parent.classList.add('submenu-open'); if (submenu) submenu.classList.add('show'); if (arrow) arrow.style.transform = 'rotate(90deg)'; }
+                });
+            });
+            document.querySelectorAll('#mobile-dropdown .nested-btn').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parent = this.closest('.has-nested'); const menu = parent.querySelector('.nested-menu'); const arrow = this.querySelector('.nested-arrow');
+                    const isOpen = parent.classList.contains('nested-open');
+                    if (isOpen) { parent.classList.remove('nested-open'); if (menu) menu.classList.remove('show'); if (arrow) arrow.style.transform = ''; }
+                    else { parent.classList.add('nested-open'); if (menu) menu.classList.add('show'); if (arrow) arrow.style.transform = 'rotate(90deg)'; }
+                });
+            });
+        }
         
         
         // ===== EVITAR CIERRE AUTOMÁTICO DEL MENÚ EN MÓVIL =====
