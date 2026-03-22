@@ -839,10 +839,10 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
 .nested-btn:hover { background: #dcfce7; }
 .nested-arrow {
     transition: transform 0.3s ease;
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     flex-shrink: 0;
-    stroke: #93c5fd;
+    stroke: #3b82f6;
 }
 .has-nested.nested-open .nested-arrow { transform: rotate(90deg); }
 .nested-menu {
@@ -1028,15 +1028,15 @@ body {
 
 /* ── Flechas ── */
 #mobile-dropdown .submenu-arrow {
-    stroke: #6b7280 !important;
-    width: 1.7rem !important;
-    height: 1.7rem !important;
+    stroke: #3b82f6 !important;
+    width: 24px !important;
+    height: 24px !important;
     stroke-width: 2.5 !important;
     flex-shrink: 0 !important;
     transition: stroke 0.18s !important;
 }
 #mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn .submenu-arrow {
-    stroke: #16a34a !important;
+    stroke: #3b82f6 !important;
 }
 
 /* ── Contenedor submenu ── */
@@ -1151,9 +1151,9 @@ body {
     color: #1e40af !important;
 }
 #mobile-dropdown .nested-arrow {
-    stroke: #93c5fd !important;
-    width: 22px !important;
-    height: 22px !important;
+    stroke: #3b82f6 !important;
+    width: 24px !important;
+    height: 24px !important;
     stroke-width: 2.5 !important;
 }
 #mobile-dropdown .nested-menu {
@@ -1480,30 +1480,38 @@ body {
             font-size: 0.95rem !important;
             font-weight: 700 !important;
             letter-spacing: 0.04em !important;
-            color: #1a1a1a !important;
-            background: rgba(0,0,0,0.03) !important;
-            border-bottom: 1px solid rgba(0,0,0,0.07) !important;
+            color: #1e40af !important;
+            background: rgba(59, 130, 246, 0.06) !important;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.12) !important;
             cursor: pointer !important;
             user-select: none !important;
         }
         #drill-content .drill-collapsible .submenu-title:active {
-            background: rgba(22,163,74,0.06) !important;
+            background: rgba(59, 130, 246, 0.12) !important;
         }
+        /* Botones dentro de secciones azul suave */
+        #drill-content .drill-collapsible.open button {
+            color: #1e3a8a !important;
+        }
+        /* Chevron de secciones colapsables — azul */
         .drill-chevron {
-            width: 22px !important;
-            height: 22px !important;
-            stroke: #16a34a;
+            width: 24px !important;
+            height: 24px !important;
+            stroke: #3b82f6 !important;
             flex-shrink: 0;
             transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
         }
         #drill-content .drill-collapsible.open .drill-chevron {
             transform: rotate(90deg);
         }
+        /* submenu-arrow ya unificado en bloque global (24px, #3b82f6) */
         /* Botones de cada sección: ocultos por defecto, visibles al abrir */
-        #drill-content .drill-collapsible button {
+        #drill-content .submenu .drill-collapsible button,
+        #drill-content .submenu.leyes-compactas .drill-collapsible button {
             display: none !important;
         }
-        #drill-content .drill-collapsible.open button {
+        #drill-content .submenu .drill-collapsible.open button,
+        #drill-content .submenu.leyes-compactas .drill-collapsible.open button {
             display: flex !important;
         }
     }
