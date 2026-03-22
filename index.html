@@ -889,11 +889,12 @@ body {
         -webkit-backdrop-filter: saturate(200%) blur(30px) !important;
         box-shadow: 0 8px 40px rgba(0,0,0,0.16) !important;
         z-index: 1500 !important;
+        will-change: transform, opacity !important;
         /* Animación: sale desde atrás del pill hacia abajo */
-        transform: translateX(-50%) translateY(-100%) !important;
+        transform: translateX(-50%) translateY(-104%) !important;
         opacity: 0 !important;
-        transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
-                    opacity 0.35s ease !important;
+        transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.18s ease-out !important;
     }
     /* Estado abierto */
     .mobile-dropdown.show {
@@ -1295,11 +1296,11 @@ body {
     }
 
     @media (max-width: 1023px) {
-        /* Pill se funde con el panel cuando el menú está abierto */
+        /* Pill con frosted glass igual al panel cuando el menú está abierto — enmascara el scroll interno */
         #banner.menu-open {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: saturate(200%) blur(30px) !important;
+            -webkit-backdrop-filter: saturate(200%) blur(30px) !important;
             border: none !important;
             box-shadow: none !important;
         }
@@ -3285,7 +3286,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileDropdown.classList.add('hidden');
                 mobileMenuOverlay.classList.add('hidden');
                 document.body.style.overflow = '';
-            }, 380);
+            }, 240);
         }
 
         // Evento del botón hamburguesa (ahora también cierra como X)
