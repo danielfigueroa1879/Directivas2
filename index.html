@@ -320,11 +320,15 @@ body.homepage {
     .desktop-navbar { display: none !important; }
     #mobile-menu-btn { display: block !important; }
     #banner { height: 4.5rem; }
-    body  { padding-top: 4.5rem; }
+    body  { padding-top: 0; }
     .homepage-section {
         min-height: 70vh !important;
         height: 70vh !important;
         max-height: 70vh !important;
+    }
+    /* Título hero: empieza debajo del pill (pill top 8px + height 56px + margen) */
+    #hero-title-container {
+        top: 100px !important;
     }
     /* Botones posicionados hacia el fondo de la sección hero */
     #btn-container-hero {
@@ -2315,7 +2319,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
         
         <!-- Contenedor del Título (FORZADO HACIA ARRIBA) -->
-        <div class="relative z-10" style="position: absolute !important; top: 10% !important; left: 0; right: 0; width: 100%;">
+        <div class="relative z-10" id="hero-title-container" style="position: absolute !important; top: 10%; left: 0; right: 0; width: 100%;">
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
             <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p>
         </div>
