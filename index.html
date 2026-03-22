@@ -1402,6 +1402,26 @@ body {
         #drill-content {
             padding: 8px 0 48px;
         }
+        /* SPD amarillo y alineado en el panel de detalle */
+        #drill-content button {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+        #drill-content .spd-badge,
+        #drill-content .spd-badge-dark {
+            background: #facc15 !important;
+            border: 1px solid #eab308 !important;
+            color: #713f12 !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            padding: 2px 6px !important;
+            border-radius: 4px !important;
+            margin-left: auto !important;
+            flex-shrink: 0 !important;
+            letter-spacing: 0.05em !important;
+        }
+
         /* Forzar columna única y textos grandes en el panel de detalle */
         #drill-content .submenu.leyes-compactas {
             display: flex !important;
@@ -1415,9 +1435,9 @@ body {
         #drill-content .submenu button,
         #drill-content .submenu.submenu-compact button,
         #drill-content .submenu.leyes-compactas button {
-            font-size: 1rem !important;
+            font-size: 1.05rem !important;
             padding: 15px 20px !important;
-            min-height: 52px !important;
+            min-height: 54px !important;
             width: 100% !important;
             text-align: left !important;
         }
