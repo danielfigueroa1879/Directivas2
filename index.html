@@ -1368,16 +1368,16 @@ body {
         #drill-header {
             position: sticky;
             top: 0;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            padding: 16px 18px;
-            padding-top: max(16px, env(safe-area-inset-top));
+            padding: 14px 18px;
+            padding-top: max(14px, env(safe-area-inset-top));
             background: rgba(255,255,255,0.96);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0,0,0,0.07);
             z-index: 10;
-            gap: 10px;
         }
         #drill-back-btn {
             display: flex;
@@ -1404,12 +1404,11 @@ body {
             font-weight: 700;
             font-size: 1.25rem;
             color: #111;
-            flex: 1;
             text-align: center;
-            padding-right: 80px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            grid-column: 2;
         }
         #drill-content {
             padding: 8px 0 48px;
