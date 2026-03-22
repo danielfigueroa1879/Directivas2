@@ -489,7 +489,8 @@ body.homepage {
     overflow: visible;
 }
 .desktop-submenu-item {
-    display: block;
+    display: flex;
+    align-items: center;
     width: calc(100% + 0.8rem);
     padding: 6px 0.4rem;
     margin-left: -0.4rem;
@@ -499,7 +500,7 @@ body.homepage {
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
-    text-align: center;
+    text-align: left;
     border-radius: 0;
     transition: all 0.2s ease;
     background: transparent;
@@ -507,6 +508,11 @@ body.homepage {
     cursor: pointer;
     margin-bottom: 3px;
     max-height: 28px;
+}
+/* Badge SPD alineado a la derecha en desktop */
+button.desktop-submenu-item .spd-badge {
+    margin-left: auto !important;
+    flex-shrink: 0;
 }
 .desktop-submenu-item:hover { background: rgba(0,0,0,0.2); }
 .desktop-submenu-title {
