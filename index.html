@@ -482,7 +482,11 @@ body.homepage {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: none;
+    transform: translateY(-6px);
+    transition: opacity 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear 0.16s;
+    will-change: opacity, transform;
     z-index: 1001;
     border: none;
     font-family: Arial, sans-serif;
@@ -551,7 +555,11 @@ button.desktop-submenu-item .spd-badge {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: none;
+    transform: translateX(-4px);
+    transition: opacity 0.14s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear 0.14s;
+    will-change: opacity, transform;
     z-index: 1002;
     margin-left: 0px;
     overflow: visible;
@@ -562,7 +570,15 @@ button.desktop-submenu-item .spd-badge {
 .desktop-submenu-side::-webkit-scrollbar-track { background: transparent; }
 .desktop-submenu-side::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 10px; }
 .desktop-submenu-side::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.5); }
-.desktop-submenu-item-with-side:hover > .desktop-submenu-side { opacity: 1; visibility: visible; pointer-events: auto; }
+.desktop-submenu-item-with-side:hover > .desktop-submenu-side {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition: opacity 0.14s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear 0s;
+}
 .desktop-submenu-item-with-side {
     display: flex;
     align-items: center;
@@ -1172,12 +1188,12 @@ body {
             max-width: 820px !important;
             height: 56px !important;
             border-radius: 9999px !important;
-            background: #ffffff !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            border: 1px solid #e5e7eb !important;
-            border-bottom: 1px solid #e5e7eb !important;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.09) !important;
+            background: rgba(255, 255, 255, 0.60) !important;
+            backdrop-filter: saturate(180%) blur(40px) !important;
+            -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
+            border: 1px solid rgba(255,255,255,0.45) !important;
+            border-bottom: 1px solid rgba(255,255,255,0.45) !important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
         }
         /* Layout interno mobile: hamburger+logo | search | counter */
         #banner > div {
@@ -1298,9 +1314,9 @@ body {
     @media (max-width: 1023px) {
         /* Pill con frosted glass igual al panel cuando el menú está abierto — enmascara el scroll interno */
         #banner.menu-open {
-            background: rgba(255, 255, 255, 0.85) !important;
-            backdrop-filter: saturate(200%) blur(30px) !important;
-            -webkit-backdrop-filter: saturate(200%) blur(30px) !important;
+            background: rgba(255, 255, 255, 0.60) !important;
+            backdrop-filter: saturate(180%) blur(40px) !important;
+            -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
             border: none !important;
             box-shadow: none !important;
         }
@@ -1686,11 +1702,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentOpenSubmenu.style.opacity = '0';
                 currentOpenSubmenu.style.visibility = 'hidden';
                 currentOpenSubmenu.style.pointerEvents = 'none';
+                currentOpenSubmenu.style.transform = 'translateY(-6px)';
             }
             positionSubmenu();
-            submenu.style.opacity = '1';
             submenu.style.visibility = 'visible';
-            submenu.style.pointerEvents = 'auto';
+            submenu.style.transition = 'opacity 0.16s cubic-bezier(0.16,1,0.3,1), transform 0.18s cubic-bezier(0.16,1,0.3,1), visibility 0s linear 0s';
+            requestAnimationFrame(() => {
+                submenu.style.opacity = '1';
+                submenu.style.transform = 'translateY(0)';
+                submenu.style.pointerEvents = 'auto';
+            });
             currentOpenSubmenu = submenu;
         }
         
@@ -1700,12 +1721,13 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(closeTimeout);
             closeTimeout = setTimeout(() => {
                 submenu.style.opacity = '0';
-                submenu.style.visibility = 'hidden';
+                submenu.style.transform = 'translateY(-6px)';
                 submenu.style.pointerEvents = 'none';
+                setTimeout(() => { submenu.style.visibility = 'hidden'; }, 160);
                 if (currentOpenSubmenu === submenu) {
                     currentOpenSubmenu = null;
                 }
-            }, 500); // Delay de seguridad - se cancela inmediatamente si vuelves al menú
+            }, 120); // Delay reducido — se cancela si vuelves al menú
         }
         
         // Cancelar cierre - función clave
