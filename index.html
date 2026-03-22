@@ -836,7 +836,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     gap: 0.5rem;
     font-weight: 500;
 }
-.nested-btn:hover { background: #dcfce7; }
+.nested-btn:hover { background: #bfdbfe; }
 .nested-arrow {
     transition: transform 0.3s ease;
     width: 24px;
@@ -865,7 +865,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     cursor: pointer;
 }
 .nested-menu button:last-child { border-bottom: none; }
-.nested-menu button:hover { background: #dcfce7; color: #15803d; }
+.nested-menu button:hover { background: #bfdbfe; color: #1e40af; }
 
 /* ===== SCROLL SUAVE Y RÁPIDO ===== */
 html {
@@ -1076,8 +1076,8 @@ body {
 #mobile-dropdown .submenu button:hover,
 #mobile-dropdown .submenu.submenu-compact button:hover,
 #mobile-dropdown .submenu.leyes-compactas button:hover {
-    background: #dcfce7 !important;
-    color: #14532d !important;
+    background: #bfdbfe !important;
+    color: #1e40af !important;
 }
 
 /* ── Títulos de columnas ── */
@@ -1146,6 +1146,8 @@ body {
     margin-right: calc(22px + 0.4rem + 0.5rem) !important;
 }
 #mobile-dropdown .submenu.submenu-compact button.nested-btn:hover,
+#mobile-dropdown .submenu.leyes-compactas button.nested-btn:hover,
+#mobile-dropdown .submenu button.nested-btn:hover,
 #mobile-dropdown button.nested-btn:hover {
     background: #bfdbfe !important;
     color: #1e40af !important;
@@ -1441,20 +1443,46 @@ body {
             width: 100% !important;
             text-align: left !important;
         }
+        /* Color y fondo azul en items del drill panel — regla separada para asegurar aplicación */
+        #drill-detail-panel #drill-content .submenu button {
+            color: #1d4ed8 !important;
+            background-color: #dbeafe !important;
+            border-bottom: 1px solid rgba(147,197,253,0.4) !important;
+        }
         #drill-content .submenu-title {
             font-size: 0.72rem !important;
             letter-spacing: 0.08em !important;
             padding: 14px 20px 6px !important;
         }
         #drill-content button.nested-btn {
-            font-size: 0.95rem !important;
-            padding: 14px 20px !important;
-            min-height: 50px !important;
+            font-size: 1.05rem !important;
+            padding: 15px 20px !important;
+            min-height: 54px !important;
+        }
+        /* Subtítulos con sub-submenú: azul más oscuro (igual a Leyes/Decretos/Resoluciones) */
+        #drill-detail-panel #drill-content .has-nested button.nested-btn {
+            color: #1e3a8a !important;
+            background-color: #bfdbfe !important;
+            border-bottom: 1px solid rgba(96,165,250,0.35) !important;
+        }
+        /* Ítems internos del sub-submenú: azul muy claro */
+        #drill-detail-panel #drill-content .nested-menu button {
+            color: #1d4ed8 !important;
+            background-color: #eff6ff !important;
+            border-bottom: 1px solid rgba(147,197,253,0.3) !important;
         }
         #drill-content .nested-menu button {
-            font-size: 0.88rem !important;
-            padding: 12px 20px 12px 32px !important;
-            min-height: 46px !important;
+            font-size: 0.97rem !important;
+            padding: 13px 20px 13px 32px !important;
+            min-height: 50px !important;
+        }
+        /* Hover uniforme azul en TODOS los items del panel de detalle */
+        #drill-detail-panel #drill-content .submenu button:hover,
+        #drill-detail-panel #drill-content .drill-collapsible.open button:hover,
+        #drill-detail-panel #drill-content button.nested-btn:hover,
+        #drill-detail-panel #drill-content .nested-menu button:hover {
+            background-color: #bfdbfe !important;
+            color: #1e40af !important;
         }
 
         /* Submenu completamente visible dentro del panel de detalle */
@@ -1472,26 +1500,29 @@ body {
             box-shadow: none !important;
         }
         /* Secciones colapsables dentro del panel (Leyes / Decretos / Resoluciones) */
+        /* Títulos de sección: fondo azul más oscuro, letra igual que los otros items del menú */
         #drill-content .drill-collapsible .submenu-title {
             display: flex !important;
             justify-content: space-between !important;
             align-items: center !important;
-            padding: 17px 20px !important;
-            font-size: 0.95rem !important;
-            font-weight: 700 !important;
-            letter-spacing: 0.04em !important;
-            color: #1e40af !important;
-            background: rgba(59, 130, 246, 0.06) !important;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.12) !important;
+            padding: 15px 20px !important;
+            font-size: 1.05rem !important;
+            font-weight: 500 !important;
+            letter-spacing: 0 !important;
+            color: #1e3a8a !important;
+            background-color: #bfdbfe !important;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.35) !important;
             cursor: pointer !important;
             user-select: none !important;
+            min-height: 54px !important;
         }
         #drill-content .drill-collapsible .submenu-title:active {
-            background: rgba(59, 130, 246, 0.12) !important;
+            background-color: #93c5fd !important;
         }
-        /* Botones dentro de secciones azul suave */
-        #drill-content .drill-collapsible.open button {
-            color: #1e3a8a !important;
+        /* Ítems dentro de sección abierta: fondo azul más claro que el título */
+        #drill-detail-panel #drill-content .drill-collapsible.open button {
+            color: #1d4ed8 !important;
+            background-color: #eff6ff !important;
         }
         /* Chevron de secciones colapsables — azul */
         .drill-chevron {
