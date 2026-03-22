@@ -797,7 +797,7 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     width: 100%;
     text-align: left;
     padding: 0.45rem 1rem 0.45rem 2.5rem;
-    background: #f0fdf4;
+    background: #e0f0ff;
     border: none;
     border-bottom: 1px solid rgba(229,231,235,0.5);
     display: flex;
@@ -812,16 +812,16 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
 .nested-btn:hover { background: #dcfce7; }
 .nested-arrow {
     transition: transform 0.3s ease;
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
-    stroke: #237c4e;
+    stroke: #2563eb;
 }
 .has-nested.nested-open .nested-arrow { transform: rotate(90deg); }
 .nested-menu {
     display: none;
-    background: #f9fafb;
-    border-left: 3px solid #237c4e;
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
     margin-left: 1rem;
 }
 .nested-menu.show { display: block; }
@@ -974,13 +974,23 @@ body {
 #mobile-dropdown .submenu.leyes-compactas button {
     background: transparent !important;
     color: #475569 !important;
-    border-bottom: 1px solid #bbf7d0 !important;
+    border-bottom: 1px solid #22c55e !important;
     font-size: 0.78rem !important;
     padding-top: 0.45rem !important;
     padding-bottom: 0.45rem !important;
     padding-left: 1.8rem !important;
+    padding-right: 0.8rem !important;
+    display: flex !important;
+    align-items: center !important;
     transition: background 0.12s, color 0.12s, padding-left 0.12s !important;
     box-shadow: none !important;
+}
+/* SPD badge de submenu: alineado a la derecha */
+#mobile-dropdown .submenu button .spd-badge-dark,
+#mobile-dropdown .submenu.submenu-compact button .spd-badge-dark,
+#mobile-dropdown .submenu.leyes-compactas button .spd-badge-dark {
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
 }
 #mobile-dropdown .submenu button:hover,
 #mobile-dropdown .submenu.submenu-compact button:hover,
@@ -1018,37 +1028,71 @@ body {
     border-left-color: #22c55e !important;
 }
 
-/* Badges SPD */
+/* Badges SPD — amarillo sólido (como el look del PC) */
 #mobile-dropdown .spd-badge-dark {
-    background: rgba(35,124,78,0.1) !important;
-    border-color: rgba(35,124,78,0.3) !important;
-    color: #166534 !important;
+    background: #fde047 !important;
+    border: 1px solid #ca8a04 !important;
+    color: #713f12 !important;
+    font-weight: 800 !important;
 }
 
 /* Sub-submenús nested */
-#mobile-dropdown .nested-btn {
-    background: #f1f5f9 !important;
-    color: #475569 !important;
-    border-bottom: 1px solid #e2e8f0 !important;
+#mobile-dropdown .submenu.submenu-compact button.nested-btn,
+#mobile-dropdown .submenu.leyes-compactas button.nested-btn,
+#mobile-dropdown .submenu button.nested-btn,
+#mobile-dropdown button.nested-btn {
+    background: #dbeafe !important;
+    color: #1d4ed8 !important;
+    border-bottom: 1px solid #2563eb !important;
     font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    padding-left: 1.8rem !important;
+    justify-content: flex-start !important;
 }
-#mobile-dropdown .nested-btn:hover {
-    background: #dcfce7 !important;
-    color: #166534 !important;
+/* SPD del nested-btn: empujar a la derecha, dejando espacio para la flecha */
+#mobile-dropdown button.nested-btn .spd-badge-dark {
+    margin-left: auto !important;
+    margin-right: 0.4rem !important;
+    flex-shrink: 0 !important;
 }
-#mobile-dropdown .nested-arrow { stroke: #22c55e !important; }
+/* Items del nested-menu: flex para alinear SPD al mismo nivel */
+#mobile-dropdown .nested-menu button {
+    display: flex !important;
+    align-items: center !important;
+}
+#mobile-dropdown .nested-menu button .spd-badge-dark {
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+    margin-right: calc(22px + 0.4rem + 0.5rem) !important;
+}
+#mobile-dropdown .submenu.submenu-compact button.nested-btn:hover,
+#mobile-dropdown button.nested-btn:hover {
+    background: #bfdbfe !important;
+    color: #1e40af !important;
+}
+#mobile-dropdown .nested-arrow {
+    stroke: #2563eb !important;
+    width: 22px !important;
+    height: 22px !important;
+    stroke-width: 3 !important;
+}
 #mobile-dropdown .nested-menu {
-    background: #f8fafc !important;
-    border-left-color: #86efac !important;
+    background: #eff6ff !important;
+    border-left: 7px solid #2563eb !important;
 }
 #mobile-dropdown .nested-menu button {
-    color: #64748b !important;
+    color: #1d4ed8 !important;
     font-size: 0.72rem !important;
-    border-bottom: 1px solid #bbf7d0 !important;
+    border-bottom: 2px solid #2563eb !important;
+    background: transparent !important;
+    padding-left: 1.8rem !important;
 }
+#mobile-dropdown .submenu .nested-menu button:hover,
+#mobile-dropdown .submenu.submenu-compact .nested-menu button:hover,
+#mobile-dropdown .submenu.leyes-compactas .nested-menu button:hover,
 #mobile-dropdown .nested-menu button:hover {
-    background: #dcfce7 !important;
-    color: #166534 !important;
+    background: #bfdbfe !important;
+    color: #1e40af !important;
 }
 
     </style>
