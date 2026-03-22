@@ -1337,9 +1337,9 @@ body {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.92);
-            width: 88%;
-            max-width: 480px;
-            height: 78vh;
+            width: 97%;
+            max-width: 520px;
+            height: 82vh;
             background: #f8faf8;
             border-radius: 20px;
             box-shadow: 0 24px 60px rgba(0,0,0,0.22);
@@ -1450,6 +1450,41 @@ body {
         /* Sin glow en drill-down */
         #drill-content .has-submenu.submenu-open {
             box-shadow: none !important;
+        }
+        /* Secciones colapsables dentro del panel (Leyes / Decretos / Resoluciones) */
+        #drill-content .drill-collapsible .submenu-title {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 17px 20px !important;
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.04em !important;
+            color: #1a1a1a !important;
+            background: rgba(0,0,0,0.03) !important;
+            border-bottom: 1px solid rgba(0,0,0,0.07) !important;
+            cursor: pointer !important;
+            user-select: none !important;
+        }
+        #drill-content .drill-collapsible .submenu-title:active {
+            background: rgba(22,163,74,0.06) !important;
+        }
+        .drill-chevron {
+            width: 22px !important;
+            height: 22px !important;
+            stroke: #16a34a;
+            flex-shrink: 0;
+            transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        #drill-content .drill-collapsible.open .drill-chevron {
+            transform: rotate(90deg);
+        }
+        /* Botones de cada sección: ocultos por defecto, visibles al abrir */
+        #drill-content .drill-collapsible button {
+            display: none !important;
+        }
+        #drill-content .drill-collapsible.open button {
+            display: flex !important;
         }
     }
 
@@ -3518,6 +3553,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const drillContent = document.getElementById('drill-content');
             const drillTitleEl = document.getElementById('drill-title');
 
+            const chevronSVG = `<svg class="drill-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+
+            function initCollapsibleColumns(submenu) {
+                submenu.querySelectorAll('.submenu-column').forEach(col => {
+                    if (col.classList.contains('drill-collapsible')) return; // ya iniciado
+                    col.classList.add('drill-collapsible');
+                    const title = col.querySelector('.submenu-title');
+                    if (title && !title.querySelector('.drill-chevron')) {
+                        title.insertAdjacentHTML('beforeend', chevronSVG);
+                    }
+                });
+            }
+
             function openDrillPanel(submenu, title, parentEl) {
                 drillContent.innerHTML = '';
                 drillContent.appendChild(submenu);
@@ -3526,6 +3574,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 submenu.style.maxHeight = 'none';
                 submenu.style.overflow = 'visible';
                 submenu.style.height = 'auto';
+                // Inicializar secciones colapsables si aplica
+                if (submenu.classList.contains('leyes-compactas')) {
+                    initCollapsibleColumns(submenu);
+                }
                 drillTitleEl.textContent = title;
                 activeSubmenu = submenu;
                 activeParent = parentEl;
@@ -3577,6 +3629,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Botón volver y tap en overlay
             document.getElementById('drill-back-btn').addEventListener('click', closeDrillPanel);
             drillOverlay.addEventListener('click', closeDrillPanel);
+
+            // Secciones colapsables (Leyes / Decretos / Resoluciones)
+            drillContent.addEventListener('click', function(e) {
+                const title = e.target.closest('.drill-collapsible .submenu-title');
+                if (!title) return;
+                e.stopPropagation();
+                const col = title.closest('.drill-collapsible');
+                col.classList.toggle('open');
+            });
 
             // Nested buttons: delegación de eventos sobre drill-content
             drillContent.addEventListener('click', function(e) {
