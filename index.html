@@ -1320,6 +1320,14 @@ body {
         #mobile-dropdown .menu-item-stack {
             background: transparent !important;
         }
+        /* Sección abierta: glow verde alrededor de toda la tarjeta */
+        #mobile-dropdown .has-submenu.submenu-open {
+            box-shadow: 0 0 0 2.5px #16a34a, 0 4px 16px rgba(22,163,74,0.15) !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            margin: 3px 0 !important;
+            transition: box-shadow 0.2s ease !important;
+        }
         #mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
             background: rgba(240,253,244,0.40) !important;
         }
