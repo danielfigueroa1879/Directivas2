@@ -380,6 +380,6 @@ body:not(.homepage) {
 /* Móvil (<1024px): banner height 6.5rem = 104px */
 @media (max-width: 1023px) {
     #contenido {
-        margin-top: 8rem !important;
+        margin-top: 6.5rem !important;
     }
 }
