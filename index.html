@@ -898,8 +898,8 @@ body {
         left: 50% !important;
         height: auto !important;
         max-height: calc(100vh - 16px) !important;
-        /* Padding para que los items aparezcan debajo del pill (67px = altura pill) */
-        padding-top: 67px !important;
+        /* Sin padding-top: el spacer #scroll-mask-top lo reemplaza */
+        padding-top: 0 !important;
         border-right: none !important;
         /* Esquinas redondeadas en todo — igual que el pill */
         border-radius: 28px !important;
@@ -1012,7 +1012,7 @@ body {
     border-bottom: 1px solid #e8ecef !important;
     border-left: 3px solid transparent !important;
     font-size: 1.2rem !important;
-    font-weight: 540 !important;
+    font-weight: 500 !important;
     padding: 1rem 1.25rem 1rem 1.15rem !important;
     transition: background 0.18s, border-left-color 0.18s, color 0.18s !important;
     box-shadow: none !important;
@@ -1099,12 +1099,17 @@ body {
 /* ── Botones de acción al fondo ── */
 #mobile-dropdown .menu-item-stack {
     background: rgba(255, 255, 255, 0.55) !important;
-    color: #1f2937 !important;
+    color: #111827 !important;
     border-bottom: 1px solid #e8ecef !important;
     border-left: 3px solid transparent !important;
-    font-size: 0.95rem !important;
+    font-size: 1.2rem !important;
     font-weight: 500 !important;
+    padding: 1rem 1.25rem 1rem 1.15rem !important;
     transition: all 0.18s !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    text-align: left !important;
 }
 #mobile-dropdown .menu-item-stack:hover {
     background: #f0fdf4 !important;
@@ -1315,14 +1320,29 @@ body {
 
     /* ── DRILL-DOWN MOBILE NAVIGATION ── */
     @media (max-width: 1023px) {
-        #mobile-dropdown { overflow: hidden !important; scrollbar-width: none !important; }
+        /* Dropdown: flex-column, NO scrollea — solo drill-main-panel scrollea */
+        #mobile-dropdown { overflow: hidden !important; scrollbar-width: none !important;
+            display: flex !important; flex-direction: column !important; }
         #mobile-dropdown::-webkit-scrollbar { display: none !important; }
-        #mobile-dropdown.show { overflow-y: auto !important; overflow-x: hidden !important; }
+        #mobile-dropdown.show { overflow: hidden !important; }
 
+        /* Spacer fijo 67px — ocupa zona del pill, no scrollea */
+        #scroll-mask-top {
+            height: 67px;
+            flex-shrink: 0;
+            pointer-events: none;
+        }
+
+        /* Solo drill-main-panel scrollea */
         #drill-main-panel {
+            flex: 1;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            scrollbar-width: none !important;
             transition: transform 0.26s cubic-bezier(0.16,1,0.3,1), opacity 0.20s ease;
             will-change: transform, opacity;
         }
+        #drill-main-panel::-webkit-scrollbar { display: none !important; }
         #drill-main-panel.pushed {
             transform: translateX(-20%);
             opacity: 0.2;
@@ -3593,9 +3613,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (window.innerWidth < 1024) {
             // 1. Envolver contenido existente en panel principal
+            // Máscara sticky — tapa el scroll detrás del pill sin añadir capa extra de blur
+            const scrollMask = document.createElement('div');
+            scrollMask.id = 'scroll-mask-top';
+            mobileDropdown.appendChild(scrollMask);
+
             const drillMain = document.createElement('div');
             drillMain.id = 'drill-main-panel';
-            Array.from(mobileDropdown.children).forEach(c => drillMain.appendChild(c));
+            Array.from(mobileDropdown.children).forEach(c => {
+                if (c !== scrollMask) drillMain.appendChild(c);
+            });
             mobileDropdown.appendChild(drillMain);
 
             // 2. Crear panel de detalle — en body para que position:fixed funcione
