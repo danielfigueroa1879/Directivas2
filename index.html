@@ -144,7 +144,7 @@ body.homepage {
     right: 0;
     z-index: 1200;
     height: 4rem;
-    background-color: rgba(255,255,255,0.25);
+    background-color: rgba(255,255,255,0.35);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255,255,255,0.3);
@@ -898,15 +898,16 @@ body {
         left: 50% !important;
         height: auto !important;
         max-height: calc(100vh - 16px) !important;
-        /* Padding para que los items aparezcan debajo del pill (60px = altura pill) */
-        padding-top: 60px !important;
+        /* Padding para que los items aparezcan debajo del pill (67px = altura pill) */
+        padding-top: 67px !important;
         border-right: none !important;
         /* Esquinas redondeadas en todo — igual que el pill */
         border-radius: 28px !important;
         /* Frosted glass IDÉNTICO al pill — parecen uno solo */
-        background: rgba(255, 255, 255, 0.75) !important;
-        backdrop-filter: saturate(200%) blur(30px) !important;
-        -webkit-backdrop-filter: saturate(200%) blur(30px) !important;
+        background: rgba(255, 255, 255, 0.73) !important;
+        backdrop-filter: saturate(180%) blur(40px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
+        border: 1px solid rgba(255,255,255,0.55) !important;
         box-shadow: 0 8px 40px rgba(0,0,0,0.16) !important;
         z-index: 1500 !important;
         will-change: transform, opacity !important;
@@ -1195,7 +1196,7 @@ body {
             top: 8px !important;
             width: calc(100% - 1.5rem) !important;
             max-width: 820px !important;
-            height: 70px !important;
+            height: 67px !important;
             border-radius: 9999px !important;
             background: rgba(255, 255, 255, 0.60) !important;
             backdrop-filter: saturate(180%) blur(40px) !important;
@@ -1567,9 +1568,9 @@ body {
     @media (max-width: 1023px) {
         /* Pill con frosted glass igual al panel cuando el menú está abierto — enmascara el scroll interno */
         #banner.menu-open {
-            background: rgba(255, 255, 255, 0.60) !important;
-            backdrop-filter: saturate(180%) blur(40px) !important;
-            -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
             border: none !important;
             box-shadow: none !important;
         }
