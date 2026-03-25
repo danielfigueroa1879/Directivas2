@@ -365,3 +365,21 @@ body:not(.homepage) {
         width: 97%;
     }
 }
+
+/* ========================================
+   ESPACIADO DEL CONTENEDOR BAJO EL BANNER
+   ======================================== */
+
+/* PC (≥1024px): banner pill top:8px h:52px + navbar top:64px h:34px = 98px total */
+@media (min-width: 1024px) {
+    #contenido {
+        margin-top: 115px !important;
+    }
+}
+
+/* Móvil (<1024px): banner height 6.5rem = 104px */
+@media (max-width: 1023px) {
+    #contenido {
+        margin-top: 8rem !important;
+    }
+}
