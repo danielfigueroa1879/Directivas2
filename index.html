@@ -3387,8 +3387,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3 class="text-lg font-semibold text-white">Contacto</h3>
                 <ul class="mt-4 space-y-2 text-sm">
                     <li><a href="tel:+56512651024" class="hover:text-white">Fonos +56 51 265 1024 (23-22)</a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#c5a6aaabb1a4a6b1aa85aab6f4f5a6aab4b0aca8a7aaeba6a9" class="hover:text-white"><span class="__cf_email__" data-cfemail="315e4200011f525e4044585c535e715250435053585f54435e421f525d">[email&#160;protected]</span></a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#a3ccd09293e3c0ccd2d6cacec1cc8dc0cf" class="hover:text-white"><span class="__cf_email__" data-cfemail="731c004243101c02061a1e111c33141e121a1f5d101c1e">[email&#160;protected]</span></a></li>
+                    <li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li>
+                    <li><a href="mailto:os10coquimbo@gmail.com" class="hover:text-white">os10coquimbo@gmail.com</a></li>
                     <li><a href="https://maps.app.goo.gl/QUhujWbTF1FjDA7E6" target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Map Ubicación</a></li>
                 </ul>
             </div>
@@ -3450,7 +3450,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </button>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/inicio.js?v=4" defer></script>
+    <script src="assets/js/inicio.js?v=4" defer></script>
     <script src="assets/js/carousel.js" defer></script>
     
     <!-- Carrusel de Componentes manejado por carousel.js (via main.js) -->
@@ -4388,4 +4388,11 @@ function setLang(langCode, label, btn) {
         select.dispatchEvent(new Event('change'));
     } else {
         // Si el widget aún no cargó, guardar selección y recargar
-        document.cookie = 'googtrans=/es/' + langCod
+        document.cookie = 'googtrans=/es/' + langCode;
+        location.reload();
+    }
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
