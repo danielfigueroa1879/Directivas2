@@ -45,8 +45,19 @@ function rotateBackground() {
 // Start background rotation every 12 seconds for homepage
 setInterval(rotateBackground, 12000);
 
+// Cierra el menú móvil y el drill-panel si están abiertos
+function _closeMobileNav() {
+    if (window._closeDrillPanel) window._closeDrillPanel();
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    if (mobileDropdown && mobileDropdown.classList.contains('show')) {
+        mobileDropdown.classList.remove('show');
+        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
+    }
+}
+
 // Functions to switch between sections (called by main.js or HTML)
 function showHomepage() {
+    _closeMobileNav();
     document.getElementById('homepage-section').style.display = 'flex';
     document.getElementById('homepage-content-wrapper').style.display = 'block';
     document.getElementById('main-footer').style.display = 'block';
@@ -62,6 +73,7 @@ function showHomepage() {
 }
 
 function showDirectiva() {
+    _closeMobileNav();
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
     document.getElementById('main-footer').style.display = 'none';
@@ -75,6 +87,7 @@ function showDirectiva() {
 }
 
 function showCredenciales() {
+    _closeMobileNav();
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
     document.getElementById('main-footer').style.display = 'none';
