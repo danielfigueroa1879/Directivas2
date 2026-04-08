@@ -440,3 +440,66 @@ body:not(.homepage) {
         z-index: 60 !important;
     }
 }
+
+/* ========================================
+   ACCESIBILIDAD: TAMAÑO MÍNIMO DE ÁREAS TÁCTILES
+   ======================================== */
+
+/* Botón de cambiar idioma */
+.lang-btn {
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 4px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto !important;
+}
+
+/* Botones del menú desktop */
+.desktop-nav-item {
+    min-height: 40px !important;
+    padding: 8px 12px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Asegurar espaciado mínimo entre botones */
+.desktop-nav-item + .desktop-nav-item {
+    margin-left: 8px !important;
+}
+
+/* Botones del dropdown */
+.desktop-dropdown button,
+.desktop-dropdown a {
+    min-height: 38px !important;
+    padding: 8px 10px !important;
+}
+
+/* Botones móviles */
+.mobile-dropdown .submenu button,
+.mobile-dropdown .submenu-parent-btn,
+.mobile-dropdown .dropdown-menu-content > button,
+.mobile-dropdown .dropdown-menu-content > a {
+    min-height: 42px !important;
+    padding: 10px 14px !important;
+}
+
+/* Botones del menú de leyes */
+.mobile-dropdown .submenu.leyes-compactas button {
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+}
+
+/* ========================================
+   MOBILE DROPDOWN POSITION FIX
+   ======================================== */
+@media (max-width: 767px) {
+    .mobile-dropdown {
+        top: 4rem !important;
+        height: calc(100vh - 4rem) !important;
+        z-index: 1500 !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+}
