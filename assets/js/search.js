@@ -453,6 +453,48 @@ class GlobalSearch {
                 action: () => window.open('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf', '_blank'),
                 keywords: ['resolución', '2522', '2.522', 'regulariza', 'tramitación', 'credenciales', '2024']
             },
+            {
+                title: 'Resolución 2183 - Capacitación y Exámenes Carabineros',
+                content: 'Res. N° 2183 sobre Capacitación y Exámenes para Carabineros de Chile',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf', '_blank'),
+                keywords: ['resolución', '2183', 'capacitación', 'exámenes', 'carabineros', 'chile', '2025']
+            },
+            {
+                title: 'Resolución 772 - Clasificación de Eventos Masivos',
+                content: 'Res. N° 772 sobre Clasificación de Eventos Masivos',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf', '_blank'),
+                keywords: ['resolución', '772', 'clasificación', 'eventos', 'masivos', 'seguridad', '2026']
+            },
+            {
+                title: 'Resolución 928 - Instrucciones Matriz de Riesgo',
+                content: 'Res. N° 928 sobre Instrucciones para Matriz de Riesgo',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/10/44396-B/01/2781576.pdf', '_blank'),
+                keywords: ['resolución', '928', 'matriz', 'riesgo', 'instrucciones', 'seguridad', '2026']
+            },
+            {
+                title: 'Resolución 830 - Capacitación Guardias Seguridad Fútbol Profesional',
+                content: 'Res. N° 830 sobre Capacitación Guardias de Seguridad Fútbol Profesional',
+                section: 'Resoluciones',
+                action: () => window.open('https://os10.short.gy/830', '_blank'),
+                keywords: ['resolución', '830', 'capacitación', 'guardias', 'seguridad', 'fútbol', 'profesional', 'deportes']
+            },
+            {
+                title: 'Resolución 831 - Elementos de Defensa Fútbol Profesional',
+                content: 'Res. N° 831 sobre Elementos de Defensa para Fútbol Profesional',
+                section: 'Resoluciones',
+                action: () => window.open('https://os10.short.gy/831', '_blank'),
+                keywords: ['resolución', '831', 'elementos', 'defensa', 'fútbol', 'profesional', 'deportes', 'equipo']
+            },
+            {
+                title: 'Ley 21.806 - Extensión de Autoridades (VIGENTE)',
+                content: 'Ley 21.806 sobre Extensión de Autoridades Gobernadores y Vicegobernadores. Marco normativo actualizado 2026',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1221118', '_blank'),
+                keywords: ['ley', '21806', '21.806', 'extensión', 'autoridades', 'gobernadores', 'vicegobernadores', 'vigente', '2026']
+            },
 
             // SECCIÓN: Componentes del Sistema (ACTUALIZADO SEGÚN LEY 21.659 Y DECRETO 209)
             {
