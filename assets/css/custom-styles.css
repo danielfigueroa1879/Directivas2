@@ -503,3 +503,15 @@ body:not(.homepage) {
         padding-top: 0 !important;
     }
 }
+
+/* --- Submenú "Links de Interés": texto centrado --- */
+.desktop-submenu.submenu-centered .desktop-submenu-item {
+    text-align: center;
+    justify-content: center;
+}
+
+.mobile-dropdown .submenu.submenu-compact.submenu-centered button {
+    text-align: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
