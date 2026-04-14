@@ -1020,6 +1020,7 @@ function updateOfficeStatus() {
    BLOQUE 13: Ken Burns carousel de fondo - carga diferida de imágenes
    (extraído desde index.html, línea 4227)
 ============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
 (function() {
     var container = document.getElementById('kb-container');
     if (!container) return;
@@ -1123,6 +1124,7 @@ function updateOfficeStatus() {
         });
     }
 })();
+}); // DOMContentLoaded - Bloque 13
 
 
 /* ============================================================
