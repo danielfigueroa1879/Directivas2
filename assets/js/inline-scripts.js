@@ -1131,18 +1131,20 @@ document.addEventListener('DOMContentLoaded', function() {
    BLOQUE 14: YouTube facade - carga iframe al hacer click
    (extraído desde index.html, línea 4333)
 ============================================================ */
-document.querySelectorAll('.yt-facade').forEach(function(el) {
-    el.addEventListener('click', function() {
-        var vid = this.dataset.vid;
-        var iframe = document.createElement('iframe');
-        iframe.width = '560'; iframe.height = '315';
-        iframe.src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1';
-        iframe.frameBorder = '0';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-        iframe.allowFullscreen = true;
-        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
-        this.innerHTML = '';
-        this.appendChild(iframe);
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.yt-facade').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var vid = this.dataset.vid;
+            var iframe = document.createElement('iframe');
+            iframe.width = '560'; iframe.height = '315';
+            iframe.src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1';
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+            this.innerHTML = '';
+            this.appendChild(iframe);
+        });
     });
 });
 
