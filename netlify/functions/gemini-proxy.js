@@ -23,7 +23,8 @@ exports.handler = async function(event, context) {
   }
   console.log(`GEMINI_API_KEY presente (longitud: ${API_KEY.length}).`);
 
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+  // gemini-2.0-flash tiene una cuota gratuita diaria mucho mayor que 2.5-flash (20/día → ~1500/día).
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
   const MAX_RETRIES = 3;
   let retries = 0;
