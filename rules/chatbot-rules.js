@@ -21,7 +21,7 @@ const responses = {
     'rule_5': { 
         keywords: ["guardia de seguridad", "guardia"], 
         requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
-        response: '🤖🛡️ **GUARDIA DE SEGURIDAD - LEY 21.659 Y DECRETO 209**\n\n**REQUISITOS GENERALES (Art. 46 Ley 21.659):**\n✓ Mayor de edad\n✓ Condiciones físicas y psíquicas compatibles\n✓ Educación media completa o equivalente\n✓ Sin condenas por crimen o delito\n✓ Sin violencia intrafamiliar\n✓ Sin acusaciones por delitos específicos\n✓ No sancionado en últimos 5 años\n✓ No inhabilitado para seguridad privada\n\n**REQUISITOS ESPECÍFICOS (Decreto 209):**\n✓ Curso: 90 horas pedagógicas mínimo (Art. 89)\n✓ Credencial: Vigente, emitida por SPD (Art. 91)\n✓ Uniforme: Negro con leyenda "SEGURIDAD PRIVADA" (Art. 90)\n✓ Directiva: Aprobada por SPD (Art. 92)\n✓ Seguro de vida: Mínimo 132 UF (Art. 88)\n✓ Chaleco anticorte: Elemento mínimo obligatorio\n\n**PERÍODO DE VALIDACIÓN:**\n• Credencial: 2 años\n• Curso: Renovación anual recomendada\n\n**PROHIBICIONES:**\n✗ Trabajar sin curso aprobado\n✗ Trabajar sin credencial vigente\n✗ Portar armas no autorizadas\n✗ Intervenir en conflictos políticos/laborales\n\nℹ️ Contacta OS10: 512651024 / 512651023' 
+        response: '🤖🛡️ **GUARDIA DE SEGURIDAD - LEY 21.659 Y DECRETO 209**\n\n**REQUISITOS GENERALES (Art. 46 Ley 21.659):**\n✓ Mayor de edad\n✓ Condiciones físicas y psíquicas compatibles\n✓ Educación media completa o equivalente\n✓ Sin condenas por crimen o delito\n✓ Sin violencia intrafamiliar\n✓ Sin acusaciones por delitos específicos\n✓ No sancionado en últimos 5 años\n✓ No inhabilitado para seguridad privada\n\n**REQUISITOS ESPECÍFICOS (Decreto 209):**\n✓ Curso: 90 horas pedagógicas mínimo (Art. 89)\n✓ Credencial: Vigente, emitida por SPD (Art. 91)\n✓ Uniforme: Negro con leyenda "SEGURIDAD PRIVADA" (Art. 90)\n✓ Directiva: Aprobada por SPD (Art. 92)\n✓ Seguro de vida: Mínimo 132 UF (Art. 88)\n✓ Chaleco anticorte: Elemento mínimo obligatorio\n\n**PERÍODO DE VALIDACIÓN:**\n• Credencial: 2 años\n• Curso: Renovación anual recomendada\n\n**PROHIBICIONES:**\n✗ Trabajar sin curso aprobado\n✗ Trabajar sin credencial vigente\n✗ Portar armas no autorizadas\n✗ Intervenir en conflictos políticos/laborales\n\n🔵 **TRÁMITE ANTE LA SPD** (No en OS10)\n👉 https://segprivada.minsegpublica.gob.cl/\n📞 Consultas OS10: 512651024 / 512651023' 
     },
     
     'rule_5a': { 
@@ -32,7 +32,7 @@ const responses = {
     'rule_5b': { 
         keywords: ["vigilante privado", "vigilante"], 
         requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
-        response: '🤖👮 **VIGILANTE PRIVADO - LEY 21.659 Y DECRETO 209**\n\n**REQUISITOS GENERALES (Art. 46 Ley 21.659):**\n✓ Mayor de edad\n✓ Condiciones físicas y psíquicas compatibles\n✓ Educación media completa o equivalente\n✓ Sin condenas por crimen o delito\n✓ Sin violencia intrafamiliar\n✓ Sin acusaciones por delitos específicos\n✓ No sancionado en últimos 5 años\n✓ No inhabilitado para seguridad privada\n\n**REQUISITOS ESPECÍFICOS (Decreto 209):**\n✓ Curso: 60 horas pedagógicas mínimo\n✓ Credencial: Vigente, emitida por SPD\n✓ Uniforme: Identificatorio de la empresa\n✓ Seguro: Según normativa\n\n**DIFERENCIAS CON GUARDIA:**\n• NO puede portar armas\n• NO puede realizar detenciones\n• Función: Control y vigilancia\n• Reporta incidentes a autoridades\n\n**PROHIBICIONES:**\n✗ Portar armas de ningún tipo\n✗ Realizar investigaciones\n✗ Intervenir en conflictos\n\nℹ️ Contacta OS10: 512651024 / 512651023' 
+        response: '🤖👮 **VIGILANTE PRIVADO - LEY 21.659 Y DECRETO 209**\n\n**REQUISITOS GENERALES (Art. 46 Ley 21.659):**\n✓ Mayor de edad\n✓ Condiciones físicas y psíquicas compatibles\n✓ Educación media completa o equivalente\n✓ Sin condenas por crimen o delito\n✓ Sin violencia intrafamiliar\n✓ Sin acusaciones por delitos específicos\n✓ No sancionado en últimos 5 años\n✓ No inhabilitado para seguridad privada\n\n**REQUISITOS ESPECÍFICOS (Decreto 209):**\n✓ Curso: 60 horas pedagógicas mínimo\n✓ Credencial: Vigente, emitida por SPD\n✓ Uniforme: Identificatorio de la empresa\n✓ Seguro: Según normativa\n\n**DIFERENCIAS CON GUARDIA:**\n• NO puede portar armas\n• NO puede realizar detenciones\n• Función: Control y vigilancia\n• Reporta incidentes a autoridades\n\n**PROHIBICIONES:**\n✗ Portar armas de ningún tipo\n✗ Realizar investigaciones\n✗ Intervenir en conflictos\n\n🔵 **TRÁMITE ANTE LA SPD** (No en OS10)\n👉 https://segprivada.minsegpublica.gob.cl/\n📞 Consultas OS10: 512651024 / 512651023' 
     },
     
     'rule_6': { 
@@ -44,7 +44,7 @@ const responses = {
     'rule_7': { 
         keywords: ["supervisor", "supervisor seguridad"], 
         requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
-        response: '🤖👀 **SUPERVISOR DE SEGURIDAD - LEY 21.659**\n\n**REQUISITOS GENERALES:**\n✓ Todos los requisitos del Art. 46 Ley 21.659\n✓ Experiencia supervisiva en seguridad\n✓ Conocimiento de Ley 21.659 y Decreto 209\n✓ Competencias en liderazgo y gestión\n\n**FORMACIÓN:**\n✓ Curso de supervisión: Mínimo 120 horas\n✓ Certificación en supervisión de seguridad\n✓ Actualización anual recomendada\n\n**RESPONSABILIDADES:**\n✓ Supervisar cumplimiento de directivas\n✓ Verificar requisitos de personal\n✓ Inspeccionar equipamiento y uniformes\n✓ Documentar infracciones\n✓ Reportar a Jefe de Seguridad\n✓ Coordinar con fiscalizadores\n\n**AUTORIDAD:**\n✓ Verificar credenciales\n✓ Supervisar jornadas\n✓ Reportar irregularidades\n\nℹ️ Contacta OS10: 512651024 / 512651023' 
+        response: '🤖👀 **SUPERVISOR DE SEGURIDAD - LEY 21.659**\n\n**REQUISITOS GENERALES:**\n✓ Todos los requisitos del Art. 46 Ley 21.659\n✓ Experiencia supervisiva en seguridad\n✓ Conocimiento de Ley 21.659 y Decreto 209\n✓ Competencias en liderazgo y gestión\n\n**FORMACIÓN:**\n✓ Curso de supervisión: Mínimo 120 horas\n✓ Certificación en supervisión de seguridad\n✓ Actualización anual recomendada\n\n**RESPONSABILIDADES:**\n✓ Supervisar cumplimiento de directivas\n✓ Verificar requisitos de personal\n✓ Inspeccionar equipamiento y uniformes\n✓ Documentar infracciones\n✓ Reportar a Jefe de Seguridad\n✓ Coordinar con fiscalizadores\n\n**AUTORIDAD:**\n✓ Verificar credenciales\n✓ Supervisar jornadas\n✓ Reportar irregularidades\n\n🔵 **TRÁMITE ANTE LA SPD** (No en OS10)\n👉 https://segprivada.minsegpublica.gob.cl/\n📞 Consultas OS10: 512651024 / 512651023' 
     },
     
     'rule_8': { 
@@ -53,10 +53,10 @@ const responses = {
         response: '🤖🔧 **ENCARGADO DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔧 Ver Requisitos Encargado</button>' 
     },
     
-    'rule_9': { 
-        keywords: ["capacitador"], 
+    'rule_9': {
+        keywords: ["capacitador"],
         requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
-        response: '🤖👨‍🏫 **CAPACITADOR**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Ver Requisitos Capacitador</button>' 
+        response: '🤖👨‍🏫 **CAPACITADOR**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Ver Requisitos Capacitador</button>\n🔵 **TRÁMITE ANTE LA SPD** (No en OS10)\n👉 https://segprivada.minsegpublica.gob.cl/'
     },
     
     'rule_10': { 
@@ -77,9 +77,9 @@ const responses = {
         response: '🤖🔌 **INSTALADOR TÉCNICO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔌 Ver Requisitos Instalador</button>' 
     },
     
-    'rule_13': { 
-        keywords: ["empresa de seguridad", "empresas de seguridad", "crear empresa seguridad"], 
-        response: '🤖🏢 **EMPRESAS DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'empresa\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Empresa</button>' 
+    'rule_13': {
+        keywords: ["empresa de seguridad", "empresas de seguridad", "crear empresa seguridad"],
+        response: '🤖🏢 **EMPRESAS DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'empresa\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Empresa</button>\n🔵 **TRÁMITE ANTE LA SPD** (No en OS10)\n👉 https://segprivada.minsegpublica.gob.cl/'
     },
     
     'rule_14': { 
@@ -153,7 +153,7 @@ const responses = {
     'rule_111': { keywords: ["nueva ley"], response: '🤖 *NUEVA LEY SEGURIDAD PRIVADA*\nLey 21.659 del 21 de marzo de 2024\nhttps://dal5.short.gy/LeySeg **Decreto 209**\n https://os10.short.gy/J88sfJ **APRUEBA REGLAMENTO DE SEGURIDAD PRIVADA** https://os10.short.gy/209 ' },
     'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor' },
     'rule_113': { keywords: ["vigilante privado"], response: '🤖👮‍♂️ **VIGILANTE PRIVADO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Vigilante</button>' },
-    'rule_114': { keywords: ["portero", "nochero", "rondin", "guia portero"], response: '🤖🌙 **PORTERO / NOCHERO / RONDÍN**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'portero\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Portero</button>' },
+    'rule_114': { keywords: ["portero", "nochero", "rondin", "guia portero"], response: '🤖🌙 **PORTERO / NOCHERO / RONDÍN**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'portero\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Portero</button>\n🔵 **TRÁMITE ANTE LA SPD** (No en OS10)\n👉 https://segprivada.minsegpublica.gob.cl/' },
     'rule_115': { keywords: ["encargado de armas", "guia encargado armas"], response: '🤖🔫 **ENCARGADO DE ARMAS**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'encargadoArmas\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Encargado Armas</button>' },
     'rule_116': { keywords: ["malla", "malla curricular", "malla curso", "materias curso", "que entra en el curso", "asignaturas de capacitacion", "asignaturas de capacitación", "malla de capacitacion", "malla de capacitación", "asignaturas"], response: '🤖📚 **MALLAS CURRICULARES**\nDescarga los contenidos de los cursos:\n\n👮 **Guardia de Seguridad (90 hrs):**\nhttps://www.zosepcar.cl/content/OS10/malla_guardia.pdf\n\n🔫 **Vigilante Privado (100 hrs):**\nhttps://www.zosepcar.cl/content/OS10/malla_vigilante.pdf\n\n🌙 **Portero/Nochero:**\nhttps://www.zosepcar.cl/content/OS10/malla_portero.pdf' },
     'rule_149': { keywords: ["empresas recursos humanos"], response: '🤖 *EMPRESAS DE RECURSOS HUMANOS*\nAutorización especial para intermediación laboral\nRequisitos específicos' },
@@ -1164,8 +1164,32 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
     'rule_portero_duracion': {
         keywords: ["cuanto dura portero", "vigencia portero", "nochero duracion"],
         response: '🤖🚪 **PORTERO/NOCHERO/RONDÍN - DURACIÓN:**\n\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n✅ NO requiere curso nuevo al cambiar empleador'
+    },
+
+    // ==================== DECRETOS 208 Y 209 - SPD ====================
+
+    'rule_decreto_209': {
+        keywords: ["decreto 209", "reglamento seguridad privada", "que es el decreto 209"],
+        response: '🤖📘 **DECRETO 209 - REGLAMENTO DE SEGURIDAD PRIVADA:**\n\nReglamento principal de la Ley 21.659, vigente desde el 28-NOV-2025.\n\n**REGULA:** Requisitos de todos los componentes del sistema, directivas de funcionamiento, uniformes, cursos, infracciones y empresas de seguridad privada.\n\n**TRAMITACIÓN:** Ante la SPD\n👉 https://segprivada.minsegpublica.gob.cl/'
+    },
+
+    'rule_decreto_208': {
+        keywords: ["decreto 208", "reglamento 208", "que es el decreto 208"],
+        response: '🤖🏟️ **DECRETO 208 - REGLAMENTO EVENTOS MASIVOS:**\n\nReglamento de la Ley 21.659 para eventos con más de 3.000 personas, vigente desde el 28-NOV-2025.\n\n**EXIGE:** Directiva de Funcionamiento específica, organizador responsable, encargado de seguridad, guardias capacitados, CCTV, coordinación con Carabineros y seguro de responsabilidad civil.\n\n**TRAMITACIÓN:** Ante la SPD\n👉 https://segprivada.minsegpublica.gob.cl/'
+    },
+
+    // ==================== COMPONENTES CON LOGO SPD → TRAMITAR EN SPD ====================
+
+    'rule_spd_tramitar': {
+        keywords: ["tramitar vigilante", "tramitar guardia", "tramitar supervisor", "tramitar capacitador", "tramitar portero", "tramitar nochero", "tramitar conserje", "tramitar empresa seguridad", "tramitar empresa capacitacion", "tramitar empresa electronica", "tramitar empresa asesoria", "tramitar empresa recursos humanos", "tramitar empresa externalizacion", "tramitar empresa custodia", "donde tramito", "donde tramitar credencial", "logo spd", "componente spd", "tramite spd"],
+        response: '🤖🏛️ **¡ATENCIÓN! TRÁMITE EN LA SPD** 🔵\n\nEste componente tiene el logo **SPD** en la página. El trámite se realiza en la **Subsecretaría de Prevención del Delito**, NO en la oficina OS10.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**COMPONENTES QUE SE TRAMITAN EN SPD:**\n👮 Vigilante Privado\n🛡️ Guardia de Seguridad\n👀 Supervisor de Seguridad\n👀 Supervisor de Vigilantes Privados\n👨‍🏫 Capacitador\n🚪 Portero / Nochero / Rondín / Conserje\n🏢 Empresas de Seguridad Privada (todos los tipos)\n📄 Doc. Editables SPD (formatos y plantillas)\n\n**SE TRAMITAN EN OS10 (Carabineros):**\n- Jefe de Seguridad\n- Encargado de Seguridad\n- Asesor de Seguridad\n- Técnico en Seguridad / Instalador / Operador de Cámaras\n- Encargado de Armas\n- Empresa Transporte de Valores\n\n📞 OS10 Coquimbo: 512651024 / 512651023\n📧 spd-cargadimensionada@minsegpublica.gob.cl'
+    },
+
+    'rule_spd_doc_editables': {
+        keywords: ["documentos editables spd", "formatos spd", "descargar formatos spd", "formato estudio seguridad spd", "formato plan seguridad spd", "formato declarar dueños", "formato declarar socios", "plantilla inicio curso", "plantilla termino curso", "plantilla servicio custodia", "declaracion jurada spd", "descargables spd"],
+        response: '🤖📄 **DOC. EDITABLES SPD** 🔵\n\nLos documentos con logo SPD se descargan desde:\n\n👉 **https://segprivada.minsegpublica.gob.cl/descargables**\n\n**DISPONIBLES:**\n📋 Entidades con Medidas de Seguridad:\n- Formato declarar dueños y socios\n- Formato Estudio de Seguridad\n- Formato Planes de Seguridad (sucursal)\n\n📋 Entidades con Sistema de Vigilancia Privada:\n- Formato declarar dueños y socios\n- Formato Estudio de Seguridad\n- Formato Planes de Seguridad (sucursal)\n\n📋 Mod. Declaración Jurada SPD\n\n🎓 Planes y Programas de Capacitación:\n👉 **https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones**\n- Plantilla informar inicio de curso\n- Plantilla informar término de curso\n- Plantilla informar servicio de custodia'
     }
-    
+
 };
 
 const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada O.S.10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada bajo la LEY 21.659 Y DECRETO 209, profesional.
@@ -1179,6 +1203,7 @@ Tus reglas principales son:
 7.- **Nueva Ley de seguridad privada:** La Ley 21.659 entra en vigencia el 28-NOV-2025. El Decreto 209 y 208 son sus reglamentos. Toda información debe referirse a esta nueva ley, no a leyes anteriores.
 8.- **infracciones de seguridad privada:** Siempre que te pregunten por infracciones entrega información detallada según Art. 94 (Gravísimas), Art. 96 (Graves) y Art. 98 (Leves) de la Ley 21.659.
 9.- **Requisitos de personal:** Entrega requisitos según Art. 46 (generales) y Decreto 209 (específicos) para cada componente del sistema.
+10.- **Logo SPD = tramitar en SPD:** Los componentes con logo SPD (Vigilante, Guardia, Supervisor, Capacitador, Portero/Nochero/Conserje, todas las Empresas de Seguridad excepto Transporte de Valores, Doc. Editables SPD) se tramitan en https://segprivada.minsegpublica.gob.cl/ — NO en OS10. Los sin badge SPD (Jefe, Encargado, Asesor, Técnico, Instalador, Operador de Cámaras, Encargado de Armas, Empresa Transporte de Valores) se tramitan en OS10.
 Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.`;
 
 // Hacer variables globalmente accesibles
