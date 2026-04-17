@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(python3 -c \":*)",
-      "Bash(python -c \":*)"
+      "Bash(python -c \":*)",
+      "Bash(find \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\" -type f -name \"*.js\" -exec grep -l \"spd\\\\|SPD\" {} \\\\;)",
+      "Bash(node --check rules/chatbot-rules.js)",
+      "Bash(node --check assets/js/chatbot.js)",
+      "Bash(node --check assets/js/chatbot.min.js)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(node -e \"const r = require\\('./rules/chatbot-rules.js'\\); \")",
+      "Bash(node -e ' *)",
+      "Bash(echo \"EXIT:$?\")"
     ]
   }
 }
