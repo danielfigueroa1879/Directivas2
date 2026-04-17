@@ -846,8 +846,10 @@ async function speakWithElevenLabs(text) {
         // Si NO se encuentra una respuesta, consultar a la IA
         addTypingIndicator();
         try {
-            // Combinar el prompt del sistema con la pregunta del usuario
-            const fullPrompt = `${systemPrompt}\n\n**User Query:**\n${text}\n\n**Knowledge Base for reference (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Response:**`;
+            // Combinar el prompt del sistema con la pregunta del usuario.
+            // NOTA: No se adjunta la base de reglas (allRules) porque ya se buscó
+            // localmente con findExactMatch(). Enviarla provoca 413 Payload Too Large.
+            const fullPrompt = `${systemPrompt}\n\n**User Query:**\n${text}\n\n**Response:**`;
 
             console.log("-> Fallback a Asistente Inteligente (Gemini). Enviando prompt:", fullPrompt); // Log para confirmar el fallback
 
