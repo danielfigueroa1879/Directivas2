@@ -779,7 +779,7 @@ async function speakWithElevenLabs(text) {
                 else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "Ver OS10";
                 else if (cleanedUrl.includes('segprivada.minsegpublica.gob.cl')) {
                     buttonText = "PAGINA (SPD)";
-                    buttonClass = "bg-blue-100 hover:bg-blue-200 border border-blue-500/50 text-blue-800";
+                    buttonClass = "bg-blue-600 hover:bg-blue-700 border border-blue-700 text-white";
                 }
                 return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left ${buttonClass} text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
             });
