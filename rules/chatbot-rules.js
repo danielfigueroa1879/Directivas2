@@ -1164,108 +1164,8 @@ response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGA
     'rule_portero_duracion': {
         keywords: ["cuanto dura portero", "vigencia portero", "nochero duracion"],
         response: '🤖🚪 **PORTERO/NOCHERO/RONDÍN - DURACIÓN:**\n\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n✅ NO requiere curso nuevo al cambiar empleador'
-    },
-
-    // ==================== DECRETOS 208 Y 209 - SPD ====================
-
-    'rule_decreto_209': {
-        keywords: ["decreto 209", "reglamento seguridad privada", "que es el decreto 209"],
-        response: '🤖📘 **DECRETO 209 - REGLAMENTO DE SEGURIDAD PRIVADA:**\n\nEs el reglamento principal de la Ley 21.659, vigente desde el 28-NOV-2025.\n\n**REGULA:**\n- Requisitos de todos los componentes del sistema (guardias, vigilantes, jefes, encargados, supervisores, asesores, capacitadores)\n- Directivas de funcionamiento\n- Uniformes y elementos defensivos\n- Estudios de seguridad\n- Cursos y capacitaciones\n- Infracciones y sanciones\n- Empresas de seguridad privada\n\n**TRAMITACIÓN:** Ante la SPD\n👉 https://segprivada.minsegpublica.gob.cl/'
-    },
-
-    'rule_decreto_208': {
-        keywords: ["decreto 208", "reglamento 208", "que es el decreto 208"],
-        response: '🤖🏟️ **DECRETO 208 - REGLAMENTO EVENTOS MASIVOS:**\n\nReglamento de la Ley 21.659 que regula la seguridad en eventos con más de 3.000 personas, vigente desde el 28-NOV-2025.\n\n**EXIGE:**\n- Directiva de Funcionamiento específica para el evento\n- Organizador responsable designado\n- Encargado de Seguridad de Eventos\n- Guardias capacitados\n- Medios tecnológicos: CCTV, control de acceso\n- Coordinación con Carabineros y autoridades\n- Seguro de responsabilidad civil\n- Autorización de la Delegación Presidencial\n\n**TRAMITACIÓN:** Ante la SPD\n👉 https://segprivada.minsegpublica.gob.cl/'
-    },
-
-    'rule_spd_logo': {
-        keywords: ["logo spd", "tramite spd", "donde tramito", "donde tramitar", "componente spd", "trámite en spd", "como tramitar en spd", "que tramitar en spd"],
-        response: '🤖🏛️ **TRÁMITES ANTE LA SPD:**\n\nTodo componente o trámite marcado con el logo **SPD** debe gestionarse directamente en la plataforma de la Subsecretaría de Prevención del Delito:\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**SE TRAMITAN EN SPD:**\n- Vigilante Privado\n- Guardia de Seguridad\n- Supervisor de Seguridad\n- Supervisor de Vigilantes Privados\n- Capacitador\n- Portero / Nochero / Rondín / Conserje\n- Todas las Empresas de Seguridad (excepto Transporte de Valores)\n- Doc. Editables: formatos Ent. Medidas de Seguridad y Ent. Sistema Vigilancia Privada\n- Planes y Programas de Capacitación (plantillas)\n- Mod. Declaración Jurada SPD\n\n**SE TRAMITAN EN OS10 (Carabineros):**\n- Jefe de Seguridad\n- Encargado de Seguridad\n- Asesor de Seguridad\n- Técnico en Seguridad\n- Instalador Técnico\n- Operador de Cámaras\n- Encargado de Armas\n- Empresa Transporte de Valores\n\n**CONTACTO SPD:**\n📧 spd-cargadimensionada@minsegpublica.gob.cl\n📧 spd-capacitacionessp@minsegpublica.gob.cl'
-    },
-
-    // ==================== REGLAS SPD POR COMPONENTE ====================
-
-    'rule_spd_vigilante': {
-        keywords: ["tramitar vigilante", "credencial vigilante", "autorizar vigilante", "solicitud vigilante privado", "como obtener credencial vigilante", "acreditacion vigilante"],
-        response: '🤖👮 **VIGILANTE PRIVADO - TRÁMITE SPD** 🔵\n\nEste componente lleva el logo **SPD**. El trámite se realiza ante la **Subsecretaría de Prevención del Delito**, NO en la oficina OS10.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**REQUISITOS GENERALES (Art. 46 Ley 21.659):**\n- Mayor de edad, enseñanza media, salud compatible\n- Sin condenas por crimen o delito\n- Sin acusaciones por delitos específicos\n\n**REQUISITOS DECRETO 209:**\n- Curso: 100 horas pedagógicas\n- Perfeccionamiento: 40 horas cada 2 años\n- Credencial vigente (2 años)\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_guardia': {
-        keywords: ["tramitar guardia", "credencial guardia", "autorizar guardia", "solicitud guardia de seguridad", "como obtener credencial guardia", "acreditacion guardia"],
-        response: '🤖🛡️ **GUARDIA DE SEGURIDAD - TRÁMITE SPD** 🔵\n\nEste componente lleva el logo **SPD**. El trámite se realiza ante la **Subsecretaría de Prevención del Delito**, NO en la oficina OS10.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**REQUISITOS DECRETO 209:**\n- Curso: 90 horas pedagógicas (Art. 89)\n- Perfeccionamiento: 36 horas cada 4 años\n- Credencial vigente (4 años, emitida por SPD)\n- Chaleco anticorte obligatorio (Art. 93)\n- Seguro de vida mínimo 132 UF\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_supervisor': {
-        keywords: ["tramitar supervisor", "credencial supervisor", "autorizar supervisor", "solicitud supervisor de seguridad", "acreditacion supervisor"],
-        response: '🤖👀 **SUPERVISOR DE SEGURIDAD - TRÁMITE SPD** 🔵\n\nEste componente lleva el logo **SPD**. El trámite se realiza ante la **Subsecretaría de Prevención del Delito**, NO en la oficina OS10.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**REQUISITOS:**\n- Cumplir Art. 46 Ley 21.659\n- Si tiene curso guardia: +30 hrs supervisión (mín. 120 hrs total)\n- Si tiene curso vigilante: +20 hrs supervisión (mín. 120 hrs total)\n- Autorización SPD\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_supervisor_vigilantes': {
-        keywords: ["tramitar supervisor vigilantes", "credencial supervisor vigilantes privados", "supervisor de vigilantes privados", "acreditacion supervisor vigilantes"],
-        response: '🤖👀 **SUPERVISOR DE VIGILANTES PRIVADOS - TRÁMITE SPD** 🔵\n\nEste componente lleva el logo **SPD**. El trámite se realiza ante la **Subsecretaría de Prevención del Delito**, NO en la oficina OS10.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**REQUISITOS:**\n- Cumplir Art. 46 Ley 21.659\n- Curso de supervisión de vigilantes privados\n- Autorización SPD\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_capacitador': {
-        keywords: ["tramitar capacitador", "credencial capacitador", "autorizar capacitador", "solicitud capacitador seguridad", "acreditacion capacitador"],
-        response: '🤖👨‍🏫 **CAPACITADOR - TRÁMITE SPD** 🔵\n\nEste componente lleva el logo **SPD**. El trámite se realiza ante la **Subsecretaría de Prevención del Delito**, NO en la oficina OS10.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**REQUISITOS (Art. 104-105 Decreto 209):**\n- Cumplir Art. 46 Ley 21.659\n- Título profesional o técnico superior\n- Diplomado en seguridad privada o gestión seguridad empresarial\n- Cada especialidad tiene requisitos propios (abogado para legislación/DDHH, profesional salud para primeros auxilios, etc.)\n- Autorización SPD previo informe Carabineros\n\n📧 Contacto capacitación: spd-capacitacionessp@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_portero': {
-        keywords: ["tramitar portero", "credencial portero", "tramitar nochero", "credencial nochero", "tramitar rondin", "tramitar conserje", "autorizar portero", "acreditacion portero"],
-        response: '🤖🚪 **PORTERO / NOCHERO / RONDÍN / CONSERJE - TRÁMITE SPD** 🔵\n\nEste componente lleva el logo **SPD**. El trámite se realiza ante la **Subsecretaría de Prevención del Delito**, NO en la oficina OS10.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**REQUISITOS DECRETO 209:**\n- Cumplir Art. 46 Ley 21.659\n- Curso de formación: 60 horas pedagógicas\n- Perfeccionamiento: 30 horas cada 4 años\n- Credencial vigente (4 años)\n- Autorización SPD\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    // ==================== EMPRESAS SPD ====================
-
-    'rule_spd_empresa_seguridad': {
-        keywords: ["tramitar empresa seguridad", "crear empresa seguridad privada", "autorizar empresa seguridad", "constituir empresa seguridad", "requisitos empresa seguridad privada spd"],
-        response: '🤖🏢 **EMPRESA DE SEGURIDAD PRIVADA - TRÁMITE SPD** 🔵\n\nEste trámite lleva el logo **SPD**. Debe gestionarse ante la **Subsecretaría de Prevención del Delito**.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**REQUISITOS:**\n- Constitución legal como persona jurídica\n- Objeto social específico en seguridad privada\n- Medios humanos, técnicos y financieros\n- Seguros obligatorios para el personal\n- Socios sin antecedentes penales\n- Autorización SPD (vigencia 4 años)\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_empresa_capacitacion': {
-        keywords: ["tramitar empresa capacitacion", "crear empresa capacitacion seguridad", "autorizar otec seguridad", "constituir empresa capacitacion", "empresa capacitacion spd"],
-        response: '🤖🎓 **EMPRESA DE CAPACITACIÓN (OTEC) - TRÁMITE SPD** 🔵\n\nEste trámite lleva el logo **SPD**. Debe gestionarse ante la **Subsecretaría de Prevención del Delito**.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**PUEDEN SER:** OTEC, universidades, institutos profesionales, centros de formación técnica.\n\n**REQUISITOS:**\n- Autorización SPD\n- Instalaciones idóneas\n- Capacitadores autorizados\n- Programas aprobados\n\n📧 Contacto: spd-capacitacionessp@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_empresa_electronica': {
-        keywords: ["tramitar empresa electronica", "crear empresa seguridad electronica", "autorizar empresa alarmas", "empresa cctv spd", "empresa electronica seguridad spd"],
-        response: '🤖📹 **EMPRESA DE SEGURIDAD ELECTRÓNICA - TRÁMITE SPD** 🔵\n\nEste trámite lleva el logo **SPD**. Debe gestionarse ante la **Subsecretaría de Prevención del Delito**.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**SERVICIOS:** Instalación/mantenimiento de sistemas, operación de centrales de alarmas/CCTV, videovigilancia.\n\n**REQUISITOS:**\n- Autorización SPD\n- Personal calificado\n- Certificados de dispositivos\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_empresa_asesoria': {
-        keywords: ["tramitar empresa asesoria", "crear empresa asesoria seguridad", "autorizar empresa asesoria", "empresa asesoria seguridad spd"],
-        response: '🤖💼 **EMPRESA DE ASESORÍA EN SEGURIDAD PRIVADA - TRÁMITE SPD** 🔵\n\nEste trámite lleva el logo **SPD**. Debe gestionarse ante la **Subsecretaría de Prevención del Delito**.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**SERVICIOS:** Consultoría y elaboración de estudios de seguridad.\n\n**REQUISITOS:**\n- Autorización SPD\n- Asesores de seguridad certificados\n- Objeto social específico\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_empresa_rrhhh': {
-        keywords: ["tramitar empresa recursos humanos seguridad", "empresa recursos humanos spd", "autorizar empresa rrhh seguridad", "empresa suministro personal seguridad"],
-        response: '🤖👥 **EMPRESA DE RECURSOS HUMANOS (SEGURIDAD) - TRÁMITE SPD** 🔵\n\nEste trámite lleva el logo **SPD**. Debe gestionarse ante la **Subsecretaría de Prevención del Delito**.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**OBJETO:** Suministro de personal de seguridad privada.\n\n**REQUISITOS:**\n- Autorización SPD (vigencia 4 años)\n- Objeto social específico\n- Seguros de vida para el personal\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_empresa_externalizacion': {
-        keywords: ["tramitar empresa externalizacion", "empresa externalizacion vigilantes", "autorizar externalizacion vvpp", "empresa externalizacion spd"],
-        response: '🤖🔄 **EMPRESA DE EXTERNALIZACIÓN DE VIGILANTES PRIVADOS - TRÁMITE SPD** 🔵\n\nEste trámite lleva el logo **SPD**. Debe gestionarse ante la **Subsecretaría de Prevención del Delito**.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**OBJETO:** Servicios de vigilancia privada externalizados con vigilantes privados.\n\n**REQUISITOS:**\n- Autorización SPD\n- Vigilantes privados certificados por SPD\n- Directiva de funcionamiento aprobada\n\n📧 Contacto: spd-cargadimensionada@minsegpublica.gob.cl'
-    },
-
-    'rule_spd_empresa_custodia': {
-        keywords: ["tramitar empresa custodia", "empresa custodia carga sobredimensionada", "empresa transporte carga sobredimensionada", "empresa custodia spd"],
-        response: '🤖🚚 **EMPRESA CUSTODIA Y TRANSPORTE CARGA SOBREDIMENSIONADA - TRÁMITE SPD** 🔵\n\nEste trámite lleva el logo **SPD**. Debe gestionarse ante la **Subsecretaría de Prevención del Delito**.\n\n👉 **https://segprivada.minsegpublica.gob.cl/**\n\n**TRAMITACIÓN TRANSITORIA:**\n📧 spd-cargadimensionada@minsegpublica.gob.cl\n\n*(Vigente hasta implementación de módulos electrónicos en la plataforma SPD)*'
-    },
-
-    // ==================== DOC. EDITABLES SPD ====================
-
-    'rule_spd_doc_editables': {
-        keywords: ["documentos editables spd", "formatos spd", "descargar formatos spd", "doc editables spd", "donde descargar formatos", "formato estudio seguridad spd", "formato plan seguridad spd", "formato declarar dueños socios", "formato declarar socios", "plantilla curso spd", "plantilla inicio curso", "plantilla termino curso", "plantilla servicio custodia", "declaracion jurada spd"],
-        response: '🤖📄 **DOC. EDITABLES SPD - DESCARGA DE FORMATOS** 🔵\n\nLos documentos con logo **SPD** se descargan desde la plataforma oficial:\n\n👉 **https://segprivada.minsegpublica.gob.cl/descargables**\n\n**FORMATOS DISPONIBLES:**\n\n📋 **Entidades con Medidas de Seguridad:**\n- Formato declarar dueños y socios\n- Formato Estudio de Seguridad\n- Formato Planes de Seguridad (sucursal)\n\n📋 **Entidades con Sistema de Vigilancia Privada:**\n- Formato declarar dueños y socios\n- Formato Estudio de Seguridad\n- Formato Planes de Seguridad (sucursal)\n\n📋 **Mod. Declaración Jurada SPD**\n\n🎓 **Planes y Programas de Capacitación:**\n👉 **https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones**\n- Plantilla informar inicio de curso\n- Plantilla informar término de curso\n- Plantilla informar servicio de custodia'
-    },
-
-    // ==================== OS10 (NO SPD) - ACLARACIÓN ====================
-
-    'rule_os10_componentes': {
-        keywords: ["tramitar jefe seguridad os10", "tramitar encargado os10", "tramitar asesor os10", "tramitar tecnico os10", "tramitar instalador os10", "tramitar operador camaras os10", "tramitar encargado armas os10", "tramitar transporte valores os10"],
-        response: '🤖👮 **TRÁMITES ANTE OS10 (Carabineros) - SIN BADGE SPD:**\n\nEstos componentes se tramitan en la **Prefectura de Carabineros** / **Oficina OS10**, NO en la plataforma SPD:\n\n- Jefe de Seguridad\n- Encargado de Seguridad\n- Asesor de Seguridad\n- Técnico en Seguridad Privada\n- Instalador Técnico\n- Operador de Cámaras y Alarmas\n- Encargado de Armas y Municiones\n- Empresa de Transporte de Valores\n\n📍 **OS10 Coquimbo:**\nCalle Cienfuegos N°180, La Serena\n📞 512651024 / 512651023'
     }
-
+    
 };
 
 const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada O.S.10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada bajo la LEY 21.659 Y DECRETO 209, profesional.
@@ -1277,10 +1177,6 @@ Tus reglas principales son:
 5.- **OS10 COQUIMBO, OFICINA DE SEGURIDAD PRIVADA OS10 COQUIMBO, OFICINA, O.S.10:** Es una oficina que se encuentra en el centro de La Serena, su direccion es Calle Cienfuegos N°180, La Serena, sus fonos son los siguientes: 512651024 o el 512651023.
 6.  **infracciones del os10 - LEY 21.659:** Las infracciones para guardia de seguridad y vigilante privado están clasificadas en GRAVÍSIMAS, GRAVES y LEVES según Art. 94, 96 y 98 de la Ley 21.659 y Decreto 209. Cada una tiene multas específicas en UTM.
 7.- **Nueva Ley de seguridad privada:** La Ley 21.659 entra en vigencia el 28-NOV-2025. El Decreto 209 y 208 son sus reglamentos. Toda información debe referirse a esta nueva ley, no a leyes anteriores.
-10.- **Decreto 209:** Reglamento principal de seguridad privada. Regula guardias, vigilantes, jefes, encargados, directivas de funcionamiento, uniformes, cursos y sanciones. Trámites ante la SPD.
-11.- **Decreto 208:** Reglamento de eventos masivos (más de 3.000 personas). Exige directiva específica, organizador responsable, encargado de seguridad, guardias capacitados, CCTV y coordinación con Carabineros. Trámites ante la SPD.
-12.- **Logo SPD = tramitar en SPD (https://segprivada.minsegpublica.gob.cl/):** Los siguientes componentes tienen badge SPD en la página y su trámite es EXCLUSIVAMENTE ante la Subsecretaría de Prevención del Delito: Vigilante Privado, Guardia de Seguridad, Supervisor de Seguridad, Supervisor de Vigilantes Privados, Capacitador, Portero/Nochero/Rondín/Conserje, todas las Empresas de Seguridad (Recursos Humanos, Capacitación, Seguridad Electrónica, Asesoría, Externalización de VV.PP., Custodia Carga Sobredimensionada), Doc. Editables SPD (formatos Ent. Medidas de Seguridad, Ent. Sistema Vigilancia Privada, Mod. Decl. Jurada SPD, Plantillas Planes y Programas Capacitación).
-13.- **Tramitar en OS10 (Carabineros) - SIN badge SPD:** Los siguientes componentes NO tienen badge SPD y se tramitan en la oficina OS10: Jefe de Seguridad, Encargado de Seguridad, Asesor de Seguridad, Técnico en Seguridad Privada, Instalador Técnico, Operador de Cámaras y Alarmas, Encargado de Armas y Municiones, Empresa de Transporte de Valores.
 8.- **infracciones de seguridad privada:** Siempre que te pregunten por infracciones entrega información detallada según Art. 94 (Gravísimas), Art. 96 (Graves) y Art. 98 (Leves) de la Ley 21.659.
 9.- **Requisitos de personal:** Entrega requisitos según Art. 46 (generales) y Decreto 209 (específicos) para cada componente del sistema.
 Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.`;
