@@ -773,10 +773,15 @@ async function speakWithElevenLabs(text) {
                 const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
                 let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
                 let buttonText = "Google Maps";
+                let buttonClass = "bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800";
                 if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "Descargar";
                 else if (cleanedUrl.includes('bcn.cl')) buttonText = "Ver ley";
                 else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "Ver OS10";
-                return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
+                else if (cleanedUrl.includes('segprivada.minsegpublica.gob.cl')) {
+                    buttonText = "PAGINA (SPD)";
+                    buttonClass = "bg-blue-100 hover:bg-blue-200 border border-blue-500/50 text-blue-800";
+                }
+                return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left ${buttonClass} text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
             });
 
             // TERCERO: Crear botones HTML
@@ -846,10 +851,8 @@ async function speakWithElevenLabs(text) {
         // Si NO se encuentra una respuesta, consultar a la IA
         addTypingIndicator();
         try {
-            // Combinar el prompt del sistema con la pregunta del usuario.
-            // NOTA: No se adjunta la base de reglas (allRules) porque ya se buscó
-            // localmente con findExactMatch(). Enviarla provoca 413 Payload Too Large.
-            const fullPrompt = `${systemPrompt}\n\n**User Query:**\n${text}\n\n**Response:**`;
+            // Combinar el prompt del sistema con la pregunta del usuario
+            const fullPrompt = `${systemPrompt}\n\n**User Query:**\n${text}\n\n**Knowledge Base for reference (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Response:**`;
 
             console.log("-> Fallback a Asistente Inteligente (Gemini). Enviando prompt:", fullPrompt); // Log para confirmar el fallback
 
