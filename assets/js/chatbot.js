@@ -847,16 +847,19 @@ async function speakWithElevenLabs(text) {
         addMessage('user', text);
         input.value = '';
         
-        // Usar la función de búsqueda mejorada
-        const response = findExactMatch(text, allRules);
-        
+        // Si hay conversación en curso (> 1 porque el mensaje actual ya fue añadido),
+        // ir directo a Gemini para que use el historial como contexto.
+        // Solo usar reglas en la primera pregunta (sin historial previo).
+        const hasHistory = conversationHistory.length > 1;
+        const response = hasHistory ? null : findExactMatch(text, allRules);
+
         // Si se encuentra una respuesta en las reglas, mostrarla
         if (response) {
             setTimeout(() => addMessage('bot', response), 500);
-            return; // Terminar la ejecución aquí
+            return;
         }
 
-        // Si NO se encuentra una respuesta, consultar a la IA
+        // Consultar a Gemini (con historial si aplica)
         addTypingIndicator();
         try {
             console.log("-> Gemini con historial multi-turno. Turnos en contexto:", conversationHistory.length);
