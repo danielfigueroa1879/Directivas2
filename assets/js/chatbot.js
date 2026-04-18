@@ -40,7 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Si el archivo externo no carga o no define `window.responses`, `allRules` será un array vacío.
     const allRules = Object.values(window.responses || {});
 
-    const systemPrompt = window.systemPrompt || 'You are a help assistant.'; 
+    const systemPrompt = window.systemPrompt || 'You are a help assistant.';
+
+    const conversationHistory = [];
+    const MAX_HISTORY = 8; // últimos 4 intercambios (usuario + bot)
 
     // ===== FUNCIONES DE SÍNTESIS DE VOZ MODERNAS MEJORADAS =====
 
@@ -747,7 +750,7 @@ async function speakWithElevenLabs(text) {
 
     // FUNCIÓN CORREGIDA PARA MOSTRAR NEGRITAS
     // ----- MODIFICACIÓN 1: Añadir 'speakMessage = true' -----
-    function addMessage(sender, text, buttons = [], speakMessage = true) {
+    function addMessage(sender, text, buttons = [], speakMessage = true, trackHistory = true) {
         const chatMessages = document.getElementById('chat-messages');
         const messageDiv = document.createElement('div');
         
@@ -820,8 +823,13 @@ async function speakWithElevenLabs(text) {
         messageDiv.innerHTML = content;
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        if (trackHistory) {
+            conversationHistory.push({ role: sender === 'user' ? 'user' : 'model', parts: [{ text }] });
+            while (conversationHistory.length > MAX_HISTORY) conversationHistory.shift();
+        }
     }
-        
+
     window.handleUserButtonClick = (text) => {
          document.getElementById('user-input').value = text;
          handleMessage();
@@ -851,14 +859,16 @@ async function speakWithElevenLabs(text) {
         // Si NO se encuentra una respuesta, consultar a la IA
         addTypingIndicator();
         try {
-            // Combinar el prompt del sistema con la pregunta del usuario
-            const fullPrompt = `${systemPrompt}\n\n**User Query:**\n${text}\n\n**Knowledge Base for reference (JSON):**\n\`\`\`json\n${JSON.stringify(allRules, null, 2)}\n\`\`\`\n\n**Response:**`;
+            console.log("-> Gemini con historial multi-turno. Turnos en contexto:", conversationHistory.length);
 
-            console.log("-> Fallback a Asistente Inteligente (Gemini). Enviando prompt:", fullPrompt); // Log para confirmar el fallback
-
-            // Construir el cuerpo de la solicitud para la API de Gemini
+            // Payload multi-turno: historial completo + instrucción del sistema con reglas
             const geminiPayload = {
-                contents: [{ parts: [{ text: fullPrompt }] }],
+                systemInstruction: {
+                    parts: [{
+                        text: `${systemPrompt}\n\nBase de conocimiento OS10 (úsala como referencia para responder con precisión):\n${JSON.stringify(allRules, null, 2)}`
+                    }]
+                },
+                contents: conversationHistory,
                 safetySettings: [
                     { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
                     { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
@@ -1081,7 +1091,7 @@ async function speakWithElevenLabs(text) {
         const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
         
         // ----- MODIFICACIÓN 3: Pasa 'false' para silenciar este mensaje -----
-        addMessage('bot', randomWelcomeMessage, welcomeButtons, false); 
+        addMessage('bot', randomWelcomeMessage, welcomeButtons, false, false);
 
     }, 1000);
 });
