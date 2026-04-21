@@ -406,7 +406,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // ── DRILL-DOWN NAVIGATION (reemplaza acordeones en mobile) ──
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
 
-        if (window.innerWidth < 1024) {
+        // Estructura drill-down: creada SIEMPRE (no solo si window.innerWidth < 1024)
+        // para que al simular móvil desde DevTools en PC también se aplique el layout
+        // correcto (spacer + panel scrollable) y "Leyes y Normativa" no quede detrás del pill.
+        {
             // 1. Envolver contenido existente en panel principal
             // Máscara sticky — tapa el scroll detrás del pill sin añadir capa extra de blur
             const scrollMask = document.createElement('div');
@@ -551,36 +554,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-        } else {
-            // Desktop: mantener acordeón normal
-            submenuButtons.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const parent = this.closest('.has-submenu');
-                    const submenu = parent.querySelector('.submenu');
-                    const arrow = this.querySelector('.submenu-arrow');
-                    document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(function(other) {
-                        if (other !== parent) {
-                            other.classList.remove('submenu-open');
-                            const os = other.querySelector('.submenu'); const oa = other.querySelector('.submenu-arrow');
-                            if (os) os.classList.remove('show'); if (oa) oa.style.transform = '';
-                        }
-                    });
-                    const isOpen = parent.classList.contains('submenu-open');
-                    if (isOpen) { parent.classList.remove('submenu-open'); if (submenu) submenu.classList.remove('show'); if (arrow) arrow.style.transform = ''; }
-                    else { parent.classList.add('submenu-open'); if (submenu) submenu.classList.add('show'); if (arrow) arrow.style.transform = 'rotate(90deg)'; }
-                });
-            });
-            document.querySelectorAll('#mobile-dropdown .nested-btn').forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const parent = this.closest('.has-nested'); const menu = parent.querySelector('.nested-menu'); const arrow = this.querySelector('.nested-arrow');
-                    const isOpen = parent.classList.contains('nested-open');
-                    if (isOpen) { parent.classList.remove('nested-open'); if (menu) menu.classList.remove('show'); if (arrow) arrow.style.transform = ''; }
-                    else { parent.classList.add('nested-open'); if (menu) menu.classList.add('show'); if (arrow) arrow.style.transform = 'rotate(90deg)'; }
-                });
-            });
         }
+        // Nota: la rama else (acordeón escritorio para mobile-dropdown) se eliminó
+        // porque en escritorio #mobile-menu-btn está oculto y el mobile-dropdown
+        // no se abre — los handlers drill-down ya no interfieren en PC.
         
         
         // ===== EVITAR CIERRE AUTOMÁTICO DEL MENÚ EN MÓVIL =====
