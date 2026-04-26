@@ -38,14 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Abrir submenú
         function openSubmenu() {
             clearTimeout(closeTimeout);
-            // Cerrar otros submenús primero
+            // Leer geometría ANTES de cualquier escritura para evitar reflow forzado
+            positionSubmenu();
+            // Cerrar otros submenús después de las lecturas
             if (currentOpenSubmenu && currentOpenSubmenu !== submenu) {
                 currentOpenSubmenu.style.opacity = '0';
                 currentOpenSubmenu.style.visibility = 'hidden';
                 currentOpenSubmenu.style.pointerEvents = 'none';
                 currentOpenSubmenu.style.transform = 'translateY(-6px)';
             }
-            positionSubmenu();
             submenu.style.visibility = 'visible';
             submenu.style.transition = 'opacity 0.16s cubic-bezier(0.16,1,0.3,1), transform 0.18s cubic-bezier(0.16,1,0.3,1), visibility 0s linear 0s';
             requestAnimationFrame(() => {
@@ -235,12 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
    (extraído desde index.html, línea 3459)
 ============================================================ */
 // Contador de visitas: REST API directa → elimina 34 KiB de Firebase SDK.
-        // Misma lógica: lee PRE-incremento + incremento atómico en paralelo.
-        const runWhenIdle = window.requestIdleCallback
-            ? (cb) => requestIdleCallback(cb, { timeout: 4000 })
-            : (cb) => setTimeout(cb, 3500);
-
-        runWhenIdle(async () => {
+        // Espera al evento load + 3s para no competir con LCP/FCP.
+        window.addEventListener('load', () => setTimeout(async () => {
             const counterSpan = document.getElementById('visit-counter');
             const PROJECT = 'cuenta-946e2';
             const KEY = 'AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U';
@@ -274,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch {
                 if (counterSpan) counterSpan.textContent = '—';
             }
-        });
+        }, 3000)); // 3s después de load → fuera de la ventana LCP
 
 
 /* ============================================================
@@ -1043,8 +1040,9 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 prev.classList.remove('active', 'alt');
                 prev.style.animation = 'none';
-                prev.offsetHeight; // reflow
-                prev.style.animation = '';
+                requestAnimationFrame(function() {
+                    prev.style.animation = '';
+                });
             }, 1900);
         }, 9000);
     }
