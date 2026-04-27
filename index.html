@@ -1329,15 +1329,31 @@ body {
             padding-right: 0.75rem !important;
         }
         #banner > div > div:first-child {
-            flex: 0 0 auto !important;
+            flex: 0 1 auto !important;
+            min-width: 0 !important;
+        }
+        /* En móvil, la imagen de aniversario puede achicarse si falta espacio */
+        #banner-aniversario {
+            max-width: 56px !important;
+            flex-shrink: 1 !important;
         }
         #search-center-container {
-            flex: 1 1 0 !important;
-            min-width: 0 !important;
+            flex: 1 1 auto !important;
+            min-width: 44px !important;
             display: flex !important;
             justify-content: center !important;
-            padding: 0 !important;
-            overflow: hidden !important;
+            padding: 0 0 0 0.5rem !important;
+            overflow: visible !important;
+        }
+        /* La lupa siempre tiene su espacio mínimo, nunca se oculta */
+        #global-search-button {
+            flex: 0 0 auto !important;
+            min-width: 44px !important;
+            min-height: 44px !important;
+            margin-left: 0.5rem !important;
+        }
+        #global-search-button .search-icon {
+            display: block !important;
         }
         #banner > div > div:last-child {
             flex: 0 0 auto !important;
@@ -1367,7 +1383,13 @@ body {
             box-shadow: 0 2px 20px rgba(0,0,0,0.08) !important;
             border-radius: 9999px !important;
             z-index: 1200 !important;
-            overflow: hidden !important;
+            overflow: visible !important;
+        }
+        /* Permitir que el escudo de aniversario sobresalga del pill sin recortarse */
+        #banner > div { overflow: visible !important; }
+        #banner-aniversario {
+            position: relative;
+            z-index: 2;
         }
 
         /* Sin padding en body — el hero llega hasta arriba como Mobbin */
@@ -1776,6 +1798,7 @@ body {
         <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center space-x-1 h-10">
           <img src="assets/images/logo-os10.webp" srcset="assets/images/logo-os10.webp 1x, assets/images/logo-os10@2x.webp 2x" alt="OS10 Logo" class="h-full" loading="lazy" width="41" height="41">
         </a>
+        <img id="banner-aniversario" src="assets/images/aniversario1.webp" alt="100 años Camino al Centenario - Carabineros de Chile 1927-2027" class="h-7 sm:h-9 lg:h-14 w-auto object-contain flex-shrink ml-2 sm:ml-2 lg:ml-3" loading="lazy" width="150" height="100">
       </div>
       <div id="search-center-container" class="flex-grow flex justify-center px-4">
       </div>
