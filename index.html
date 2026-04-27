@@ -1325,41 +1325,56 @@ body {
             display: flex !important;
             align-items: center !important;
             overflow: hidden !important;
-            padding-left: 0.5rem !important;
-            padding-right: 0.75rem !important;
+            padding-left: 0 !important;
+            padding-right: 1.5rem !important;
+            justify-content: flex-start !important;
+            gap: 0 !important;
         }
         #banner > div > div:first-child {
             flex: 0 0 auto !important;
         }
-        /* En móvil, la imagen de aniversario puede achicarse si falta espacio */
+        /* En móvil, la imagen de aniversario tiene tamaño fijo, sin recorte */
         #banner-aniversario {
-            max-width: 56px !important;
+            width: 70px !important;
+            max-width: 70px !important;
             flex-shrink: 0 !important;
-            margin-left: 1.25rem !important;
+            margin-left: 0.5rem !important;
         }
         #search-center-container {
-            flex: 1 1 auto !important;
+            flex: 0 0 auto !important;
             min-width: 44px !important;
             display: flex !important;
-            justify-content: flex-end !important;
-            padding: 0 0 0 1.25rem !important;
+            justify-content: flex-start !important;
+            padding: 0 !important;
+            margin: 0 0 0 auto !important;
             overflow: visible !important;
         }
         /* La lupa siempre tiene su espacio mínimo, nunca se oculta */
         #global-search-button {
             flex: 0 0 auto !important;
-            min-width: 44px !important;
-            min-height: 44px !important;
-            margin-left: 1.25rem !important;
-            margin-right: 0.5rem !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
+            padding: 6px !important;
+            margin: 0 !important;
         }
         #global-search-button .search-icon {
             display: block !important;
         }
-        #banner > div > div:last-child {
+        #banner > div > div:last-child,
+        #banner-counter-group {
             flex: 0 0 auto !important;
             display: flex !important;
             align-items: center !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 1.25rem !important;
+            padding: 0 !important;
+        }
+        /* Forzar al grupo del logo a no expandirse */
+        #banner > div > div:first-child {
+            margin-right: 0 !important;
+            padding: 0 !important;
         }
     }
 
@@ -1799,11 +1814,11 @@ body {
         <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center space-x-1 h-10">
           <img src="assets/images/logo-os10.webp" srcset="assets/images/logo-os10.webp 1x, assets/images/logo-os10@2x.webp 2x" alt="OS10 Logo" class="h-full" loading="lazy" width="41" height="41">
         </a>
-        <img id="banner-aniversario" src="assets/images/aniversario1.webp" alt="100 años Camino al Centenario - Carabineros de Chile 1927-2027" class="h-7 sm:h-9 lg:h-14 w-auto object-contain flex-shrink ml-4 sm:ml-4 lg:ml-3" loading="lazy" width="150" height="100">
+        <img id="banner-aniversario" src="assets/images/aniversario1.webp" alt="100 años Camino al Centenario - Carabineros de Chile 1927-2027" class="h-11 sm:h-12 lg:h-20 w-auto object-contain flex-shrink-0 ml-4 sm:ml-4 lg:ml-3" loading="lazy" width="150" height="100">
       </div>
       <div id="search-center-container" class="flex-grow flex justify-center px-4">
       </div>
-      <div class="flex items-center space-x-2 banner-text-small">
+      <div id="banner-counter-group" class="flex items-center space-x-2 banner-text-small">
         <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
