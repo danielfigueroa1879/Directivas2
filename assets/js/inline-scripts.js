@@ -1128,6 +1128,7 @@ document.addEventListener('DOMContentLoaded', function() {
    BLOQUE 15: Google Translate - funciones del traductor
    (extraído desde index.html, línea 4352)
 ============================================================ */
+var _gtLoaded = false;
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
         pageLanguage: 'es',
@@ -1135,9 +1136,17 @@ function googleTranslateElementInit() {
         autoDisplay: false
     }, 'google_translate_element');
 }
+function _loadGoogleTranslate() {
+    if (_gtLoaded) return;
+    _gtLoaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.body.appendChild(s);
+}
 function toggleLangMenu(e) {
     e.stopPropagation();
     document.getElementById('lang-selector').classList.toggle('open');
+    _loadGoogleTranslate();
 }
 // Cerrar menú de idioma al hacer clic fuera
 document.addEventListener('click', function(e) {
