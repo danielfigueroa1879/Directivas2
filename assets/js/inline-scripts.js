@@ -1078,25 +1078,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function loadDeferredImages() {
-        var loadFn = (typeof requestIdleCallback !== 'undefined')
-            ? requestIdleCallback
-            : function(cb) { setTimeout(cb, 2000); };
-
-        loadFn(function() {
-            var idx = 0;
-            function loadNext() {
-                if (idx >= deferred.length) return;
-                var src = deferred[idx++];
-                loadImage(src, function(ok) {
-                    if (ok) {
-                        slides.push(createSlide(src));
-                    }
-                    // Cargar siguiente con pequeño delay para no saturar la red
-                    setTimeout(loadNext, 300);
-                });
-            }
-            loadNext();
-        });
+        var deferredIdx = 0;
+        function loadOne() {
+            if (deferredIdx >= deferred.length) return;
+            var src = deferred[deferredIdx++];
+            loadImage(src, function(ok) {
+                if (ok) slides.push(createSlide(src));
+            });
+        }
+        // Precargar 1 imagen 6s después del inicio (lista antes de la primera transición a los 9s)
+        setTimeout(loadOne, 6000);
+        // Luego 1 imagen por cada ciclo del carrusel
+        setInterval(loadOne, 9000);
     }
 })();
 }); // DOMContentLoaded - Bloque 13
@@ -1186,5 +1179,68 @@ function setLang(langCode, label, btn) {
         location.reload();
     }
 }
+
+
+/* ============================================================
+   BLOQUE 16: Lazy loading de Chatbot (solo al primer click)
+============================================================ */
+(function() {
+    var chatbotLoaded = false;
+    function loadChatbot(callback) {
+        if (chatbotLoaded) { if (callback) callback(); return; }
+        chatbotLoaded = true;
+        var s1 = document.createElement('script');
+        s1.src = './rules/chatbot-rules.js?v=3';
+        s1.onload = function() {
+            var s2 = document.createElement('script');
+            s2.src = 'assets/js/chatbot.min.js';
+            if (callback) s2.onload = callback;
+            document.body.appendChild(s2);
+        };
+        document.body.appendChild(s1);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('chat-toggle-button');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+            loadChatbot();
+        }, { once: true });
+    });
+})();
+
+
+/* ============================================================
+   BLOQUE 17: Lazy loading de Search (solo al primer click o Ctrl+K)
+============================================================ */
+(function() {
+    var searchLoaded = false;
+    function loadSearch(callback) {
+        if (searchLoaded) { if (callback) callback(); return; }
+        searchLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'assets/js/search.min.js?v=1';
+        if (callback) s.onload = callback;
+        document.body.appendChild(s);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ctrl+K
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                loadSearch(function() {
+                    var ev = new KeyboardEvent('keydown', { ctrlKey: true, key: 'k', bubbles: true });
+                    document.dispatchEvent(ev);
+                });
+            }
+        }, { once: true });
+        // Botón de búsqueda
+        var searchBtn = document.getElementById('global-search-button') ||
+                        document.querySelector('[aria-label*="uscar"]') ||
+                        document.querySelector('[title*="uscar"]');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() { loadSearch(); }, { once: true });
+        }
+    });
+})();
 
 
