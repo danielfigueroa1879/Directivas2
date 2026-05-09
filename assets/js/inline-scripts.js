@@ -1078,24 +1078,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function loadDeferredImages() {
+        // Garantizar que la carga arranque en máx. 800 ms aunque el browser
+        // no entre en estado idle (frecuente en móvil con scripts pesados).
         var loadFn = (typeof requestIdleCallback !== 'undefined')
-            ? requestIdleCallback
-            : function(cb) { setTimeout(cb, 2000); };
+            ? function(cb) { requestIdleCallback(cb, { timeout: 800 }); }
+            : function(cb) { setTimeout(cb, 500); };
 
         loadFn(function() {
-            var idx = 0;
-            function loadNext() {
-                if (idx >= deferred.length) return;
-                var src = deferred[idx++];
+            // Carga en paralelo: el navegador maneja ~6 conexiones simultáneas,
+            // así que las 19 imágenes terminan en ~2 s en lugar de los ~6 s que
+            // tomaba la cadena secuencial con setTimeout(300ms). Cada slide se
+            // añade al carrusel apenas termina su descarga; los fallos se omiten.
+            deferred.forEach(function(src) {
                 loadImage(src, function(ok) {
                     if (ok) {
                         slides.push(createSlide(src));
                     }
-                    // Cargar siguiente con pequeño delay para no saturar la red
-                    setTimeout(loadNext, 300);
                 });
-            }
-            loadNext();
+            });
         });
     }
 })();
