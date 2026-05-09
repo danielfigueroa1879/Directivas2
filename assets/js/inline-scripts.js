@@ -999,16 +999,20 @@ document.addEventListener('DOMContentLoaded', function() {
     var container = document.getElementById('kb-container');
     if (!container) return;
 
+    // Cache busting — añade ?v=N a cada URL para forzar redescarga cuando se
+    // actualicen las fotos. window.PHOTO_VERSION se define en index.html <head>.
+    var ver = window.PHOTO_VERSION ? ('?v=' + window.PHOTO_VERSION) : '';
+
     // Solo las primeras 2 imágenes para carga inicial inmediata
     var priority = [
-        'assets/images/foto%20(1a).webp',
-        'assets/images/foto%20(1).webp'
+        'assets/images/foto%20(1a).webp' + ver,
+        'assets/images/foto%20(1).webp' + ver
     ];
 
     // El resto se carga de forma diferida
     var deferred = [];
     for (var i = 2; i <= 20; i++) {
-        deferred.push('assets/images/foto%20(' + i + ').webp');
+        deferred.push('assets/images/foto%20(' + i + ').webp' + ver);
     }
 
     var slides = [];
