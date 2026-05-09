@@ -71,12 +71,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- =====================================================
+         VERSIÓN DE FOTOS — INCREMENTAR CUANDO SE REEMPLACEN
+         Sube este número (y CACHE_NAME en sw.js) cada vez que
+         cambies cualquier foto del carrusel. Todos los dispositivos
+         descargarán la versión nueva sin importar la caché previa.
+    ====================================================== -->
+  <script>window.PHOTO_VERSION = '2';</script>
+  <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
          Precarga la imagen de fondo del homepage-section.
          Reduce "Retraso de carga de recursos" de 1260ms a ~0ms.
          fetchpriority="high" indica al navegador máxima prioridad.
+         IMPORTANTE: el ?v=N debe coincidir con window.PHOTO_VERSION arriba
+                     y con el src del <img> en el body.
     ====================================================== -->
-  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp?v=2" fetchpriority="high">
   <!-- =====================================================
          TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
@@ -275,13 +284,16 @@ body.homepage {
 .kb-slide.active.alt {
     animation: kenburns-b 12s ease-in-out forwards;
 }
+/* Las escalas mínimas (1.04) garantizan que el translate nunca exponga
+   un borde vacío del contenedor: para un translate de hasta ±1.5%, scale ≥ 1.03
+   asegura cobertura completa. Mantiene el rango de zoom de ~10%. */
 @keyframes kenburns-a {
-    0%   { transform: scale(1.0)  translate(0%,    0%);    }
-    100% { transform: scale(1.10) translate(-1.5%, -1%);   }
+    0%   { transform: scale(1.04) translate(0%,    0%);    }
+    100% { transform: scale(1.14) translate(-1.5%, -1%);   }
 }
 @keyframes kenburns-b {
-    0%   { transform: scale(1.08) translate(-1%, -0.5%);   }
-    100% { transform: scale(1.0)  translate(1%,   0.5%);   }
+    0%   { transform: scale(1.12) translate(-1%, -0.5%);   }
+    100% { transform: scale(1.04) translate(1%,   0.5%);   }
 }
 /* PWA banner */
 .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; pointer-events: none; }
@@ -2556,7 +2568,7 @@ body {
                 <li>Para empresas deben completar este listado en Word y debe venir en pendrive en formato digital.</li>
                 <a href="https://docs.google.com/document/d/14mzX_kderPmSKiui__WIqVKiRSKgFe7x/edit?usp=drive_link&ouid=106863493232977056654&rtpof=true&sd=true" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">WORD LIST. GG.SS.</a>
               </ul>
-              <div class="mt-4 flex justify-center"><img src="assets/images/foto.webp" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413"></div>
+              <div class="mt-4 flex justify-center"><img src="assets/images/foto.webp?v=2" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413"></div>
               <div class="flex flex-col space-y-3 mt-4">
                 <p class="text-sm italic text-center">Formato JPG, 260 x 320 píxeles, fondo blanco:</p>
               </div>
@@ -2601,8 +2613,9 @@ body {
     <!-- Slides Ken Burns inyectadas por JS -->
     <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
       <!-- Primer slide: <img> real para que sea el elemento LCP con fetchpriority=high -->
+      <!-- ?v=N debe coincidir con window.PHOTO_VERSION en <head> -->
       <div class="kb-slide active">
-        <img src="assets/images/foto%20(1a).webp" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <img src="assets/images/foto%20(1a).webp?v=2" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       </div>
     </div>
     <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
