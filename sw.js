@@ -2,7 +2,7 @@
 // PHOTO_VERSION sincronizado con window.PHOTO_VERSION en index.html.
 // IMPORTANTE: cuando reemplaces fotos, sube PHOTO_VERSION en los 3 lugares
 // (index.html <script>, este archivo, y bumpear el sufijo de CACHE_NAME).
-const PHOTO_VERSION = '2';
+const PHOTO_VERSION = '3';
 const CACHE_NAME = 'directivas-os10-cache-v2.1'; // Subir cuando cambien fotos para forzar limpieza de caché vieja
 
 // Lista de archivos y recursos a cachear durante la instalación
