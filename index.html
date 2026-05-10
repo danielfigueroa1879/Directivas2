@@ -2617,10 +2617,15 @@ body {
       <!-- Primer slide: <img> real para que sea el elemento LCP con fetchpriority=high -->
       <!-- ?v=N debe coincidir con window.PHOTO_VERSION en <head> -->
       <div class="kb-slide active">
-        <picture>
-          <source media="(max-width: 1023px)" srcset="assets/images/foto%20(1b).webp?v=6">
+        <video autoplay muted loop playsinline preload="auto"
+               poster="assets/images/foto%20(1a).webp?v=6"
+               width="960" height="443"
+               aria-label="Video de fondo OS10 Coquimbo"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+               class="kb-hero-video">
+          <source src="assets/images/camioneta.mp4" type="video/mp4">
           <img src="assets/images/foto%20(1a).webp?v=6" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" class="kb-hero-img">
-        </picture>
+        </video>
       </div>
     </div>
     <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
