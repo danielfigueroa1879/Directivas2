@@ -28,6 +28,7 @@ const urlsToCache = [
   // para que los hits del navegador y del SW apunten a la misma entrada de caché.
   './assets/images/foto (1).webp?v=' + PHOTO_VERSION,
   './assets/images/foto (1a).webp?v=' + PHOTO_VERSION,
+  './assets/images/foto (1b).webp?v=' + PHOTO_VERSION,
   './assets/images/foto (2).webp?v=' + PHOTO_VERSION,
   './assets/images/foto (2a).webp?v=' + PHOTO_VERSION,
   './assets/images/foto (3).webp?v=' + PHOTO_VERSION,

@@ -85,7 +85,8 @@
          IMPORTANTE: el ?v=N debe coincidir con window.PHOTO_VERSION arriba
                      y con el src del <img> en el body.
     ====================================================== -->
-  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp?v=5" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp?v=5" fetchpriority="high" media="(min-width: 1024px)">
+  <link rel="preload" as="image" href="assets/images/foto%20(1b).webp?v=5" fetchpriority="high" media="(max-width: 1023px)">
   <!-- =====================================================
          TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
@@ -276,6 +277,7 @@ body.homepage {
     transition: opacity 1.8s ease-in-out;
     z-index: 0;
 }
+.kb-hero-img { object-fit: cover; }
 .kb-slide.active {
     opacity: 1;
     will-change: transform, opacity;
@@ -2615,7 +2617,10 @@ body {
       <!-- Primer slide: <img> real para que sea el elemento LCP con fetchpriority=high -->
       <!-- ?v=N debe coincidir con window.PHOTO_VERSION en <head> -->
       <div class="kb-slide active">
-        <img src="assets/images/foto%20(1a).webp?v=5" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <picture>
+          <source media="(max-width: 1023px)" srcset="assets/images/foto%20(1b).webp?v=5">
+          <img src="assets/images/foto%20(1a).webp?v=5" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" class="kb-hero-img">
+        </picture>
       </div>
     </div>
     <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
