@@ -1034,7 +1034,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         intervalId = setInterval(function() {
             var prev = slides[current];
-            current = (current + 1) % slides.length;
+            // Avanzar al próximo slot con slide cargado; omite huecos (null/false)
+            // de imágenes que todavía no terminan de descargar o que fallaron.
+            var nextIdx = current;
+            var attempts = 0;
+            do {
+                nextIdx = (nextIdx + 1) % slides.length;
+                attempts++;
+                if (attempts > slides.length) return;
+            } while (!slides[nextIdx]);
+            if (nextIdx === current) return;
+            current = nextIdx;
             var next = slides[current];
 
             altToggle = !altToggle;
@@ -1089,15 +1099,16 @@ document.addEventListener('DOMContentLoaded', function() {
             : function(cb) { setTimeout(cb, 500); };
 
         loadFn(function() {
-            // Carga en paralelo: el navegador maneja ~6 conexiones simultáneas,
-            // así que las 19 imágenes terminan en ~2 s en lugar de los ~6 s que
-            // tomaba la cadena secuencial con setTimeout(300ms). Cada slide se
-            // añade al carrusel apenas termina su descarga; los fallos se omiten.
-            deferred.forEach(function(src) {
+            // Carga en paralelo manteniendo el orden numérico: reservamos un
+            // índice fijo por foto en `slides[]` (foto 2 → pos 2, foto 3 → pos 3, …)
+            // y cada imagen aterriza en su slot apenas termina su descarga.
+            // Slots todavía vacíos los omite el carrusel hasta que carguen.
+            var startIndex = slides.length;
+            deferred.forEach(function(src, idx) {
+                var pos = startIndex + idx;
+                slides[pos] = null;
                 loadImage(src, function(ok) {
-                    if (ok) {
-                        slides.push(createSlide(src));
-                    }
+                    slides[pos] = ok ? createSlide(src) : false;
                 });
             });
         });
