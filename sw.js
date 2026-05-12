@@ -3,7 +3,7 @@
 // IMPORTANTE: cuando reemplaces fotos, sube PHOTO_VERSION en los 3 lugares
 // (index.html <script>, este archivo, y bumpear el sufijo de CACHE_NAME).
 const PHOTO_VERSION = '9';
-const CACHE_NAME = 'directivas-os10-cache-v9'; // Subir cuando cambien fotos para forzar limpieza de caché vieja
+const CACHE_NAME = 'directivas-os10-cache-v10'; // Subir cuando cambien fotos para forzar limpieza de caché vieja
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
@@ -114,8 +114,9 @@ self.addEventListener('activate', (event) => {
 
 // Evento 'fetch': Implementa una estrategia "Network first, then cache".
 self.addEventListener('fetch', (event) => {
-  // Ignorar peticiones que no son GET o son de extensiones.
-  if (event.request.method !== 'GET' || event.request.url.startsWith('chrome-extension://') || event.request.url.startsWith('moz-extension://') || event.request.url.includes('netlify/functions/')) {
+  // Ignorar peticiones que no son GET, de extensiones, o de archivos de video.
+  // Los videos usan range requests (HTTP 206) que el SW no puede manejar correctamente.
+  if (event.request.method !== 'GET' || event.request.url.startsWith('chrome-extension://') || event.request.url.startsWith('moz-extension://') || event.request.url.includes('netlify/functions/') || /\.(mp4|webm|mov|ogg)(\?|$)/i.test(event.request.url)) {
     return;
   }
 
