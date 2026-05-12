@@ -56,6 +56,11 @@ body.homepage {
     transition: opacity 1.8s ease-in-out;
     z-index: 0;
 }
+/* Realce sutil extra del video hero (el archivo ya viene con color/contraste mejorado vía ffmpeg) */
+.kb-hero-video {
+    filter: saturate(1.05) contrast(1.03);
+    -webkit-filter: saturate(1.05) contrast(1.03);
+}
 .kb-slide.active {
     opacity: 1;
     will-change: transform, opacity;
