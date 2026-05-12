@@ -1028,37 +1028,56 @@ document.addEventListener('DOMContentLoaded', function() {
         return div;
     }
 
+    function advanceSlide() {
+        var prev = slides[current];
+        // Avanzar al próximo slot con slide cargado; omite huecos (null/false)
+        var nextIdx = current;
+        var attempts = 0;
+        do {
+            nextIdx = (nextIdx + 1) % slides.length;
+            attempts++;
+            if (attempts > slides.length) return;
+        } while (!slides[nextIdx]);
+        if (nextIdx === current) return;
+        current = nextIdx;
+        var next = slides[current];
+
+        altToggle = !altToggle;
+        next.classList.toggle('alt', altToggle);
+        next.classList.add('active');
+
+        setTimeout(function() {
+            prev.classList.remove('active', 'alt');
+            prev.style.animation = 'none';
+            requestAnimationFrame(function() {
+                prev.style.animation = '';
+            });
+        }, 1900);
+
+        scheduleNext();
+    }
+
+    function scheduleNext() {
+        // Si la slide actual tiene un video, esperar a que termine
+        var slide = slides[current];
+        if (slide) {
+            var video = slide.querySelector('video');
+            if (video && !video.ended) {
+                video.onended = function() {
+                    video.onended = null;
+                    advanceSlide();
+                };
+                return;
+            }
+        }
+        setTimeout(advanceSlide, 9000);
+    }
+
     function startCarousel() {
         if (slides.length < 2 || intervalId) return;
+        intervalId = true; // marcar como iniciado
         slides[0].classList.add('active');
-
-        intervalId = setInterval(function() {
-            var prev = slides[current];
-            // Avanzar al próximo slot con slide cargado; omite huecos (null/false)
-            // de imágenes que todavía no terminan de descargar o que fallaron.
-            var nextIdx = current;
-            var attempts = 0;
-            do {
-                nextIdx = (nextIdx + 1) % slides.length;
-                attempts++;
-                if (attempts > slides.length) return;
-            } while (!slides[nextIdx]);
-            if (nextIdx === current) return;
-            current = nextIdx;
-            var next = slides[current];
-
-            altToggle = !altToggle;
-            next.classList.toggle('alt', altToggle);
-            next.classList.add('active');
-
-            setTimeout(function() {
-                prev.classList.remove('active', 'alt');
-                prev.style.animation = 'none';
-                requestAnimationFrame(function() {
-                    prev.style.animation = '';
-                });
-            }, 1900);
-        }, 9000);
+        scheduleNext();
     }
 
     function loadImage(src, callback) {
