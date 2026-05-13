@@ -1019,6 +1019,41 @@ document.addEventListener('DOMContentLoaded', function() {
     var current = 0;
     var altToggle = false;
     var intervalId = null;
+    var firstVideoEnded = false;
+
+    // Engancha el listener 'ended' al primer video INMEDIATAMENTE (no esperar
+    // a que carguen las imágenes prioritarias). Evita el caso en que el video
+    // de 21 s termine antes de que scheduleNext() corra y se quede en bucle
+    // visual / congelado en el último frame sin transición a la primera foto.
+    var firstVideoEl = container.querySelector('video');
+    if (firstVideoEl) {
+        firstVideoEl.loop = false;
+        var onFirstVideoEnded = function() {
+            firstVideoEl.removeEventListener('ended', onFirstVideoEnded);
+            firstVideoEnded = true;
+            // Si el carrusel ya arrancó y hay al menos una foto cargada, avanzar ya.
+            if (intervalId && slides.length >= 2) advanceSlide();
+        };
+        firstVideoEl.addEventListener('ended', onFirstVideoEnded);
+        // Red de seguridad: si por algún motivo el evento 'ended' no se dispara
+        // (bug de navegador, buffering, etc.), forzar la transición usando la
+        // duración del video + 500 ms de margen, o 22 s si la duración aún no
+        // se conoce.
+        var armSafety = function() {
+            var d = firstVideoEl.duration;
+            var ms = (isFinite(d) && d > 0) ? (d * 1000 + 500) : 22000;
+            setTimeout(function() {
+                if (!firstVideoEnded) onFirstVideoEnded();
+            }, ms);
+        };
+        if (firstVideoEl.readyState >= 1 && isFinite(firstVideoEl.duration) && firstVideoEl.duration > 0) {
+            armSafety();
+        } else {
+            firstVideoEl.addEventListener('loadedmetadata', armSafety, { once: true });
+            // Por si loadedmetadata tampoco se dispara a tiempo
+            setTimeout(function() { if (!firstVideoEnded) onFirstVideoEnded(); }, 22000);
+        }
+    }
 
     function createSlide(src, hidden) {
         var div = document.createElement('div');
@@ -1083,11 +1118,23 @@ document.addEventListener('DOMContentLoaded', function() {
         var slide = slides[current];
         if (slide) {
             var video = slide.querySelector('video');
-            if (video && !video.ended) {
-                video.onended = function() {
-                    video.onended = null;
-                    advanceSlide();
-                };
+            if (video) {
+                // Primera reproducción del primer video: el listener global
+                // ya está enganchado y llamará a advanceSlide() al terminar.
+                // En replays (firstVideoEnded === true) usamos el flujo normal.
+                if (video === firstVideoEl && !firstVideoEnded) {
+                    if (video.ended) setTimeout(advanceSlide, 50);
+                    return;
+                }
+                if (!video.ended) {
+                    video.onended = function() {
+                        video.onended = null;
+                        advanceSlide();
+                    };
+                    return;
+                }
+                // Video ya terminó (caso raro en replay)
+                setTimeout(advanceSlide, 50);
                 return;
             }
         }
@@ -1098,7 +1145,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (slides.length < 2 || intervalId) return;
         intervalId = true; // marcar como iniciado
         slides[0].classList.add('active');
-        scheduleNext();
+        // Si el primer video ya terminó antes de que cargara la primera foto,
+        // transicionar de inmediato en lugar de quedarnos en el último frame.
+        if (firstVideoEnded) {
+            advanceSlide();
+        } else {
+            scheduleNext();
+        }
     }
 
     function loadImage(src, callback) {
