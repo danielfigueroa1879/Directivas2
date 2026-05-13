@@ -1028,6 +1028,21 @@ document.addEventListener('DOMContentLoaded', function() {
         return div;
     }
 
+    function createVideoSlide(src) {
+        var div = document.createElement('div');
+        div.className = 'kb-slide';
+        var video = document.createElement('video');
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'auto';
+        video.src = src;
+        video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;';
+        video.className = 'kb-hero-video';
+        div.appendChild(video);
+        container.appendChild(div);
+        return div;
+    }
+
     function advanceSlide() {
         var prev = slides[current];
         // Avanzar al próximo slot con slide cargado; omite huecos (null/false)
@@ -1045,6 +1060,12 @@ document.addEventListener('DOMContentLoaded', function() {
         altToggle = !altToggle;
         next.classList.toggle('alt', altToggle);
         next.classList.add('active');
+
+        var prevVideo = prev.querySelector('video');
+        if (prevVideo) { prevVideo.pause(); prevVideo.currentTime = 0; }
+
+        var nextVideo = next.querySelector('video');
+        if (nextVideo) { nextVideo.currentTime = 0; nextVideo.play(); }
 
         setTimeout(function() {
             prev.classList.remove('active', 'alt');
@@ -1118,17 +1139,35 @@ document.addEventListener('DOMContentLoaded', function() {
             : function(cb) { setTimeout(cb, 500); };
 
         loadFn(function() {
-            // Carga en paralelo manteniendo el orden numérico: reservamos un
-            // índice fijo por foto en `slides[]` (foto 2 → pos 2, foto 3 → pos 3, …)
-            // y cada imagen aterriza en su slot apenas termina su descarga.
-            // Slots todavía vacíos los omite el carrusel hasta que carguen.
             var startIndex = slides.length;
+
+            // Intercalar videos entre las fotos diferidas
+            var heroVideos = [
+                'assets/images/camioneta2.mp4' + ver,
+                'assets/images/camioneta3.mp4' + ver
+            ];
+            var videoInsertAfter = [4, 12];
+
+            var allItems = [];
+            var videoIdx = 0;
             deferred.forEach(function(src, idx) {
+                allItems.push({ type: 'image', src: src });
+                if (videoIdx < videoInsertAfter.length && idx === videoInsertAfter[videoIdx]) {
+                    allItems.push({ type: 'video', src: heroVideos[videoIdx] });
+                    videoIdx++;
+                }
+            });
+
+            allItems.forEach(function(item, idx) {
                 var pos = startIndex + idx;
-                slides[pos] = null;
-                loadImage(src, function(ok) {
-                    slides[pos] = ok ? createSlide(src) : false;
-                });
+                if (item.type === 'video') {
+                    slides[pos] = createVideoSlide(item.src);
+                } else {
+                    slides[pos] = null;
+                    loadImage(item.src, function(ok) {
+                        slides[pos] = ok ? createSlide(item.src) : false;
+                    });
+                }
             });
         });
     }
