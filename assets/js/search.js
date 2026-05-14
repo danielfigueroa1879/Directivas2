@@ -489,6 +489,69 @@ class GlobalSearch {
                 keywords: ['resolución', '831', 'elementos', 'defensa', 'fútbol', 'profesional', 'deportes', 'equipo']
             },
             {
+                title: 'Resolución N° 396',
+                content: 'Res. N° 396 - Normativa de Seguridad Privada',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1220956', '_blank'),
+                keywords: ['resolución', 'resol', '396', 'normativa', 'seguridad', 'privada', 'bcn', 'ley chile']
+            },
+            {
+                title: 'Resolución N° 581',
+                content: 'Res. N° 581 - Normativa de Seguridad Privada',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1221275', '_blank'),
+                keywords: ['resolución', 'resol', '581', 'normativa', 'seguridad', 'privada', 'bcn', 'ley chile']
+            },
+            {
+                title: 'Resolución N° 1366',
+                content: 'Res. N° 1366 - Normativa de Seguridad Privada',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1223663', '_blank'),
+                keywords: ['resolución', 'resol', '1366', 'normativa', 'seguridad', 'privada', 'bcn', 'ley chile']
+            },
+            {
+                title: 'Diario Oficial 44136',
+                content: 'Publicación Diario Oficial N° 44136 - 29 de abril de 2025',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136-B/01/2641518.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44136', '2025', 'abril', 'publicación', 'normativa', 'seguridad']
+            },
+            {
+                title: 'Diario Oficial 44253',
+                content: 'Publicación Diario Oficial N° 44253 - 17 de septiembre de 2025',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44253', '2025', 'septiembre', 'publicación', 'normativa', 'seguridad']
+            },
+            {
+                title: 'Diario Oficial 44270',
+                content: 'Publicación Diario Oficial N° 44270 - 9 de octubre de 2025',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/10/09/44270/01/2705896.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44270', '2025', 'octubre', 'publicación', 'normativa', 'seguridad']
+            },
+            {
+                title: 'Diario Oficial 44295',
+                content: 'Publicación Diario Oficial N° 44295 - 10 de noviembre de 2025',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295/01/2721027.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44295', '2025', 'noviembre', 'publicación', 'normativa', 'seguridad']
+            },
+            {
+                title: 'Diario Oficial 44311',
+                content: 'Publicación Diario Oficial N° 44311 - 28 de noviembre de 2025',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/28/44311/01/2732298.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44311', '2025', 'noviembre', 'publicación', 'normativa', 'seguridad']
+            },
+            {
+                title: 'Diario Oficial 44323',
+                content: 'Publicación Diario Oficial N° 44323 - 13 de diciembre de 2025 (Edición Electrónica)',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/edicionelectronica/index.php?date=13-12-2025&edition=44323', '_blank'),
+                keywords: ['diario', 'oficial', '44323', '2025', 'diciembre', 'edición', 'electrónica', 'publicación', 'normativa', 'seguridad']
+            },
+            {
                 title: 'Ley 21.806 - Extensión de Autoridades (VIGENTE)',
                 content: 'Ley 21.806 sobre Extensión de Autoridades Gobernadores y Vicegobernadores. Marco normativo actualizado 2026',
                 section: 'Leyes y Normativa',
