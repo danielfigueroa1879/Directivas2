@@ -1189,10 +1189,12 @@ document.addEventListener('DOMContentLoaded', function() {
         loadFn(function() {
             var startIndex = slides.length;
 
-            // Intercalar videos entre las fotos diferidas
+            // Intercalar videos entre las fotos diferidas.
+            // camioneta3 lleva su propia versión (recompresión liviana 2.8 MB) para
+            // forzar re-descarga sin afectar al cache de fotos via PHOTO_VERSION.
             var heroVideos = [
                 'assets/images/camioneta2.mp4' + ver,
-                'assets/images/camioneta3.mp4' + ver
+                'assets/images/camioneta3.mp4?v=2'
             ];
             var videoInsertAfter = [4, 12];
 
