@@ -1194,7 +1194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // forzar re-descarga sin afectar al cache de fotos via PHOTO_VERSION.
             var heroVideos = [
                 'assets/images/camioneta2.mp4' + ver,
-                'assets/images/camioneta3.mp4?v=2'
+                'assets/images/camioneta3.mp4?v=3'
             ];
             var videoInsertAfter = [4, 12];
 
