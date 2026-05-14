@@ -489,32 +489,46 @@ class GlobalSearch {
                 keywords: ['resolución', '831', 'elementos', 'defensa', 'fútbol', 'profesional', 'deportes', 'equipo']
             },
             {
-                title: 'Resolución N° 396',
-                content: 'Res. N° 396 - Normativa de Seguridad Privada',
+                title: 'Resolución N° 396 - Instrucciones Generales Examen VV.PP. y GG.SS.',
+                content: 'Res. N° 396 sobre Instrucciones Generales para Exámenes de Vigilantes Privados y Guardias de Seguridad',
                 section: 'Resoluciones',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1220956', '_blank'),
-                keywords: ['resolución', 'resol', '396', 'normativa', 'seguridad', 'privada', 'bcn', 'ley chile']
+                keywords: ['resolución', 'resol', '396', 'instrucciones', 'examen', 'vvpp', 'ggss', 'vigilantes', 'guardias', 'seguridad', 'privada', 'bcn']
             },
             {
-                title: 'Resolución N° 581',
-                content: 'Res. N° 581 - Normativa de Seguridad Privada',
+                title: 'Resolución N° 581 - Modifica Custodia Carga Sobredimensionada',
+                content: 'Res. N° 581 que modifica regulación de custodia de cargas sobredimensionadas',
                 section: 'Resoluciones',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1221275', '_blank'),
-                keywords: ['resolución', 'resol', '581', 'normativa', 'seguridad', 'privada', 'bcn', 'ley chile']
+                keywords: ['resolución', 'resol', '581', 'custodia', 'carga', 'sobredimensionada', 'modifica', 'transporte', 'seguridad', 'bcn']
             },
             {
-                title: 'Resolución N° 1366',
-                content: 'Res. N° 1366 - Normativa de Seguridad Privada',
+                title: 'Resolución N° 1366 - Aprueba Convalidación de Asignaturas',
+                content: 'Res. N° 1366 que aprueba la convalidación de asignaturas',
                 section: 'Resoluciones',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1223663', '_blank'),
-                keywords: ['resolución', 'resol', '1366', 'normativa', 'seguridad', 'privada', 'bcn', 'ley chile']
+                keywords: ['resolución', 'resol', '1366', 'convalidación', 'asignaturas', 'aprueba', 'capacitación', 'bcn']
             },
             {
-                title: 'Diario Oficial 44136',
-                content: 'Publicación Diario Oficial N° 44136 - 29 de abril de 2025',
+                title: 'Resolución N° 33 - Aprueba Norma Técnica N° 247',
+                content: 'Res. N° 33 que aprueba la Norma Técnica N° 247',
                 section: 'Resoluciones',
-                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136-B/01/2641518.pdf', '_blank'),
-                keywords: ['diario', 'oficial', '44136', '2025', 'abril', 'publicación', 'normativa', 'seguridad']
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1217403', '_blank'),
+                keywords: ['resolución', 'resol', '33', 'norma', 'técnica', '247', 'aprueba', 'bcn']
+            },
+            {
+                title: 'Resolución N° 2277 - Aprueba Planes y Programas',
+                content: 'Res. N° 2277 que aprueba Planes y Programas de capacitación',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1218912', '_blank'),
+                keywords: ['resolución', 'resol', '2277', 'planes', 'programas', 'aprueba', 'capacitación', 'bcn']
+            },
+            {
+                title: 'Diario Oficial 44136 - Modifica Decreto 222',
+                content: 'Publicación Diario Oficial N° 44136 (29-04-2025) que modifica el Decreto N° 222',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136/01/2638569.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44136', 'modifica', 'decreto', '222', '2025', 'abril', 'publicación']
             },
             {
                 title: 'Diario Oficial 44253',
@@ -522,34 +536,6 @@ class GlobalSearch {
                 section: 'Resoluciones',
                 action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf', '_blank'),
                 keywords: ['diario', 'oficial', '44253', '2025', 'septiembre', 'publicación', 'normativa', 'seguridad']
-            },
-            {
-                title: 'Diario Oficial 44270',
-                content: 'Publicación Diario Oficial N° 44270 - 9 de octubre de 2025',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/10/09/44270/01/2705896.pdf', '_blank'),
-                keywords: ['diario', 'oficial', '44270', '2025', 'octubre', 'publicación', 'normativa', 'seguridad']
-            },
-            {
-                title: 'Diario Oficial 44295',
-                content: 'Publicación Diario Oficial N° 44295 - 10 de noviembre de 2025',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295/01/2721027.pdf', '_blank'),
-                keywords: ['diario', 'oficial', '44295', '2025', 'noviembre', 'publicación', 'normativa', 'seguridad']
-            },
-            {
-                title: 'Diario Oficial 44311',
-                content: 'Publicación Diario Oficial N° 44311 - 28 de noviembre de 2025',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/28/44311/01/2732298.pdf', '_blank'),
-                keywords: ['diario', 'oficial', '44311', '2025', 'noviembre', 'publicación', 'normativa', 'seguridad']
-            },
-            {
-                title: 'Diario Oficial 44323',
-                content: 'Publicación Diario Oficial N° 44323 - 13 de diciembre de 2025 (Edición Electrónica)',
-                section: 'Resoluciones',
-                action: () => window.open('https://www.diariooficial.interior.gob.cl/edicionelectronica/index.php?date=13-12-2025&edition=44323', '_blank'),
-                keywords: ['diario', 'oficial', '44323', '2025', 'diciembre', 'edición', 'electrónica', 'publicación', 'normativa', 'seguridad']
             },
             {
                 title: 'Ley 21.806 - Extensión de Autoridades (VIGENTE)',
