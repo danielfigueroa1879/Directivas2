@@ -3,7 +3,7 @@
 // IMPORTANTE: cuando reemplaces fotos, sube PHOTO_VERSION en los 3 lugares
 // (index.html <script>, este archivo, y bumpear el sufijo de CACHE_NAME).
 const PHOTO_VERSION = '10';
-const CACHE_NAME = 'directivas-os10-cache-v15'; // Subir cuando cambien fotos para forzar limpieza de caché vieja
+const CACHE_NAME = 'directivas-os10-cache-v17'; // Subir cuando cambien fotos para forzar limpieza de caché vieja
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
@@ -12,7 +12,7 @@ const urlsToCache = [
   './manifest.json',
   './assets/css/styles.css?v=25',
   './assets/css/credenciales.css',
-  './assets/js/main.js?v=2',
+  './assets/js/main.js?v=3',
   './assets/js/inicio.js?v=5',
   './assets/js/credenciales.js',
   './assets/js/chatbot.js?v=2',
