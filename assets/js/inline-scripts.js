@@ -1021,38 +1021,28 @@ document.addEventListener('DOMContentLoaded', function() {
     var intervalId = null;
     var firstVideoEnded = false;
 
-    // Engancha el listener 'ended' al primer video INMEDIATAMENTE (no esperar
-    // a que carguen las imágenes prioritarias). Evita el caso en que el video
-    // de 21 s termine antes de que scheduleNext() corra y se quede en bucle
-    // visual / congelado en el último frame sin transición a la primera foto.
+    // Cortar el primer video a los 20 s exactos y transicionar a foto (1).webp.
+    // No esperamos al evento 'ended' del video (~21 s) — forzamos el corte a 20 s.
+    var FIRST_VIDEO_CUT_MS = 20000;
     var firstVideoEl = container.querySelector('video');
     if (firstVideoEl) {
         firstVideoEl.loop = false;
         var onFirstVideoEnded = function() {
-            firstVideoEl.removeEventListener('ended', onFirstVideoEnded);
+            if (firstVideoEnded) return;
             firstVideoEnded = true;
+            try { firstVideoEl.pause(); } catch (e) {}
+            // Limpiar el poster para que el navegador NO muestre foto (1a).webp
+            // si por cualquier motivo el video se rebobina o pierde su último frame
+            // durante el fade-out hacia foto (1).webp.
+            try { firstVideoEl.removeAttribute('poster'); } catch (e) {}
             // Si el carrusel ya arrancó y hay al menos una foto cargada, avanzar ya.
             if (intervalId && slides.length >= 2) advanceSlide();
         };
+        // Corte forzado a los 20 s desde el arranque del script.
+        setTimeout(onFirstVideoEnded, FIRST_VIDEO_CUT_MS);
+        // Backup: si el video natural terminara antes (ej. cambia a uno más corto),
+        // que también dispare la transición.
         firstVideoEl.addEventListener('ended', onFirstVideoEnded);
-        // Red de seguridad: si por algún motivo el evento 'ended' no se dispara
-        // (bug de navegador, buffering, etc.), forzar la transición usando la
-        // duración del video + 500 ms de margen, o 22 s si la duración aún no
-        // se conoce.
-        var armSafety = function() {
-            var d = firstVideoEl.duration;
-            var ms = (isFinite(d) && d > 0) ? (d * 1000 + 500) : 22000;
-            setTimeout(function() {
-                if (!firstVideoEnded) onFirstVideoEnded();
-            }, ms);
-        };
-        if (firstVideoEl.readyState >= 1 && isFinite(firstVideoEl.duration) && firstVideoEl.duration > 0) {
-            armSafety();
-        } else {
-            firstVideoEl.addEventListener('loadedmetadata', armSafety, { once: true });
-            // Por si loadedmetadata tampoco se dispara a tiempo
-            setTimeout(function() { if (!firstVideoEnded) onFirstVideoEnded(); }, 22000);
-        }
     }
 
     function createSlide(src, hidden) {
@@ -1097,7 +1087,12 @@ document.addEventListener('DOMContentLoaded', function() {
         next.classList.add('active');
 
         var prevVideo = prev.querySelector('video');
-        if (prevVideo) { prevVideo.pause(); prevVideo.currentTime = 0; }
+        // Solo pausar — NO rebobinar a 0. Si rebobinamos, el navegador muestra el
+        // primer frame (o el poster, si lo tiene) durante el fade-out de 1.8 s,
+        // lo que produce un destello de "otra foto" entre video y foto (1).webp.
+        // El reset a 0 lo hace el bloque nextVideo cuando el carrusel cicla de
+        // vuelta al video y lo va a reproducir de nuevo desde el inicio.
+        if (prevVideo) { prevVideo.pause(); }
 
         var nextVideo = next.querySelector('video');
         if (nextVideo) { nextVideo.currentTime = 0; nextVideo.play(); }
