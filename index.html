@@ -750,6 +750,7 @@ button.desktop-submenu-item .spd-badge {
 .modal-requisitos-componentes { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.85); z-index: 9999 !important; overflow-y: auto; padding: 1rem; backdrop-filter: blur(8px); }
 .modal-requisitos-componentes.active { display: flex; align-items: flex-start; justify-content: center; padding-top: 2rem; padding-bottom: 2rem; }
 body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !important; }
+body:has(.modal-requisitos-componentes.active) #chat-widget-container { display: none !important; }
 .modal-requisitos-componentes.active ~ * .desktop-navbar,
 .desktop-navbar.hide-on-modal { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
 .modal-content-componentes { background: white; border-radius: 1rem; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: slideDownModal 0.3s ease-out; }
