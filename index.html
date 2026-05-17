@@ -98,7 +98,8 @@
          FUENTES LOCALES - Sin dependencia de Google Fonts
          Poppins (300,400,600,700), Roboto (300,400,500,600,700), Mate SC
     ====================================================== -->
-  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/fonts.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/fonts.css"></noscript>
   <!-- =====================================================
          CSS LOCALES - No bloqueantes (técnica print trick)
          Convierte los 4 archivos CSS de render-blocking a async.
@@ -2136,7 +2137,7 @@ body {
 <!-- ============================================================
      SCRIPTS INLINE EXTRAÍDOS
 ============================================================ -->
-  <script src="assets/js/inline-scripts.js?v=10"></script>
+  <script src="assets/js/inline-scripts.js?v=10" defer></script>
 <!-- ============================================================
      MENÚ DESPLEGABLE MÓVIL Y DRILL-DOWN
 ============================================================ -->
