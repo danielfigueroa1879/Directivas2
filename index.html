@@ -718,17 +718,23 @@ button.desktop-submenu-item .spd-badge {
 /* ===== Destacado del último ítem agregado: breve destello blanco al abrir el menú ===== */
 @keyframes flashItemNuevo {
     0%   { color: #fff; text-shadow: none; }
-    10%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
-    25%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
-    45%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
-    65%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
-    85%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    8%   { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    16%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    24%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    32%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    40%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    48%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    56%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    64%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    72%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    80%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    88%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
     100% { color: #fff; text-shadow: none; }
 }
-/* Se dispara al abrir el submenú que contiene el ítem nuevo, parpadea unas veces y vuelve a lo normal */
+/* Se dispara al abrir el submenú que contiene el ítem nuevo, parpadea 6 veces y vuelve a lo normal */
 .desktop-submenu-item-with-side:hover .item-nuevo,
 .desktop-nav-item:hover > .desktop-submenu > .item-nuevo {
-    animation: flashItemNuevo 2.3s ease-in-out;
+    animation: flashItemNuevo 3.6s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
     .desktop-submenu-item-with-side:hover .item-nuevo,
