@@ -412,6 +412,42 @@ button.desktop-submenu-item .spd-badge {
     flex-shrink: 0;
 }
 .desktop-submenu-item:hover { background: rgba(0,0,0,0.2); }
+/* ===== Destacado del último ítem agregado: breve destello blanco al abrir el menú ===== */
+@keyframes flashItemNuevo {
+    0%   { color: #fff; text-shadow: none; }
+    10%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    25%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    45%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    65%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    85%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    100% { color: #fff; text-shadow: none; }
+}
+/* Se dispara al abrir el submenú que contiene el ítem nuevo, parpadea unas veces y vuelve a lo normal */
+.desktop-submenu-item-with-side:hover .item-nuevo,
+.desktop-nav-item:hover > .desktop-submenu > .item-nuevo {
+    animation: flashItemNuevo 2.3s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .desktop-submenu-item-with-side:hover .item-nuevo,
+    .desktop-nav-item:hover > .desktop-submenu > .item-nuevo { animation: none; }
+}
+/* ===== Destello del último ítem agregado en CELULAR (fondo claro): brillo verde breve al abrir el submenú ===== */
+@keyframes flashNuevoMobile {
+    0%   { background-color: transparent; color: #4b5563; }
+    18%  { background-color: rgba(22,163,74,0.22); color: #15803d; }
+    45%  { background-color: rgba(22,163,74,0.06); color: #15803d; }
+    70%  { background-color: rgba(22,163,74,0.22); color: #15803d; }
+    100% { background-color: transparent; color: #4b5563; }
+}
+#mobile-dropdown .submenu button.item-nuevo,
+#drill-content button.item-nuevo {
+    animation: flashNuevoMobile 2.3s ease-in-out;
+    border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+    #mobile-dropdown .submenu button.item-nuevo,
+    #drill-content button.item-nuevo { animation: none; }
+}
 .desktop-submenu-title {
     font-family: Arial, sans-serif;
     font-size: 11px;
@@ -463,6 +499,16 @@ button.desktop-submenu-item .spd-badge {
 .desktop-submenu-side::-webkit-scrollbar-track { background: transparent; }
 .desktop-submenu-side::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 10px; }
 .desktop-submenu-side::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.5); }
+/* ===== Lista lateral (leyes/normativa) ordenada: ancho fijo, sin cortes ===== */
+.desktop-submenu-side { width: 300px; min-width: 300px; max-width: 300px; }
+.desktop-submenu-side .desktop-submenu-item {
+    max-height: none;            /* no cortar los textos largos */
+    align-items: flex-start;     /* texto de 2 líneas alineado arriba */
+    white-space: normal;
+    line-height: 1.35;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 .desktop-submenu-item-with-side:hover > .desktop-submenu-side {
     opacity: 1;
     visibility: visible;
