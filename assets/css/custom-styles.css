@@ -445,17 +445,6 @@ body:not(.homepage) {
    ACCESIBILIDAD: TAMAÑO MÍNIMO DE ÁREAS TÁCTILES
    ======================================== */
 
-/* Botón de cambiar idioma */
-.lang-btn {
-    min-width: 32px !important;
-    min-height: 32px !important;
-    padding: 4px 8px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: auto !important;
-}
-
 /* Botones del menú desktop */
 .desktop-nav-item {
     min-height: 40px !important;
