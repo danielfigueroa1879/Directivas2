@@ -477,7 +477,8 @@ body.homepage {
     color: #334155;
     font-size: 13px;
     line-height: 1.55;
-    text-align: left;
+    text-align: justify;
+    hyphens: auto;
 }
 #aviso-ley .aviso-text strong {
     color: #0f172a;
@@ -514,17 +515,18 @@ body.homepage {
     right: 10px;
     background: transparent;
     border: none;
-    color: #94a3b8;
+    color: #000;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 24px;
+    font-weight: 700;
     line-height: 1;
     padding: 4px 9px;
     border-radius: 6px;
     transition: all 0.2s ease;
 }
 #aviso-ley .aviso-close:hover {
-    background: rgba(241, 245, 249, 0.8);
-    color: #334155;
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
 }
 /* Ocultar el aviso cuando se abre un modal de requisitos o vistas alternas (igual que la barra verde) */
 body:has(.modal-requisitos-componentes.active) #aviso-ley,
