@@ -455,6 +455,14 @@ body.homepage {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
     pointer-events: auto;
+    animation: aviso-inflate-twice 0.95s ease-in-out forwards;
+}
+@keyframes aviso-inflate-twice {
+    0%   { transform: translate(-50%, -50%) scale(0.05); opacity: 0; }
+    25%  { transform: translate(-50%, -50%) scale(1);    opacity: 1; }
+    50%  { transform: translate(-50%, -50%) scale(0.75); opacity: 1; }
+    75%  { transform: translate(-50%, -50%) scale(1.03); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1);    opacity: 1; }
 }
 #aviso-ley .aviso-badge {
     align-self: flex-start;
