@@ -873,9 +873,9 @@ body:not(.homepage) {
            98vw → en celulares normales queda un poquito más ancho. */
         width: clamp(280px, 98vw, 450px) !important;
         max-width: 98vw !important;
-        /* Alto: escala fluido con la altura de pantalla */
-        height: clamp(320px, 62vh, 460px) !important;
-        max-height: 86vh !important;
+        /* Alto: escala fluido con la altura de pantalla (reducido un poco más) */
+        height: clamp(280px, 52vh, 400px) !important;
+        max-height: 80vh !important;
         /* Pegado al fondo: sin espacio entre el cuadro y el fin de la pantalla */
         bottom: 0 !important;
     }
@@ -887,6 +887,28 @@ body:not(.homepage) {
 }
 
 /* ========================================
+   CHATBOT — CELULARES (≤ 767px)
+   Cabecera simplificada: se deja SOLO el ícono del bot,
+   el título "Asistente", el parlante y la X.
+   Se ocultan el subtítulo "O.S.10 Coquimbo 👍✅" y el
+   selector de voz (Diego, Antoni, ...).
+   Además la letra se reduce un poquito para adaptarse mejor.
+   ======================================== */
+@media (max-width: 767px) {
+    /* Ocultar subtítulo (nombre OS10 + pulgar) */
+    #chat-popup header p { display: none !important; }
+    /* Ocultar el selector de voz (el nombre para elegir) */
+    #chat-popup #voiceSelector,
+    #chat-popup .voice-selector { display: none !important; }
+
+    /* Letra de los mensajes un poquito más pequeña */
+    #chat-popup #chat-messages { font-size: 0.86rem !important; line-height: 1.3 !important; }
+    #chat-popup #chat-messages .max-w-sm,
+    #chat-popup #chat-messages .max-w-xs { font-size: 0.86rem !important; }
+    #chat-popup #user-input { font-size: 0.86rem !important; }
+}
+
+/* ========================================
    CHATBOT — CELULARES PEQUEÑOS (≤ 380px)
    El bot se hace aún más pequeño y la letra se reduce
    para que todo entre cómodo en pantallas chicas.
@@ -895,8 +917,8 @@ body:not(.homepage) {
     #chat-popup {
         width: clamp(250px, 98vw, 380px) !important;
         max-width: 98vw !important;
-        height: clamp(300px, 56vh, 420px) !important;
-        max-height: 82vh !important;
+        height: clamp(270px, 50vh, 380px) !important;
+        max-height: 78vh !important;
         bottom: 0 !important;
     }
 
