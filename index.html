@@ -112,17 +112,17 @@
     <link rel="stylesheet" href="assets/css/carousel.css">
   </noscript>
   <!-- styles.css: async → cubierto por inline-critical + tailwind crítico -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=25" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=26" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=26"></noscript>
   <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
   <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="assets/css/search.css?v=1">
   </noscript>
   <!-- custom-styles.css: panel/modales empiezan ocultos → async seguro -->
-  <link rel="stylesheet" href="assets/css/custom-styles.css?v=2" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/custom-styles.css?v=8" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="assets/css/custom-styles.css?v=2">
+    <link rel="stylesheet" href="assets/css/custom-styles.css?v=8">
   </noscript>
   <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -1201,7 +1201,7 @@ body {
     .mobile-dropdown {
         /* Mismo ancho y posición que el pill — parecen un solo bloque */
         width: calc(100% - 1.5rem) !important;
-        max-width: 820px !important;
+        max-width: 500px !important;
         top: 8px !important;
         left: 50% !important;
         height: auto !important;
@@ -1322,7 +1322,7 @@ body {
     color: #111827 !important;
     border-bottom: 1px solid #e8ecef !important;
     border-left: 3px solid transparent !important;
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     font-weight: 500 !important;
     padding: 1rem 1.25rem 1rem 1.15rem !important;
     transition: background 0.18s, border-left-color 0.18s, color 0.18s !important;
@@ -1413,7 +1413,7 @@ body {
     color: #111827 !important;
     border-bottom: 1px solid #e8ecef !important;
     border-left: 3px solid transparent !important;
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     font-weight: 500 !important;
     padding: 1rem 1.25rem 1rem 1.15rem !important;
     transition: all 0.18s !important;
@@ -1511,7 +1511,7 @@ body {
             transform: translateX(-50%) !important;
             top: 8px !important;
             width: calc(100% - 1.5rem) !important;
-            max-width: 820px !important;
+            max-width: 500px !important;
             height: 67px !important;
             border-radius: 9999px !important;
             background: rgba(255, 255, 255, 0.60) !important;
@@ -1521,61 +1521,70 @@ body {
             border-bottom: 1px solid rgba(255,255,255,0.45) !important;
             box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
         }
-        /* Layout interno mobile: hamburger+logo | search | counter */
+        /* Layout interno mobile: todo dentro del pill sin desborde */
         #banner > div {
             display: flex !important;
             align-items: center !important;
             overflow: hidden !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            justify-content: flex-start !important;
+            padding-left: 0.4rem !important;
+            padding-right: 0.4rem !important;
+            justify-content: space-between !important;
             gap: 0 !important;
+            width: 100% !important;
         }
         #banner > div > div:first-child {
-            flex: 0 0 auto !important;
+            flex: 0 1 auto !important;
+            min-width: 0 !important;
         }
-        /* En móvil, la imagen de aniversario tiene tamaño fijo, sin recorte */
+        /* Imagen aniversario: se reduce solo en pantallas muy chicas */
         #banner-aniversario {
-            width: 70px !important;
-            max-width: 70px !important;
-            flex-shrink: 0 !important;
-            margin-left: 1.1rem !important;
+            width: clamp(69px, 20vw, 78px) !important;
+            max-width: clamp(69px, 20vw, 78px) !important;
+            flex-shrink: 1 !important;
+            margin-left: clamp(1.1rem, 4vw, 1.6rem) !important;
         }
         #search-center-container {
             flex: 0 0 auto !important;
-            min-width: 44px !important;
+            min-width: 0 !important;
             display: flex !important;
             justify-content: flex-start !important;
             padding: 0 !important;
             margin: 0 0 0 auto !important;
-            overflow: visible !important;
+            overflow: hidden !important;
         }
-        /* La lupa siempre tiene su espacio mínimo, nunca se oculta */
+        /* Lupa: se adapta */
         #global-search-button {
             flex: 0 0 auto !important;
-            min-width: 40px !important;
-            min-height: 40px !important;
-            padding: 6px !important;
+            min-width: clamp(38px, 11vw, 44px) !important;
+            min-height: clamp(38px, 11vw, 44px) !important;
+            padding: clamp(4px, 1.2vw, 6px) !important;
             margin: 0 !important;
         }
         #global-search-button .search-icon {
             display: block !important;
         }
+        /* Contador: se adapta y no desborda */
         #banner > div > div:last-child,
         #banner-counter-group {
-            flex: 0 0 auto !important;
+            flex: 0 1 auto !important;
             display: flex !important;
             align-items: center !important;
             margin-top: 0 !important;
             margin-bottom: 0 !important;
             margin-left: 0 !important;
-            margin-right: 0.5rem !important;
-            padding: 0 0.5rem 0 0 !important;
+            margin-right: clamp(0.2rem, 1vw, 0.5rem) !important;
+            padding: 0 clamp(0.2rem, 0.8vw, 0.5rem) 0 0 !important;
+            overflow: hidden !important;
+            min-width: 0 !important;
         }
         /* Forzar al grupo del logo a no expandirse */
         #banner > div > div:first-child {
             margin-right: 0 !important;
             padding: 0 !important;
+        }
+        /* Hamburger: se adapta */
+        #mobile-menu-btn {
+            flex-shrink: 0 !important;
         }
     }
 
@@ -1979,7 +1988,34 @@ body {
             background: transparent !important;
         }
     }
-    
+
+    /* ── MENÚ RESPONSIVE: solo celulares pequeños (≤ 374px) ── */
+    @media (max-width: 374px) {
+        #mobile-dropdown .submenu-parent-btn {
+            font-size: 0.95rem !important;
+            padding: 0.7rem 0.8rem !important;
+        }
+        #mobile-dropdown .menu-item-stack {
+            font-size: 0.95rem !important;
+            padding: 0.7rem 0.8rem !important;
+        }
+        #mobile-dropdown .submenu button,
+        #mobile-dropdown .submenu.submenu-compact button,
+        #mobile-dropdown .submenu.leyes-compactas button {
+            font-size: 0.62rem !important;
+            padding-left: 1.2rem !important;
+        }
+        #mobile-dropdown .submenu-arrow {
+            width: 18px !important;
+            height: 18px !important;
+        }
+        #mobile-dropdown .submenu-title {
+            font-size: 0.52rem !important;
+        }
+        #mobile-dropdown .dropdown-menu-header h3 {
+            font-size: 0.85rem !important;
+        }
+    }
 
   </style>
 </head>
