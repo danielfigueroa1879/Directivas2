@@ -557,11 +557,14 @@ body:not(.homepage) {
         padding: 0 clamp(0.25rem, 1vw, 0.5rem) 0 0 !important;
     }
     .banner-text-small {
-        font-size: clamp(0.9rem, 4.2vw, 1.15rem) !important;
+        font-size: clamp(1rem, 4.7vw, 1.28rem) !important;
+    }
+    .banner-text-small #visit-counter {
+        font-size: clamp(1.05rem, 5vw, 1.35rem) !important;
     }
     .banner-text-small svg {
-        width: clamp(1.35rem, 5.8vw, 1.75rem) !important;
-        height: clamp(1.35rem, 5.8vw, 1.75rem) !important;
+        width: clamp(1.5rem, 6.2vw, 1.9rem) !important;
+        height: clamp(1.5rem, 6.2vw, 1.9rem) !important;
     }
 
     /* Hamburger menu button */
@@ -700,7 +703,10 @@ body:not(.homepage) {
     }
 
     .banner-text-small {
-        font-size: 0.85rem !important;
+        font-size: 0.95rem !important;
+    }
+    .banner-text-small #visit-counter {
+        font-size: 1rem !important;
     }
 
     /* Chat widget más pequeño */
@@ -791,5 +797,64 @@ body:not(.homepage) {
     img, svg, video, iframe {
         max-width: 100% !important;
         height: auto !important;
+    }
+}
+
+/* ========================================
+   CELULARES MUY PEQUEÑOS (≤ 324px)
+   - Logo OS10 más pequeño
+   - Textos del menú (Leyes y Normativa, Informativos SPD, etc.) más pequeños
+   ======================================== */
+@media (max-width: 324px) {
+    /* Logo OS10: reducir cuando la imagen aniversario ya está pequeña */
+    #banner .logo-os10-container img,
+    #banner > div > div:first-child img:not(#banner-aniversario) {
+        height: clamp(26px, 8.5vw, 32px) !important;
+        width: auto !important;
+    }
+
+    /* Imagen aniversario: un toque más pequeña para acompañar */
+    #banner-aniversario {
+        width: clamp(48px, 14vw, 58px) !important;
+        max-width: clamp(48px, 14vw, 58px) !important;
+        margin-left: clamp(0.35rem, 1.8vw, 0.7rem) !important;
+    }
+
+    /* Botones principales del menú (Normativa, Informativos SPD, etc.) */
+    body .mobile-dropdown .submenu-parent-btn {
+        padding: 0.25rem 0.45rem !important;
+        font-size: 0.6rem !important;
+    }
+
+    /* Botones internos del menú */
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .dropdown-menu-content > button,
+    body .mobile-dropdown .dropdown-menu-content > a {
+        padding: 0.22rem 0.45rem !important;
+        font-size: 0.6rem !important;
+    }
+
+    /* Submenús compactos (leyes-compactas, submenu-compact) */
+    body .mobile-dropdown .submenu.submenu-compact button,
+    body .mobile-dropdown .submenu.leyes-compactas button {
+        padding-left: 0.7rem !important;
+        font-size: 0.5rem !important;
+    }
+
+    /* Encabezado del dropdown */
+    body .mobile-dropdown .dropdown-menu-header h3 {
+        font-size: 0.65rem !important;
+    }
+
+    /* Flechas del menú */
+    body .mobile-dropdown .submenu-arrow {
+        width: 0.72rem !important;
+        height: 0.72rem !important;
+    }
+
+    /* Altura mínima táctil reducida */
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .submenu-parent-btn {
+        min-height: 28px !important;
     }
 }
