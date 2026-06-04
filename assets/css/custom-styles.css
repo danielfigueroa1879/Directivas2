@@ -557,14 +557,14 @@ body:not(.homepage) {
         padding: 0 clamp(0.25rem, 1vw, 0.5rem) 0 0 !important;
     }
     .banner-text-small {
-        font-size: clamp(1rem, 4.7vw, 1.28rem) !important;
+        font-size: clamp(0.92rem, 4.2vw, 1.18rem) !important;
     }
     .banner-text-small #visit-counter {
-        font-size: clamp(1.05rem, 5vw, 1.35rem) !important;
+        font-size: clamp(0.95rem, 4.4vw, 1.22rem) !important;
     }
     .banner-text-small svg {
-        width: clamp(1.5rem, 6.2vw, 1.9rem) !important;
-        height: clamp(1.5rem, 6.2vw, 1.9rem) !important;
+        width: clamp(1.4rem, 5.6vw, 1.75rem) !important;
+        height: clamp(1.4rem, 5.6vw, 1.75rem) !important;
     }
 
     /* Hamburger menu button */
@@ -870,12 +870,14 @@ body:not(.homepage) {
 @media (max-width: 1023px) {
     #chat-popup {
         /* Ancho: hasta 450px en tablet, se reduce con el ancho de pantalla.
-           96vw → en celulares normales queda un poquito más ancho. */
-        width: clamp(280px, 96vw, 450px) !important;
-        max-width: 96vw !important;
+           98vw → en celulares normales queda un poquito más ancho. */
+        width: clamp(280px, 98vw, 450px) !important;
+        max-width: 98vw !important;
         /* Alto: escala fluido con la altura de pantalla */
         height: clamp(320px, 62vh, 460px) !important;
         max-height: 86vh !important;
+        /* Pegado al fondo: sin espacio entre el cuadro y el fin de la pantalla */
+        bottom: 0 !important;
     }
 
     /* La cabecera y el pie también se compactan en pantallas chicas */
@@ -891,10 +893,11 @@ body:not(.homepage) {
    ======================================== */
 @media (max-width: 380px) {
     #chat-popup {
-        width: clamp(250px, 95vw, 360px) !important;
-        max-width: 96vw !important;
+        width: clamp(250px, 98vw, 380px) !important;
+        max-width: 98vw !important;
         height: clamp(300px, 56vh, 420px) !important;
         max-height: 82vh !important;
+        bottom: 0 !important;
     }
 
     /* Letra de los mensajes (burbujas) más pequeña */
