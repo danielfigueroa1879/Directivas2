@@ -2517,7 +2517,7 @@ body {
       </div>
     </div>
     <div class="has-submenu">
-      <button class="submenu-parent-btn">Empresa Seguridad Priv. <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button class="submenu-parent-btn">Empresas Seguridad Privada <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path d="M9 5l7 7-7 7"></path>
         </svg></button>
       <div class="submenu submenu-compact">
@@ -2915,7 +2915,11 @@ body {
                aria-label="Video de fondo OS10 Coquimbo"
                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;"
                class="kb-hero-video">
-          <img src="assets/images/foto%20(1a).webp?v=10" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" class="kb-hero-img">
+          <picture>
+            <source media="(max-width: 1023px)" srcset="assets/images/foto%20(1b).webp?v=10" type="image/webp">
+            <source media="(min-width: 1024px)" srcset="assets/images/foto%20(1a).webp?v=10" type="image/webp">
+            <img src="assets/images/foto%20(1a).webp?v=10" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" class="kb-hero-img">
+          </picture>
         </video>
       </div>
     </div>
