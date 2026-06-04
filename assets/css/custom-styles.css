@@ -858,3 +858,68 @@ body:not(.homepage) {
         min-height: 28px !important;
     }
 }
+
+/* ========================================
+   CHATBOT — TAMAÑO FLUIDO (escala con la pantalla)
+   El popup se achica de forma CONTINUA a medida que la
+   pantalla se reduce, adaptándose a tablets, celulares
+   normales y celulares pequeños — sin saltos bruscos.
+   - clamp(min, preferido, max): el ancho/alto crecen y se
+     reducen junto al viewport, con topes mínimo y máximo.
+   ======================================== */
+@media (max-width: 1023px) {
+    #chat-popup {
+        /* Ancho: hasta 450px en tablet, se reduce con el ancho de pantalla.
+           96vw → en celulares normales queda un poquito más ancho. */
+        width: clamp(280px, 96vw, 450px) !important;
+        max-width: 96vw !important;
+        /* Alto: escala fluido con la altura de pantalla */
+        height: clamp(320px, 62vh, 460px) !important;
+        max-height: 86vh !important;
+    }
+
+    /* La cabecera y el pie también se compactan en pantallas chicas */
+    #chat-popup header { padding: clamp(0.5rem, 2vw, 0.75rem) !important; }
+    #chat-popup footer { padding: clamp(0.5rem, 2vw, 0.75rem) !important; }
+    #chat-popup #chat-messages { padding: clamp(0.6rem, 2.5vw, 1rem) !important; }
+}
+
+/* ========================================
+   CHATBOT — CELULARES PEQUEÑOS (≤ 380px)
+   El bot se hace aún más pequeño y la letra se reduce
+   para que todo entre cómodo en pantallas chicas.
+   ======================================== */
+@media (max-width: 380px) {
+    #chat-popup {
+        width: clamp(250px, 95vw, 360px) !important;
+        max-width: 96vw !important;
+        height: clamp(300px, 56vh, 420px) !important;
+        max-height: 82vh !important;
+    }
+
+    /* Letra de los mensajes (burbujas) más pequeña */
+    #chat-popup #chat-messages { font-size: 0.78rem !important; line-height: 1.3 !important; }
+    #chat-popup #chat-messages .max-w-sm,
+    #chat-popup #chat-messages .max-w-xs { font-size: 0.78rem !important; }
+
+    /* Burbujas: menos relleno */
+    #chat-popup #chat-messages .p-3 { padding: 0.5rem 0.65rem !important; }
+
+    /* Avatares (bot/usuario) más chicos */
+    #chat-popup #chat-messages .w-8 { width: 1.6rem !important; height: 1.6rem !important; }
+
+    /* Botones de respuesta del bot */
+    #chat-popup .response-button {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.55rem !important;
+    }
+
+    /* Cabecera más compacta */
+    #chat-popup header h1 { font-size: 0.85rem !important; }
+    #chat-popup header p { font-size: 0.62rem !important; }
+    #chat-popup .voice-selector { font-size: 0.62rem !important; }
+
+    /* Entrada de texto y aviso del pie */
+    #chat-popup #user-input { font-size: 0.78rem !important; }
+    #chat-popup footer .text-xs { font-size: 0.6rem !important; }
+}
