@@ -442,7 +442,7 @@ body.homepage {
     backdrop-filter: blur(16px) saturate(160%);
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 26px;
+    border-radius: 28px;
     box-shadow:
         0 20px 50px rgba(15, 23, 42, 0.18),
         0 4px 12px rgba(15, 23, 42, 0.08),
@@ -539,8 +539,8 @@ body.homepage {
 }
 #aviso-ley .aviso-close {
     position: absolute;
-    top: 8px;
-    right: 10px;
+    top: 28px;
+    right: 18px;
     background: transparent;
     border: none;
     color: #000;
@@ -551,6 +551,18 @@ body.homepage {
     padding: 4px 9px;
     border-radius: 6px;
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+#aviso-ley .aviso-close svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 #aviso-ley .aviso-close:hover {
     background: rgba(0, 0, 0, 0.08);
@@ -2363,7 +2375,7 @@ body {
     <span class="aviso-badge">Aviso</span>
     <p class="aviso-text"><strong>Ley Núm. 21.825 — Modifica la Ley Nº 21.659, sobre Seguridad Privada</strong>Para aumentar el plazo de presentación y pronunciamiento sobre los estudios de seguridad que dispone, y extiende la prórroga de vigencia de la última autorización del personal de seguridad privada que indica. Reemplázase, en el inciso segundo del artículo tercero transitorio, la expresión “seis meses contados” por la oración “dieciocho meses contados”.</p>
     <a class="aviso-btn" href="https://www.bcn.cl/leychile/navegar?idNorma=1224572" target="_blank" rel="noopener noreferrer">Ver publicación oficial</a>
-    <button id="aviso-ley-close" class="aviso-close" type="button" aria-label="Cerrar aviso">&times;</button>
+    <button id="aviso-ley-close" class="aviso-close" type="button" aria-label="Cerrar aviso"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg></button>
   </div>
   <script>
     (function () {
