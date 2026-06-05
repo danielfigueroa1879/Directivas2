@@ -82,6 +82,7 @@ class GlobalSearch {
                             <button class="suggestion-pill" data-search="directiva">Directivas</button>
                             <button class="suggestion-pill" data-search="credencial">Credenciales</button>
                             <button class="suggestion-pill" data-search="21659">Ley 21.659</button>
+                            <button class="suggestion-pill" data-search="21825">Ley 21.825</button>
                             <button class="suggestion-pill" data-search="209">Decreto 209</button>
                             <button class="suggestion-pill" data-search="208">Decreto 208</button>
                             <button class="suggestion-pill" data-search="2310">Decreto 2310</button>
@@ -510,6 +511,13 @@ class GlobalSearch {
                 keywords: ['resolución', 'resol', '1366', 'convalidación', 'asignaturas', 'aprueba', 'capacitación', 'bcn']
             },
             {
+                title: 'Resolución N° 1507 - Convalidación Asignaturas de Perfeccionamiento (NUEVA)',
+                content: 'Res. N° 1507 sobre Convalidación de Asignaturas de Perfeccionamiento. Diario Oficial N° 44459 (27-05-2026).',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/27/44459/01/2813688.pdf', '_blank'),
+                keywords: ['resolución', 'resol', '1507', 'convalidación', 'asignaturas', 'perfeccionamiento', 'capacitación', 'formación', 'diario', 'oficial', '44459', '2026']
+            },
+            {
                 title: 'Resolución N° 33 - Aprueba Norma Técnica N° 247',
                 content: 'Res. N° 33 que aprueba la Norma Técnica N° 247',
                 section: 'Resoluciones',
@@ -543,6 +551,13 @@ class GlobalSearch {
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1221118', '_blank'),
                 keywords: ['ley', '21806', '21.806', 'extensión', 'autoridades', 'gobernadores', 'vicegobernadores', 'vigente', '2026']
+            },
+            {
+                title: 'Ley 21.825 - Modifica Plazos Ley 21.659 (NUEVA)',
+                content: 'Ley 21.825 que modifica la Ley 21.659 sobre Seguridad Privada. Aumenta el plazo de presentación y pronunciamiento sobre los estudios de seguridad de 6 a 18 meses. Extiende la prórroga de vigencia de la última autorización del personal de seguridad privada.',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1224572', '_blank'),
+                keywords: ['ley', '21825', '21.825', 'modifica', 'plazos', '18', 'meses', 'dieciocho', 'estudios', 'seguridad', 'prórroga', 'autorización', 'transitorio', 'nueva', 'vigente', '21659', '21.659', '2026']
             },
 
             // SECCIÓN: Componentes del Sistema (ACTUALIZADO SEGÚN LEY 21.659 Y DECRETO 209)
