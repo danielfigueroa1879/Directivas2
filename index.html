@@ -277,6 +277,9 @@ body.homepage {
 }
 .kb-hero-img { object-fit: cover; }
 .kb-hero-video { filter: saturate(1.15) contrast(1.08) brightness(1.03); }
+.kb-hero-video > img {
+    display: none !important;
+}
 .kb-slide.active {
     opacity: 1;
     will-change: transform, opacity;
@@ -587,13 +590,26 @@ body.show-credenciales #aviso-ley { display: none !important; }
 }
 @media (max-width: 1023px) {
     .desktop-navbar { display: none !important; }
-    #mobile-menu-btn { display: block !important; }
+    #mobile-menu-btn { display: flex !important; }
+    #mobile-menu-btn-right { display: flex !important; }
     #banner { height: 6.5rem; }
     body  { padding-top: 0 !important; }
     .homepage-section {
-        min-height: 77vh !important;
-        height: 77vh !important;
-        max-height: 77vh !important;
+        min-height: 82vh !important;
+        height: auto !important;
+        max-height: calc(100vh - 5rem) !important;
+    }
+    #kb-container,
+    .kb-slide {
+        min-height: 82vh !important;
+        height: 100% !important;
+    }
+    .kb-hero-video {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 82vh !important;
+        object-fit: cover !important;
+        object-position: center center !important;
     }
     /* Título hero: empieza debajo del pill (pill top 8px + height 56px + margen) */
     #hero-title-container {
@@ -610,10 +626,15 @@ body.show-credenciales #aviso-ley { display: none !important; }
     }
     /* Menú lateral alineado con el fin del banner */
     .mobile-dropdown { top: 4.5rem !important; }
+    /* Ocultar solo el icono de visitas en celular, mantener el número visible */
+    #banner-counter-group svg {
+        display: none !important;
+    }
 }
 @media (min-width: 1024px) {
     .desktop-navbar { display: block !important; }
     #mobile-menu-btn { display: none !important; }
+    #mobile-menu-btn-right { display: none !important; }
     .homepage-section {
         margin-top: 98px !important;
         padding-top: 0 !important;
@@ -1217,7 +1238,7 @@ body {
         width: calc(100% - 0.4rem) !important;
         max-width: 500px !important;
         top: 8px !important;
-        left: 50% !important;
+        left: 0.2rem !important;
         height: auto !important;
         max-height: calc(100vh - 16px) !important;
         /* Sin padding-top: el spacer #scroll-mask-top lo reemplaza */
@@ -1233,24 +1254,56 @@ body {
         box-shadow: 0 8px 40px rgba(0,0,0,0.16) !important;
         z-index: 1500 !important;
         will-change: transform, opacity !important;
-        /* Animación: sale desde atrás del pill hacia abajo */
-        transform: translateX(-50%) translateY(-104%) !important;
+        /* Animación: sale desde la izquierda */
+        transform: translateX(-105%) !important;
         opacity: 0 !important;
-        transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
                     opacity 0.18s ease-out !important;
     }
-    /* Estado abierto */
+    /* Estado abierto - menú izquierdo */
     .mobile-dropdown.show {
-        transform: translateX(-50%) translateY(0) !important;
+        transform: translateX(0) !important;
         opacity: 1 !important;
     }
     /* Ocultar barra de desplazamiento visualmente */
     .mobile-dropdown::-webkit-scrollbar { display: none !important; }
     .mobile-dropdown { scrollbar-width: none !important; }
+    /* Segundo menú derecho: sale desde la derecha */
+    .mobile-dropdown-right {
+        left: auto !important;
+        right: 0.2rem !important;
+        transform: translateX(105%) !important;
+    }
+    .mobile-dropdown-right.show {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+    }
 }
+
+@media (min-width: 640px) and (max-width: 1023px) {
+    .mobile-dropdown,
+    .mobile-dropdown-right {
+        width: min(95%, 640px) !important;
+        max-width: 640px !important;
+        left: 50% !important;
+        right: auto !important;
+    }
+    .mobile-dropdown {
+        transform: translateX(-150%) !important;
+    }
+    .mobile-dropdown-right {
+        transform: translateX(150%) !important;
+    }
+    .mobile-dropdown.show,
+    .mobile-dropdown-right.show {
+        transform: translateX(-50%) !important;
+        opacity: 1 !important;
+    }
+}
+
 @media (min-width: 1024px) {
     .mobile-dropdown { width: 430px !important; top: 4rem !important; height: auto !important; }
-    #drill-detail-panel, #drill-overlay { display: none !important; }
+    #drill-detail-panel, #drill-overlay, #drill-detail-panel-right, #drill-overlay-right { display: none !important; }
 }
 #footer-columns {
     display: flex;
@@ -1329,6 +1382,8 @@ body {
     transform: rotate(90deg) !important;
 }
 #mobile-dropdown .close-mobile-menu-btn svg { stroke: #111827 !important; width: 18px !important; height: 18px !important; }
+#mobile-dropdown.show .close-mobile-menu-btn svg { stroke: #047857 !important; }
+#mobile-dropdown-right.show .close-mobile-menu-btn svg { stroke: #1d4ed8 !important; }
 
 /* ── ITEMS NIVEL 1 — Mobbin: big, clean, airy ── */
 #mobile-dropdown .submenu-parent-btn {
@@ -1364,8 +1419,14 @@ body {
     flex-shrink: 0 !important;
     transition: stroke 0.18s !important;
 }
+#mobile-dropdown.show .submenu-arrow {
+    stroke: #047857 !important;
+}
 #mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn .submenu-arrow {
     stroke: #3b82f6 !important;
+}
+#mobile-dropdown-right.show .submenu-arrow {
+    stroke: #1d4ed8 !important;
 }
 
 /* ── Contenedor submenu ── */
@@ -1513,6 +1574,168 @@ body {
     color: #1e40af !important;
 }
 
+/* ── MENÚ DERECHO: heredar TODOS los estilos del menú izquierdo ── */
+#mobile-dropdown-right .close-mobile-menu-btn { background: rgba(0,0,0,0.07) !important; border-radius: 50% !important; border: none !important; transition: background 0.2s, transform 0.2s !important; padding: 0 !important; width: 34px !important; height: 34px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+#mobile-dropdown-right .close-mobile-menu-btn:hover { background: rgba(0,0,0,0.12) !important; transform: rotate(90deg) !important; }
+#mobile-dropdown-right .close-mobile-menu-btn svg { stroke: #111827 !important; width: 18px !important; height: 18px !important; }
+#mobile-dropdown-right.show .close-mobile-menu-btn svg { stroke: #1d4ed8 !important; }
+#mobile-dropdown-right .submenu-parent-btn {
+    background: rgba(255, 255, 255, 0.55) !important;
+    color: #111827 !important;
+    border-bottom: 1px solid #e8ecef !important;
+    border-left: 3px solid transparent !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    padding: 1rem 1.25rem 1rem 1.15rem !important;
+    transition: background 0.18s, border-left-color 0.18s, color 0.18s !important;
+    box-shadow: none !important;
+    letter-spacing: 0.01em !important;
+}
+#mobile-dropdown-right .submenu-parent-btn:hover {
+    background: rgba(240, 253, 244, 0.80) !important;
+    color: #14532d !important;
+    border-left-color: #86efac !important;
+}
+#mobile-dropdown-right .has-submenu.submenu-open > .submenu-parent-btn {
+    background: rgba(240, 253, 244, 0.75) !important;
+    color: #14532d !important;
+    border-left: 8px solid #16a34a !important;
+    font-weight: 700 !important;
+}
+#mobile-dropdown-right .submenu-arrow {
+    stroke: #3b82f6 !important;
+    width: 24px !important;
+    height: 24px !important;
+    stroke-width: 2.5 !important;
+    flex-shrink: 0 !important;
+    transition: stroke 0.18s !important;
+}
+#mobile-dropdown-right.show .submenu-arrow {
+    stroke: #1d4ed8 !important;
+}
+#mobile-dropdown-right .has-submenu.submenu-open > .submenu-parent-btn .submenu-arrow {
+    stroke: #3b82f6 !important;
+}
+#mobile-dropdown-right .submenu,
+#mobile-dropdown-right .submenu.submenu-compact {
+    background: rgba(248, 250, 252, 0.55) !important;
+    border-left: 5px solid #22c55e !important;
+    margin-left: 0 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+#mobile-dropdown-right .submenu button,
+#mobile-dropdown-right .submenu.submenu-compact button {
+    background: transparent !important;
+    color: #374151 !important;
+    border-bottom: 1px solid #e8ecef !important;
+    font-size: 0.72rem !important;
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+    padding-left: 1.8rem !important;
+    padding-right: 0.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: background 0.15s, color 0.15s !important;
+    box-shadow: none !important;
+}
+#mobile-dropdown-right .submenu button .spd-badge-dark,
+#mobile-dropdown-right .submenu.submenu-compact button .spd-badge-dark {
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+}
+#mobile-dropdown-right .submenu button:hover,
+#mobile-dropdown-right .submenu.submenu-compact button:hover {
+    background: #bfdbfe !important;
+    color: #1e40af !important;
+}
+#mobile-dropdown-right .submenu-title {
+    color: #237c4e !important;
+    background: #e8f5ee !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.1em !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+}
+#mobile-dropdown-right .menu-item-stack {
+    background: rgba(255, 255, 255, 0.55) !important;
+    color: #111827 !important;
+    border-bottom: 1px solid #e8ecef !important;
+    border-left: 3px solid transparent !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    padding: 1rem 1.25rem 1rem 1.15rem !important;
+    transition: all 0.18s !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    text-align: left !important;
+}
+#mobile-dropdown-right .menu-item-stack:hover {
+    background: #f0fdf4 !important;
+    color: #14532d !important;
+    border-left-color: #22c55e !important;
+}
+#mobile-dropdown-right .spd-badge-dark {
+    background: #fde047 !important;
+    border: 1px solid #ca8a04 !important;
+    color: #713f12 !important;
+    font-weight: 800 !important;
+}
+#mobile-dropdown-right .submenu button.nested-btn,
+#mobile-dropdown-right button.nested-btn {
+    background: #eff6ff !important;
+    color: #1d4ed8 !important;
+    border-bottom: 1px solid rgba(147, 197, 253, 0.5) !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    padding-left: 1.8rem !important;
+    justify-content: flex-start !important;
+}
+#mobile-dropdown-right button.nested-btn .spd-badge-dark {
+    margin-left: auto !important;
+    margin-right: 0.4rem !important;
+    flex-shrink: 0 !important;
+}
+#mobile-dropdown-right .nested-menu button {
+    display: flex !important;
+    align-items: center !important;
+}
+#mobile-dropdown-right .nested-menu button .spd-badge-dark {
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+    margin-right: calc(22px + 0.4rem + 0.5rem) !important;
+}
+#mobile-dropdown-right .submenu button.nested-btn:hover,
+#mobile-dropdown-right button.nested-btn:hover {
+    background: #bfdbfe !important;
+    color: #1e40af !important;
+}
+#mobile-dropdown-right .nested-arrow {
+    stroke: #3b82f6 !important;
+    width: 24px !important;
+    height: 24px !important;
+    stroke-width: 2.5 !important;
+}
+#mobile-dropdown-right .nested-menu {
+    background: #f5f9ff !important;
+    border-left: none !important;
+}
+#mobile-dropdown-right .submenu .nested-menu button,
+#mobile-dropdown-right .nested-menu button {
+    color: #1d4ed8 !important;
+    font-size: 0.72rem !important;
+    border-bottom: 1px solid rgba(147, 197, 253, 0.3) !important;
+    background: transparent !important;
+    padding-left: 1.8rem !important;
+}
+#mobile-dropdown-right .submenu .nested-menu button:hover,
+#mobile-dropdown-right .nested-menu button:hover {
+    background: #bfdbfe !important;
+    color: #1e40af !important;
+}
+
     /* ========================================
        NAVBAR PILL STYLE
        ======================================== */
@@ -1578,7 +1801,6 @@ body {
             display: block !important;
         }
         /* Contador: se adapta y no desborda */
-        #banner > div > div:last-child,
         #banner-counter-group {
             flex: 0 1 auto !important;
             display: flex !important;
@@ -1591,13 +1813,19 @@ body {
             overflow: hidden !important;
             min-width: 0 !important;
         }
+        #banner > div > div:last-child {
+            flex: 0 0 auto !important;
+            display: flex !important;
+            align-items: center !important;
+            overflow: visible !important;
+        }
         /* Forzar al grupo del logo a no expandirse */
         #banner > div > div:first-child {
             margin-right: 0 !important;
             padding: 0 !important;
         }
         /* Hamburger: se adapta */
-        #mobile-menu-btn {
+        #mobile-menu-btn, #mobile-menu-btn-right {
             flex-shrink: 0 !important;
         }
     }
@@ -1693,20 +1921,20 @@ body {
     /* ── DRILL-DOWN MOBILE NAVIGATION ── */
     @media (max-width: 1023px) {
         /* Dropdown: flex-column, NO scrollea — solo drill-main-panel scrollea */
-        #mobile-dropdown { overflow: hidden !important; scrollbar-width: none !important;
+        #mobile-dropdown, #mobile-dropdown-right { overflow: hidden !important; scrollbar-width: none !important;
             display: flex !important; flex-direction: column !important; }
-        #mobile-dropdown::-webkit-scrollbar { display: none !important; }
-        #mobile-dropdown.show { overflow: hidden !important; }
+        #mobile-dropdown::-webkit-scrollbar, #mobile-dropdown-right::-webkit-scrollbar { display: none !important; }
+        #mobile-dropdown.show, #mobile-dropdown-right.show { overflow: hidden !important; }
 
         /* Spacer fijo 67px — ocupa zona del pill, no scrollea */
-        #scroll-mask-top {
+        #scroll-mask-top, #scroll-mask-top-right {
             height: 67px;
             flex-shrink: 0;
             pointer-events: none;
         }
 
         /* Solo drill-main-panel scrollea */
-        #drill-main-panel {
+        #drill-main-panel, #drill-main-panel-right {
             flex: 1;
             overflow-y: auto !important;
             overflow-x: hidden !important;
@@ -1714,14 +1942,14 @@ body {
             transition: transform 0.26s cubic-bezier(0.16,1,0.3,1), opacity 0.20s ease;
             will-change: transform, opacity;
         }
-        #drill-main-panel::-webkit-scrollbar { display: none !important; }
-        #drill-main-panel.pushed {
+        #drill-main-panel::-webkit-scrollbar, #drill-main-panel-right::-webkit-scrollbar { display: none !important; }
+        #drill-main-panel.pushed, #drill-main-panel-right.pushed {
             transform: translateX(-20%);
             opacity: 0.2;
             pointer-events: none;
         }
         /* Overlay oscuro detrás de la ventana */
-        #drill-overlay {
+        #drill-overlay, #drill-overlay-right {
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.40);
@@ -1730,9 +1958,9 @@ body {
             pointer-events: none;
             transition: opacity 0.24s ease;
         }
-        #drill-overlay.active { opacity: 1; pointer-events: auto; }
+        #drill-overlay.active, #drill-overlay-right.active { opacity: 1; pointer-events: auto; }
 
-        #drill-detail-panel {
+        #drill-detail-panel, #drill-detail-panel-right {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -1752,13 +1980,13 @@ body {
                         opacity 0.22s ease;
             will-change: transform, opacity;
         }
-        #drill-detail-panel.active {
+        #drill-detail-panel.active, #drill-detail-panel-right.active {
             transform: translate(-50%, -50%) scale(1);
             opacity: 1;
             pointer-events: auto;
         }
 
-        #drill-header {
+        #drill-header, #drill-detail-panel-right .drill-header {
             position: sticky;
             top: 0;
             display: grid;
@@ -1772,7 +2000,7 @@ body {
             border-bottom: 1px solid rgba(0,0,0,0.07);
             z-index: 10;
         }
-        #drill-back-btn {
+        #drill-back-btn, #drill-detail-panel-right .drill-back-btn {
             display: flex;
             align-items: center;
             gap: 4px;
@@ -1787,13 +2015,13 @@ body {
             flex-shrink: 0;
             -webkit-tap-highlight-color: transparent;
         }
-        #drill-back-btn svg {
+        #drill-back-btn svg, #drill-detail-panel-right .drill-back-btn svg {
             width: 28px !important;
             height: 28px !important;
             stroke-width: 2.8 !important;
         }
-        #drill-back-btn:active { background: rgba(22,163,74,0.10); }
-        #drill-title {
+        #drill-back-btn:active, #drill-detail-panel-right .drill-back-btn:active { background: rgba(22,163,74,0.10); }
+        #drill-title, .drill-title-right {
             font-weight: 700;
             font-size: 1.25rem;
             color: #111;
@@ -1803,17 +2031,17 @@ body {
             white-space: nowrap;
             grid-column: 2;
         }
-        #drill-content {
+        #drill-content, .drill-content-right {
             padding: 8px 0 48px;
         }
         /* SPD amarillo y alineado en el panel de detalle */
-        #drill-content button {
+        #drill-content button, .drill-content-right button {
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
         }
-        #drill-content .spd-badge,
-        #drill-content .spd-badge-dark {
+        #drill-content .spd-badge, .drill-content-right .spd-badge,
+        #drill-content .spd-badge-dark, .drill-content-right .spd-badge-dark {
             background: #facc15 !important;
             border: 1px solid #eab308 !important;
             color: #713f12 !important;
@@ -1947,13 +2175,120 @@ body {
         #drill-content .submenu.leyes-compactas .drill-collapsible.open button {
             display: flex !important;
         }
+
+        /* ── DRILL-DOWN para menú DERECHO: mismos estilos ── */
+        .drill-content-right .submenu button,
+        .drill-content-right .submenu.submenu-compact button {
+            font-size: 0.82rem !important;
+            padding: 10px 16px !important;
+            min-height: 40px !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+        #drill-detail-panel-right .drill-content-right .submenu button {
+            color: #1d4ed8 !important;
+            background-color: #eff6ff !important;
+            border-bottom: 1px solid rgba(147,197,253,0.4) !important;
+        }
+        .drill-content-right .submenu-title {
+            font-size: 0.72rem !important;
+            letter-spacing: 0.08em !important;
+            padding: 14px 20px 6px !important;
+        }
+        .drill-content-right button.nested-btn {
+            font-size: 1.05rem !important;
+            padding: 15px 20px !important;
+            min-height: 54px !important;
+        }
+        #drill-detail-panel-right .drill-content-right .has-nested button.nested-btn {
+            color: #1e3a8a !important;
+            background-color: #dbeafe !important;
+            border-bottom: 1px solid rgba(96,165,250,0.35) !important;
+        }
+        #drill-detail-panel-right .drill-content-right .nested-menu button {
+            color: #1d4ed8 !important;
+            background-color: #f5f9ff !important;
+            border-bottom: 1px solid rgba(147,197,253,0.3) !important;
+        }
+        .drill-content-right .nested-menu button {
+            font-size: 1.05rem !important;
+            padding: 13px 20px 13px 32px !important;
+            min-height: 50px !important;
+        }
+        #drill-detail-panel-right .drill-content-right .submenu button:hover,
+        #drill-detail-panel-right .drill-content-right button.nested-btn:hover,
+        #drill-detail-panel-right .drill-content-right .nested-menu button:hover {
+            background-color: #bfdbfe !important;
+            color: #1e40af !important;
+        }
+        .drill-content-right .submenu,
+        .drill-content-right .submenu.submenu-compact {
+            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
+            background: transparent !important;
+            height: auto !important;
+        }
+    }
+
+    /* Botones hamburguesa: mismos estilos, ambos visibles en móvil */
+    #mobile-menu-btn,
+    #mobile-menu-btn-right {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0.6rem !important;
+        border-radius: 10px !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    #mobile-menu-btn {
+        margin-left: -0.15rem !important;
+    }
+    #mobile-menu-btn-right {
+        margin-right: -0.15rem !important;
+    }
+    #mobile-menu-btn svg,
+    #mobile-menu-btn-right svg {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    @media (max-width: 540px) {
+        #mobile-menu-btn,
+        #mobile-menu-btn-right {
+            width: 44px !important;
+            height: 44px !important;
+            padding: 0.55rem !important;
+        }
+        #mobile-menu-btn svg,
+        #mobile-menu-btn-right svg {
+            width: 30px !important;
+            height: 30px !important;
+        }
+    }
+    @media (min-width: 1024px) {
+        #mobile-menu-btn-right { display: none !important; }
+    }
+
+    #mobile-menu-btn,
+    #mobile-menu-btn-right {
+        display: none !important;
+    }
+    @media (max-width: 1023px) {
+        #mobile-menu-btn,
+        #mobile-menu-btn-right {
+            display: flex !important;
+        }
     }
 
     /* Los SVG del banner en negro */
     #banner svg { color: #111827; }
     #banner .font-bold { color: #111827; }
     /* Transición suave hamburger → X */
-    #menu-icon-hamburger, #menu-icon-close {
+    #menu-icon-hamburger, #menu-icon-close,
+    #menu-icon-hamburger-right, #menu-icon-close-right {
         transition: opacity 0.2s ease;
     }
 
@@ -1967,37 +2302,47 @@ body {
             box-shadow: none !important;
         }
         /* Todos los ítems del menú: transparentes — el frosted glass del panel lo da todo */
-        #mobile-dropdown .submenu-parent-btn {
+        #mobile-dropdown .submenu-parent-btn,
+        #mobile-dropdown-right .submenu-parent-btn {
             background: transparent !important;
         }
         #mobile-dropdown .submenu,
         #mobile-dropdown .submenu.submenu-compact,
-        #mobile-dropdown .submenu.leyes-compactas {
+        #mobile-dropdown .submenu.leyes-compactas,
+        #mobile-dropdown-right .submenu,
+        #mobile-dropdown-right .submenu.submenu-compact {
             background: rgba(220, 252, 231, 0.25) !important;
         }
         #mobile-dropdown .submenu button,
         #mobile-dropdown .submenu.submenu-compact button,
-        #mobile-dropdown .submenu.leyes-compactas button {
+        #mobile-dropdown .submenu.leyes-compactas button,
+        #mobile-dropdown-right .submenu button,
+        #mobile-dropdown-right .submenu.submenu-compact button {
             background: rgba(220, 252, 231, 0.45) !important;
         }
-        #mobile-dropdown .menu-item-stack {
+        #mobile-dropdown .menu-item-stack,
+        #mobile-dropdown-right .menu-item-stack {
             background: transparent !important;
         }
         /* Sección abierta: glow verde alrededor de toda la tarjeta */
-        #mobile-dropdown .has-submenu.submenu-open {
+        #mobile-dropdown .has-submenu.submenu-open,
+        #mobile-dropdown-right .has-submenu.submenu-open {
             box-shadow: 0 0 0 2.5px #16a34a, 0 4px 16px rgba(22,163,74,0.15) !important;
             border-radius: 10px !important;
             overflow: hidden !important;
             margin: 3px 0 !important;
             transition: box-shadow 0.2s ease !important;
         }
-        #mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
+        #mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn,
+        #mobile-dropdown-right .has-submenu.submenu-open > .submenu-parent-btn {
             background: rgba(187, 247, 208, 0.65) !important;
         }
-        #mobile-dropdown .submenu-parent-btn:hover {
+        #mobile-dropdown .submenu-parent-btn:hover,
+        #mobile-dropdown-right .submenu-parent-btn:hover {
             background: rgba(187, 247, 208, 0.45) !important;
         }
-        #mobile-dropdown .dropdown-menu-content {
+        #mobile-dropdown .dropdown-menu-content,
+        #mobile-dropdown-right .dropdown-menu-content {
             padding-top: 0.25rem !important;
             background: transparent !important;
         }
@@ -2031,6 +2376,28 @@ body {
         }
     }
 
+    @media (max-width: 1023px) {
+        #banner-counter-group {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        #banner-counter-group svg {
+            display: none !important;
+        }
+    }
+    @media (min-width: 1024px) {
+        #banner-counter-group svg {
+            display: inline-flex !important;
+        }
+        #banner-counter-group svg path {
+            stroke-width: 3 !important;
+        }
+        #visit-counter {
+            font-weight: 700 !important;
+        }
+    }
   </style>
 </head>
 
@@ -2069,12 +2436,22 @@ body {
       </div>
       <div id="search-center-container" class="flex-grow flex justify-center px-4">
       </div>
-      <div id="banner-counter-group" class="flex items-center space-x-2 banner-text-small">
-        <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-        </svg>
-        <span class="flex items-center"><span id="visit-counter" class="font-bold ml-1">--</span></span>
+      <div class="flex items-center space-x-1">
+        <div id="banner-counter-group" class="flex items-center space-x-2 banner-text-small text-slate-900">
+          <svg class="w-5 h-5 hidden lg:inline-flex" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+          <span class="flex items-center"><span id="visit-counter" class="ml-1 text-slate-900">--</span></span>
+        </div>
+        <button id="mobile-menu-btn-right" class="p-2" aria-label="Abrir menú derecho" aria-expanded="false" aria-controls="mobile-dropdown-right">
+          <svg id="menu-icon-hamburger-right" class="w-7 h-7" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="menu-icon-close-right" class="w-7 h-7 hidden" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -2545,6 +2922,40 @@ body {
       </div>
     </div>
     <div class="has-submenu">
+      <button class="submenu-parent-btn">Manuales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg></button>
+      <div class="submenu submenu-compact">
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Manual de Funcionamiento</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">2. Manual de Capacitación</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">3. Manual de Organización</button>
+      </div>
+    </div>
+    <div class="has-submenu">
+      <button class="submenu-parent-btn">Capacitación <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg></button>
+      <div class="submenu submenu-compact">
+        <button onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
+        <button onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Informativo_N5_v2_may_2026.pdf')">Informativo Nº 5 Proceso de exámenes, certificación y convalidación</button>
+        <button onclick="openNewLink('https://dal5.short.gy/4S3')">Asesores</button>
+        <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
+        <div class="has-nested">
+          <button class="nested-btn">Planes y Programas de Capacitación <span class="spd-badge-dark">SPD</span><svg class="nested-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg></button>
+          <div class="nested-menu">
+            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar inicio curso <span class="spd-badge-dark">SPD</span></button>
+            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar término curso <span class="spd-badge-dark">SPD</span></button>
+            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar servicio custodia <span class="spd-badge-dark">SPD</span></button>
+          </div>
+        </div>
+        <button onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
+        <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
+      </div>
+    </div>
+
+    <div class="has-submenu">
       <button class="submenu-parent-btn">Doc. Editables <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path d="M9 5l7 7-7 7"></path>
         </svg></button>
@@ -2593,40 +3004,13 @@ body {
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf')">6. Mod. Acred. Capacitador.</button>-->
       </div>
     </div>
-    <div class="has-submenu">
-      <button class="submenu-parent-btn">Manuales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M9 5l7 7-7 7"></path>
-        </svg></button>
-      <div class="submenu submenu-compact">
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Manual de Funcionamiento</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">2. Manual de Capacitación</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">3. Manual de Organización</button>
-      </div>
-    </div>
-    <div class="has-submenu">
-      <button class="submenu-parent-btn">Capacitación <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M9 5l7 7-7 7"></path>
-        </svg></button>
-      <div class="submenu submenu-compact">
-        <button onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
-        
-        <button onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Informativo_N5_v2_may_2026.pdf')">Informativo Nº 5 Proceso de exámenes, certificación y convalidación</button>
-        <button onclick="openNewLink('https://dal5.short.gy/4S3')">Asesores</button>
-        <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
-        <div class="has-nested">
-          <button class="nested-btn">Planes y Programas de Capacitación <span class="spd-badge-dark">SPD</span><svg class="nested-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg></button>
-          <div class="nested-menu">
-            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar inicio curso <span class="spd-badge-dark">SPD</span></button>
-            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar término curso <span class="spd-badge-dark">SPD</span></button>
-            <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones')">Plantilla informar servicio custodia <span class="spd-badge-dark">SPD</span></button>
-          </div>
-        </div>
-        <button onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
-        <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
-      </div>
-    </div>
+
+  </div>
+  </div>
+<!-- SEGUNDO MENÚ MÓVIL (DERECHO) -->
+  <div id="mobile-dropdown-right" class="mobile-dropdown mobile-dropdown-right hidden" style="margin-top: 0 !important; padding-top: 0 !important; z-index: 1500 !important;">
+    <div class="dropdown-menu-content">
+
     <div class="has-submenu">
       <button class="submenu-parent-btn">Credenciales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path d="M9 5l7 7-7 7"></path>
@@ -2643,8 +3027,6 @@ body {
       <div class="submenu submenu-compact">
         <button onclick="openNewLink('https://drive.google.com/file/d/1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ/view')">Valores Credenciales</button>
         <button onclick="openNewLink('https://drive.google.com/file/d/12mg35jowBvw1zX8z-jU2gZg_ALjBCIBD/view')">Valores Plan</button>
-        <!--<button onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
-        <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>-->
         <button onclick="openNewLink('https://os10.short.gy/Renta')">Valor Alarma 1r S. 2026</button>
         <div style="overflow:hidden;border-top:1px solid #fca5a5;margin-top:6px;padding:8px 4px;background:rgba(220,38,38,0.08);border-radius:4px;">
           <span style="display:inline-block;white-space:nowrap;color:#b91c1c;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:0.03em;animation:valores-marquee 40s ease-in-out infinite;">&#9888;&#65039;&nbsp; ☝🏻 LOS PAGOS SOLO CON VALE VISTA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -2669,6 +3051,7 @@ body {
         <button onclick="openNewLink('https://www.ayudamineduc.cl/ficha/equivalencia-de-estudios-para-fines-laborales-18')">Cuarto medio laboral</button>
         <button onclick="openNewLink('https://guardiaevento.netlify.app/')">Ggss x Evento</button>
       </div>
+    </div>
     <!-- RECLAMOS -->
     <div class="has-submenu">
       <button class="submenu-parent-btn">Reclamos <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2681,7 +3064,8 @@ body {
     </div>
     <button class="menu-item-stack" onclick="handleSPD()">SPD</button>
     <button class="menu-item-stack" onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Descargables SPD</button>
-  </div>
+    <button class="menu-item-stack" onclick="document.getElementById('mobile-menu-btn-right').click(); document.getElementById('main-footer').scrollIntoView({behavior:'smooth'});">Contacto</button>
+    </div>
   </div>
 <!-- ============================================================
      OVERLAY Y PANEL DE SUBMENÚ DESKTOP
@@ -2929,7 +3313,7 @@ body {
                aria-label="Video de fondo OS10 Coquimbo"
                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;"
                class="kb-hero-video">
-          <img src="assets/images/foto%20(1a).webp?v=10" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" class="kb-hero-img">
+          <img src="assets/images/foto%20(1a).webp?v=10" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none !important;" class="kb-hero-img hidden" aria-hidden="true">
         </video>
       </div>
     </div>
