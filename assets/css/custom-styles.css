@@ -610,9 +610,15 @@ body:not(.homepage) {
     }
     #mobile-menu-btn,
     #mobile-menu-btn-right {
-        width: clamp(36px, 10vw, 44px) !important;
-        height: clamp(36px, 10vw, 44px) !important;
+        width: clamp(44px, 10vw, 48px) !important;
+        height: clamp(44px, 10vw, 48px) !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
         padding: clamp(4px, 1vw, 6px) !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        position: relative !important;
+        z-index: 10 !important;
     }
     #mobile-menu-btn svg,
     #mobile-menu-btn-right svg {
