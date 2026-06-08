@@ -1504,7 +1504,7 @@ body {
 /* Badges SPD — amarillo sólido (como el look del PC) */
 #mobile-dropdown .spd-badge-dark {
     background: #fde047 !important;
-    border: 1px solid #ca8a04 !important;
+    border: 1px solid #0c0f6e !important;
     color: #713f12 !important;
     font-weight: 800 !important;
 }
@@ -1575,11 +1575,11 @@ body {
 /* ── MENÚ DERECHO: heredar TODOS los estilos del menú izquierdo ── */
 #mobile-dropdown-right .close-mobile-menu-btn { background: rgba(0,0,0,0.07) !important; border-radius: 50% !important; border: none !important; transition: background 0.2s, transform 0.2s !important; padding: 0 !important; width: 34px !important; height: 34px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
 #mobile-dropdown-right .close-mobile-menu-btn:hover { background: rgba(0,0,0,0.12) !important; transform: rotate(90deg) !important; }
-#mobile-dropdown-right .close-mobile-menu-btn svg { stroke: #111827 !important; width: 18px !important; height: 18px !important; }
-#mobile-dropdown-right.show .close-mobile-menu-btn svg { stroke: #1d4ed8 !important; }
+#mobile-dropdown-right .close-mobile-menu-btn svg { stroke: #1e3a5f !important; width: 18px !important; height: 18px !important; }
+#mobile-dropdown-right.show .close-mobile-menu-btn svg { stroke: #1e3a5f !important; }
 #mobile-dropdown-right .submenu-parent-btn {
     background: rgba(255, 255, 255, 0.55) !important;
-    color: #111827 !important;
+    color: #1e3a5f !important;
     border-bottom: 1px solid #e8ecef !important;
     border-left: 3px solid transparent !important;
     font-size: clamp(1.3rem, 4.2vw, 1.5rem) !important;
@@ -1590,18 +1590,18 @@ body {
     letter-spacing: 0.01em !important;
 }
 #mobile-dropdown-right .submenu-parent-btn:hover {
-    background: rgba(240, 253, 244, 0.80) !important;
-    color: #14532d !important;
-    border-left-color: #86efac !important;
+    background: rgba(219, 234, 254, 0.80) !important;
+    color: #1e3a5f !important;
+    border-left-color: #3b82f6 !important;
 }
 #mobile-dropdown-right .has-submenu.submenu-open > .submenu-parent-btn {
-    background: rgba(240, 253, 244, 0.75) !important;
-    color: #14532d !important;
-    border-left: 8px solid #16a34a !important;
+    background: rgba(219, 234, 254, 0.75) !important;
+    color: #1e3a5f !important;
+    border-left: 8px solid #1d4ed8 !important;
     font-weight: 700 !important;
 }
 #mobile-dropdown-right .submenu-arrow {
-    stroke: #3b82f6 !important;
+    stroke: #1e3a5f !important;
     width: 24px !important;
     height: 24px !important;
     stroke-width: 2.5 !important;
@@ -1658,7 +1658,7 @@ body {
 }
 #mobile-dropdown-right .menu-item-stack {
     background: rgba(255, 255, 255, 0.55) !important;
-    color: #111827 !important;
+    color: #1e3a5f !important;
     border-bottom: 1px solid #e8ecef !important;
     border-left: 3px solid transparent !important;
     font-size: clamp(1.3rem, 4.2vw, 1.5rem) !important;
@@ -1671,9 +1671,9 @@ body {
     text-align: left !important;
 }
 #mobile-dropdown-right .menu-item-stack:hover {
-    background: #f0fdf4 !important;
-    color: #14532d !important;
-    border-left-color: #22c55e !important;
+    background: rgba(219, 234, 254, 0.80) !important;
+    color: #1e3a5f !important;
+    border-left-color: #3b82f6 !important;
 }
 #mobile-dropdown-right .spd-badge-dark {
     background: #fde047 !important;
@@ -2284,6 +2284,8 @@ body {
     /* Los SVG del banner en negro */
     #banner svg { color: #111827; }
     #banner .font-bold { color: #111827; }
+    #banner #menu-icon-close-right { color: #0633af !important; }
+    #banner #menu-icon-close-right path { stroke: #0633af !important; }
     /* Transición suave hamburger → X */
     #menu-icon-hamburger, #menu-icon-close,
     #menu-icon-hamburger-right, #menu-icon-close-right {
