@@ -665,6 +665,18 @@ body:not(.homepage) {
         right: 0.2rem !important;
     }
     /* Botones del menú: texto más grande y en negrillas */
+    /* PRUEBA: Tipografía Arial para todos los textos de ambos menús móviles
+       (izquierdo: #mobile-dropdown, derecho: #mobile-dropdown-right, paneles drill) */
+    body #mobile-dropdown,
+    body #mobile-dropdown *,
+    body #mobile-dropdown-right,
+    body #mobile-dropdown-right *,
+    body #drill-detail-panel,
+    body #drill-detail-panel *,
+    body #drill-detail-panel-right,
+    body #drill-detail-panel-right * {
+        font-family: Arial, Helvetica, sans-serif !important;
+    }
     body .mobile-dropdown .submenu-parent-btn {
         padding: clamp(0.4rem, 1.8vw, 0.8rem) clamp(0.6rem, 2.5vw, 1.5rem) !important;
         font-size: clamp(1rem, 3.2vw, 1.15rem) !important;
