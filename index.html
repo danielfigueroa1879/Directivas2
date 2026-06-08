@@ -77,7 +77,7 @@
          cambies cualquier foto del carrusel. Todos los dispositivos
          descargarán la versión nueva sin importar la caché previa.
     ====================================================== -->
-  <script>window.PHOTO_VERSION = '10';</script>
+  <script>window.PHOTO_VERSION = '11';</script>
   <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
          Precarga la imagen de fondo del homepage-section.
@@ -88,7 +88,7 @@
     ====================================================== -->
   <!-- El poster del <video> hero es foto (1a) en TODOS los dispositivos →
        se precarga una sola imagen, con prioridad alta, para acelerar el LCP. -->
-  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp?v=10" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp?v=11" fetchpriority="high">
   <!-- =====================================================
          TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
@@ -113,17 +113,17 @@
     <link rel="stylesheet" href="assets/css/carousel.css">
   </noscript>
   <!-- styles.css: async → cubierto por inline-critical + tailwind crítico -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=27" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=27"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=28" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=28"></noscript>
   <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
   <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="assets/css/search.css?v=1">
   </noscript>
   <!-- custom-styles.css: panel/modales empiezan ocultos → async seguro -->
-  <link rel="stylesheet" href="assets/css/custom-styles.css?v=17" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/custom-styles.css?v=18" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="assets/css/custom-styles.css?v=17">
+    <link rel="stylesheet" href="assets/css/custom-styles.css?v=18">
   </noscript>
   <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -1740,22 +1740,26 @@ body {
 
     /* ── MOBILE (≤1023px): pill fija, blanca, pill shape ── */
     @media (max-width: 1023px) {
-        #banner {
-            left: 50% !important;
-            right: auto !important;
-            transform: translateX(-50%) !important;
-            top: 8px !important;
-            width: calc(100% - 0.4rem) !important;
-            max-width: 500px !important;
-            height: 68px !important;
-            border-radius: 9999px !important;
-            background: rgba(255, 255, 255, 0.60) !important;
-            backdrop-filter: saturate(180%) blur(40px) !important;
-            -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
-            border: 1px solid rgba(255,255,255,0.45) !important;
-            border-bottom: 1px solid rgba(255,255,255,0.45) !important;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
-        }
+      /* Banner pill height driven by CSS var so spacer can match it */
+      #banner {
+        --banner-pill-h: clamp(56px, 12vw, 80px);
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        top: 6px !important;
+        width: calc(100% - 0.4rem) !important;
+        max-width: 500px !important;
+        height: var(--banner-pill-h) !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+        border-radius: 9999px !important;
+        background: rgba(255, 255, 255, 0.60) !important;
+        backdrop-filter: saturate(180%) blur(40px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
+        border: 1px solid rgba(255,255,255,0.45) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.45) !important;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
+      }
         /* Layout interno mobile: todo dentro del pill sin desborde */
         #banner > div {
             display: flex !important;
@@ -1929,7 +1933,7 @@ body {
 
         /* Spacer 68px — ocupa zona del pill, no scrollea (debe coincidir con #banner) */
         #scroll-mask-top, #scroll-mask-top-right {
-            height: 68px;
+          height: var(--banner-pill-h, 68px);
             flex-shrink: 0;
             pointer-events: none;
         }
@@ -2781,7 +2785,7 @@ body {
 <!-- ============================================================
      SCRIPTS INLINE EXTRAÍDOS
 ============================================================ -->
-  <script src="assets/js/inline-scripts.js?v=10"></script>
+  <script src="assets/js/inline-scripts.js?v=11"></script>
 <!-- ============================================================
      MENÚ DESPLEGABLE MÓVIL Y DRILL-DOWN
 ============================================================ -->
@@ -3262,7 +3266,7 @@ body {
                 <li>Para empresas deben completar este listado en Word y debe venir en pendrive en formato digital.</li>
                 <a href="https://docs.google.com/document/d/14mzX_kderPmSKiui__WIqVKiRSKgFe7x/edit?usp=drive_link&ouid=106863493232977056654&rtpof=true&sd=true" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">WORD LIST. GG.SS.</a>
               </ul>
-              <div class="mt-4 flex justify-center"><img src="assets/images/foto.webp?v=10" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413"></div>
+              <div class="mt-4 flex justify-center"><img src="assets/images/foto.webp?v=11" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413"></div>
               <div class="flex flex-col space-y-3 mt-4">
                 <p class="text-sm italic text-center">Formato JPG, 260 x 320 píxeles, fondo blanco:</p>
               </div>
@@ -3309,14 +3313,14 @@ body {
       <!-- Primer slide: <img> real para que sea el elemento LCP con fetchpriority=high -->
       <!-- ?v=N debe coincidir con window.PHOTO_VERSION en <head> -->
       <div class="kb-slide active">
-        <video autoplay muted playsinline preload="auto" fetchpriority="high"
-               src="assets/images/camioneta.mp4?v=17"
-               poster="assets/images/foto%20(1a).webp?v=10"
+         <video autoplay muted playsinline preload="auto" fetchpriority="high"
+           src="assets/images/camioneta.mp4?v=18"
+           poster="assets/images/foto%20(1a).webp?v=11"
                width="960" height="443"
                aria-label="Video de fondo OS10 Coquimbo"
                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;"
                class="kb-hero-video">
-          <img src="assets/images/foto%20(1a).webp?v=10" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none !important;" class="kb-hero-img hidden" aria-hidden="true">
+          <img src="assets/images/foto%20(1a).webp?v=11" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none !important;" class="kb-hero-img hidden" aria-hidden="true">
         </video>
       </div>
     </div>
@@ -3866,22 +3870,22 @@ body {
               </svg>
             </button>
             <div id="modelos-solicitud-content" class="space-y-2 md:space-y-3">
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://drive.google.com/file/d/1ObrdQqk_PPVTTRUKOzVmVDIxxlcZXRY6/view" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada P. Natural</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://drive.google.com/file/d/1X32qrNC0KeyR9bW2AVZ7VzZW6JZTSjl0/view" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada Empresas</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Acreditación de Empresa</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="#" onclick="mostrarRequisitos('asesor'); return false;" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Acreditación Asesor</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_solicitud_pers_natural_dependiente.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://segprivada.minsegpublica.gob.cl/descargables" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Solic. Pers. Natural Dep.</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://segprivada.minsegpublica.gob.cl/descargables" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Acred. Capacitador</span>
               </a>
             </div>
@@ -4187,16 +4191,16 @@ body {
 <!-- ============================================================
      SCRIPTS EXTERNOS DIFERIDOS
 ============================================================ -->
-  <script src="assets/js/inicio.js?v=4" defer></script>
+  <script src="assets/js/inicio.js?v=5" defer></script>
   <script src="assets/js/carousel.js" defer></script>
   <!-- Carrusel de Componentes manejado por carousel.js (via main.js) -->
-  <script src="assets/js/main.js?v=3" defer></script>
-  <script src="./rules/chatbot-rules.js?v=3" defer></script>
+  <script src="assets/js/main.js?v=4" defer></script>
+  <script src="./rules/chatbot-rules.js?v=4" defer></script>
   <script src="assets/js/chatbot.min.js" defer></script>
   <!-- Script para menú hamburguesa móvil y manejo de banner PWA -->
   <!-- SCRIPT PARA ACORDEÓN (AÑADIDO) -->
   <!-- ✨ SCRIPT PARA ANIMACIÓN SPD -->
-  <script src="assets/js/search.min.js?v=4" defer></script>
+  <script src="assets/js/search.min.js?v=5" defer></script>
   <!-- spd-componentes (183 KiB): carga diferida via idle para no bloquear LCP paint -->
   <!-- Función para descargar contenido en PDF con animación -->
   <!-- Script mejorado para ocultar el banner verde cuando el modal está activo -->
