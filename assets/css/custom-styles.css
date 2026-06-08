@@ -189,6 +189,35 @@
     }
 }
 
+/* Ocultar menú hamburguesa izquierdo en PC */
+@media (min-width: 1024px) {
+    #mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+/* Centrar los paneles móviles en tablet y móviles grandes */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .mobile-dropdown,
+    .mobile-dropdown-right {
+        width: min(95%, 640px) !important;
+        max-width: 640px !important;
+        left: 50% !important;
+        right: auto !important;
+    }
+    .mobile-dropdown {
+        transform: translateX(-150%) !important;
+    }
+    .mobile-dropdown-right {
+        transform: translateX(150%) !important;
+    }
+    .mobile-dropdown.show,
+    .mobile-dropdown-right.show {
+        transform: translateX(-50%) !important;
+        opacity: 1 !important;
+    }
+}
+
 /* ============================================================
    BLOQUE DE RESCATE: VISIBILIDAD DE SECCIONES
    ============================================================ */
@@ -525,15 +554,15 @@ body:not(.homepage) {
 
     /* Imagen aniversario */
     #banner-aniversario {
-        width: clamp(55px, 16vw, 70px) !important;
-        max-width: clamp(55px, 16vw, 70px) !important;
+        width: clamp(76px, 21vw, 90px) !important;
+        max-width: clamp(76px, 21vw, 90px) !important;
         margin-left: clamp(0.5rem, 2.5vw, 1.1rem) !important;
     }
 
     /* Logo OS10 */
     #banner .logo-os10-container img,
     #banner > div > div:first-child img {
-        height: clamp(34px, 10vw, 45px) !important;
+        height: clamp(30px, 8.5vw, 38px) !important;
         width: auto !important;
     }
 
@@ -557,10 +586,10 @@ body:not(.homepage) {
         padding: 0 clamp(0.25rem, 1vw, 0.5rem) 0 0 !important;
     }
     .banner-text-small {
-        font-size: clamp(0.92rem, 4.2vw, 1.18rem) !important;
+        font-size: clamp(0.95rem, 4.2vw, 1.18rem) !important;
     }
     .banner-text-small #visit-counter {
-        font-size: clamp(0.95rem, 4.4vw, 1.22rem) !important;
+        font-size: clamp(1rem, 4.6vw, 1.3rem) !important;
     }
     .banner-text-small svg {
         width: clamp(1.4rem, 5.6vw, 1.75rem) !important;
@@ -569,13 +598,34 @@ body:not(.homepage) {
 
     /* Hamburger menu button */
     #mobile-menu-btn {
+        margin-left: clamp(4px, 1.2vw, 8px) !important;
+    }
+    #mobile-menu-btn-right {
+        margin-right: clamp(4px, 1.2vw, 8px) !important;
+    }
+    #mobile-menu-btn,
+    #mobile-menu-btn-right {
         width: clamp(36px, 10vw, 44px) !important;
         height: clamp(36px, 10vw, 44px) !important;
         padding: clamp(4px, 1vw, 6px) !important;
     }
-    #mobile-menu-btn svg {
+    #mobile-menu-btn svg,
+    #mobile-menu-btn-right svg {
         width: clamp(22px, 6vw, 26px) !important;
         height: clamp(22px, 6vw, 26px) !important;
+    }
+    /* Close icons del menú móvil: color específico según menú abierto */
+    #menu-icon-close {
+        color: #047857 !important;
+        stroke-width: 3 !important;
+    }
+    #menu-icon-close-right {
+        color: #C2781D !important;
+        stroke-width: 3 !important;
+    }
+    #menu-icon-close path,
+    #menu-icon-close-right path {
+        stroke-width: 3 !important;
     }
 
     /* Menú dropdown: mismo ancho que el pill, fluido */
@@ -947,4 +997,49 @@ body:not(.homepage) {
     /* Entrada de texto y aviso del pie */
     #chat-popup #user-input { font-size: 0.78rem !important; }
     #chat-popup footer .text-xs { font-size: 0.6rem !important; }
+}
+
+/* Colores específicos para menús móviles abiertos */
+#mobile-dropdown.show {
+    color: #047857 !important;
+}
+#mobile-dropdown.show .submenu-parent-btn,
+#mobile-dropdown.show .dropdown-menu-content > button,
+#mobile-dropdown.show .dropdown-menu-content > a,
+#mobile-dropdown.show .submenu button,
+#mobile-dropdown.show .menu-item-stack,
+#mobile-dropdown.show .dropdown-menu-header h3,
+#mobile-dropdown.show .submenu-title {
+    color: #047857 !important;
+}
+#mobile-dropdown.show .submenu-arrow,
+#mobile-dropdown.show .close-mobile-menu-btn svg {
+    stroke: #047857 !important;
+    color: #047857 !important;
+}
+#mobile-dropdown.show .submenu-parent-btn .submenu-arrow path,
+#mobile-dropdown.show .close-mobile-menu-btn svg path {
+    stroke: #047857 !important;
+}
+
+#mobile-dropdown-right.show {
+    color: #C2781D !important;
+}
+#mobile-dropdown-right.show .submenu-parent-btn,
+#mobile-dropdown-right.show .dropdown-menu-content > button,
+#mobile-dropdown-right.show .dropdown-menu-content > a,
+#mobile-dropdown-right.show .submenu button,
+#mobile-dropdown-right.show .menu-item-stack,
+#mobile-dropdown-right.show .dropdown-menu-header h3,
+#mobile-dropdown-right.show .submenu-title {
+    color: #C2781D !important;
+}
+#mobile-dropdown-right.show .submenu-arrow,
+#mobile-dropdown-right.show .close-mobile-menu-btn svg {
+    stroke: #C2781D !important;
+    color: #C2781D !important;
+}
+#mobile-dropdown-right.show .submenu-parent-btn .submenu-arrow path,
+#mobile-dropdown-right.show .close-mobile-menu-btn svg path {
+    stroke: #C2781D !important;
 }
