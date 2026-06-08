@@ -565,7 +565,7 @@ body:not(.homepage) {
     /* Logo OS10 */
     #banner .logo-os10-container img,
     #banner > div > div:first-child img {
-        height: clamp(42px, 11vw, 54px) !important;
+        height: clamp(38px, 10vw, 50px) !important;
         width: auto !important;
     }
 
