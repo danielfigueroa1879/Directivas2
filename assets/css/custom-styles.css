@@ -658,24 +658,28 @@ body:not(.homepage) {
         left: auto !important;
         right: 0.2rem !important;
     }
-    /* Botones del menú: texto y padding fluido */
+    /* Botones del menú: texto más grande y en negrillas */
     body .mobile-dropdown .submenu-parent-btn {
         padding: clamp(0.4rem, 1.8vw, 0.8rem) clamp(0.6rem, 2.5vw, 1.5rem) !important;
-        font-size: clamp(0.78rem, 2.6vw, 0.95rem) !important;
+        font-size: clamp(0.88rem, 2.9vw, 1.05rem) !important;
+        font-weight: 700 !important;
     }
     body .mobile-dropdown .submenu button,
     body .mobile-dropdown .dropdown-menu-content > button,
     body .mobile-dropdown .dropdown-menu-content > a {
         padding: clamp(0.3rem, 1.3vw, 0.5rem) clamp(0.6rem, 2.5vw, 1.5rem) !important;
-        font-size: clamp(0.78rem, 2.6vw, 0.95rem) !important;
+        font-size: clamp(0.85rem, 2.8vw, 1rem) !important;
+        font-weight: 600 !important;
     }
     body .mobile-dropdown .dropdown-menu-header h3 {
-        font-size: clamp(0.82rem, 2.8vw, 1rem) !important;
+        font-size: clamp(0.9rem, 3vw, 1.1rem) !important;
+        font-weight: 800 !important;
     }
     body .mobile-dropdown .submenu.submenu-compact button,
     body .mobile-dropdown .submenu.leyes-compactas button {
         padding-left: clamp(1rem, 4vw, 2.5rem) !important;
-        font-size: clamp(0.65rem, 2vw, 0.78rem) !important;
+        font-size: clamp(0.72rem, 2.2vw, 0.85rem) !important;
+        font-weight: 600 !important;
     }
     /* Flechas del menú */
     body .mobile-dropdown .submenu-arrow {
