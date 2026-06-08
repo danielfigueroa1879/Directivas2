@@ -355,6 +355,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Función para abrir el menú
         function openMobileMenu() {
+            // Cerrar el menú derecho si está abierto (sin tocar overlay)
+            if (mobileDropdownRight && !mobileDropdownRight.classList.contains('hidden')) {
+                mobileDropdownRight.classList.remove('show');
+                setMenuIconRight(false);
+                setTimeout(() => { mobileDropdownRight.classList.add('hidden'); }, 240);
+            }
             mobileDropdown.classList.remove('hidden');
             mobileMenuOverlay.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -378,8 +384,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (bannerEl) bannerEl.classList.remove('menu-open');
             setTimeout(() => {
                 mobileDropdown.classList.add('hidden');
-                mobileMenuOverlay.classList.add('hidden');
-                document.body.style.overflow = '';
+                var rightMenu = document.getElementById('mobile-dropdown-right');
+                if (!rightMenu || rightMenu.classList.contains('hidden')) {
+                    mobileMenuOverlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
             }, 240);
         }
 
@@ -398,8 +407,66 @@ document.addEventListener('DOMContentLoaded', function() {
         // Cerrar al hacer click en el overlay
         mobileMenuOverlay.addEventListener('click', function() {
             closeMobileMenu();
+            if (window._closeMobileMenuRight) window._closeMobileMenuRight();
         });
-        
+
+        // ===== MANEJO DEL SEGUNDO MENÚ HAMBURGUESA (DERECHO) =====
+        const mobileMenuBtnRight = document.getElementById('mobile-menu-btn-right');
+        const mobileDropdownRight = document.getElementById('mobile-dropdown-right');
+        const menuIconHamburgerRight = document.getElementById('menu-icon-hamburger-right');
+        const menuIconCloseRight = document.getElementById('menu-icon-close-right');
+
+        function setMenuIconRight(open) {
+            if (menuIconHamburgerRight) menuIconHamburgerRight.classList.toggle('hidden', open);
+            if (menuIconCloseRight) menuIconCloseRight.classList.toggle('hidden', !open);
+        }
+
+        function openMobileMenuRight() {
+            // Cerrar el menú izquierdo si está abierto (sin tocar overlay)
+            if (!mobileDropdown.classList.contains('hidden')) {
+                mobileDropdown.classList.remove('show');
+                setMenuIcon(false);
+                setTimeout(() => { mobileDropdown.classList.add('hidden'); }, 240);
+            }
+            mobileDropdownRight.classList.remove('hidden');
+            mobileMenuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setMenuIconRight(true);
+            if (bannerEl) bannerEl.classList.add('menu-open');
+            mobileDropdownRight.scrollTop = 0;
+            setTimeout(() => {
+                mobileDropdownRight.classList.add('show');
+            }, 10);
+        }
+
+        function closeMobileMenuRight() {
+            if (!mobileDropdownRight) return;
+            mobileDropdownRight.classList.remove('show');
+            setMenuIconRight(false);
+            if (bannerEl && !mobileDropdown.classList.contains('show')) bannerEl.classList.remove('menu-open');
+            setTimeout(() => {
+                mobileDropdownRight.classList.add('hidden');
+                if (mobileDropdown.classList.contains('hidden')) {
+                    mobileMenuOverlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            }, 240);
+        }
+        window._closeMobileMenuRight = closeMobileMenuRight;
+
+        if (mobileMenuBtnRight) {
+            mobileMenuBtnRight.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const isOpen = !mobileDropdownRight.classList.contains('hidden');
+                if (isOpen) {
+                    closeMobileMenuRight();
+                } else {
+                    openMobileMenuRight();
+                }
+            });
+        }
+
         // ── DRILL-DOWN NAVIGATION (reemplaza acordeones en mobile) ──
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
 
@@ -552,6 +619,125 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
         }
+
+        // ── DRILL-DOWN NAVIGATION para MENÚ DERECHO ──
+        if (mobileDropdownRight) {
+            const submenuButtonsRight = mobileDropdownRight.querySelectorAll('.submenu-parent-btn');
+
+            const scrollMaskR = document.createElement('div');
+            scrollMaskR.id = 'scroll-mask-top-right';
+            scrollMaskR.className = 'scroll-mask-top';
+            mobileDropdownRight.appendChild(scrollMaskR);
+
+            const drillMainR = document.createElement('div');
+            drillMainR.id = 'drill-main-panel-right';
+            drillMainR.className = 'drill-main-panel';
+            Array.from(mobileDropdownRight.children).forEach(c => {
+                if (c !== scrollMaskR) drillMainR.appendChild(c);
+            });
+            mobileDropdownRight.appendChild(drillMainR);
+
+            const drillDetailR = document.createElement('div');
+            drillDetailR.id = 'drill-detail-panel-right';
+            drillDetailR.className = 'drill-detail-panel';
+            drillDetailR.innerHTML = `
+                <div class="drill-header">
+                    <button class="drill-back-btn" aria-label="Volver al menú">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/></svg>
+                        Menú
+                    </button>
+                    <span class="drill-title-right"></span>
+                </div>
+                <div class="drill-content-right"></div>
+            `;
+            const drillOverlayR = document.createElement('div');
+            drillOverlayR.id = 'drill-overlay-right';
+            drillOverlayR.className = 'drill-overlay';
+            document.body.appendChild(drillOverlayR);
+            document.body.appendChild(drillDetailR);
+
+            let activeSubmenuR = null;
+            let activeParentR = null;
+            const drillContentR = drillDetailR.querySelector('.drill-content-right');
+            const drillTitleR = drillDetailR.querySelector('.drill-title-right');
+
+            const chevronSVG2 = `<svg class="drill-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+
+            function openDrillPanelR(submenu, title, parentEl) {
+                drillContentR.innerHTML = '';
+                drillContentR.appendChild(submenu);
+                submenu.classList.add('show');
+                submenu.style.maxHeight = 'none';
+                submenu.style.overflow = 'visible';
+                submenu.style.height = 'auto';
+                drillTitleR.textContent = title;
+                activeSubmenuR = submenu;
+                activeParentR = parentEl;
+                drillMainR.classList.add('pushed');
+                drillDetailR.classList.add('active');
+                drillOverlayR.classList.add('active');
+                drillDetailR.scrollTop = 0;
+            }
+
+            function closeDrillPanelR() {
+                drillMainR.classList.remove('pushed');
+                drillDetailR.classList.remove('active');
+                drillOverlayR.classList.remove('active');
+                const sub = activeSubmenuR;
+                const par = activeParentR;
+                activeSubmenuR = null;
+                activeParentR = null;
+                setTimeout(() => {
+                    if (sub && par) {
+                        sub.style.maxHeight = '';
+                        sub.style.overflow = '';
+                        sub.style.height = '';
+                        par.appendChild(sub);
+                        sub.classList.remove('show');
+                    }
+                    drillContentR.innerHTML = '';
+                }, 280);
+            }
+
+            submenuButtonsRight.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parent = this.closest('.has-submenu');
+                    const submenu = parent.querySelector('.submenu');
+                    if (!submenu) return;
+                    const title = Array.from(this.childNodes)
+                        .filter(n => n.nodeType === 3)
+                        .map(n => n.textContent.trim())
+                        .filter(Boolean)
+                        .join(' ');
+                    openDrillPanelR(submenu, title, parent);
+                });
+            });
+
+            drillDetailR.querySelector('.drill-back-btn').addEventListener('click', closeDrillPanelR);
+            drillOverlayR.addEventListener('click', closeDrillPanelR);
+
+            // Nested buttons en menú derecho
+            drillContentR.addEventListener('click', function(e) {
+                const btn = e.target.closest('.nested-btn');
+                if (!btn) return;
+                e.stopPropagation();
+                const parent = btn.closest('.has-nested');
+                const menu = parent.querySelector('.nested-menu');
+                const arrow = btn.querySelector('.nested-arrow');
+                const isOpen = parent.classList.contains('nested-open');
+                if (isOpen) {
+                    parent.classList.remove('nested-open');
+                    if (menu) menu.classList.remove('show');
+                    if (arrow) arrow.style.transform = '';
+                } else {
+                    parent.classList.add('nested-open');
+                    if (menu) menu.classList.add('show');
+                    if (arrow) arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        }
+
         // Nota: la rama else (acordeón escritorio para mobile-dropdown) se eliminó
         // porque en escritorio #mobile-menu-btn está oculto y el mobile-dropdown
         // no se abre — los handlers drill-down ya no interfieren en PC.
