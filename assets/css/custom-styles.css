@@ -554,16 +554,21 @@ body:not(.homepage) {
 
     /* Imagen aniversario */
     #banner-aniversario {
-        width: clamp(76px, 21vw, 90px) !important;
-        max-width: clamp(76px, 21vw, 90px) !important;
+        width: clamp(80px, 22vw, 94px) !important;
+        max-width: clamp(80px, 22vw, 94px) !important;
         margin-left: clamp(0.5rem, 2.5vw, 1.1rem) !important;
     }
 
     /* Logo OS10 */
     #banner .logo-os10-container img,
     #banner > div > div:first-child img {
-        height: clamp(30px, 8.5vw, 38px) !important;
+        height: clamp(33px, 9vw, 42px) !important;
         width: auto !important;
+    }
+
+    /* Número de visitas en negrillas */
+    .banner-text-small #visit-counter {
+        font-weight: 800 !important;
     }
 
     /* Lupa */
@@ -598,10 +603,10 @@ body:not(.homepage) {
 
     /* Hamburger menu button */
     #mobile-menu-btn {
-        margin-left: clamp(4px, 1.2vw, 8px) !important;
+        margin-left: clamp(6px, 1.6vw, 10px) !important;
     }
     #mobile-menu-btn-right {
-        margin-right: clamp(4px, 1.2vw, 8px) !important;
+        margin-right: clamp(6px, 1.6vw, 10px) !important;
     }
     #mobile-menu-btn,
     #mobile-menu-btn-right {
@@ -628,10 +633,30 @@ body:not(.homepage) {
         stroke-width: 3 !important;
     }
 
-    /* Menú dropdown: mismo ancho que el pill, fluido */
+    /* Menú dropdown: extensión del banner pill */
+    .mobile-dropdown,
+    .mobile-dropdown-right {
+        position: fixed !important;
+        top: 8px !important;
+        width: calc(100% - 0.4rem) !important;
+        max-width: 500px !important;
+        max-height: calc(100vh - 16px) !important;
+        height: auto !important;
+        padding-top: 0 !important;
+        border-radius: 28px !important;
+        background: rgba(255, 255, 255, 0.79) !important;
+        backdrop-filter: saturate(180%) blur(40px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
+        border: 1px solid rgba(255,255,255,0.55) !important;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.16) !important;
+    }
     .mobile-dropdown {
-        width: calc(100% - 1rem) !important;
-        border-radius: clamp(20px, 6vw, 28px) !important;
+        left: 0.2rem !important;
+        right: auto !important;
+    }
+    .mobile-dropdown-right {
+        left: auto !important;
+        right: 0.2rem !important;
     }
     /* Botones del menú: texto y padding fluido */
     body .mobile-dropdown .submenu-parent-btn {
