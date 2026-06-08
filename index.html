@@ -113,17 +113,17 @@
     <link rel="stylesheet" href="assets/css/carousel.css">
   </noscript>
   <!-- styles.css: async → cubierto por inline-critical + tailwind crítico -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=26" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=26"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=27" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=27"></noscript>
   <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
   <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="assets/css/search.css?v=1">
   </noscript>
   <!-- custom-styles.css: panel/modales empiezan ocultos → async seguro -->
-  <link rel="stylesheet" href="assets/css/custom-styles.css?v=16" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/custom-styles.css?v=17" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="assets/css/custom-styles.css?v=16">
+    <link rel="stylesheet" href="assets/css/custom-styles.css?v=17">
   </noscript>
   <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -1254,28 +1254,30 @@ body {
         box-shadow: 0 8px 40px rgba(0,0,0,0.16) !important;
         z-index: 1500 !important;
         will-change: transform, opacity !important;
-        /* Animación: sale desde la izquierda */
-        transform: translateX(-105%) !important;
+        /* Animación: baja desde el banner hacia abajo */
+        transform-origin: top center !important;
+        transform: scaleY(0) !important;
         opacity: 0 !important;
-        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                    opacity 0.18s ease-out !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.2s ease-out !important;
     }
     /* Estado abierto - menú izquierdo */
     .mobile-dropdown.show {
-        transform: translateX(0) !important;
+        transform: scaleY(1) !important;
         opacity: 1 !important;
     }
     /* Ocultar barra de desplazamiento visualmente */
     .mobile-dropdown::-webkit-scrollbar { display: none !important; }
     .mobile-dropdown { scrollbar-width: none !important; }
-    /* Segundo menú derecho: sale desde la derecha */
+    /* Segundo menú derecho: misma posición, baja desde el banner */
     .mobile-dropdown-right {
-        left: auto !important;
-        right: 0.2rem !important;
-        transform: translateX(105%) !important;
+        left: 0.2rem !important;
+        right: auto !important;
+        transform-origin: top center !important;
+        transform: scaleY(0) !important;
     }
     .mobile-dropdown-right.show {
-        transform: translateX(0) !important;
+        transform: scaleY(1) !important;
         opacity: 1 !important;
     }
 }
@@ -1287,16 +1289,12 @@ body {
         max-width: 640px !important;
         left: 50% !important;
         right: auto !important;
-    }
-    .mobile-dropdown {
-        transform: translateX(-150%) !important;
-    }
-    .mobile-dropdown-right {
-        transform: translateX(150%) !important;
+        transform-origin: top center !important;
+        transform: translateX(-50%) scaleY(0) !important;
     }
     .mobile-dropdown.show,
     .mobile-dropdown-right.show {
-        transform: translateX(-50%) !important;
+        transform: translateX(-50%) scaleY(1) !important;
         opacity: 1 !important;
     }
 }
@@ -1775,8 +1773,8 @@ body {
         }
         /* Imagen aniversario: se reduce solo en pantallas muy chicas */
         #banner-aniversario {
-            width: clamp(76px, 21vw, 90px) !important;
-            max-width: clamp(76px, 21vw, 90px) !important;
+            width: clamp(80px, 22vw, 94px) !important;
+            max-width: clamp(80px, 22vw, 94px) !important;
             flex-shrink: 1 !important;
             margin-left: clamp(1.1rem, 4vw, 1.6rem) !important;
         }
@@ -2245,10 +2243,10 @@ body {
         -webkit-tap-highlight-color: transparent !important;
     }
     #mobile-menu-btn {
-        margin-left: clamp(4px, 1.2vw, 8px) !important;
+        margin-left: clamp(6px, 1.6vw, 10px) !important;
     }
     #mobile-menu-btn-right {
-        margin-right: clamp(4px, 1.2vw, 8px) !important;
+        margin-right: clamp(6px, 1.6vw, 10px) !important;
     }
     #mobile-menu-btn svg,
     #mobile-menu-btn-right svg {
