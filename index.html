@@ -1747,7 +1747,7 @@ body {
             top: 8px !important;
             width: calc(100% - 0.4rem) !important;
             max-width: 500px !important;
-            height: 67px !important;
+            height: 68px !important;
             border-radius: 9999px !important;
             background: rgba(255, 255, 255, 0.60) !important;
             backdrop-filter: saturate(180%) blur(40px) !important;
@@ -1771,12 +1771,15 @@ body {
             flex: 0 1 auto !important;
             min-width: 0 !important;
         }
-        /* Imagen aniversario: se reduce solo en pantallas muy chicas */
+        /* Imagen aniversario: agrandada en móvil */
         #banner-aniversario {
-            width: clamp(80px, 22vw, 94px) !important;
-            max-width: clamp(80px, 22vw, 94px) !important;
-            flex-shrink: 1 !important;
-            margin-left: clamp(1.1rem, 4vw, 1.6rem) !important;
+            width: clamp(140px, 42vw, 200px) !important;
+            max-width: clamp(140px, 42vw, 200px) !important;
+            height: clamp(56px, 16vw, 64px) !important;
+            max-height: clamp(56px, 16vw, 64px) !important;
+            flex-shrink: 0 !important;
+            margin-left: clamp(1rem, 3.6vw, 1.8rem) !important;
+            object-fit: contain !important;
         }
         #search-center-container {
             flex: 0 0 auto !important;
@@ -1924,9 +1927,9 @@ body {
         #mobile-dropdown::-webkit-scrollbar, #mobile-dropdown-right::-webkit-scrollbar { display: none !important; }
         #mobile-dropdown.show, #mobile-dropdown-right.show { overflow: hidden !important; }
 
-        /* Spacer fijo 67px — ocupa zona del pill, no scrollea */
+        /* Spacer 68px — ocupa zona del pill, no scrollea (debe coincidir con #banner) */
         #scroll-mask-top, #scroll-mask-top-right {
-            height: 67px;
+            height: 68px;
             flex-shrink: 0;
             pointer-events: none;
         }
