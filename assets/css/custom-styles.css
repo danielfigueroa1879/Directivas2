@@ -1431,13 +1431,37 @@ body:not(.homepage) {
         display: grid !important;
         grid-template-columns: repeat(4, 1fr);
         gap: 0.5rem;
-        background: #ffffff;
-        margin: -2.5rem 0.85rem 1rem 0.85rem;
-        padding: 0.95rem 0.75rem;
+        background: #ffffff !important;
+        /* margin-top un poquito mayor (sube la tarjeta sobre el hero)
+           y margin-bottom en 0 → pegada a Trámites Principales */
+        margin: -5rem 0.85rem 0 0.85rem !important;
+        padding: 1.05rem 0.75rem 1.1rem 0.75rem !important;
         border-radius: 1.1rem;
         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+        position: relative !important;
+        z-index: 50 !important; /* sobre el video del hero */
+        /* Forzar nueva capa de composición → no parpadea / no
+           desaparece durante las transiciones del Ken Burns carousel */
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* La sección verde "Trámites Principales" sube y se mete
+       detrás del contenedor blanco, pegándose al hero (sin gap). */
+    #homepage-content-wrapper {
+        margin-top: -5.5rem !important;
         position: relative;
-        z-index: 30;
+        z-index: 1; /* la tarjeta blanca queda encima (z-index: 50) */
+    }
+    /* Padding superior compensado para que el título "Trámites
+       Principales" no quede tapado por la tarjeta blanca */
+    #homepage-content-wrapper #tramites-principales {
+        padding-top: 6.5rem !important;
     }
 
     .mobile-quick-access .mqa-btn {
