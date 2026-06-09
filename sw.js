@@ -3,7 +3,7 @@
 // IMPORTANTE: cuando reemplaces fotos, sube PHOTO_VERSION en los 3 lugares
 // (index.html <script>, este archivo, y bumpear el sufijo de CACHE_NAME).
 const PHOTO_VERSION = '11';
-const CACHE_NAME = 'directivas-os10-cache-v24'; // Subir cuando cambien fotos/css para forzar limpieza de caché vieja
+const CACHE_NAME = 'directivas-os10-cache-v25'; // Subir cuando cambien fotos/css para forzar limpieza de caché vieja
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
@@ -21,7 +21,7 @@ const urlsToCache = [
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',
   './assets/images/logo-os10.webp',
-  './assets/images/poli.webp',
+  './assets/images/poli.webp?v=2',
   './assets/images/favicon.ico',
   // Imágenes críticas y del carrusel (versiones WebP)
   // El sufijo ?v=${PHOTO_VERSION} debe coincidir con el de index.html / inline-scripts.js
