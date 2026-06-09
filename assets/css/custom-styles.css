@@ -1393,17 +1393,17 @@ body:not(.homepage) {
     }
 
     /* Overlay VERDE GRADUAL desde la izquierda — color institucional
-       #14502F (rgb 20, 80, 47). El lado izquierdo queda verde opaco
+       #173A32 (rgb 23, 58, 50). El lado izquierdo queda verde opaco
        para que el título blanco contraste fuerte, y se desvanece
        hacia la derecha para dejar ver el video / foto del fondo. */
     #homepage-section > div.absolute.inset-0.bg-black\/30 {
         background: linear-gradient(
             90deg,
-            rgba(20, 80, 47, 0.92) 0%,
-            rgba(20, 80, 47, 0.80) 25%,
-            rgba(20, 80, 47, 0.55) 50%,
-            rgba(20, 80, 47, 0.25) 75%,
-            rgba(20, 80, 47, 0.05) 100%
+            rgba(23, 58, 50, 0.92) 0%,
+            rgba(23, 58, 50, 0.80) 25%,
+            rgba(23, 58, 50, 0.55) 50%,
+            rgba(23, 58, 50, 0.25) 75%,
+            rgba(23, 58, 50, 0.05) 100%
         ) !important;
     }
 }
@@ -1461,7 +1461,7 @@ body:not(.homepage) {
     /* Padding superior compensado para que el título "Trámites
        Principales" no quede tapado por la tarjeta blanca */
     #homepage-content-wrapper #tramites-principales {
-        padding-top: 6.5rem !important;
+        padding-top: 4.5rem !important;
     }
 
     .mobile-quick-access .mqa-btn {
@@ -1550,6 +1550,41 @@ body:not(.homepage) {
     }
     .mobile-quick-access .mqa-label {
         font-size: 0.85rem !important;
+    }
+}
+
+/* SECCIÓN INFORMATIVA UNIFICADA: Ajustes de posición y color */
+#info-section-unified {
+    padding-top: 140px !important; /* Espacio para librar botones en móvil */
+}
+
+@media (min-width: 1024px) {
+    #info-section-unified {
+        padding-top: 4.5rem !important; /* Espacio estandar en PC */
+        padding-bottom: 2rem !important;
+        background-color: #146314 !important; /* Fondo verde institucional */
+        border-bottom: none !important; /* Eliminar borde inferior */
+    }
+    /* Centrar el contenido dentro del contenedor principal de la sección */
+    #info-section-unified > div.max-w-5xl.mx-auto {
+        text-align: center !important;
+    }
+    /* Asegurar que el título y los párrafos sean blancos */
+    #info-section-unified h2,
+    #info-section-unified p,
+    #info-section-unified strong {
+        color: white !important;
+    }
+    /* Contenedores de avisos: transparentes con borde blanco sutil y sin sombra */
+    #info-section-unified > div.max-w-5xl.mx-auto > div > div {
+        background-color: transparent !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        box-shadow: none !important;
+    }
+    /* Botón "Ver Informativo Nº 5": fondo blanco y texto verde */
+    #info-section-unified > div.max-w-5xl.mx-auto button {
+        background-color: white !important;
+        color: #173A32 !important;
     }
 }
 
