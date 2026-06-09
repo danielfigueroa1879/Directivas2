@@ -215,9 +215,9 @@ body.homepage {
         height: 70vh !important;
         max-height: 70vh !important;
     }
-    /* Título hero: empieza debajo del pill (pill top 8px + height 56px + margen) */
+    /* Título hero: bajado para respirar bajo el banner pill */
     #hero-title-container {
-        top: 100px !important;
+        top: 150px !important;
     }
     /* Botones posicionados hacia el fondo de la sección hero */
     #btn-container-hero {
