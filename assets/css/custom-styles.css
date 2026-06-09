@@ -1371,7 +1371,7 @@ body:not(.homepage) {
         text-align: left !important;
         padding-left: 1.25rem !important;
         padding-right: 1.25rem !important;
-        top: 40% !important; /* todo el bloque más abajo */
+        top: 150px !important; /* coincide con inline-critical.css */
     }
     #hero-title-container h1 {
         text-align: left !important;
@@ -1411,7 +1411,7 @@ body:not(.homepage) {
 /* Móviles pequeños: bajar un poco menos el título para no perderlo */
 @media (max-width: 380px) {
     #hero-title-container {
-        top: 38% !important;
+        top: 130px !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
     }
