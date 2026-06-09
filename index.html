@@ -3402,9 +3402,43 @@ body {
     </button>
   </nav>
   <div id="homepage-content-wrapper" role="main">
+    <!-- SECCIÓN INFORMATIVA UNIFICADA (MÓVIL Y PC) -->
+    <div id="info-section-unified" class="bg-white lg:bg-[#146314] pb-8 px-6 relative z-0 border-b border-gray-100 lg:border-none">
+      <div class="max-w-5xl mx-auto lg:text-center">
+        <h2 class="text-2xl lg:text-4xl font-black mb-6 uppercase tracking-tight text-[#173A32] lg:text-white">Información</h2>
+      
+      <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-stretch">
+      <!-- Contenedor Aviso 1 -->
+      <div class="bg-gray-50/80 lg:bg-transparent border border-gray-200/50 lg:border-white/20 rounded-2xl p-4 mb-4 lg:mb-0 shadow-sm lg:shadow-none">
+        <p class="text-gray-800 lg:text-white text-sm leading-relaxed text-justify lg:text-center">
+          ✅ <strong class="text-[#173A32] lg:text-white">EXTENSIÓN DE AUTORIZACIONES LEY 21.659:</strong><br>
+          MODIFICA LA LEY Nº 21.659, SOBRE SEGURIDAD PRIVADA, PARA AUMENTAR EL PLAZO DE PRESENTACIÓN Y PRONUNCIAMIENTO SOBRE LOS ESTUDIOS DE SEGURIDAD QUE DISPONE, Y EXTIENDE LA PRÓRROGA DE VIGENCIA DE LA ÚLTIMA AUTORIZACIÓN DEL PERSONAL DE SEGURIDAD PRIVADA QUE INDICA, REEMPLÁZASE, EN EL INCISO SEGUNDO DEL ARTÍCULO TERCERO TRANSITORIO, LA EXPRESIÓN “SEIS MESES CONTADOS” POR LA ORACIÓN “DIECIOCHO MESES CONTADOS". <br><br><strong>Esta medida entrega continuidad a quienes trabajan en la seguridad privada.</strong>
+        </p>
+      </div>
+
+      <!-- Contenedor Aviso 2 -->
+      <div class="bg-gray-50/80 lg:bg-transparent border border-gray-200/50 lg:border-white/20 rounded-2xl p-4 mb-8 lg:mb-0 shadow-sm lg:shadow-none flex flex-col justify-between">
+        <p class="text-gray-800 lg:text-white text-sm leading-relaxed text-justify lg:text-center">
+          ✅ <strong class="text-[#173A32] lg:text-white">CERTIFICACIÓN DE APROBACIÓN Y EMISIÓN DE CERTIFICADOS (Informativo Nº 5)</strong><br>
+          Este certificado solo habilita a las personas a realizar su solicitud de autorización en la plataforma de Seguridad Privada, no a desempeñar sus funciones. En caso de que el alumno no haya recibido el certificado, es la institución de capacitación la que debe informar a la Subsecretaría esta situación.
+        </p>
+        <button class="mt-3 w-full lg:w-auto lg:px-12 py-3 bg-[#173A32] lg:bg-white lg:text-[#173A32] text-white rounded-xl text-xs font-bold uppercase tracking-widest shadow-md active:scale-95 transition-transform" onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Informativo_N5_v2_may_2026.pdf')">Ver Informativo Nº 5</button>
+      </div>
+      </div>
+      </div>
+      </div>
+    </div>
+
     <section id="tramites-principales" class="py-16 md:py-24 bg-[#146314] backdrop-blur-sm">
       <div class="max-w-5xl mx-auto px-6 lg:px-8">
-        <div class="text-center">
+        <!-- Cabecera Móvil (Texto Blanco) -->
+        <div class="lg:hidden text-left mb-6">
+          <h2 class="text-2xl font-black uppercase tracking-tight text-white">Trámites Principales</h2>
+          <p class="text-gray-200 text-sm font-medium mt-1">Acceso directo a la información que buscas</p>
+        </div>
+
+        <!-- Cabecera original (Solo visible en PC) -->
+        <div class="text-center hidden lg:block">
           <!--<div class="flex items-center justify-center space-x-2">
                      <iframe width="560" height="315" src="https://www.youtube.com/embed/M_epPITSCSw?si=W2xBOL_F0pn_sw2j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br><br>
                     </div><br>-->
@@ -3415,15 +3449,7 @@ body {
           </div>
           <p class="mt-4 text-lg leading-8 text-gray-300">Acceso directo a la información que buscas</p>
         </div>
-        <!-- Aviso informativo -->
-        <div id="suspension-notice">
-          <span class="notice-marquee"><br>✅ <strong class="notice-title">EXTENSIÓN DE AUTORIZACIONES LEY 21.659:</strong><br>MODIFICA LA LEY Nº 21.659, SOBRE SEGURIDAD PRIVADA, PARA AUMENTAR EL PLAZO DE PRESENTACIÓN Y PRONUNCIAMIENTO SOBRE LOS ESTUDIOS DE SEGURIDAD QUE DISPONE, Y EXTIENDE LA PRÓRROGA DE VIGENCIA DE LA ÚLTIMA AUTORIZACIÓN DEL PERSONAL DE SEGURIDAD PRIVADA QUE INDICA, REEMPLÁZASE, EN EL INCISO SEGUNDO DEL ARTÍCULO TERCERO TRANSITORIO, LA EXPRESIÓN “SEIS MESES CONTADOS” POR LA ORACIÓN “DIECIOCHO MESES CONTADOS <strong>Esta medida entrega continuidad a quienes trabajan en la seguridad privada.</strong><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        </div>
 
-         <div id="suspension-notice">
-          <span class="notice-marquee"><br>✅ <strong class="notice-title">CERTIFICACIÓN DE APROBACIÓN Y EMISIÓN DE CERTIFICADOS (Informativo Nº 5)</strong><br> Este certificado solo habilita a las personas a realizar su solicitud de autorización en la plataforma de Seguridad Privada, no a desempeñar sus funciones. En caso de que el alumno no haya recibido el certificado, es la institución de capacitación la que debe informar a la Subsecretaría esta situación, través del correo: spd-certificados@minsegpublica.gob.cl. <br><br>Las consultas relacionadas con Certificados de Aprobación de exámenes, tales como aquellas asociadas a errores en los datos de contacto o las solicitudes de rectificación de datos en los certificados, producto de cambio de nombre o errores de digitación en la cédula nacional de identidad), deberán ser remitidas al correo electrónico spdspcursos@minsegpublica.gob.cl </span><br>
-          <button class="desktop-submenu-item" onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Informativo_N5_v2_may_2026.pdf')">Informativo Nº 5</button> 
-        </div>
         
         <div class="carousel-container carousel-desktop-grid mt-16">
           <div onclick="showDirectiva()" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
@@ -3471,24 +3497,6 @@ body {
           </div>
         </div>
         <div class="pagination-dots"></div>
-      </div>
-    </section>
-    <section id="banner-cierre" class="py-8 bg-[#146314] text-white">
-      <div class="max-w-5xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <img src="assets/images/logo-os10.webp" alt="OS10 Coquimbo" class="h-12 w-auto" loading="lazy" width="48" height="48">
-          <div>
-            <p class="font-semibold text-lg">O.S.10 Coquimbo</p>
-            <p class="text-sm text-green-200">Carabineros de Chile</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-3 justify-center sm:justify-end">
-          <img src="assets/images/aniversario1.webp" alt="100 años" class="h-12 w-auto" loading="lazy" width="72" height="72">
-          <div class="text-right">
-            <p class="text-sm uppercase tracking-[0.2em] text-green-200">100 años</p>
-            <p class="text-xs text-green-200">Un siglo de servicio y compromiso</p>
-          </div>
-        </div>
       </div>
     </section>
   <!-- ============================================================
