@@ -198,7 +198,7 @@ body.homepage {
 
 #chat-popup {
     width: 450px;
-    height: 600px;
+    height: 500px;
     box-shadow: var(--shadow-xl);
     border-radius: var(--radius-xl);
 }

@@ -1510,6 +1510,106 @@ body:not(.homepage) {
     }
 }
 
+/* ========================================
+   PC (>=1024px): la misma tarjeta blanca reemplaza a los 3 botones
+   del hero. Ancho completo (igual que el banner superior) y misma
+   posición/anclaje que en celular (superpuesta al fondo del hero).
+   ======================================== */
+@media (min-width: 1024px) {
+    .mobile-quick-access {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+        background: #ffffff !important;
+        /* Mismo ancho que el banner superior (pill centrada, máx. 900px),
+           ubicada entre el carrusel y la sección de abajo */
+        width: calc(100% - 4rem);
+        max-width: 900px;
+        /* Sube la tarjeta sobre el fin del hero (como en celular) */
+        margin: -5rem auto 0 auto !important;
+        padding: 1.05rem 0.75rem 1.1rem 0.75rem !important;
+        border-radius: 1.1rem;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+        position: relative !important;
+        z-index: 50 !important;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* Carrusel (hero) más bajo en PC para que asome la sección verde.
+       (body delante para ganarle al calc(100vh - 30px) inline) */
+    body .homepage-section {
+        min-height: calc(100vh - 180px) !important;
+        height: calc(100vh - 180px) !important;
+    }
+
+    /* La sección verde sube hasta la MITAD de la tarjeta (~123px de
+       alto): el borde visible carrusel/verde pasa justo por su centro,
+       dejando media tarjeta sobre el carrusel y media sobre el verde.
+       (body delante para ganarle al -160px inline de index.html) */
+    body #homepage-content-wrapper {
+        margin-top: -3.85rem !important;
+        position: relative;
+        z-index: 1;
+    }
+    #homepage-content-wrapper #info-section-unified {
+        padding-top: 6rem !important;
+    }
+
+    .mobile-quick-access .mqa-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.4rem;
+        background: transparent;
+        border: none;
+        padding: 0.35rem 0.2rem;
+        cursor: pointer;
+        text-align: center;
+        font-family: inherit;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-quick-access .mqa-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 0.85rem;
+        background: rgba(20, 99, 20, 0.12);
+        color: #146314;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .mobile-quick-access .mqa-icon svg {
+        width: 1.75rem;
+        height: 1.75rem;
+        stroke: #146314;
+    }
+
+    .mobile-quick-access .mqa-btn:hover .mqa-icon {
+        background: rgba(20, 99, 20, 0.22);
+        transform: scale(1.05);
+    }
+    .mobile-quick-access .mqa-btn:active .mqa-icon {
+        transform: scale(0.96);
+    }
+
+    .mobile-quick-access .mqa-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #1f2937;
+        line-height: 1.1;
+    }
+}
+
 /* Móviles pequeños: ajuste fino */
 @media (max-width: 380px) {
     .mobile-quick-access {
