@@ -113,17 +113,17 @@
     <link rel="stylesheet" href="assets/css/carousel.css">
   </noscript>
   <!-- styles.css: async → cubierto por inline-critical + tailwind crítico -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=30" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=30"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=32" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=32"></noscript>
   <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
   <link rel="stylesheet" href="assets/css/search.css?v=2" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="assets/css/search.css?v=2">
   </noscript>
   <!-- custom-styles.css: panel/modales empiezan ocultos → async seguro -->
-  <link rel="stylesheet" href="assets/css/custom-styles.css?v=31" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/custom-styles.css?v=32" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="assets/css/custom-styles.css?v=31">
+    <link rel="stylesheet" href="assets/css/custom-styles.css?v=32">
   </noscript>
   <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -3362,7 +3362,11 @@ body {
        Credenciales · Directivas · Documentos · Contacto
        Oculta en PC (>=1024px). No afecta la vista desktop.
   ============================================================ -->
-  <nav id="mobile-quick-access" class="mobile-quick-access" aria-label="Accesos rápidos">
+  <div class="mqa-wrap">
+    <button type="button" class="mqa-arrow mqa-arrow--left" aria-label="Desplazar a la izquierda" onclick="mqaScroll(-1)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <nav id="mobile-quick-access" class="mobile-quick-access" aria-label="Accesos rápidos">
     <button type="button" class="mqa-btn" onclick="showCredenciales()">
       <span class="mqa-icon">
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -3400,7 +3404,43 @@ body {
       </span>
       <span class="mqa-label">Contacto</span>
     </button>
-  </nav>
+    <button type="button" class="mqa-btn" onclick="document.getElementById('componentes-seguridad')?.scrollIntoView({behavior:'smooth', block:'start'})" aria-label="Ir a Componentes del Sistema">
+      <span class="mqa-icon">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+        </svg>
+      </span>
+      <span class="mqa-label">Componentes</span>
+    </button>
+    <button type="button" class="mqa-btn" onclick="openNewLink('https://dal5.short.gy/R3')" aria-label="Reclamos O.S.10">
+      <span class="mqa-icon">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+          <path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+        </svg>
+      </span>
+      <span class="mqa-label">Reclamos</span>
+    </button>
+    <button type="button" class="mqa-btn" onclick="document.getElementById('leyes-normativa')?.scrollIntoView({behavior:'smooth', block:'start'})" aria-label="Ir a Leyes y Normativa">
+      <span class="mqa-icon">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v18"/>
+          <path d="M3 7l9-4 9 4"/>
+          <path d="M6 9l-3 6a3 3 0 0 0 6 0z"/>
+          <path d="M18 9l-3 6a3 3 0 0 0 6 0z"/>
+          <path d="M7 21h10"/>
+        </svg>
+      </span>
+      <span class="mqa-label">Leyes y Normativa</span>
+    </button>
+    </nav>
+    <button type="button" class="mqa-arrow mqa-arrow--right" aria-label="Desplazar a la derecha" onclick="mqaScroll(1)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
   <div id="homepage-content-wrapper" role="main">
     <!-- SECCIÓN INFORMATIVA UNIFICADA (MÓVIL Y PC) -->
     <div id="info-section-unified" class="bg-white lg:bg-[#146314] pb-8 px-6 relative z-0 border-b border-gray-100 lg:border-none">
@@ -3432,7 +3472,7 @@ body {
     <section id="tramites-principales" class="py-16 md:py-24 bg-[#146314] backdrop-blur-sm">
       <div class="max-w-5xl mx-auto px-6 lg:px-8">
         <!-- Cabecera Móvil (Texto Blanco) -->
-        <div class="lg:hidden text-left mb-6">
+        <div class="lg:hidden text-center mb-6">
           <h2 class="text-2xl font-black uppercase tracking-tight text-white">Trámites Principales</h2>
           <p class="text-gray-200 text-sm font-medium mt-1">Acceso directo a la información que buscas</p>
         </div>
@@ -3528,50 +3568,70 @@ body {
               </svg>
             </button>
             <div id="leyes-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=242302" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Constitución Política</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=30329" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Ley 18.961</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=30670" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Ley 19.303</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">D.L. 3.607 (1981)</span>
-              </a>
               <a href="https://www.bcn.cl/leychile/navegar?idNorma=1202067" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Ley 21.659</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1213672" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Reglamento 209</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1211115" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Reglamento 208</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218921" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2310</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1219417" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2424</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218338" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2100</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 2183</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 772</span>
+                <span class="text-xs md:text-sm font-medium text-blue-700">01 Ley 21.659 Nueva Ley Seguridad Privada.</span>
               </a>
               <a href="https://www.bcn.cl/leychile/navegar?idNorma=1221118" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Ley 21.806</span>
+                <span class="text-xs md:text-sm font-medium text-blue-700">02 Ley 21.806 Mod. Plazos de la Ley 21.659.</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1213672" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">03 Regl. N° 209 Reglame. Seguridad Privada.</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1211115" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">04 Regl. N° 208 Reglame. de. Eventos Masiv.</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1219417" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">05 Resol. N° 2424 Instruc. Grales. Transitorie</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218921" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">06 Resol. N° 2310 Instrucc. de Transitoriedad</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218338" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">07 Resol. N° 2100 Acta Desc. Evento Masivo.</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218912" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">08 Resol. N° 2277 Aprueba Planes y Program</span>
+              </a>
+              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">09 Resol. N° 2183 Cap. y Exam. Carabineros</span>
+              </a>
+              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">10 Resol. N° 772 Clasificacci. Eventos Masiv.</span>
+              </a>
+              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/10/44396-B/01/2781576.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">11 Resol. N° 928. Instrucción Matriz de Riesg.</span>
               </a>
               <a href="https://os10.short.gy/830" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 830</span>
+                <span class="text-xs md:text-sm font-medium text-blue-700">12 Resol. N° 830 Cap. GG.SS. Futbol Profes.</span>
               </a>
               <a href="https://os10.short.gy/831" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">Resolución 831</span>
+                <span class="text-xs md:text-sm font-medium text-blue-700">13 Resol. N° 831 Element. Def. Futbol Profes.</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1220956" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">14 Resol. N° 396 Instrucc. Ex. Vvpp y GG.SS.</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1221275" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">15 Resol. N° 581 Mod. Cust. Carga Sobredim</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1223663" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">16 Resol. N° 1366 Convali. Asign. Formación.</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1217403" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">17 Resol. N° 33 Aprueba Norma. Tec. N°. 247</span>
+              </a>
+              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136/01/2638569.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">18 Diario Of. N° 44136 Modifi. el Decreto 222</span>
+              </a>
+              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">19 Diario Of. N° 44253 Migraciones. y Visado.</span>
+              </a>
+              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/27/44459/01/2813688.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">20 Resol. N° 1507 Convali. Asign. Perfeccion.</span>
+                <span class="ml-1 inline-block align-middle text-[10px] font-bold text-white bg-red-500 px-1.5 py-0.5 rounded">NUEVO</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1224572" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-blue-700">21 Ley 21.825 Modifica los Plazos 18. Meses.</span>
+                <span class="ml-1 inline-block align-middle text-[10px] font-bold text-white bg-red-500 px-1.5 py-0.5 rounded">NUEVO</span>
               </a>
             </div>
           </div>
@@ -3587,6 +3647,18 @@ body {
               </svg>
             </button>
             <div id="decretos-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=242302" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-green-700">Constitución Política</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=30329" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-green-700">Ley 18.961</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=30670" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-green-700">Ley 19.303</span>
+              </a>
+              <a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+                <span class="text-xs md:text-sm font-medium text-green-700">D.L. 3.607 (1981)</span>
+              </a>
               <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">D.E. 261 (2020)</span>
               </a>
@@ -4293,16 +4365,16 @@ body {
 <!-- ============================================================
      SCRIPTS EXTERNOS DIFERIDOS
 ============================================================ -->
-  <script src="assets/js/inicio.js?v=5" defer></script>
+  <script src="assets/js/inicio.js?v=6" defer></script>
   <script src="assets/js/carousel.js" defer></script>
   <!-- Carrusel de Componentes manejado por carousel.js (via main.js) -->
-  <script src="assets/js/main.js?v=4" defer></script>
-  <script src="./rules/chatbot-rules.js?v=4" defer></script>
-  <script src="assets/js/chatbot.min.js" defer></script>
+  <script src="assets/js/main.js?v=5" defer></script>
+  <script src="./rules/chatbot-rules.js?v=5" defer></script>
+  <script src="assets/js/chatbot.min.js?v=2" defer></script>
   <!-- Script para menú hamburguesa móvil y manejo de banner PWA -->
   <!-- SCRIPT PARA ACORDEÓN (AÑADIDO) -->
   <!-- ✨ SCRIPT PARA ANIMACIÓN SPD -->
-  <script src="assets/js/search.min.js?v=5" defer></script>
+  <script src="assets/js/search.min.js?v=6" defer></script>
   <!-- spd-componentes (183 KiB): carga diferida via idle para no bloquear LCP paint -->
   <!-- Función para descargar contenido en PDF con animación -->
   <!-- Script mejorado para ocultar el banner verde cuando el modal está activo -->
@@ -4314,6 +4386,64 @@ body {
      Esto reduce el peso inicial descargado (ahorro ~500KB).
 -->
   <!-- YouTube facade: carga iframe solo al hacer click -->
+  <!-- ===== Accesos rápidos: flechas + auto-scroll del contenedor blanco ===== -->
+  <script>
+  (function () {
+    var strip = document.getElementById('mobile-quick-access');
+    var wrap = strip ? strip.closest('.mqa-wrap') : null;
+    if (!strip || !wrap) return;
+
+    var leftBtn = wrap.querySelector('.mqa-arrow--left');
+    var rightBtn = wrap.querySelector('.mqa-arrow--right');
+
+    // Desplaza ~2 botones por clic
+    window.mqaScroll = function (dir) {
+      var firstBtn = strip.querySelector('.mqa-btn');
+      var step = firstBtn ? (firstBtn.offsetWidth + 8) * 2 : 160;
+      strip.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+
+    // Habilita/inhabilita flechas según la posición del scroll
+    function updateArrows() {
+      var max = strip.scrollWidth - strip.clientWidth - 1;
+      if (leftBtn) leftBtn.disabled = strip.scrollLeft <= 0;
+      if (rightBtn) rightBtn.disabled = strip.scrollLeft >= max;
+    }
+    strip.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+
+    // Auto-scroll: avanza y vuelve al inicio en bucle; se pausa al interactuar
+    var dir = 1, paused = false, timer = null;
+    function tick() {
+      if (paused) return;
+      var max = strip.scrollWidth - strip.clientWidth - 1;
+      if (max <= 0) return;
+      if (strip.scrollLeft >= max) dir = -1;
+      else if (strip.scrollLeft <= 0) dir = 1;
+      strip.scrollBy({ left: dir * (strip.querySelector('.mqa-btn') ? strip.querySelector('.mqa-btn').offsetWidth + 8 : 80), behavior: 'smooth' });
+    }
+    function start() { stop(); timer = setInterval(tick, 2600); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function pause() { paused = true; stop(); }
+    function resume() { paused = false; start(); }
+
+    ['pointerdown', 'touchstart', 'mouseenter', 'focusin'].forEach(function (ev) {
+      strip.addEventListener(ev, pause, { passive: true });
+      wrap.addEventListener(ev, pause, { passive: true });
+    });
+    ['mouseleave', 'focusout'].forEach(function (ev) {
+      wrap.addEventListener(ev, function () { setTimeout(resume, 1200); });
+    });
+
+    // Respeta la preferencia de movimiento reducido
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) {
+      if (document.readyState === 'complete') setTimeout(start, 1500);
+      else window.addEventListener('load', function () { setTimeout(start, 1500); });
+    }
+  })();
+  </script>
 </body>
 
 </html>
