@@ -1458,16 +1458,16 @@ body:not(.homepage) {
     padding: 0;
     border: none;
     border-radius: 999px;
-    background: #ffffff;
+    background: transparent;
     color: #146314;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    box-shadow: none;
     cursor: pointer;
-    transition: background .15s ease, transform .15s ease, opacity .2s ease;
+    transition: opacity .2s ease, transform .15s ease;
     -webkit-tap-highlight-color: transparent;
 }
 .mqa-arrow--left { left: 0.35rem; }
 .mqa-arrow--right { right: 0.35rem; }
-.mqa-arrow:hover { background: #f0fdf4; }
+.mqa-arrow:hover { background: transparent; }
 .mqa-arrow:active { transform: translateY(-50%) scale(0.9); }
 .mqa-arrow[disabled] { opacity: 0; pointer-events: none; }
 
@@ -1478,8 +1478,8 @@ body:not(.homepage) {
         background: #ffffff !important;
         /* margin-top un poquito mayor (sube la tarjeta sobre el hero)
            y margin-bottom en 0 → pegada a Trámites Principales */
-        margin: -5rem 0.85rem 0 0.85rem !important;
-        padding: 1.05rem 2.5rem 1.1rem 2.5rem !important; /* lados: espacio para las flechas */
+        margin: -5rem 0.35rem 0 0.35rem !important;
+        padding: 1.1rem 1.3rem 1.15rem 1.3rem !important; /* lados: mínimo para los chevrones */
         border-radius: 1.1rem;
         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
         z-index: 50 !important; /* sobre el video del hero */
@@ -1503,7 +1503,7 @@ body:not(.homepage) {
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x proximity;
         scroll-behavior: smooth;
-        gap: 0.5rem;
+        gap: 1.5rem;
         background: transparent !important; /* Se revierte el fondo transparente a la barra de botones */
         /* Se eliminan los estilos de blur, borde, sombra y border-radius de la barra de botones */
         /* backdrop-filter: saturate(180%) blur(18px) !important; */
@@ -1513,7 +1513,7 @@ body:not(.homepage) {
         /* box-shadow: 0 2px 20px rgba(0,0,0,0.08) !important; */
         /* border-radius: 9999px !important; */
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0 0.75rem !important;
         width: 100%;
         position: relative !important;
         z-index: 1;
@@ -1538,17 +1538,17 @@ body:not(.homepage) {
 
     .mobile-quick-access .mqa-btn {
         flex: 0 0 auto;
-        width: calc((100% - 1.5rem) / 4); /* 4 botones visibles; el resto se desliza */
+        width: calc((100% - 4.5rem) / 4); /* 4 botones visibles con gap 1.5rem × 3 = 4.5rem */
         min-width: 4.3rem;
         scroll-snap-align: start;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        gap: 0.4rem;
+        gap: 0.55rem;
         background: transparent;
         border: none;
-        padding: 0.35rem 0.2rem;
+        padding: 0.4rem 0.2rem;
         cursor: pointer;
         text-align: center;
         font-family: inherit;
@@ -1579,10 +1579,11 @@ body:not(.homepage) {
     }
 
     .mobile-quick-access .mqa-label {
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 600;
         color: #1f2937;
         line-height: 1.1;
+        letter-spacing: 0.02em;
     }
 }
 
@@ -1717,12 +1718,13 @@ body:not(.homepage) {
 /* Móviles pequeños: ajuste fino */
 @media (max-width: 380px) {
     .mqa-wrap {
-        margin-left: 0.5rem !important;
-        margin-right: 0.5rem !important;
-        padding: 0.8rem 2.2rem !important;
+        margin-left: 0.2rem !important;
+        margin-right: 0.2rem !important;
+        padding: 0.85rem 1.1rem !important;
     }
     .mobile-quick-access {
-        gap: 0.25rem !important;
+        gap: 0.3rem !important;
+        padding: 0 0.6rem !important;
     }
     .mqa-arrow { width: 1.7rem; height: 1.7rem; }
     .mqa-arrow--left { left: 0.2rem; }
