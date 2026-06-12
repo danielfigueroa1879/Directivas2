@@ -1426,19 +1426,62 @@ body:not(.homepage) {
     display: none; /* Por defecto oculto (PC) */
 }
 
+/* Envoltorio posicionado: contiene la tira deslizable + las flechas
+   chevron laterales. La "tarjeta blanca" visible vive ahora aquí. */
+.mqa-wrap {
+    position: relative;
+    display: none; /* se activa en los breakpoints donde se ve la tarjeta */
+}
+
+/* Oculta la barra de scroll: se navega con las flechas o el auto-scroll */
+.mobile-quick-access {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.mobile-quick-access::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+/* Flechas chevron laterales (auto-scroll al hacer clic) */
+.mqa-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.95rem;
+    height: 1.95rem;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #146314;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    transition: background .15s ease, transform .15s ease, opacity .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.mqa-arrow--left { left: 0.35rem; }
+.mqa-arrow--right { right: 0.35rem; }
+.mqa-arrow:hover { background: #f0fdf4; }
+.mqa-arrow:active { transform: translateY(-50%) scale(0.9); }
+.mqa-arrow[disabled] { opacity: 0; pointer-events: none; }
+
 @media (max-width: 1023px) {
-    .mobile-quick-access {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.5rem;
+    /* Tarjeta blanca (ahora el envoltorio) */
+    .mqa-wrap {
+        display: block !important;
         background: #ffffff !important;
         /* margin-top un poquito mayor (sube la tarjeta sobre el hero)
            y margin-bottom en 0 → pegada a Trámites Principales */
         margin: -5rem 0.85rem 0 0.85rem !important;
-        padding: 1.05rem 0.75rem 1.1rem 0.75rem !important;
+        padding: 1.05rem 2.5rem 1.1rem 2.5rem !important; /* lados: espacio para las flechas */
         border-radius: 1.1rem;
         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
-        position: relative !important;
         z-index: 50 !important; /* sobre el video del hero */
         /* Forzar nueva capa de composición → no parpadea / no
            desaparece durante las transiciones del Ken Burns carousel */
@@ -1450,6 +1493,35 @@ body:not(.homepage) {
         opacity: 1 !important;
         visibility: visible !important;
     }
+
+    /* Tira deslizable interior */
+    .mobile-quick-access {
+        display: flex !important;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        scroll-behavior: smooth;
+        gap: 0.5rem;
+        background: transparent !important; /* Se revierte el fondo transparente a la barra de botones */
+        /* Se eliminan los estilos de blur, borde, sombra y border-radius de la barra de botones */
+        /* backdrop-filter: saturate(180%) blur(18px) !important; */
+        /* -webkit-backdrop-filter: saturate(180%) blur(18px) !important; */
+        /* border: 1px solid rgba(255, 255, 255, 0.5) !important; */
+        /* border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important; */
+        /* box-shadow: 0 2px 20px rgba(0,0,0,0.08) !important; */
+        /* border-radius: 9999px !important; */
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        position: relative !important;
+        z-index: 1;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .mqa-arrow { display: inline-flex; }
 
     /* La sección verde "Trámites Principales" sube y se mete
        detrás del contenedor blanco, pegándose al hero (sin gap). */
@@ -1465,6 +1537,10 @@ body:not(.homepage) {
     }
 
     .mobile-quick-access .mqa-btn {
+        flex: 0 0 auto;
+        width: calc((100% - 1.5rem) / 4); /* 4 botones visibles; el resto se desliza */
+        min-width: 4.3rem;
+        scroll-snap-align: start;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1516,21 +1592,19 @@ body:not(.homepage) {
    posición/anclaje que en celular (superpuesta al fondo del hero).
    ======================================== */
 @media (min-width: 1024px) {
-    .mobile-quick-access {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.5rem;
+    /* Tarjeta blanca (ahora el envoltorio) */
+    .mqa-wrap {
+        display: block !important;
         background: #ffffff !important;
-        /* Mismo ancho que el banner superior (pill centrada, máx. 900px),
-           ubicada entre el carrusel y la sección de abajo */
+        /* Ancho original de la tarjeta (900px); todas las secciones de
+           abajo usan este mismo ancho para quedar alineadas */
         width: calc(100% - 4rem);
         max-width: 900px;
         /* Sube la tarjeta sobre el fin del hero (como en celular) */
         margin: -5rem auto 0 auto !important;
-        padding: 1.05rem 0.75rem 1.1rem 0.75rem !important;
+        padding: 0.7rem 2.75rem 0.75rem 2.75rem !important; /* lados: espacio para las flechas; vertical reducido en PC */
         border-radius: 1.1rem;
         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
-        position: relative !important;
         z-index: 50 !important;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
@@ -1540,6 +1614,32 @@ body:not(.homepage) {
         opacity: 1 !important;
         visibility: visible !important;
     }
+
+    /* Tira deslizable interior */
+    .mobile-quick-access {
+        display: flex !important;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x proximity;
+        scroll-behavior: smooth;
+        gap: 0.5rem;
+        background: transparent !important; /* Se revierte el fondo transparente a la barra de botones */
+        /* Se eliminan los estilos de borde, sombra y border-radius de la barra de botones */
+        /* border: 1px solid rgba(255,255,255,0.45) !important; */
+        /* border-bottom: 1px solid rgba(255,255,255,0.45) !important; */
+        /* box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important; */
+        /* border-radius: 9999px !important; */
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        position: relative !important;
+        z-index: 1;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .mqa-arrow { display: inline-flex; }
 
     /* Carrusel (hero) más bajo en PC para que asome la sección verde.
        (body delante para ganarle al calc(100vh - 30px) inline) */
@@ -1562,6 +1662,10 @@ body:not(.homepage) {
     }
 
     .mobile-quick-access .mqa-btn {
+        flex: 0 0 auto;
+        width: calc((100% - 1.5rem) / 4); /* 4 botones visibles; el resto se desliza */
+        min-width: 5rem;
+        scroll-snap-align: start;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1612,12 +1716,17 @@ body:not(.homepage) {
 
 /* Móviles pequeños: ajuste fino */
 @media (max-width: 380px) {
-    .mobile-quick-access {
+    .mqa-wrap {
         margin-left: 0.5rem !important;
         margin-right: 0.5rem !important;
-        padding: 0.8rem 0.45rem !important;
+        padding: 0.8rem 2.2rem !important;
+    }
+    .mobile-quick-access {
         gap: 0.25rem !important;
     }
+    .mqa-arrow { width: 1.7rem; height: 1.7rem; }
+    .mqa-arrow--left { left: 0.2rem; }
+    .mqa-arrow--right { right: 0.2rem; }
     .mobile-quick-access .mqa-icon {
         width: 2.7rem !important;
         height: 2.7rem !important;
@@ -1634,11 +1743,11 @@ body:not(.homepage) {
 
 /* Tablets (601px – 1023px): tarjeta un poco más grande y centrada */
 @media (min-width: 601px) and (max-width: 1023px) {
-    .mobile-quick-access {
+    .mqa-wrap {
         max-width: 560px !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        padding: 1.1rem 1rem !important;
+        padding: 1.1rem 2.75rem !important;
     }
     .mobile-quick-access .mqa-icon {
         width: 3.5rem !important;
@@ -1796,5 +1905,31 @@ body:not(.homepage) {
     #chat-toggle-button.chat-toggle-asistente .chat-toggle-label {
         font-size: 8.5px !important;
         bottom: 4px !important;
+    }
+}
+
+/* ===== Asistente (bot) en PC: un poquito más arriba ===== */
+@media (min-width: 1024px) {
+    #chat-widget-container {
+        bottom: 11rem !important;
+    }
+}
+
+/* Al abrir el chat, el botón del bot desaparece (no se queda sobre el
+   cuadro de conversación). Refuerza el display:none que aplica el JS. */
+#chat-popup.chat-popup-visible ~ #chat-toggle-button {
+    display: none !important;
+}
+
+/* ===== PC: todos los contenedores con el mismo ancho y alineados ===== */
+@media (min-width: 1024px) {
+    /* Solo Información (avisos) y Trámites Principales comparten el ancho
+       de la tarjeta blanca (900px). El resto conserva su ancho original. */
+    #info-section-unified > .max-w-5xl,
+    #tramites-principales > .max-w-5xl {
+        max-width: 900px !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 }
