@@ -1812,7 +1812,7 @@ body:not(.homepage) {
     padding: 0.55rem 1.1rem;
     background: rgba(20, 83, 45, 0.55);
     color: #ffffff;
-    border: 1.5px solid rgba(74, 222, 128, 0.7);
+    border: 1.5px solid #237c4e;
     border-radius: 999px;
     font-weight: 700;
     font-size: 0.95rem;
@@ -1825,7 +1825,7 @@ body:not(.homepage) {
 .hero-oficial-pill svg {
     width: 1.1rem;
     height: 1.1rem;
-    color: #4ade80;
+    color: #237c4e;
     flex-shrink: 0;
 }
 
