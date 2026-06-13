@@ -167,7 +167,7 @@ class GlobalSearch {
                 title: 'Ley 21.659 - Seguridad Privada (VIGENTE)',
                 content: 'Nueva Ley de Seguridad Privada vigente desde 2024. Marco legal actualizado para servicios de seguridad privada en Chile',
                 section: 'Leyes y Normativa',
-                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0', '_blank'),
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1202067&idVersion=2026-05-28https://www.bcn.cl/leychile/navegar?idNorma=1202067&idVersion=2026-05-28', '_blank'),
                 keywords: ['ley', '21659', '21.659', 'seguridad', 'privada', 'actualizada', 'vigente', 'nueva', '2024']
             },
             {
