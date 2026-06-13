@@ -1137,6 +1137,32 @@ body:has(.modal-requisitos-componentes.active) #chat-widget-container { display:
 .carousel-card .flex > div:last-child {
     margin-left: 0;
 }
+/* Mejora de visibilidad de la flecha de regreso en celular */
+#credenciales-arrow-back-btn {
+    position: absolute;
+    top: 1rem;
+    left: 0rem;
+    z-index: 100;
+    background-color: #166534; /* Fondo verde para alto contraste */
+    color: white; /* Flecha blanca */
+    border-radius: 50%;
+    padding: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+    display: none; /* Se controla con JS vía la clase .hidden */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+#credenciales-arrow-back-btn:not(.hidden) {
+    display: flex !important;
+}
+#credenciales-arrow-back-btn:active {
+    transform: scale(0.85);
+    background-color: #14532d;
+}
 @media (max-width: 768px) {
     .carousel-card {
         flex-basis: 98%;
@@ -3148,8 +3174,8 @@ body {
       <img src="assets/images/logo-os10.webp" srcset="assets/images/logo-os10.webp 1x, assets/images/logo-os10@2x.webp 2x" alt="OS10 Logo" class="h-full" loading="lazy" width="60" height="60">
     </a>
     <button id="credenciales-arrow-back-btn" class="hidden" title="Back to Home" onclick="showHomepage()">
-      <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
+      <svg class="w-8 h-8" style="transform: translateX(-2px);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 18l-6-6 6-6"></path>
       </svg>
     </button>
     <section id="main-section" class="main-content" style="display: none;">
@@ -4279,8 +4305,10 @@ body {
   <!-- ============================================================
        FRANJA VERDE FINAL — "O.S.10 COQUIMBO · 100 AÑOS · 1925-2025"
        Se muestra al final del documento, después del footer.
+       OCULTA TEMPORALMENTE — para reactivar, eliminar style="display:none"
+       (esto también oculta la línea amarilla superior del border-top).
   ============================================================ -->
-  <section id="os10-bottom-band" aria-label="O.S.10 Coquimbo Carabineros de Chile - 100 años">
+  <section id="os10-bottom-band" aria-label="O.S.10 Coquimbo Carabineros de Chile - 100 años" style="display:none;">
     <div class="os10-band-inner">
       <div class="os10-band-col os10-band-col--logo">
         <img src="assets/images/logo-os10.webp" alt="Logo O.S.10 Coquimbo" width="56" height="56" loading="lazy">
