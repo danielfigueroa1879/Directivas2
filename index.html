@@ -2500,39 +2500,54 @@ body {
           </svg>
           <div class="desktop-submenu">
             <div class="desktop-submenu-title">⚖️ Leyes y Normativa</div>
-            <!-- SECCIÓN 1: LEYES PRINCIPALES (7 Documentos) -->
-            <div class="desktop-submenu-item desktop-submenu-item-with-side">
-              <span>Nuevas Leyes y Principales</span>
+            <!-- ============================================================
+                 FUENTE DE DATOS (PADRE): este submenú alimenta también
+                 las tarjetas de la sección #leyes-normativa. Para agregar,
+                 modificar o eliminar un ítem, editar AQUÍ.
+                 Cada sección usa data-section-key + data-section-color.
+            ============================================================ -->
+            <!-- SECCIÓN 1: MARCO LEGAL (3 documentos) -->
+            <div class="desktop-submenu-item desktop-submenu-item-with-side" data-section-key="marco-legal" data-section-color="green" data-section-title="Marco Legal">
+              <span>Marco Legal</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
               <div class="desktop-submenu-side">
                    <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067')">01 Ley 21.659 Nueva Ley Seguridad Privada.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1221118')">02 Ley 21.806 Mod. Plazos de la Ley 21.659.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1213672')">03 Regl. N° 209 Reglame. Seguridad Privada.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1211115')">04 Regl. N° 208 Reglame. de. Eventos Masiv.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1219417')">05 Resol. N° 2424 Instruc. Grales. Transitorie</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218921')">06 Resol. N° 2310 Instrucc. de Transitoriedad</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218338')">07 Resol. N° 2100 Acta Desc. Evento Masivo.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218912')">08 Resol. N° 2277 Aprueba Planes y Program</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf')">09 Resol. N° 2183 Cap. y Exam. Carabineros</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf')">10 Resol. N° 772 Clasificacci. Eventos Masiv.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/10/44396-B/01/2781576.pdf')">11 Resol. N° 928. Instrucción Matriz de Riesg.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://os10.short.gy/830')">12 Resol. N° 830 Cap. GG.SS. Futbol Profes.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://os10.short.gy/831')">13 Resol. N° 831 Element. Def. Futbol Profes.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1220956')">14 Resol. N° 396 Instrucc. Ex. Vvpp y GG.SS.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1221275')">15 Resol. N° 581 Mod. Cust. Carga Sobredim</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1223663')">16 Resol. N° 1366 Convali. Asign. Formación.</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1217403')">17 Resol. N° 33 Aprueba Norma. Tec. N°. 247</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136/01/2638569.pdf')">18 Diario Of. N° 44136 Modifi. el Decreto 222</button>
-                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf')">19 Diario Of. N° 44253 Migraciones. y Visado.</button>
-                   <button class="desktop-submenu-item item-nuevo" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/27/44459/01/2813688.pdf')">20 Resol. N° 1507 Convali. Asign. Perfeccion.</button>
-                   <button class="desktop-submenu-item item-nuevo" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1224572')">21 Ley 21.825 Modifica los Plazos 18. Meses.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1213672')">02 Regl. N° 209 Reglame. Seguridad Privada.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1211115')">03 Regl. N° 208 Reglame. de. Eventos Masiv.</button>
               </div>
             </div>
-            <!-- SECCIÓN 2: DECRETOS SUPREMOS (13 Documentos) -->
-            <div class="desktop-submenu-item desktop-submenu-item-with-side">
-              <span>Decretos Supremos</span>
+            <!-- SECCIÓN 2: LEYES PRINCIPALES (18 documentos) -->
+            <div class="desktop-submenu-item desktop-submenu-item-with-side" data-section-key="leyes-principales" data-section-color="blue" data-section-title="Leyes Principales">
+              <span>Leyes Principales</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+              <div class="desktop-submenu-side">
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1221118')">01 Ley 21.806 Mod. Plazos de la Ley 21.659.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1219417')">02 Resol. N° 2424 Instruc. Grales. Transitorie</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218921')">03 Resol. N° 2310 Instrucc. de Transitoriedad</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218338')">04 Resol. N° 2100 Acta Desc. Evento Masivo.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218912')">05 Resol. N° 2277 Aprueba Planes y Program</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf')">06 Resol. N° 2183 Cap. y Exam. Carabineros</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf')">07 Resol. N° 772 Clasificacci. Eventos Masiv.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/10/44396-B/01/2781576.pdf')">08 Resol. N° 928. Instrucción Matriz de Riesg.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://os10.short.gy/830')">09 Resol. N° 830 Cap. GG.SS. Futbol Profes.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://os10.short.gy/831')">10 Resol. N° 831 Element. Def. Futbol Profes.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1220956')">11 Resol. N° 396 Instrucc. Ex. Vvpp y GG.SS.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1221275')">12 Resol. N° 581 Mod. Cust. Carga Sobredim</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1223663')">13 Resol. N° 1366 Convali. Asign. Formación.</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1217403')">14 Resol. N° 33 Aprueba Norma. Tec. N°. 247</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136/01/2638569.pdf')">15 Diario Of. N° 44136 Modifi. el Decreto 222</button>
+                   <button class="desktop-submenu-item" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf')">16 Diario Of. N° 44253 Migraciones. y Visado.</button>
+                   <button class="desktop-submenu-item item-nuevo" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/27/44459/01/2813688.pdf')">17 Resol. N° 1507 Convali. Asign. Perfeccion.</button>
+                   <button class="desktop-submenu-item item-nuevo" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1224572')">18 Ley 21.825 Modifica los Plazos 18. Meses.</button>
+              </div>
+            </div>
+            <!-- SECCIÓN 3: NORMATIVA ANTERIOR (17 documentos, antes Decretos Supremos) -->
+            <div class="desktop-submenu-item desktop-submenu-item-with-side" data-section-key="normativa-anterior" data-section-color="green" data-section-title="Normativa Anterior">
+              <span>Normativa Anterior</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
@@ -2554,37 +2569,6 @@ body {
                 <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18592')">D.S. 1772 (1995)</button>
                 <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18594')">D.S. 1773 (1994)</button>
                 <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=9081')">D.S. 93 (1985)</button>
-              </div>
-            </div>
-            <!-- SECCIÓN 3: RESOLUCIONES (22 Documentos) -->
-            <div class="desktop-submenu-item desktop-submenu-item-with-side">
-              <span>Resoluciones</span>
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-              <div class="desktop-submenu-side" style="max-height: 400px; overflow-y: auto;">
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_111.pdf')">1. Res. Exenta N° 111</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_112.pdf')">2. Res. Exenta N° 112</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_253.pdf')">3. Res. Exenta N° 253</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_59.pdf')">4. Res. Exenta N° 59</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_281.pdf')">5. Res. Exenta N° 281</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/RESOLUCION%20EXENTA%20NRO.50.pdf')">6. Res. Exenta N° 50</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_23.pdf')">7. Res. Exenta N° 23</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_133.pdf')">8. Res. Exenta N° 133</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2432.pdf')">9. Res. N° 2432</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf')">10. Res. N° 4070</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_20.pdf')">11. Res. N° 20</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf')">12. Res. N° 2660</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_123.pdf')">13. Res. Exenta N° 123</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resol_4651.pdf')">14. Res. Exenta N° 4651</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf')">15. Res. N° 2095</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf')">16. Res. N° 2114</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf')">17. Res. N° 2340</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf')">18. Res. N° 1763</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Resol_3632.pdf')">19. Res. N° 3632</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_370.pdf')">20. Res. N° 370</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_80.pdf')">21. Res. Exenta N° 80</button>
-                <button class="desktop-submenu-item" onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf')">22. Res. N° 2522</button>
               </div>
             </div>
           </div>
@@ -2826,75 +2810,17 @@ body {
         <button class="submenu-parent-btn">Leyes y Normativa <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path d="M9 5l7 7-7 7"></path>
           </svg></button>
+        <!-- Columnas pobladas por JS desde el banner verde (única fuente).
+             Para editar items: modificar el banner verde de PC. -->
         <div class="submenu leyes-compactas" style="z-index: 999 !important;">
-          <div class="submenu-column">
-            <div class="submenu-title">Leyes</div>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">1. Ley 21.659 Seguridad Privada.</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1221118')">2. Ley 21.806 Modifica plazos ley 21.659</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1213672')">3. Regl. 209 Seguridad Privada.</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1211115')">4. Regl. 208 Eventos Masivos.</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1219417')">5. Resol. 2424 Instrucc Gen. transitor.</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218921')">6. Resol. 2310 Instrucc. transitoriedad.</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218338')">7. Resol. 2100 Acta Des. Eventos Masiv.</button>
-            <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf')">8. Resol. 2183 Cap. Exam. Carab. de Chile.</button>
-            <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf')">9. Resol. 772 Clas. Event Masiv.</button>
-            <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/10/44396-B/01/2781576.pdf')">10. Resol. 928 Inst. Matriz de Riesgo</button>
-            <button onclick="openNewLink('https://os10.short.gy/830')">11. Resol. 830 Cap. GG.SS. Futbol Prof.</button>
-            <button onclick="openNewLink('https://os10.short.gy/831')">12. Resol. 831 Elem. Def. Fut Prof.</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1220956')">13. Resol. N° 396 Inst. Ex. VVPP GGSS</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1221275')">14. Resol. N° 581 Mod. Cust. Car. Sob. Dim</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1223663')">15. Resol. N° 1366 Covalidacion Asig Form.</button>
-            <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136/01/2638569.pdf')">16. Diario Of. 44136 Mod. D. 222</button>
-            <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf')">17. Diario Of. 44253</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1217403')">18. Resol. N° 33 Ap. Nor Tec. N° 247</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1218912')">19. Resol. N° 2277 Ap. Planes y Progr.</button>
-            <button class="item-nuevo" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/27/44459/01/2813688.pdf')">20. Resol. N° 15007 Covalidación Asig Perfecc.</button>
-            <button class="item-nuevo" onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/28/44460/01/2816857.pdf')">21. Ley N° 21.825 Modif. Plazos 18 meses</button>
+          <div class="submenu-column" data-mobile-target="marco-legal">
+            <div class="submenu-title">Marco Legal</div>
           </div>
-          <div class="submenu-column">
-            <div class="submenu-title">Decretos</div>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución Política</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30329')">2. Ley 18.961</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30670')">3. Ley 19.303</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=7193')">4. D.L. 3.607 (1981)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">5. D.E. 261 (2020)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">6. D.E. 32 (2024)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17')">7. D. 298 (2019)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05')">8. D. 123 (2019)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12')">9. D. 1045 (2018)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1116274')">10. D. 867 (2017)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1069299')">11. D. 1814 (2014)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1055580')">12. D.S. 222 (2014)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1072929')">13. D.E. 1122 (1994)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=19870')">14. D.S. 41 (1996)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18592')">15. D.S. 1772 (1995)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18594')">16. D.S. 1773 (1994)</button>
-            <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=9081')">17. D.S. 93 (1985)</button>
+          <div class="submenu-column" data-mobile-target="leyes-principales">
+            <div class="submenu-title">Leyes Principales</div>
           </div>
-          <div class="submenu-column">
-            <div class="submenu-title">Resoluciones</div>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_111.pdf')">1. Res. Exenta N° 111 (18-06-2010)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_112.pdf')">2. Res. Exenta N° 112 (18-06-2010)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_253.pdf')">3. Res. Exenta N° 253 (29-10-2013)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_59.pdf')">4. Res. Exenta N° 59 (30-09-2014)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_281.pdf')">5. Res. Exenta N° 281 (13-11-2015)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/RESOLUCION%20EXENTA%20NRO.50.pdf')">6. Res. Exenta N° 50 (22-05-2020)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_23.pdf')">7. Res. Exenta N° 23 (05-03-2021)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_133.pdf')">8. Res. Exenta N° 133 (26-05-2021)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2432.pdf')">9. Res. N° 2432 (05-07-2021)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf')">10. Res. N° 4070 (20-10-2021)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_20.pdf')">11. Res. N° 20 (14-02-2022)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf')">12. Res. N° 2660 (20-07-2022)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_123.pdf')">13. Res. Exenta N° 123 (09-08-2022)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resol_4651.pdf')">14. Res. Exenta N° 4651 (27-12-2022)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf')">15. Res. N° 2095 (01-08-2023)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf')">16. Res. N° 2114 (03-08-2023)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf')">17. Res. N° 2340 (22-08-2023)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf')">18. Res. N° 1763 (10-06-2023)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Resol_3632.pdf')">19. Res. N° 3632 (21-12-2022)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_370.pdf')">20. Res. N° 370 (13-02-2024)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_80.pdf')">21. Res. Exenta N° 80 (20-03-2024)</button>
-            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf')">22. Res. N° 2522 (26-08-2024)</button>
+          <div class="submenu-column" data-mobile-target="normativa-anterior">
+            <div class="submenu-title">Normativa Anterior</div>
           </div>
         </div>
       </div>
@@ -3364,10 +3290,6 @@ body {
       <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
       <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p>
       <div class="hero-oficial-pill" aria-label="Seguridad Privada">
-        <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
         <span>Seguridad Privada</span>
       </div>
     </div>
@@ -3590,7 +3512,20 @@ body {
           <p class="mt-4 text-lg leading-8 text-gray-600">Marco legal y decretos que regulan la seguridad privada</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          <!-- Columna Leyes -->
+          <!-- Tarjeta MARCO LEGAL (verde, orden 1: PC y móvil) — poblada por JS desde el banner -->
+          <div class="bg-green-200/30 border border-green-500 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green leyes-normativa-column" style="order:-1;">
+            <button id="resoluciones-toggle" class="w-full text-base md:text-lg font-bold text-green-900 mb-4 flex items-center justify-between text-left">
+              <span class="flex items-center">
+                <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                </svg> Marco Legal </span>
+              <svg id="resoluciones-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div id="resoluciones-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll" data-target="marco-legal"></div>
+          </div>
+          <!-- Tarjeta LEYES PRINCIPALES (azul) — poblada por JS desde el banner -->
           <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue leyes-normativa-column">
             <button id="leyes-toggle" class="w-full text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center justify-between text-left">
               <span class="flex items-center">
@@ -3601,219 +3536,22 @@ body {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <div id="leyes-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1202067" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">01 Ley 21.659 Nueva Ley Seguridad Privada.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1221118" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">02 Ley 21.806 Mod. Plazos de la Ley 21.659.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1213672" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">03 Regl. N° 209 Reglame. Seguridad Privada.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1211115" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">04 Regl. N° 208 Reglame. de. Eventos Masiv.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1219417" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">05 Resol. N° 2424 Instruc. Grales. Transitorie</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218921" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">06 Resol. N° 2310 Instrucc. de Transitoriedad</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218338" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">07 Resol. N° 2100 Acta Desc. Evento Masivo.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1218912" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">08 Resol. N° 2277 Aprueba Planes y Program</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">09 Resol. N° 2183 Cap. y Exam. Carabineros</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">10 Resol. N° 772 Clasificacci. Eventos Masiv.</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/10/44396-B/01/2781576.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">11 Resol. N° 928. Instrucción Matriz de Riesg.</span>
-              </a>
-              <a href="https://os10.short.gy/830" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">12 Resol. N° 830 Cap. GG.SS. Futbol Profes.</span>
-              </a>
-              <a href="https://os10.short.gy/831" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">13 Resol. N° 831 Element. Def. Futbol Profes.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1220956" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">14 Resol. N° 396 Instrucc. Ex. Vvpp y GG.SS.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1221275" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">15 Resol. N° 581 Mod. Cust. Carga Sobredim</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1223663" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">16 Resol. N° 1366 Convali. Asign. Formación.</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1217403" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">17 Resol. N° 33 Aprueba Norma. Tec. N°. 247</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136/01/2638569.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">18 Diario Of. N° 44136 Modifi. el Decreto 222</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">19 Diario Of. N° 44253 Migraciones. y Visado.</span>
-              </a>
-              <a href="https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/27/44459/01/2813688.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">20 Resol. N° 1507 Convali. Asign. Perfeccion.</span>
-                <span class="ml-1 inline-block align-middle text-[10px] font-bold text-white bg-red-500 px-1.5 py-0.5 rounded">NUEVO</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1224572" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-100 hover:shadow-md transition-all border border-blue-300 hover:-translate-y-1 active:bg-blue-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-blue-700">21 Ley 21.825 Modifica los Plazos 18. Meses.</span>
-                <span class="ml-1 inline-block align-middle text-[10px] font-bold text-white bg-red-500 px-1.5 py-0.5 rounded">NUEVO</span>
-              </a>
-            </div>
+            <div id="leyes-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll" data-target="leyes-principales"></div>
           </div>
-          <!-- Columna Decretos -->
+          <!-- Tarjeta NORMATIVA ANTERIOR (verde, antes Decretos Supremos) — poblada por JS desde el banner -->
           <div class="bg-green-200/30 border border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green leyes-normativa-column">
             <button id="decretos-toggle" class="w-full text-base md:text-lg font-bold text-green-900 mb-4 flex items-center justify-between text-left">
               <span class="flex items-center">
                 <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg> Decretos Supremos </span>
+                </svg> Normativa Anterior </span>
               <svg id="decretos-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <div id="decretos-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=242302" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">Constitución Política</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=30329" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">Ley 18.961</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=30670" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">Ley 19.303</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=7193" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.L. 3.607 (1981)</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.E. 261 (2020)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.E. 32 (2024)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1136545" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D. 298 (2019)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1130300" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D. 123 (2019)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1122982" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D. 1045 (2018)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1116274" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D. 867 (2017)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1069299" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D. 1814 (2014)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1055580" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.S. 222 (2014)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=1072929" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.E. 1122 (1994)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=19870" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.S. 41 (1996)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=18592" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.S. 1772 (1995)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=18594" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.S. 1773 (1994)</span>
-              </a>
-              <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-green-700">D.S. 93 (1985)</span>
-              </a>
-            </div>
+            <div id="decretos-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll" data-target="normativa-anterior"></div>
           </div>
-          <!-- Columna Resoluciones -->
-          <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow leyes-normativa-column">
-            <button id="resoluciones-toggle" class="w-full text-base md:text-lg font-bold text-yellow-900 mb-4 flex items-center justify-between text-left">
-              <span class="flex items-center">
-                <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                </svg> Resoluciones </span>
-              <svg id="resoluciones-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-            <div id="resoluciones-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll">
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_111.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">1. Res. Exenta N° 111</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_112.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">2. Res. Exenta N° 112</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_253.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">3. Res. Exenta N° 253</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_59.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">4. Res. Exenta N° 59</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_281.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">5. Res. Exenta N° 281</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/RESOLUCION%20EXENTA%20NRO.50.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">6. Res. Exenta N° 50</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_23.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">7. Res. Exenta N° 23</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_133.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">8. Res. Exenta N° 133</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_2432.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">9. Res. N° 2432</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_4070.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">10. Res. N° 4070</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_20.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">11. Res. N° 20</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_2660.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">12. Res. N° 2660</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_123.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">13. Res. Exenta N° 123</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resol_4651.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">14. Res. Exenta N° 4651</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_2095.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">15. Res. N° 2095</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_2114.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">16. Res. N° 2114</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_2340.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">17. Res. N° 2340</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_1763.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">18. Res. N° 1763</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/Resol_3632.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">19. Res. N° 3632</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_370.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">20. Res. N° 370</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_80.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">21. Res. Exenta N° 80</span>
-              </a>
-              <a href="https://www.zosepcar.cl/content/OS10/resolucion_2522.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-yellow-100 hover:shadow-md transition-all border border-yellow-300 hover:-translate-y-1 active:bg-yellow-200 active:-translate-y-0.5">
-                <span class="text-xs md:text-sm font-medium text-yellow-700">22. Res. N° 2522</span>
-              </a>
-            </div>
-          </div>
+        </div>
         </div>
       </div>
     </section>
@@ -4014,7 +3752,8 @@ body {
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Documentos y Formularios</h2>
           <p class="mt-4 text-lg leading-8 text-gray-600">Plantillas editables y modelos de solicitud</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <!-- Grid centrado: 2 col en md+. Si se reactiva Manuales, cambiar a lg:grid-cols-3 + remover style max-width -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" style="max-width:56rem;margin-left:auto;margin-right:auto;">
           <!-- Documentos Editables -->
           <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue">
             <button id="docs-editables-toggle" class="w-full text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center justify-between text-left">
@@ -4073,8 +3812,8 @@ body {
               </a>
             </div>
           </div>
-          <!-- Manuales -->
-          <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow">
+          <!-- Manuales — OCULTA en PC y móvil. Para reactivar, eliminar style="display:none" -->
+          <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow" style="display:none;">
             <button id="manuales-toggle" class="w-full text-base md:text-lg font-bold text-yellow-900 mb-4 flex items-center justify-between text-left">
               <span class="flex items-center">
                 <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4477,6 +4216,73 @@ body {
     if (!reduce) {
       if (document.readyState === 'complete') setTimeout(start, 1500);
       else window.addEventListener('load', function () { setTimeout(start, 1500); });
+    }
+  })();
+  </script>
+  <!-- ============================================================
+       SYNC: BANNER VERDE → SECCIÓN "LEYES Y NORMATIVA"
+       El banner es el PADRE (fuente de datos). Cada submenu con
+       data-section-key alimenta el contenedor con data-target.
+       Para agregar/quitar items: editar SOLO el banner.
+  ============================================================ -->
+  <script>
+  (function syncLeyesNormativaFromBanner() {
+    var SECTIONS = {
+      'marco-legal':       { color: 'green' },
+      'leyes-principales': { color: 'blue'  },
+      'normativa-anterior':{ color: 'green' }
+    };
+    function parseItems(source) {
+      var btns = source.querySelectorAll('button.desktop-submenu-item');
+      var items = [];
+      btns.forEach(function(btn){
+        var oc = btn.getAttribute('onclick') || '';
+        var m  = oc.match(/openNewLink\(\s*['"]([^'"]+)['"]\s*\)/);
+        items.push({
+          url: m ? m[1] : '#',
+          text: (btn.textContent || '').trim(),
+          isNuevo: btn.classList.contains('item-nuevo')
+        });
+      });
+      return items;
+    }
+    function renderSectionCard(target, items, color) {
+      target.innerHTML = items.map(function(it){
+        var badge = it.isNuevo
+          ? ' <span class="ml-1 inline-block align-middle text-[10px] font-bold text-white bg-red-500 px-1.5 py-0.5 rounded">NUEVO</span>'
+          : '';
+        return '<a href="' + it.url + '" target="_blank" rel="noopener" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-' + color + '-100 hover:shadow-md transition-all border border-' + color + '-300 hover:-translate-y-1 active:bg-' + color + '-200 active:-translate-y-0.5">'
+             +   '<span class="text-xs md:text-sm font-medium text-' + color + '-700">' + it.text + '</span>' + badge
+             + '</a>';
+      }).join('');
+    }
+    function renderMobileColumn(col, items) {
+      var title = col.querySelector('.submenu-title');
+      var keep = title ? title.outerHTML : '';
+      var btns = items.map(function(it){
+        var cls = it.isNuevo ? ' class="item-nuevo"' : '';
+        var safeUrl = it.url.replace(/'/g, "\\'");
+        var safeText = it.text.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        return '<button' + cls + ' onclick="openNewLink(\'' + safeUrl + '\')">' + safeText + '</button>';
+      }).join('');
+      col.innerHTML = keep + btns;
+    }
+    function render() {
+      Object.keys(SECTIONS).forEach(function(key){
+        var color  = SECTIONS[key].color;
+        var source = document.querySelector('[data-section-key="' + key + '"] .desktop-submenu-side');
+        if (!source) return;
+        var items = parseItems(source);
+        var sectionTarget = document.querySelector('[data-target="' + key + '"]');
+        if (sectionTarget) renderSectionCard(sectionTarget, items, color);
+        var mobileCol = document.querySelector('[data-mobile-target="' + key + '"]');
+        if (mobileCol) renderMobileColumn(mobileCol, items);
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', render);
+    } else {
+      render();
     }
   })();
   </script>
