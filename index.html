@@ -3464,12 +3464,22 @@ body {
           font-size: 0.7rem !important;
         }
 
-        /* === Trámites Principales: tarjetas más cuadradas === */
+        /* === Trámites Principales: tarjetas más cuadradas y separadas === */
         #tramites-principales .carousel-card {
-          min-height: 280px !important;
+          min-height: 290px !important;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          padding: 1.5rem !important;
+        }
+        /* Más separación entre tarjetas y armonía con Información */
+        #tramites-principales .carousel-container.carousel-desktop-grid {
+          gap: 2.5rem !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          max-width: 900px !important;
+          margin: 0 auto !important;
         }
 
         /* === Capacitación: tarjetas más cuadradas / más altas === */
