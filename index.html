@@ -4072,10 +4072,17 @@ body {
         </div>
       </div>
     </div>
-    <div class="w-full mt-8 border-t border-white pt-8 pb-8 text-center text-sm px-6">
+    <div class="footer-copyright w-full mt-8 border-t border-white pt-8 pb-8 text-center text-sm px-6">
       <p>© 2026 Prefectura de Coquimbo. Todos los derechos reservados.</p>
-      <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Ch. Ingeniero en Informática & Ciberseguridad.</p>
+      <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Chacama. Ingeniero en Informática & Ciberseguridad.</p>
     </div>
+    <style>
+      /* En mobile el copyright se ve un poco más pequeño */
+      @media (max-width: 1023px) {
+        #main-footer .footer-copyright,
+        #main-footer .footer-copyright p { font-size: 11px !important; line-height: 1.4 !important; }
+      }
+    </style>
   </footer>
   <!-- ============================================================
        FRANJA VERDE FINAL — "O.S.10 COQUIMBO · 100 AÑOS · 1925-2025"
