@@ -1027,8 +1027,8 @@ body:has(.modal-requisitos-componentes.active) #chat-widget-container { display:
 }
 /* Leyes normativa PC */
 @media (min-width: 768px) {
-    .leyes-normativa-column { min-height: 320px; max-height: 320px; display: flex; flex-direction: column; }
-    .leyes-normativa-scroll { display: block !important; max-height: 220px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.1) transparent; }
+    .leyes-normativa-column { min-height: 480px; max-height: 480px; display: flex; flex-direction: column; }
+    .leyes-normativa-scroll { display: block !important; max-height: 380px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.1) transparent; }
     .leyes-normativa-scroll::-webkit-scrollbar { width: 6px; }
     .leyes-normativa-scroll::-webkit-scrollbar-track { background: transparent; }
     .leyes-normativa-scroll::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.1); border-radius: 3px; }
@@ -2890,6 +2890,16 @@ body {
       </div>
     </div>
     <div class="has-submenu">
+      <button class="submenu-parent-btn">Manuales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg></button>
+      <div class="submenu submenu-compact">
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Manual de Funcionamiento</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">2. Manual de Capacitación</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">3. Manual de Organización</button>
+      </div>
+    </div>
+    <div class="has-submenu">
       <button class="submenu-parent-btn">Capacitación <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path d="M9 5l7 7-7 7"></path>
         </svg></button>
@@ -3419,9 +3429,56 @@ body {
           border-color: rgba(255,255,255,0.2);
           margin-bottom: 0 !important;
         }
-        #info-section-unified .info-aviso-text,
-        #info-section-unified .info-aviso-title,
+        /* PC: párrafos justificados, títulos centrados */
+        #info-section-unified .info-aviso-text { color: #fff; text-align: justify !important; }
+        #info-section-unified .info-aviso-title { color: #fff; }
         #info-section-unified h2 { color: #fff; text-align: center; }
+
+        /* === Componentes del Sistema: tarjetas más bajas verticalmente === */
+        #componentes-seguridad .carousel-card {
+          min-height: 320px !important;
+          padding: 1rem !important;
+        }
+        #componentes-seguridad .carousel-card .grid {
+          gap: 0.5rem !important;
+        }
+        /* Botones internos más compactos */
+        #componentes-seguridad .carousel-card .grid > button {
+          padding: 0.5rem !important;
+        }
+        /* Iconos más pequeños */
+        #componentes-seguridad .carousel-card .grid > button > div.flex-shrink-0 {
+          width: 2.25rem !important;
+          height: 2.25rem !important;
+        }
+        #componentes-seguridad .carousel-card .grid > button > div.flex-shrink-0 svg {
+          width: 1.25rem !important;
+          height: 1.25rem !important;
+        }
+        /* Reducir margen superior del título */
+        #componentes-seguridad .carousel-card .grid > button h3 {
+          margin-top: 0.5rem !important;
+          font-size: 0.8rem !important;
+        }
+        #componentes-seguridad .carousel-card .grid > button p {
+          font-size: 0.7rem !important;
+        }
+
+        /* === Trámites Principales: tarjetas más cuadradas === */
+        #tramites-principales .carousel-card {
+          min-height: 280px !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        /* === Capacitación: tarjetas más cuadradas / más altas === */
+        #capacitacion .carousel-card {
+          min-height: 310px !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
     </style>
     <!-- SECCIÓN INFORMATIVA UNIFICADA (MÓVIL Y PC) -->
