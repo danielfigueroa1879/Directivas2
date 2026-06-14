@@ -2751,7 +2751,7 @@ body {
             <button class="desktop-submenu-item" onclick="openNewLink('https://carabineros.cerofilas.digital.gob.cl/')">Cerofilas</button>
             <button class="desktop-submenu-item" onclick="openNewLink('https://www.ayudamineduc.cl/ficha/equivalencia-de-estudios-para-fines-laborales-18')">Cuarto medio laboral</button>
           
-            <!--<button class="desktop-submenu-item" onclick="openNewLink('https://guardiaevento.netlify.app/')">Ggss x Evento</button>-->
+            <button class="desktop-submenu-item" onclick="openNewLink('https://guardiaevento.netlify.app/')">Ggss x Evento</button>
           </div>
         </div>
           <!-- RECLAMOS -->
@@ -3017,7 +3017,7 @@ body {
         <button onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/')">Spd</button>
         <button onclick="openNewLink('https://carabineros.cerofilas.digital.gob.cl/')">Cerofilas</button>
         <button onclick="openNewLink('https://www.ayudamineduc.cl/ficha/equivalencia-de-estudios-para-fines-laborales-18')">Cuarto medio laboral</button>
-        <!--<button onclick="openNewLink('https://guardiaevento.netlify.app/')">Ggss x Evento</button>-->
+        <button onclick="openNewLink('https://guardiaevento.netlify.app/')">Ggss x Evento</button>
       </div>
     </div>
     <!-- RECLAMOS -->
@@ -3399,27 +3399,62 @@ body {
     </button>
   </div>
   <div id="homepage-content-wrapper" role="main">
+    <!-- Fix Tailwind purgado: lg:grid, bg-[#173A32], lg:bg-white no compilan -->
+    <style>
+      /* Mobile: fondo verde oscuro y texto blanco para el botón "Ver Informativo Nº 5" */
+      #info-section-unified .info-aviso-btn {
+        background-color: #173A32;
+        color: #fff;
+      }
+      @media (min-width: 1024px) {
+        /* Dos avisos lado a lado en PC */
+        #info-section-unified .info-avisos-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 2rem;
+          align-items: stretch;
+        }
+        /* PC: botón blanco con texto verde oscuro */
+        #info-section-unified .info-aviso-btn {
+          background-color: #fff;
+          color: #173A32;
+          width: auto;
+          padding-left: 3rem;
+          padding-right: 3rem;
+        }
+        /* PC: fondo verde de la sección y texto blanco */
+        #info-section-unified { background-color: #146314; border-bottom: none; }
+        #info-section-unified .info-aviso-card {
+          background-color: transparent;
+          border-color: rgba(255,255,255,0.2);
+          margin-bottom: 0 !important;
+        }
+        #info-section-unified .info-aviso-text,
+        #info-section-unified .info-aviso-title,
+        #info-section-unified h2 { color: #fff; text-align: center; }
+      }
+    </style>
     <!-- SECCIÓN INFORMATIVA UNIFICADA (MÓVIL Y PC) -->
     <div id="info-section-unified" class="bg-white lg:bg-[#146314] pb-8 px-6 relative z-0 border-b border-gray-100 lg:border-none">
       <div class="max-w-5xl mx-auto lg:text-center">
         <h2 class="text-2xl lg:text-4xl font-black mb-6 uppercase tracking-tight text-[#173A32] lg:text-white">Información</h2>
       
-      <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-stretch">
+      <div class="info-avisos-grid lg:grid lg:grid-cols-2 lg:gap-8 lg:items-stretch">
       <!-- Contenedor Aviso 1 -->
-      <div class="bg-gray-50/80 lg:bg-transparent border border-gray-200/50 lg:border-white/20 rounded-2xl p-4 mb-4 lg:mb-0 shadow-sm lg:shadow-none" style="box-shadow: 0 6px 14px rgba(0,0,0,0.16), 0 2px 5px rgba(0,0,0,0.09);">
-        <p class="text-gray-800 lg:text-white text-sm leading-relaxed text-justify lg:text-center">
-          ✅ <strong class="text-[#173A32] lg:text-white">EXTENSIÓN DE AUTORIZACIONES LEY 21.659:</strong><br>
+      <div class="info-aviso-card bg-gray-50/80 lg:bg-transparent border border-gray-200/50 lg:border-white/20 rounded-2xl p-4 mb-4 lg:mb-0 shadow-sm lg:shadow-none" style="box-shadow: 0 6px 14px rgba(0,0,0,0.16), 0 2px 5px rgba(0,0,0,0.09);">
+        <p class="info-aviso-text text-gray-800 lg:text-white text-sm leading-relaxed text-justify lg:text-center">
+          ✅ <strong class="info-aviso-title text-[#173A32] lg:text-white">EXTENSIÓN DE AUTORIZACIONES LEY 21.659:</strong><br>
           MODIFICA LA LEY Nº 21.659, SOBRE SEGURIDAD PRIVADA, PARA AUMENTAR EL PLAZO DE PRESENTACIÓN Y PRONUNCIAMIENTO SOBRE LOS ESTUDIOS DE SEGURIDAD QUE DISPONE, Y EXTIENDE LA PRÓRROGA DE VIGENCIA DE LA ÚLTIMA AUTORIZACIÓN DEL PERSONAL DE SEGURIDAD PRIVADA QUE INDICA, REEMPLÁZASE, EN EL INCISO SEGUNDO DEL ARTÍCULO TERCERO TRANSITORIO, LA EXPRESIÓN “SEIS MESES CONTADOS” POR LA ORACIÓN “DIECIOCHO MESES CONTADOS". <br><br><strong>Esta medida entrega continuidad a quienes trabajan en la seguridad privada.</strong>
         </p>
       </div>
 
       <!-- Contenedor Aviso 2 -->
-      <div class="bg-gray-50/80 lg:bg-transparent border border-gray-200/50 lg:border-white/20 rounded-2xl p-4 mb-8 lg:mb-0 shadow-sm lg:shadow-none flex flex-col justify-between" style="box-shadow: 0 6px 14px rgba(0,0,0,0.16), 0 2px 5px rgba(0,0,0,0.09);">
-        <p class="text-gray-800 lg:text-white text-sm leading-relaxed text-justify lg:text-center">
-          ✅ <strong class="text-[#173A32] lg:text-white">CERTIFICACIÓN DE APROBACIÓN Y EMISIÓN DE CERTIFICADOS (Informativo Nº 5)</strong><br>
+      <div class="info-aviso-card bg-gray-50/80 lg:bg-transparent border border-gray-200/50 lg:border-white/20 rounded-2xl p-4 mb-8 lg:mb-0 shadow-sm lg:shadow-none flex flex-col justify-between" style="box-shadow: 0 6px 14px rgba(0,0,0,0.16), 0 2px 5px rgba(0,0,0,0.09);">
+        <p class="info-aviso-text text-gray-800 lg:text-white text-sm leading-relaxed text-justify lg:text-center">
+          ✅ <strong class="info-aviso-title text-[#173A32] lg:text-white">CERTIFICACIÓN DE APROBACIÓN Y EMISIÓN DE CERTIFICADOS (Informativo Nº 5)</strong><br>
           Este certificado solo habilita a las personas a realizar su solicitud de autorización en la plataforma de Seguridad Privada, no a desempeñar sus funciones. En caso de que el alumno no haya recibido el certificado, es la institución de capacitación la que debe informar a la Subsecretaría esta situación.
         </p>
-        <button class="mt-3 w-full lg:w-auto lg:px-12 py-3 bg-[#173A32] lg:bg-white lg:text-[#173A32] text-white rounded-xl text-xs font-bold uppercase tracking-widest shadow-md active:scale-95 transition-transform" onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Informativo_N5_v2_may_2026.pdf')">Ver Informativo Nº 5</button>
+        <button class="info-aviso-btn mt-3 w-full lg:w-auto lg:px-12 py-3 bg-[#173A32] lg:bg-white lg:text-[#173A32] text-white rounded-xl text-xs font-bold uppercase tracking-widest shadow-md active:scale-95 transition-transform" onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Informativo_N5_v2_may_2026.pdf')">Ver Informativo Nº 5</button>
       </div>
       </div>
       </div>
