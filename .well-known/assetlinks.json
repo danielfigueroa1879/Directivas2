@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.netlify.os10coquimbo.twa",
+        "sha256_cert_fingerprints": ["77:A8:C7:19:0D:02:47:A4:D6:B1:E1:E8:79:6C:20:2F:9A:E8:EF:F9:A8:70:4C:87:4C:56:D9:FF:50:41:BC:0A"]
+      }
+    }]
