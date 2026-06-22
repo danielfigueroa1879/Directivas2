@@ -811,10 +811,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
             }
-            // Configurar las tres secciones
+            // Configurar las cuatro secciones
             setupAccordion('leyes-toggle', 'leyes-content', 'leyes-arrow');
             setupAccordion('decretos-toggle', 'decretos-content', 'decretos-arrow');
             setupAccordion('resoluciones-toggle', 'resoluciones-content', 'resoluciones-arrow');
+            setupAccordion('informativos-toggle', 'informativos-content', 'informativos-arrow');
             // Similar para la sección de Documentos (si se quisiera)
             setupAccordion('docs-editables-toggle', 'docs-editables-content', 'docs-editables-arrow');
             setupAccordion('modelos-solicitud-toggle', 'modelos-solicitud-content', 'modelos-solicitud-arrow');

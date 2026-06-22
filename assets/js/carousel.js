@@ -54,10 +54,29 @@ function initializeCarousel({
     // Carga inicial del caché — se lee ANTES de modificar el DOM (evita reflow forzado)
     refreshCache();
 
+    // Cantidad de "páginas" del carrusel = tarjetas totales - visibles + 1.
+    // En móvil suele ser 1 visible → dotCount = cardCount.
+    // En PC entran varias → dotCount es menor (1 punto por posición de scroll única).
+    const computeDotCount = () => {
+        if (!cachedCardRects.length) return cardCount;
+        const firstLeft = cachedCardRects[0].offsetLeft;
+        let visible = 0;
+        // Visible = tarjetas cuyo borde izquierdo cae dentro del viewport
+        // (incluye la última que se ve parcialmente como "peek").
+        for (const r of cachedCardRects) {
+            if (r.offsetLeft - firstLeft < cachedContainerWidth) visible++;
+            else break;
+        }
+        return Math.max(1, cardCount - Math.max(1, visible) + 1);
+    };
+
     // 1. Crear los puntos de paginación (DOM modification DESPUÉS de leer geometría)
-    if (dotsContainer) {
+    let dotCount = computeDotCount();
+    console.log('[carousel]', containerSelector, 'cardCount=', cardCount, 'dotCount=', dotCount, 'containerW=', cachedContainerWidth, 'isActive=', cachedIsActive);
+    const renderDots = () => {
+        if (!dotsContainer) return;
         dotsContainer.innerHTML = '';
-        for (let i = 0; i < cardCount; i++) {
+        for (let i = 0; i < dotCount; i++) {
             const dot = document.createElement('span');
             dot.classList.add('dot');
             dot.addEventListener('click', () => {
@@ -66,26 +85,26 @@ function initializeCarousel({
             });
             dotsContainer.appendChild(dot);
         }
-    }
+    };
+    renderDots();
 
-    const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
+    let dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
     if (dots.length > 0) {
         dots[0].classList.add('active');
     }
 
-    // 2. Función para ir a un slide específico
-    function goToSlide(index) {
+    // 2. Función para ir a una "página" (índice de punto, no índice de tarjeta)
+    function goToSlide(pageIndex) {
         if (!isCarouselActive()) return;
-        if (index >= 0 && index < cardCount) {
-            const cached = cachedCardRects[index]; // sin reflow
-            const scrollLeft = cached.offsetLeft - (cachedContainerWidth - cached.offsetWidth) / 2;
-            scrollContainer.scrollTo({
-                left: scrollLeft,
-                behavior: 'smooth'
-            });
-            currentIndex = index;
-            updateDots();
-        }
+        if (pageIndex < 0 || pageIndex >= dotCount) return;
+        const cached = cachedCardRects[pageIndex];
+        if (!cached) return;
+        // Alinea la tarjeta de la página al borde izquierdo del viewport del carrusel
+        const firstLeft = cachedCardRects[0].offsetLeft;
+        const scrollLeft = cached.offsetLeft - firstLeft;
+        scrollContainer.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        currentIndex = pageIndex;
+        updateDots();
     }
 
     // 3. Actualizar el punto activo
@@ -96,11 +115,9 @@ function initializeCarousel({
         });
     }
 
-    // 4. Detectar el slide actual mientras se hace scroll
+    // 4. Detectar la página actual mientras se hace scroll
     const handleScroll = () => {
-        // Leer propiedades geométricas ANTES de cualquier modificación CSS (evita reflow forzado)
         const scrollLeft = scrollContainer.scrollLeft;
-        const containerWidth = cachedContainerWidth;
 
         if (!isCarouselActive()) {
             if (dotsContainer) dotsContainer.style.display = 'none';
@@ -108,22 +125,23 @@ function initializeCarousel({
         }
         if (dotsContainer) dotsContainer.style.display = 'flex';
 
-        let closestCardIndex = 0;
+        // Página activa = tarjeta cuyo borde izquierdo está más cerca del scroll actual,
+        // recortada al rango de páginas válidas [0, dotCount-1].
+        const firstLeft = cachedCardRects[0].offsetLeft;
+        let closestIndex = 0;
         let minDistance = Infinity;
-
-        cachedCardRects.forEach(({ offsetLeft, offsetWidth }, i) => { // sin reflow
-            const cardCenter = offsetLeft + offsetWidth / 2;
-            const scrollCenter = scrollLeft + containerWidth / 2;
-            const distance = Math.abs(cardCenter - scrollCenter);
-
+        cachedCardRects.forEach(({ offsetLeft }, i) => {
+            const cardScrollPos = offsetLeft - firstLeft;
+            const distance = Math.abs(cardScrollPos - scrollLeft);
             if (distance < minDistance) {
                 minDistance = distance;
-                closestCardIndex = i;
+                closestIndex = i;
             }
         });
+        const pageIndex = Math.min(closestIndex, dotCount - 1);
 
-        if (currentIndex !== closestCardIndex) {
-            currentIndex = closestCardIndex;
+        if (currentIndex !== pageIndex) {
+            currentIndex = pageIndex;
             updateDots();
         }
     };
@@ -136,7 +154,7 @@ function initializeCarousel({
 
         autoScrollInterval = setInterval(() => {
             if (!isCarouselActive()) return;
-            let nextIndex = (currentIndex + 1) % cardCount;
+            let nextIndex = (currentIndex + 1) % dotCount;
             goToSlide(nextIndex);
         }, scrollSpeed);
     }
@@ -169,9 +187,17 @@ function initializeCarousel({
 
     // Listener para cambios de tamaño de ventana
     window.addEventListener('resize', () => {
-        refreshCache();     // Actualiza caché primero (un solo reflow en lote)
-        handleScroll();     // Usa valores cacheados
-        manageAutoScroll(); // Usa matchMedia
+        refreshCache();
+        // Recalcular cantidad de páginas (cambia con el viewport)
+        const newDotCount = computeDotCount();
+        if (newDotCount !== dotCount) {
+            dotCount = newDotCount;
+            renderDots();
+            dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
+            if (currentIndex >= dotCount) currentIndex = dotCount - 1;
+        }
+        handleScroll();
+        manageAutoScroll();
     });
 
     // Iniciar por primera vez.
