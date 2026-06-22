@@ -630,8 +630,8 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
     .leyes-normativa-scroll::-webkit-scrollbar { width: 6px; }
     .leyes-normativa-scroll::-webkit-scrollbar-track { background: transparent; }
     .leyes-normativa-scroll::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.1); border-radius: 3px; }
-    #leyes-toggle, #decretos-toggle, #resoluciones-toggle { pointer-events: none; cursor: default; }
-    #leyes-arrow, #decretos-arrow, #resoluciones-arrow { display: none; }
+    #leyes-toggle, #decretos-toggle, #resoluciones-toggle, #informativos-toggle { pointer-events: none; cursor: default; }
+    #leyes-arrow, #decretos-arrow, #resoluciones-arrow, #informativos-arrow { display: none; }
 }
 @media (max-width: 767px) { .leyes-normativa-scroll.hidden { display: none; } }
 /* ===== BOTÓN DE BÚSQUEDA EN BANNER (crítico - inline) ===== */
