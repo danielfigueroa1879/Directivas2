@@ -2824,7 +2824,6 @@ body {
           </div>
         </div>
       </div>
-    </div>
     <!--INFORMATIVOS — poblado por JS desde el banner verde (única fuente).
          Para editar items: modificar el banner verde de PC. -->
     <div class="has-submenu">
@@ -4403,7 +4402,7 @@ body {
     function applyTitleToSectionCard(key, title) {
       var target = document.querySelector('[data-target="' + key + '"]');
       if (!target) return;
-      var card = target.closest('div');
+      var card = target.closest('.leyes-normativa-column');
       if (!card) return;
       var span = card.querySelector('button > span.flex');
       if (!span) return;
