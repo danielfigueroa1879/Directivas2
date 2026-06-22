@@ -1026,14 +1026,18 @@ body:has(.modal-requisitos-componentes.active) #chat-widget-container { display:
 100% { opacity: 0; transform: translate(70%,-350%) scale(0.1); }
 }
 /* Leyes normativa PC */
+/* Tailwind precompilado no incluye lg:grid-cols-4; lo añadimos manualmente. */
+@media (min-width: 1024px) {
+    #leyes-normativa .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 @media (min-width: 768px) {
     .leyes-normativa-column { min-height: 480px; max-height: 480px; display: flex; flex-direction: column; }
     .leyes-normativa-scroll { display: block !important; max-height: 380px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.1) transparent; }
     .leyes-normativa-scroll::-webkit-scrollbar { width: 6px; }
     .leyes-normativa-scroll::-webkit-scrollbar-track { background: transparent; }
     .leyes-normativa-scroll::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.1); border-radius: 3px; }
-    #leyes-toggle, #decretos-toggle, #resoluciones-toggle { pointer-events: none; cursor: default; }
-    #leyes-arrow, #decretos-arrow, #resoluciones-arrow { display: none; }
+    #leyes-toggle, #decretos-toggle, #resoluciones-toggle, #informativos-toggle { pointer-events: none; cursor: default; }
+    #leyes-arrow, #decretos-arrow, #resoluciones-arrow, #informativos-arrow { display: none; }
 }
 @media (max-width: 767px) { .leyes-normativa-scroll.hidden { display: none; } }
 /* ===== BOTÓN DE BÚSQUEDA EN BANNER (crítico - inline) ===== */
@@ -2501,13 +2505,8 @@ body {
           </svg>
           <div class="desktop-submenu">
             <div class="desktop-submenu-title">⚖️ Leyes y Normativa</div>
-            <!-- ============================================================
-                 FUENTE DE DATOS (PADRE): este submenú alimenta también
-                 las tarjetas de la sección #leyes-normativa. Para agregar,
-                 modificar o eliminar un ítem, editar AQUÍ.
-                 Cada sección usa data-section-key + data-section-color.
-            ============================================================ -->
-            <!-- SECCIÓN 1: MARCO LEGAL (3 documentos) -->
+            <!-- ⚖️ FUENTE ÚNICA (PADRE): banner verde → PC #leyes-normativa + menú móvil. Editar ítems AQUÍ. -->
+            <!-- 🟩 PADRE 1 · MARCO LEGAL (marco-legal) -->
             <div class="desktop-submenu-item desktop-submenu-item-with-side" data-section-key="marco-legal" data-section-color="green" data-section-title="Marco Legal">
               <span>Marco Legal</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2519,7 +2518,7 @@ body {
                    <button class="desktop-submenu-item" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1211115')">03 Regl. N° 208 Regl. de Eventos Masivo.</button>
               </div>
             </div>
-            <!-- SECCIÓN 2: ACTUALIZACIONES NORMATIVAS (18 documentos) -->
+            <!-- 🟦 PADRE 2 · ACTUALIZACIONES NORMATIVAS (leyes-principales) -->
             <div class="desktop-submenu-item desktop-submenu-item-with-side" data-section-key="leyes-principales" data-section-color="blue" data-section-title="Actualizaciones Normativas">
               <span>Actualizaciones Normativas</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2546,7 +2545,7 @@ body {
                    <button class="desktop-submenu-item item-nuevo" onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1224572')">18 Ley 21.825 Modifica los Plazos 18. Meses.</button>
               </div>
             </div>
-            <!-- SECCIÓN 3: NORMATIVA ANTERIOR (17 documentos, antes Decretos Supremos) -->
+            <!-- 🟩 PADRE 3 · NORMATIVA ANTERIOR (normativa-anterior) -->
             <div class="desktop-submenu-item desktop-submenu-item-with-side" data-section-key="normativa-anterior" data-section-color="green" data-section-title="Normativa Anterior">
               <span>Normativa Anterior</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2574,8 +2573,8 @@ body {
             </div>
           </div>
         </div>
-        <!-- INFORMATIVOS -->
-        <div class="desktop-nav-item"> Informativos <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- 📣 PADRE 4 · INFORMATIVOS SPD (informativos) — solo móvil -->
+        <div class="desktop-nav-item" data-section-key="informativos" data-section-title="Informativos SPD"> Informativos <svg class="desktop-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
           </svg>
            <div class="desktop-submenu submenu-centered">
@@ -2826,12 +2825,13 @@ body {
         </div>
       </div>
     </div>
-    <!--INFORMATIVOS -->
+    <!--INFORMATIVOS — poblado por JS desde el banner verde (única fuente).
+         Para editar items: modificar el banner verde de PC. -->
     <div class="has-submenu">
       <button class="submenu-parent-btn">Informativos SPD<svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path d="M9 5l7 7-7 7"></path>
         </svg></button>
-      <div class="submenu submenu-compact">
+      <div class="submenu submenu-compact" data-mobile-target="informativos">
         <button onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Funciones_de_resguardo_interno.pdf')">Dictamen Contraloría</button>
         <button onclick="openNewLink('https://segprivada-docs.minsegpublica.gob.cl/Informativo_N1.pdf')">Informativo Nº 1</button>
         <button onclick="openNewLink('https://www.diariooficial.interior.gob.cl/publicaciones/2025/12/30/44336/04/2748566.pdf')">Informativo Nº 2</button>
@@ -3440,22 +3440,28 @@ body {
         #componentes-seguridad .carousel-card .grid > button {
           padding: 0.5rem !important;
         }
-        /* Iconos más pequeños */
+        /* Iconos del interior (proporcionados a la tarjeta de 310px) */
         #componentes-seguridad .carousel-card .grid > button > div.flex-shrink-0 {
-          width: 2.25rem !important;
-          height: 2.25rem !important;
+          width: 3rem !important;       /* 48px */
+          height: 3rem !important;
+          padding: 0.5rem !important;
         }
         #componentes-seguridad .carousel-card .grid > button > div.flex-shrink-0 svg {
-          width: 1.25rem !important;
-          height: 1.25rem !important;
+          width: 100% !important;       /* svg llena el container (~32px visibles) */
+          height: 100% !important;
         }
-        /* Reducir margen superior del título */
         #componentes-seguridad .carousel-card .grid > button h3 {
-          margin-top: 0.5rem !important;
-          font-size: 0.8rem !important;
+          margin-top: 0.6rem !important;
+          font-size: 0.9rem !important;
         }
         #componentes-seguridad .carousel-card .grid > button p {
-          font-size: 0.7rem !important;
+          font-size: 0.72rem !important;
+        }
+        /* Carrusel acotado en PC: muestra ~3 tarjetas, el resto con scroll */
+        #componentes-seguridad .carousel-container {
+          max-width: 1180px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
         }
 
         /* === Trámites Principales: tarjetas más cuadradas y separadas === */
@@ -3482,6 +3488,13 @@ body {
           display: flex;
           flex-direction: column;
           justify-content: center;
+        }
+      }
+      /* === Móvil: tarjetas de Componentes un poco más angostas === */
+      @media (max-width: 768px) {
+        #componentes-seguridad .carousel-card {
+          width: 88% !important;
+          flex-basis: 88% !important;
         }
       }
     </style>
@@ -3598,7 +3611,7 @@ body {
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Leyes y Normativa</h2>
           <p class="mt-4 text-lg leading-8 text-gray-600">Marco legal y decretos que regulan la seguridad privada</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <!-- Tarjeta MARCO LEGAL (verde, orden 1: PC y móvil) — poblada por JS desde el banner -->
           <div class="bg-green-200/30 border border-green-500 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green leyes-normativa-column" style="order:-1;">
             <button id="resoluciones-toggle" class="w-full text-base md:text-lg font-bold text-green-900 mb-4 flex items-center justify-between text-left">
@@ -3637,6 +3650,19 @@ body {
               </svg>
             </button>
             <div id="decretos-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll" data-target="normativa-anterior"></div>
+          </div>
+          <!-- Tarjeta INFORMATIVOS SPD (azul) — poblada por JS desde el banner -->
+          <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue leyes-normativa-column">
+            <button id="informativos-toggle" class="w-full text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center justify-between text-left">
+              <span class="flex items-center">
+                <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg> Informativos SPD </span>
+              <svg id="informativos-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div id="informativos-content" class="space-y-2 md:space-y-3 hidden leyes-normativa-scroll" data-target="informativos"></div>
           </div>
         </div>
         </div>
@@ -3713,6 +3739,11 @@ body {
                 <h3 class="text-white font-bold mt-3 text-center text-sm">Supervisor de Seguridad de Vigilantes</h3>
                 <p class="carousel-card-description">Ver requisitos completos</p>
               </button>
+            </div>
+          </div>
+          <!-- Tarjeta 3b -->
+          <div class="carousel-card">
+            <div class="grid grid-cols-1 gap-4 w-full">
               <!-- Vigilante Privado -->
               <button onclick="mostrarRequisitos('vigilante')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
                 <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-red-500/20 text-red-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3739,7 +3770,7 @@ body {
                 <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-orange-500/20 text-orange-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                   </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Portero/Nochero/Rondín/Conserje</h3>
+                <h3 class="text-white font-bold mt-3 text-center text-sm">Portero/Nochero/Rondín/<br>Conserje</h3>
                 <p class="carousel-card-description">Ver requisitos completos</p>
               </button>
             </div>
@@ -4235,7 +4266,7 @@ body {
      SCRIPTS EXTERNOS DIFERIDOS
 ============================================================ -->
   <script src="assets/js/inicio.js?v=6" defer></script>
-  <script src="assets/js/carousel.js" defer></script>
+  <script src="assets/js/carousel.js?v=2" defer></script>
   <!-- Carrusel de Componentes manejado por carousel.js (via main.js) -->
   <script src="assets/js/main.js?v=5" defer></script>
   <script src="./rules/chatbot-rules.js?v=6" defer></script>
@@ -4324,7 +4355,8 @@ body {
     var SECTIONS = {
       'marco-legal':       { color: 'green' },
       'leyes-principales': { color: 'blue'  },
-      'normativa-anterior':{ color: 'green' }
+      'normativa-anterior':{ color: 'green' },
+      'informativos':      { color: 'blue'  }
     };
     function parseItems(source) {
       var btns = source.querySelectorAll('button.desktop-submenu-item');
@@ -4362,7 +4394,9 @@ body {
       col.innerHTML = keep + btns;
     }
     function getBannerTitle(bannerSection) {
-      // Lee el <span> visible del banner (el primer hijo directo no-SVG)
+      // Prioriza data-section-title; si no, usa el <span> directo del banner.
+      var attr = bannerSection.getAttribute('data-section-title');
+      if (attr) return attr;
       var span = bannerSection.querySelector(':scope > span');
       return span ? span.textContent.trim() : '';
     }
@@ -4385,10 +4419,13 @@ body {
     }
     function render() {
       Object.keys(SECTIONS).forEach(function(key){
-        var color  = SECTIONS[key].color;
+        var color = SECTIONS[key].color;
         var bannerSection = document.querySelector('[data-section-key="' + key + '"]');
         if (!bannerSection) return;
-        var source = bannerSection.querySelector('.desktop-submenu-side');
+        // Leyes/Normativa usan .desktop-submenu-side (panel lateral).
+        // Informativos vive directo en .desktop-submenu del nav-item.
+        var source = bannerSection.querySelector('.desktop-submenu-side')
+                  || bannerSection.querySelector('.desktop-submenu');
         if (!source) return;
         var title = getBannerTitle(bannerSection);
         var items = parseItems(source);
