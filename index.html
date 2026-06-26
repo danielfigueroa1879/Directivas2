@@ -3395,6 +3395,64 @@ body {
         background-color: #173A32;
         color: #fff;
       }
+
+      /* ===== COMPONENTES: Avatar Cards — estilos globales (móvil + PC) ===== */
+      #componentes-seguridad .carousel-card {
+        padding: 0 !important;
+        min-height: 395px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        text-align: center;
+        background: rgba(0,0,0,0.3) !important;
+        border: 1px solid rgba(255,255,255,0.13) !important;
+        border-radius: 1.25rem !important;
+        cursor: pointer;
+        font-family: inherit;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+      }
+      #componentes-seguridad .carousel-card:hover {
+        transform: translateY(-6px) !important;
+        box-shadow: 0 16px 42px rgba(0,0,0,0.45) !important;
+        border-color: rgba(255,255,255,0.28) !important;
+      }
+      .comp-avatar-wrap {
+        height: 218px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .comp-avatar-wrap svg { display: block; width: 152px; height: 208px; margin: 0 auto; }
+      .comp-shimmer {
+        position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
+        background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.55));
+        pointer-events: none;
+      }
+      .comp-role-info {
+        flex: 1; padding: 0.85rem 0.8rem 1rem;
+        display: flex; flex-direction: column; align-items: center;
+        background: rgba(0,0,0,0.18);
+      }
+      .comp-role-badge {
+        display: inline-block; font-size: 0.56rem; font-weight: 800;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        padding: 0.17rem 0.6rem; border-radius: 9999px; margin-bottom: 0.45rem;
+      }
+      .comp-role-title {
+        color: #fff !important; font-size: 0.9rem !important; font-weight: 700 !important;
+        line-height: 1.35 !important; margin: 0 0 0.4rem !important; padding: 0 !important;
+      }
+      .comp-view-reqs {
+        display: block; font-size: 0.67rem; color: rgba(255,255,255,0.45);
+        margin-top: auto; padding-top: 0.55rem; border-top: 1px solid rgba(255,255,255,0.1);
+        width: 100%; letter-spacing: 0.02em;
+      }
+
       @media (min-width: 1024px) {
         /* Dos avisos lado a lado en PC */
         #info-section-unified .info-avisos-grid {
@@ -3423,42 +3481,18 @@ body {
         #info-section-unified .info-aviso-title { color: #fff; }
         #info-section-unified h2 { color: #fff; text-align: center; }
 
-        /* === Componentes del Sistema: tarjetas más angostas y más altas === */
+        /* === Componentes del Sistema: Avatar Cards (PC — tamaño fijo) === */
         #componentes-seguridad .carousel-card {
           min-height: 420px !important;
-          padding: 1rem !important;
-          min-width: 310px !important;
-          max-width: 310px !important;
-          width: 310px !important;
-          flex: 0 0 310px !important;
+          min-width: 228px !important;
+          max-width: 248px !important;
+          width: 248px !important;
+          flex: 0 0 248px !important;
         }
-        #componentes-seguridad .carousel-card .grid {
-          gap: 0.5rem !important;
-        }
-        /* Botones internos más compactos */
-        #componentes-seguridad .carousel-card .grid > button {
-          padding: 0.5rem !important;
-        }
-        /* Iconos del interior (proporcionados a la tarjeta de 310px) */
-        #componentes-seguridad .carousel-card .grid > button > div.flex-shrink-0 {
-          width: 3rem !important;       /* 48px */
-          height: 3rem !important;
-          padding: 0.5rem !important;
-        }
-        #componentes-seguridad .carousel-card .grid > button > div.flex-shrink-0 svg {
-          width: 100% !important;       /* svg llena el container (~32px visibles) */
-          height: 100% !important;
-        }
-        #componentes-seguridad .carousel-card .grid > button h3 {
-          margin-top: 0.6rem !important;
-          font-size: 0.9rem !important;
-        }
-        #componentes-seguridad .carousel-card .grid > button p {
-          font-size: 0.72rem !important;
-        }
-        /* Carrusel acotado en PC: muestra ~3 tarjetas, el resto con scroll */
+        .comp-avatar-wrap { height: 240px; }
+        .comp-avatar-wrap svg { width: 164px; height: 230px; }
         #componentes-seguridad .carousel-container {
-          max-width: 1180px !important;
+          max-width: 1320px !important;
           margin-left: auto !important;
           margin-right: auto !important;
         }
@@ -3489,12 +3523,19 @@ body {
           justify-content: center;
         }
       }
-      /* === Móvil: tarjetas de Componentes un poco más angostas === */
+      /* === Móvil: tarjetas de Componentes === */
       @media (max-width: 768px) {
         #componentes-seguridad .carousel-card {
-          width: 88% !important;
-          flex-basis: 88% !important;
+          width: 78vw !important;
+          flex: 0 0 78vw !important;
+          max-width: 300px !important;
+          min-width: 215px !important;
+          min-height: 380px !important;
         }
+        .comp-avatar-wrap { height: 210px; }
+        .comp-avatar-wrap svg { width: 146px; height: 200px; }
+        .comp-role-title { font-size: 0.85rem !important; }
+        .comp-role-info { padding: 0.75rem 0.7rem 0.9rem; }
       }
     </style>
     <!-- SECCIÓN INFORMATIVA UNIFICADA (MÓVIL Y PC) -->
@@ -3668,168 +3709,733 @@ body {
       </div>
     </section>
     <!-- ========== SECCIÓN 2: COMPONENTES DEL SISTEMA (FONDO VERDE DEGRADADO) ========== -->
-    <section id="componentes-seguridad" class="py-16 md:py-24 bg-[#146314] backdrop-blur-sm overflow-y-hidden">
+    <section id="componentes-seguridad" class="py-16 md:py-20 overflow-y-hidden" style="background:linear-gradient(180deg,#0d4a0d 0%,#146314 45%,#1a7a1a 100%);">
       <div class="max-w-full mx-auto">
-        <div class="text-center mb-12 px-6">
-          <div class="flex items-center justify-center space-x-2">
-            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Componentes del Sistema</h2>
+        <div class="text-center mb-10 px-6">
+          <div class="flex items-center justify-center gap-4 mb-3">
+            <div style="height:2px;width:52px;background:linear-gradient(90deg,transparent,rgba(201,162,39,0.7));border-radius:1px;"></div>
+            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl" style="letter-spacing:-0.01em;">Componentes del Sistema</h2>
+            <div style="height:2px;width:52px;background:linear-gradient(90deg,rgba(201,162,39,0.7),transparent);border-radius:1px;"></div>
           </div>
-          <p class="mt-4 text-lg leading-8 text-gray-300">Requisitos según Ley 21.659 y Decreto 209 - Vigente desde 28-Nov-2025</p>
+          <p class="mt-3 text-base text-green-200" style="opacity:0.85;">Requisitos según Ley 21.659 y Decreto 209 &middot; Vigente desde 28-Nov-2025</p>
         </div>
         <div class="carousel-container">
-          <!-- Tarjeta 1 -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Asesor -->
-              <button onclick="mostrarRequisitos('asesor')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Asesor de Seguridad</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
-              <!-- Capacitador -->
-              <button onclick="mostrarRequisitos('capacitador')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Capacitador</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+
+          <!-- ===== VIGILANTE PRIVADO: uniforme azul-teal, chaleco antibalas, gorra ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('vigilante')" aria-label="Ver requisitos Vigilante Privado">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0b3b55 0%,#1a6e8a 55%,#0c4a62 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a1a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#0a0a1a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1c2340"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1c2340"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#1a8a9a"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#1a8a9a"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a8a9a"/>
+                <rect x="53" y="101" width="74" height="78" rx="9" fill="#1c1c1c"/>
+                <rect x="59" y="108" width="27" height="62" rx="5" fill="#252525"/>
+                <rect x="94" y="108" width="27" height="62" rx="5" fill="#252525"/>
+                <rect x="79" y="101" width="22" height="9" rx="4" fill="#2e2e2e"/>
+                <rect x="60" y="138" width="60" height="10" rx="3" fill="#c9a227"/>
+                <text x="90" y="146.5" text-anchor="middle" fill="#0a0a0a" font-size="6" font-weight="800" font-family="Arial,sans-serif">VIGILANTE</text>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8956c"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8956c"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M70 50 Q78 46 86 50" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a87050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 79 Q90 82 97 79" stroke="#8a5030" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="90" cy="35" rx="37" ry="17" fill="#1a8a9a"/>
+                <rect x="53" y="25" width="74" height="15" rx="5" fill="#15788a"/>
+                <path d="M49 40 Q90 55 131 40" stroke="#0a1a20" stroke-width="10" fill="none" stroke-linecap="round"/>
+                <rect x="80" y="26" width="20" height="13" rx="3" fill="#c9a227"/>
+                <text x="90" y="36" text-anchor="middle" fill="#0a0a0a" font-size="5.5" font-weight="800" font-family="Arial,sans-serif">OS·10</text>
+              </svg>
+              <div class="comp-shimmer"></div>
             </div>
-          </div>
-          <!-- Tarjeta 2 -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Jefe de Seguridad -->
-              <button onclick="mostrarRequisitos('jefe')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-500/20 text-yellow-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Jefe de Seguridad</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
-              <!-- Encargado de Seguridad -->
-              <button onclick="mostrarRequisitos('encargado')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/20 text-green-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h2a2 2 0 012 2v1m-6 0h6"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Encargado de Seguridad</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(26,110,138,0.3);color:#7dd3e8;border:1px solid rgba(26,110,138,0.5);">Operativo</span>
+              <h3 class="comp-role-title">Vigilante Privado</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
             </div>
-          </div>
-          <!-- Tarjeta 3 -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Supervisor de Seguridad -->
-              <button onclick="mostrarRequisitos('supervisor')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-500/20 text-yellow-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Supervisor de Seguridad</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
-              <!-- Supervisor de Seguridad de Vigilantes-->
-              <button onclick="mostrarRequisitos('supervisorVigilantes')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-500/20 text-yellow-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Supervisor de Seguridad de Vigilantes</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+          </button>
+
+          <!-- ===== GUARDIA DE SEGURIDAD: chaleco rojo, camisa negra, pantalón negro ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('guardia')" aria-label="Ver requisitos Guardia de Seguridad">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#1a0808 0%,#3d0e0e 55%,#1a0808 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#111"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#111"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#111"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#111"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#111"/>
+                <rect x="53" y="100" width="74" height="80" rx="10" fill="#c91515"/>
+                <rect x="53" y="143" width="74" height="8" rx="2" fill="#d8d8d8"/>
+                <rect x="53" y="158" width="74" height="8" rx="2" fill="#d8d8d8"/>
+                <rect x="66" y="104" width="48" height="32" rx="4" fill="#b01212"/>
+                <rect x="70" y="108" width="40" height="12" rx="3" fill="#0a0a0a"/>
+                <text x="90" y="117.5" text-anchor="middle" fill="#c91515" font-size="5.5" font-weight="800" font-family="Arial,sans-serif">SEGURIDAD</text>
+                <rect x="80" y="98" width="20" height="14" rx="5" fill="#111"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#d4a76a"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#d4a76a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#d4a76a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#d4a76a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#d4a76a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#d4a76a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#2a1808"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#2a1808"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M70 50 Q78 46 86 50" stroke="#2a1808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#2a1808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#b08050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 79 Q90 83 97 79" stroke="#8a5535" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
             </div>
-          </div>
-          <!-- Tarjeta 3b -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Vigilante Privado -->
-              <button onclick="mostrarRequisitos('vigilante')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-red-500/20 text-red-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Vigilante Privado</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(180,20,20,0.3);color:#fca0a0;border:1px solid rgba(180,20,20,0.5);">Operativo</span>
+              <h3 class="comp-role-title">Guardia de Seguridad</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
             </div>
-          </div>
-          <!-- Tarjeta 4 -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Guardia de Seguridad -->
-              <button onclick="mostrarRequisitos('guardia')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-purple-500/20 text-purple-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Guardia de Seguridad</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
-              <!-- Portero/Nochero/Rondín -->
-              <button onclick="mostrarRequisitos('portero')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-orange-500/20 text-orange-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Portero/Nochero/Rondín/<br>Conserje</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+          </button>
+
+          <!-- ===== ASESOR DE SEGURIDAD: traje oscuro, corbata, elegante ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('asesor')" aria-label="Ver requisitos Asesor de Seguridad">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#080812 0%,#18183a 55%,#080812 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#2a2a3a"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#2a2a3a"/>
+                <rect x="22" y="103" width="26" height="72" rx="10" fill="#1a1a2a"/>
+                <rect x="132" y="103" width="26" height="72" rx="10" fill="#1a1a2a"/>
+                <rect x="22" y="163" width="26" height="10" rx="5" fill="#f0f0f0"/>
+                <rect x="132" y="163" width="26" height="10" rx="5" fill="#f0f0f0"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a1a2a"/>
+                <rect x="76" y="100" width="28" height="74" rx="5" fill="#f0f0f0"/>
+                <path d="M76 100 L63 142 L76 142 Z" fill="#1a1a2a"/>
+                <path d="M104 100 L117 142 L104 142 Z" fill="#1a1a2a"/>
+                <path d="M87 108 L84 160 L90 166 L96 160 L93 108 Z" fill="#1a3080"/>
+                <rect x="85" y="105" width="10" height="7" rx="2" fill="#1a3080"/>
+                <rect x="57" y="108" width="12" height="8" rx="2" fill="#f0f0f0"/>
+                <circle cx="90" cy="138" r="2.5" fill="#2a2a3a"/>
+                <circle cx="90" cy="152" r="2.5" fill="#2a2a3a"/>
+                <ellipse cx="35" cy="177" rx="13" ry="12" fill="#e8c99a"/>
+                <ellipse cx="145" cy="177" rx="13" ry="12" fill="#e8c99a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#e8c99a"/>
+                <path d="M82 100 L74 110 L82 110" fill="#f0f0f0"/>
+                <path d="M98 100 L106 110 L98 110" fill="#f0f0f0"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#e8c99a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#e8c99a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#e8c99a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#2a1a08"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#2a1a08"/>
+                <path d="M62 28 Q90 22 120 26" stroke="#1a1008" stroke-width="4" fill="none"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="79" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="103" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="77.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="101.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 46 86 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#c09860" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M82 78 Q90 84 98 78" stroke="#8a5035" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
             </div>
-          </div>
-          <!-- Tarjeta 5 -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Encargado de Armas -->
-              <button onclick="mostrarRequisitos('encargadoArmas')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-red-500/20 text-red-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Encargado de Armas</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
-              <!-- Operador de Cámaras -->
-              <button onclick="mostrarRequisitos('operador')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-500/20 text-indigo-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Operador de Cámaras</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(30,60,160,0.3);color:#a0b8f0;border:1px solid rgba(30,60,160,0.5);">Directivo</span>
+              <h3 class="comp-role-title">Asesor de Seguridad</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
             </div>
-          </div>
-          <!-- Tarjeta 6 -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Técnico en Seguridad -->
-              <button onclick="mostrarRequisitos('tecnico')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/20 text-green-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Técnico en Seguridad</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
-              <!-- Instalador Técnico -->
-              <button onclick="mostrarRequisitos('instalador')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/20 text-green-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Instalador Técnico</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+          </button>
+
+          <!-- ===== JEFE DE SEGURIDAD: uniforme formal, estrellas en hombreras, gorra ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('jefe')" aria-label="Ver requisitos Jefe de Seguridad">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#181200 0%,#2e2200 55%,#181200 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1a1a2a"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1a1a2a"/>
+                <rect x="73" y="178" width="3" height="74" rx="1" fill="#c9a227"/>
+                <rect x="106" y="178" width="3" height="74" rx="1" fill="#c9a227"/>
+                <rect x="22" y="103" width="26" height="72" rx="10" fill="#1a1a2a"/>
+                <rect x="132" y="103" width="26" height="72" rx="10" fill="#1a1a2a"/>
+                <rect x="22" y="103" width="26" height="13" rx="4" fill="#c9a227"/>
+                <rect x="132" y="103" width="26" height="13" rx="4" fill="#c9a227"/>
+                <text x="35" y="113" text-anchor="middle" fill="#1a1200" font-size="9" font-family="Arial,sans-serif">★</text>
+                <text x="145" y="113" text-anchor="middle" fill="#1a1200" font-size="9" font-family="Arial,sans-serif">★</text>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a1a2a"/>
+                <rect x="78" y="100" width="24" height="74" rx="5" fill="#e8e8f0"/>
+                <path d="M78 100 L66 140 L78 140 Z" fill="#1a1a2a"/>
+                <path d="M102 100 L114 140 L102 140 Z" fill="#1a1a2a"/>
+                <path d="M87 106 L85 158 L90 164 L95 158 L93 106 Z" fill="#0a0a18"/>
+                <rect x="85" y="103" width="10" height="7" rx="2" fill="#0a0a18"/>
+                <rect x="84" y="132" width="12" height="3" rx="1" fill="#c9a227"/>
+                <rect x="57" y="108" width="18" height="14" rx="3" fill="#c9a227"/>
+                <ellipse cx="35" cy="177" rx="13" ry="12" fill="#b87c4a"/>
+                <ellipse cx="145" cy="177" rx="13" ry="12" fill="#b87c4a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#b87c4a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#b87c4a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#b87c4a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#b87c4a"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M70 50 Q78 45 86 49" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 49 Q102 45 110 50" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#906040" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 78 Q90 80 97 78" stroke="#7a4028" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="90" cy="34" rx="37" ry="17" fill="#1a1a2a"/>
+                <rect x="53" y="24" width="74" height="15" rx="5" fill="#111122"/>
+                <rect x="53" y="36" width="74" height="5" rx="0" fill="#c9a227"/>
+                <path d="M49 40 Q90 55 131 40" stroke="#0a0a10" stroke-width="9" fill="none" stroke-linecap="round"/>
+                <rect x="80" y="26" width="20" height="13" rx="3" fill="#c9a227"/>
+              </svg>
+              <div class="comp-shimmer"></div>
             </div>
-          </div>
-          <!-- Tarjeta 7 -->
-          <div class="carousel-card">
-            <div class="grid grid-cols-1 gap-4 w-full">
-              <!-- Empresas de Seguridad Privada -->
-              <button onclick="mostrarRequisitos('empresa')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                  </svg></div>
-                <h3 class="text-white font-bold mt-3 text-center text-sm">Empresas de Seguridad Privada</h3>
-                <p class="carousel-card-description">Ver requisitos completos</p>
-              </button>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(180,140,0,0.3);color:#f5d070;border:1px solid rgba(180,140,0,0.5);">Directivo</span>
+              <h3 class="comp-role-title">Jefe de Seguridad</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
             </div>
-          </div>
+          </button>
+
+          <!-- ===== ENCARGADO DE SEGURIDAD: uniforme verde oscuro, credencial ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('encargado')" aria-label="Ver requisitos Encargado de Seguridad">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a1a10 0%,#1a3822 55%,#0a1a10 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#111"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#111"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1a2a1a"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1a2a1a"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#1a4a28"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#1a4a28"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a4a28"/>
+                <rect x="74" y="100" width="32" height="18" rx="6" fill="#f0f0e8"/>
+                <path d="M74 100 L62 138 L74 138 Z" fill="#1a4a28"/>
+                <path d="M106 100 L118 138 L106 138 Z" fill="#1a4a28"/>
+                <rect x="60" y="128" width="60" height="48" rx="4" fill="#163a20"/>
+                <rect x="64" y="133" width="28" height="18" rx="3" fill="#1a6a30"/>
+                <text x="78" y="146" text-anchor="middle" fill="#c9a227" font-size="5" font-weight="800" font-family="Arial,sans-serif">ID</text>
+                <rect x="64" y="156" width="52" height="6" rx="2" fill="#0a2a12"/>
+                <rect x="64" y="165" width="40" height="4" rx="2" fill="#0a2a12"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8956c"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8956c"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#3a2010"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#3a2010"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 47 86 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 47 110 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a87050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 79 Q90 82 97 79" stroke="#8a5030" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(20,80,36,0.4);color:#86efac;border:1px solid rgba(20,80,36,0.6);">Gestión</span>
+              <h3 class="comp-role-title">Encargado de Seguridad</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== SUPERVISOR DE SEGURIDAD: uniforme oscuro, galones ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('supervisor')" aria-label="Ver requisitos Supervisor de Seguridad">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a1818 0%,#1a3030 55%,#0a1818 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a10"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#0a0a10"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1a2030"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1a2030"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#1a3038"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#1a3038"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a3038"/>
+                <rect x="78" y="100" width="24" height="70" rx="5" fill="#e8e8f0"/>
+                <path d="M78 100 L66 140 L78 140 Z" fill="#1a3038"/>
+                <path d="M102 100 L114 140 L102 140 Z" fill="#1a3038"/>
+                <rect x="22" y="103" width="26" height="10" rx="4" fill="#2a7a6a"/>
+                <rect x="132" y="103" width="26" height="10" rx="4" fill="#2a7a6a"/>
+                <rect x="22" y="116" width="26" height="6" rx="2" fill="#2a7a6a"/>
+                <rect x="132" y="116" width="26" height="6" rx="2" fill="#2a7a6a"/>
+                <path d="M87 106 L85 156 L90 162 L95 156 L93 106 Z" fill="#0a1018"/>
+                <rect x="85" y="103" width="10" height="7" rx="2" fill="#0a1018"/>
+                <rect x="57" y="108" width="16" height="12" rx="3" fill="#2a7a6a"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#c8a07a"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#c8a07a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8a07a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8a07a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8a07a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8a07a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#1a1008"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#1a1008"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 47 86 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 47 110 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a08050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 78 Q90 81 97 78" stroke="#8a5030" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(30,90,80,0.4);color:#5eead4;border:1px solid rgba(30,90,80,0.6);">Supervisión</span>
+              <h3 class="comp-role-title">Supervisor de Seguridad</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== SUPERVISOR DE VIGILANTES PRIVADOS: uniforme azul, chevrones ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('supervisorVigilantes')" aria-label="Ver requisitos Supervisor Vigilantes Privados">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a1a2a 0%,#1a3a55 55%,#0a1a2a 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a18"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#0a0a18"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1c2540"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1c2540"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#1a5070"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#1a5070"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a5070"/>
+                <rect x="53" y="101" width="74" height="78" rx="9" fill="#1c1c1c"/>
+                <rect x="59" y="108" width="27" height="62" rx="5" fill="#252525"/>
+                <rect x="94" y="108" width="27" height="62" rx="5" fill="#252525"/>
+                <rect x="79" y="101" width="22" height="9" rx="4" fill="#2e2e2e"/>
+                <rect x="60" y="138" width="60" height="10" rx="3" fill="#1a5070"/>
+                <text x="90" y="146.5" text-anchor="middle" fill="#fff" font-size="5.5" font-weight="800" font-family="Arial,sans-serif">SUPERVISOR</text>
+                <path d="M22 125 L48 117 L48 123 L22 131 Z" fill="#c9a227"/>
+                <path d="M22 134 L48 126 L48 132 L22 140 Z" fill="#c9a227"/>
+                <path d="M158 125 L132 117 L132 123 L158 131 Z" fill="#c9a227"/>
+                <path d="M158 134 L132 126 L132 132 L158 140 Z" fill="#c9a227"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8956c"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8956c"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#2a2010"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#2a2010"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M70 50 Q78 46 86 50" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a87050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 79 Q90 82 97 79" stroke="#8a5030" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="90" cy="35" rx="37" ry="17" fill="#1a5070"/>
+                <rect x="53" y="25" width="74" height="15" rx="5" fill="#1a4060"/>
+                <path d="M49 40 Q90 55 131 40" stroke="#0a1520" stroke-width="10" fill="none" stroke-linecap="round"/>
+                <rect x="80" y="26" width="20" height="13" rx="3" fill="#c9a227"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(20,70,100,0.4);color:#7dd3e8;border:1px solid rgba(20,70,100,0.6);">Supervisión</span>
+              <h3 class="comp-role-title">Supervisor de Vigilantes Privados</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== PORTERO / NOCHERO / RONDÍN / CONSERJE: uniforme oscuro, botones dorados ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('portero')" aria-label="Ver requisitos Portero Nochero Rondín Conserje">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#111118 0%,#222230 55%,#111118 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1a1a22"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1a1a22"/>
+                <rect x="22" y="103" width="26" height="72" rx="10" fill="#1a1a28"/>
+                <rect x="132" y="103" width="26" height="72" rx="10" fill="#1a1a28"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a1a28"/>
+                <rect x="78" y="100" width="24" height="70" rx="5" fill="#e8e8f0"/>
+                <path d="M78 100 L65 140 L78 140 Z" fill="#1a1a28"/>
+                <path d="M102 100 L115 140 L102 140 Z" fill="#1a1a28"/>
+                <circle cx="90" cy="112" r="3" fill="#c9a227"/>
+                <circle cx="90" cy="124" r="3" fill="#c9a227"/>
+                <circle cx="90" cy="136" r="3" fill="#c9a227"/>
+                <circle cx="90" cy="148" r="3" fill="#c9a227"/>
+                <rect x="60" y="103" width="6" height="72" rx="3" fill="#c9a227" opacity="0.3"/>
+                <rect x="114" y="103" width="6" height="72" rx="3" fill="#c9a227" opacity="0.3"/>
+                <ellipse cx="35" cy="177" rx="13" ry="12" fill="#c8956c"/>
+                <ellipse cx="145" cy="177" rx="13" ry="12" fill="#c8956c"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8956c"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8956c"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#2a2010"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#2a2010"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 47 86 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 47 110 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a07050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 79 Q90 82 97 79" stroke="#8a5030" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="90" cy="34" rx="37" ry="17" fill="#1a1a28"/>
+                <rect x="53" y="24" width="74" height="15" rx="5" fill="#111120"/>
+                <rect x="53" y="36" width="74" height="4" rx="0" fill="#c9a227"/>
+                <path d="M49 40 Q90 55 131 40" stroke="#080810" stroke-width="9" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(60,60,80,0.4);color:#c8c8d8;border:1px solid rgba(60,60,80,0.6);">Operativo</span>
+              <h3 class="comp-role-title">Portero / Nochero / Rondín / Conserje</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== ENCARGADO DE ARMAS: equipamiento táctico oscuro ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('encargadoArmas')" aria-label="Ver requisitos Encargado de Armas">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#180808 0%,#2e1010 55%,#180808 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0808"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#0a0808"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#111"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#111"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#111"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#111"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#111"/>
+                <rect x="53" y="101" width="74" height="78" rx="9" fill="#0f0f0f"/>
+                <rect x="59" y="110" width="27" height="60" rx="5" fill="#1a1a1a"/>
+                <rect x="94" y="110" width="27" height="60" rx="5" fill="#1a1a1a"/>
+                <rect x="50" y="162" width="80" height="12" rx="3" fill="#2a1a0a"/>
+                <rect x="52" y="165" width="76" height="6" rx="2" fill="#3a2a10"/>
+                <rect x="116" y="162" width="14" height="50" rx="5" fill="#3a2a10"/>
+                <rect x="118" y="175" width="10" height="20" rx="3" fill="#2a1a08"/>
+                <rect x="60" y="130" width="60" height="10" rx="3" fill="#8a1010"/>
+                <text x="90" y="138.5" text-anchor="middle" fill="#fff" font-size="5.5" font-weight="700" font-family="Arial,sans-serif">ARMAS</text>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#b87c4a"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#b87c4a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#b87c4a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#b87c4a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#b87c4a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#b87c4a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#1a1008"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#1a1008"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#0a0808"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#0a0808"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M70 50 Q78 46 86 50" stroke="#4a2808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#4a2808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#906040" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 78 Q90 80 97 78" stroke="#7a4028" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(140,20,20,0.35);color:#fca5a5;border:1px solid rgba(140,20,20,0.55);">Especializado</span>
+              <h3 class="comp-role-title">Encargado de Armas</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== OPERADOR DE CÁMARAS: ropa casual oscura, auricular ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('operador')" aria-label="Ver requisitos Operador de Cámaras">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a0a22 0%,#18183e 55%,#0a0a22 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1a1a2a"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1a1a2a"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#1a2055"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#1a2055"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a2055"/>
+                <rect x="64" y="100" width="52" height="70" rx="8" fill="#1a1a3a"/>
+                <rect x="58" y="105" width="64" height="8" rx="4" fill="#1a2055"/>
+                <rect x="60" y="135" width="60" height="10" rx="3" fill="#0a3080"/>
+                <text x="90" y="143.5" text-anchor="middle" fill="#7a9fff" font-size="5.5" font-weight="700" font-family="Arial,sans-serif">CÁMARAS</text>
+                <rect x="60" y="148" width="60" height="30" rx="4" fill="#0d0d20"/>
+                <rect x="63" y="151" width="26" height="18" rx="3" fill="#1a3a6a" opacity="0.8"/>
+                <rect x="91" y="151" width="26" height="18" rx="3" fill="#1a3a6a" opacity="0.8"/>
+                <rect x="66" y="154" width="20" height="12" rx="2" fill="#2a5aaa" opacity="0.6"/>
+                <rect x="94" y="154" width="20" height="12" rx="2" fill="#2a5aaa" opacity="0.6"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#e8c99a"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#e8c99a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#e8c99a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#e8c99a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#e8c99a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#e8c99a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#2a1808"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#2a1808"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="79" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="103" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="77.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="101.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 47 86 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 47 110 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#c09860" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M82 78 Q90 83 98 78" stroke="#8a5035" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M118 55 Q130 48 128 62" stroke="#444" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <ellipse cx="127" cy="62" rx="5" ry="8" fill="#333" stroke="#555" stroke-width="1"/>
+                <line x1="127" y1="70" x2="127" y2="80" stroke="#555" stroke-width="2"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(30,50,140,0.35);color:#a0b0f8;border:1px solid rgba(30,50,140,0.55);">Especializado</span>
+              <h3 class="comp-role-title">Operador de Cámaras</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== TÉCNICO EN SEGURIDAD: ropa de trabajo, cinturón ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('tecnico')" aria-label="Ver requisitos Técnico en Seguridad">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#101818 0%,#1e3030 55%,#101818 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a10"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#1a1a10"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1e2a1e"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1e2a1e"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#2a3a28"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#2a3a28"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#2a3a28"/>
+                <rect x="22" y="137" width="26" height="6" rx="2" fill="#d0d0c0"/>
+                <rect x="132" y="137" width="26" height="6" rx="2" fill="#d0d0c0"/>
+                <rect x="50" y="137" width="80" height="6" rx="2" fill="#d0d0c0"/>
+                <rect x="50" y="155" width="80" height="6" rx="2" fill="#d0d0c0"/>
+                <rect x="74" y="100" width="32" height="18" rx="6" fill="#3a4a38"/>
+                <rect x="50" y="175" width="80" height="10" rx="3" fill="#3a2a10"/>
+                <rect x="58" y="163" width="14" height="12" rx="3" fill="#2a3a28"/>
+                <rect x="76" y="163" width="14" height="12" rx="3" fill="#2a3a28"/>
+                <rect x="94" y="163" width="14" height="12" rx="3" fill="#2a3a28"/>
+                <rect x="112" y="163" width="14" height="12" rx="3" fill="#2a3a28"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#c8a07a"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#c8a07a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8a07a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8a07a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8a07a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8a07a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#3a2810"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#3a2810"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 46 86 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a08050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 79 Q90 82 97 79" stroke="#8a5530" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(30,70,50,0.4);color:#86efac;border:1px solid rgba(30,70,50,0.6);">Técnico</span>
+              <h3 class="comp-role-title">Técnico en Seguridad</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== INSTALADOR TÉCNICO: ropa de trabajo, casco naranja ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('instalador')" aria-label="Ver requisitos Instalador Técnico">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#181008 0%,#2e2010 55%,#181008 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1408"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#1a1408"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1e2a18"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1e2a18"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#1a2210"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#1a2210"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a2210"/>
+                <rect x="22" y="138" width="26" height="7" rx="2" fill="#ff8c00" opacity="0.8"/>
+                <rect x="132" y="138" width="26" height="7" rx="2" fill="#ff8c00" opacity="0.8"/>
+                <rect x="50" y="138" width="80" height="7" rx="2" fill="#ff8c00" opacity="0.8"/>
+                <rect x="50" y="155" width="80" height="7" rx="2" fill="#ff8c00" opacity="0.8"/>
+                <rect x="74" y="100" width="32" height="18" rx="6" fill="#2a3a20"/>
+                <rect x="50" y="175" width="80" height="10" rx="3" fill="#3a2a10"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#c8956c"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8956c"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8956c"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8956c"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 46 86 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#4a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a87050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M83 79 Q90 82 97 79" stroke="#8a5030" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <!-- HARD HAT orange -->
+                <path d="M52 44 Q90 20 128 44 L128 52 Q90 44 52 52 Z" fill="#ff6600"/>
+                <rect x="46" y="47" width="88" height="10" rx="4" fill="#e05500"/>
+                <rect x="46" y="51" width="88" height="5" rx="2" fill="#ff8c22"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(180,80,0,0.3);color:#fdb96a;border:1px solid rgba(180,80,0,0.5);">Técnico</span>
+              <h3 class="comp-role-title">Instalador Técnico</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== CAPACITADOR: smart casual, porta-clipboard ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('capacitador')" aria-label="Ver requisitos Capacitador">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0e0a20 0%,#201840 55%,#0e0a20 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1a1a2a"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1a1a2a"/>
+                <rect x="22" y="103" width="26" height="68" rx="10" fill="#22205a"/>
+                <rect x="132" y="103" width="26" height="68" rx="10" fill="#22205a"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#22205a"/>
+                <rect x="74" y="100" width="32" height="18" rx="6" fill="#f0f0e8"/>
+                <path d="M74 100 L62 138 L74 138 Z" fill="#22205a"/>
+                <path d="M106 100 L118 138 L106 138 Z" fill="#22205a"/>
+                <rect x="60" y="138" width="60" height="42" rx="4" fill="#1a185a"/>
+                <rect x="25" y="108" width="20" height="28" rx="3" fill="#e8e0c0"/>
+                <rect x="27" y="111" width="16" height="3" rx="1" fill="#888"/>
+                <rect x="27" y="116" width="16" height="2" rx="1" fill="#888"/>
+                <rect x="27" y="120" width="16" height="2" rx="1" fill="#888"/>
+                <rect x="27" y="124" width="12" height="2" rx="1" fill="#888"/>
+                <rect x="27" y="128" width="14" height="2" rx="1" fill="#888"/>
+                <rect x="25" y="106" width="20" height="5" rx="2" fill="#555"/>
+                <path d="M87 106 L85 156 L90 162 L95 156 L93 106 Z" fill="#3a2a80"/>
+                <rect x="85" y="103" width="10" height="7" rx="2" fill="#3a2a80"/>
+                <ellipse cx="35" cy="175" rx="13" ry="12" fill="#c8a07a"/>
+                <ellipse cx="145" cy="175" rx="13" ry="12" fill="#c8a07a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#c8a07a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#c8a07a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#c8a07a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#c8a07a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#2a1a08"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#2a1a08"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="78" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="102" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="76.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="100.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 47 86 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 47 110 50" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#a08050" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M82 78 Q90 84 98 78" stroke="#8a5530" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(50,40,120,0.4);color:#c4b5fd;border:1px solid rgba(50,40,120,0.6);">Formación</span>
+              <h3 class="comp-role-title">Capacitador</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
+          <!-- ===== EMPRESAS DE SEGURIDAD PRIVADA: ejecutivo con maletín ===== -->
+          <button class="carousel-card" onclick="mostrarRequisitos('empresa')" aria-label="Ver requisitos Empresas de Seguridad Privada">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#080a18 0%,#141838 55%,#080a18 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
+                <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
+                <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <ellipse cx="108" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
+                <rect x="60" y="178" width="27" height="74" rx="7" fill="#1a1a2e"/>
+                <rect x="93" y="178" width="27" height="74" rx="7" fill="#1a1a2e"/>
+                <rect x="22" y="103" width="26" height="72" rx="10" fill="#1a1a32"/>
+                <rect x="132" y="103" width="26" height="72" rx="10" fill="#1a1a32"/>
+                <rect x="22" y="163" width="26" height="10" rx="5" fill="#f0f0f0"/>
+                <rect x="132" y="163" width="26" height="10" rx="5" fill="#f0f0f0"/>
+                <rect x="50" y="98" width="80" height="85" rx="12" fill="#1a1a32"/>
+                <rect x="76" y="100" width="28" height="74" rx="5" fill="#f0f0f0"/>
+                <path d="M76 100 L63 142 L76 142 Z" fill="#1a1a32"/>
+                <path d="M104 100 L117 142 L104 142 Z" fill="#1a1a32"/>
+                <path d="M87 108 L84 160 L90 166 L96 160 L93 108 Z" fill="#8b0000"/>
+                <rect x="85" y="105" width="10" height="7" rx="2" fill="#8b0000"/>
+                <rect x="57" y="108" width="12" height="8" rx="2" fill="#f0f0f0"/>
+                <rect x="118" y="150" width="22" height="30" rx="4" fill="#3a2a10"/>
+                <rect x="120" y="148" width="18" height="6" rx="3" fill="#5a4520"/>
+                <rect x="127" y="143" width="4" height="8" rx="2" fill="#5a4520"/>
+                <line x1="118" y1="165" x2="140" y2="165" stroke="#2a1a08" stroke-width="1.5"/>
+                <ellipse cx="35" cy="177" rx="13" ry="12" fill="#e8c99a"/>
+                <ellipse cx="145" cy="177" rx="13" ry="12" fill="#e8c99a"/>
+                <rect x="82" y="84" width="16" height="18" rx="6" fill="#e8c99a"/>
+                <ellipse cx="90" cy="62" rx="34" ry="37" fill="#e8c99a"/>
+                <ellipse cx="56" cy="62" rx="7" ry="9" fill="#e8c99a"/>
+                <ellipse cx="124" cy="62" rx="7" ry="9" fill="#e8c99a"/>
+                <ellipse cx="90" cy="30" rx="34" ry="18" fill="#1a1a08"/>
+                <rect x="56" y="30" width="68" height="15" rx="0" fill="#1a1a08"/>
+                <path d="M65 28 Q90 22 118 26" stroke="#0a0a04" stroke-width="4" fill="none"/>
+                <ellipse cx="78" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="102" cy="60" rx="6.5" ry="7" fill="white"/>
+                <ellipse cx="79" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="103" cy="61" rx="4" ry="5" fill="#1a1008"/>
+                <ellipse cx="77.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <ellipse cx="101.5" cy="59" rx="1.5" ry="1.5" fill="white"/>
+                <path d="M71 50 Q78 46 86 50" stroke="#2a1808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M94 50 Q102 46 110 50" stroke="#2a1808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M86 70 Q90 74 94 70" stroke="#c09860" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M82 78 Q90 84 98 78" stroke="#8a5035" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="comp-shimmer"></div>
+            </div>
+            <div class="comp-role-info">
+              <span class="comp-role-badge" style="background:rgba(20,30,100,0.4);color:#a0b0f8;border:1px solid rgba(20,30,100,0.6);">Empresa</span>
+              <h3 class="comp-role-title">Empresas de Seguridad Privada</h3>
+              <span class="comp-view-reqs">Ver requisitos completos →</span>
+            </div>
+          </button>
+
         </div>
         <div class="pagination-dots"></div>
       </div>
