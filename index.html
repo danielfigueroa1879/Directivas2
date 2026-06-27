@@ -3021,6 +3021,7 @@ body {
     </div>
     <button class="menu-item-stack" onclick="handleSPD()">SPD</button>
     <button class="menu-item-stack" onclick="openNewLink('https://segprivada.minsegpublica.gob.cl/descargables')">Descargables SPD</button>
+    <button class="menu-item-stack" onclick="document.getElementById('mobile-menu-btn-right').click(); document.getElementById('componentes-seguridad').scrollIntoView({behavior:'smooth'});">Componentes del Sistema</button>
     <button class="menu-item-stack" onclick="document.getElementById('mobile-menu-btn-right').click(); document.getElementById('main-footer').scrollIntoView({behavior:'smooth'});">Contacto</button>
     </div>
   </div>
@@ -3406,8 +3407,8 @@ body {
         justify-content: flex-start !important;
         align-items: stretch !important;
         text-align: center;
-        background: rgba(0,0,0,0.3) !important;
-        border: 1px solid rgba(255,255,255,0.13) !important;
+        background: rgba(0,0,0,0.14) !important;
+        border: 1px solid rgba(255,255,255,0.18) !important;
         border-radius: 1.25rem !important;
         cursor: pointer;
         font-family: inherit;
@@ -3711,19 +3712,19 @@ body {
     <!-- ========== SECCIÓN 2: COMPONENTES DEL SISTEMA (FONDO VERDE DEGRADADO) ========== -->
     <section id="componentes-seguridad" class="py-16 md:py-20 overflow-y-hidden" style="background:linear-gradient(180deg,#0d4a0d 0%,#146314 45%,#1a7a1a 100%);">
       <div class="max-w-full mx-auto">
-        <div class="text-center mb-10 px-6">
+        <div class="text-center mb-16 px-6">
           <div class="flex items-center justify-center gap-4 mb-3">
             <div style="height:2px;width:52px;background:linear-gradient(90deg,transparent,rgba(201,162,39,0.7));border-radius:1px;"></div>
             <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl" style="letter-spacing:-0.01em;">Componentes del Sistema</h2>
             <div style="height:2px;width:52px;background:linear-gradient(90deg,rgba(201,162,39,0.7),transparent);border-radius:1px;"></div>
           </div>
-          <p class="mt-3 text-base text-green-200" style="opacity:0.85;">Requisitos según Ley 21.659 y Decreto 209 &middot; Vigente desde 28-Nov-2025</p>
+          <p class="mt-3 text-base" style="color:white;opacity:0.85;">Requisitos según Ley 21.659 y Decreto 209 &middot; Vigente desde 28-Nov-2025</p>
         </div>
-        <div class="carousel-container">
+        <div class="carousel-container" style="margin-top: 2.5rem !important;">
 
           <!-- ===== VIGILANTE PRIVADO: uniforme azul-teal, chaleco antibalas, gorra ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('vigilante')" aria-label="Ver requisitos Vigilante Privado">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0b3b55 0%,#1a6e8a 55%,#0c4a62 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#1d4ed8 0%,#60a5fa 55%,#1e40af 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a1a"/>
@@ -3764,7 +3765,7 @@ body {
               <div class="comp-shimmer"></div>
             </div>
             <div class="comp-role-info">
-              <span class="comp-role-badge" style="background:rgba(26,110,138,0.3);color:#7dd3e8;border:1px solid rgba(26,110,138,0.5);">Operativo</span>
+              <span class="comp-role-badge" style="background:rgba(20,70,100,0.4);color:#7dd3e8;border:1px solid rgba(20,70,100,0.6);">Operativo</span>
               <h3 class="comp-role-title">Vigilante Privado</h3>
               <span class="comp-view-reqs">Ver requisitos completos →</span>
             </div>
@@ -3772,7 +3773,7 @@ body {
 
           <!-- ===== GUARDIA DE SEGURIDAD: chaleco rojo, camisa negra, pantalón negro ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('guardia')" aria-label="Ver requisitos Guardia de Seguridad">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#1a0808 0%,#3d0e0e 55%,#1a0808 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#b91c1c 0%,#ef4444 55%,#7f1d1d 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
@@ -3819,7 +3820,7 @@ body {
 
           <!-- ===== ASESOR DE SEGURIDAD: traje oscuro, corbata, elegante ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('asesor')" aria-label="Ver requisitos Asesor de Seguridad">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#080812 0%,#18183a 55%,#080812 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#1e3a8a 0%,#3b82f6 55%,#172554 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
@@ -3872,7 +3873,7 @@ body {
 
           <!-- ===== JEFE DE SEGURIDAD: uniforme formal, estrellas en hombreras, gorra ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('jefe')" aria-label="Ver requisitos Jefe de Seguridad">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#181200 0%,#2e2200 55%,#181200 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#b45309 0%,#f59e0b 55%,#78350f 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
@@ -3928,7 +3929,7 @@ body {
 
           <!-- ===== ENCARGADO DE SEGURIDAD: uniforme verde oscuro, credencial ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('encargado')" aria-label="Ver requisitos Encargado de Seguridad">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a1a10 0%,#1a3822 55%,#0a1a10 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#047857 0%,#10b981 55%,#064e3b 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#111"/>
@@ -3976,7 +3977,7 @@ body {
 
           <!-- ===== SUPERVISOR DE SEGURIDAD: uniforme oscuro, galones ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('supervisor')" aria-label="Ver requisitos Supervisor de Seguridad">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a1818 0%,#1a3030 55%,#0a1818 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0f766e 0%,#14b8a6 55%,#115e59 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a10"/>
@@ -4026,7 +4027,7 @@ body {
 
           <!-- ===== SUPERVISOR DE VIGILANTES PRIVADOS: uniforme azul, chevrones ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('supervisorVigilantes')" aria-label="Ver requisitos Supervisor Vigilantes Privados">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a1a2a 0%,#1a3a55 55%,#0a1a2a 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#1d4ed8 0%,#60a5fa 55%,#1e40af 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a18"/>
@@ -4080,7 +4081,7 @@ body {
 
           <!-- ===== PORTERO / NOCHERO / RONDÍN / CONSERJE: uniforme oscuro, botones dorados ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('portero')" aria-label="Ver requisitos Portero Nochero Rondín Conserje">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#111118 0%,#222230 55%,#111118 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#4b5563 0%,#9ca3af 55%,#374151 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0a0a"/>
@@ -4133,7 +4134,7 @@ body {
 
           <!-- ===== ENCARGADO DE ARMAS: equipamiento táctico oscuro ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('encargadoArmas')" aria-label="Ver requisitos Encargado de Armas">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#180808 0%,#2e1010 55%,#180808 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#991b1b 0%,#ea580c 55%,#7f1d1d 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#0a0808"/>
@@ -4182,7 +4183,7 @@ body {
 
           <!-- ===== OPERADOR DE CÁMARAS: ropa casual oscura, auricular ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('operador')" aria-label="Ver requisitos Operador de Cámaras">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0a0a22 0%,#18183e 55%,#0a0a22 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0369a1 0%,#06b6d4 55%,#0f172a 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
@@ -4234,7 +4235,7 @@ body {
 
           <!-- ===== TÉCNICO EN SEGURIDAD: ropa de trabajo, cinturón ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('tecnico')" aria-label="Ver requisitos Técnico en Seguridad">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#101818 0%,#1e3030 55%,#101818 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0e7490 0%,#06b6d4 55%,#164e63 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a10"/>
@@ -4284,7 +4285,7 @@ body {
 
           <!-- ===== INSTALADOR TÉCNICO: ropa de trabajo, casco naranja ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('instalador')" aria-label="Ver requisitos Instalador Técnico">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#181008 0%,#2e2010 55%,#181008 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#c2410c 0%,#f97316 55%,#7c2d12 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1408"/>
@@ -4332,7 +4333,7 @@ body {
 
           <!-- ===== CAPACITADOR: smart casual, porta-clipboard ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('capacitador')" aria-label="Ver requisitos Capacitador">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#0e0a20 0%,#201840 55%,#0e0a20 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#78350f 0%,#b45309 55%,#451a03 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
@@ -4385,7 +4386,7 @@ body {
 
           <!-- ===== EMPRESAS DE SEGURIDAD PRIVADA: ejecutivo con maletín ===== -->
           <button class="carousel-card" onclick="mostrarRequisitos('empresa')" aria-label="Ver requisitos Empresas de Seguridad Privada">
-            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#080a18 0%,#141838 55%,#080a18 100%);">
+            <div class="comp-avatar-wrap" style="background:linear-gradient(160deg,#2563eb 0%,#60a5fa 55%,#1d4ed8 100%);">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" aria-hidden="true">
                 <ellipse cx="90" cy="254" rx="44" ry="7" fill="rgba(0,0,0,0.35)"/>
                 <ellipse cx="72" cy="250" rx="22" ry="8" fill="#1a1a1a"/>
