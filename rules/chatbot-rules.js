@@ -1245,9 +1245,9 @@ function procesarMensajeConValidacion(userMessage, rules) {
                 )
             );
             
-            // Si no tiene las palabras requeridas, NO responder
+            // Si no tiene las palabras requeridas, saltar esta regla y continuar buscando otras
             if (!tieneRequiredKeyword) {
-                return null;
+                continue;
             }
         }
         
