@@ -847,15 +847,14 @@ async function speakWithElevenLabs(text) {
         addMessage('user', text);
         input.value = '';
         
-        // Si hay conversación en curso (> 1 porque el mensaje actual ya fue añadido),
-        // ir directo a Gemini para que use el historial como contexto.
-        // Solo usar reglas en la primera pregunta (sin historial previo).
-        const hasHistory = conversationHistory.length > 1;
-        const response = hasHistory ? null : findExactMatch(text, allRules);
+        // Intentar primero buscar coincidencia en las reglas locales.
+        // Si hay coincidencia, responder inmediatamente desde la base de datos local
+        // sin importar el historial, evitando llamadas lentas de red a la API de Gemini.
+        const response = findExactMatch(text, allRules);
 
         // Si se encuentra una respuesta en las reglas, mostrarla
         if (response) {
-            setTimeout(() => addMessage('bot', response), 500);
+            setTimeout(() => addMessage('bot', response), 200); // Reducido a 200ms para mayor agilidad
             return;
         }
 
