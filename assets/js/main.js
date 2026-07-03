@@ -337,7 +337,7 @@ window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil');
 window.handleDirectiva = function() { if(typeof showDirectiva === 'function') showDirectiva(); closeActiveMenu(); };
 window.handleCredenciales = function() { if(typeof showCredenciales === 'function') showCredenciales(); closeActiveMenu(); };
 window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1cP51FJEqrndm3RDNLuDUFCR8zlGIBrwb'); };
-window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); };
+window.handleValores = function() { openNewLink('https://drive.google.com/file/d/1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ/view'); };
 window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); };
 window.handleBuscarCurso = function(url) { openNewLink(url); };
 // FUNCIÓN PARA SPD - Abre portal externo
