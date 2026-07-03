@@ -780,6 +780,10 @@ async function speakWithElevenLabs(text) {
                 if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "Descargar";
                 else if (cleanedUrl.includes('bcn.cl')) buttonText = "Ver ley";
                 else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "Ver OS10";
+                else if (cleanedUrl.includes('drive.google.com')) {
+                    buttonText = "📥 Descargar cuadro";
+                    buttonClass = "bg-red-500 hover:bg-red-600 border border-red-600 text-white";
+                }
                 else if (cleanedUrl.includes('segprivada.minsegpublica.gob.cl')) {
                     buttonText = "PAGINA (SPD)";
                     buttonClass = "bg-blue-600 hover:bg-blue-700 border border-blue-700 text-white";
@@ -847,14 +851,15 @@ async function speakWithElevenLabs(text) {
         addMessage('user', text);
         input.value = '';
         
-        // Intentar primero buscar coincidencia en las reglas locales.
-        // Si hay coincidencia, responder inmediatamente desde la base de datos local
-        // sin importar el historial, evitando llamadas lentas de red a la API de Gemini.
-        const response = findExactMatch(text, allRules);
+        // Si hay conversación en curso (> 1 porque el mensaje actual ya fue añadido),
+        // ir directo a Gemini para que use el historial como contexto.
+        // Solo usar reglas en la primera pregunta (sin historial previo).
+        const hasHistory = conversationHistory.length > 1;
+        const response = hasHistory ? null : findExactMatch(text, allRules);
 
         // Si se encuentra una respuesta en las reglas, mostrarla
         if (response) {
-            setTimeout(() => addMessage('bot', response), 200); // Reducido a 200ms para mayor agilidad
+            setTimeout(() => addMessage('bot', response), 500);
             return;
         }
 
