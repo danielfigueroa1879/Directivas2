@@ -613,11 +613,11 @@ class GlobalSearch {
                 keywords: ['consultar', 'curso', 'certificación', 'verificar', 'estado', 'buscador']
             },
             {
-                title: 'Valores y Aranceles',
-                content: 'Tabla de valores y aranceles vigentes. Vale vista $5.890',
+                title: 'Valores y Aranceles (2° Semestre 2026)',
+                content: '1 credencial: $6.123 CLP. Más de una credencial: valores distintos — descargar cuadro oficial (no se pueden sumar).',
                 section: 'Servicios Adicionales',
                 action: () => window.handleValores && window.handleValores(),
-                keywords: ['valores', 'aranceles', 'tabla', 'precio', 'vale', 'vista', '5890']
+                keywords: ['valores', 'aranceles', 'tabla', 'precio', 'vale', 'vista', '6123', '6.123', 'semestre 2026', 'segundo semestre', 'mas de una credencial', 'varias credenciales', 'cuadro valores']
             },
             {
                 title: 'Ubicación OS10',
@@ -708,11 +708,18 @@ class GlobalSearch {
                 keywords: ['guia', 'credencial', 'independiente', 'requisitos', 'documento']
             },
             {
-                title: 'Tabla de Valores (Credenciales)',
-                content: 'Imagen con la tabla de valores y aranceles para el pago de credenciales ($5.890)',
+                title: 'Tabla de Valores (Credenciales) — 2° Semestre 2026',
+                content: 'Cuadro oficial de valores 2° semestre 2026. 1 credencial: $6.123 CLP. Más de una credencial: valores distintos, no se pueden sumar — descargar cuadro para ver monto exacto.',
                 section: 'Credenciales',
                 action: () => window.open('https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ', '_blank'),
-                keywords: ['valores', 'tabla', 'pago', 'vale vista', '5890', 'arancel', 'credencial']
+                keywords: ['valores', 'tabla', 'pago', 'vale vista', '6123', '6.123', 'arancel', 'credencial', 'cuadro', 'mas de una credencial', 'varias credenciales', 'semestre 2026', 'segundo semestre', 'multiples credenciales']
+            },
+            {
+                title: 'Valor Plan de Seguridad — 2° Semestre 2026',
+                content: 'Plan de Seguridad: $40.823 CLP (vigente 01.07.2026 – 31.12.2026). Cuadro oficial de valores del Plan.',
+                section: 'Credenciales',
+                action: () => window.open('https://drive.google.com/file/d/12mg35jowBvw1zX8z-jU2gZg_ALjBCIBD/view', '_blank'),
+                keywords: ['plan', 'plan de seguridad', 'valor plan', 'precio plan', 'costo plan', 'arancel plan', '40823', '40.823', 'cuadro plan', 'semestre 2026', 'segundo semestre']
             },
             {
                 title: 'Requisitos Fotografía (Credencial)',
