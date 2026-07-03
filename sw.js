@@ -3,7 +3,7 @@
 // IMPORTANTE: cuando reemplaces fotos, sube PHOTO_VERSION en los 3 lugares
 // (index.html <script>, este archivo, y bumpear el sufijo de CACHE_NAME).
 const PHOTO_VERSION = '15';
-const CACHE_NAME = 'directivas-os10-cache-v41'; // Incrementado para forzar actualización en todos los usuarios
+const CACHE_NAME = 'directivas-os10-cache-v42'; // Incrementado para forzar actualización en todos los usuarios
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
@@ -18,7 +18,7 @@ const urlsToCache = [
   './assets/js/credenciales.js?v=2',
   './assets/js/chatbot.min.js?v=2',
   './assets/js/search.min.js?v=9',
-  './rules/chatbot-rules.js?v=6',
+  './rules/chatbot-rules.js?v=7',
   // Iconos y logos
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',
